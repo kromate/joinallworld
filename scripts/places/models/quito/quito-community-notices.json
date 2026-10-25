@@ -1,0 +1,411 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Carondelet_-_Quito.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Taty2007",
+   "view": "front",
+   "file": "/tmp/places-evidence/quito/carondelet.jpg",
+   "used": "white neoclassical facade, dark volcanic-stone basement with small gabled windows, colonnade of stone columns under arched end bays, first-floor wrought-iron balcony, raised central pediment with clock, small bell turret behind at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/381053952",
+   "used": "overall size 76 x 32 m (outline is noisy so a clean rectangle is used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "basement",
+   "footprint": {
+    "rect": [
+     76,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5c5853",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5853"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     76,
+     22
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 2.5,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain"
+    },
+    "cornice": true,
+    "bands": "#e6e3da"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5dc",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wall-upper",
+   "footprint": {
+    "rect": [
+     76,
+     1.5
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 9.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "cornice": true,
+    "windowShape": "rect",
+    "trimColour": "#ffffff",
+    "bands": "#e6e3da"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5dc",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment-block",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 16.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ece9e0",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    -34,
+    -11
+   ],
+   "z0": 2.5,
+   "height": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "round",
+      "bay": 4,
+      "opening": 2.8,
+      "height": 5,
+      "depth": 1.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    34,
+    -11
+   ],
+   "z0": 2.5,
+   "height": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "round",
+      "bay": 4,
+      "opening": 2.8,
+      "height": 5,
+      "depth": 1.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5dc"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -11,
+    2.5
+   ],
+   "params": {
+    "length": 60,
+    "count": 12,
+    "height": 6.8,
+    "radius": 0.7,
+    "kind": "round",
+    "beamHeight": 0.5,
+    "colour": "#8a8782",
+    "roofColour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -10.2,
+    9.3
+   ],
+   "params": {
+    "length": 62,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    24,
+    9,
+    16.5
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 8,
+    "cap": "hip",
+    "capRise": 2.5,
+    "windows": "none",
+    "colour": "#efece3",
+    "capColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    -3,
+    23.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "colour": "#d8c23a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.6,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#8f8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-back",
+   "footprint": {
+    "rect": [
+     62,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -8.2
+   ],
+   "z0": 2.5,
+   "height": 6.8,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#4a4541",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4541"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -14.4,
+     0
+    ],
+    "end": [
+     30,
+     -14.4,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "mass",
+     "id": "door-hood",
+     "footprint": {
+      "rect": [
+       1.8,
+       0.8
+      ]
+     },
+     "height": 1.8,
+     "wall": {
+      "material": "stone",
+      "colour": "#4a3b30",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#6a655f",
+      "pitch": 30,
+      "overhang": 0.3
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -6.4,
+    21
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "frameColour": "#7a746a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    24,
+    9,
+    28.5
+   ],
+   "params": {
+    "height": 2,
+    "count": 1,
+    "colour": "#d8d4c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "end-bay arches only on piers, window hoods and balcony rail simplified, doors as small hoods, bell turret has no cross"
+ }
+}

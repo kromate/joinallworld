@@ -1,0 +1,108 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/30100279",
+   "used": "real outline (containing match): irregular block with internal courts, 192 x 146 m, fitted to scene"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mexico-city.json",
+   "used": "federal ministry office complex, 7 storeys, concrete modernist 1960s-70s; the only Hacienda photo found (Condusef office on Insurgentes Sur, dark green concrete) is a different address so it is not used as a match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ministry",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 30,
+   "storeys": 7,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfb9ab",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#4f585d",
+     "height": 1.8,
+     "at": 0.3,
+     "floors": "upper",
+     "skipGround": false
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -58,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Plan only; facade, height and entrance not verified against a photo of this block"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-community-notices"
+}

@@ -1,0 +1,306 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alma_Jordan_Library_Building_-_forecourt.JPG",
+   "licence": "CC BY-SA 2.0",
+   "author": "Juliet Chan Wing",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-of-spain/workshop1.jpg",
+   "used": "brutalist stacked concrete floors stepping back, heavy fascia bands, dark ribbon windows, tall timber-framed ground-floor windows, entrance porch on two piers at the right, steps and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_the_Alma_Jordan_Library_Building.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Juliet Chan Wing",
+   "view": "detail",
+   "used": "entrance porch: two square concrete piers carrying a deep stepped fascia, dark glazed doors, low steps, timber balustrades"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/100763763",
+   "used": "size 75 x 73 m and four levels only (footprint is an irregular outline, a stepped rect is used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     70,
+     52
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a39a",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "glassColour": "#e8e0d0",
+    "trimColour": "#8a5a3a",
+    "plinth": 0.8,
+    "bay": 6.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#a09b92"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "parapet": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floor-2",
+   "footprint": {
+    "rect": [
+     64,
+     46
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a09b92",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#26343f",
+    "parapet": 0.5,
+    "bands": "#8d8980",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   },
+   "z0": 4.6
+  },
+  {
+   "type": "mass",
+   "id": "floor-3",
+   "footprint": {
+    "rect": [
+     56,
+     40
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a09b92",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#26343f",
+    "parapet": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   },
+   "z0": 8.2
+  },
+  {
+   "type": "mass",
+   "id": "floor-4",
+   "footprint": {
+    "rect": [
+     44,
+     34
+    ]
+   },
+   "at": [
+    4,
+    6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a09b92",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#26343f",
+    "parapet": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   },
+   "z0": 11.8
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -26.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 4.4,
+    "colour": "#9a958c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    -26.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 4.4,
+    "colour": "#9a958c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    29,
+    -26.5,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     14,
+     3.6
+    ],
+    "height": 1.6,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    29,
+    -24.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3
+    ],
+    "height": 1.6,
+    "colour": "#262a2e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    29,
+    -28.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.0,
+    "run": 0.5,
+    "count": 5,
+    "colour": "#9a958c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Stepped concrete floors and entrance porch match; real ground floor has deeper timber-framed windows and the upper floors are wider with stronger fascias; OSM plan is irregular."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-community-workshop"
+}

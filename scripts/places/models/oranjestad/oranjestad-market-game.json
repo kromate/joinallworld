@@ -1,0 +1,399 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palm_Beach,_Aruba_-_panoramio_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vlad Podvorny",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/mall1.jpg",
+   "used": "courtyard elevation: salmon-pink rough-render two-storey wings with arched dark-glazed windows and scalloped Cape-Dutch parapet gables, terracotta tile hips, tall salmon clock tower with pyramid tile cap, small tile-roofed kiosks, palms, stepped amphitheatre paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palm_Beach,_Aruba_-_panoramio_(2).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vlad Podvorny",
+   "view": "side",
+   "file": "/tmp/places-evidence/oranjestad/mall2.jpg",
+   "used": "ochre, coral and salmon painted bays, orange tile hip roofs, balustrade parapet, open loggia with white columns, awnings"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4073810",
+   "used": "mall outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 106,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3a08c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.38,
+    "plinth": 0.4,
+    "cornice": true,
+    "bay": 8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b8654f"
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8654f",
+    "material": "membrane",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-a",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -54
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#d9703f",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-b",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    26,
+    -54
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#d9703f",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.5,
+    "colour": "#e6b878"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    12,
+    -44
+   ],
+   "height": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9584a",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9584a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "hospital/clock-tower-square",
+   "at": [
+    12,
+    -44,
+    7
+   ],
+   "params": {
+    "width": 5.6,
+    "height": 24,
+    "cap": "hip",
+    "capRise": 3.5,
+    "clock": true,
+    "belfry": true,
+    "colour": "#dc8a72",
+    "trimColour": "#f1dcc0",
+    "capColour": "#d9703f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mosque-domed/frontispiece",
+     "at": [
+      0,
+      0,
+      9.5
+     ],
+     "params": {
+      "width": 7,
+      "height": 2.6,
+      "kind": "arched",
+      "thickness": 0.6,
+      "colour": "#d3a08c",
+      "trim": "#f1dcc0"
+     }
+    },
+    "count": 4,
+    "start": [
+     -36,
+     -24
+    ],
+    "end": [
+     -6,
+     -24
+    ],
+    "mode": "line"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mosque-domed/frontispiece",
+     "at": [
+      0,
+      0,
+      9.5
+     ],
+     "params": {
+      "width": 7,
+      "height": 2.6,
+      "kind": "arched",
+      "thickness": 0.6,
+      "colour": "#d3a08c",
+      "trim": "#f1dcc0"
+     }
+    },
+    "count": 4,
+    "start": [
+     22,
+     -24
+    ],
+    "end": [
+     46,
+     -24
+    ],
+    "mode": "line"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "amphi",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     12,
+     -55,
+     0
+    ],
+    "radius": 15,
+    "radiusY": 10,
+    "startDeg": 200,
+    "endDeg": 340,
+    "rows": 3,
+    "rise": 0.3,
+    "run": 1.6,
+    "firstHeight": 0.3,
+    "facetDeg": 15,
+    "concreteColour": "#b9a58a",
+    "seatColour": "#a8957a",
+    "closeEnds": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-hip-0",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    10
+   ],
+   "z0": 9.5,
+   "height": 0.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3a08c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9703f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-hip-1",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    20,
+    -5
+   ],
+   "z0": 9.5,
+   "height": 0.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3a08c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9703f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -55
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-market-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no Cape-Dutch scalloped gables, open belfry, arched glazing or courtyard amphitheatre; roof is flat with two tile hips because the OSM outline is irregular"
+ }
+}

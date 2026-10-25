@@ -1,0 +1,535 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/958543660",
+   "used": "real park outline (simplified, scaled 0.4) 298 x 214 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "polygon": [
+     [
+      -52.5,
+      31.0
+     ],
+     [
+      -48.0,
+      7.6
+     ],
+     [
+      -32.1,
+      -31.6
+     ],
+     [
+      -26.4,
+      -43.1
+     ],
+     [
+      13.2,
+      -58.3
+     ],
+     [
+      41.3,
+      -60.5
+     ],
+     [
+      35.8,
+      -3.6
+     ],
+     [
+      31.4,
+      55.0
+     ],
+     [
+      -5.0,
+      55.1
+     ],
+     [
+      -49.4,
+      34.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb070",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb070"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "path-a",
+   "footprint": {
+    "rect": [
+     60,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -8,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cbb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "path-b",
+   "footprint": {
+    "rect": [
+     60,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 82,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cbb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cbb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    18.0,
+    15.0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e8d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523b",
+    "pitch": 25,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -27.0,
+    -18.0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e8d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523b",
+    "pitch": 25,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    -6.0,
+    6.0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c0392b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e1d4",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    40,
+    -45,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13.722122374486517,
+    5.36142112249234,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.663779246923925
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0.44321219282759333,
+    8.144758410604249,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.0526719662194965
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22.2481449257876,
+    -16.28909491107142,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.766976415981198
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15.028882356105818,
+    5.114015307806949,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6.90541283479734
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10.344088432649716,
+    -24.553151774212182,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.6064895054115444
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27.550128306380454,
+    -6.3648092125718225,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.68564590147837
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24.158113706380163,
+    21.625498717798123,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.17115611735784
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18.804589345013387,
+    26.591358853728096,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.890996354661867
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15.12943544394819,
+    30.789772819416612,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8.152435419592221
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2.38390684352961,
+    19.337573951997356,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6.7784842242030425
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28.13520330227126,
+    30.79386618569116,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.143546525715854
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    1.6930047349573387,
+    -16.39342685508363,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6.744647466509717
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9.598897452008236,
+    -13.12200891966159,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8.33390847998459
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.441364117373741,
+    4.591834459197753,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7.337007171880796
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26.252106250866508,
+    15.830642384257466,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8.425602265587022
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    31.459378692128908,
+    15.016789204351387,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.79446348132603
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8.416582689598377,
+    5.174211626923785,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7.2764300138972935
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14.829021210451954,
+    -19.954501240654533,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6.068339624552651
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20.533909799101693,
+    0.6321081288131212,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8.959224059686324
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22.6889144134163,
+    24.845244415570143,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.588384632789056
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26.792478757847295,
+    -3.537226122407742,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.491068098512805
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25.348596332227398,
+    10.704472168417453,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.51121907587172
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-way-958543660",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No usable photo of this park (nearby photos show a fenced dry lot); outline simplified from OSM, paths, pavilions, kiosk and trees are typed."
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/323057986",
+   "used": "real 58 x 45 m rectangle of the Mediatheque (library), name-quality match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/marigot.json",
+   "used": "two-storey 2000s library block, ribbon glazing with a brise-soleil screen on the front, entrance steps, car park; the only nearby Commons photo is Concordia, a different site"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#6d9eb5",
+    "parapet": 0.6,
+    "glassColour": "#6d9eb5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa8",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -16,
+    -27,
+    0
+   ],
+   "rotDeg": -20,
+   "params": {
+    "length": 30,
+    "height": 8,
+    "pitch": 1.6,
+    "depth": 0.5,
+    "colour": "#b9b9b2"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     32
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM rectangle with typed render, ribbon glazing and brise-soleil."
+ }
+}

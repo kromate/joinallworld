@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-node-1929227554",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/169605484",
+   "used": "size only (10 m); match is 75 m away so the outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "deck_height": 0.5,
+    "post_height": 2.8,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": true,
+    "bar": true
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#5fb7b0",
+     "#f2efe6",
+     "#c9a15a"
+    ]
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "width": 2.2,
+    "height": 0.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1,
+    "bottom": 1.2,
+    "colour": "#5fb7b0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline; thatched open pavilion inferred from the word ajoupa."
+ }
+}

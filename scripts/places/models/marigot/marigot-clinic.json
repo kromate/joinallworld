@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/232173960",
+   "used": "real hospital outline (113 x 96 m, several wings), name-quality match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/marigot.json",
+   "used": "three storeys, white painted concrete, flat roofs, ambulance bay, blank red-cross board, two water tanks; the only Commons photo is a distant town view, not usable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8fb7c4",
+    "parapet": 0.6,
+    "bay": 6.5,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a8a8",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    20,
+    -68,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#efece4",
+    "roofColour": "#bdbdb6",
+    "vans": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -20,
+    30,
+    11.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -12,
+    36,
+    11.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -50,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the hospital; real outline scaled 0.88 to the 118 m clamp; storeys, colours typed; single height for all wings."
+ }
+}

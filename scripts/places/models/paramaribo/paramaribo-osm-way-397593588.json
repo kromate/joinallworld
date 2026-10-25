@@ -1,0 +1,424 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paramaribo_Zoo_-_entree_20160926.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Otter",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/zoo1.jpg",
+   "used": "entrance building: long low shed with red corrugated gable roof, open timber front with kiosk windows, white sign board above the roof, sandy forecourt, tall trees both sides"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/397593588",
+   "used": "park outline 425 x 219 m, size context only; the scene shows the entrance zone"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.9
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     90
+    ],
+    "height": 0.1,
+    "colour": "#7a9a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -18,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     60,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#c4875a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -4,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -14
+     ],
+     [
+      4,
+      -14
+     ],
+     [
+      8,
+      30
+     ],
+     [
+      -4,
+      30
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#a9a290"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4f36",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.4,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     25,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e9e4d4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -11.6,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#3f6b9a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -11.6,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#d6a93a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -8,
+    3.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 0.0,
+    "colour": "#f2f2f2",
+    "frameColour": "#c8c8c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 1.2,
+      "colour": "#c43a2a"
+     }
+    },
+    "start": [
+     -4,
+     -12.5
+    ],
+    "end": [
+     4,
+     -12.5
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house--30-30",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    30
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee4cf",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-18-30",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    18,
+    30
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-34-8",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    34,
+    8
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee4cf",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a5f42",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      16
+     ],
+     [
+      40,
+      16
+     ],
+     [
+      40,
+      42
+     ],
+     [
+      -40,
+      42
+     ],
+     [
+      -40,
+      16
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.1,
+    "colour": "#5a5148",
+    "kind": "fence"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 5,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 4,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 6,
+    "spread": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-397593588",
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "Render queue stalled (workers idle since 21:40 on 24 Oct), so no render was compared; entrance hut taken from two photos, rest of the zoo (houses, fence) typed; blue slatted front is only a colour patch"
+ }
+}

@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-way-769698096",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Zoutman_Willem_III_Toren.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "JohnathanBaena",
+   "view": "front",
+   "used": "Willem III tower: pale blue base with arched door, maroon middle stage with white arched louvred windows and balcony, white clock stage with cornice; maroon gate piers, white gate",
+   "file": "/tmp/places-evidence/oranjestad/fort1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Presentacion_%22Voices_of_the_Drum%22_pa_Ondrofeni_Na_Reti_Foundation_na_Fort_Zoutman_Aruba_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ginelly.Q",
+   "view": "side",
+   "used": "whitewashed low rampart wall with small embrasures"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/769698096",
+   "used": "fort area about 1000 m2 (square courtyard fort with tower on west side)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 8,
+  "fovDeg": 38,
+  "aspect": 0.8,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rampart",
+   "footprint": {
+    "rect": [
+     32,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efeae0",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d2",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9d0ea",
+    "windows": "none",
+    "trimColour": "#f4f4f2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-mid",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.6
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "z0": 4.3,
+   "height": 6.7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7b2132",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "trimColour": "#f4f4f2",
+    "bay": 5.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     5.8,
+     5.8
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "z0": 11,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5f1",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceae4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19,
+    -2.95,
+    14.2
+   ],
+   "params": {
+    "n": 16,
+    "radius": 1.1,
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f9f9f6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7b2132",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7b2132",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -19,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 6.4,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#f5f5f2"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 4.5,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clock faces, white arch surrounds, balcony and gate railings missing; rampart modelled as a plain whitewashed square"
+ }
+}

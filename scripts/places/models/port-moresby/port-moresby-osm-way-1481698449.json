@@ -1,0 +1,134 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1481698449",
+   "used": "real outline 77x40 m, orientation"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey rendered clinic on low piers, covered porch, red roof, palms (Motu coastal village)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f2efe6",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.9,
+    "bands": "#9fb8c4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9422f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#a9422f",
+    "edgeColour": "#8d6e4a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "bottom": 1.2,
+    "colour": "#f2efe6",
+    "posts": true
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -18,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "columns": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-1481698449",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; footprint/brief only, details and colours are plausible not observed"
+ }
+}

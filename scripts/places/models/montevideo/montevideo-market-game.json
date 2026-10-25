@@ -1,0 +1,521 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alrededores_de_Montevideo_Shopping_y_Edificio_World_Trade_Center_Montevideo_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio contributor (Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/montevideo/mv-shop2.jpg",
+   "used": "red brick windowless mall volumes with stepped upper block, white steel truss canopy walkway with flagpoles, car park in front, glass towers beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Montevideo_Shopping_visto_desde_Calle_Avda_Luis_Alberto_de_Herrera_-_panoramio_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio contributor (Commons)",
+   "view": "street",
+   "used": "brick pylon and orange sign blade, glazed food-court box with yellow roof edge at the corner"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/180467217",
+   "used": "only the car park polygon exists (156 x 40 m); used for the size of the front car park, not as the mall footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "all",
+  "shiftX": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall-low",
+   "footprint": {
+    "rect": [
+     110,
+     46
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9c4a36",
+    "windows": "none",
+    "cornice": false,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall-high",
+   "footprint": {
+    "rect": [
+     62,
+     30
+    ]
+   },
+   "at": [
+    10,
+    26
+   ],
+   "z0": 12,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24f39",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-box",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -36,
+    -16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7a8c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3c63a",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -52,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 9,
+    "bottom": 3,
+    "colour": "#e8731f",
+    "frameColour": "#7a3a2a",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0,
+    "colour": "#b9bcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0,
+    "colour": "#8a2b2b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      6.0
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "bulge": 1.0
+    },
+    "points": [
+     [
+      -30,
+      -14,
+      5.8
+     ],
+     [
+      30,
+      -14,
+      5.8
+     ]
+    ],
+    "colour": "#f2f3f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -16.5,
+      4.4
+     ],
+     [
+      30,
+      -16.5,
+      4.4
+     ]
+    ],
+    "colour": "#f2f3f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -11.5,
+      4.4
+     ],
+     [
+      30,
+      -11.5,
+      4.4
+     ]
+    ],
+    "colour": "#f2f3f4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -29,
+     -16.5,
+     0
+    ],
+    "end": [
+     29,
+     -16.5,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.3,
+        0.3
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        4.4
+       ]
+      ],
+      "colour": "#f2f3f4"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     25,
+     25
+    ]
+   },
+   "at": [
+    30,
+    52
+   ],
+   "height": 120,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6fa0",
+    "windows": "none",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7378",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    -5,
+    62
+   ],
+   "height": 70,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a86b0",
+    "windows": "none",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7378",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foodcourt",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    42,
+    -16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a8294",
+    "windows": "ribbon",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3c63a",
+    "overhang": 1,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "profile": [
+     [
+      0,
+      12,
+      "#a24f39"
+     ],
+     [
+      14,
+      12,
+      "#a24f39"
+     ],
+     [
+      14,
+      19,
+      "#a24f39"
+     ],
+     [
+      0,
+      19,
+      "#8d8a85"
+     ]
+    ]
+   },
+   "at": [
+    -12,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -25,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 10,
+    "colours": [
+     "#2a5ca8",
+     "#f2f3f4",
+     "#c8313a"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -16.5,
+     4.4
+    ],
+    "end": [
+     28,
+     -16.5,
+     4.4
+    ],
+    "count": 16,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.15,
+        0.15
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        1.9,
+        0,
+        1.5
+       ]
+      ],
+      "colour": "#f2f3f4"
+     }
+    },
+    "lod1Step": 4,
+    "lod2Step": 16
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "white truss canopy is lattice with flag row, glass towers and food-court box added; towers are plain blue prisms without curtain-wall detail, no curved roof volumes beyond one drum, viewpoint is aerial not street level"
+ }
+}

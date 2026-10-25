@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/301893671",
+   "used": "campus is 537 x 503 m, too large to model; one representative ward cluster, pastel palette from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     48,
+     14
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d8a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#f1eee4",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9b5ab",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     14,
+     36
+    ]
+   },
+   "at": [
+    -31,
+    -9
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8cc9c4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#f1eee4",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9b5ab",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    28,
+    -14
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#8cc9c4",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9b5ab",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "link",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#f1eee4",
+    "roofColour": "#b9b5ab"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "amb",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f1eee4",
+    "roofColour": "#8cc9c4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -12,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.5,
+    "colour": "#8cc9c4"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -5,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence",
+   "at": [
+    -45,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#f1eee4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render queue workers were stalled (no heartbeat since 24 Oct 21:40), so no comparison render was possible: no photo of the campus found; one typical pastel ward cluster, campus outline (537 m) not modelled"
+ }
+}

@@ -1,0 +1,288 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/384856441",
+   "used": "retail strip footprint 77.4 x 22 m, 1 level (shared with other shops): modelled as a row of four units, aligned so the shopfronts face the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "unit-0",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -25.7,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e3b8",
+    "windows": "curtain",
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.55,
+    "bands": "#c8452d",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9195",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "unit-1",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    -3.7,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d3c6",
+    "windows": "curtain",
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.55,
+    "bands": "#7a8a99",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9195",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "unit-2",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    14.3,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd2",
+    "windows": "curtain",
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.55,
+    "bands": "#5d7f6e",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9195",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "unit-3",
+   "footprint": {
+    "rect": [
+     15.4,
+     22
+    ]
+   },
+   "at": [
+    31,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd6d8",
+    "windows": "curtain",
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.55,
+    "bands": "#a8793f",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9195",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 77,
+    "depth": 5,
+    "height": 3.4,
+    "thickness": 0.3,
+    "colour": "#c8452d",
+    "edgeColour": "#ffffff",
+    "columns": 9
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -25.7,
+    -11.3,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "bottom": 5.2,
+    "colour": "#c8452d",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -45,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 4,
+    "bottom": 6,
+    "colour": "#c8452d",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -22,
+     0
+    ],
+    "end": [
+     34,
+     -22,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 4,
+    "of": {
+     "type": "car",
+     "params": {}
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; unit split, colours and canopy are typed, only strip size and level count are from OSM"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-node-3882111329"
+}

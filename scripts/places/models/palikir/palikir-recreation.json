@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanish_Wall_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zykasaa",
+   "view": "side",
+   "file": "/tmp/places-evidence/palikir/sw2.jpg",
+   "used": "low dark basalt rubble wall around mown lawn, wall end piers with an arched lintel remnant, bougainvillea, trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanish_Wall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zykasaa",
+   "view": "street",
+   "file": "/tmp/places-evidence/palikir/sw1.jpg",
+   "used": "coarse dark stone blocks, concrete footpath along lawn, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316996154",
+   "used": "park extent 105 x 65 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 110,
+    "colour": "#7fa860"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-long",
+   "footprint": {
+    "rect": [
+     44,
+     1.8
+    ]
+   },
+   "at": [
+    16,
+    14
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#34373a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mosque-domed/ruin-wall",
+   "at": [
+    -24,
+    14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.8,
+    "thickness": 1.4,
+    "colour": "#34373a",
+    "gaps": 0.15
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "pier-a",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -6,
+    14
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#555a58",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-b",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    2,
+    14
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4b504e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     10,
+     1.6
+    ]
+   },
+   "at": [
+    -2,
+    14
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6458",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6458",
+    "material": "concrete"
+   },
+   "z0": 4.4
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -50
+     ],
+     [
+      -8,
+      -20
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      8,
+      40
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -22,
+    18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#c9b99a",
+    "cap_colour": "#a33b2d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wall is a plain straight run, not rough ruined rubble with a broken arch lintel; no bougainvillea; park layout inferred from OSM extent."
+ }
+}

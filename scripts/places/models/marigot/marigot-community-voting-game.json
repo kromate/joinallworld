@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/323656342",
+   "used": "real 7 x 7 m building outline of the Reserve Naturelle office"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/marigot.json",
+   "used": "small timber visitor hut, green shed roof, louvred windows, blank sign board, sandy shore; no photo of it exists in the evidence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6c4c",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "faces": {
+     "front": "louvre",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f7c5d",
+    "material": "metal-sheet",
+    "rise": 1.0,
+    "overhang": 0.7,
+    "high": "back"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 0.9,
+    "bottom": 1.0,
+    "colour": "#f2eee2",
+    "frameColour": "#4f7c5d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "colour": "#f2eee2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; 7x7 m OSM outline with a typed timber hut."
+ }
+}

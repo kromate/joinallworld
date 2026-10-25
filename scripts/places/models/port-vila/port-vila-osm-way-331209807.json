@@ -1,0 +1,490 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-way-331209807",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/331209807",
+   "used": "real 163 x 147 m ground outline (unscaled), orientation of the pitch long axis"
+  },
+  {
+   "kind": "text",
+   "used": "Photo Luganville_Soccer_City_Stadium.jpg (CC BY-SA 4.0, Mtemar), NOT this venue (Luganville, another island; the OSM wikidata tag is wrong). Used only as a hint of the local ground type: open grass pitch ringed by tall coconut palms and a small white two-storey clubhouse with a flat roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -82.5,
+      -9
+     ],
+     [
+      -63.7,
+      22.3
+     ],
+     [
+      -57.5,
+      76.8
+     ],
+     [
+      52.2,
+      83.9
+     ],
+     [
+      70.6,
+      -74.9
+     ],
+     [
+      -39.6,
+      -84.8
+     ],
+     [
+      -45,
+      -45.6
+     ],
+     [
+      -65.4,
+      -32.6
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#7e9d55",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    0,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     66,
+     100
+    ],
+    "height": 0.04,
+    "colour": "#79b04f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    0,
+    0.29
+   ],
+   "params": {
+    "rect": [
+     66.6,
+     0.5
+    ],
+    "height": 0.03,
+    "colour": "#f1f3ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    50,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     6
+    ],
+    "height": 0.04,
+    "colour": "#f1f3ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -50,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     6
+    ],
+    "height": 0.04,
+    "colour": "#f1f3ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -51,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     7.3,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    51,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     7.3,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    48,
+    -5
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "trimColour": "#c9c4b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc8",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    48,
+    14
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a8a7a",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -62,
+     36
+    ],
+    "end": [
+     -62,
+     -36
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.4,
+    "concreteColour": "#b9bbb6",
+    "seatColour": "#6d7f8c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     -42
+    ],
+    "end": [
+     56,
+     -20
+    ],
+    "rows": 3,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.4,
+    "concreteColour": "#b9bbb6",
+    "seatColour": "#6d7f8c"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    60,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -68,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    56,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -72,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    66,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    78,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -82,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -86,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    80,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    88,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -76,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -80,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this venue (the only linked photo is Luganville); footprint is the real OSM outline but pitch markings, clubhouse, terraces and floodlight positions are typical, not observed. Scene is about 168 m wide, above the 120 m clamp warning."
+ }
+}

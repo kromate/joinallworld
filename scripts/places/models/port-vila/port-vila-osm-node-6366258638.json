@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-node-6366258638",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "viewpoint node only; no building in OSM, no photo found: a modest hilltop lookout shelter with railing and steps"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -7,
+      -5
+     ],
+     [
+      6,
+      -6
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      -6,
+      5
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#b8ad96",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b48f",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b6b4a",
+    "material": "thatch",
+    "pitch": 32,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5.5,
+    0.5
+   ],
+   "params": {
+    "length": 13,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#8b6b4a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.25,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#b8ad96"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.1,
+    "bottom": 0.8,
+    "colour": "#7aa37a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or building; generic lookout shelter"
+ }
+}

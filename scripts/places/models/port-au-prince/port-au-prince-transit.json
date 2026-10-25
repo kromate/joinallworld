@@ -1,0 +1,173 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/386926",
+   "used": "size cue only (112 x 46 m); the OSM match is a hospital 190 m away so its outline is not used"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/#map=17/18.5360/-72.3466",
+   "used": "Portail Leogane tap-tap park: open asphalt yard with a long low shed and bays, painted minibuses in yellow and blue"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 46,
+    "border": 0.8,
+    "colour": "#5b5d60",
+    "border_colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "depth": 9,
+    "height": 4.5,
+    "form": "shed",
+    "colour": "#8f9498",
+    "accent": "#e8c94f"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -34,
+    -4,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "depth": 6,
+    "height": 3.8,
+    "form": "gable",
+    "colour": "#9aa0a4",
+    "accent": "#6fa8c8"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    3,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "kind": "van",
+    "density": 0.9,
+    "colours": [
+     "#e8c94f",
+     "#6fa8c8",
+     "#c8362f",
+     "#f1f1ee"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "kind": "van",
+    "density": 0.7,
+    "colours": [
+     "#6fa8c8",
+     "#e8c94f",
+     "#2f6b4f"
+    ],
+    "yaw": 270
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3.2,
+    "colour": "#e8c94f",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -26
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     22
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this park and the OSM match is a hospital; layout of sheds and bays is typical, not surveyed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-transit"
+}

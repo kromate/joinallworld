@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-way-864040553",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/864040553",
+   "used": "106 x 99 m park ground; arena sized to its inscribed oval"
+  },
+  {
+   "kind": "text",
+   "used": "brief: oval rodeo/event ground with timber rail fence and two sheds; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 47,
+    "n": 24,
+    "height": 0.15,
+    "colour": "#7aa37a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "radius": 36,
+    "n": 24,
+    "height": 0.1,
+    "colour": "#b48a5a",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 36,
+    "radius": 36.5,
+    "facing": "outward",
+    "of": {
+     "type": "fence-wall",
+     "params": {
+      "length": 6.4,
+      "height": 1.5,
+      "thickness": 0.2,
+      "kind": "rail",
+      "pillarEvery": 3.2,
+      "colour": "#8b6b4a"
+     }
+    },
+    "lod1Step": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    -52
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b48f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b6b4a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    40,
+    -40
+   ],
+   "rotDeg": 35,
+   "height": 2.8,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b48f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b6b4a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     30
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     34
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; fence rail, sheds and arena surface are assumed from the brief; OSM outline is a loose quad so a true oval is used."
+ }
+}

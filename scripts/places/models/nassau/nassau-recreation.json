@@ -1,0 +1,304 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1491651204",
+   "used": "real park outline, about 50 x 135 m (name match); no photo found, furniture is typical for a Nassau constituency park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 38,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "polygon": [
+     [
+      -36.5,
+      59.8
+     ],
+     [
+      21.3,
+      59
+     ],
+     [
+      24.1,
+      -72.3
+     ],
+     [
+      -4.6,
+      -75.7
+     ]
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7cae5e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7cae5e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    -6,
+    -10,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     15,
+     28
+    ],
+    "height": 0.1,
+    "colour": "#b5503a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hoop-a",
+   "at": [
+    -6,
+    -23,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.1,
+    "colour": "#3a3d41"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board-a",
+   "at": [
+    -6,
+    -22.7,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "height": 1.1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hoop-b",
+   "at": [
+    -6,
+    3,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.1,
+    "colour": "#3a3d41"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board-b",
+   "at": [
+    -6,
+    2.7,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "height": 1.1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "id": "shelter",
+   "at": [
+    6,
+    28,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 6,
+    "colour": "#f0d98a",
+    "cap_colour": "#a2573f"
+   }
+  },
+  {
+   "type": "stadium/gate-piers",
+   "id": "gate",
+   "at": [
+    -6,
+    -72,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-w",
+   "at": [
+    -18,
+    -5,
+    0.5
+   ],
+   "params": {
+    "length": 128,
+    "height": 1.6,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#8cc9c4",
+    "points": [
+     [
+      -6,
+      -70
+     ],
+     [
+      -14,
+      60
+     ]
+    ]
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path",
+   "at": [
+    0,
+    0,
+    0.52
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -70
+     ],
+     [
+      -4,
+      -14
+     ],
+     [
+      4,
+      20
+     ],
+     [
+      -8,
+      56
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d6d0c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -55,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    5,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    40,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    48,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline real, court/shelter/trees typical of a Nassau constituency park, lawn scaled 0.87 to the 118 m limit."
+ }
+}

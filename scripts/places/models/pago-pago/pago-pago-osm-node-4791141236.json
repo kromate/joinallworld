@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-osm-node-4791141236",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/428979691",
+   "used": "real 65 x 30 m outline of the containing shop strip (Tafuna)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey concrete strip of small shops, shared awning, shed roof, forecourt car park; photo not found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "strip",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e4d6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#9fb7c9"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8b95",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "pitch": 8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    2,
+    -12.5,
+    0
+   ],
+   "rotDeg": 16,
+   "params": {
+    "form": "flat",
+    "width": 58,
+    "depth": 2.6,
+    "height": 3.0,
+    "colour": "#9fb7c9",
+    "edgeColour": "#e9e4d6",
+    "columns": 8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "shopfront",
+     "params": {
+      "width": 3.4,
+      "height": 3.2,
+      "kind": "shutter",
+      "colour": "#9fb7c9",
+      "sign_colour": "#e9e4d6"
+     },
+     "rotDeg": 16
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -19.4
+    ],
+    "end": [
+     28,
+     -4.6
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "count": 3,
+    "spacing": 4.2,
+    "yaw": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 2,
+  "treeKind": "palm",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the strip; outline real, shopfront split, awning and roof pitch typed."
+ }
+}

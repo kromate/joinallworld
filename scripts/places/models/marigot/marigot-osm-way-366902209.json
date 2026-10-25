@@ -1,0 +1,428 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-way-366902209",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Marina_Shopping_(16083041437).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Paul Sableman",
+   "view": "street",
+   "file": "/tmp/places-evidence/marigot/osm-way-366902209-0.jpg",
+   "used": "two-storey white rendered block, pale yellow-green metal hip roof, upper balcony with blue railing, ground-floor shopfronts under grey and cream awnings, red storefront accent"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Marina_Marigot_(15648954153).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Paul Sableman",
+   "view": "back",
+   "used": "low quay-side kiosks with pale roofs on the marina edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/366902209",
+   "used": "name match; the way is only a 17x5 m fragment so the strip is a typed 30x9 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bands": "#8fc1cf",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#cfc98c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-lantern",
+   "footprint": {
+    "rect": [
+     8,
+     3.5
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "z0": 7.6,
+   "height": 1.6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f86b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ab0b8"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -11.5,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 3.5,
+    "kind": "glazed",
+    "colour": "#e9b49a",
+    "sign_colour": "#e9b49a",
+    "awning_colours": [
+     "#d8d4c8",
+     "#f2ede0"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -6.9,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 3.5,
+    "kind": "glazed",
+    "colour": "#a8322e",
+    "sign_colour": "#a8322e",
+    "awning_colours": [
+     "#8d8780",
+     "#d8d4c8"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.3,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 3.5,
+    "kind": "glazed",
+    "colour": "#f4efe4",
+    "sign_colour": "#f4efe4",
+    "awning_colours": [
+     "#8d8780",
+     "#f2ede0"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.3,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 3.5,
+    "kind": "glazed",
+    "colour": "#8fc1cf",
+    "sign_colour": "#8fc1cf",
+    "awning_colours": [
+     "#d8d4c8",
+     "#a8322e"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    6.9,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 3.5,
+    "kind": "glazed",
+    "colour": "#e9b49a",
+    "sign_colour": "#e9b49a",
+    "awning_colours": [
+     "#8d8780",
+     "#f2ede0"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    11.5,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 3.5,
+    "kind": "glazed",
+    "colour": "#f4efe4",
+    "sign_colour": "#f4efe4",
+    "awning_colours": [
+     "#d8d4c8",
+     "#8d8780"
+    ]
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -4,
+    -4.6,
+    3.8
+   ],
+   "params": {
+    "width": 9,
+    "depth": 1.1,
+    "railing_colour": "#7fb2d6"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    8,
+    -4.6,
+    3.8
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.1,
+    "railing_colour": "#7fb2d6"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -11.5,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#d8d4c8",
+     "#f2ede0"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6.9,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#8d8780",
+     "#d8d4c8"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2.3,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#8d8780",
+     "#f2ede0"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2.3,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#d8d4c8",
+     "#a8322e"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6.9,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#8d8780",
+     "#f2ede0"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    11.5,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#d8d4c8",
+     "#8d8780"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    10,
+    1.5,
+    7.6
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 1.6,
+    "colour": "#ece9e2",
+    "roof_colour": "#cfc98c"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -11,
+    1.5,
+    7.6
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 1.6,
+    "colour": "#ece9e2",
+    "roof_colour": "#cfc98c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -7
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Shown as a frontage strip on paving with projecting awnings, dormers and a rooftop blue skylight; photo is a narrow lane, so stepped irregular facade, deep street scene, tent kiosks and rear marina not modelled."
+ }
+}

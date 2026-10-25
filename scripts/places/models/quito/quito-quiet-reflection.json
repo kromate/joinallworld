@@ -1,0 +1,271 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-quiet-reflection",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 9.5,
+    "n": 24,
+    "height": 0.3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.3,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2eee4",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "bay": 3.2,
+    "glassColour": "#3b4a4d",
+    "trimColour": "#8d8a82",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    5.5
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f2eee4",
+    "profile": [
+     [
+      5.3,
+      0,
+      "#8d8a82"
+     ],
+     [
+      5.3,
+      0.4
+     ],
+     [
+      4.4,
+      0.5,
+      "#f2eee4"
+     ],
+     [
+      4.4,
+      2.3
+     ],
+     [
+      4.7,
+      2.5,
+      "#8d8a82"
+     ],
+     [
+      4.7,
+      2.8,
+      "#a8522f"
+     ],
+     [
+      4.1,
+      4.2
+     ],
+     [
+      3.0,
+      5.5
+     ],
+     [
+      1.8,
+      6.3
+     ],
+     [
+      1.0,
+      6.7
+     ],
+     [
+      1.0,
+      7.7,
+      "#f2eee4"
+     ],
+     [
+      1.3,
+      7.9,
+      "#8d8a82"
+     ],
+     [
+      1.2,
+      8.4,
+      "#a8522f"
+     ],
+     [
+      0.6,
+      9.0
+     ],
+     [
+      0.1,
+      9.4
+     ],
+     [
+      0.1,
+      10.6,
+      "#8d8a82"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#a39d90"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -5.2,
+    0.3
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 3.0,
+    "arch": true,
+    "colour": "#4a3426"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    7.5,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 3.4,
+    "plinth_height": 1.6,
+    "colour": "#cfc8b8",
+    "figure_colour": "#f2eee4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 5,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 4,
+    "spread": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "length": 30,
+    "height": 0.8,
+    "thickness": 0.3,
+    "colour": "#a39d90",
+    "points": [
+     [
+      -13,
+      -12
+     ],
+     [
+      13,
+      -12
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": 0,
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline exists for this shrine; round whitewashed chapel with tiled cimborio dome and lantern is inferred from the name and Quito conventions"
+ }
+}

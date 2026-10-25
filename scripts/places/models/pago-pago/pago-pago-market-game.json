@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/107474782",
+   "used": "real outline of Fagatogo Market (name match, 43 x 43 m rotated square)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open-sided roofed hall of produce stalls, red corrugated roof, teal accent, bus stands alongside on the harbour front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ddc9",
+    "windows": "screen",
+    "windowRatio": 0.55,
+    "plinth": 0.9,
+    "bands": "#2f7f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33b2d",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ridge-monitor",
+   "at": [
+    0,
+    0,
+    5.2
+   ],
+   "rotDeg": 121,
+   "params": {
+    "rect": [
+     28,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#2f7f9a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -27,
+    -33,
+    0
+   ],
+   "rotDeg": 121,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#2f7f9a",
+     "#c0392b",
+     "#e7b83c"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "kind": "coach",
+    "density": 0.7,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "width": 4,
+    "colour": "#2f7f9a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for the market; real OSM outline and brief only. Open sides, stall layout, ridge and roof colour are typed, not seen."
+ }
+}

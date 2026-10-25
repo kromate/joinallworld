@@ -1,0 +1,142 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/466671984",
+   "used": "only 3.7 x 2.4 m building at 10 m: far too small to be the market, so used for nothing but location"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tin-shed",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    -4.5,
+    2.5
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b2a4",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-shed",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    5.5,
+    3.5
+   ],
+   "z0": 0,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9743f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a05a3a",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -2.5,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "colours": [
+     "#6fa8c8",
+     "#c9743f",
+     "#e8c94f",
+     "#b9b2a4"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 2.5,
+    "colours": [
+     "#6fa8c8",
+     "#c9743f"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.4,
+    "thickness": 0.5,
+    "colour": "#a89a85"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "extent": [
+   28,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; typical tin-and-tarpaulin roadside stalls for Canaan settlement, layout invented."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-node-4217575341"
+}

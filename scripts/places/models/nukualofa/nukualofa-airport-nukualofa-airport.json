@@ -1,0 +1,273 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-airport-nukualofa-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fua%27amoto_International_Airport.jpg",
+   "licence": "CC BY 3.0",
+   "author": "PetterLundkvist",
+   "view": "front",
+   "file": "/tmp/places-evidence/nukualofa/a1.jpg",
+   "used": "long low white terminal, shallow grey hip roofs on both wings, taller central block with viewing gallery and blank sign band, dark ground-floor glazing, covered frontage"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fua%27amotu_International_Airport.jpg",
+   "licence": "CC BY 2.0",
+   "author": "lirneasia",
+   "view": "detail",
+   "file": "/tmp/places-evidence/nukualofa/a2.jpg",
+   "used": "white render walls with blue-grey base, lean-to metal roof over entrance, railed gallery, yellow-banded columns, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/168878137",
+   "used": "overall size 138 x 40 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9a69c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9a69c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 5.6,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3d8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0ada3",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.35,
+    "columns": 6,
+    "colour": "#f1eee4",
+    "edgeColour": "#d6d2c6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.5,
+    5.7
+   ],
+   "params": {
+    "width": 28,
+    "height": 1.4,
+    "bottom": 0.2,
+    "colour": "#f4f1ea",
+    "frameColour": "#9c3a34",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "bottom": 1.2,
+    "colour": "#5e9fb8",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wing hip roofs are lower and paler than the photo's broad grey roofs; blue sign board and window bands are guessed; no floodlight mast or apron objects"
+ }
+}

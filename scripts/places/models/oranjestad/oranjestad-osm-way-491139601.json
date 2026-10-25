@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-way-491139601",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_Aruba_(front)_21_04_09_400000.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Caribiana",
+   "view": "front",
+   "used": "two-storey ochre block with white-framed arches, white balustrade loggia on upper floor, central stepped gable with round oculus, grey slate hip roof, white cornice",
+   "file": "/tmp/places-evidence/oranjestad/uni1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/491139601",
+   "used": "campus complex outline (about 83 x 65 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2a948",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#f4f1ea",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6366",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     22,
+     3
+    ]
+   },
+   "at": [
+    -8,
+    -31
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2a948",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6366",
+    "material": "slate",
+    "pitch": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 12,
+    "density": 0.3
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM outline is the whole campus, so the hip roof and window rhythm are simplified; the arched loggia, white arch surrounds and central oculus gable are not modelled in detail"
+ }
+}

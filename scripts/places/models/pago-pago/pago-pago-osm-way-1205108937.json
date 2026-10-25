@@ -1,0 +1,231 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-osm-way-1205108937",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/885567271",
+   "used": "real 37 m round fort/gun-position outline (named Utulei Beach Park, historic=fort) as a low concrete ring"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mouth-watering_tuna_sashimi_and_a_beer_at_Pago_Pago_harbour_mouth_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Peter Gill",
+   "view": "street",
+   "used": "setting only: pale sand beach and turquoise bay with a broad shade tree; no building visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fort-ring",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b0a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa860",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    0,
+    -8,
+    1.5
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    -34,
+    22,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#e9e4d6",
+    "cap_colour": "#a33b2d"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    34,
+    20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.0,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#e9e4d6",
+    "cap_colour": "#a33b2d"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -10,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 2.8,
+    "colour": "#e9e4d6",
+    "roof_colour": "#a33b2d"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "rotDeg": -70,
+   "params": {
+    "length": 24,
+    "width": 2.5,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sand",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     14
+    ],
+    "height": 0.1,
+    "colour": "#eae0c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     0
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     6
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     34
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     36
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     38
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   118,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only the round fort outline is real; pavilions, kiosk, pier and sand strip placed from brief, park boundary not modelled"
+ }
+}

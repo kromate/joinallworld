@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-way-320590185",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/320590185",
+   "used": "real multi-lobed 74 x 57 m outline of the cathedral (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large white church with a bell tower and steps; no photo of the exterior found (Commons holds no cathedral file)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "bands": "#c8b9a2",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ridge-hall",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "rotDeg": -30,
+   "z0": 9,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33a2f",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -26
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "cornice": true,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#a33a2f",
+    "material": "corrugated",
+    "rise": 6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 4,
+    "colour": "#cfc9b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.3,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo: lobed outline is real, the central gabled nave, red roof and front bell tower position are typed guesses"
+ }
+}

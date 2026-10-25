@@ -1,0 +1,645 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/959755657",
+   "used": "2.9 km x 136 m linear park; a 400 x 30 m stretch is modelled (scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "greenway",
+   "footprint": {
+    "rect": [
+     110,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb070",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb070"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "path",
+   "footprint": {
+    "rect": [
+     110,
+     2
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cbb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    15,
+    -3
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e8d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a9fa3",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -53.054889836341125,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.516261120944132
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48.162504971768705,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.02169820093298
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45.45835956597626,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.846686479390819
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -39.80799985434613,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.831401368902025
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36.97758569509722,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.939658832574912
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32.46911277676199,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.8759782792253645
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27.33361180240163,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.1302536530884275
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23.17858224515824,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.931666155163181
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19.439307599484692,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.860378406335785
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14.659756290887744,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.293574660292798
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10.82987709639785,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.809307708615516
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -7.105091123858843,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.563381879843618
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2.718636814286072,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.36518939767503
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2.2189259643431125,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.060158670913798
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5.794540541394512,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.180241531883169
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10.013933063138408,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.058747574968965
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14.701128843667577,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.214102867756103
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17.39726654790456,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.864523112982965
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    21.595704321401964,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.753366834550411
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26.52660437778912,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.532263063578794
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30.271213355997855,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.531522838673476
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34.603750576560785,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.314615177488478
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    39.72593549404463,
+    -4.05,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.930050086230279
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42.933863575892566,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.716085530693526
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    47.07482249274215,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.948616974757606
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    51.12299761959236,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7.847447201619007
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-0",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    -42.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-1",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    -30.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-2",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    -18.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-3",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    -6.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-4",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    6.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-5",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    18.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-6",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    30.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-7",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    42.0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8a60"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   140,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-way-959755657",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; a 110 m stretch of the 2.9 km greenway (scene clamp) with typed path, pavilion, fence and tree rows."
+ }
+}

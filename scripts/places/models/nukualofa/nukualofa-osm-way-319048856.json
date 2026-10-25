@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-way-319048856",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/319048856",
+   "used": "real 49 x 48 m irregular outline of the cafe (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large open-sided cafe-restaurant (fale kai = eating house) with a broad hipped roof, terrace, umbrellas, car park; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fale",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b59a6a",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#8a7a62"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a33a2f",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-hall",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    1,
+    0
+   ],
+   "rotDeg": 15,
+   "z0": 3.4,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a33a2f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    -28,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5,
+    "colours": [
+     "#f2efe8",
+     "#a33a2f"
+    ]
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    34,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.3,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: open sides, posts and terrace are typed; only the outline and brief are evidence"
+ }
+}

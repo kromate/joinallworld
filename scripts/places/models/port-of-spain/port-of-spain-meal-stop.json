@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1525792589",
+   "used": "18 x 12 m building outline (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "glass-fronted single storey coffee shop with awning and car park from the brief; no photo (offline)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e9e4d6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "bands": "#2f5d4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "membrane",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10,
+    2.2
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#2f5d4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     8,
+     3.5
+    ]
+   },
+   "at": [
+    -10,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "colours": [
+     "#2f5d4a",
+     "#f4efe3"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    14,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#d9d2c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   56,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; facade detail, drive-through lane and terrace position are typical not observed."
+ }
+}

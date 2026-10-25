@@ -1,0 +1,332 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sero_Jamanota,_Aruba.jpg",
+   "licence": "CC0",
+   "author": "Kashiunti-aua",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/jamanota1.jpg",
+   "used": "dry ochre-brown scrub dome, a paved track zigzagging up, white lattice radio tower on a small cabin at the summit, columnar cacti in the foreground"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q594885",
+   "used": "Aruba's highest point (188 m); modelled as a scaled-down hill (about 34 m) to fit the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       48,
+       40
+      ],
+      "colour": "#7a6a48"
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       36,
+       30
+      ],
+      "colour": "#a08c62"
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       24,
+       20
+      ],
+      "colour": "#b09a6c"
+     },
+     {
+      "z": 38,
+      "ellipse": [
+       11,
+       9
+      ],
+      "colour": "#a89260"
+     },
+     {
+      "z": 42,
+      "ellipse": [
+       5,
+       4
+      ],
+      "colour": "#b8a47c"
+     }
+    ],
+    "curve": true,
+    "steps": 3,
+    "capTop": true,
+    "round": 20,
+    "colour": "#a08c62"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "shoulder",
+   "at": [
+    -34,
+    10,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       26,
+       22
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       16,
+       13
+      ]
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       4,
+       4
+      ]
+     }
+    ],
+    "curve": true,
+    "steps": 3,
+    "round": 14,
+    "colour": "#7c6a46"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      -6,
+      -18,
+      1
+     ],
+     [
+      -2,
+      -12,
+      9
+     ],
+     [
+      8,
+      -8,
+      16
+     ],
+     [
+      3,
+      -2,
+      26
+     ],
+     [
+      -1,
+      4,
+      34
+     ],
+     [
+      0,
+      8,
+      40
+     ]
+    ],
+    "colour": "#c9c3b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cabin",
+   "at": [
+    0,
+    9,
+    42
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 2.4,
+    "colour": "#d8d6d0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower",
+   "at": [
+    0,
+    9,
+    44.4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "colour": "#e8e8e8"
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "colour": "#cfd3d6"
+     },
+     {
+      "z": 18,
+      "rect": [
+       1.5,
+       1.5
+      ],
+      "colour": "#d6d0c8"
+     },
+     {
+      "z": 20,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.399999999999999,
+     -26
+    ],
+    "end": [
+     18.2,
+     -27
+    ],
+    "count": 7,
+    "vary": {},
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.45
+       },
+       {
+        "z": 8,
+        "circle": 0.4
+       }
+      ],
+      "colour": "#4e6b3a",
+      "capTop": true,
+      "round": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12.6,
+     -23
+    ],
+    "end": [
+     15.399999999999999,
+     -23
+    ],
+    "count": 5,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.45
+       },
+       {
+        "z": 5,
+        "circle": 0.4
+       }
+      ],
+      "colour": "#4e6b3a",
+      "capTop": true,
+      "round": 6
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-540217531",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Hill is a smooth cone at reduced scale (34 m not 188 m), not the ridged scrub slope; track hidden inside the surface; tower is a plain tapered loft, no lattice; cacti too small."
+ }
+}

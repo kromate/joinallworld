@@ -1,0 +1,402 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/nukualofa.json",
+   "used": "low-tide mudflat where village pigs forage, coconut palms behind; OSM match was a nearby church and is ignored; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 20,
+    "colour": "#7fa3a3",
+    "bank": false
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "flat",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -14
+     ],
+     [
+      30,
+      -14
+     ],
+     [
+      34,
+      6
+     ],
+     [
+      10,
+      12
+     ],
+     [
+      -14,
+      10
+     ],
+     [
+      -34,
+      4
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#a89c80"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "wet",
+   "at": [
+    6,
+    12,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -4
+     ],
+     [
+      10,
+      -5
+     ],
+     [
+      18,
+      2
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -12,
+      4
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#7f7762"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    6,
+    0.0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "colour": "#d9b7a0",
+    "capBottom": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.05,
+      "ellipse": [
+       0.5,
+       1.0
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       0.62,
+       1.2
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.45,
+       0.9
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.2,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -3,
+    9,
+    0.0
+   ],
+   "rotDeg": 100,
+   "params": {
+    "colour": "#d9b7a0",
+    "capBottom": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.05,
+      "ellipse": [
+       0.5,
+       1.0
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       0.62,
+       1.2
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.45,
+       0.9
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.2,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4,
+    5,
+    0.0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "colour": "#d9b7a0",
+    "capBottom": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.05,
+      "ellipse": [
+       0.5,
+       1.0
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       0.62,
+       1.2
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.45,
+       0.9
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.2,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    10,
+    0.0
+   ],
+   "rotDeg": 70,
+   "params": {
+    "colour": "#d9b7a0",
+    "capBottom": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.05,
+      "ellipse": [
+       0.5,
+       1.0
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       0.62,
+       1.2
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.45,
+       0.9
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.2,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14,
+    11,
+    0.0
+   ],
+   "rotDeg": -60,
+   "params": {
+    "colour": "#d9b7a0",
+    "capBottom": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.05,
+      "ellipse": [
+       0.5,
+       1.0
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       0.62,
+       1.2
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.45,
+       0.9
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.2,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#8a7a62",
+    "pillarEvery": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 10,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; flat, pigs and fence are typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-node-12072562069"
+}

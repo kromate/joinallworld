@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-node-1208562570",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1347181280",
+   "used": "real outline containing the museum node (52 x 30 m, 1358 m2, stepped north-west corner)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vanuatu_Parliament_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jean Van Jean",
+   "view": "street",
+   "used": "setting only: nearby civic grounds with a bronze family statue, green railings, clipped trees and low buildings under bright orange-red roofs; the museum is not in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "accentColour": "#8a5a3a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a94a3b",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "kind": "rail",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    35,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the museum; two-storey painted block with red roof assumed, entrance carving not modelled."
+ }
+}

@@ -1,0 +1,425 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Carolina_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (see file page)",
+   "view": "side",
+   "file": "/tmp/places-evidence/quito/car1.jpg",
+   "used": "lagoon channel with white concrete rim, dark green-grey water, paths and lawns either side, tall palms at right front, stone boathouse with clay-tile roof at right, mixed broadleaf trees and distant mountains"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31133611",
+   "used": "identity and scale only (64 ha park); the model shows a recognisable portion: lagoon, boathouse, botanical garden, island, courts"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": 0.07
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    40,
+    0.05
+   ],
+   "params": {
+    "width": 42,
+    "depth": 80,
+    "colour": "#2f4a46",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22.5,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     80
+    ],
+    "height": 0.8,
+    "topScale": 0.45,
+    "colour": "#e4eaeb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22.5,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     80
+    ],
+    "height": 0.8,
+    "topScale": 0.45,
+    "colour": "#e4eaeb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     80
+    ],
+    "height": 0.15,
+    "colour": "#7f9a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    40,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     4,
+     80
+    ],
+    "height": 0.05,
+    "colour": "#b9ae98"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     80
+    ],
+    "height": 0.15,
+    "colour": "#6f8f52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    40,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     6,
+     80
+    ],
+    "height": 0.05,
+    "colour": "#3e3a34"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "boathouse",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    33,
+    22
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f6254",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9835e",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.9,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     8
+    ],
+    "height": 0.5,
+    "colour": "#a49c8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     18,
+     0.1
+    ],
+    "end": [
+     -17,
+     28,
+     0.1
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       2.4
+      ],
+      "height": 0.6,
+      "colour": "#eeeeee"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "jardin",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -50,
+    92
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfe0e2",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#8fb7b5",
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#b6d3d2",
+    "material": "glass",
+    "rise": 3.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -4,
+    78,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "plinthHeight": 3,
+    "colour": "#3b3a3a",
+    "plinthColour": "#8a8780"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -10,
+    130,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 50,
+    "height": 30,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#3f5a45",
+    "boulders": 0
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    35,
+    118,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 40,
+    "height": 24,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#4d6b58",
+    "boulders": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 24,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 21,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    60,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    88,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 8,
+    "spread": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stylised low-poly trees and flat water; only a portion of the park; hills are smooth mounds not crisp ridgelines; palms smaller than the photo's giant right-foreground palm"
+ }
+}

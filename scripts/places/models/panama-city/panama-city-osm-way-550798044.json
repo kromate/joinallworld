@@ -1,0 +1,335 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-550798044",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Olimpico_de_Panama.jpg",
+   "licence": "Public domain",
+   "author": "unknown",
+   "view": "interior",
+   "file": "/tmp/places-evidence/panama-city/arosemena.jpg",
+   "used": "old black-and-white view only: a baseball diamond inside a running track, a curved banked stand with plain concrete fronts on one side, houses on the slope behind; used for the track ring and low open stands, not for colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/550798044",
+   "used": "the angular outfield outline (about 233 x 226 m, rotated 46 deg), modelled at half scale as a track ring round a grass field and a baseball diamond, stands on the four straight sides"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52.1,
+      29.7
+     ],
+     [
+      -2.8,
+      81.2
+     ],
+     [
+      70.2,
+      3.8
+     ],
+     [
+      68.2,
+      -2.2
+     ],
+     [
+      64.8,
+      -8.4
+     ],
+     [
+      58.9,
+      -16.2
+     ],
+     [
+      -7.9,
+      -79.6
+     ],
+     [
+      -51.8,
+      -36.5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b4553d",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40.8,
+      24.4
+     ],
+     [
+      0.6,
+      67.6
+     ],
+     [
+      61.9,
+      2.6
+     ],
+     [
+      60.2,
+      -2.4
+     ],
+     [
+      57.4,
+      -7.6
+     ],
+     [
+      52.4,
+      -14.2
+     ],
+     [
+      -3.7,
+      -67.4
+     ],
+     [
+      -40.6,
+      -31.2
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.06,
+    "colour": "#5d8c46",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.5625,
+      -3.5250000000000004
+     ],
+     [
+      18.4375,
+      18.475
+     ],
+     [
+      40.4375,
+      -3.5250000000000004
+     ],
+     [
+      18.4375,
+      -25.525
+     ]
+    ],
+    "z0": 0.16,
+    "height": 0.05,
+    "colour": "#c9a06b",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -51.8,
+     -36.5
+    ],
+    "end": [
+     -7.9,
+     -79.6
+    ],
+    "rows": 16,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.6,
+    "concreteColour": "#c8c4b8",
+    "underColour": "#b4b0a4",
+    "seatColour": "#8a98a8",
+    "backWall": 0.8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52.1,
+     29.7
+    ],
+    "end": [
+     -51.8,
+     -36.5
+    ],
+    "rows": 18,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.6,
+    "concreteColour": "#c8c4b8",
+    "underColour": "#b4b0a4",
+    "seatColour": "#8a98a8",
+    "backWall": 0.8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -7.9,
+     -79.6
+    ],
+    "end": [
+     58.9,
+     -16.2
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.6,
+    "concreteColour": "#c8c4b8",
+    "underColour": "#b4b0a4",
+    "seatColour": "#9aa0a6",
+    "backWall": 0.8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -2.8,
+     81.2
+    ],
+    "end": [
+     -52.1,
+     29.7
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.6,
+    "concreteColour": "#c8c4b8",
+    "underColour": "#b4b0a4",
+    "seatColour": "#9aa0a6",
+    "backWall": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -25,
+     0
+    ],
+    "end": [
+     -30,
+     -60,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {
+       "height": 22,
+       "count": 1
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     60
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (render queue hung). Footprint plus one old b/w photo; stand sides and heights are guesses, stand direction (field side) unchecked."
+ }
+}

@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1276583869",
+   "used": "real park outline 101 x 36 m (name match): rocky ground plate, path and picnic area placed along it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -43.7,
+      -16.2
+     ],
+     [
+      -17.8,
+      -29.5
+     ],
+     [
+      -11.1,
+      -13.9
+     ],
+     [
+      36.3,
+      8.7
+     ],
+     [
+      47.6,
+      6.6
+     ],
+     [
+      50.5,
+      22.4
+     ],
+     [
+      29.8,
+      26.2
+     ],
+     [
+      28.6,
+      19.8
+     ],
+     [
+      -11.7,
+      4.8
+     ],
+     [
+      -31.7,
+      4.3
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#7c7d76"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-patch",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -4
+     ],
+     [
+      -14,
+      -9
+     ],
+     [
+      0,
+      -2
+     ],
+     [
+      -12,
+      2
+     ],
+     [
+      -28,
+      1
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#6f7f55"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -14
+     ],
+     [
+      -14,
+      -12
+     ],
+     [
+      0,
+      -4
+     ],
+     [
+      34,
+      12
+     ],
+     [
+      46,
+      15
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "outcrop",
+   "at": [
+    -30,
+    -18
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "height": 5,
+    "seed": 4,
+    "stairs": false,
+    "boulders": 5,
+    "rock_colour": "#6a6a64"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "outcrop2",
+   "at": [
+    38,
+    22
+   ],
+   "params": {
+    "width": 16,
+    "depth": 10,
+    "height": 3.5,
+    "seed": 9,
+    "stairs": false,
+    "boulders": 4,
+    "rock_colour": "#74746c"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "picnic-shelter",
+   "at": [
+    14,
+    3,
+    0.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.0,
+    "roof": "hip",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#a8774a",
+    "cap_colour": "#6f6f68"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -8,
+    0.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "width": 3,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#9a9a92"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    2,
+    -6,
+    0.5
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the place; only the OSM outline, name and position are real. Picnic shelter, path, rock outcrops and steps are plausible guesses; grass ground is the nearest allowed site ground for bare rock."
+ }
+}

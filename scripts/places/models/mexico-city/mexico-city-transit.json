@@ -1,0 +1,2225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metro_de_la_Ciudad_de_M%C3%A9xico_-_7.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ProtoplasmaKid",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/mexico-city/m24-anaya.jpg",
+   "used": "surface island-platform station in an avenue median: long red flat roof with pale fascia on slim posts, grey stair/lift end blocks, pedestrian bridge crossing at the end, tracks each side behind green mesh fences, traffic lanes both sides"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MetroGeneralAnayaStation.JPG",
+   "licence": "Public domain",
+   "author": "Thelmadatter",
+   "view": "street",
+   "file": "/tmp/places-evidence/mexico-city/m24-anaya2.jpg",
+   "used": "earlier look: blue-painted end blocks, grey roof edge, concrete bridge across the avenue with blank sign boards, train on the track beside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/611635886",
+   "used": "thin transportation outline only suggests orientation; massing taken from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -60,
+  "pitchDeg": 26,
+  "fovDeg": 52,
+  "aspect": 1.78,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     11
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#8f9296",
+    "topColour": "#8f9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     8.4
+    ],
+    "z0": 1.6,
+    "height": 0.3,
+    "colour": "#b9b4aa",
+    "topColour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-0-0",
+   "at": [
+    -34.0,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-0-1",
+   "at": [
+    -34.0,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-1-0",
+   "at": [
+    -22.67,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-1-1",
+   "at": [
+    -22.67,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-2-0",
+   "at": [
+    -11.33,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-2-1",
+   "at": [
+    -11.33,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-3-0",
+   "at": [
+    0.0,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-3-1",
+   "at": [
+    0.0,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-4-0",
+   "at": [
+    11.33,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-4-1",
+   "at": [
+    11.33,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-5-0",
+   "at": [
+    22.67,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-5-1",
+   "at": [
+    22.67,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-6-0",
+   "at": [
+    34.0,
+    -3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-6-1",
+   "at": [
+    34.0,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 1.9,
+    "height": 3.0,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-w",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    -43.0,
+    0
+   ],
+   "height": 7.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8362f",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cf",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-e",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    43.0,
+    0
+   ],
+   "height": 7.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8362f",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cf",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    -37,
+    -8.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc3c6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-deck",
+   "at": [
+    58.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     56
+    ],
+    "z0": 6.5,
+    "height": 1.3,
+    "colour": "#8d9096",
+    "topColour": "#8d9096"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-rail",
+   "at": [
+    58.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     56
+    ],
+    "z0": 7.8,
+    "height": 0.8,
+    "colour": "#b7bab8",
+    "topColour": "#b7bab8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-pier--18",
+   "at": [
+    58.0,
+    -18
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#9c9fa2",
+    "topColour": "#9c9fa2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-pier-18",
+   "at": [
+    58.0,
+    18
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#9c9fa2",
+    "topColour": "#9c9fa2"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -8,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 114,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    8,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 114,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -13.5,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#4f8f7a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    13.5,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#4f8f7a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    58.0,
+    -3,
+    7.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 0.2,
+    "colour": "#d9703a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     72,
+     9.6
+    ],
+    "z0": 4.9,
+    "height": 0.9,
+    "colour": "#ebe8e0",
+    "topColour": "#ebe8e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-e",
+   "at": [
+    37,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#bfc3c6",
+    "topColour": "#9a9ea1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-w",
+   "at": [
+    -43,
+    -7
+   ],
+   "params": {
+    "rect": [
+     3,
+     6
+    ],
+    "z0": 0,
+    "height": 3.5,
+    "colour": "#a3a7aa",
+    "topColour": "#a3a7aa",
+    "topScale": [
+     1,
+     0.5
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-e",
+   "at": [
+    43,
+    7
+   ],
+   "params": {
+    "rect": [
+     3,
+     6
+    ],
+    "z0": 0,
+    "height": 3.5,
+    "colour": "#a3a7aa",
+    "topColour": "#a3a7aa",
+    "topScale": [
+     1,
+     0.5
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ballast-n",
+   "at": [
+    0,
+    8
+   ],
+   "params": {
+    "rect": [
+     116,
+     4
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#4a4640",
+    "topColour": "#4a4640"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ballast-s",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     116,
+     4
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#4a4640",
+    "topColour": "#4a4640"
+   }
+  },
+  {
+   "type": "array",
+   "id": "lane-s",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -66,
+     -26,
+     0.09
+    ],
+    "end": [
+     66,
+     -26,
+     0.09
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.2
+      ],
+      "z0": 0,
+      "height": 0.03,
+      "colour": "#e8e6dc",
+      "topColour": "#e8e6dc"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lane-n",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -66,
+     26,
+     0.09
+    ],
+    "end": [
+     66,
+     26,
+     0.09
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.2
+      ],
+      "z0": 0,
+      "height": 0.03,
+      "colour": "#e8e6dc",
+      "topColour": "#e8e6dc"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-post-a",
+   "at": [
+    58,
+    -24
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#9c9fa2",
+    "topColour": "#9c9fa2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-post-b",
+   "at": [
+    58,
+    24
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#9c9fa2",
+    "topColour": "#9c9fa2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars-0-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -30,
+     0.1
+    ],
+    "end": [
+     -5,
+     -30,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#e9e9ea",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-0-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     -30,
+     0.1
+    ],
+    "end": [
+     10,
+     -30,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#8d9094",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-1-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -53,
+     -26,
+     0.1
+    ],
+    "end": [
+     2,
+     -26,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c0322c",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-1-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -58,
+     -26,
+     0.1
+    ],
+    "end": [
+     -3,
+     -26,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2b2d33",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-2-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     -22,
+     0.1
+    ],
+    "end": [
+     9,
+     -22,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c9ccd0",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-2-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -51,
+     -22,
+     0.1
+    ],
+    "end": [
+     4,
+     -22,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2f4d86",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-3-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -59,
+     22,
+     0.1
+    ],
+    "end": [
+     -4,
+     22,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#e9e9ea",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-3-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     22,
+     0.1
+    ],
+    "end": [
+     11,
+     22,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#8d9094",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-4-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     26,
+     0.1
+    ],
+    "end": [
+     3,
+     26,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c0322c",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-4-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -57,
+     26,
+     0.1
+    ],
+    "end": [
+     -2,
+     26,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2b2d33",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-5-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     30,
+     0.1
+    ],
+    "end": [
+     10,
+     30,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c9ccd0",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-5-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     30,
+     0.1
+    ],
+    "end": [
+     5,
+     30,
+     0.1
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2f4d86",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     72,
+     9.6
+    ],
+    "z0": 4.9,
+    "height": 0.9,
+    "colour": "#ebe8e0",
+    "topColour": "#ebe8e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     72,
+     9.6
+    ],
+    "z0": 5.8,
+    "height": 0.7,
+    "colour": "#c8362f",
+    "topColour": "#d0392e",
+    "topScale": [
+     0.99,
+     0.75
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-e",
+   "at": [
+    37,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#bfc3c6",
+    "topColour": "#9a9ea1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-w",
+   "at": [
+    -43,
+    -7
+   ],
+   "params": {
+    "rect": [
+     3,
+     6
+    ],
+    "z0": 0,
+    "height": 3.5,
+    "colour": "#a3a7aa",
+    "topColour": "#a3a7aa",
+    "topScale": [
+     1,
+     0.5
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-e",
+   "at": [
+    43,
+    7
+   ],
+   "params": {
+    "rect": [
+     3,
+     6
+    ],
+    "z0": 0,
+    "height": 3.5,
+    "colour": "#a3a7aa",
+    "topColour": "#a3a7aa",
+    "topScale": [
+     1,
+     0.5
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ballast-n",
+   "at": [
+    0,
+    8
+   ],
+   "params": {
+    "rect": [
+     112,
+     4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#4a4640",
+    "topColour": "#4a4640"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ballast-s",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     112,
+     4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#4a4640",
+    "topColour": "#4a4640"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road-s",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     116,
+     20
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#38393c",
+    "topColour": "#38393c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road-n",
+   "at": [
+    0,
+    26
+   ],
+   "params": {
+    "rect": [
+     116,
+     20
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#38393c",
+    "topColour": "#38393c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "lane-s",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -26,
+     0.26
+    ],
+    "end": [
+     54,
+     -26,
+     0.26
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.2
+      ],
+      "z0": 0,
+      "height": 0.03,
+      "colour": "#e8e6dc",
+      "topColour": "#e8e6dc"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lane-n",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     26,
+     0.26
+    ],
+    "end": [
+     54,
+     26,
+     0.26
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.2
+      ],
+      "z0": 0,
+      "height": 0.03,
+      "colour": "#e8e6dc",
+      "topColour": "#e8e6dc"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-post-a",
+   "at": [
+    58,
+    -24
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#9c9fa2",
+    "topColour": "#9c9fa2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-post-b",
+   "at": [
+    58,
+    24
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#9c9fa2",
+    "topColour": "#9c9fa2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars-0-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     -30,
+     0.27
+    ],
+    "end": [
+     -6,
+     -30,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#e9e9ea",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-0-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -41,
+     -30,
+     0.27
+    ],
+    "end": [
+     9,
+     -30,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#8d9094",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-1-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -49,
+     -26,
+     0.27
+    ],
+    "end": [
+     1,
+     -26,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c0322c",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-1-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -26,
+     0.27
+    ],
+    "end": [
+     -4,
+     -26,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2b2d33",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-2-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -22,
+     0.27
+    ],
+    "end": [
+     8,
+     -22,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c9ccd0",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-2-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -47,
+     -22,
+     0.27
+    ],
+    "end": [
+     3,
+     -22,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2f4d86",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-3-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -55,
+     22,
+     0.27
+    ],
+    "end": [
+     -5,
+     22,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#e9e9ea",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-3-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     22,
+     0.27
+    ],
+    "end": [
+     10,
+     22,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#8d9094",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-4-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     26,
+     0.27
+    ],
+    "end": [
+     2,
+     26,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c0322c",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-4-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -53,
+     26,
+     0.27
+    ],
+    "end": [
+     -3,
+     26,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2b2d33",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-5-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -41,
+     30,
+     0.27
+    ],
+    "end": [
+     9,
+     30,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#c9ccd0",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-5-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     30,
+     0.27
+    ],
+    "end": [
+     4,
+     30,
+     0.27
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.4,
+      "colour": "#2f4d86",
+      "topColour": "#30343a",
+      "topScale": [
+       0.7,
+       0.9
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     0
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -42
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -42
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -40
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     42
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     42
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -36
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Longer narrow roof with pale fascia, slim posts, red end blocks, grey stair/lift blocks, lanes with cars both sides, dark ballast and taller green fences added; cars are boxes in only a few rows, fences sit apart from the tracks, no median planting beside the platform, scene wider than the photo."
+ }
+}

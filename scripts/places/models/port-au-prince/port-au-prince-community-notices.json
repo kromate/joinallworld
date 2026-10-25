@@ -1,0 +1,82 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/381641809",
+   "used": "footprint 9 x 5.6 m, 1 level, concrete"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#e8c94f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1,
+    "bottom": 2.2,
+    "colour": "#5f9d6e",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    5,
+    -4,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ }
+}

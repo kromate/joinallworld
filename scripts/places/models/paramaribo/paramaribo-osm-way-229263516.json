@@ -1,0 +1,319 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/229263516",
+   "used": "name-matched stadium, 255 x 120 m site, bearing 74; reduced to a 150 x 100 m scene"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Clarence_Seedorf_Stadion",
+   "used": "opened 2001, one covered stand, open banks; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     100
+    ],
+    "height": 0.12,
+    "colour": "#b4a88f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     104,
+     66
+    ],
+    "height": 0.1,
+    "colour": "#3f8a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     -40
+    ],
+    "end": [
+     30,
+     -40
+    ],
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.3,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#d9822b",
+     "#e8e4d8"
+    ],
+    "blocks": 6,
+    "concreteColour": "#cfcbbd",
+    "underColour": "#cfcbbd",
+    "canopy": {
+     "height": 1.0,
+     "depth": 12,
+     "thickness": 0.5,
+     "slopeDeg": 4,
+     "colour": "#8d9296",
+     "edgeColour": "#6c7176",
+     "overhangBack": 1
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     45,
+     40
+    ],
+    "end": [
+     -45,
+     40
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#cfcbbd"
+    ],
+    "blocks": 1,
+    "concreteColour": "#7d9a68",
+    "underColour": "#7d9a68"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     52,
+     0
+    ],
+    "radius": 28,
+    "radiusY": 32,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 3,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColours": [
+     "#cfcbbd"
+    ],
+    "blocks": 1,
+    "concreteColour": "#7d9a68",
+    "underColour": "#7d9a68",
+    "facetDeg": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -48
+     ],
+     [
+      70,
+      -48
+     ],
+     [
+      70,
+      48
+     ],
+     [
+      -70,
+      48
+     ],
+     [
+      -70,
+      -48
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#e8e4d8"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -76,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    76,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -76,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo on Commons and render queue stalled; one covered stand, open banks, masts typed from text"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-229263516"
+}

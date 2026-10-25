@@ -1,0 +1,537 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Brooklyn_Community_Board_9_jeh.JPG",
+   "licence": "Public domain",
+   "author": "Jim.henderson",
+   "view": "front",
+   "file": "/tmp/places-evidence/new-york/cb9.jpg",
+   "used": "terrace of tan and buff brick 3 and 2 storey shopfront buildings: taller stepped-parapet block at left, two storey blocks with bracketed brown eaves roof, steel roller shutters, blank blue awning"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/250223459",
+   "used": "row width about 26 m, depth 6 to 12 m, height 10.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.0,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -8.5,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a56",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "groundKind": "curtain",
+    "groundHeight": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "board-office",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    0.5,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#cdb98c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "groundKind": "none",
+    "groundHeight": 3.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b5a3e",
+    "material": "clay-tile",
+    "rise": 2.2,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deli-block",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    9.5,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c3ab7c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "groundKind": "curtain",
+    "groundHeight": 3.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5e6368",
+    "material": "slate",
+    "rise": 1.8,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "laundry-block",
+   "footprint": {
+    "rect": [
+     6,
+     14
+    ]
+   },
+   "at": [
+    17,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a5c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "groundKind": "curtain",
+    "groundHeight": 3.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0.5,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#1f4a8a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    9.5,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.6,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#1c7a5c"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8.5,
+    -7.3,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "bottom": 3.6,
+    "colour": "#e8c53a",
+    "frameColour": "#555555",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    13.5,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "colour": "#a9adb0",
+    "count": 1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lg-step1",
+   "footprint": {
+    "rect": [
+     7.6,
+     1.2
+    ]
+   },
+   "at": [
+    -8.5,
+    -6.2
+   ],
+   "z0": 14,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a56",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lg-step2",
+   "footprint": {
+    "rect": [
+     5.2,
+     1.2
+    ]
+   },
+   "at": [
+    -8.5,
+    -6.2
+   ],
+   "z0": 15.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b79660",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lg-step3",
+   "footprint": {
+    "rect": [
+     2.8,
+     1.2
+    ]
+   },
+   "at": [
+    -8.5,
+    -6.2
+   ],
+   "z0": 17.2,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a56",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -8.5,
+    -6.2,
+    18.6
+   ],
+   "params": {
+    "baseWidth": 0.6,
+    "height": 1.8,
+    "colour": "#a9835a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.5,
+    -6.9,
+    15.2
+   ],
+   "params": {
+    "points": [
+     [
+      -0.9,
+      0
+     ],
+     [
+      -0.5,
+      0.7
+     ],
+     [
+      0.5,
+      0.7
+     ],
+     [
+      0.9,
+      0
+     ],
+     [
+      0.5,
+      -0.7
+     ],
+     [
+      -0.5,
+      -0.7
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#d7c49c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rg-step1",
+   "footprint": {
+    "rect": [
+     4.6,
+     1.2
+    ]
+   },
+   "at": [
+    17,
+    -6.2
+   ],
+   "z0": 12.5,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rg-step2",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.2
+    ]
+   },
+   "at": [
+    17,
+    -6.2
+   ],
+   "z0": 13.9,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b79660",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a50",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-board",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    0.5,
+    -7.05
+   ],
+   "z0": 0.1,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-deli",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.5
+    ]
+   },
+   "at": [
+    11.4,
+    -7.05
+   ],
+   "z0": 0.1,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    4.5,
+    -9.2,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -11.5,
+    0
+   ],
+   "params": {
+    "colour": "#8e9296",
+    "count": 1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -11.5,
+    0
+   ],
+   "params": {
+    "colour": "#c0c4c8",
+    "count": 1,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Stepped gables are stacked boxes without scrolls; bracketed cornice, brick relief and roller-shutter texture simplified; cars are boxes"
+ }
+}

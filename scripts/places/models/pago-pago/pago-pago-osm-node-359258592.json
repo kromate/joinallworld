@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-osm-node-359258592",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "wikidata Q21847134",
+   "used": "existence of the park/field in the Eastern District; no photo found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/428669667",
+   "used": "nearest 16x15 m building 18 m away: only the scale of a small clubhouse"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 60,
+    "colour": "#7fa860"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -4,
+    0,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 50,
+    "stripes": 6,
+    "goals": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    8,
+    -35
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e7e1d0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#c0392b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a33b2d",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -46,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    46,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    -31,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 0.9,
+    "thickness": 0.3,
+    "colour": "#bdb9ae"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 10,
+    "count": 9,
+    "kind": "palm"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 8,
+  "treeKind": "palm",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; field markings, clubhouse and lights typed from the brief. Steep hills behind the field are not modelled."
+ }
+}

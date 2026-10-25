@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TnT_San_Juan_Bus_Terminal_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Grueslayer",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-of-spain/bus.jpg",
+   "used": "setting only: green-painted low planter wall with benches, clipped trees, street lights, white coach; no building is visible so the shelter is typical, not verified"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/841079736",
+   "used": "size only; outline is the San Juan fire station 139 m away, not the terminal"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     50
+    ],
+    "height": 0.15,
+    "colour": "#6b6e70",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     36,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#2e7d4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0.65
+   ],
+   "params": {
+    "rect": [
+     34,
+     3.8
+    ],
+    "height": 0.15,
+    "colour": "#b9b6ad"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 35,
+    "depth": 11,
+    "height": 4.6,
+    "thickness": 0.35,
+    "columns": 8,
+    "colour": "#c9c6bd",
+    "edgeColour": "#2e7d4f",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-west",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    -12,
+    6
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e7d4f",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-east",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    12,
+    6
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7503a",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 4.7,
+    "colour": "#2e7d4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 12,
+    "colour": "#f1f1ee",
+    "stripe": "#c8362f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 3,
+    "spread": 4,
+    "line": 40,
+    "colour": "#3f7a34"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo shows the shelter itself (only the setting), so the building is a typical PTSC shelter; OSM outline is a fire station and not used"
+ }
+}

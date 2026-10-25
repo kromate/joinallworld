@@ -1,0 +1,278 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Teufaiva_Sport_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Walmaul",
+   "view": "side",
+   "file": "/tmp/places-evidence/nukualofa/7249636-0.jpg",
+   "used": "red eight-lane track around a pale grass infield, single covered stand on the far straight with dark flat roof on slender posts and grey seating, tall white floodlight masts, scoreboard at left, low grass banks, chain-link fence, red field buildings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/307249636",
+   "used": "overall size 212 x 157 m, scaled to scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 12,
+  "fovDeg": 62,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 180,
+    "width": 104,
+    "lane_width": 7.6,
+    "infield": true,
+    "pitch": false,
+    "colour": "#b4402f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     30,
+     52
+    ],
+    "end": [
+     -30,
+     52
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#5a5f66",
+     "#6b7077"
+    ],
+    "blocks": 1,
+    "concreteColour": "#555a60",
+    "underColour": "#4a4e53",
+    "canopy": {
+     "height": 7.5,
+     "depth": 8,
+     "thickness": 0.35,
+     "slopeDeg": 0,
+     "colour": "#2e3236",
+     "edgeColour": "#2e3236",
+     "overhangBack": 0.5
+    },
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "infield",
+   "at": [
+    0,
+    0,
+    0.13
+   ],
+   "params": {
+    "rect": [
+     150,
+     64
+    ],
+    "height": 0.05,
+    "colour": "#b8b878"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     54.5
+    ],
+    "end": [
+     30,
+     54.5
+    ],
+    "count": 11,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.3,
+        0.3
+       ],
+       "height": 7.5,
+       "colour": "#2e3236"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -76,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4,
+    "colour": "#eef0f2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    76,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4,
+    "colour": "#eef0f2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -76,
+    66,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4,
+    "colour": "#eef0f2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    76,
+    66,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4,
+    "colour": "#eef0f2"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -76,
+    56,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "field-block",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    64,
+    30
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8472f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8d4c8",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "height": 1.3,
+    "kind": "fence",
+    "colour": "#9aa0a5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-way-307249636",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "infield is a rectangle patch not full oval, fence only on one side at LOD0, stand simplified, no banks or throwing poles"
+ }
+}

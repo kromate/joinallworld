@@ -1,0 +1,421 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-osm-relation-10242577",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_de_Tahiti_et_des_%C3%8Eles.JPG",
+   "licence": "CC0",
+   "author": "Wmpearl",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/museum1.jpg",
+   "used": "low white-rendered walls, dark brown hipped shingle roof, entrance porch under a big dark brown A-frame canopy on white piers, palms and rock garden"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_de_Tahiti_et_des_%C3%8Eles_(II).JPG",
+   "licence": "CC0",
+   "author": "Wmpearl",
+   "view": "detail",
+   "used": "white piers, dark timber beams, glazed entrance doors"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10242577",
+   "used": "name-matched civic outline 106 x 104 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     106,
+     20
+    ]
+   },
+   "at": [
+    2.5,
+    -32
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dd",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4a44",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west",
+   "footprint": {
+    "rect": [
+     27,
+     49
+    ]
+   },
+   "at": [
+    -37.5,
+    2.5
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dd",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4a44",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     58,
+     30
+    ]
+   },
+   "at": [
+    5.5,
+    -7
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dd",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4a44",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south",
+   "footprint": {
+    "rect": [
+     46,
+     36
+    ]
+   },
+   "at": [
+    28,
+    40
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dd",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4a44",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -43.6
+   ],
+   "params": {
+    "rect": [
+     9,
+     3
+    ],
+    "height": 3.9,
+    "z0": 0,
+    "colour": "#eeece4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.2,
+    -45.2
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "height": 2.4,
+    "z0": 0,
+    "colour": "#8a9498",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.8,
+    -45.2
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "height": 2.4,
+    "z0": 0,
+    "colour": "#8a9498",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -6,
+    -51,
+    4.6
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 18,
+    "depth": 14,
+    "rise": 5.5,
+    "thickness": 0.6,
+    "folds": 1,
+    "colour": "#4a3a36",
+    "edgeColour": "#2f2420",
+    "underColour": "#3b2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.2,
+    -45.5
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 4.8,
+    "z0": 0,
+    "colour": "#eeece4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.2,
+    -45.5
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 4.8,
+    "z0": 0,
+    "colour": "#eeece4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -44.6
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.0
+    ],
+    "height": 0.3,
+    "z0": 0,
+    "colour": "#b9b7b0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16.5,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 2.6,
+    "bottom": 0.4,
+    "colour": "#e5e1d4",
+    "frameColour": "#8a8780"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -14,
+      -58.5,
+      10.2
+     ],
+     [
+      -6,
+      -46,
+      6.4
+     ]
+    ],
+    "colour": "#3b2a22"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      2,
+      -58.5,
+      10.2
+     ],
+     [
+      -6,
+      -46,
+      6.4
+     ]
+    ],
+    "colour": "#3b2a22"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -6,
+      -57,
+      10.1
+     ],
+     [
+      -6,
+      -45,
+      5.6
+     ]
+    ],
+    "colour": "#3b2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -60
+   ],
+   "params": {
+    "rect": [
+     9,
+     22
+    ],
+    "height": 0.08,
+    "z0": 0,
+    "colour": "#3c3d40",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -55
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Hall split into 4 hipped wings over the OSM concave outline; A-frame canopy, recessed porch with grey doors, piers, beams and sign pillar added. Missing: curved drive, rock-edged planting, shingle texture (flat metal-sheet roof to fit LOD1 budget); only 3 palms; camera is a far all-fit view so the canopy reads small."
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/316806684",
+   "used": "27 x 14 m gabled classroom block, bearing 157 degrees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palikir_2025-Congress.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zykasaa",
+   "view": "street",
+   "used": "nearby Palikir low block style only: orange-red corrugated roof, cream walls with yellow columns, dark windows. Not a photo of this building."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#e0b020"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0502f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 2.6,
+    "height": 3.0,
+    "colour": "#c0502f",
+    "columns": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; OSM gabled block with typed orange roof and cream walls."
+ }
+}

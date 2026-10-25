@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Community_Church_Seroe_Colorado_(5).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Natalie Liao Jen",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/church1.jpg",
+   "used": "white rendered cross-gabled church, steep deep-red shingle roofs, round windows in gables, arched openings, rubble-stone buttresses along the nave wall, lower east gable"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/97566669",
+   "used": "overall size 25.8 x 13.6 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     24,
+     10.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "plinth": 0.5,
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2f26",
+    "material": "clay-tile",
+    "pitch": 62,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-gable",
+   "footprint": {
+    "rect": [
+     6.5,
+     9
+    ]
+   },
+   "at": [
+    -1,
+    -5.5
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "plinth": 0.5,
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2f26",
+    "material": "clay-tile",
+    "pitch": 62,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-annex",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    13.5,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2f26",
+    "material": "clay-tile",
+    "pitch": 58,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-0",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.4
+    ]
+   },
+   "at": [
+    3.5,
+    -5.9
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d2c4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9bda6",
+    "pitch": 30,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.4
+    ]
+   },
+   "at": [
+    5.9,
+    -5.9
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d2c4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9bda6",
+    "pitch": 30,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-2",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.4
+    ]
+   },
+   "at": [
+    8.3,
+    -5.9
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d2c4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9bda6",
+    "pitch": 30,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-3",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.4
+    ]
+   },
+   "at": [
+    10.7,
+    -5.9
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d2c4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9bda6",
+    "pitch": 30,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-4",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.4
+    ]
+   },
+   "at": [
+    13.1,
+    -5.9
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d2c4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9bda6",
+    "pitch": 30,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-stone",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -9.3,
+    -6
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bda6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bda6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round gable windows, stone side buttress detail, entrance steps and the stepped base are simplified; roof pitch slightly low."
+ }
+}

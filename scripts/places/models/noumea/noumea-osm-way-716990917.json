@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-way-716990917",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/716990917",
+   "used": "real 16 x 11 m rotated rectangle outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ede0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#b5473a",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f5f8a",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "height": 2.8,
+    "colour": "#b5473a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.8,
+    3.4
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: roadside pizzeria massing from OSM outline and brief only; colours, awning and roof guessed from city style."
+ }
+}

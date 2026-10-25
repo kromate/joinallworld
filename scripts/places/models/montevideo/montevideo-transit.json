@@ -1,0 +1,506 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_y_Shopping_Tres_Cruces_en_2024_-_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NaBUru38",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/tres1.jpg",
+   "used": "long low front: red-brick base wings, tall near-black metal-clad upper band, central glazed entrance between two concrete gateways with relief lintels, equestrian monument on a plinth in the middle, blank white sign boards, paved plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/180467243",
+   "used": "size only (178 x 106 m, comb-shaped plan); front modelled at 116 m with the platform sheds behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-base",
+   "footprint": {
+    "rect": [
+     116,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a65b3d",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.6,
+    "bands": "#b8603f"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#7a7a76"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-hall",
+   "footprint": {
+    "rect": [
+     118,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#262c33",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383e",
+    "parapet": 0.5
+   },
+   "z0": 7
+  },
+  {
+   "type": "mass",
+   "id": "glass-entry",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -15.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb6cf",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#7ea6c1"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l1",
+   "footprint": {
+    "rect": [
+     3.6,
+     4
+    ]
+   },
+   "at": [
+    -21,
+    -17.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l2",
+   "footprint": {
+    "rect": [
+     3.6,
+     4
+    ]
+   },
+   "at": [
+    -9,
+    -17.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel-l",
+   "footprint": {
+    "rect": [
+     12,
+     3.6
+    ]
+   },
+   "at": [
+    -15,
+    -17.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f897c",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#8f897c",
+       "#a29c8e",
+       "#7d776b"
+      ],
+      "slits": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   },
+   "z0": 7.5
+  },
+  {
+   "type": "mass",
+   "id": "pier-r1",
+   "footprint": {
+    "rect": [
+     3.6,
+     4
+    ]
+   },
+   "at": [
+    9,
+    -17.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r2",
+   "footprint": {
+    "rect": [
+     3.6,
+     4
+    ]
+   },
+   "at": [
+    21,
+    -17.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel-r",
+   "footprint": {
+    "rect": [
+     12,
+     3.6
+    ]
+   },
+   "at": [
+    15,
+    -17.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f897c",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#8f897c",
+       "#a29c8e",
+       "#7d776b"
+      ],
+      "slits": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   },
+   "z0": 7.5
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9488",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    0,
+    -25,
+    4.2
+   ],
+   "params": {
+    "height": 8,
+    "plinth": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-l",
+   "footprint": {
+    "rect": [
+     4.6,
+     0.6
+    ]
+   },
+   "at": [
+    -9,
+    -16.5
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0f2",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e8"
+   },
+   "z0": 5
+  },
+  {
+   "type": "mass",
+   "id": "sign-r",
+   "footprint": {
+    "rect": [
+     4.6,
+     0.6
+    ]
+   },
+   "at": [
+    9,
+    -16.5
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0f2",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e8"
+   },
+   "z0": 5
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 110,
+    "depth": 28,
+    "height": 6.5,
+    "columns": 4,
+    "colour": "#7b7f84",
+    "edgeColour": "#3a3d41"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "kind": "coach",
+    "density": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 16,
+    "colour": "#b8b4aa",
+    "border_colour": "#8e8a82",
+    "border": 0.6
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -44,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#b43a32",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -44,
+    -42,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#b43a32",
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -34
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-transit",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Heavy concrete gateways with relief lintels, taller dark band, slim sign panels, plaza and buses added; brick texture and sign graphics absent, statue is a stock part, camera framing differs from photo"
+ }
+}

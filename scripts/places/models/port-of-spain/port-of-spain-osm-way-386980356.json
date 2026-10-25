@@ -1,0 +1,121 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-386980356",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/386980356",
+   "used": "chapel and school outline, cross-shaped, 30 x 27 m, wikidata Q16844412 (Holy Name Preparatory, 1962)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#b9cfd6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a3b30",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    -2,
+    -8,
+    8.6
+   ]
+  },
+  {
+   "type": "cross",
+   "at": [
+    7,
+    -4,
+    12.5
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#9c978d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "kind": "wall",
+    "colour": "#d9d2c2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: OSM outline and brief only; belfry, roof and colours typical for the city"
+ }
+}

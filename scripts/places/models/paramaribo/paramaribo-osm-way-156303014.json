@@ -1,0 +1,480 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KamperveenStadion.jpg",
+   "licence": "Public domain",
+   "author": "Brokopondo",
+   "view": "side",
+   "file": "/tmp/places-evidence/paramaribo/156303014_0.jpg",
+   "used": "main stand: steel-frame cantilever shed roof clad in grey corrugated sheet over a white concrete back wall; low green-roofed office range beside it; ad-hoarding boundary wall; lattice floodlight mast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SVB_met_Andr%C3%A9_Kamperveenstation.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymnes",
+   "view": "side",
+   "file": "/tmp/places-evidence/paramaribo/156303014_1.jpg",
+   "used": "green federation office block with yellow awning, lattice floodlight masts, sandy open ground, bare red-earth ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19067909",
+   "used": "overall extent 222 x 135 m reduced to the scene; bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 5,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     170,
+     110
+    ],
+    "height": 0.12,
+    "colour": "#b08f6c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     106,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#4c8a46"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -42
+    ],
+    "end": [
+     34,
+     -42
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#cfcbbd",
+     "#2f6a8a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#e4e0d4",
+    "underColour": "#e4e0d4",
+    "canopy": {
+     "height": 1.8,
+     "depth": 13,
+     "thickness": 0.7,
+     "slopeDeg": 6,
+     "colour": "#9aa0a4",
+     "edgeColour": "#6c7176",
+     "overhangBack": 1.5
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-back",
+   "footprint": {
+    "rect": [
+     72,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#2f6a8a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa0a4",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     38
+    ],
+    "end": [
+     -50,
+     38
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#cfcbbd"
+    ],
+    "concreteColour": "#8aa070",
+    "underColour": "#8aa070"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     55,
+     0
+    ],
+    "radius": 30,
+    "radiusY": 34,
+    "startDeg": -85,
+    "endDeg": 85,
+    "rows": 3,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColours": [
+     "#cfcbbd"
+    ],
+    "concreteColour": "#8aa070",
+    "underColour": "#8aa070",
+    "facetDeg": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -55,
+     0
+    ],
+    "radius": 30,
+    "radiusY": 34,
+    "startDeg": 95,
+    "endDeg": 265,
+    "rows": 3,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColours": [
+     "#cfcbbd"
+    ],
+    "concreteColour": "#8aa070",
+    "underColour": "#8aa070",
+    "facetDeg": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    52,
+    -58
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f8a4a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "pattern": {
+     "type": "bands",
+     "colour": "#1f5a33"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26302c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    52,
+    -63.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 3,
+    "height": 3.2,
+    "thickness": 0.2,
+    "colour": "#f2b51c"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    46,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    46,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -80,
+      -52
+     ],
+     [
+      80,
+      -52
+     ],
+     [
+      80,
+      52
+     ],
+     [
+      -80,
+      52
+     ],
+     [
+      -80,
+      -52
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e8e4d8"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -25,
+      -52.4
+     ],
+     [
+      25,
+      -52.4
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.2,
+    "colour": "#c8a23a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -82,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    82,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -82,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-156303014",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the photos but never rendered or compared: the shared render queue was stalled (no worker progress since 24 Oct 21:40, 90 jobs waiting). Roof ridge directions, spire lofts and part placements are unchecked; re-run submit.ts and raise verified to photo after comparing."
+ }
+}

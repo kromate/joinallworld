@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-airport-nassau-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:NAS_US_departures.jpg",
+   "licence": "Public domain",
+   "author": "Crm18 (assumed)",
+   "view": "interior",
+   "used": "interior only: tall white columns with teal base band, glazed clerestory, cream walls; informs the teal accent"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:NassauAirportview.jpg",
+   "licence": "Public domain",
+   "author": "Halibut Thyme",
+   "view": "aerial",
+   "used": "layout only: terminal cluster beside the main runway, apron in front"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Lynden_Pindling_International_Airport",
+   "used": "three-stage terminal redevelopment sizes; no exterior photo or OSM building outline exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     110,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c6cc",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#f2f2ee",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8c8",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb9c2",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e9ea",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-west",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    -50,
+    32
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dfe4e6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8c8",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-east",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    50,
+    32
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dfe4e6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8c8",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "id": "dropoff",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 9,
+    "height": 5,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -38,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 3,
+    "colour": "#4f9aa6"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "id": "tower",
+   "at": [
+    58,
+    6,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "colour": "#dfe4e6",
+    "cabColour": "#4f9aa6"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "id": "jb1",
+   "at": [
+    -50,
+    56,
+    3
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "id": "jb2",
+   "at": [
+    50,
+    56,
+    3
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "core/airliner",
+   "id": "jet",
+   "at": [
+    -50,
+    82,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.9,
+    "tailColour": "#4f9aa6"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -25,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render queue workers were stalled (no heartbeat since 24 Oct 21:40), so no comparison render was possible: no exterior photo found; interior photos only inform the cream/teal palette, massing is typed"
+ }
+}

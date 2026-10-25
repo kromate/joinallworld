@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_College_Curepipe_image1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mrorangina",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-louis/college1.jpg",
+   "used": "style reference only (Royal College Curepipe, not this venue): grey rusticated stone, white quoins/surrounds, projecting pedimented loggia, white railing, flagpole, war memorial"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_College_Curepipe_image2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mrorangina",
+   "view": "side",
+   "used": "side range with pale-framed sash windows, war memorial statue on a stepped limestone plinth, fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/223523808",
+   "used": "overall extent 140 x 90 m (OSM is a plain rectangle, so a U plan is composed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6e72",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.8,
+    "bands": "#eceae4",
+    "bay": 10
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7f84",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     18,
+     56
+    ]
+   },
+   "at": [
+    -38,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6e72",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.8,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#f2f0ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7f84",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     56
+    ]
+   },
+   "at": [
+    38,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6e72",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.8,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#f2f0ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7f84",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -32.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6e72",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 10
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a7f84",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 5,
+    "height": 11.5,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#eceae4",
+    "roofColour": "#7a7f84"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.5,
+    "run": 1,
+    "count": 3,
+    "colour": "#d8d0bf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "railing",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "railing",
+   "at": [
+    20,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    40,
+    -54,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "plinth_height": 3,
+    "colour": "#d8d2c2",
+    "figure_colour": "#4a4f4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    0,
+    -44.2,
+    6.2
+   ],
+   "params": {
+    "width": 16,
+    "depth": 0.8,
+    "railing_colour": "#f2f0ea"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "photo is Royal College Curepipe, not this Port Louis venue; verified downgraded to footprint. Composed as U-plan with pedimented loggia, railing and memorial in that style"
+ }
+}

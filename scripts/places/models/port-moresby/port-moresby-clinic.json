@@ -1,0 +1,194 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/793402380",
+   "used": "identity only: the 431 x 325 m hospital compound is too large to model; one typical ward range is composed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     60,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc8",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -23,
+    21
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dac2",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    23,
+    21
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dac2",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 52,
+    "depth": 3.2,
+    "height": 3.0,
+    "columns": 9,
+    "colour": "#7c868c",
+    "edgeColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#e6dfc8",
+    "roofColour": "#4f7a5c",
+    "vans": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.0,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#8a8f92"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; a typical ward range only, not the real compound layout."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-clinic"
+}

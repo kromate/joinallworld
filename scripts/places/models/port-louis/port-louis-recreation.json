@@ -1,0 +1,228 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SSR_Curepipe_Botanical_Gardens_-_Mauritius_1.jpg",
+   "licence": "CC0",
+   "author": "Abu Shawka",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-louis/park1.jpg",
+   "used": "open mown lawn, irregular brown pond with a cluster of fan palms on the near bank, travellers palms and broadleaf trees behind, small white statue on the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SSR_Curepipe_Botanical_Gardens_-_Mauritius.jpg",
+   "licence": "CC0",
+   "author": "Abu Shawka",
+   "view": "street",
+   "used": "far bank with palms and dense mixed trees, bright green lawn sloping to the water"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Curepipe_Botanic_Gardens",
+   "used": "Victorian-style gazebo on the front lawn, informal layout, gates on Botanical Garden Street"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 1.0
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 46,
+    "depth": 24,
+    "shape": "oval",
+    "colour": "#7a6a4c",
+    "bank": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20.8,
+    "count": 4,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16.0,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 5,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 6,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 5,
+    "spread": 12
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "gazebo",
+   "at": [
+    -30,
+    -12,
+    0.4
+   ],
+   "params": {
+    "width": 7,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.4,
+    "posts": 8,
+    "colour": "#f6f3ec",
+    "cap_colour": "#4f7a5a",
+    "floor_colour": "#9c7a55"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    -16.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#f6f3ec"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#2f4a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    26,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#2f4a3a"
+   }
+  },
+  {
+   "type": "statue-on-plinth",
+   "at": [
+    34,
+    -4,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "real park is 170,000 m2: only the front lawn, pond, gazebo and gate are modelled; palm species and dense understorey are generic; photo camera framing renders the whole garden small; pond reads as a flat brown patch"
+ }
+}

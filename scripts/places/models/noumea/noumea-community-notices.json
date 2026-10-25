@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/19257369",
+   "used": "stepped courthouse outline 69 x 36 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe5d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#a8a290",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 7,
+    "columns": 4,
+    "pediment": false,
+    "steps": 5,
+    "colour": "#cfc9b8",
+    "roofColour": "#a8a290"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#2f4a8a",
+     "#b3262a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -25,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "street photos found were an unrelated church interior and a bay panorama; facade is typed, portico placement approximate"
+ }
+}

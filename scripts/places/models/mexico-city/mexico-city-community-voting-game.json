@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Torres_de_Sat%C3%A9lite_-_2.jpg",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/mexico-city/torres-242.jpg",
+   "used": "five triangular-section board-marked concrete prisms, red tallest, blue, yellow, two unpainted cream; relative heights and staggered layout; paved island with low planters"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Torres_de_Sat%C3%A9lite",
+   "used": "heights 30 to 52 m, colours, Barragan and Goeritz 1958"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 0.8,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     64
+    ],
+    "height": 0.5,
+    "colour": "#cfc9bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red",
+   "at": [
+    4,
+    -30,
+    0
+   ],
+   "rotDeg": 186.0,
+   "params": {
+    "points": [
+     [
+      -4.2,
+      2.436
+     ],
+     [
+      4.2,
+      2.436
+     ],
+     [
+      0,
+      -4.8468
+     ]
+    ],
+    "height": 57.2,
+    "colour": "#b8392d",
+    "material": "board-concrete",
+    "top": true,
+    "topColour": "#b8392d",
+    "pattern": null
+   }
+  },
+  {
+   "type": "prism",
+   "id": "yellow",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "rotDeg": 173.0,
+   "params": {
+    "points": [
+     [
+      -3.8,
+      2.2039999999999997
+     ],
+     [
+      3.8,
+      2.2039999999999997
+     ],
+     [
+      0,
+      -4.385199999999999
+     ]
+    ],
+    "height": 35.2,
+    "colour": "#d8a53a",
+    "material": "board-concrete",
+    "top": true,
+    "topColour": "#d8a53a",
+    "pattern": null
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "rotDeg": 188.0,
+   "params": {
+    "points": [
+     [
+      -3.8,
+      2.2039999999999997
+     ],
+     [
+      3.8,
+      2.2039999999999997
+     ],
+     [
+      0,
+      -4.385199999999999
+     ]
+    ],
+    "height": 41.800000000000004,
+    "colour": "#22418c",
+    "material": "board-concrete",
+    "top": true,
+    "topColour": "#22418c",
+    "pattern": null
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cream-left",
+   "at": [
+    -12,
+    4,
+    0
+   ],
+   "rotDeg": 174.0,
+   "params": {
+    "points": [
+     [
+      -3.8,
+      2.2039999999999997
+     ],
+     [
+      3.8,
+      2.2039999999999997
+     ],
+     [
+      0,
+      -4.385199999999999
+     ]
+    ],
+    "height": 55.00000000000001,
+    "colour": "#ecd6a4",
+    "material": "board-concrete",
+    "top": true,
+    "topColour": "#ecd6a4",
+    "pattern": null
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cream-right",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "rotDeg": 189.0,
+   "params": {
+    "points": [
+     [
+      -3.8,
+      2.2039999999999997
+     ],
+     [
+      3.8,
+      2.2039999999999997
+     ],
+     [
+      0,
+      -4.385199999999999
+     ]
+    ],
+    "height": 46.2,
+    "colour": "#ecd6a4",
+    "material": "board-concrete",
+    "top": true,
+    "topColour": "#ecd6a4",
+    "pattern": null
+   }
+  },
+  {
+   "type": "array",
+   "id": "planters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.4
+      ],
+      "height": 0.9,
+      "colour": "#d8d3c7"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     10
+    ],
+    "end": [
+     8,
+     16
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "curb",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     64
+    ],
+    "height": 0.3,
+    "colour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    32,
+    -14,
+    -0.02
+   ],
+   "params": {
+    "rect": [
+     16,
+     90
+    ],
+    "height": 0.1,
+    "colour": "#55575a"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Towers tightened and taller with warmer cream, curb and road added, but the triangular apex edge still reads flat from the front, tops are not pointed, and the camera is farther than the photo so towers look small; no billboards or city backdrop"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   90,
+   160
+  ]
+ }
+}

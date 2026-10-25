@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-way-363071670",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cyrus_Wathey_Square_(49872144976).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "street",
+   "file": "/tmp/places-evidence/philipsburg/square2.jpg",
+   "used": "open paved plaza with a grey paved circular medallion, rows of tall royal palms and broadleaf shade trees along both edges, lamp posts, small kiosks, courthouse closing the north end (separate venue)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Maarten_Philipsburg_Wathey_Square_Courthouse.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dr. Thomas Liptak",
+   "view": "street",
+   "file": "/tmp/places-evidence/philipsburg/square1.jpg",
+   "used": "tall palm trunks flanking the square, sand coloured paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/363071670",
+   "used": "park outline as the paved ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "fit": "building",
+  "shiftY": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15.2,
+      -17.3
+     ],
+     [
+      -0.2,
+      23
+     ],
+     [
+      15.2,
+      17.3
+     ],
+     [
+      0.2,
+      -23
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#cdbfa8",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0.15
+   ],
+   "params": {
+    "radius": 6.5,
+    "n": 28,
+    "height": 0.06,
+    "colour": "#9d9a94",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0.2
+   ],
+   "params": {
+    "radius": 2.0,
+    "n": 20,
+    "height": 0.05,
+    "colour": "#8fb2b8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     -8,
+     0
+    ],
+    "end": [
+     -5,
+     10,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "lamp-post",
+      "params": {
+       "height": 5.0
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     9,
+     -8,
+     0
+    ],
+    "end": [
+     5,
+     10,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "lamp-post",
+      "params": {
+       "height": 5.0
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -5,
+    13,
+    0
+   ],
+   "rotDeg": -20,
+   "params": {
+    "kind": "stall",
+    "width": 2.6,
+    "depth": 2.0,
+    "height": 2.6,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    5,
+    -12,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "kind": "stall",
+    "width": 2.6,
+    "depth": 2.0,
+    "height": 2.6,
+    "colour": "#5fb7b0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 8,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "wall",
+    "colour": "#f4f2ec"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -12
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -7,
+     -4
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -5,
+     4
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -3,
+     12
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -12
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -3
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     6
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     3,
+     14
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -6
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     6
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     0
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   40,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "the courthouse and surrounding shopfronts are separate venues and absent; the paving pattern is only the central medallion; the brief's bandstand is not in any photo so it is omitted"
+ }
+}

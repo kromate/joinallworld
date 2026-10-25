@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: game-venue placeholder, small glazed bus shelter 8 x 3 m beside a road; OSM match (town hall) deliberately ignored"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9aa6ab",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f57",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "platform-canopy",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 3.4,
+    "height": 3.0,
+    "thickness": 0.25,
+    "columns": 4,
+    "colour": "#2f5f8f",
+    "edgeColour": "#bfbbaf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.2,
+    -1.5,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.2,
+    "bottom": 0.2,
+    "colour": "#2f5f8f",
+    "frameColour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "height": 0.2,
+    "colour": "#bfbbaf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -10
+   ],
+   "params": {
+    "rect": [
+     40,
+     6
+    ],
+    "height": 0.05,
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -4,
+    -10,
+    0.05
+   ],
+   "params": {
+    "colour": "#2f5f8f",
+    "stripe": "#bfbbaf",
+    "count": 1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5.5,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   44,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Placeholder game venue with no real place or photo; typical glazed shelter, canopy and bus typed from the brief; coach slightly overlaps the road edge."
+ }
+}

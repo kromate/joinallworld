@@ -1,0 +1,234 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Papua_New_Guinea_National_Museum_May_2015.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nick-D",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-moresby/pm-museum.jpg",
+   "used": "tall steep A-frame gable with carved/painted ochre-red front leaning slightly forward, low ochre body behind, dry-stone rubble boundary wall, thatched open pavilion at right, lawn and trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25598649",
+   "used": "hexagonal footprint of the body"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 6,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c98f5a",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a5a34",
+    "overhang": 1.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "rotDeg": -25,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       2.2
+      ],
+      "colour": "#b5532c"
+     },
+     {
+      "z": 6,
+      "rect": [
+       7,
+       2.2
+      ],
+      "cy": -0.2,
+      "colour": "#c06a3a"
+     },
+     {
+      "z": 12,
+      "rect": [
+       4.4,
+       2.2
+      ],
+      "cy": -0.5,
+      "colour": "#c06a3a"
+     },
+     {
+      "z": 18,
+      "rect": [
+       1.6,
+       2.2
+      ],
+      "cy": -0.9,
+      "colour": "#a9582f"
+     },
+     {
+      "z": 20,
+      "rect": [
+       0.3,
+       2.0
+      ],
+      "cy": -1.0,
+      "colour": "#8a4a2a"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    0.0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.6,
+      1.0
+     ],
+     [
+      4.6,
+      1.0
+     ],
+     [
+      4.6,
+      1.4
+     ],
+     [
+      -4.6,
+      1.4
+     ]
+    ],
+    "height": 0.01,
+    "colour": "#d07a42"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.0,
+    "thickness": 1.0,
+    "colour": "#8c8678"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 12,
+    "post_height": 3.6,
+    "roof": "hip",
+    "thatch": true,
+    "bar": false,
+    "rail": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -34,
+     -44
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -28,
+     -50
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     -50
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     32,
+     -46
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -10,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "A-frame is a plain tapered wedge without carved mosaic texture and reads slightly pyramidal; wall is a plain grey strip not rubble; pavilion simplified; trees light green"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-25598649"
+}

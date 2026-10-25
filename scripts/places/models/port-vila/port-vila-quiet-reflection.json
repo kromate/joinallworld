@@ -1,0 +1,433 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port-Vila_cath_Sacre_Coeur.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "G\u00e9rard Janot",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-vila/cath.jpg",
+   "used": "tall asymmetric A-frame roof sloping down along the nave, white recessed gable wall with dark blue cross and timber posts, flat-roofed front canopy on slim posts, low white side aisle with band roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/319762684",
+   "used": "overall extent only (about 40 x 35 m irregular outline); the nave is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "points",
+    "thickness": 0.5,
+    "smooth": false,
+    "colour": "#9aa1a4",
+    "edgeColour": "#d9dcdc",
+    "underColour": "#7a3f26",
+    "points": [
+     [
+      [
+       -7,
+       0,
+       5.2
+      ],
+      [
+       -7,
+       26,
+       3.4
+      ]
+     ],
+     [
+      [
+       0,
+       0,
+       14
+      ],
+      [
+       0,
+       26,
+       5
+      ]
+     ],
+     [
+      [
+       7,
+       0,
+       5.2
+      ],
+      [
+       7,
+       26,
+       3.4
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f4f1e8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12.4,
+       0.6
+      ],
+      "cx": 0,
+      "cy": 2.8
+     },
+     {
+      "z": 5,
+      "rect": [
+       12.0,
+       0.6
+      ],
+      "cx": 0,
+      "cy": 2.8
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       1.0,
+       0.6
+      ],
+      "cx": 0,
+      "cy": 2.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     0.2
+    ],
+    "z0": 6.2,
+    "height": 2.8,
+    "colour": "#3a2d26"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -3.8,
+     0,
+     0
+    ],
+    "end": [
+     3.8,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.1
+      ],
+      "z0": 6.4,
+      "height": 2.4,
+      "colour": "#e8e6dc"
+     },
+     "at": [
+      0,
+      2.15,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -5,
+     2.3,
+     0
+    ],
+    "end": [
+     5,
+     2.3,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "z0": 0,
+      "height": 9,
+      "colour": "#3a2d26"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.12
+    ],
+    "z0": 9.4,
+    "height": 1.6,
+    "colour": "#2f4660"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.12
+    ],
+    "z0": 10.2,
+    "height": 0.3,
+    "colour": "#2f4660"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     7
+    ],
+    "z0": 3.9,
+    "height": 0.35,
+    "colour": "#e4e7e7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     23.6,
+     6.6
+    ],
+    "z0": 3.55,
+    "height": 0.35,
+    "colour": "#3a2c25"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -16,
+     -6,
+     0
+    ],
+    "end": [
+     5.5,
+     -6,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "z0": 0,
+      "height": 3.6,
+      "colour": "#2e2824"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     7,
+     24
+    ]
+   },
+   "at": [
+    10.5,
+    15
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "ribbon",
+    "plinth": 0.3,
+    "glassColour": "#3b4a50"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    -9.5,
+    14
+   ],
+   "height": 3.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "ribbon",
+    "plinth": 0.3,
+    "glassColour": "#3b4a50"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     15,
+     8
+    ]
+   },
+   "at": [
+    0,
+    33
+   ],
+   "height": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.2,
+    "colour": "#7a3b2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     0
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is now a crisp two-plane gable falling front to rear with dark timber soffit, small cross, timber posts, louvre band, flat canopy on thin dark posts, glazed side aisle. Remaining: louvre band and soffit rafters are simplified, irregular OSM wings and the sloping step between canopy and aisle roof are not reproduced."
+ }
+}

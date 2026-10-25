@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-osm-node-9695866739",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/way/754460705",
+   "used": "approximate size 9.9 x 7.4 m (nearest-quality match, not name-confirmed); open fare shelter typed from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     7
+    ],
+    "height": 0.7,
+    "colour": "#8a6a48",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 2.9,
+    "dy": 4.8,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.2,
+      "z0": 0.7,
+      "colour": "#6e5236",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     12.2,
+     9.2
+    ],
+    "height": 4.2,
+    "topScale": [
+     0.04,
+     1.0
+    ],
+    "colour": "#b9a67c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     10.2,
+     7.2
+    ],
+    "height": 0.3,
+    "colour": "#7a5f42",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.7,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#a08463"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2.6,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#7a5f42",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "market-open/umbrella",
+   "at": [
+    9,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "colour": "#d9c8a5"
+   }
+  },
+  {
+   "type": "market-open/umbrella",
+   "at": [
+    -8.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "colour": "#e8e2d2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     5
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     -2
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -3
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue hung); no photo, typed fare shelter."
+ }
+}

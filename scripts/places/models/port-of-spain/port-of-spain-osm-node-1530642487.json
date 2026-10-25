@@ -1,0 +1,224 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-node-1530642487",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1443372161",
+   "used": "paved parking-tagged area as the terrace and car park apron (containing match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: paved viewing terrace with stone parapet over the sea; no photo (offline)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b3ada0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3ada0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-upper",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4bfb3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bfb3",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet",
+   "footprint": {
+    "rect": [
+     26,
+     0.6
+    ]
+   },
+   "at": [
+    -4,
+    11.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-w",
+   "footprint": {
+    "rect": [
+     0.6,
+     9
+    ]
+   },
+   "at": [
+    -16.7,
+    6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-e",
+   "footprint": {
+    "rect": [
+     0.6,
+     9
+    ]
+   },
+   "at": [
+    8.7,
+    6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    0.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.55,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#b3ada0"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -14,
+    -1,
+    0.35
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; parapet position and terrace levels are placed from the brief, not observed."
+ }
+}

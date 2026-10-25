@@ -1,0 +1,628 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Synagoge,_Paramaribo_Suriname.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "GJ Bulte",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/191965515_0.jpg",
+   "used": "white painted timber clapboard walls, dark grey hipped roof, six white Tuscan columns with dark bases and capitals carrying a pedimented entablature with round window, arched upper windows and square lower windows, dark red plinth, low red steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191965515",
+   "used": "approximate size 26 x 20 m including portico"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     56
+    ],
+    "height": 0.1,
+    "colour": "#7fae52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     44,
+     20
+    ],
+    "height": 0.05,
+    "colour": "#d6c7a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     19,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2f0ea",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 0.8,
+    "trimColour": "#ffffff",
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4a4c",
+    "material": "slate",
+    "rise": 4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     19.4,
+     22.4
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a3a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-slab",
+   "footprint": {
+    "rect": [
+     15,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    -13.4
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a3a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a40"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     15,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    -13.4
+   ],
+   "z0": 7.0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4a4c",
+    "material": "slate",
+    "rise": 2.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entablature",
+   "footprint": {
+    "rect": [
+     15,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    -13.4
+   ],
+   "z0": 6.8,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -15.7,
+    8.1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.25
+     ]
+    },
+    "closed": true,
+    "colour": "#2e3338",
+    "points": [
+     [
+      0.8,
+      0,
+      0.0
+     ],
+     [
+      0.692820323027551,
+      0,
+      0.39999999999999997
+     ],
+     [
+      0.40000000000000013,
+      0,
+      0.6928203230275509
+     ],
+     [
+      4.898587196589413e-17,
+      0,
+      0.8
+     ],
+     [
+      -0.3999999999999999,
+      0,
+      0.692820323027551
+     ],
+     [
+      -0.692820323027551,
+      0,
+      0.39999999999999997
+     ],
+     [
+      -0.8,
+      0,
+      9.797174393178826e-17
+     ],
+     [
+      -0.6928203230275511,
+      0,
+      -0.39999999999999986
+     ],
+     [
+      -0.40000000000000036,
+      0,
+      -0.6928203230275507
+     ],
+     [
+      -1.4695761589768238e-16,
+      0,
+      -0.8
+     ],
+     [
+      0.40000000000000013,
+      0,
+      -0.6928203230275509
+     ],
+     [
+      0.6928203230275507,
+      0,
+      -0.40000000000000036
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     1.4
+    ],
+    "height": 0.4,
+    "colour": "#a8453a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -5.8,
+    -14.5,
+    0.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      0.6875,
+      0,
+      "#1f1f1f"
+     ],
+     [
+      0.6875,
+      0.35
+     ],
+     [
+      0.55,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      0.55,
+      5.8
+     ],
+     [
+      0.66,
+      5.9,
+      "#1f1f1f"
+     ],
+     [
+      0.66,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -3.5,
+    -14.5,
+    0.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      0.6875,
+      0,
+      "#1f1f1f"
+     ],
+     [
+      0.6875,
+      0.35
+     ],
+     [
+      0.55,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      0.55,
+      5.8
+     ],
+     [
+      0.66,
+      5.9,
+      "#1f1f1f"
+     ],
+     [
+      0.66,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -1.2,
+    -14.5,
+    0.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      0.6875,
+      0,
+      "#1f1f1f"
+     ],
+     [
+      0.6875,
+      0.35
+     ],
+     [
+      0.55,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      0.55,
+      5.8
+     ],
+     [
+      0.66,
+      5.9,
+      "#1f1f1f"
+     ],
+     [
+      0.66,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    1.2,
+    -14.5,
+    0.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      0.6875,
+      0,
+      "#1f1f1f"
+     ],
+     [
+      0.6875,
+      0.35
+     ],
+     [
+      0.55,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      0.55,
+      5.8
+     ],
+     [
+      0.66,
+      5.9,
+      "#1f1f1f"
+     ],
+     [
+      0.66,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    3.5,
+    -14.5,
+    0.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      0.6875,
+      0,
+      "#1f1f1f"
+     ],
+     [
+      0.6875,
+      0.35
+     ],
+     [
+      0.55,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      0.55,
+      5.8
+     ],
+     [
+      0.66,
+      5.9,
+      "#1f1f1f"
+     ],
+     [
+      0.66,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    5.8,
+    -14.5,
+    0.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      0.6875,
+      0,
+      "#1f1f1f"
+     ],
+     [
+      0.6875,
+      0.35
+     ],
+     [
+      0.55,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      0.55,
+      5.8
+     ],
+     [
+      0.66,
+      5.9,
+      "#1f1f1f"
+     ],
+     [
+      0.66,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -16,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     6,
+     2.4
+    ],
+    "height": 0.25,
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -12,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     6,
+     2.4
+    ],
+    "height": 0.25,
+    "colour": "#4a4c50"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   56,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-191965515",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the photos but never rendered or compared: the shared render queue was stalled (no worker progress since 24 Oct 21:40, 90 jobs waiting). Roof ridge directions, spire lofts and part placements are unchecked; re-run submit.ts and raise verified to photo after comparing."
+ }
+}

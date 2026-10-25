@@ -1,0 +1,94 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/325281407",
+   "used": "25 x 13 m footprint (containing match, unnamed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 15,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "waiting-hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "none",
+    "bands": "#3e6b8a",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e9396",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "bay-canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 5,
+    "height": 3.6,
+    "form": "flat",
+    "colour": "#8e9396",
+    "columns": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Game placeholder; waiting hall on OSM footprint with bay canopy, no real place to compare."
+ }
+}

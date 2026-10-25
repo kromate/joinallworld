@@ -1,0 +1,670 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-604023701",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citi_Field_from_the_south_2025.jpg",
+   "licence": "CC0",
+   "author": "Jeffme",
+   "view": "side",
+   "file": "/tmp/places-evidence/new-york/citi1.jpg",
+   "used": "low brick base with limestone-trimmed arch rotunda at one end, flat brick band, dark steel truss upper ring, big truss frame above the outfield, light towers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citi_Field_Night_Game.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chris6d",
+   "view": "interior",
+   "used": "green grass field with brown infield dirt, dark blue wall, scoreboard backdrop, stands colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/604023701",
+   "used": "real stadium outline, auto-fitted to the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-ring",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 16
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65240",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 4.5,
+    "bands": "#d6c9a8",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "field",
+   "footprint": {
+    "osm": true,
+    "fit": 70,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 17.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f8a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 18,
+    "height": 30,
+    "colour": "#2c3338"
+   },
+   "note": "truss frame left leg"
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 18,
+    "height": 30,
+    "colour": "#2c3338"
+   },
+   "note": "placeholder"
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    36,
+    38
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.6
+    ],
+    "height": 2.4,
+    "colour": "#2c3338"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    16,
+    35,
+    26
+   ],
+   "params": {
+    "width": 13,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#232a31",
+    "posts": false
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 42,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 8,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 0,
+    "seatColour": "#3b4a50",
+    "concreteColour": "#6c6f70",
+    "facetDeg": 15,
+    "closeEnds": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      54.0,
+      0.0,
+      19.5
+     ],
+     [
+      52.65,
+      10.24,
+      19.5
+     ],
+     [
+      48.65,
+      19.96,
+      19.5
+     ],
+     [
+      42.22,
+      28.68,
+      19.5
+     ],
+     [
+      33.67,
+      35.96,
+      19.5
+     ],
+     [
+      23.43,
+      41.44,
+      19.5
+     ],
+     [
+      12.02,
+      44.85,
+      19.5
+     ],
+     [
+      0.0,
+      46.0,
+      19.5
+     ],
+     [
+      -12.02,
+      44.85,
+      19.5
+     ],
+     [
+      -23.43,
+      41.44,
+      19.5
+     ],
+     [
+      -33.67,
+      35.96,
+      19.5
+     ],
+     [
+      -42.22,
+      28.68,
+      19.5
+     ],
+     [
+      -48.65,
+      19.96,
+      19.5
+     ],
+     [
+      -52.65,
+      10.24,
+      19.5
+     ],
+     [
+      -54.0,
+      0.0,
+      19.5
+     ],
+     [
+      -52.65,
+      -10.24,
+      19.5
+     ],
+     [
+      -48.65,
+      -19.96,
+      19.5
+     ],
+     [
+      -42.22,
+      -28.68,
+      19.5
+     ],
+     [
+      -33.67,
+      -35.96,
+      19.5
+     ],
+     [
+      -23.43,
+      -41.44,
+      19.5
+     ],
+     [
+      -12.02,
+      -44.85,
+      19.5
+     ],
+     [
+      -0.0,
+      -46.0,
+      19.5
+     ],
+     [
+      12.02,
+      -44.85,
+      19.5
+     ],
+     [
+      23.43,
+      -41.44,
+      19.5
+     ],
+     [
+      33.67,
+      -35.96,
+      19.5
+     ],
+     [
+      42.22,
+      -28.68,
+      19.5
+     ],
+     [
+      48.65,
+      -19.96,
+      19.5
+     ],
+     [
+      52.65,
+      -10.24,
+      19.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      54.0,
+      0.0,
+      23
+     ],
+     [
+      52.65,
+      10.24,
+      23
+     ],
+     [
+      48.65,
+      19.96,
+      23
+     ],
+     [
+      42.22,
+      28.68,
+      23
+     ],
+     [
+      33.67,
+      35.96,
+      23
+     ],
+     [
+      23.43,
+      41.44,
+      23
+     ],
+     [
+      12.02,
+      44.85,
+      23
+     ],
+     [
+      0.0,
+      46.0,
+      23
+     ],
+     [
+      -12.02,
+      44.85,
+      23
+     ],
+     [
+      -23.43,
+      41.44,
+      23
+     ],
+     [
+      -33.67,
+      35.96,
+      23
+     ],
+     [
+      -42.22,
+      28.68,
+      23
+     ],
+     [
+      -48.65,
+      19.96,
+      23
+     ],
+     [
+      -52.65,
+      10.24,
+      23
+     ],
+     [
+      -54.0,
+      0.0,
+      23
+     ],
+     [
+      -52.65,
+      -10.24,
+      23
+     ],
+     [
+      -48.65,
+      -19.96,
+      23
+     ],
+     [
+      -42.22,
+      -28.68,
+      23
+     ],
+     [
+      -33.67,
+      -35.96,
+      23
+     ],
+     [
+      -23.43,
+      -41.44,
+      23
+     ],
+     [
+      -12.02,
+      -44.85,
+      23
+     ],
+     [
+      -0.0,
+      -46.0,
+      23
+     ],
+     [
+      12.02,
+      -44.85,
+      23
+     ],
+     [
+      23.43,
+      -41.44,
+      23
+     ],
+     [
+      33.67,
+      -35.96,
+      23
+     ],
+     [
+      42.22,
+      -28.68,
+      23
+     ],
+     [
+      48.65,
+      -19.96,
+      23
+     ],
+     [
+      52.65,
+      -10.24,
+      23
+     ]
+    ],
+    "closed": true,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 16,
+    "radius": 54,
+    "radiusY": 46,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "z0": 11,
+      "height": 12,
+      "colour": "#2c3338"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -16,
+    -56,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "profile": [
+     [
+      0,
+      0,
+      "#a65240"
+     ],
+     [
+      13,
+      0,
+      "#a65240"
+     ],
+     [
+      13,
+      6,
+      "#a65240"
+     ],
+     [
+      13.4,
+      6.5,
+      "#d6c9a8"
+     ],
+     [
+      13.4,
+      13,
+      "#a65240"
+     ],
+     [
+      13.8,
+      13.4,
+      "#d6c9a8"
+     ],
+     [
+      0,
+      13.4,
+      "#8a6a58"
+     ]
+    ],
+    "arcade": {
+     "count": 10,
+     "width": 2.4,
+     "height": 4.4,
+     "sill": 0.8,
+     "shape": "round",
+     "depth": 0.6,
+     "z0": 0
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -16,
+    -69,
+    13.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#d6502b",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 4,
+    "radius": 46,
+    "radiusY": 40,
+    "startDeg": 45,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 22,
+      "head_width": 5,
+      "colour": "#2c3338"
+     },
+     "at": [
+      0,
+      0,
+      19
+     ]
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "open ring of stands under thin steel truss with rotunda arcade, truss frame and 4 light masts now present; rotunda is one tier of arches and a plain cylinder, brick base only one band, truss is a simple ring not the lattice; footprint simplified/scaled; LOD0 near budget"
+ }
+}

@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FSU_Republic_of_Panama.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Andres Canelones",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/work1.jpg",
+   "used": "white four-storey block with a maroon-red pent eave over each storey, ribbon windows, tall dark glass lift tower and glass entrance canopy on the front, mango tree and flowerbeds"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/387400207",
+   "used": "40 x 22 m footprint, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -31.3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.8,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe6d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c3b3a",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-tower",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b4a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#9aa4ad",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#40505f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-canopy",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    2,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5d70",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f33",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eave0",
+   "footprint": {
+    "rect": [
+     43,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3b3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3b3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eave1",
+   "footprint": {
+    "rect": [
+     43,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 7.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3b3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3b3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eave2",
+   "footprint": {
+    "rect": [
+     43,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3b3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3b3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: shared render queue workers A/B were hung (heartbeats stale since 2026-10-24 21:40), jobs queued but unprocessed. Composed from the downloaded photo by eye; massing, roof, colour and placement unchecked."
+ }
+}

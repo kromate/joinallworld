@@ -1,0 +1,349 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-osm-way-316996156",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanish_Wall,_Kolonia,_Pohnpei.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Uhooep",
+   "view": "front",
+   "used": "dark basalt stepped wall banks with grass on the terraces, stone steps at left, ruined square bell tower with dome cap and cross behind, softball field in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316996154",
+   "used": "Spanish Wall Park outline (name score 0.5, used only for extent and wall alignment)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -30
+     ],
+     [
+      40,
+      -30
+     ],
+     [
+      40,
+      -8
+     ],
+     [
+      -40,
+      -8
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 4.5,
+    "thickness": 4,
+    "colour": "#3f423b",
+    "gaps": 0.02
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -32,
+    4,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "height": 7,
+    "thickness": 4,
+    "colour": "#363933",
+    "gaps": 0.02
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -4
+     ],
+     [
+      30,
+      -4
+     ],
+     [
+      30,
+      2
+     ],
+     [
+      -30,
+      2
+     ]
+    ],
+    "height": 4.0,
+    "colour": "#4f6a35"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -24,
+    -8.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.5,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 7,
+    "colour": "#4a4c45"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 14,
+    "cap": "hip",
+    "belfry": true,
+    "colour": "#4a4c45",
+    "cap_colour": "#3f423b",
+    "cap_height": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 2.4,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -32,
+      -8
+     ],
+     [
+      32,
+      -8
+     ],
+     [
+      32,
+      -4
+     ],
+     [
+      -32,
+      -4
+     ]
+    ],
+    "height": 4.5,
+    "colour": "#3f423b"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -32,
+      2
+     ],
+     [
+      32,
+      2
+     ],
+     [
+      32,
+      6
+     ],
+     [
+      -32,
+      6
+     ]
+    ],
+    "height": 7,
+    "colour": "#363933"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no scoreboard/steps weathering/vegetation on wall faces, dome cap approximated by hip, wall plan is two straight runs not the traced outline"
+ }
+}

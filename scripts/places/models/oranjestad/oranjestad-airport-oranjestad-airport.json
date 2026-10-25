@@ -1,0 +1,393 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-airport-oranjestad-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queen_Beatrix_Airport.jpg",
+   "licence": "Public domain",
+   "author": "en:Eurocopter_tigre",
+   "view": "back",
+   "file": "/tmp/places-evidence/oranjestad/airport-airport-0.jpg",
+   "used": "row of sand-beige terminal bays under turquoise hipped metal roofs, yellow control tower behind the left-centre bay, white jet bridges along the apron face, tall floodlight masts, low left wing"
+  },
+  {
+   "kind": "text",
+   "ref": "brief oranjestad-airport",
+   "used": "1950s core expanded to 2025, control tower plus departures building; OSM has no building match so size is estimated from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bay0",
+   "footprint": {
+    "rect": [
+     22,
+     36
+    ]
+   },
+   "at": [
+    -47,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#25a3b5",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay1",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#25a3b5",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay2",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    9,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#25a3b5",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay3",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    37,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#25a3b5",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     100,
+     2.6
+    ]
+   },
+   "at": [
+    -6,
+    -19.5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9fb4b8",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "square",
+    "colour": "#d8c46c",
+    "cabColour": "#e3c84f",
+    "bandColour": "#d8c46c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "at": [
+      0,
+      0,
+      3.6
+     ],
+     "rotDeg": 90,
+     "params": {
+      "length": 9,
+      "colour": "#d8d2bf"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -23.5
+    ],
+    "end": [
+     40,
+     -23.5
+    ],
+    "count": 4,
+    "lod1Step": 4,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -55,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "count": 4,
+    "spacing": 35
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    10,
+    -42
+   ],
+   "params": {
+    "rect": [
+     120,
+     30
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b9ad92"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -10,
+    -42,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eef1f2",
+    "tailColour": "#d94a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    16,
+    -42,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eef1f2",
+    "tailColour": "#3f9a4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    42,
+    -42,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eef1f2",
+    "tailColour": "#2c5fb0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    68,
+    -42,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eef1f2",
+    "tailColour": "#e0a030"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    10,
+    48
+   ],
+   "params": {
+    "rect": [
+     150,
+     14
+    ],
+    "z0": 0,
+    "height": 14,
+    "topScale": [
+     0.6,
+     0.3
+    ],
+    "colour": "#7a6a4c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   116,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Walls hidden behind the white link block so the tan body reads white; no hills, water, apron airliners or tall floodlights as in the photo; bay roofs hipped rather than the real low gables."
+ }
+}

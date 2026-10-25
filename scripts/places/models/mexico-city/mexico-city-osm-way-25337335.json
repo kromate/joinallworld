@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-25337335",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Azul_from_the_air.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user (see Commons)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/mexico-city/ea2.jpg",
+   "used": "closed oval bowl, long axis along the pitch, royal/sky blue seating all round with a darker outer wall, no roof over the stands, green pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Azul-15.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "CHEMO RRO",
+   "view": "interior",
+   "used": "three raked tiers with a break between them, blue seat colours, light fascia band at the tier edges (interior view, colours only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9345770",
+   "used": "outer oval 182 x 215 m scaled to 0.68 for the 160 m scene limit; building:colour royalblue, roof:colour dodgerblue, 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 72,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      35.36,
+      0.0
+     ],
+     [
+      34.92,
+      7.23
+     ],
+     [
+      33.63,
+      14.29
+     ],
+     [
+      31.51,
+      20.99
+     ],
+     [
+      28.61,
+      27.18
+     ],
+     [
+      25.0,
+      32.7
+     ],
+     [
+      20.78,
+      37.41
+     ],
+     [
+      16.05,
+      41.2
+     ],
+     [
+      10.93,
+      43.98
+     ],
+     [
+      5.53,
+      45.67
+     ],
+     [
+      0.0,
+      46.24
+     ],
+     [
+      -5.53,
+      45.67
+     ],
+     [
+      -10.93,
+      43.98
+     ],
+     [
+      -16.05,
+      41.2
+     ],
+     [
+      -20.78,
+      37.41
+     ],
+     [
+      -25.0,
+      32.7
+     ],
+     [
+      -28.61,
+      27.18
+     ],
+     [
+      -31.51,
+      20.99
+     ],
+     [
+      -33.63,
+      14.29
+     ],
+     [
+      -34.92,
+      7.23
+     ],
+     [
+      -35.36,
+      0.0
+     ],
+     [
+      -34.92,
+      -7.23
+     ],
+     [
+      -33.63,
+      -14.29
+     ],
+     [
+      -31.51,
+      -20.99
+     ],
+     [
+      -28.61,
+      -27.18
+     ],
+     [
+      -25.0,
+      -32.7
+     ],
+     [
+      -20.78,
+      -37.41
+     ],
+     [
+      -16.05,
+      -41.2
+     ],
+     [
+      -10.93,
+      -43.98
+     ],
+     [
+      -5.53,
+      -45.67
+     ],
+     [
+      -0.0,
+      -46.24
+     ],
+     [
+      5.53,
+      -45.67
+     ],
+     [
+      10.93,
+      -43.98
+     ],
+     [
+      16.05,
+      -41.2
+     ],
+     [
+      20.78,
+      -37.41
+     ],
+     [
+      25.0,
+      -32.7
+     ],
+     [
+      28.61,
+      -27.18
+     ],
+     [
+      31.51,
+      -20.99
+     ],
+     [
+      33.63,
+      -14.29
+     ],
+     [
+      34.92,
+      -7.23
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#5e9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 35.36,
+    "radiusY": 46.24,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facetDeg": 12,
+    "tiers": [
+     {
+      "rows": 12,
+      "rise": 0.45,
+      "run": 0.56
+     },
+     {
+      "rows": 11,
+      "rise": 0.5,
+      "run": 0.56,
+      "gap": 3.0,
+      "lift": 1.6
+     },
+     {
+      "rows": 9,
+      "rise": 0.55,
+      "run": 0.56,
+      "gap": 3.0,
+      "lift": 1.6
+     }
+    ],
+    "firstHeight": 1.5,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColour": "#5aaee8",
+    "seatColours": [
+     "#5aaee8",
+     "#3b8fe0",
+     "#78c0f0"
+    ],
+    "blocks": 1,
+    "concreteColour": "#d6e6f4",
+    "underColour": "#1c3f9c",
+    "backWall": 1.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 57,
+    "radiusY": 68,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 8,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "floodlight-mast",
+      "params": {
+       "height": 22,
+       "head_width": 3,
+       "colour": "#aeb4ba"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "oval two-tone blue bowl with tier break and masts; no surrounding street blocks, terracotta ground slabs remain, scaled to 0.68"
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   160
+  ]
+ }
+}

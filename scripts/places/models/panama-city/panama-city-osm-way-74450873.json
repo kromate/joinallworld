@@ -1,0 +1,618 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-74450873",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biomuseo_panama.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Editorpana",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/bio1.jpg",
+   "used": "tall orange cladding block with tilted walls and panel joints, yellow/orange/red/blue/green tilted roof planes on steel struts and concrete posts, concrete ramp and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CintaCostera3_Biomuseo.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ayaita",
+   "view": "street",
+   "file": "/tmp/places-evidence/panama-city/bio2.jpg",
+   "used": "overall cluster silhouette, colour mix of red, yellow, blue, green, magenta planes against the orange block at one end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/74450873",
+   "used": "podium outline (about 93 x 88 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 2.0,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcac0",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4bb",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "orange-block",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     36,
+     26
+    ],
+    "z0": 0,
+    "height": 27,
+    "topScale": [
+     1.0,
+     0.95
+    ],
+    "topOffset": [
+     -1,
+     3
+    ],
+    "colour": "#e5521b",
+    "topColour": "#c9c9c4",
+    "windows": "none",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "yellow-big",
+   "at": [
+    -6,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 30,
+    "depth": 18,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": -22,
+    "slopeY": 6,
+    "z": 13,
+    "colour": "#f2c230",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "yellow-2",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 18,
+    "depth": 12,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 8,
+    "slopeY": -24,
+    "z": 12,
+    "colour": "#f5a623",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "red-1",
+   "at": [
+    4,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 22,
+    "depth": 18,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 14,
+    "slopeY": 24,
+    "z": 13,
+    "colour": "#d6303a",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "red-2",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 18,
+    "depth": 14,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 16,
+    "slopeY": -14,
+    "z": 14,
+    "colour": "#c42a43",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "blue-1",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 16,
+    "depth": 14,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": -22,
+    "slopeY": 14,
+    "z": 16,
+    "colour": "#2d6fd0",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "blue-2",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 16,
+    "depth": 12,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 18,
+    "slopeY": 8,
+    "z": 11,
+    "colour": "#2f86d0",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "green-1",
+   "at": [
+    2,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 14,
+    "depth": 12,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 0,
+    "slopeY": 22,
+    "z": 15,
+    "colour": "#39a845",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "magenta",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 14,
+    "depth": 12,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": -14,
+    "slopeY": -16,
+    "z": 13,
+    "colour": "#c2185b",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "red-3",
+   "at": [
+    -4,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 16,
+    "depth": 12,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 14,
+    "slopeY": 16,
+    "z": 12,
+    "colour": "#e03a3e",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "teal-1",
+   "at": [
+    -26,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 12,
+    "depth": 10,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeX": 10,
+    "slopeY": 12,
+    "z": 9,
+    "colour": "#1fa8a0",
+    "edgeColour": "#d9d9d4",
+    "underColour": "#c9c4bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 8,
+      "z0": 0,
+      "height": 13,
+      "colour": "#b9b6ae"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -36
+    ],
+    "end": [
+     0,
+     -36
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "struts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.22,
+      "n": 6,
+      "z0": 0,
+      "height": 12,
+      "colour": "#8f949a",
+      "topOffset": [
+       3,
+       2
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4,
+     -2
+    ],
+    "end": [
+     10,
+     -2
+    ],
+    "count": 4,
+    "lod2Step": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.5,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#cfcbc2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 8,
+    "line": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "diag0",
+   "at": [
+    6,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 9,
+    "colour": "#8f949a",
+    "topOffset": [
+     3,
+     2
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "diag1",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 9,
+    "colour": "#8f949a",
+    "topOffset": [
+     -3,
+     3
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "diag2",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 9,
+    "colour": "#8f949a",
+    "topOffset": [
+     4,
+     2
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "ramp",
+   "at": [
+    -4,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 26,
+    "depth": 8,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.6,
+    "slopeY": 14,
+    "z": 1.2,
+    "colour": "#cfcbc2",
+    "edgeColour": "#bdb9b0",
+    "underColour": "#bdb9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "mound0",
+   "at": [
+    -30,
+    -8,
+    2.5
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 18,
+    "depth": 14,
+    "rise": 2.5,
+    "thickness": 0.4,
+    "colour": "#5f9a3c",
+    "z": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "mound1",
+   "at": [
+    -30,
+    12,
+    2.5
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 18,
+    "depth": 14,
+    "rise": 2.5,
+    "thickness": 0.4,
+    "colour": "#5f9a3c",
+    "z": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "mound2",
+   "at": [
+    34,
+    10,
+    2.5
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 18,
+    "depth": 14,
+    "rise": 2.5,
+    "thickness": 0.4,
+    "colour": "#5f9a3c",
+    "z": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "orange block leans a little and shows no panel joints (tilted prisms drop the panel pattern); roof planes cluster is plausible but struts and lawn mounds are simplified"
+ }
+}

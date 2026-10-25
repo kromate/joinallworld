@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queen%27s_Ingrid%27s_Hospital_Entrance_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ThatGuyOnline",
+   "view": "front",
+   "file": "/tmp/places-evidence/nuuk/nuuk-clinic-0.jpg",
+   "used": "new health-centre front: tall glass curtain wall under a white-grey panel band, yellow entrance portal, dark cladding and red timber at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/252144904",
+   "used": "footprint of the 1954 sanatorium and later wings (angular multi-wing plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "health-centre",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6068",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "bands": "#e4e6e7"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a4a",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-wing",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    30,
+    -50
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2e3236",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4e52",
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-band",
+   "footprint": {
+    "rect": [
+     44.4,
+     14.4
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "z0": 7.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0e3e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-frame",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -61
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2c21b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2c21b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-opening",
+   "footprint": {
+    "rect": [
+     8.6,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -63.6
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1d2327",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d2327"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-slats",
+   "footprint": {
+    "rect": [
+     0.6,
+     9
+    ]
+   },
+   "at": [
+    37.2,
+    -50
+   ],
+   "z0": 2,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a3b2c",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a3b2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the entrance block matches the photo; wing placement/colours of the old sanatorium are from OSM outline and brief, copper angular additions missing."
+ }
+}

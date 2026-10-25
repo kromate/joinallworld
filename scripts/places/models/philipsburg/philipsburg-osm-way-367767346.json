@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-way-367767346",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/367767346",
+   "used": "13.8 x 12.9 m footprint, 2 levels, metal roof"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "two-storey Caribbean beach snack bar with tin roof, roof terrace, umbrellas; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     13.8,
+     12.9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#5fb7b0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 3.0,
+    "plinth": 0.4,
+    "trimColour": "#ffffff",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 2.8,
+    "colours": [
+     "#f2d98a",
+     "#ffffff"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    0,
+    -6.5,
+    3.7
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.2,
+    "railing_colour": "#f2d98a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 1.0,
+    "bottom": 3.0,
+    "colour": "#f2d98a",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 6,
+    "colours": [
+     "#f2d98a",
+     "#ffffff",
+     "#5fb7b0"
+    ]
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3,
+    "umbrellas": false,
+    "loungers": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     5
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; timber walls, colours and roof terrace are typical beach-bar assumptions from the brief"
+ }
+}

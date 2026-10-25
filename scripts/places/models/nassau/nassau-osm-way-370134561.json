@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-way-370134561",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/370134561",
+   "used": "name and amenity only: the 227 x 215 m polygon is a whole site, not a building, so it was not used as the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "bay": 4.5,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#7fa8c9",
+    "trimColour": "#f6f3ea"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a7a49c",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classrooms",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    21,
+    2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "trimColour": "#7fa8c9"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a7a49c",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#7fa8c9"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.8,
+    "bottom": 1.0,
+    "colour": "#7fa8c9"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.4,
+    "thickness": 0.25,
+    "colour": "#e6dfc9",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -24,
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -9,
+    -24,
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -24,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -19,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline exists: a modest hall plus classroom wing typical of Nassau community buildings, pastel render with blue accent per the brief."
+ }
+}

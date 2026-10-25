@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ilisimatusarfik_-_University_of_Greenland.jpg",
+   "licence": "CC0",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/nuuk/nuuk-community-workshop-1.jpg",
+   "used": "long stepped terrace block of weathered grey-brown timber cladding with thin ribbon windows, black clad wing at left, flagpoles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ilisimatusarfik-university-of-greenland.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Algkalv",
+   "view": "front",
+   "used": "warm timber tone and dark glazed entrance wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    8,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8d8a80",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       96,
+       26
+      ],
+      "cy": 0
+     },
+     {
+      "z": 13,
+      "rect": [
+       96,
+       16
+      ],
+      "cy": -5
+     }
+    ],
+    "capBottom": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "black-wing",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -56,
+    -6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#222629",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#222629"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -75,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5,
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real facade leans in as one slope and is greyer; modelled as stepped terraces with timber tone."
+ }
+}

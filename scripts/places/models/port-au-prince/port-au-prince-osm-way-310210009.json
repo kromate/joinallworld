@@ -1,0 +1,95 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/465285406",
+   "used": "real 24 x 8 m building outline (inside the Quisqueya University campus way/310210009)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 24
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#5f9d6e",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#5f9d6e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    12,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     8
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of this campus building exists; storeys, ribbon windows and green accent are typed from the brief. Only the 24 x 8 m outline is real."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-way-310210009"
+}

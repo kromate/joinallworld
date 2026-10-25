@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:5_de_Mayo_Panama_metro_station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Valenciano",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/metro1.jpg",
+   "used": "teal-green tinted glass entrance hall on a white concrete kerb, light-green mullions, dark louvred eave band and a deep teal glass fascia (sign left blank), railings at the base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_Mahatma_Gandhi_5_de_mayo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "David A. Nunez Linares",
+   "view": "street",
+   "used": "setting: plaza with benches, broadleaf and palm trees under the flyover, glazed station front across the street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/776797114",
+   "used": "entrance location only (4 m outline too small for the glazed hall seen in photos)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 44,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "kerb",
+   "params": {
+    "rect": [
+     15,
+     9
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#e4e6e3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.9,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fc9b3",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#8fc9b3",
+    "bay": 14,
+    "trimColour": "#8fc9b3",
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "curtain",
+     "right": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58605d",
+    "parapet": 0.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-band",
+   "params": {
+    "rect": [
+     14.8,
+     8.8
+    ],
+    "z0": 4.3,
+    "height": 0.8,
+    "colour": "#3f4543",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres",
+     "colour": "#2c3230",
+     "faces": [
+      "front"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     14.8,
+     8.8
+    ],
+    "z0": 5.1,
+    "height": 1.9,
+    "colour": "#1f8a7a",
+    "topColour": "#c8d0cc",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#1f8a7a",
+      "#208c7c"
+     ],
+     "slits": 0.0
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "mullions",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 0.9,
+      "height": 3.6,
+      "colour": "#8fd3a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -4.1
+    ],
+    "end": [
+     6,
+     -4.1
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d0d2cf"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    5.8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.1,
+    "thickness": 0.1,
+    "colour": "#b9bdbb",
+    "kind": "fence",
+    "pillarEvery": 2
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -4.8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.06,
+    "colour": "#d8dbd8",
+    "kind": "fence",
+    "pillarEvery": 1.5,
+    "points": [
+     [
+      -7,
+      0
+     ],
+     [
+      7,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   44,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "glass reads darker than the photo's reflective green; louvre slats are a textured band, fence at the kerb is simplified"
+ }
+}

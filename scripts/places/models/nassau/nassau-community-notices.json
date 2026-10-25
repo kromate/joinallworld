@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Archives_of_the_Bahamas.jpg",
+   "licence": "CC BY 4.0",
+   "author": "LittleT889",
+   "view": "side",
+   "file": "/tmp/places-evidence/nassau/archives1.jpg",
+   "used": "pink stuccoed two-storey block with white pilaster strips, small paned windows, very large low-pitched hipped white metal roof with deep overhang, flag on a pole at the corner, chain-link fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/367730949",
+   "used": "21.5 x 18 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.25,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     21.5,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eebfb5",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bands": "#f3efe4",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#e6e3dc",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "rise": 4.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.5
+      ],
+      "height": 7,
+      "colour": "#f3efe4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9,
+     -9.2,
+     0
+    ],
+    "end": [
+     9,
+     -9.2,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "awning",
+   "id": "door-hood",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 1.4,
+    "colours": [
+     "#f3efe4"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flag",
+   "at": [
+    -11.5,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#00778b"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence",
+   "at": [
+    -13,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.2,
+    "kind": "wall",
+    "colour": "#a9adb0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "Render queue workers were stalled (no heartbeat since 24 Oct 21:40), so no comparison render was possible: composed from the archives photo (pink block, white pilasters, big white hipped metal roof, flag) but never compared; photo shows a side view"
+ }
+}

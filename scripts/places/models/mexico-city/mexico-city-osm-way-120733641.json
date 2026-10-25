@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-120733641",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mexico_city_Insigne_y_Nacional_Bas%C3%ADlica_de_Santa_Mar%C3%ADa_de_Guadalupe_7.JPG",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Arne Museler",
+   "view": "front",
+   "file": "/tmp/places-evidence/mexico-city/w59-basilica.jpg",
+   "used": "round tan concrete drum with open dark ground storey, amber-glass band between concrete piers, concave green copper tent roof with a yellow-gold stripe, cross frame at the apex, front cross on the roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/120733641",
+   "used": "101 m round plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#b3a58c",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      50.5,
+      0,
+      "#5a5148"
+     ],
+     [
+      50.5,
+      8.5,
+      "#4a423a"
+     ],
+     [
+      51.5,
+      8.5,
+      "#b3a58c"
+     ],
+     [
+      51.5,
+      10,
+      "#b3a58c"
+     ],
+     [
+      50.8,
+      10.4,
+      "#8c6a3e"
+     ],
+     [
+      50.8,
+      15.6,
+      "#8c6a3e"
+     ],
+     [
+      51.8,
+      15.8,
+      "#b9ab92"
+     ],
+     [
+      51.8,
+      17.2,
+      "#b9ab92"
+     ],
+     [
+      49,
+      17.2,
+      "#8fb59d"
+     ],
+     [
+      40,
+      19,
+      "#8fb59d"
+     ],
+     [
+      30,
+      22.5,
+      "#9bbfa9"
+     ],
+     [
+      22,
+      27,
+      "#9bbfa9"
+     ],
+     [
+      15,
+      32.5,
+      "#9bbfa9"
+     ],
+     [
+      10,
+      37,
+      "#d9b24a"
+     ],
+     [
+      7,
+      40.5,
+      "#d9b24a"
+     ],
+     [
+      5.5,
+      42,
+      "#b3a58c"
+     ],
+     [
+      0,
+      42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 51.2,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 20,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.6,
+       2.2
+      ],
+      "height": 17.2,
+      "colour": "#a99b82"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 50.8,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 20,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.6,
+       0.5
+      ],
+      "height": 8.5,
+      "colour": "#2c2723"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -51.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.0
+    ],
+    "height": 8.5,
+    "colour": "#4fa6a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8,
+    42
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5,
+    "colour": "#6b5c4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8,
+    45
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.7
+    ],
+    "height": 0.8,
+    "colour": "#6b5c4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -38,
+    26
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.8
+    ],
+    "height": 15,
+    "colour": "#7d6c58",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -38,
+    36
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.8
+    ],
+    "height": 1.0,
+    "colour": "#7d6c58"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   124,
+   124
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No ground-floor arcade piers/doors detail, glass band is plain amber, roof stripes and apex cross frame are simplified, old basilica and plaza not modelled."
+ }
+}

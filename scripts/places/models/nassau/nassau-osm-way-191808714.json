@@ -1,0 +1,195 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Montagu_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "view": "front",
+   "file": "/tmp/places-evidence/nassau/fort0.jpg",
+   "used": "square weathered dark-grey limestone block walls, taller arched gate block at one corner, rooftop room, cannon barrels over parapet, grass apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FORT_MONTAGU,_NEW_PROVIDENCE_ISLAND,_BAHAMAS.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jerrye and Roy Klotz MD",
+   "view": "side",
+   "file": "/tmp/places-evidence/nassau/fort1.jpg",
+   "used": "seaward wall in pale coursed limestone, rooftop block, palms and casuarina behind, stone sea-wall causeway"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191808714",
+   "used": "19.3 x 19.2 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 5,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "walls",
+   "footprint": {
+    "rect": [
+     19.3,
+     19.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#5a5752",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6760",
+    "parapet": 0.6,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-block",
+   "footprint": {
+    "rect": [
+     6.5,
+     6
+    ]
+   },
+   "at": [
+    -6.4,
+    -6.6
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#625f5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6760",
+    "parapet": 0.3,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-room",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    4,
+    4
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#6d6a64",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#77746d",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-door",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.5
+    ]
+   },
+   "at": [
+    -6.4,
+    -9.55
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#15130f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#15130f"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -9.0,
+    -1,
+    6.3
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 1.5
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    0,
+    -9.0,
+    6.3
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 0,
+    "scale": 1.5
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    9.0,
+    -3,
+    6.3
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 90,
+    "scale": 1.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-way-191808714",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate block does not rise from the wall corner as one tower and door is a flat dark box, not arched; stone is regular courses not rough rubble; cannons short with brown carriages; sea and boulders omitted"
+ }
+}

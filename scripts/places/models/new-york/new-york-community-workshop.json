@@ -1,0 +1,234 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13104702",
+   "used": "campus polygon only (498 x 401 m, whole Newark health-sciences campus); not extruded, a single typical academic block is modelled from the brief (about 120 x 45 m, 8 storeys, glass and brick)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-bar",
+   "footprint": {
+    "rect": [
+     62,
+     20
+    ]
+   },
+   "at": [
+    -26,
+    8
+   ],
+   "height": 31,
+   "storeys": 8,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65c46",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#6d808c",
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9093",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "height": 31,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6d808c",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    },
+    "glassColour": "#5f7886",
+    "bands": "#d9dcde",
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9093",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-podium",
+   "footprint": {
+    "rect": [
+     100,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d0d2d3",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#6d808c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9093",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    3,
+    -20
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd8dc",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#6f93a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    3,
+    -28,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 1.4,
+    "colour": "#a65c46"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    20,
+    -26,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this building; massing and colours come from the brief and typical Newark academic buildings; the real campus outline is far larger"
+ }
+}

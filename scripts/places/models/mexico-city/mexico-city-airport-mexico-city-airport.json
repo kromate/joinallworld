@@ -1,0 +1,243 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:Terminal_1_del_AICM_durante_tercer_ola_de_pandemia_COVID-19.jpg (CC BY-SA 4.0, ProtoplasmaKid, interior only)",
+   "used": "fluted pale concrete columns, white steel-truss roof, stone-tile floor: colours and column treatment only (no exterior photo found)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Mexico_City_International_Airport",
+   "used": "T1 about 800 m long, two storeys, elevated departures roadway, 1952 with upgrades; a central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     112,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d0d2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e4e1d8",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "material": "membrane",
+    "overhang": 2.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-podium",
+   "footprint": {
+    "rect": [
+     116,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d6cc",
+    "windows": "none",
+    "bands": "#bdb9ae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9f9f",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "departures-canopy",
+   "at": [
+    0,
+    -32,
+    7.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 116,
+    "depth": 10,
+    "height": 0.01,
+    "thickness": 0.8,
+    "columns": 0,
+    "colour": "#bfc2c0",
+    "edgeColour": "#8f9596"
+   }
+  },
+  {
+   "type": "array",
+   "id": "road-columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "height": 7.4,
+      "colour": "#d4d0c4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -54,
+     -38
+    ],
+    "end": [
+     54,
+     -38
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concourse-pier",
+   "footprint": {
+    "rect": [
+     96,
+     14
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c3c7",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b4",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "jet-bridges",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 16
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     48
+    ],
+    "end": [
+     40,
+     48
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "tower",
+   "at": [
+    60,
+    10,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -44,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo found; ~112 m of the ~800 m T1 modelled; facade colours and canopy form typed from city style and interior photos"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-airport-mexico-city-airport"
+}

@@ -1,0 +1,377 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-1564487878",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Reynier_Speer_House.jpg",
+   "licence": "Public domain",
+   "author": "Lithium6ion",
+   "view": "front",
+   "file": "/tmp/places-evidence/new-york/speer1.jpg",
+   "used": "low two-bay Dutch colonial: grey clapboard upper storey over a brown sandstone basement on a slope, shallow gable roof with slight eave break, lower rear/side wing, brick chimneys, dark navy shutters, pale teal door, white picket fence, conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1564487878",
+   "used": "plan size 15.2 x 9.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "basement",
+   "footprint": {
+    "rect": [
+     10.5,
+     8
+    ]
+   },
+   "at": [
+    -1.5,
+    0
+   ],
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d5f4f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d5f4f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     10.6,
+     8
+    ]
+   },
+   "at": [
+    -1.5,
+    0
+   ],
+   "z0": 1.7,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b2ab99",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 2.6,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#46484b",
+    "material": "slate",
+    "pitch": 28,
+    "axis": "x",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     5.4,
+     6.6
+    ]
+   },
+   "at": [
+    5.2,
+    1.2
+   ],
+   "z0": 0.6,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b2ab99",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#46484b",
+    "material": "slate",
+    "pitch": 26,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-left",
+   "at": [
+    -6.6,
+    1.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 7.6,
+    "colour": "#7b4a3a",
+    "topColour": "#5e3a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-ridge",
+   "at": [
+    0.6,
+    1.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 7.6,
+    "colour": "#9a5a45",
+    "topColour": "#6d4033"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -1.35,
+    -4.12,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     0.95,
+     0.12
+    ],
+    "height": 2.1,
+    "colour": "#9cc4bd",
+    "topColour": "#9cc4bd"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8.8,
+    -6.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 4.5,
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.25,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.55,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.55,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.55,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.55,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.25,
+    -4.1,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#2b2f4d",
+    "topColour": "#2b2f4d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -11,
+     2
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     5
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     7
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Clapboard is vertical-board texture, no hillside planting, porch steps, window boxes or the white picket fence; shutters approximate."
+ }
+}

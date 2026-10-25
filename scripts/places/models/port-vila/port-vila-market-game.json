@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/868937789",
+   "used": "real marketplace outline (name match, 80 x 38 m, long axis north-south)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Road_Market_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jean Van Jean",
+   "view": "street",
+   "used": "traders sell off low timber tables and mats in the shade of a big spreading tree on bare earth near the site; the nearby Au Bon Marche supermarket (corrugated pale cladding, petrol canopy) gave the roof and wall colours. Neither photo shows the OSM shed itself, so not a photo match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#bfc4c2",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis",
+     "inset": 1.2,
+     "spacing": 5,
+     "width": 0.35,
+     "colour": "#7b8083",
+     "backColour": "#2b2f31"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a2",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 1.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "table",
+    "colours": [
+     "#e3b86b",
+     "#4f9a6a",
+     "#c9553d"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    6,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "table",
+    "colours": [
+     "#e3b86b",
+     "#4f9a6a",
+     "#c9553d"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -28,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -34,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Roof is fitted to the bounding rectangle of an irregular outline; no photo of the market itself, wall/roof colours from nearby shops."
+ }
+}

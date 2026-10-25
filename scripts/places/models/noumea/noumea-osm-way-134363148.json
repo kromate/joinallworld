@@ -1,0 +1,197 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/134363148",
+   "used": "real 108 x 87 m store outline, name-quality match"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#b5473a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfbbaf",
+    "parapet": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    3,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.5,
+    "colour": "#b5473a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "params": {
+    "points": [
+     [
+      -9,
+      -0.3
+     ],
+     [
+      9,
+      -0.3
+     ],
+     [
+      9,
+      0.3
+     ],
+     [
+      -9,
+      0.3
+     ]
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#8fb4bb",
+    "topColour": "#8fb4bb"
+   },
+   "at": [
+    3,
+    -39.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board-1",
+   "params": {
+    "points": [
+     [
+      -7,
+      -0.2
+     ],
+     [
+      7,
+      -0.2
+     ],
+     [
+      7,
+      0.2
+     ],
+     [
+      -7,
+      0.2
+     ]
+    ],
+    "z0": 7.5,
+    "height": 2.4,
+    "colour": "#b5473a",
+    "topColour": "#b5473a"
+   },
+   "at": [
+    3,
+    -40.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board-2",
+   "params": {
+    "points": [
+     [
+      -4,
+      -0.2
+     ],
+     [
+      4,
+      -0.2
+     ],
+     [
+      4,
+      0.2
+     ],
+     [
+      -4,
+      0.2
+     ]
+    ],
+    "z0": 7.5,
+    "height": 2.2,
+    "colour": "#e8e4d8",
+    "topColour": "#e8e4d8"
+   },
+   "at": [
+    -30,
+    -26.5
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 16,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 6,
+    "line": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo: outline is real; walls, canopy and colours are typical-supermarket guesses; canopy and sign boards placed from the outline's front edge."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-way-134363148"
+}

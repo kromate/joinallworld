@@ -1,0 +1,830 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port-au-Prince_Haiti_Temple_-_Pierre.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "18sdjackson",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-au-prince/p5-temple.jpg",
+   "used": "pale cream limestone, long low flat-roofed wings with a stepped cornice, a central entrance block with a recessed porch and dark red door, a stepped square tower with a tall narrow green window and a slender spire, tall narrow dark-green windows in the wings, bollards, flower beds, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1328919400",
+   "used": "overall size 48 x 34 m, long axis east-west with front facade to the south-west lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 3,
+  "fovDeg": 34,
+  "aspect": 0.81
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     19,
+     14
+    ]
+   },
+   "at": [
+    -14.5,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe5d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     19,
+     14
+    ]
+   },
+   "at": [
+    14.5,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe5d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9db",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-pier-l",
+   "footprint": {
+    "rect": [
+     4.25,
+     2
+    ]
+   },
+   "at": [
+    -4.375,
+    -7
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9db",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-pier-r",
+   "footprint": {
+    "rect": [
+     4.25,
+     2
+    ]
+   },
+   "at": [
+    4.375,
+    -7
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9db",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-lintel",
+   "footprint": {
+    "rect": [
+     4.5,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9db",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.6
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "centre-rear",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e3d3",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 10,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9db",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 14,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0eadc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-tier",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 20,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0eadc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dccd",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -1,
+    21.5
+   ],
+   "params": {
+    "baseWidth": 2.2,
+    "height": 8,
+    "shaftHeight": 3,
+    "sides": 4,
+    "colour": "#e8e2d2",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-recess",
+   "at": [
+    0,
+    -6.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 3.8,
+    "colour": "#6e2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-back",
+   "at": [
+    0,
+    -5.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.2
+    ],
+    "height": 6,
+    "colour": "#cfc7b2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 2,
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -8,
+     -14
+    ],
+    "end": [
+     8,
+     -14
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 1.0,
+      "colour": "#ddd6c6"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-window",
+   "at": [
+    0,
+    -3.0,
+    14.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "height": 5,
+    "colour": "#2f5d4e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wsur-21",
+   "at": [
+    -21,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin-21",
+   "at": [
+    -21,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur-17",
+   "at": [
+    -17,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin-17",
+   "at": [
+    -17,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur-13",
+   "at": [
+    -13,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin-13",
+   "at": [
+    -13,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur-9",
+   "at": [
+    -9,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin-9",
+   "at": [
+    -9,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur9",
+   "at": [
+    9,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin9",
+   "at": [
+    9,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur13",
+   "at": [
+    13,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin13",
+   "at": [
+    13,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur17",
+   "at": [
+    17,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin17",
+   "at": [
+    17,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wsur21",
+   "at": [
+    21,
+    -7.08,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 5.0,
+    "colour": "#f7f3e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wwin21",
+   "at": [
+    21,
+    -7.18,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 4.0,
+    "colour": "#2f4f43"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -16
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     6
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     8
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Recessed porch, stepped tower and wing windows added; still no flower beds, hedges or benches, spire thicker than the needle in the photo, forecourt reads as grey tile not pale concrete."
+ }
+}

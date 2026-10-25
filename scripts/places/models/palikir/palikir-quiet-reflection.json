@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: plain white village church, red corrugated gable roof, small bell tower, lawn and palms; OSM match is nearest only, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     18,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#bdb9ae"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33b2d",
+    "material": "corrugated",
+    "rise": 3.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33b2d",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "windowShape": "arched",
+    "bands": "#bdb9ae"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#a33b2d",
+    "material": "corrugated",
+    "rise": 3.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -13.5,
+    13.0
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM match was only nearest; typical white village church from the brief."
+ }
+}

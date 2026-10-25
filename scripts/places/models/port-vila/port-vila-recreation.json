@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/435756621",
+   "used": "real 106 x 47 m park polygon (name match prima park)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: grass sports park with a shelter and boundary fence; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -29.2,
+      -47
+     ],
+     [
+      15.7,
+      -56.4
+     ],
+     [
+      29.8,
+      48.4
+     ],
+     [
+      -17,
+      54.1
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7aa37a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -36
+     ],
+     [
+      10,
+      -42
+     ],
+     [
+      20,
+      36
+     ],
+     [
+      -10,
+      40
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#5f9a52",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#9aa0a2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "params": {
+    "points": [
+     [
+      -29.2,
+      -47
+     ],
+     [
+      15.7,
+      -56.4
+     ],
+     [
+      29.8,
+      48.4
+     ],
+     [
+      -17,
+      54.1
+     ],
+     [
+      -29.2,
+      -47
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#bfc4c2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    -36,
+    40
+   ],
+   "rotDeg": 8,
+   "height": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa0a2",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; pitch markings, pavilion and fence are assumed from the brief."
+ }
+}

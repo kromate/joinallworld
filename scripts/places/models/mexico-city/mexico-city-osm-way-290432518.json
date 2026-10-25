@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-290432518",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/290432518",
+   "used": "campus plot outline 188 x 166 m (fitted to the scene) as the paved pad; blocks follow its two long edges"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/TecMilenio_University",
+   "used": "private university, 2000s; block style (pale banded teaching blocks with a green stair tower) from the brand's other campuses, not from a photo of this site"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pad",
+   "footprint": {
+    "osm": true,
+    "fit": 112
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b9b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b0a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     62,
+     17
+    ]
+   },
+   "at": [
+    -4,
+    -34
+   ],
+   "rotDeg": 20,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a6a82",
+    "bands": "#c4c6c2",
+    "cornice": true,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    24,
+    14
+   ],
+   "rotDeg": -70,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad2",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a6a82",
+    "bands": "#c4c6c2",
+    "cornice": true,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -12,
+    22
+   ],
+   "rotDeg": 20,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a6a82",
+    "bands": "#c4c6c2",
+    "cornice": true,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -31,
+    -44
+   ],
+   "rotDeg": 20,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f9a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a7a40"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "auditorium",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    -30,
+    2
+   ],
+   "rotDeg": 20,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b3a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -56,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    36,
+    -30,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "width": 22,
+    "depth": 10
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this campus; block arrangement is a plausible reading of the plot outline, colours from the brand palette"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     48
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

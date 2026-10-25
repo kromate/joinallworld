@@ -1,0 +1,778 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-135643181",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FortNieuwAmsterdam.jpg",
+   "licence": "Public domain",
+   "author": "J. J. Hartsinck, Beschrijving van Guiana (1770)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/paramaribo/p8_fort_a.jpg",
+   "used": "five-bastion star plan, wet moat, gate on the south-east curtain, long barracks on the east side, governor's and commandant's houses on the central avenue of orange trees, old church/magazine in the west, workshops in the north"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SR157_Fort_Amsterdam.jpg",
+   "licence": "Public domain",
+   "author": "19th-century lithograph",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/p8_fort_b.jpg",
+   "used": "low whitewashed houses with steep dark roofs, palms and big tree, flat river-side setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/135643181",
+   "used": "extent (about 530 m, shown at reduced scale) and place on the confluence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 80,
+  "fovDeg": 40,
+  "aspect": 0.7,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "water",
+   "params": {
+    "points": [
+     [
+      -19.0,
+      -32.9
+     ],
+     [
+      -6.3,
+      -51.6
+     ],
+     [
+      -0.0,
+      -62.0
+     ],
+     [
+      6.3,
+      -51.6
+     ],
+     [
+      19.0,
+      -32.9
+     ],
+     [
+      25.4,
+      -28.2
+     ],
+     [
+      47.1,
+      -22.0
+     ],
+     [
+      59.0,
+      -19.2
+     ],
+     [
+      51.0,
+      -9.9
+     ],
+     [
+      37.2,
+      7.9
+     ],
+     [
+      34.7,
+      15.5
+     ],
+     [
+      35.5,
+      38.0
+     ],
+     [
+      36.4,
+      50.2
+     ],
+     [
+      25.2,
+      45.5
+     ],
+     [
+      4.0,
+      37.8
+     ],
+     [
+      -4.0,
+      37.8
+     ],
+     [
+      -25.2,
+      45.5
+     ],
+     [
+      -36.4,
+      50.2
+     ],
+     [
+      -35.5,
+      38.0
+     ],
+     [
+      -34.7,
+      15.5
+     ],
+     [
+      -37.2,
+      7.9
+     ],
+     [
+      -51.0,
+      -9.9
+     ],
+     [
+      -59.0,
+      -19.2
+     ],
+     [
+      -47.1,
+      -22.0
+     ],
+     [
+      -25.4,
+      -28.2
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#5a7f8c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parade",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -13.5,
+      -23.4
+     ],
+     [
+      -5.0,
+      -40.7
+     ],
+     [
+      -0.0,
+      -49.0
+     ],
+     [
+      5.0,
+      -40.7
+     ],
+     [
+      13.5,
+      -23.4
+     ],
+     [
+      18.1,
+      -20.1
+     ],
+     [
+      37.2,
+      -17.3
+     ],
+     [
+      46.6,
+      -15.1
+     ],
+     [
+      40.2,
+      -7.8
+     ],
+     [
+      26.4,
+      5.6
+     ],
+     [
+      24.7,
+      11.0
+     ],
+     [
+      28.0,
+      30.0
+     ],
+     [
+      28.8,
+      39.6
+     ],
+     [
+      19.9,
+      35.9
+     ],
+     [
+      2.8,
+      26.9
+     ],
+     [
+      -2.8,
+      26.9
+     ],
+     [
+      -19.9,
+      35.9
+     ],
+     [
+      -28.8,
+      39.6
+     ],
+     [
+      -28.0,
+      30.0
+     ],
+     [
+      -24.7,
+      11.0
+     ],
+     [
+      -26.4,
+      5.6
+     ],
+     [
+      -40.2,
+      -7.8
+     ],
+     [
+      -46.6,
+      -15.1
+     ],
+     [
+      -37.2,
+      -17.3
+     ],
+     [
+      -18.1,
+      -20.1
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.3,
+    "colour": "#7fa05a"
+   }
+  },
+  {
+   "type": "rampart-ring",
+   "id": "ramparts",
+   "params": {
+    "points": [
+     [
+      -15.0,
+      -26.0
+     ],
+     [
+      -5.4,
+      -43.7
+     ],
+     [
+      -0.0,
+      -52.0
+     ],
+     [
+      5.4,
+      -43.7
+     ],
+     [
+      15.0,
+      -26.0
+     ],
+     [
+      20.1,
+      -22.3
+     ],
+     [
+      39.9,
+      -18.6
+     ],
+     [
+      49.5,
+      -16.1
+     ],
+     [
+      43.2,
+      -8.4
+     ],
+     [
+      29.3,
+      6.2
+     ],
+     [
+      27.4,
+      12.2
+     ],
+     [
+      30.0,
+      32.2
+     ],
+     [
+      30.6,
+      42.1
+     ],
+     [
+      21.3,
+      38.5
+     ],
+     [
+      3.1,
+      29.8
+     ],
+     [
+      -3.1,
+      29.8
+     ],
+     [
+      -21.3,
+      38.5
+     ],
+     [
+      -30.6,
+      42.1
+     ],
+     [
+      -30.0,
+      32.2
+     ],
+     [
+      -27.4,
+      12.2
+     ],
+     [
+      -29.3,
+      6.2
+     ],
+     [
+      -43.2,
+      -8.4
+     ],
+     [
+      -49.5,
+      -16.1
+     ],
+     [
+      -39.9,
+      -18.6
+     ],
+     [
+      -20.1,
+      -22.3
+     ]
+    ],
+    "height": 3.8,
+    "thickness": 4.5,
+    "batter": 1.2,
+    "merlons": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "governor",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    1,
+    -7
+   ],
+   "rotDeg": -46,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "commandant",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": -46,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "magazine-c",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    9,
+    -13
+   ],
+   "rotDeg": -46,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks",
+   "footprint": {
+    "rect": [
+     34,
+     5.5
+    ]
+   },
+   "at": [
+    15,
+    9
+   ],
+   "rotDeg": -67,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "rect": [
+     17,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    12
+   ],
+   "rotDeg": -46,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-church",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -24,
+    -14
+   ],
+   "rotDeg": -20,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "powder",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    27,
+    -8
+   ],
+   "rotDeg": -30,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "bands": "#6b6a60"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "id": "orange-avenue",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     19
+    ],
+    "end": [
+     14,
+     -19
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon0",
+   "at": [
+    -0.0,
+    -45.0,
+    3.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon1",
+   "at": [
+    42.8,
+    -13.9,
+    3.8
+   ],
+   "rotDeg": 252,
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon2",
+   "at": [
+    26.5,
+    36.4,
+    3.8
+   ],
+   "rotDeg": 324,
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon3",
+   "at": [
+    -26.5,
+    36.4,
+    3.8
+   ],
+   "rotDeg": 36,
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon4",
+   "at": [
+    -42.8,
+    -13.9,
+    3.8
+   ],
+   "rotDeg": 108,
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "gate-piers",
+   "id": "gate",
+   "at": [
+    17,
+    -24,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 6,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "id": "flag",
+   "at": [
+    8,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "cargo-ship",
+   "id": "lightvessel",
+   "at": [
+    -60,
+    -12,
+    0
+   ],
+   "rotDeg": 60,
+   "params": {
+    "length": 34,
+    "width": 8,
+    "hull_colour": "#b8332c",
+    "stripe_colour": "#e8e2d2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm1",
+   "at": [
+    -55,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm2",
+   "at": [
+    58,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue workers hung since 2026-10-24 21:40, so no comparison render was possible; composition follows the 1770 plan, unchecked in 3D"
+ }
+}

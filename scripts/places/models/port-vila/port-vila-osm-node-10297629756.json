@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-node-10297629756",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/332734135",
+   "used": "real outline of the building 1.6 m from the Coco De Mer node (18 x 17 m, 229 m2, angular six-point shape)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9c9a8",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis",
+     "inset": 0.8,
+     "spacing": 3,
+     "width": 0.3,
+     "kind": "round",
+     "colour": "#6b4f33",
+     "backColour": "#3a2f24"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b6b4a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    19,
+    -5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the restaurant; open timber pavilion assumed, outline is nearest OSM building."
+ }
+}

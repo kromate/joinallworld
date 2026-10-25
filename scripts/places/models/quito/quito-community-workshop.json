@@ -1,0 +1,22 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "quito", "venueId": "quito-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/175006653", "used": "real outline of the Edificio Administrativo block (42 x 27 m, irregular plan)"},
+  {"kind": "text", "ref": "briefs/quito.json", "used": "3-storey concrete teaching block with ribbon windows, glazed accent, brise-soleil, two flags, blank sign board"}
+ ],
+ "parts": [
+  {"type": "mass", "id": "block", "footprint": {"osm": true}, "height": 12, "storeys": 3,
+   "wall": {"material": "concrete", "colour": "#d8d2c4", "windows": "ribbon", "windowRatio": 0.4, "bands": "#a64b2a", "plinth": 0.5, "cornice": true},
+   "roof": {"form": "flat", "colour": "#8d8a82", "material": "concrete", "parapet": 0.5}},
+  {"type": "mass", "id": "glass-stair", "footprint": {"rect": [8, 6]}, "at": [-9, -16], "height": 12.8, "storeys": 3,
+   "wall": {"material": "glass-curtain", "colour": "#5f86a8", "windows": "curtain", "windowRatio": 0.8},
+   "roof": {"form": "flat", "colour": "#8d8a82", "parapet": 0.3}},
+  {"type": "brise-soleil", "at": [-1, -21, 0], "params": {"length": 12, "height": 9, "pitch": 1.6, "depth": 0.5, "colour": "#a64b2a"}},
+  {"type": "core/sign-board", "at": [14, -26, 0], "params": {"width": 6, "height": 2.4, "bottom": 1.2, "colour": "#a64b2a", "frameColour": "#d8d2c4"}},
+  {"type": "core/flag", "at": [-12, -28, 0], "params": {"height": 9, "count": 2, "spacing": 3, "colours": ["#f2d21b", "#1d4fa3"]}},
+  {"type": "core/tree", "at": [-30, 4, 0], "params": {"kind": "conifer", "height": 12, "count": 3, "spread": 5, "line": 18, "colour": "#3f6a3c"}}
+ ],
+ "site": {"ground": "paving", "forecourt": "plaza", "trees": 0, "extent": [90, 80]},
+ "review": {"rounds": 0, "match": "rough", "gaps": "no photo; facade design (window rhythm, glazed accent position, colours) is typical for the campus, only the plan is real"}
+}

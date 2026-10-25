@@ -1,0 +1,334 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-284831877",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grace_CoE_Pilot_St_City_Is_Av_jeh.jpg",
+   "licence": "CC0",
+   "author": "Jim.henderson",
+   "view": "street",
+   "file": "/tmp/places-evidence/new-york/grace.jpg",
+   "used": "white wood-shingle walls, grey steep gable roofs, square front tower with louvred pointed windows and a slim dark-green spire, red pointed door in tower base, pointed and traceried windows, low black iron fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/284831877",
+   "used": "size about 25 x 17 m, height 7.2 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 6,
+  "fovDeg": 34,
+  "aspect": 0.87
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "bay": 3.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e9196",
+    "material": "slate",
+    "rise": 4.2,
+    "overhang": 0.35
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     6,
+     9
+    ]
+   },
+   "at": [
+    9,
+    1
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "bay": 3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e9196",
+    "material": "slate",
+    "rise": 3.4,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.0,
+     3.0
+    ]
+   },
+   "at": [
+    -1.3,
+    -9.2
+   ],
+   "height": 9.0,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.08,
+    "bay": 2.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cornice1",
+   "at": [
+    -1.3,
+    -9.2
+   ],
+   "params": {
+    "z0": 9.0,
+    "height": 0.3,
+    "colour": "#f4f2ea",
+    "rect": [
+     3.5,
+     3.5
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    -1.3,
+    -9.2
+   ],
+   "z0": 9.3,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.45,
+    "glassColour": "#3a4048",
+    "bay": 2.8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cornice2",
+   "at": [
+    -1.3,
+    -9.2
+   ],
+   "params": {
+    "z0": 11.9,
+    "height": 0.4,
+    "colour": "#f4f2ea",
+    "rect": [
+     3.8,
+     3.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire",
+   "at": [
+    -1.3,
+    -9.2
+   ],
+   "params": {
+    "z0": 12.3,
+    "height": 7.5,
+    "colour": "#3f5148",
+    "radius": 2.0,
+    "n": 8,
+    "topScale": 0.03,
+    "topColour": "#3f5148"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "finial",
+   "at": [
+    -1.3,
+    -9.2
+   ],
+   "params": {
+    "z0": 19.8,
+    "height": 1.2,
+    "colour": "#c9a64a",
+    "rect": [
+     0.12,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "church-door",
+   "id": "door",
+   "at": [
+    -1.3,
+    -10.7
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.7,
+    "arch": true,
+    "colour": "#b3302a",
+    "trim": "#c9a64a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "at": [
+    -1.3,
+    -11.1
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.9
+    ],
+    "z0": 2.9,
+    "height": 0.2,
+    "colour": "#6b6e72"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 3,
+    "colour": "#1f1f22"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "nave-window",
+   "at": [
+    3,
+    -9.1
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 3.0,
+    "kind": "pointed",
+    "trim": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-red",
+   "at": [
+    -1.3,
+    -10.78
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.08
+    ],
+    "z0": 0.35,
+    "height": 2.3,
+    "colour": "#b3302a",
+    "topColour": "#b3302a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "nave gable window is a plain pointed window without tracery, no shingle texture, real L-shaped outline still simplified to two gables, roof tint still slightly blue, iron fence short"
+ }
+}

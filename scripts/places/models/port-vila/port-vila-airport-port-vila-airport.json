@@ -1,0 +1,324 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-airport-port-vila-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:International_terminal,_Port_Vila_Airport,_Vanuatu,_April_2008_-_Flickr_-_PhillipC.jpg",
+   "licence": "CC BY 2.0",
+   "author": "PhillipC",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-vila/a1.jpg",
+   "used": "apron elevation: yellow two-storey block, open ground-floor front on white columns, full-width green fascia band, open upper viewing deck under a low flat metal roof on slim columns, blue glazed annex at the right end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bauerfield.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Wikimedia Commons user Pett",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-vila/a2.jpg",
+   "used": "same frontage: deck roof set back and shorter than the block, blue glass annex with stairs, boarding stairs on the apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/52246281",
+   "used": "overall size (104 x 50 m); the irregular outline is simplified to the apron frontage seen in the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 52,
+  "aspect": 1.6,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-block",
+   "footprint": {
+    "rect": [
+     92,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d33a",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b4",
+    "material": "membrane",
+    "overhang": 1.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-band",
+   "footprint": {
+    "rect": [
+     100,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -10.2
+   ],
+   "z0": 4.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3cc46a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3cc46a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-parapet",
+   "footprint": {
+    "rect": [
+     92,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 6.4,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d6b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b4",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    4.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -8
+    ],
+    "end": [
+     24,
+     -8
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 3.9,
+      "colour": "#c9a838"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -1,
+    8.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 56,
+    "depth": 14,
+    "height": 0.1,
+    "thickness": 0.5,
+    "colour": "#8f969a",
+    "edgeColour": "#6f777b"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -10
+    ],
+    "end": [
+     38,
+     -10
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 4.6,
+      "colour": "#f2f2f0"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-annex",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    51,
+    -3
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7aa7c9",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "bands": "#2a5aa6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a5aa6",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     60,
+     22
+    ]
+   },
+   "at": [
+    -5,
+    20
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0c8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8fb7c4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a2",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -38,
+    24,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#e6e6e0",
+    "cabColour": "#6d8fa0",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -60,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "colour": "#3cc46a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper deck is a solid parapet slab rather than open railings with slim columns; no lettering by design; rear hall and tower are inferred from OSM size only; apron stairs and trolleys omitted"
+ }
+}

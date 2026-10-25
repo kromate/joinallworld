@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/313663820",
+   "used": "real temple outline (cruciform plan, 63 x 39 m, rotated 115 degrees)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Nuku%CA%BBalofa_Tonga_Temple",
+   "used": "two storeys, textured cream render over block, split cedar shake roof, single central spire with angel statue, landscaped grounds"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "polygon": [
+     [
+      -33.4,
+      1.9
+     ],
+     [
+      -20.9,
+      28.8
+     ],
+     [
+      -8.5,
+      23.1
+     ],
+     [
+      -9.7,
+      20.6
+     ],
+     [
+      1,
+      15.6
+     ],
+     [
+      2.8,
+      19.4
+     ],
+     [
+      10.8,
+      15.7
+     ],
+     [
+      9,
+      11.8
+     ],
+     [
+      21,
+      6.2
+     ],
+     [
+      22,
+      8.3
+     ],
+     [
+      35.7,
+      1.9
+     ],
+     [
+      23.4,
+      -24.5
+     ],
+     [
+      6.1,
+      -16.5
+     ],
+     [
+      2.7,
+      -23.9
+     ],
+     [
+      -21.8,
+      -12.5
+     ],
+     [
+      -18.4,
+      -5.1
+     ]
+    ]
+   },
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "bands": "#d9cdb0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a5c3a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steeple-base",
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 9.5,
+    "height": 3.5,
+    "topScale": 0.7,
+    "colour": "#efe9d8",
+    "topColour": "#d9cdb0"
+   },
+   "at": [
+    2,
+    5
+   ],
+   "rotDeg": 25
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    2,
+    5,
+    13
+   ],
+   "params": {
+    "baseWidth": 4,
+    "height": 14,
+    "sides": 8,
+    "colour": "#f2eee2",
+    "finial": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2,
+    5,
+    27
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.9,
+      1.5
+     ],
+     [
+      0.3,
+      2.2
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-steps",
+   "params": {
+    "rect": [
+     10,
+     4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#d9d0bb",
+    "topColour": "#d9d0bb"
+   },
+   "at": [
+    -7,
+    -17
+   ],
+   "rotDeg": 25
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; cruciform OSM outline with hip shingle roof and single spire; no windows or angel detail beyond a gold finial"
+ }
+}

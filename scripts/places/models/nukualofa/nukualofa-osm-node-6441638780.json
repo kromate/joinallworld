@@ -1,0 +1,194 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/6441638780",
+   "used": "rounded-end 22 x 14 m outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     10
+    ],
+    "height": 0.45,
+    "colour": "#b9a98a",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b59a6a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b59a5b",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0,
+    -11.4,
+    2.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.25
+    ],
+    "height": 0.9,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -8
+    ],
+    "end": [
+     11,
+     -8
+    ],
+    "count": 4,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.12,
+        0.12
+       ],
+       "height": 2.2,
+       "colour": "#8a7a62"
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       2.2
+      ],
+      "params": {
+       "profile": [
+        [
+         0,
+         0.5,
+         "#f2efe8"
+        ],
+        [
+         1.5,
+         0,
+         "#f2efe8"
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -8.4,
+    0.45
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.0,
+    "kind": "fence",
+    "colour": "#8a7a62"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-node-6441638780",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; thatch fale form and terrace are typical, not seen"
+ }
+}

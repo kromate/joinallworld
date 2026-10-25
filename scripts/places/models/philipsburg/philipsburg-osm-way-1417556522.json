@@ -1,0 +1,173 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1417556522",
+   "used": "27 m round park outline, name match"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 24,
+    "n": 32,
+    "height": 0.08,
+    "colour": "#4a4d50",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 13.5,
+    "n": 32,
+    "height": 0.3,
+    "colour": "#b5aea3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "radius": 12.6,
+    "n": 32,
+    "height": 0.05,
+    "colour": "#7aa05a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 16,
+    "height": 0.2,
+    "colour": "#c8b27d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 1.8,
+    "n": 8,
+    "height": 1.2,
+    "colour": "#b5aea3"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "monument",
+   "at": [
+    0,
+    0,
+    1.75
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     }
+    ],
+    "colour": "#a39d92"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 3,
+    "radius": 8,
+    "startDeg": 90,
+    "endDeg": 330,
+    "facing": "outward",
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 7,
+      "colour": "#c93c3c"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -7,
+    5,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 6,
+    "colour": "#3f7a35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": 0,
+  "forecourt": "road",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the monument; its form, flags and planting are generic; nearby Commons photos were of other subjects and were not used"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-way-1417556522"
+}

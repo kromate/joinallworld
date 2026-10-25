@@ -1,0 +1,207 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/25601717",
+   "used": "setting only: leisure=park outline 421 x 332 m is too large for the scene; a pitch and pavilion are modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: wide grass fields, low clubhouse pavilion, floodlight masts, fence and gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -5,
+    92,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "width": 55,
+    "stripes": 6,
+    "goals": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e1c9",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -20,
+     -38
+    ],
+    "end": [
+     20,
+     -38
+    ],
+    "rows": 5,
+    "seatColour": "#4f7a5c",
+    "under": "open"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -65,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 130
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -70,
+     -50
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     70,
+     -52
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     75,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or building outline; setting typical of Port Moresby suburban sports ground"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-25601717"
+}

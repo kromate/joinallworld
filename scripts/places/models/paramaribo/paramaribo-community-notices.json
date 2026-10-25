@@ -1,0 +1,356 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AssembleeSurinaam.jpg",
+   "licence": "Public domain",
+   "author": "Brokopondo at German Wikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/assembly1.jpg",
+   "used": "white 1950s modernist block: tall tower with a curved upswept slab roof and round porthole windows, claret-framed windows, blue-grey pillared portico with blank fascia board, dark glazed left wing, low white boundary wall with green base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paramaribo,_Nationale_Assemblee_(National_Assembly).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mark Ahsmann",
+   "view": "side",
+   "file": "/tmp/places-evidence/paramaribo/assembly2.jpg",
+   "used": "long dark-glazed upper gallery under a grey hip roof on the right wing, tower relation"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/135982001",
+   "used": "extent only (78 x 62 m); the rebuilt 2022 complex is said to be identical to the photographed building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.31,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    -2,
+    4
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f2ec",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#7a2d3e",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     8.5,
+     7
+    ]
+   },
+   "at": [
+    -2,
+    4
+   ],
+   "z0": 13.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    3.6,
+    17.7
+   ],
+   "params": {
+    "form": "curved",
+    "width": 12.5,
+    "depth": 10.5,
+    "height": 0.4,
+    "thickness": 0.35,
+    "rise": 1.6,
+    "colour": "#f3f2ec",
+    "edgeColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-wing",
+   "footprint": {
+    "rect": [
+     15,
+     12
+    ]
+   },
+   "at": [
+    -17,
+    4
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a2e2a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#2d2622",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d8386",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    17,
+    6
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f2ec",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#3a2e2a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     23,
+     9
+    ]
+   },
+   "at": [
+    19,
+    8
+   ],
+   "z0": 6.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a2e2a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#2d2622"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f767a",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-slab",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    14,
+    -4
+   ],
+   "z0": 3.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4a40"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     "height": 3.6,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#8fa3b5",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#8fa3b5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     2,
+     -7
+    ],
+    "end": [
+     26,
+     -7
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    20,
+    -7.6,
+    3.7
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#f4f4f0",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#f1f1ea"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#2e7d3a",
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     2
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared: render queue down. Composed from two photos of the identical pre-rebuild building; curved tower roof is a thin curved canopy, right wing layout estimated."
+ }
+}

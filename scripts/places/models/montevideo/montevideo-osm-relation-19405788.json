@@ -1,0 +1,177 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Facultad_de_Ciencias_Sociales_-_Uruguay.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Andreateletrabajo",
+   "view": "street",
+   "file": "/tmp/places-evidence/montevideo/p11.jpg",
+   "used": "chamfered corner tower: cream render with fine horizontal banding, four-window bays, rounded glazed podium with streamlined cornice, wide flat overhanging hip roof over a ribbon-glazed top storey"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19405788",
+   "used": "real 39.5 x 24.3 m plan with the chamfered corner, 8 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.1
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d8d4c8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 2.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.5,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c9b8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#cbbfa8",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colour": "#c9bda8"
+     },
+     {
+      "type": "bands",
+      "colour": "#e2d9c6"
+     }
+    ],
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "osm": true,
+    "scale": 0.9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 26.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3539",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa79c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-hip",
+   "footprint": {
+    "osm": true,
+    "scale": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 29.7,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9b4a6",
+    "overhang": 1.0,
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-relation-19405788",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "roof is a thin flat plate with overhang, not a sweeping hip; podium cornice still boxy and chamfer not a distinct face; window grid still denser than photo"
+ }
+}

@@ -1,0 +1,437 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pr%C3%A9sidence.Papeete.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/presidence.jpg",
+   "used": "two-storey cream colonial facade with arched multi-pane windows outlined in brown, red-pink tile hip roof with pedimented dormers and a central clock gable, lace-edged eave band, dark green cast-iron balcony with a curved glazed porch canopy over the arched entrance, white stepped approach and round fountain bed"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/204588753",
+   "used": "real footprint of the former Bruat barracks (about 110 x 100 m, wings round a rear court), rotated to put the main range across the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe2b8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#7b4a3a",
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c5604d",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-24",
+   "footprint": {
+    "rect": [
+     3.2,
+     3
+    ]
+   },
+   "at": [
+    -24,
+    -45
+   ],
+   "z0": 11.8,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e6b4",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c5604d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-12",
+   "footprint": {
+    "rect": [
+     3.2,
+     3
+    ]
+   },
+   "at": [
+    -12,
+    -45
+   ],
+   "z0": 11.8,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e6b4",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c5604d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer0",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "z0": 11.8,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c5604d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer12",
+   "footprint": {
+    "rect": [
+     3.2,
+     3
+    ]
+   },
+   "at": [
+    12,
+    -45
+   ],
+   "z0": 11.8,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e6b4",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c5604d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer24",
+   "footprint": {
+    "rect": [
+     3.2,
+     3
+    ]
+   },
+   "at": [
+    24,
+    -45
+   ],
+   "z0": 11.8,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e6b4",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c5604d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     58,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -49.5
+   ],
+   "height": 0.5,
+   "z0": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2d4b43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d4b43"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.18,
+        0.18
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        10.4
+       ]
+      ],
+      "colour": "#2d4b43"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -29,
+     -50.5,
+     0
+    ],
+    "end": [
+     29,
+     -50.5,
+     0
+    ],
+    "count": 15
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -50.8,
+    5.6
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.0,
+    "postEvery": 1.4,
+    "colour": "#2d4b43"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -50.8,
+    10.6
+   ],
+   "params": {
+    "length": 58,
+    "height": 0.6,
+    "postEvery": 0.7,
+    "colour": "#2d4b43"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -50.5,
+    5.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      3.0,
+      0,
+      "#9fc6c0"
+     ],
+     [
+      3.0,
+      1.2,
+      "#9fc6c0"
+     ],
+     [
+      2.2,
+      3.0,
+      "#9fc6c0"
+     ],
+     [
+      0.6,
+      3.8,
+      "#2d4b43"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -53,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -48,
+    11
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "colours": [
+     "#e03c2e"
+    ]
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -61,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "waterColour": "#9ec6d8",
+    "rimColour": "#d9d0bc"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 7,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 0.8,
+    "count": 8,
+    "spread": 2,
+    "line": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "dormers, clock gable, green gallery and roof now read; rectangle replaces the irregular OSM outline, camera sits far back with an empty lawn, glazed curved porch canopy is a small dome, fountain jets and flower beds are minimal"
+ }
+}

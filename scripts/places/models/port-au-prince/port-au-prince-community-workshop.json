@@ -1,0 +1,87 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1027510523",
+   "used": "33 x 10 m block outline, rotated 31 degrees"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5a0a8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2efe6",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#6b6460"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

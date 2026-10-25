@@ -1,0 +1,144 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/palikir.json",
+   "used": "game placeholder: 30x18 m roadside open market, tin-roofed stalls, umbrellas; no photo or OSM footprint exists"
+  }
+ ],
+ "parts": [
+  {
+   "type": "market-shed",
+   "id": "main-shed",
+   "at": [
+    -6,
+    2,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "post_pitch": 3.5,
+    "goods": "sacks",
+    "roof_colour": "#7b8b95",
+    "roof_material": "corrugated",
+    "wall_colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "fish-shed",
+   "at": [
+    9,
+    3,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "gable",
+    "post_pitch": 3,
+    "goods": "sacks",
+    "roof_colour": "#8a6f5f",
+    "roof_material": "corrugated",
+    "wall_colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "front-stalls",
+   "at": [
+    -1,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#2f7f9a",
+     "#a33b2d",
+     "#c9b99a"
+    ],
+    "goods_colours": [
+     "#d9a441",
+     "#5a8a3c",
+     "#c9663a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 2.5,
+    "radius": 1.4,
+    "colours": [
+     "#2f7f9a",
+     "#a33b2d"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    13,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#2f7f9a",
+    "frameColour": "#c9b99a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -17,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: stalls, sheds and umbrellas typed from the city style (tin roofs, humid roadside market)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-market-game"
+}

@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Downtown_Nassau_-_2025_-_Nassau_Public_Library_(2).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Bluerasberry",
+   "view": "front",
+   "file": "/tmp/places-evidence/nassau/lib4.jpg",
+   "used": "octagonal pink stucco tower, white plinth, white string course, green louvred shutters, green door under small gabled hood, red-brown stair with white cheek walls, open white gallery on top storey"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Downtown_Nassau_-_2025_-_Nassau_Public_Library_(1).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Bluerasberry",
+   "view": "street",
+   "file": "/tmp/places-evidence/nassau/lib2.jpg",
+   "used": "pink octagonal body with low purple-brown pyramidal roof over the gallery, tall palms around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/301902604",
+   "used": "octagonal 14.1 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 0.667,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true,
+    "fit": 14.1
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.4,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e7b7b0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bands": "#f3efe4",
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7b7b0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.9,
+    "z0": 9.4,
+    "height": 2.0,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 8.3,
+    "z0": 11.4,
+    "height": 2.4,
+    "topScale": 0.08,
+    "colour": "#7b5a6e",
+    "topColour": "#7b5a6e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "stair",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.4,
+    "run": 0.4,
+    "count": 6,
+    "colour": "#b5503a"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "hood",
+   "at": [
+    0,
+    -7.4,
+    2.3
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 0.9,
+    "colours": [
+     "#cfd8d0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -5.5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.2,
+    "bottom": 0.8,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -7.15,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#3f6b45",
+    "topColour": "#3f6b45",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   45,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "Render queue workers were stalled (no heartbeat since 24 Oct 21:40), so no comparison render was possible: composed from exterior photos (octagon, pink stucco, purple pyramidal roof, red stair, green door) but never compared"
+ }
+}

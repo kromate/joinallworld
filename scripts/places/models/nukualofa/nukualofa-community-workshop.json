@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/317154071",
+   "used": "17.6 x 13.5 m library outline (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tiny single-storey library, blue corrugated hip roof, pale walls, front porch"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#b9d3e0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f5f8a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 2.6,
+    "height": 2.7,
+    "columns": 2,
+    "colour": "#3f5f8a",
+    "edgeColour": "#f1ecdf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: OSM outline plus brief only; colours, roof and porch are typed guesses"
+ }
+}

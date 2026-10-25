@@ -1,0 +1,152 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: roadside viewpoint with low wall, steps and trees; no OSM footprint, no photos"
+  }
+ ],
+ "parts": [
+  {
+   "type": "fence-wall",
+   "id": "parapet",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#b9b2a4",
+    "pillarEvery": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "side-wall",
+   "at": [
+    -9,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#b9b2a4",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -3
+     ],
+     [
+      9,
+      -3
+     ],
+     [
+      9,
+      3.8
+     ],
+     [
+      -9,
+      3.8
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#c4bdae"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 1,
+    "colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -7,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 5,
+  "extent": [
+   34,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Nothing known beyond a viewpoint tag; wall, steps and trees are plausible only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-node-4842345826"
+}

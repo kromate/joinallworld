@@ -1,0 +1,281 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Carlos_Andrade_Mar%C3%ADn_%E2%80%93_main_entrance.jpg",
+   "licence": "CC0",
+   "author": "Marsupium",
+   "view": "front",
+   "file": "/tmp/places-evidence/quito/clinic.jpg",
+   "used": "long white six-storey ward block with green horizontal fascia bands, lower podium with blank entrance sign canopy, dark green railing gate, broadleaf trees and palms in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/795834189",
+   "used": "OSM polygon is only a 34 x 16 m wing; the larger complex is modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 2.1,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    4,
+    12
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e1",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2fa56f",
+      "height": 1.0,
+      "proud": 0.12,
+      "floors": "all",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e1d8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "osm-wing",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    48,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dfd3",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 7,
+    "height": 5.5,
+    "columns": 2,
+    "colour": "#f4f4f2",
+    "edgeColour": "#26308a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -9,
+    5.4
+   ],
+   "params": {
+    "width": 24,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#f4f4f2",
+    "frameColour": "#26308a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -12,
+    15.5
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 3.5,
+    "bottom": 0,
+    "colour": "#ffffff",
+    "frameColour": "#2fa56f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "height": 2.8,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#2b5d3b",
+    "leafColour": "#2b5d3b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "spread": 0,
+    "line": 0,
+    "colour": "#2e5a33"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 2,
+    "spread": 3,
+    "line": 8,
+    "colour": "#2c5230"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#f2c618",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "colour": "#2e5a33"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   116,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate and trees are stand-ins, stepped-back top floors not modelled, OSM wing approximate"
+ }
+}

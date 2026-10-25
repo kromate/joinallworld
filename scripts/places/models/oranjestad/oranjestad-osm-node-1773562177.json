@@ -1,0 +1,117 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q21972902",
+   "used": "Sero Cabai is a mountain (small hill) in Aruba"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+   "used": "dry cactus scrub on the plateau and hills"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "id": "hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 55,
+    "height": 10,
+    "seed": 7,
+    "stairs": false,
+    "boulders": 10,
+    "rock_colour": "#a89268"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 2.5,
+    "count": 6,
+    "spread": 22
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.35,
+        0,
+        "#6f7f45"
+       ],
+       [
+        0.35,
+        2.6,
+        "#6f7f45"
+       ],
+       [
+        0,
+        3,
+        "#6f7f45"
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     0
+    ],
+    "end": [
+     26,
+     6
+    ],
+    "count": 7,
+    "vary": {}
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-1773562177",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; rock-and-cactus knoll from name and class only"
+ }
+}

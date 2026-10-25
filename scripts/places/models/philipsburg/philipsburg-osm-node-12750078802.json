@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-node-12750078802",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: waterfront excursion kiosk with a short jetty on Great Bay. OSM only has the name; the containing way (73 m zigzag, untagged) is a pier complex and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6fa3c9",
+    "windows": "none",
+    "bands": "#f4f1ea",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    0.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2,
+    "height": 2.7,
+    "colours": [
+     "#e8836b",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    0.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1,
+    "bottom": 3.1,
+    "colour": "#f4f1ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 26,
+    "width": 3,
+    "height": 0.8,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -1.5,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#e8836b"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -10,
+    -1.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#e8836b",
+     "#6fa3c9",
+     "#f4f1ea"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     7
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or footprint; typed kiosk and jetty for the business type"
+ }
+}

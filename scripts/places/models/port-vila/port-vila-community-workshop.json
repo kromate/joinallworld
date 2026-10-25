@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/332815985",
+   "used": "real teaching-block footprint 47.6 x 11.7 m"
+  },
+  {
+   "kind": "text",
+   "used": "Wikidata Q125566011 (founded 1970): long low two-storey block; geotagged cemetery photos are unrelated so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a8",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#8fb7c4",
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d7a5c",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#f5f3ee",
+    "roofColour": "#4d7a5c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#4d7a5c"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM 48x12 m footprint, green corrugated gable roof and louvres from the brief"
+ }
+}

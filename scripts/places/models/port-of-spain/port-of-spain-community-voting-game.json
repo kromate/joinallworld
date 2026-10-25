@@ -1,0 +1,253 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: government works-division office and depot, two-storey rendered office with a workshop yard (no photo found; OSM nearest match is a different building, a magistrate's court, so its outline was not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    -14
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5d2b0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "bands": "#f4efe3",
+    "cornice": true,
+    "trimColour": "#f4efe3",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b86",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-block",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7c85",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    18,
+    10
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa0a3",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d8b86",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    12
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5d2b0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d8b86",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "height": 2.2,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#f4efe3"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -34,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 2.2,
+    "colour": "#6f7c85"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#c8102e",
+     "#111111"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    40,
+    -10,
+    0
+   ],
+   "params": {
+    "nx": 1,
+    "ny": 2,
+    "levels": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -30
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; modest office plus workshop typical of a works depot."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-community-voting-game"
+}

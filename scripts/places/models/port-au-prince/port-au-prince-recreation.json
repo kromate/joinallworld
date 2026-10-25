@@ -1,0 +1,286 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8929056",
+   "used": "real park outline, about 230 x 57 m, bearing 110"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Champs_de_Mars_(_Haiti).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Geelav",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-au-prince/p5-champ.jpg",
+   "used": "green iron railings on low white piers, wide asphalt boulevard, palms and shade trees; not a view of the monuments so not used as a match target"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Champ_de_Mars_(Port-au-Prince)",
+   "used": "series of paved squares between boulevards, four founder statues, reflecting pools"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d5c9",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb06a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -60,
+    10,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "colour": "#d9d5c9",
+    "border_colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -8,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "colour": "#d9d5c9",
+    "border_colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    60,
+    -26,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "colour": "#d9d5c9",
+    "border_colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    0,
+    -8,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 18,
+    "depth": 8
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    -60,
+    10,
+    0.5
+   ],
+   "params": {
+    "height": 8,
+    "plinth_height": 3,
+    "colour": "#b9b2a4",
+    "figure_colour": "#4d4a43"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    60,
+    -26,
+    0.5
+   ],
+   "params": {
+    "height": 8,
+    "plinth_height": 3,
+    "colour": "#b9b2a4",
+    "figure_colour": "#4d4a43"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    -30,
+    -1,
+    0.5
+   ],
+   "params": {
+    "height": 7,
+    "plinth_height": 2.5,
+    "colour": "#b9b2a4",
+    "figure_colour": "#4d4a43"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    30,
+    -17,
+    0.5
+   ],
+   "params": {
+    "height": 7,
+    "plinth_height": 2.5,
+    "colour": "#b9b2a4",
+    "figure_colour": "#4d4a43"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -14,
+    0.5
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#00209f",
+     "#d21034"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -90,
+    22,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "height": 6,
+    "count": 8,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -42,
+    2,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -100,
+     40
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     28
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     2
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     80,
+     -12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     95,
+     -40
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -36
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Park outline is real but the square layout, statue positions and pool are schematic; only a boulevard street photo exists so no comparison render."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-recreation"
+}

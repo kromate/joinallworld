@@ -1,0 +1,145 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/442973662",
+   "used": "real 52 x 21 m commercial outline (containing match, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "strip",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#c24a3a",
+    "plinth": 0.3,
+    "parapet": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ada5",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shop-canopy",
+   "at": [
+    -2,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 3.2,
+    "height": 3.6,
+    "columns": 6,
+    "colour": "#f2efe6",
+    "edgeColour": "#c24a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -8,
+    -21.8,
+    3.7
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.5,
+    "bottom": 0.4,
+    "colour": "#c24a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-way-692348777",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo: outline only, shopfront rhythm and sign colours are typed from the brief."
+ }
+}

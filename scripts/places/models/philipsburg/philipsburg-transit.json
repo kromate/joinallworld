@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/365932285",
+   "used": "nothing: matched only a houseboat restaurant; shore orientation not reliable"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     25,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#6fa3c9",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 4,
+    "height": 3.3,
+    "columns": 4,
+    "colour": "#e8836b",
+    "edgeColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.3
+   ],
+   "z0": 3.4,
+   "height": 1.1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6fa3c9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa3c9"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    18,
+    12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "width": 4,
+    "height": 0.9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#e8836b",
+     "#6fa3c9"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or building outline; generic small shed-roof terminal with a jetty typed from the place type, water not modelled."
+ }
+}

@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-245394269",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/245394269",
+   "used": "Teaneck hospital campus founded 1925; the OSM outline is the whole 385 m campus, not one building, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 30,
+   "storeys": 7,
+   "wall": {
+    "material": "brick",
+    "colour": "#b89a74",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9195",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -38,
+    8
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98a66",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 9,
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9195"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "polygon": [
+     [
+      -14,
+      -10
+     ],
+     [
+      22,
+      -10
+     ],
+     [
+      22,
+      26
+     ],
+     [
+      10,
+      26
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      -14,
+      6
+     ]
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c2a67f",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 9,
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9195"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-link",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7d8a92",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7479",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "helipad",
+   "on": "tower",
+   "at": [
+    12,
+    0
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "colour": "#2d4d7a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "no photo and the OSM outline is the whole campus, so massing is a plausible tower plus two wings from the brief; facade detail reduced for the LOD1 budget"
+ }
+}

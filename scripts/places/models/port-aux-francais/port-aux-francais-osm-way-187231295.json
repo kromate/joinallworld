@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-osm-way-187231295",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/187231295",
+   "used": "real 467 m2 outline, name matched; Wikidata Q48756"
+  },
+  {
+   "kind": "text",
+   "used": "fr.wikipedia: base hosts satellite tracking facilities; mast and radome count typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cnes",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f2ee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.7,
+    "bands": "#a33b32"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "material": "membrane",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    22,
+    -3,
+    5.2
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemisphere",
+    "drum": 0.6,
+    "colour": "#f4f5f3"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -22,
+    12,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "baseWidth": 1.6,
+    "topWidth": 0.4,
+    "panels": 8,
+    "colour": "#a33b32",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "banded": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "fence",
+    "thickness": 0.1,
+    "colour": "#6f777c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Outline real; radome and masts are typed (no antenna description found)."
+ }
+}

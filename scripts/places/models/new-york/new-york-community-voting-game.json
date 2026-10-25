@@ -1,0 +1,459 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SI_Boro_Hall_jeh.JPG",
+   "licence": "Public domain",
+   "author": "Jim.henderson",
+   "view": "front",
+   "file": "/tmp/places-evidence/new-york/sibh.jpg",
+   "used": "limestone rusticated ground storey with arched doors, pilastered central bay, brick flank pavilions with limestone quoins, grey-blue slate mansard with dormers, brick clock tower and brick chimney block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/241853809",
+   "used": "overall size 59 x 32 m and height 26.8 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     36,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bfa6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 1.2,
+    "cornice": true,
+    "groundKind": "arched",
+    "groundHeight": 5.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "spacing": 9,
+      "width": 1.8,
+      "depth": 1.0,
+      "colour": "#ddd5c0"
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#66798a",
+    "material": "slate",
+    "rise": 7.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     17
+    ]
+   },
+   "at": [
+    -23,
+    -1.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a4a3c",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": true,
+    "groundKind": "arched",
+    "groundHeight": 5.5,
+    "accentColour": "#cbc2ac",
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#66798a",
+    "material": "slate",
+    "rise": 5.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     17
+    ]
+   },
+   "at": [
+    24,
+    -0.5
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a4a3c",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.8,
+    "cornice": true,
+    "groundKind": "arched",
+    "groundHeight": 5.5,
+    "accentColour": "#cbc2ac",
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#66798a",
+    "material": "slate",
+    "rise": 5.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#98594a",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6a72",
+    "rise": 4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "z0": 19,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5a48",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7d8a",
+    "material": "slate",
+    "rise": 3,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-block",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    12,
+    9
+   ],
+   "z0": 20,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4f40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e80",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.45,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#c9c0ab"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    7,
+    31
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b22234",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.45,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#c9c0ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer0",
+   "lod": [
+    0
+   ],
+   "footprint": {
+    "rect": [
+     1.8,
+     1.6
+    ]
+   },
+   "at": [
+    -13.5,
+    -7.0
+   ],
+   "z0": 16.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbc2ac",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e7a74",
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer2",
+   "lod": [
+    0
+   ],
+   "footprint": {
+    "rect": [
+     1.8,
+     1.6
+    ]
+   },
+   "at": [
+    -4.5,
+    -7.0
+   ],
+   "z0": 16.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbc2ac",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e7a74",
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer4",
+   "lod": [
+    0
+   ],
+   "footprint": {
+    "rect": [
+     1.8,
+     1.6
+    ]
+   },
+   "at": [
+    4.5,
+    -7.0
+   ],
+   "z0": 16.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbc2ac",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e7a74",
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer6",
+   "lod": [
+    0
+   ],
+   "footprint": {
+    "rect": [
+     1.8,
+     1.6
+    ]
+   },
+   "at": [
+    13.5,
+    -7.0
+   ],
+   "z0": 16.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbc2ac",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e7a74",
+    "rise": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No rusticated arched doorways or balustraded terrace stair to scale, no clock face, dormers simplified boxes, lawn lacks shrubs and slope; flank quoins only approximate"
+ }
+}

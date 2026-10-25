@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-node-4784596045",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/256787898",
+   "used": "footprint of the main workshop and classroom hall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Niels_Hammekenip_Aqqutaa_in_Nuuk_(5)_(Kenny_McFly).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kenny McFly",
+   "view": "street",
+   "used": "neighbouring Nuuk vernacular only (timber board cladding, dark pitched roofs, white trim); not this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -64
+   },
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#59616b",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "trimColour": "#e8e8e4",
+    "plinth": 0.5,
+    "bands": "#e8e8e4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2c2f33",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-bay",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3a2f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2c2f33",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 2.4,
+    "colour": "#2f5f8f",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   55,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building exists; outline measured, cladding, colours, roof and workshop bay are typical Nuuk vocational-school guesses"
+ }
+}

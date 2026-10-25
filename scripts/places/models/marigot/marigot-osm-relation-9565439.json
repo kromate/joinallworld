@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-relation-9565439",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:French_Cul_de_Sac_looking_down_into_the_Baie_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "SV Zanshin",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/marigot/pinel1.jpg",
+   "used": "low dark-green scrub island in turquoise water, one ridge, pale beach rim"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9565439",
+   "used": "island outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5,
+    0.03
+   ],
+   "params": {
+    "rect": [
+     150,
+     130
+    ],
+    "height": 0.05,
+    "colour": "#2fb5b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "island",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe3b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58733a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    3,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a28",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 1.4,
+      "ellipse": [
+       48,
+       15
+      ]
+     },
+     {
+      "z": 4.8,
+      "ellipse": [
+       40,
+       9
+      ]
+     },
+     {
+      "z": 7.8,
+      "ellipse": [
+       26,
+       5.5
+      ]
+     },
+     {
+      "z": 9.3,
+      "ellipse": [
+       10,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant-a",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    18,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a07a52",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c7b55",
+    "material": "thatch",
+    "rise": 2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant-b",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    28,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a07a52",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c7b55",
+    "material": "thatch",
+    "rise": 2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.4,
+    "thickness": 1.6,
+    "kind": "wall",
+    "colour": "#9a7b55",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      -6
+     ],
+     [
+      10,
+      -12
+     ],
+     [
+      15,
+      -18
+     ],
+     [
+      20,
+      -24
+     ],
+     [
+      25,
+      -30
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -8,
+    1.4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 6,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Island is the real outline now ringed by turquoise water with a green scrub ridge; the outline top is flat olive (no pale beach ring), ridge is a smooth loft, jetty is a thin timber strip, and the photo shows distant shore context that is not modelled."
+ }
+}

@@ -64,6 +64,14 @@ def rss_mb():
         return None
 
 
+def _age(p):
+    """Sort key for queued jobs: oldest first. The other server can claim a file between glob and stat, so a missing file sorts first and its rename then fails harmlessly."""
+    try:
+        return (p.stat().st_mtime, p.name)
+    except OSError:
+        return (0, p.name)
+
+
 def main():
     argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
     ap = argparse.ArgumentParser()
@@ -119,7 +127,7 @@ def main():
             print(f'[queue {wid}] {done_n} jobs done, exiting for a clean restart', flush=True)
             sys.exit(RESTART_CODE)
         claimed = None
-        for f in sorted(dirs['in'].glob('*.json'), key=lambda p: (p.stat().st_mtime if p.exists() else 0, p.name)):
+        for f in sorted(dirs['in'].glob('*.json'), key=_age):
             target = dirs['work'] / f'{f.stem}__{wid}.json'
             try:
                 os.rename(f, target)

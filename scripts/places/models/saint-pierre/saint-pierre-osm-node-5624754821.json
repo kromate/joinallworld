@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-node-5624754821",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/565281054",
+   "used": "building footprint 15.5 x 10.9 m (tagged hotel, contains the point); no photo of the creperie itself; blue clapboard with yellow trim follows the brief and the coloured-house look of the town (town photo by Bernard975, CC BY-SA 4.0)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true,
+    "fit": 19.5,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.3,
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f6fa0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "trimColour": "#e0b84a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f57",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -8.5,
+    0.3
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.8,
+    "height": 2.6,
+    "colours": [
+     "#e0b84a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5,
+    -8.6,
+    0.3
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 2.3,
+    "colour": "#e0b84a",
+    "frameColour": "#3f6fa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    -11,
+    0.3
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "radius": 1.4,
+    "colours": [
+     "#e0b84a",
+     "#ffffff",
+     "#3f6fa0"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   44,
+   34
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the creperie; OSM outline with blue clapboard and yellow trim from the brief, roof ridge direction follows the outline."
+ }
+}

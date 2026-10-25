@@ -1,0 +1,142 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/215991985",
+   "used": "18.2 x 8.2 m building at bearing 120, 12.8 m from the venue point; size and orientation of the open ramada"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/San_Salvador",
+   "used": "regional context; Salvadoran coastal ramada (open timber-post shelter, corrugated pitched roof)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 18,
+    "depth": 8,
+    "height": 4.8,
+    "form": "gable",
+    "support": "timber",
+    "colour": "#b79872",
+    "roof_colour": "#8a8f93",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     5,
+     3.2
+    ]
+   },
+   "at": [
+    6,
+    3.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d0",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "pitch": 10
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#2f6f8f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -5,
+    -14,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-meal-stop",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; open gable ramada from OSM size only, furniture and kitchen block typed"
+ }
+}

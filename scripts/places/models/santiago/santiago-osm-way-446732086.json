@@ -1,0 +1,338 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cerrillos,_CNAC_20171201_fRF02.1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rodrigo Fernandez",
+   "view": "front",
+   "file": "/tmp/places-evidence/santiago/cnac.jpg",
+   "used": "white two-storey front block, long green ribbed upper band, recessed glazed entrance with wide steps and flat canopy, blue tiled mural panels at both ends, taller block at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/607947219",
+   "used": "overall size about 68 x 34 m (outline is an irregular zigzag, only dimensions used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.35,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e0",
+    "windows": "none",
+    "bands": "#d8d4c8",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-band",
+   "footprint": {
+    "rect": [
+     60,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 3.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8c49a",
+    "windows": "none",
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front",
+      "back"
+     ],
+     "spacing": 0.9,
+     "colour": "#8fb083"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d2c6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    26,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e5dc",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "plain",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-green",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    26.5,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 11,
+   "height": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a2bf96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d2c6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0ddd2",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-recess",
+   "footprint": {
+    "rect": [
+     26,
+     3
+    ]
+   },
+   "at": [
+    -2,
+    -6.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2f33",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#323a40",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d2c6",
+    "material": "concrete"
+   },
+   "storeys": 1
+  },
+  {
+   "type": "mass",
+   "id": "mural-left",
+   "footprint": {
+    "rect": [
+     17,
+     1.2
+    ]
+   },
+   "at": [
+    -23,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3e86b4",
+    "windows": "none",
+    "bands": "#e5c98a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece9e0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural-right",
+   "footprint": {
+    "rect": [
+     17,
+     1.2
+    ]
+   },
+   "at": [
+    17,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3e86b4",
+    "windows": "none",
+    "bands": "#e5c98a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece9e0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -8,
+    5.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 3.5,
+    "height": 0.0,
+    "thickness": 0.5,
+    "colour": "#d6d2c6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 0.15,
+    "run": 0.45,
+    "count": 8,
+    "colour": "#b3ab9c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    7,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "mural panels are plain blue boxes without bird tiles, entrance steps and grey side planters simplified, no lettering board, rear wing is a guess"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-way-446732086"
+}

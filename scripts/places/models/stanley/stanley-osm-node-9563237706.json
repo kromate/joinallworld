@@ -1,0 +1,334 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-osm-node-9563237706",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moody_Brook_Barracks_(51064890298).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Nick (UK)",
+   "view": "street",
+   "file": "/tmp/places-evidence/stanley/moody1.jpg",
+   "used": "broken concrete slab foundation with low edge wall, two parallel concrete path strips leading to it, short-grass moorland setting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moody_Brook_Barracks_(51065600301).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Nick (UK)",
+   "view": "street",
+   "file": "",
+   "used": "low concrete wall stubs and slab fragments with scattered stones"
+  },
+  {
+   "kind": "text",
+   "used": "brief: only foundations and wall stubs remain, about 60 x 25 m; no OSM polygon"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "main-slab",
+   "params": {
+    "points": [
+     [
+      -30,
+      -6
+     ],
+     [
+      8,
+      -7
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      -28,
+      9
+     ]
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#bdbab0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "east-slab",
+   "params": {
+    "points": [
+     [
+      10,
+      -3
+     ],
+     [
+      28,
+      -4
+     ],
+     [
+      29,
+      5
+     ],
+     [
+      11,
+      6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#bdbab0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annex-slab",
+   "params": {
+    "points": [
+     [
+      -12,
+      10
+     ],
+     [
+      4,
+      10
+     ],
+     [
+      4,
+      15
+     ],
+     [
+      -12,
+      15
+     ]
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#bdbab0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stub-1",
+   "footprint": {
+    "rect": [
+     24,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    8.4
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a6a79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stub-2",
+   "footprint": {
+    "rect": [
+     0.5,
+     10
+    ]
+   },
+   "at": [
+    -21,
+    4
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a6a79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stub-3",
+   "footprint": {
+    "rect": [
+     16,
+     0.5
+    ]
+   },
+   "at": [
+    19,
+    -3.5
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a6a79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stub-4",
+   "footprint": {
+    "rect": [
+     0.5,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a6a79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-a",
+   "params": {
+    "points": [
+     [
+      -6,
+      -30
+     ],
+     [
+      -3,
+      -30
+     ],
+     [
+      -3,
+      -7
+     ],
+     [
+      -6,
+      -7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#c4c1b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-b",
+   "params": {
+    "points": [
+     [
+      1,
+      -30
+     ],
+     [
+      4,
+      -30
+     ],
+     [
+      4,
+      -7
+     ],
+     [
+      1,
+      -7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#c4c1b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-1",
+   "params": {
+    "radius": 1.1,
+    "n": 6,
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#6d6e6b"
+   },
+   "at": [
+    22,
+    -12
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rock-2",
+   "params": {
+    "radius": 0.8,
+    "n": 5,
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#74756f"
+   },
+   "at": [
+    -18,
+    -10
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#a2a29b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "slabs are clean rectangles (real ones are cracked and irregular); no scattered rubble beyond two rocks; background houses and hills omitted"
+ }
+}

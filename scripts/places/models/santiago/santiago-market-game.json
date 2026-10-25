@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mallplaza_Vespucio,_La_Florida,_Santiago_20230812_01.jpg",
+   "licence": "CC BY-SA 4.0 (Commons)",
+   "author": "Carlos Figueroa Rojas",
+   "view": "street",
+   "file": "/tmp/places-evidence/santiago/vesp-ext.jpg",
+   "used": "exterior: long grey-taupe flat-roofed boxes with a lighter parapet band, blank glazed entrance bays, a white flat canopy on slim posts on the right, bollards and a blank dark entrance gate-frame in the forecourt, palms along the road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mallplaza_Vespucio,_La_Florida,_Santiago_20250527_05.jpg",
+   "licence": "CC BY-SA 4.0 (Commons)",
+   "author": "Carlos Figueroa Rojas",
+   "view": "side",
+   "used": "beige rendered walls with diamond relief panels, tall arched glazed entrance bay with steel frame, tinted glass band at ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25448975",
+   "used": "real 392 x 330 m irregular footprint, 3 levels, auto-fitted to the 118 m model limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 9,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 5.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a39f96",
+    "windows": "none",
+    "plinth": 0.4,
+    "parapet": 0.6,
+    "bands": {
+     "colour": "#a39f96",
+     "height": 0.1
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ab",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-bay",
+   "at": [
+    -8,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 14,
+    "colour": "#d1bd98",
+    "windows": "none",
+    "topColour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-vault",
+   "at": [
+    -8,
+    -55.2,
+    0
+   ],
+   "params": {
+    "colour": "#5d7f93",
+    "material": "glass-curtain",
+    "capTop": true,
+    "curve": true,
+    "steps": 5,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10,
+       0.8
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       10,
+       0.8
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       8.4,
+       0.8
+      ]
+     },
+     {
+      "z": 13.2,
+      "rect": [
+       4.5,
+       0.8
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.2,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 9,
+    "bottom": 0,
+    "colour": "#2b2b2e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 5,
+    "line": 1
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -70
+    ],
+    "end": [
+     50,
+     -70
+    ],
+    "count": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": 4,
+  "cars": [
+   {
+    "at": [
+     -30,
+     -64
+    ],
+    "yawDeg": 90,
+    "colour": "#c9c9cc"
+   },
+   {
+    "at": [
+     -23,
+     -64
+    ],
+    "yawDeg": 90,
+    "colour": "#2e3238"
+   },
+   {
+    "at": [
+     -16,
+     -64
+    ],
+    "yawDeg": 90,
+    "colour": "#8a1f1f"
+   },
+   {
+    "at": [
+     -9,
+     -64
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -2,
+     -64
+    ],
+    "yawDeg": 90,
+    "colour": "#3d5a80"
+   },
+   {
+    "at": [
+     5,
+     -64
+    ],
+    "yawDeg": 90,
+    "colour": "#1d1d1f"
+   },
+   {
+    "at": [
+     -30,
+     -70
+    ],
+    "yawDeg": 90,
+    "colour": "#c9c9cc"
+   },
+   {
+    "at": [
+     -23,
+     -70
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "whole 392 m mall is scaled to 118 m so the street-level photo (entrance gate-frames, pink hoardings, benches, canopy of the east entrance) cannot match; entrance canopy is hidden behind the vault bay; facade panelling and palms simplified; heights compressed"
+ }
+}

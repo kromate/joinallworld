@@ -1,0 +1,313 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2014-05-02_-_Sydney_Airport_International_Terminal_-_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "m",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/sydney/air1.jpg",
+   "used": "airside aerial: long low white pier with blue-capped aerobridges, taller grey terminal block behind with dark glazing, pale flat roofs, apron with parked airliners"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13594723",
+   "used": "overall size only (745 m outline); a ~140 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 170,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     92,
+     40
+    ]
+   },
+   "at": [
+    -2,
+    12
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcc6ca",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bay": 6,
+    "glassColour": "#4a5a62",
+    "bands": "#e6e8e8",
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c9d2d6",
+      "#8a979d"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-east",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    52,
+    18
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c4cacd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     80,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe3e4",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 8,
+    "glassColour": "#3d4b52",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-head",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -46,
+    -36
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8eaea",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#3d4b52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    -4,
+    -14
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd6d8",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#3d4b52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/jet-bridge",
+   "at": [
+    -28,
+    -44,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#dfe3e4"
+   },
+   "rotDeg": 0
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/jet-bridge",
+   "at": [
+    -6,
+    -44,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#dfe3e4"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/jet-bridge",
+   "at": [
+    20,
+    -44,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#dfe3e4"
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    -20,
+    -72,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#eef1f2",
+    "tailColour": "#c9302c"
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    26,
+    -74,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#eef1f2",
+    "tailColour": "#1e5fa8"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    68,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 58,
+    "style": "round",
+    "colour": "#cfd3d4",
+    "cabColour": "#4a5a62"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 8,
+    "height": 5.5,
+    "thickness": 0.7,
+    "columns": 0,
+    "colour": "#b4b9bc",
+    "edgeColour": "#e1e4e5"
+   },
+   "rotDeg": 0
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-airport-sydney-airport",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Only a ~130 m portion of a 745 m terminal; curved skylight roof, many piers and aerobridge colours not modelled; pale grey flat roofs"
+ }
+}

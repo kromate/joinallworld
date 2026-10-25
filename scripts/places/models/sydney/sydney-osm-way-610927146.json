@@ -1,0 +1,464 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_Walkway,_Lower_campus_UNSW.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "J Bar",
+   "view": "street",
+   "file": "/tmp/places-evidence/sydney/unsw1.jpg",
+   "used": "wide paved walkway between lawns, white faceted building with dark glazing on the left, brown brick tower behind, white lamp poles, tall trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chancellery,_University_of_New_South_Wales.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "used": "dark-brick low-rise wings with ribbon windows and dark flat roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/610927146",
+   "used": "campus extent only (170 x 128 m); the outline covers the whole campus so it is not extruded as one block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.06,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    60,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     9,
+     130
+    ],
+    "height": 0.1,
+    "colour": "#b49a8c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    36,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -14
+     ],
+     [
+      9,
+      -10
+     ],
+     [
+      7,
+      16
+     ],
+     [
+      -9,
+      14
+     ]
+    ],
+    "height": 22,
+    "topScale": 0.55,
+    "topOffset": [
+     -2,
+     0
+    ],
+    "colour": "#f0f0ec",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.9,
+     22,
+     0
+    ],
+    "end": [
+     -15.9,
+     52,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.3,
+        -0.7
+       ],
+       [
+        0.6,
+        -0.7
+       ],
+       [
+        0.6,
+        0.7
+       ],
+       [
+        -0.3,
+        0.7
+       ]
+      ],
+      "height": 17,
+      "topScale": 0.5,
+      "topOffset": [
+       -1.5,
+       0
+      ],
+      "colour": "#1f2a33",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    36,
+    22
+   ],
+   "params": {
+    "rect": [
+     10,
+     22
+    ],
+    "height": 0.5,
+    "colour": "#eeeeea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    82
+   ],
+   "height": 26,
+   "storeys": 8,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7260",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#8d9aa5",
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "ribbon",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    82,
+    26.4
+   ],
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "height": 3,
+    "colour": "#a8aaad",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    74.8,
+    22
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#f4f1e6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    82,
+    26.4
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 6,
+    "colour": "#555555",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1,
+    82,
+    26.4
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 5,
+    "colour": "#555555",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancellery",
+   "footprint": {
+    "rect": [
+     38,
+     14
+    ]
+   },
+   "at": [
+    30,
+    80
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#7d5440",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4038",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-wing",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    24,
+    56
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#7d5440",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4038",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     8.5,
+     2,
+     0
+    ],
+    "end": [
+     8.5,
+     60,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 7,
+      "colour": "#e8e8e8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.5,
+     2,
+     0
+    ],
+    "end": [
+     -8.5,
+     60,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 7,
+      "colour": "#e8e8e8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.200000000000003,
+     0,
+     0
+    ],
+    "end": [
+     -16.200000000000003,
+     66,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "acacia",
+      "height": 20
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16.200000000000003,
+     0,
+     0
+    ],
+    "end": [
+     16.200000000000003,
+     66,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "acacia",
+      "height": 20
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-610927146",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "wedge reads white with weak glazing slots and brick-like texture, trees are generic umbrella canopies not bare eucalypts, camera is a 3/4 stand-in for the long walkway view"
+ }
+}

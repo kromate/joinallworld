@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-way-220421608",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Square_Joffre,_Saint-Pierre_(Saint-Pierre_et_Miquelon).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Grignette17",
+   "view": "front",
+   "file": "/tmp/places-evidence/saint-pierre/joffre.jpg",
+   "used": "black wrought-iron arched entrance gate with scroll panels and railing fence, statue on a small plinth in the middle, tall pole lamps, open timber pergola at the waterfront edge, snow-covered lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220421608",
+   "used": "park outline 68 x 52 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c9a7a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9a6a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.4,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#1f2326",
+    "points": [
+     [
+      -31.7,
+      -0.7
+     ],
+     [
+      -23.9,
+      16.1
+     ],
+     [
+      30.4,
+      30.4
+     ],
+     [
+      36.3,
+      9.2
+     ],
+     [
+      22.3,
+      -5.4
+     ],
+     [
+      -4.8,
+      -32.6
+     ],
+     [
+      -23,
+      -31.4
+     ],
+     [
+      -31.7,
+      -0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -12,
+    -31.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 4.6,
+    "pillar": 0.4,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#1f2326",
+    "leafColour": "#1f2326"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    4,
+    2,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#5d6468",
+    "plinthColour": "#a9a69c"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    8,
+    22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 3.5,
+    "height": 3.2,
+    "colour": "#2d2a28"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -10,
+    6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 3,
+    "spread": 4,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "monument is a generic statue on stepped plinth (real shape not found); gate arch has no lettered board; layout of paths and pergola position estimated; photo is a dusk snow view and was not rendered side by side"
+ }
+}

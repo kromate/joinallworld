@@ -1,0 +1,185 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/5964183",
+   "used": "footprint"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5964183",
+   "used": "three blocks laid along the real outline's east, west and south edges around an open courtyard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     100,
+     12
+    ]
+   },
+   "at": [
+    14.8,
+    16.2
+   ],
+   "rotDeg": -62,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#4f7f8f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     96,
+     11
+    ]
+   },
+   "at": [
+    -13.2,
+    6.5
+   ],
+   "rotDeg": -81.4,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#4f7f8f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-block",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    16,
+    -34
+   ],
+   "rotDeg": 17,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ee",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#4f7f8f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#4f7f8f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -24,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     50
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only OSM outline known; the kitchen block and storeys are typed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-relation-5964183"
+}

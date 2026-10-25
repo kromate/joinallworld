@@ -1,0 +1,120 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1062567762",
+   "used": "6.5 x 5.6 m shelter footprint orientation and size; brief describes concrete jetty with hut and bollards"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "polygon": [
+     [
+      -3.1,
+      -2.9
+     ],
+     [
+      -2.4,
+      3.5
+     ],
+     [
+      3.1,
+      2.9
+     ],
+     [
+      2.4,
+      -3.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cb",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#8fb6c9"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    7,
+    -1,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 4.2,
+    "shelter": false,
+    "colour": "#b5b0a5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5.5,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.1,
+    "bottom": 1.6,
+    "colour": "#8fb6c9"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the pier; shelter outline real, jetty length and bollard layout assumed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-node-5504031221"
+}

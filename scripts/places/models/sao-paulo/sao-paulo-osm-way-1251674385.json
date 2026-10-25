@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-1251674385",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Resid%C3%AAncia_Vilanova_Artigas_II_09.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Giulia Granchi",
+   "view": "side",
+   "file": "/tmp/places-evidence/sao-paulo/m10_art1.jpg",
+   "used": "red painted brick end wall, ribbon of glazing under a thin white slab roof with a V (butterfly) section, raised terrace on slim blue steel posts with red tile floor, white stair rail"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Resid%C3%AAncia_Vilanova_Artigas_II_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Giulia Granchi",
+   "view": "side",
+   "used": "low brick service wing with hipped tile roof and slatted window (not modelled in detail)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1251674385",
+   "used": "narrow rotated plan about 24 x 7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8553f",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#8fa3a0"
+   },
+   "roof": {
+    "form": "wave",
+    "colour": "#f2f1ec",
+    "material": "concrete",
+    "waves": 1,
+    "rise": 1.1,
+    "thickness": 0.3,
+    "overhang": 1.0,
+    "infill": "glass"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -9
+   ],
+   "rotDeg": 41,
+   "z0": 1.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4614a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 0.5,
+      "count": 1,
+      "height": 1.6,
+      "radius": 0.1,
+      "colour": "#2d4e8f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -0.5,
+     -11.5,
+     0
+    ],
+    "end": [
+     4.5,
+     -6.5,
+     0
+    ],
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     12
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM plan is a narrow rotated bar so the V roof and glass band read smaller than in the photo; stair, white terrace slab edge and the brick end wall step are not modelled; vegetation differs"
+ }
+}

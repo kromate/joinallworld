@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SHN_Centenary_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Xander Wu",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/toronto-clinic-0.jpg",
+   "used": "12-storey buff slab with dark ribbon windows and lighter end piers, blank banner boards near the roof, rooftop stack, 3-storey podium with long glass bands and teal-glazed corner, annex at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/660212730",
+   "used": "campus is 174 x 133 m irregular; only the main slab and podium are modelled from the photo, outline not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     76,
+     32
+    ]
+   },
+   "at": [
+    2,
+    -8
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdbfb0",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#7ea6a6",
+    "bands": "#b6aa9c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8a86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    60,
+    -6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9bfb0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 47,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3c7b2",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#2d3438",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c88",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-end-l",
+   "footprint": {
+    "rect": [
+     3,
+     22.2
+    ]
+   },
+   "at": [
+    -31.6,
+    2
+   ],
+   "height": 47.4,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4b8a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-end-r",
+   "footprint": {
+    "rect": [
+     3,
+     22.2
+    ]
+   },
+   "at": [
+    31.6,
+    2
+   ],
+   "height": 47.4,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4b8a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "penthouse",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    4
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b"
+   },
+   "z0": 47
+  },
+  {
+   "type": "tower",
+   "id": "stack",
+   "at": [
+    19,
+    6,
+    47
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 19,
+    "round": true,
+    "colour": "#85878a",
+    "windows": "none",
+    "cap": "flat"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -3,
+    -9.4,
+    43.5
+   ],
+   "params": {
+    "width": 26,
+    "height": 5.5,
+    "bottom": 0,
+    "colour": "#e9ecef",
+    "frameColour": "#2c4a7a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -21,
+    -9.4,
+    45.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 2,
+    "bottom": 0,
+    "colour": "#2d4f86",
+    "frameColour": "#2d4f86",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    28,
+    -9.4,
+    45.2
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#3a6fb0",
+    "frameColour": "#f2f2f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-end",
+   "footprint": {
+    "rect": [
+     6,
+     30
+    ]
+   },
+   "at": [
+    41.5,
+    -8
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb7b3",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9bc0bb"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Podium glazing bands simpler than the real teal-edged ribbon; no rooftop plant detail; banner boards are blank blocks; annex and car park generic"
+ }
+}

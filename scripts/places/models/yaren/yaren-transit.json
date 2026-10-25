@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: roadside tin-roofed shelter and bus bay on Nauru's single ring road; nearest OSM building is the Parliament so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 3.6,
+    "height": 2.9,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8d9296",
+    "roof_colour": "#4f6f5a",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    1.6
+   ],
+   "height": 2.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.5,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 0.9,
+    "bottom": 1.8,
+    "colour": "#4f6f5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     7
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence; generic island bus shelter"
+ }
+}

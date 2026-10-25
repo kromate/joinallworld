@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Research_tower_and_archives2.jpg",
+   "licence": "Public domain",
+   "author": "Raysonho @ Open Grid Scheduler / Grid Engine",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/toronto-community-notices-0.jpg",
+   "used": "9-storey teal glass tower lifted on three taupe concrete piers above a 3-storey teal glass podium with a lower wing to the right, white roofs, dark spandrel bands, brick neighbour at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/170051140",
+   "used": "Kaneff Tower outline (81 x 48 m, teal glass, white roof) agrees with the photo; modelled by hand from the photo because the mass is two stacked volumes"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 5,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     62,
+     26
+    ]
+   },
+   "at": [
+    29,
+    -1
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f9a96",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "glassColour": "#6aa7a0",
+    "bands": "#2f5a5c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f3f3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    71,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a9a95",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f3f3",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -20,
+    6
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -17
+     ],
+     [
+      16,
+      -17
+     ],
+     [
+      19,
+      -14
+     ],
+     [
+      19,
+      14
+     ],
+     [
+      16,
+      17
+     ],
+     [
+      -16,
+      17
+     ],
+     [
+      -19,
+      14
+     ],
+     [
+      -19,
+      -14
+     ]
+    ],
+    "z0": 14,
+    "height": 34,
+    "colour": "#4f8a88",
+    "material": "glass-curtain",
+    "glassColour": "#5b9c98",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 5,
+    "storeys": 9,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#4f8a88",
+       "#2f5a5c"
+      ]
+     }
+    ],
+    "trimColour": "#2f5a5c",
+    "topColour": "#e9ecec"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       2.6
+      ],
+      "height": 14,
+      "colour": "#8c7e72",
+      "material": "smooth-concrete"
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 24,
+    "dy": 26,
+    "centred": true
+   },
+   "at": [
+    -20,
+    7,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -20,
+    8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#6f655c",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f655c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -56,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a77b5e",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d86",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 3.8,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#d5c29a",
+    "edgeColour": "#d5c29a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    48,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 2.4,
+    "height": 2.8,
+    "thickness": 0.2,
+    "columns": 2,
+    "colour": "#a9b7b8",
+    "edgeColour": "#a9b7b8"
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Three piers, louvred core, chamfered slab, white-roofed 3-storey podium, canopy, shelter and brick neighbour added; glass skin is regular grid not mixed teal panels; podium wing/cantilever detail simplified"
+ }
+}

@@ -1,0 +1,605 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-111187823",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Quisqueya_Juan_Marichal.jpg",
+   "licence": "CC0",
+   "author": "Desiignerlogos",
+   "view": "front",
+   "file": "/tmp/places-evidence/santo-domingo/quis2.jpg",
+   "used": "cream stair tower with glazed slit, vaulted green-grey roof to the left, long banner-wrapped concourse wall, lattice floodlight towers, blue flags"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_quisqueya_santo_domingo_dominican_republic_1.jpg",
+   "licence": "CC0",
+   "author": "Calt2001",
+   "view": "interior",
+   "file": "/tmp/places-evidence/santo-domingo/quis1.jpg",
+   "used": "horseshoe two-tier stands under a dark steel roof, green outfield wall, four floodlight masts, blue and red seating"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/111187823",
+   "used": "overall size only (site outline is a loose pentagon, bowl modelled smaller)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     93.0,
+     93.0
+    ],
+    "z0": -0.05,
+    "height": 0.05,
+    "colour": "#9a9a92"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    31.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      24.8,
+      31.0
+     ],
+     [
+      24.0,
+      37.1
+     ],
+     [
+      21.5,
+      42.8
+     ],
+     [
+      17.5,
+      47.7
+     ],
+     [
+      12.4,
+      51.4
+     ],
+     [
+      6.4,
+      53.8
+     ],
+     [
+      0.0,
+      54.6
+     ],
+     [
+      -6.4,
+      53.8
+     ],
+     [
+      -12.4,
+      51.4
+     ],
+     [
+      -17.5,
+      47.7
+     ],
+     [
+      -21.5,
+      42.8
+     ],
+     [
+      -24.0,
+      37.1
+     ],
+     [
+      -24.8,
+      31.0
+     ],
+     [
+      -24.0,
+      24.9
+     ],
+     [
+      -21.5,
+      19.2
+     ],
+     [
+      -17.5,
+      14.3
+     ],
+     [
+      -12.4,
+      10.6
+     ],
+     [
+      -6.4,
+      8.2
+     ],
+     [
+      -0.0,
+      7.4
+     ],
+     [
+      6.4,
+      8.2
+     ],
+     [
+      12.4,
+      10.6
+     ],
+     [
+      17.5,
+      14.3
+     ],
+     [
+      21.5,
+      19.2
+     ],
+     [
+      24.0,
+      24.9
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    12.4,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      0.0,
+      -5.0
+     ],
+     [
+      13.6,
+      8.7
+     ],
+     [
+      0.0,
+      22.3
+     ],
+     [
+      -13.6,
+      8.7
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b8643f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0.0,
+     31.0
+    ],
+    "radius": 32.2,
+    "radiusY": 29.1,
+    "startDeg": 150,
+    "endDeg": 390,
+    "rows": 9,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3.2,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 8,
+    "seatColours": [
+     "#2f6aa8",
+     "#b53a36"
+    ],
+    "concreteColour": "#d8d3c6",
+    "underColour": "#b4afa3",
+    "canopy": {
+     "height": 3.5,
+     "depth": 9,
+     "thickness": 1.2,
+     "slopeDeg": 3,
+     "colour": "#7e8a86",
+     "edgeColour": "#8f9a96"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     69.4,
+     8.1
+    ]
+   },
+   "at": [
+    0.0,
+    -8.7
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#b9ad8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.6,
+     4.3
+    ]
+   },
+   "at": [
+    -7.4,
+    -8.7
+   ],
+   "height": 32,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d9b9",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "front": "curtain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-wing",
+   "footprint": {
+    "rect": [
+     18.6,
+     12.4
+    ]
+   },
+   "at": [
+    -29.8,
+    -5.0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0c8",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#8aa398",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14.9,
+     11.2
+    ]
+   },
+   "at": [
+    32.2,
+    -3.7
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0c8",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.7,
+    -12.8,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     40.9,
+     0.3
+    ],
+    "height": 8.5,
+    "colour": "#7a4a3a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.7,
+    -12.8,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.3
+    ],
+    "height": 8.5,
+    "colour": "#2f6aa8",
+    "top": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      24.9,
+      36.0
+     ],
+     [
+      23.9,
+      39.2
+     ],
+     [
+      22.4,
+      42.3
+     ],
+     [
+      20.6,
+      45.2
+     ],
+     [
+      18.3,
+      47.8
+     ],
+     [
+      15.6,
+      50.0
+     ],
+     [
+      12.7,
+      52.0
+     ],
+     [
+      9.5,
+      53.4
+     ],
+     [
+      6.1,
+      54.4
+     ],
+     [
+      2.7,
+      55.1
+     ],
+     [
+      -0.9,
+      55.2
+     ],
+     [
+      -4.4,
+      54.8
+     ],
+     [
+      -7.9,
+      54.0
+     ],
+     [
+      -11.2,
+      52.8
+     ],
+     [
+      -14.2,
+      51.0
+     ],
+     [
+      -17.0,
+      49.0
+     ],
+     [
+      -19.5,
+      46.6
+     ],
+     [
+      -21.6,
+      43.8
+     ],
+     [
+      -23.2,
+      40.9
+     ],
+     [
+      -24.4,
+      37.6
+     ]
+    ],
+    "height": 2.5,
+    "thickness": 0.6,
+    "colour": "#2f6b3a"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "floodlight-mast",
+   "at": [
+    -40.9,
+    3.7,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "floodlight-mast",
+   "at": [
+    40.9,
+    3.7,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "floodlight-mast",
+   "at": [
+    -32.2,
+    62.0,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "floodlight-mast",
+   "at": [
+    32.2,
+    62.0,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -18.6,
+    -14.3,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 6,
+    "colours": [
+     "#1f3d7a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18.6,
+     -18.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -43.4,
+     -13.64
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   115,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cream stair tower, banner-wrapped concourse and horseshoe stands present; vaulted west roof hidden behind tower, no glazed ground arcade, lattice floodlights are simple heads, no pitcher emblem, bowl scaled to fit 120 m clamp."
+ }
+}

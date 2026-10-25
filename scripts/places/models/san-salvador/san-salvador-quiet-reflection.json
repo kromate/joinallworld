@@ -1,0 +1,593 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_de_San_salvador,_vista_panoramica.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Cam Ventoza",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/cat4.jpg",
+   "used": "white concrete facade between two square belfry towers with tiled domed caps, big arched portal with round window, large white dome on the left with lantern, long buttressed nave, lower arched-window aisle block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_Metropolitana_de_San_Salvador_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Erickssonr",
+   "view": "side",
+   "used": "dome tile pattern and tower caps"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7966675",
+   "used": "overall extent only (about 79 x 64 m, 35 m height tag)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -26,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.78
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Facade arch is a flat panel, towers are plain boxes with a tile-coloured cap not a chevron pattern, no buttress ribs or small corner finials, nave and transept simplified."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -15
+   ],
+   "height": 27,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f3f0e8",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -12.5,
+    -16
+   ],
+   "z0": 27,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f3f0e8",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 4,
+    "glassColour": "#4a4d52",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    12.5,
+    -16
+   ],
+   "z0": 27,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f3f0e8",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 4,
+    "glassColour": "#4a4d52",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     52
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 23,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f3f0e8",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 5,
+    "glassColour": "#3d4650",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f3f0e8",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 4.5,
+    "glassColour": "#3d4650"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    -26,
+    -3
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f3f0e8",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "plain"
+    },
+    "bay": 3.5,
+    "glassColour": "#2f3640"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "drum",
+   "at": [
+    0,
+    30,
+    16
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#f3f0e8",
+    "profile": [
+     [
+      13.6,
+      0
+     ],
+     [
+      13.6,
+      6
+     ],
+     [
+      14.2,
+      6.4
+     ],
+     [
+      14.2,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    30,
+    23
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#f0efe9",
+    "profile": [
+     [
+      14,
+      0,
+      "#f0efe9"
+     ],
+     [
+      13.79,
+      2.07
+     ],
+     [
+      13.16,
+      4.07
+     ],
+     [
+      12.12,
+      5.95
+     ],
+     [
+      10.72,
+      7.65
+     ],
+     [
+      9.0,
+      9.12
+     ],
+     [
+      7.0,
+      10.31
+     ],
+     [
+      4.79,
+      11.18
+     ],
+     [
+      2.43,
+      11.72
+     ],
+     [
+      0.0,
+      11.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "lantern",
+   "at": [
+    0,
+    30,
+    35
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f3f0e8",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      3
+     ],
+     [
+      3.0,
+      3.2
+     ],
+     [
+      1.8,
+      4.5
+     ],
+     [
+      0.2,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "id": "cap-l",
+   "at": [
+    -12.5,
+    -16,
+    36
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c2a56a",
+    "profile": [
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      0.6
+     ],
+     [
+      3.9,
+      1.8
+     ],
+     [
+      2.8,
+      3.0
+     ],
+     [
+      1.4,
+      3.8
+     ],
+     [
+      0,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "id": "cap-r",
+   "at": [
+    12.5,
+    -16,
+    36
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c2a56a",
+    "profile": [
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      0.6
+     ],
+     [
+      3.9,
+      1.8
+     ],
+     [
+      2.8,
+      3.0
+     ],
+     [
+      1.4,
+      3.8
+     ],
+     [
+      0,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "portal-arch",
+   "at": [
+    0,
+    -20.2,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.5,
+      0
+     ],
+     [
+      5.5,
+      0
+     ],
+     [
+      5.5,
+      0.8
+     ],
+     [
+      -5.5,
+      0.8
+     ]
+    ],
+    "height": 14,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "portal-door",
+   "at": [
+    0,
+    -20.6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.2,
+      0
+     ],
+     [
+      2.2,
+      0
+     ],
+     [
+      2.2,
+      0.4
+     ],
+     [
+      -2.2,
+      0.4
+     ]
+    ],
+    "height": 5.5,
+    "colour": "#5a3a28"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "oculus",
+   "at": [
+    0,
+    -20.5,
+    15
+   ],
+   "params": {
+    "radius": 2.4,
+    "n": 16,
+    "height": 0.3,
+    "colour": "#2d2f33"
+   }
+  },
+  {
+   "type": "steps",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ }
+}

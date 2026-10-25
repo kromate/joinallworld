@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/396955695",
+   "used": "26 x 19 m outline, bearing 100 deg, name+Wikidata Q16218563: overall width and depth"
+  },
+  {
+   "kind": "text",
+   "ref": "https://de.wikipedia.org/wiki/St._George%E2%80%99s_Anglican_Church_(Antigua)",
+   "used": "three gabled single-storey sections side by side, no tower, heavy two-storey concrete porch on central section, white corner pilasters, round-arched windows, exposed stone"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-section",
+   "footprint": {
+    "rect": [
+     8.8,
+     13
+    ]
+   },
+   "at": [
+    -8.6,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8a",
+    "trimColour": "#ffffff",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 3.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8084",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-section",
+   "footprint": {
+    "rect": [
+     8.8,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8a",
+    "trimColour": "#ffffff",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 3.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8084",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-section",
+   "footprint": {
+    "rect": [
+     8.8,
+     13
+    ]
+   },
+   "at": [
+    8.6,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8a",
+    "trimColour": "#ffffff",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 3.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8084",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6.4,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e2d6",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bc",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -10.65,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 4.2,
+    "depth": 0.5,
+    "archWidth": 2.4,
+    "springHeight": 2.6,
+    "pointed": false,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -0.3
+   ],
+   "on": "centre-section"
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm",
+   "params": {
+    "rect": [
+     1.0,
+     0.22
+    ],
+    "z0": 0.9,
+    "height": 0.25,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -0.3
+   ],
+   "on": "centre-section"
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#ffffff"
+   },
+   "at": [
+    -14.2,
+    -6.7
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#ffffff"
+   },
+   "at": [
+    -4.4,
+    -6.7
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#ffffff"
+   },
+   "at": [
+    4.4,
+    -6.7
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#ffffff"
+   },
+   "at": [
+    14.2,
+    -6.7
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     19,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; layout from the German Wikipedia description, irregular real outline replaced by three rect sections; roof colour typed."
+ }
+}

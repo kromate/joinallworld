@@ -1,0 +1,89 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/villa-las-estrellas.json",
+   "used": "game placeholder: tiny 6 x 4 m prefab hut with a noticeboard; nearby photos show a heliograph and met kit, not this hut"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5f9a",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#e8ecee"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 0.9,
+    "colour": "#f0efe6",
+    "frameColour": "#7a5a36"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    4.5,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#c0392b",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   24,
+   20
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Game placeholder with no real building or photo; look is typed."
+ }
+}

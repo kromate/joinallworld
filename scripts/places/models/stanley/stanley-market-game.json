@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/810490920",
+   "used": "outline of the nearest building (The Waterfront Boutique Hotel, about 20 x 11 m, nearest match 5.7 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GreenFenceRossRdStanley.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Travellers & Tinkers",
+   "view": "front",
+   "file": "/tmp/places-evidence/stanley/mg1.jpg",
+   "used": "neighbouring Ross Road house for Stanley vernacular only: pale rendered stone walls, grey corrugated gable roof, brick chimney, green corrugated street fence on stone piers (not confirmed to be this building, so not scored as photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 8,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6,
+    "fit": 40
+   },
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#ffffff",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.6,
+    "colour": "#3f6b4b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#3f6b4b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is a neighbouring Ross Road house, not confirmed as this hotel: OSM outline only; no stone quoins, chimney, bay window or green fence piers; fence is a plain slab"
+ }
+}

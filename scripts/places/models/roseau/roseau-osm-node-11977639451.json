@@ -1,0 +1,544 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-osm-node-11977639451",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Windsor_Park_Roseau_Dominica.JPG",
+   "licence": "Public domain",
+   "author": "SDGibbons",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/roseau/wp1.jpg",
+   "used": "oval grass bowl, tall far stand with red/orange/yellow seat blocks under a blue roof, curved blue-roofed west stand, white pavilion block with blue roof, small curved blue stand east, tall lighting masts, long two-storey building along the near side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Windsor_pkstdm.jpg",
+   "licence": "Public domain",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/roseau/wp3.jpg",
+   "used": "four floodlight masts around the ground, red/yellow stand colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/174859525",
+   "used": "pitch outline 161 x 149 m, oval; scaled to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      44.0,
+      0.0
+     ],
+     [
+      42.9,
+      8.9
+     ],
+     [
+      39.64,
+      17.36
+     ],
+     [
+      34.4,
+      24.94
+     ],
+     [
+      27.43,
+      31.27
+     ],
+     [
+      19.09,
+      36.04
+     ],
+     [
+      9.79,
+      39.0
+     ],
+     [
+      0.0,
+      40.0
+     ],
+     [
+      -9.79,
+      39.0
+     ],
+     [
+      -19.09,
+      36.04
+     ],
+     [
+      -27.43,
+      31.27
+     ],
+     [
+      -34.4,
+      24.94
+     ],
+     [
+      -39.64,
+      17.36
+     ],
+     [
+      -42.9,
+      8.9
+     ],
+     [
+      -44.0,
+      0.0
+     ],
+     [
+      -42.9,
+      -8.9
+     ],
+     [
+      -39.64,
+      -17.36
+     ],
+     [
+      -34.4,
+      -24.94
+     ],
+     [
+      -27.43,
+      -31.27
+     ],
+     [
+      -19.09,
+      -36.04
+     ],
+     [
+      -9.79,
+      -39.0
+     ],
+     [
+      -0.0,
+      -40.0
+     ],
+     [
+      9.79,
+      -39.0
+     ],
+     [
+      19.09,
+      -36.04
+     ],
+     [
+      27.43,
+      -31.27
+     ],
+     [
+      34.4,
+      -24.94
+     ],
+     [
+      39.64,
+      -17.36
+     ],
+     [
+      42.9,
+      -8.9
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7fae4f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    4,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     7,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#c9b27a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 46,
+    "startDeg": 35,
+    "endDeg": 135,
+    "rows": 12,
+    "rise": 0.8,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "facetDeg": 16,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#c23a3a",
+     "#e07a2d",
+     "#e8b83a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfcdc6",
+    "underColour": "#a9a79f",
+    "canopy": {
+     "height": 3,
+     "depth": 11,
+     "thickness": 0.8,
+     "slopeDeg": 3,
+     "colour": "#2f6fc4",
+     "edgeColour": "#2f6fc4"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 46,
+    "startDeg": 135,
+    "endDeg": 215,
+    "rows": 9,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 2.0,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#e8b83a",
+     "#c23a3a"
+    ],
+    "blocks": 2,
+    "concreteColour": "#cfcdc6",
+    "underColour": "#a9a79f",
+    "canopy": {
+     "height": 2.5,
+     "depth": 9,
+     "thickness": 0.8,
+     "slopeDeg": 3,
+     "colour": "#2f6fc4",
+     "edgeColour": "#2f6fc4"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 46,
+    "startDeg": 215,
+    "endDeg": 245,
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "facetDeg": 16,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#e8b83a"
+    ],
+    "blocks": 1,
+    "concreteColour": "#cfcdc6",
+    "underColour": "#a9a79f",
+    "canopy": {
+     "height": 2,
+     "depth": 6,
+     "thickness": 0.8,
+     "slopeDeg": 3,
+     "colour": "#2f6fc4",
+     "edgeColour": "#2f6fc4"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 46,
+    "startDeg": -30,
+    "endDeg": 10,
+    "rows": 9,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 2.0,
+    "facetDeg": 16,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#d2564a",
+     "#e8b83a"
+    ],
+    "blocks": 2,
+    "concreteColour": "#d8d6cf",
+    "underColour": "#a9a79f",
+    "canopy": {
+     "height": 2.5,
+     "depth": 7,
+     "thickness": 0.8,
+     "slopeDeg": 3,
+     "colour": "#2f6fc4",
+     "edgeColour": "#2f6fc4"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    50,
+    24
+   ],
+   "rotDeg": -60,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe8df",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#c9c6bd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6fc4",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-block",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    34,
+    -42
+   ],
+   "rotDeg": -12,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c3b9a6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#8a6a4a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d8a82",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -50
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6ddc0",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d868d",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -44
+    ],
+    "end": [
+     52,
+     -44
+    ],
+    "count": 2,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 30,
+      "head_width": 5
+     }
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    34,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    36,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -58,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Oval and stand arcs, blue roofs and red/yellow seats match; scaled to 120 m so stands are tighter; white pavilion tower, the stepped rear structures and the surrounding town/hill are simplified"
+ }
+}

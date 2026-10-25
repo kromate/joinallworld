@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-osm-node-5316835183",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Base_Escudero.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jorge Benavente",
+   "view": "aerial",
+   "used": "grey-white prefab module raised on a dark skirt, low blue gabled roof with snow cover, lean-to annex, small mast"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1028466271",
+   "used": "13 x 7 m outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "fovDeg": 40,
+  "pitchDeg": 30
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     13,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 1.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d3d7d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#2f5aa8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f7fa",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skirt",
+   "footprint": {
+    "rect": [
+     11.8,
+     5.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3c4348",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#23282c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    8.6,
+    0
+   ],
+   "z0": 0.6,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d3d7d6",
+    "windows": "none",
+    "bands": "#2f5aa8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f5aa8",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -7,
+    3,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "radius": 0.06,
+    "banded": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-edge",
+   "footprint": {
+    "rect": [
+     14.4,
+     8.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f5aa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6edf2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Low-res aerial; roof is a shallow hip standing in for the snow-domed blue-edged roof; neighbouring modules, railing and undercroft stilts not modelled."
+ }
+}

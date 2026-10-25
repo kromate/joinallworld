@@ -1,0 +1,172 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-243738993",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/243738993",
+   "used": "real park outline (577 x 134 m, a long curving strip), auto-fitted to the scene; lawn surface"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fsanches18.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fsanches17",
+   "view": "detail",
+   "used": "not used for geometry: close-up of a cast-iron bench among dense broadleaf trees, shows the planting is thick and shady"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 50,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9f4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9f4e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "path",
+   "footprint": {
+    "polygon": [
+     [
+      -55,
+      -4
+     ],
+     [
+      -20,
+      -1
+     ],
+     [
+      10,
+      1
+     ],
+     [
+      30,
+      -1
+     ],
+     [
+      55,
+      -3
+     ],
+     [
+      55,
+      -1
+     ],
+     [
+      30,
+      1.2
+     ],
+     [
+      10,
+      3
+     ],
+     [
+      -20,
+      1.8
+     ],
+     [
+      -55,
+      -2
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.3,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    -2
+   ],
+   "z0": 0.3,
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc8",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a6522f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -50,
+    -2,
+    0.3
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#e4dcc8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 40,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo; park is the real outline with a lawn, one path, a gate and a pavilion, trees are generic."
+ }
+}

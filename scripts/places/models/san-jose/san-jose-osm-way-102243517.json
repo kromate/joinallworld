@@ -1,0 +1,449 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-way-102243517",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Basilica_of_Our_Lady_of_the_Angels,_Cartago_01.jpg",
+   "licence": "CC0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-jose/bas1.jpg",
+   "used": "grey ashlar side wings with round-arched windows and cream window trim, white metal pitched roofs, cream central front tower with clock and pediment, two tall angel-topped pinnacle piers, three-arch porch, cream and yellow domes on transept corner turrets, large central dome on a pierced drum, paved plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Basilica_de_los_Angeles_2007.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-jose/bas2.jpg",
+   "used": "facade composition, rose windows, pinnacle piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/102243517",
+   "used": "cross plan roughly 74 x 58 m; modelled with a rectangular nave and transept of the same size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     72,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8c86",
+    "trimColour": "#e8dcc0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e4e6e6",
+    "material": "metal-sheet",
+    "rise": 3.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     40
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8c86",
+    "trimColour": "#e8dcc0",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e4e6e6",
+    "material": "metal-sheet",
+    "rise": 4.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-tower",
+   "footprint": {
+    "rect": [
+     17,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "trimColour": "#d9cdb0",
+    "windows": "none",
+    "bands": "#d9cdb0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#efe8d6",
+    "rise": 2.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.8,
+    "height": 7,
+    "columns": 4,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#f2ecdc",
+    "roofColour": "#efe8d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-stage",
+   "at": [
+    0,
+    -16.5,
+    20
+   ],
+   "params": {
+    "rect": [
+     11,
+     4
+    ],
+    "height": 4.5,
+    "colour": "#efe8d6",
+    "windows": "rect",
+    "windowShape": "round",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 22,
+      "colour": "#f3eedf",
+      "topColour": "#f3eedf"
+     }
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -9.5,
+     -20
+    ],
+    "end": [
+     9.5,
+     -20
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/spire",
+     "params": {
+      "baseWidth": 1.8,
+      "height": 4,
+      "sides": 4,
+      "colour": "#f3eedf",
+      "finial": true
+     }
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -9.5,
+     -20
+    ],
+    "end": [
+     9.5,
+     -20
+    ],
+    "dz": 22
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    6,
+    17
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#efe8d6",
+    "profile": [
+     [
+      7,
+      0,
+      "#efe8d6"
+     ],
+     [
+      7,
+      5,
+      "#efe8d6"
+     ],
+     [
+      7.4,
+      5.4,
+      "#d9cdb0"
+     ],
+     [
+      6.6,
+      5.6,
+      "#e5c98a"
+     ],
+     [
+      6.6,
+      6.4,
+      "#e5c98a"
+     ],
+     [
+      4.5,
+      9.6,
+      "#e5c98a"
+     ],
+     [
+      1.8,
+      11.4,
+      "#e5c98a"
+     ],
+     [
+      0,
+      11.8,
+      "#e5c98a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#efe8d6",
+      "profile": [
+       [
+        2.6,
+        0,
+        "#efe8d6"
+       ],
+       [
+        2.6,
+        4,
+        "#efe8d6"
+       ],
+       [
+        2.9,
+        4.2,
+        "#d9cdb0"
+       ],
+       [
+        2.5,
+        4.4,
+        "#e5c98a"
+       ],
+       [
+        1.6,
+        6,
+        "#e5c98a"
+       ],
+       [
+        0,
+        6.8,
+        "#e5c98a"
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -30,
+     -9
+    ],
+    "end": [
+     30,
+     -9
+    ],
+    "dz": 13.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5,
+       5
+      ],
+      "height": 6,
+      "colour": "#efe8d6",
+      "windows": "rect",
+      "windowRatio": 0.3
+     }
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -30,
+     -9
+    ],
+    "end": [
+     30,
+     -9
+    ],
+    "dz": 13.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "rise": 0.6,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Facade is a plain tower and porch, not the ornate white piers, rose windows, angel finials and three-arch porch; transept turrets and domes simplified; plaza planters and lamp posts omitted; roofs hipped not the detailed pitched metal."
+ }
+}

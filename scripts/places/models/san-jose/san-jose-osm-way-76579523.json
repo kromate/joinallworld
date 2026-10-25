@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-way-76579523",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ST_Center.webp",
+   "licence": "CC BY 4.0",
+   "author": "Periodista82",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-jose/stc.png",
+   "used": "flat green artificial-turf pitch with white lines, tall floodlight masts with multi-lamp heads, rusty steel scaffold viewing tower at the pitch edge, high ball-stop netting on poles, low sheds and hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/76579523",
+   "used": "plot outline (99.5 x 81.6 m) as ground; pitch placed inside"
+  }
+ ],
+ "camera": {
+  "yawDeg": -90,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.45,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52.3,
+      -34.3
+     ],
+     [
+      -32.4,
+      20
+     ],
+     [
+      -25.1,
+      47.5
+     ],
+     [
+      -11.6,
+      56.5
+     ],
+     [
+      55.5,
+      29
+     ],
+     [
+      14.8,
+      -57.5
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#8a9a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     78,
+     46
+    ],
+    "height": 0.1,
+    "colour": "#4c8a3a"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "length": 70,
+    "width": 40,
+    "stripes": 0,
+    "goals": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     80,
+     5
+    ],
+    "height": 0.1,
+    "colour": "#b4b2a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -27,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     3.5
+    ],
+    "height": 0.3,
+    "colour": "#a8552d"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -28.5,
+     0
+    ],
+    "end": [
+     -27,
+     -28.5,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 7.5,
+      "colour": "#a8552d"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -25.5,
+     0
+    ],
+    "end": [
+     -27,
+     -25.5,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 7.5,
+      "colour": "#a8552d"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -27,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     4.2
+    ],
+    "height": 0.15,
+    "colour": "#7a3f20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -28.9,
+    8.55
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     0.1
+    ],
+    "height": 1.2,
+    "colour": "#a8552d"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -42,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    42,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -42,
+    32,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    42,
+    32,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     36,
+     0
+    ],
+    "end": [
+     38,
+     36,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 10,
+      "colour": "#555a5e"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    36,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     76,
+     0.05
+    ],
+    "height": 3,
+    "colour": "#2d3a2d"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a pitch-level photo exists: pitch, masts and scaffold tower are placed from it; ball-stop netting is a simple dark screen, no stand roof seen, positions of masts and the pitch rotation are estimated."
+ }
+}

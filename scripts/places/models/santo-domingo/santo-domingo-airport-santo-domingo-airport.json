@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-airport-santo-domingo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MDSD-TerminalA.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lacreta at English Wikipedia",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/santo-domingo/airport1.jpg",
+   "used": "layout from the apron: round disc-roofed pier building with raised central drum at left, long two-storey terminal with a taller back block, rounded annex at right end, tower and cooling-tower domes behind, car parks beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LasAmericas.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dontacos",
+   "view": "street",
+   "file": "/tmp/places-evidence/santo-domingo/airport2.jpg",
+   "used": "cream concrete fascia bands with dark ribbon glazing, thin pilotis at ground, copper-gold cooling tower domes, folded canopy roofs at the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29491548",
+   "used": "overall size only (421 m long finger plan); a portion is modelled by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     26
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2cdbd",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#efece4",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9d98",
+    "material": "membrane",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-block",
+   "footprint": {
+    "rect": [
+     60,
+     20
+    ]
+   },
+   "at": [
+    30,
+    22
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcabb",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9d98",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     28,
+     28
+    ]
+   },
+   "at": [
+    82,
+    -2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dccf",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bands": "#8e9296"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9b97",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "disc",
+   "at": [
+    -40,
+    -6
+   ],
+   "params": {
+    "radius": 24,
+    "n": 16,
+    "z0": 0,
+    "height": 7.5,
+    "colour": "#d6d1c3",
+    "topColour": "#a5a6a2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "disc-drum",
+   "at": [
+    -40,
+    -6
+   ],
+   "params": {
+    "radius": 9,
+    "n": 20,
+    "z0": 7.5,
+    "height": 2.6,
+    "colour": "#cfcabc",
+    "topColour": "#bdbdb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "disc-rim",
+   "at": [
+    -40,
+    -6
+   ],
+   "params": {
+    "radius": 25,
+    "n": 24,
+    "z0": 6.6,
+    "height": 0.9,
+    "colour": "#a9aaa6",
+    "topColour": "#a9aaa6"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    44,
+    28,
+    13
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#b98f4a"
+     ],
+     [
+      4.5,
+      0,
+      "#b98f4a"
+     ],
+     [
+      4.5,
+      3.5,
+      "#b98f4a"
+     ],
+     [
+      3.2,
+      5,
+      "#c9a15a"
+     ],
+     [
+      0,
+      5.6,
+      "#c9a15a"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    30,
+    24,
+    13
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#b98f4a"
+     ],
+     [
+      3,
+      0,
+      "#b98f4a"
+     ],
+     [
+      3,
+      2.4,
+      "#b98f4a"
+     ],
+     [
+      2,
+      3.4,
+      "#c9a15a"
+     ],
+     [
+      0,
+      3.8,
+      "#c9a15a"
+     ]
+    ],
+    "segments": 12
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    66,
+    26,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -18,
+    -8,
+    4.5
+   ],
+   "rotDeg": -30,
+   "params": {
+    "length": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -24,
+    -24,
+    4.0
+   ],
+   "rotDeg": -75,
+   "params": {
+    "length": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    8,
+    -13,
+    4.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -48,
+    -48,
+    0
+   ],
+   "rotDeg": 80,
+   "params": {
+    "scale": 1.0,
+    "colour": "#eceff1",
+    "tailColour": "#1f3f7a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    18,
+    -40,
+    0
+   ],
+   "rotDeg": -100,
+   "params": {
+    "scale": 1.0,
+    "colour": "#e6e9ec",
+    "tailColour": "#8a2a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    28,
+    17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 7,
+    "height": 4.2,
+    "colour": "#bdbab0",
+    "columns": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    60,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.4,
+    "colour": "#8f2a2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    66,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.4,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    45,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 25
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     48
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Aerial view only: about 160 m of the 420 m finger plan is modelled; terminal roof/fascia detail, concourse fingers and parking lots simplified; apron is flat paving."
+ }
+}

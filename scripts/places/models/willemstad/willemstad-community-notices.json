@@ -1,0 +1,271 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edificio_del_Parlamento_de_Cura\u00e7ao,_ubicado_en_el_distrito_de_Punda,_Willemstad.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ulises Icardi",
+   "view": "front",
+   "file": "/tmp/places-evidence/willemstad/parl.jpg",
+   "used": "four-storey flat-roofed block clad in pink-mauve travertine panels, 4-5 bays of square bronze-framed windows, dark deep overhanging eaves with dentil frieze, dark recessed ground storey under a projecting fascia band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/250834080",
+   "used": "footprint 20x20 m, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 42,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true,
+    "scale": 0.88
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a1c1a",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2622"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "osm": true,
+    "scale": 1.12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.4,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b98d88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98d88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.4,
+   "height": 11.2,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b58896",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.0,
+    "bands": "#a87a88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a52"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "dentil",
+   "params": {
+    "rect": [
+     19,
+     19
+    ],
+    "z0": 16.9,
+    "height": 0.7,
+    "colour": "#d8b8a8"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "id": "piers",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 0,
+      "height": 4.4,
+      "colour": "#3a2622"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -8,
+     -9.4
+    ],
+    "end": [
+     8,
+     -9.4
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sign",
+   "params": {
+    "rect": [
+     9,
+     0.2
+    ],
+    "z0": 4.8,
+    "height": 1.0,
+    "colour": "#2e2220"
+   },
+   "at": [
+    0,
+    -11.3,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     5,
+     12
+    ]
+   },
+   "at": [
+    -12.5,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b88a96",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e4f48",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eaves",
+   "footprint": {
+    "osm": true,
+    "scale": 1.12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 17.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5e4f48",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a52",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -7,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1f4fa3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stone is a generic block texture not travertine panels with horizontal veining; dentil frieze is a plain cream slab; window frames not bronze; fascia lettering omitted; left stepped wing is approximate; photo is a distorted low wide-angle view"
+ }
+}

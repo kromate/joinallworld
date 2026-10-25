@@ -1,0 +1,312 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-airport-roseau-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_terminal_building_of_Douglas%E2%80%93Charles_Airport_on_the_Caribbean_island_of_Dominica.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Russell Watkins/DFID",
+   "view": "front",
+   "file": "/tmp/places-evidence/roseau/apt2.jpg",
+   "used": "orange rendered terminal with blue window frames and trim, blue glazed control cab with railings on the left end, covered entrance walkway on slim green columns, low hipped orange outbuilding to the right, lamp masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Melville_Hall_Airport.jpg",
+   "licence": "CC0",
+   "author": "Shanman007",
+   "view": "side",
+   "used": "apron, hedge and fence setting only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/200857138",
+   "used": "overall extent (110 m zigzag outline, too ragged to use; the photographed core is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0a23a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#2a63c9",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e59a35",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -12,
+    0.5
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0a23a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#2a63c9",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e59a35",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cab",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    0.5
+   ],
+   "z0": 9.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1e3f77",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a63c9",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outbuilding",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    38,
+    6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0a23a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8963a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    20,
+    3
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0a23a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8963a",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    18,
+    -14
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0a23a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3a66b8",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 5,
+    "colour": "#f2f2ee",
+    "edgeColour": "#f0a23a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 1.0,
+    "bottom": 3.2,
+    "colour": "#2f8f43",
+    "frameColour": "#f0a23a",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no tower railings or stairs, no sign text, no vegetation or people, outbuilding layout approximate, flat canopy not tapered"
+ }
+}

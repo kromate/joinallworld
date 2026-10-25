@@ -1,0 +1,452 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_Dominican_Republic_Temple,_street_entrance.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Manuelborrell",
+   "view": "front",
+   "file": "/tmp/places-evidence/santo-domingo/temple.jpg",
+   "used": "warm cream-pink granite block with stepped parapet bays and tall arched windows, slim square entrance tower with a gold angel, white gatehouse and boundary wall with open circle-pattern gate, red flower beds, clipped hedge, royal palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316141824",
+   "used": "temple plot size (about 70 x 60 m incl. grounds); outline not used, it includes the grounds"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.2,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "temple",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    6,
+    6
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9bfa4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8,
+    "bands": "#e6d2b8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b49a",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    24,
+    2
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d9bfa4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b49a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-base",
+   "at": [
+    -17,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 24,
+    "colour": "#d9bfa4",
+    "windows": "none",
+    "plinth": 0.8,
+    "trimColour": "#e6d2b8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-shaft",
+   "at": [
+    -17,
+    4,
+    24
+   ],
+   "params": {
+    "colour": "#dcc6aa",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       5,
+       5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-cap",
+   "at": [
+    -17,
+    4,
+    44
+   ],
+   "params": {
+    "colour": "#d4baa0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.4,
+       5.4
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "angel",
+   "at": [
+    -17,
+    4,
+    48
+   ],
+   "params": {
+    "profile": [
+     [
+      0.3,
+      0,
+      "#d8a82c"
+     ],
+     [
+      0.6,
+      0.8
+     ],
+     [
+      0.45,
+      2.2
+     ],
+     [
+      0.5,
+      3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ],
+    "colour": "#d8a82c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-window",
+   "at": [
+    -17,
+    0.4,
+    36
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#4b5560"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -7,
+     14
+    ],
+    "end": [
+     34,
+     -7,
+     14
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        5,
+        3
+       ],
+       "height": 2.2,
+       "colour": "#cdb094"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.4,
+    "thickness": 0.5,
+    "pillarEvery": 5,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "height": 2.4,
+    "thickness": 0.5,
+    "pillarEvery": 5,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -26
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f0ea",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-left",
+   "at": [
+    -28,
+    -31,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     2
+    ],
+    "height": 0.9,
+    "colour": "#2f7a35",
+    "topColour": "#c8362b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-right",
+   "at": [
+    16,
+    -31,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     2
+    ],
+    "height": 0.9,
+    "colour": "#2f7a35",
+    "topColour": "#c8362b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-316141824",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower is more tapered and the main block plainer than the real stepped parapets and arched windows; hedges and the circle-pattern gate are missing; palms are generic."
+ }
+}

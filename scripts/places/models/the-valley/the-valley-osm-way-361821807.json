@@ -1,0 +1,136 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/361821807",
+   "used": "real 18 x 13 m outline; colours, terrace and hip roof typed from the brief and Anguilla coastal style (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true,
+    "fit": 18
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a08c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#ffffff",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b8f71",
+    "material": "metal-sheet",
+    "pitch": 17,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 3,
+    "height": 2.9,
+    "roof": "lean-to",
+    "roof_colour": "#3e6f9a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -1,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "radius": 1.4,
+    "height": 2.3,
+    "colours": [
+     "#ffffff",
+     "#3e6f9a",
+     "#e8a08c"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.8,
+    "bottom": 2.0,
+    "colour": "#3e6f9a",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: typed pastel hip-roofed block with terrace on real outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-osm-way-361821807"
+}

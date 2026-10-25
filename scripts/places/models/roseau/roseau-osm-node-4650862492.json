@@ -1,0 +1,149 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/372532734",
+   "used": "7.8 x 3.2 m hut outline and orientation (nearest match 5.5 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tiny roadside hut, pale blue render, red corrugated shed roof, awning and blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb7c9",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.2,
+    "bands": "#e8d9a8"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a13d2d",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -2.6,
+    0
+   ],
+   "rotDeg": 21,
+   "params": {
+    "width": 4.5,
+    "depth": 1.4,
+    "height": 2.4,
+    "colours": [
+     "#e8d9a8",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2.6,
+    -2.2,
+    0
+   ],
+   "rotDeg": 21,
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 2.6,
+    "colour": "#e8d9a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3.5,
+    -4.2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -0.5,
+    -5.2,
+    0
+   ],
+   "params": {
+    "chairs": 2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6.5,
+    3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   36,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; hut outline from OSM, colours and awning from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-osm-node-4650862492"
+}

@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-1082441931",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1082441931",
+   "used": "campus building outline about 50 x 147 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uninove_barra_funda.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Felipe Mostarda",
+   "view": "front",
+   "used": "only for the generic house style of the university (blue-green glass bands over white slab edges); it shows the Barra Funda campus, a different building, so not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 25,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dcdad2",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#3f6f86",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f1f0ea",
+       "#cfd3d1"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a7a0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -2,
+    -16
+   ],
+   "z0": 17,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa0a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#e6e6e1"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -64,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.5,
+    "bottom": 1.5,
+    "colour": "#2d4a8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this campus building (P18 shows another campus); outline from OSM scaled 0.8 to fit, glass ribbon style typed, entrance canopy and blank sign board placed by assumption"
+ }
+}

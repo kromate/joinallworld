@@ -1,0 +1,269 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sgu_picture.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "UltraVioletBud",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-georges/sgu.jpg",
+   "used": "three-storey peach rendered hall, terracotta hip roof, grey louvre shutters on a central stair bay, small white pedimented portico, covered walkway at right, lawn and brick path"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/383802717",
+   "used": "campus is 177 x 140 m of many buildings; one hall with two wings around a lawn is modelled at readable scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     38,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b99a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#5d7384",
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bands": "#f1e4d2",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     9,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -8.6
+   ],
+   "height": 11.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeb594",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "glassColour": "#5d7384",
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bands": "#f1e4d2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4623d",
+    "material": "clay-tile",
+    "pitch": 28,
+    "axis": "y",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.6,
+    "height": 4.2,
+    "columns": 2,
+    "pediment": true,
+    "steps": 2,
+    "colour": "#f7f3ea",
+    "roofColour": "#f7f3ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter",
+   "footprint": {
+    "rect": [
+     4.2,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -10.2
+   ],
+   "height": 6.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9aa5ae",
+    "windows": "louvre"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa5ae"
+   },
+   "z0": 3.8
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    -27,
+    -4
+   ],
+   "height": 10.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b99a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#5d7384",
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bands": "#f1e4d2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    27,
+    -4
+   ],
+   "height": 10.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b99a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#5d7384",
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bands": "#f1e4d2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "count": 9,
+    "height": 3.4,
+    "radius": 0.25,
+    "colour": "#f4efe4",
+    "roofColour": "#c4623d",
+    "roofDepth": 2.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 6,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "one hall with wings only (campus is many buildings); photo shows no wings, no brick path or trees at photo scale"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-community-workshop"
+}

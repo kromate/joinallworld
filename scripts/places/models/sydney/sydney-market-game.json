@@ -1,0 +1,393 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Westfield_Eastgardens_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "J Bar",
+   "view": "street",
+   "file": "/tmp/places-evidence/sydney/eg2.jpg",
+   "used": "yellow four-level ribbon-glazed block with orange edge bands, rooftop plant box and blank sign box, purple parapet wall and asphalt deck in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/45492049",
+   "used": "overall size (365 x 229 m): only the entrance portion is modelled; mall behind is pale render"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     62,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b95f",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#26434d",
+    "bands": "#c9792f",
+    "faces": {
+     "front": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6a94f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b559",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfa24e",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core-l",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    16,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe9dc",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core-r",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -26,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe9dc",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-box",
+   "footprint": {
+    "rect": [
+     17,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 20,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd0",
+    "windows": "none",
+    "bands": "#cdc7b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c0",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     96,
+     52
+    ]
+   },
+   "at": [
+    10,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "curtain",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#b9b2a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b7c9cf",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c7a68",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-wall",
+   "footprint": {
+    "rect": [
+     78,
+     0.7
+    ]
+   },
+   "at": [
+    -4,
+    -19
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a45fae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a45fae",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-wall-r",
+   "footprint": {
+    "rect": [
+     0.7,
+     14
+    ]
+   },
+   "at": [
+    35,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a45fae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a45fae",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-wall-pale",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    -44,
+    -17
+   ],
+   "height": 3.0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbab2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    16,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.8,
+    "colour": "#7e8a93"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mall behind is generic pale render; glazing bands denser than the photo, sign box blank, no purple signage panel or carts."
+ }
+}

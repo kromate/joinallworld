@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-osm-way-323534124",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/323534124",
+   "used": "real outline about 10.2 x 2.8 m, slightly skewed"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tiny painted timber cabin cafe with blue corrugated shed roof, awning and blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cabin",
+   "footprint": {
+    "polygon": [
+     [
+      -5.2,
+      0.8
+     ],
+     [
+      4.9,
+      2
+     ],
+     [
+      5.2,
+      -0.8
+     ],
+     [
+      -4.9,
+      -2
+     ]
+    ]
+   },
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9d8e0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "ribbon",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#a8392e"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3d5f8a",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "id": "awning",
+   "at": [
+    0,
+    -3.0,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.5,
+    "drop": 0.4,
+    "height": 2.5,
+    "colours": [
+     "#a8392e",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -3.8,
+    -1.8,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 0.8,
+    "bottom": 3.1,
+    "colour": "#a8392e",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "step",
+   "at": [
+    0,
+    -2.3,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.15,
+    "run": 0.4,
+    "count": 1,
+    "colour": "#b5b2a8"
+   }
+  },
+  {
+   "type": "car",
+   "id": "car",
+   "at": [
+    8,
+    -7,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   40,
+   25
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real 10 x 3 m outline with a typed painted-timber cabin, blue shed roof and awning; colours and details are guesses"
+ }
+}

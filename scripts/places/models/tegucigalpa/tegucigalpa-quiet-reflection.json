@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tegucigalpa_Honduras_Temple.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Donald A. Cazier",
+   "view": "side",
+   "file": "/tmp/places-evidence/tegucigalpa/temple.jpg",
+   "used": "construction-stage photo: stepped blocky concrete volumes of two storeys with tall narrow slot windows and a recessed corner bay, raw concrete grey. Finished colour taken from the brief (pale grey granite), spire from the brief"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/373853817",
+   "used": "cross-shaped footprint 38 x 33 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "temple",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cbca",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "glassColour": "#4a5560"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "concrete",
+    "parapet": 0.7,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 6,
+    "colour": "#cfd1d0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    17
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 6,
+    "colour": "#cfd1d0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -2,
+    23
+   ],
+   "params": {
+    "colour": "#e5c07a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 9.2,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 16.2,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -2,
+    39
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -30
+    ],
+    "end": [
+     18,
+     -30
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 0.6,
+    "colour": "#bbb8b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Boxy stepped blocks and plain pale grey wall now match the construction-stage massing; tall slot windows and recessed face openings not reproduced, spire and finish colour come from the brief."
+ }
+}

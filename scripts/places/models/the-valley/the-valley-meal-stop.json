@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/200829135",
+   "used": "named restaurant footprint 11.6 x 10.7 m, rotated rectangle"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/the-valley.json#the-valley-meal-stop",
+   "used": "beachside timber building, hip metal roof, veranda, umbrellas (typed, no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9b98a",
+    "windows": "louvre",
+    "windowRatio": 0.35,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b94a3a",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "rotDeg": -33,
+   "params": {
+    "length": 10,
+    "depth": 2.6,
+    "height": 3,
+    "roof": "lean-to",
+    "roof_colour": "#b94a3a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#3e6f9a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1,
+    "bottom": 1.2,
+    "colour": "#3e6f9a",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM footprint, timber/red hip roof typed from island beach-bar vernacular"
+ }
+}

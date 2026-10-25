@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/29466121",
+   "used": "the real Woodbine Mall outline (about 309 x 290 m, 2 storeys, retail), scaled to fit 118 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Woodbine_Centre_Atrium_2023.JPG",
+   "licence": "CC BY 4.0",
+   "view": "interior",
+   "used": "interior only: glass pyramid skylight over a two-level atrium, cream columns and fascia; used for the skylight form and cream/white palette, not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 45
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo exists (all photos are interior); outline is scaled by ~0.38 so heights are exaggerated relative to the real mall; entrances and skylight position are indicative"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a6",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#d9d6cf"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-skylight",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     22
+    ],
+    "z0": 10,
+    "height": 6,
+    "colour": "#a8c8d8",
+    "topColour": "#c5dce6",
+    "topScale": 0.25
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "atrium-skylight-lod2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     22
+    ],
+    "z0": 10,
+    "height": 6,
+    "colour": "#a8c8d8"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "skylight-ridge",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "z0": 16,
+    "height": 0.8,
+    "colour": "#e8e6df"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-ring",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     26
+    ],
+    "z0": 8.6,
+    "height": 1.4,
+    "colour": "#d9d6cf"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 8,
+    "height": 5,
+    "columns": 4,
+    "colour": "#7a6a5a",
+    "edgeColour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#7a6a5a",
+    "frameColour": "#d9d6cf",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "extent": [
+   160,
+   160
+  ]
+ }
+}

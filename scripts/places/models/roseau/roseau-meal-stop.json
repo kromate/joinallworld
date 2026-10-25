@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/526231626",
+   "used": "real 12.5 x 10 m outline, bearing 70 deg (nearest match, 8 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey roadside eatery, pale yellow render with pink trim, red corrugated gable roof, front awning"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#d98c8c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a13d2d",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.4,
+    "height": 2.6,
+    "colours": [
+     "#d98c8c",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.1,
+    "bottom": 1.3,
+    "colour": "#ffffff",
+    "frameColour": "#d98c8c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline plus brief colours, facade details assumed"
+ }
+}

@@ -1,0 +1,312 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metahch_001.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lanmeneses1987",
+   "view": "detail",
+   "file": "/tmp/places-evidence/santiago/hipo.jpg",
+   "used": "finish-post ring sign (white ring with blue band, blank here), white flags with blue marks on poles, red flowerbeds and white rail, Andes backdrop; the grandstand itself is not in the photo"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38622709",
+   "used": "site proportions only (972 x 482 m track site); grandstand 260 x 45 m from the brief shortened to fit the model cap"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "grandstand",
+   "footprint": {
+    "rect": [
+     100,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe3cd",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "bands": "#b5523b",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d7f80",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -51,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f2e8",
+    "windows": "none",
+    "bands": "#b5523b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523b",
+    "material": "concrete",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    51,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f2e8",
+    "windows": "none",
+    "bands": "#b5523b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523b",
+    "material": "concrete",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -46,
+     16
+    ],
+    "end": [
+     46,
+     16
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "seatColours": [
+     "#b5523b",
+     "#f6f2e8"
+    ],
+    "blocks": 6,
+    "under": "solid"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     30
+    ],
+    "height": 0.2,
+    "colour": "#d2bf94",
+    "topColour": "#d2bf94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    23,
+    0
+   ],
+   "params": {
+    "length": 116,
+    "height": 1.1,
+    "thickness": 0.25,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "width": 116,
+    "depth": 22,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 12,
+    "colours": [
+     "#f6f6f6",
+     "#f6f6f6",
+     "#d52b1e",
+     "#f6f6f6"
+    ]
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    34,
+    52,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 14,
+    "height": 6,
+    "post_height": 4,
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.4,
+      6
+     ],
+     [
+      1.3,
+      6.4,
+      "#2e4fa8"
+     ],
+     [
+      2.8,
+      8,
+      "#f6f6f6"
+     ],
+     [
+      2.8,
+      9,
+      "#f6f6f6"
+     ],
+     [
+      1.3,
+      10.6,
+      "#2e4fa8"
+     ],
+     [
+      0.4,
+      11
+     ]
+    ],
+    "segments": 16,
+    "colour": "#f6f6f6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the grandstand: massing is typical of a Chilean racecourse stand, only the finish-post sign, flags and rail come from the photo; width cut to 100 m"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-way-38622709"
+}

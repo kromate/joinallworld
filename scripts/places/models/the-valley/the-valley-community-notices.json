@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "24 x 14 m two-storey office; nearest OSM outline is a different building (Fairplay Shopping Center), not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc4",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b94a3a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 3.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "pattern": {
+     "type": "pilotis"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b94a3a",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -13,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    11,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#b94a3a",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence of the real building; typical small Caribbean civic office"
+ }
+}

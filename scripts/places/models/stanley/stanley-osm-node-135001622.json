@@ -1,0 +1,363 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-osm-node-135001622",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Falklands_War_Memorial,_Stanley_(Falkland_Islands).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alex Petrenko",
+   "view": "front",
+   "file": "/tmp/places-evidence/stanley/lm1.jpg",
+   "used": "tall grey granite obelisk on a stepped base with bronze Britannia on top and a round emblem; long crenellated rubble stone wall behind with green plaques and a bronze relief; flagpole, benches, flagstone paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/685416872",
+   "used": "position only (a 2 m feature; not used as geometry)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paving",
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "height": 0.15,
+    "colour": "#b8ad98"
+   },
+   "at": [
+    0,
+    -1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.9
+    ],
+    "height": 2.6,
+    "colour": "#9a8f78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "coping",
+   "at": [
+    0,
+    3.5,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     22.2,
+     1.1
+    ],
+    "height": 0.25,
+    "colour": "#8a826e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -9.5,
+    2.95,
+    0.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        0.12
+       ],
+       "height": 1.5,
+       "colour": "#2f5a4a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief",
+   "at": [
+    -2,
+    2.93,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.12
+    ],
+    "height": 1.4,
+    "colour": "#4a443c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    11.8,
+    2.95,
+    0.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     -6,
+     0,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        0.12
+       ],
+       "height": 1.5,
+       "colour": "#2f3a38"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    4.2,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     3.2
+    ],
+    "height": 0.3,
+    "colour": "#b4b4b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    4.2,
+    0,
+    0.45
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     2.5
+    ],
+    "height": 0.3,
+    "colour": "#a8a8a4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "obelisk",
+   "at": [
+    4.2,
+    0,
+    0.75
+   ],
+   "params": {
+    "colour": "#8f9094",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       2.4
+      ]
+     },
+     {
+      "z": 1.0,
+      "rect": [
+       3.4,
+       2.2
+      ]
+     },
+     {
+      "z": 1.1,
+      "rect": [
+       2.8,
+       1.8
+      ]
+     },
+     {
+      "z": 8.2,
+      "rect": [
+       2.2,
+       1.4
+      ]
+     },
+     {
+      "z": 8.4,
+      "rect": [
+       2.5,
+       1.6
+      ]
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       2.0,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "emblem",
+   "at": [
+    4.2,
+    -0.82,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 0.8,
+    "colour": "#6a5a3a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    0.5,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1f3a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    -6,
+    0.4,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "britannia",
+   "at": [
+    4.2,
+    0,
+    9.75
+   ],
+   "params": {
+    "colour": "#3f5a4c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.0
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       1.0,
+       0.7
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       0.7,
+       0.5
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.4,
+       0.3
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Britannia is an abstract tapered spike; wall is smooth render not rubble stone; obelisk granite pale, no inscription, wall not crenellated, no wreaths"
+ }
+}

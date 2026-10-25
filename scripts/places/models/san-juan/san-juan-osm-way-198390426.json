@@ -1,0 +1,295 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Polytechnic_University_of_Puerto_Rico.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Deb Stgo",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-juan/pol1.jpg",
+   "used": "cream clock tower with blue-grey vertical panel, open belfry with red tile cap, low cream blocks with red clay-tile hip roofs and flat grey roofs, barred windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centro_de_Servicios_Integrados_-_Polytechnic_University_of_Puerto_Rico_-_DSC07170.JPG",
+   "licence": "Public domain",
+   "author": "Daderot",
+   "view": "detail",
+   "file": "/tmp/places-evidence/san-juan/pol2.jpg",
+   "used": "yellow-cream arcaded wing: round arches on square piers, deep clay-tile eave, blue-tile base band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/198390426",
+   "used": "campus polygon only (207 x 177 m); a central cluster of buildings is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.08,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0c4",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9293",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wing",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ead9a0",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-block",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0c4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    30,
+    -4
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0c4",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9293",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "id": "clock-tower",
+   "at": [
+    14,
+    2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 30,
+    "cap": "hip",
+    "capRise": 3.5,
+    "clock": true,
+    "belfry": true,
+    "colour": "#e9e0c4",
+    "trimColour": "#b6c3cc",
+    "capColour": "#a8452f",
+    "windows": "punched"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#264d7a",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "belfry shown with louvres not open posts, surrounding rooftops and background towers not modelled, campus layout inferred from one viewpoint"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-198390426"
+}

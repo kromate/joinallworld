@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-way-1001557950",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Ecol%C3%B3gico.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-jose/eco1.jpg",
+   "used": "red-brown athletics track around a grass pitch, small colourful raked stand on the left bank, three team tents and dugouts at the track edge, tree-covered hill ring, mesh fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Ecol%C3%B3gico_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-jose/eco2.jpg",
+   "used": "second small stand at the far end, dark tree line behind, no roofs or floodlights visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1001557950",
+   "used": "overall size (230 x 153 m site) scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": -62,
+  "pitchDeg": 16,
+  "fovDeg": 46,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 118,
+    "width": 66,
+    "lane_width": 7.5,
+    "infield": true,
+    "pitch": true,
+    "colour": "#a8503c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -22
+    ],
+    "end": [
+     -52,
+     20
+    ],
+    "rows": 7,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 1.4,
+    "seatColours": [
+     "#2f6fa0",
+     "#e0b030",
+     "#d9703a"
+    ],
+    "blocks": 5,
+    "concreteColour": "#c9c5bb",
+    "under": "open",
+    "closeEnds": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     48
+    ],
+    "end": [
+     8,
+     50
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "seatColours": [
+     "#2f6fa0",
+     "#e0b030"
+    ],
+    "blocks": 3,
+    "concreteColour": "#c9c5bb",
+    "under": "open"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "flat",
+      "width": 5,
+      "depth": 4,
+      "height": 2.4,
+      "colour": "#f4f4f0",
+      "columns": 0
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -22,
+     -40
+    ],
+    "end": [
+     -4,
+     -40
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 12,
+      "spread": 5
+     }
+    },
+    "mode": "arc",
+    "count": 30,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 78,
+    "radiusY": 58,
+    "startDeg": 0,
+    "endDeg": 360
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-shed",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -44
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6d3c9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Surrounding hillside embankment and dense tree backdrop are only a tree ring; stands are simplified blocks, no mural; tents are plain flat canopies; track scaled down to fit the scene."
+ }
+}

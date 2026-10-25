@@ -1,0 +1,281 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-node-11159744805",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_Mt._Rich_Petroglyph.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tiredmeliorist",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-georges/petro.jpg",
+   "used": "the carved boulder: a long rounded grey-brown rock about twice as long as high, cracked in the middle, resting on dark ground under dense green forest"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/851109202",
+   "used": "size of the small visitor shelter nearby only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "boulder",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7a7266",
+    "topColour": "#847b6d",
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": -0.4,
+      "ellipse": [
+       3.4,
+       2.2
+      ]
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       3.9,
+       2.5
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       3.7,
+       2.5
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       3.0,
+       2.0
+      ],
+      "cx": 0.5,
+      "colour": "#8a8174"
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       1.6,
+       1.1
+      ],
+      "cx": 0.7
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       0.6,
+       0.5
+      ],
+      "cx": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "boulder-right-lobe",
+   "at": [
+    3.3,
+    0.4,
+    0
+   ],
+   "params": {
+    "colour": "#6f685d",
+    "sections": [
+     {
+      "z": -0.3,
+      "ellipse": [
+       1.5,
+       1.5
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       1.7,
+       1.7
+      ]
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "small-stone",
+   "at": [
+    -6,
+    -3.5,
+    0
+   ],
+   "params": {
+    "colour": "#837b6e",
+    "sections": [
+     {
+      "z": -0.2,
+      "ellipse": [
+       1.1,
+       0.9
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       1.2,
+       1.0
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.6,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "shelter",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "depth": 4,
+    "height": 2.8,
+    "form": "shed",
+    "support": "timber",
+    "colour": "#8a6a45",
+    "accent": "#6f8a5a"
+   }
+  },
+  {
+   "type": "steps",
+   "id": "path-steps",
+   "at": [
+    7,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.9,
+    "run": 1.8,
+    "count": 5,
+    "colour": "#9a8f7a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     12
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -2
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rock is a smooth ellipsoid without the cracks, pits and carved faces; setting is open lawn instead of a forest gully with a stream; shelter and steps are typed, not seen."
+ }
+}

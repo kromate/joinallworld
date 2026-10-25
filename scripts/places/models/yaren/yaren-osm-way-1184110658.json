@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-osm-way-1184110658",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1184110659",
+   "used": "real building outline (42 x 22 m, 2 levels), bearing 50 deg"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Nauru",
+   "used": "2018 two-storey campus building that also houses the community library"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#3f6f8f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#3f6f8f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; colours and glazing estimated from brief"
+ }
+}

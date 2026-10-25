@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_Antigua_and_Barbuda_High_Court.jpg",
+   "licence": "CC BY 4.0",
+   "author": "CROIX",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-johns/court1.jpg",
+   "used": "round white drum, tall black gridded glazing between white piers, cream cornice rings, stone door surrounds, curved overhanging roof edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Side_view_of_the_Antigua_and_Barbuda_High_Court.jpg",
+   "licence": "CC BY 4.0",
+   "author": "CROIX",
+   "view": "side",
+   "file": "/tmp/places-evidence/st-johns/court2.jpg",
+   "used": "long curving wing: blank white lower wall with small square slit windows, glazed upper storey behind piers, stair up the slope, small flat canopy at the end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/150128834",
+   "used": "overall size and layout (drum plus curved tail, about 70 x 43 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "curtain",
+    "windowRatio": 0.58,
+    "bay": 6.2,
+    "glassColour": "#1c2024",
+    "plinth": 0.4,
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efeee8",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     31.5,
+     31.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.4,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efeee8",
+    "overhang": 0.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "polygon": [
+     [
+      10.0,
+      4.8
+     ],
+     [
+      16.1,
+      9.2
+     ],
+     [
+      21.1,
+      14.8
+     ],
+     [
+      24.9,
+      21.4
+     ],
+     [
+      27.2,
+      28.5
+     ],
+     [
+      28.0,
+      36.0
+     ],
+     [
+      27.2,
+      43.5
+     ],
+     [
+      24.9,
+      50.6
+     ],
+     [
+      21.1,
+      57.2
+     ],
+     [
+      13.0,
+      51.3
+     ],
+     [
+      15.8,
+      46.6
+     ],
+     [
+      17.4,
+      41.4
+     ],
+     [
+      18.0,
+      36.0
+     ],
+     [
+      17.4,
+      30.6
+     ],
+     [
+      15.8,
+      25.4
+     ],
+     [
+      13.0,
+      20.7
+     ],
+     [
+      9.4,
+      16.7
+     ],
+     [
+      5.0,
+      13.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efeee8",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    26,
+    34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.5,
+    "form": "flat",
+    "colour": "#44484c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    30,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "glazing piers thinner than the real wide white piers, no stone door surrounds or cream trim rings, wing windows simplified"
+ }
+}

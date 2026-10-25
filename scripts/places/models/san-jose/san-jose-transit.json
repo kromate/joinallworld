@@ -1,0 +1,312 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atlantic_Railway_Station.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Apolo2400",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-jose/atl2.jpg",
+   "used": "long single-storey station: deep street-side veranda on iron brackets, grey stone base and wide steps, pale rendered bays with tall dark openings, balustrade parapet with finials, red mansard pavilion over the centre-left, small red pavilion right, ornate cartouche"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_al_Atlantico.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Axxis10",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-jose/atl1.jpg",
+   "used": "green-painted wall bays, stone pilasters, timber doors and windows, grey steps, balustrade and finials, grey-blue mansard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31420765",
+   "used": "size 44.8 x 15 m, one level, hipped roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.8,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     50
+    ],
+    "height": 0.1,
+    "colour": "#7a7873"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44.8,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0.9,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dccf",
+    "glassColour": "#3a2a1e",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.32,
+    "bay": 4.2,
+    "plinth": 1.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c4b6",
+    "material": "concrete",
+    "parapet": 0.9,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     46,
+     4
+    ],
+    "height": 0.45,
+    "colour": "#706e6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     46,
+     3.4
+    ],
+    "height": 0.8,
+    "colour": "#706e6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.9,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     47,
+     5.4
+    ],
+    "height": 0.5,
+    "colour": "#8c4a40"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     0,
+     0
+    ],
+    "end": [
+     22,
+     0,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0.9
+     ],
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "height": 4.1,
+      "colour": "#6f6d68"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.5,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.2
+    ],
+    "height": 0.5,
+    "colour": "#2e2d2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    1.5,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     11,
+     10
+    ],
+    "height": 5.5,
+    "topScale": [
+     0.45,
+     0.5
+    ],
+    "colour": "#a8554a",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    1.5,
+    12
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 1.6,
+    "colour": "#b5503c",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    1.5,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     8
+    ],
+    "height": 2.6,
+    "topScale": [
+     0.6,
+     0.5
+    ],
+    "colour": "#a9503e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -4.2,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#e2ddd0"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No ornate iron brackets, balustrade pattern or cartouche; windows are generic rectangles; veranda roof is flat not sloping; left mansard dormers missing."
+ }
+}

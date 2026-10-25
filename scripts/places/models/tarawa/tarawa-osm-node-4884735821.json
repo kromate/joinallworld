@@ -1,0 +1,83 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-node-4884735821",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1064983435",
+   "used": "size only: nearest building, 6 x 6 m"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     6,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b89a5e",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a5a3f",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   30,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; a one-room timber roadside hut of the OSM size with a lean-to corrugated roof."
+ }
+}

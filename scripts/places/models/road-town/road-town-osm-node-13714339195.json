@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-node-13714339195",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/673906491",
+   "used": "real rectangular outline 41 x 17 m, bearing 127 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2d98a",
+    "windows": "none",
+    "bands": "#f6f3ea",
+    "plinth": 0.4,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f7a58",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -9,
+    -12,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "width": 26,
+    "depth": 4,
+    "height": 3.4,
+    "roof_colour": "#3f7a58",
+    "wall_colour": "#f2d98a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#f2d98a",
+    "frameColour": "#3f7a58"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -26.400000000000002,
+    -18.4,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -21.6,
+    -22.0,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "colour": "#f2d98a"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -16.8,
+    -25.6,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -11.999999999999998,
+    -29.2,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "colour": "#3f7a58"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; outline plus brief; canopy and parked cars orientation approximate."
+ }
+}

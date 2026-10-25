@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-way-220427315",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220427315",
+   "used": "chapel outline about 24 x 19 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f57",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -9,
+    2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 10,
+    "cap": "pyramid",
+    "capRise": 3,
+    "windows": "none",
+    "colour": "#3f6fa0",
+    "capColour": "#4a4f57"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#b0aca2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: era, bell tower position and blue accent are from the brief, not seen; door and window layout assumed"
+ }
+}

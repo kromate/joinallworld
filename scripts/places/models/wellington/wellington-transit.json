@@ -1,0 +1,766 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Crofton_Downs_railway_station_01.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Matthew25187",
+   "view": "street",
+   "file": "/tmp/places-evidence/wellington/cds1.jpg",
+   "used": "platform with yellow edge line and white kerb, small dark shelter with maroon roof at far end, one ballasted track, rust steel catenary masts with T arms, white corrugated warehouse on posts with blue undercroft on the left, bush hill backdrop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Crofton_Downs_railway_station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Quilt Phase",
+   "view": "street",
+   "file": "/tmp/places-evidence/wellington/cds2.jpg",
+   "used": "shelter shape, steel masts, warehouse sheds behind"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Crofton_Downs_railway_station",
+   "used": "side platform, shelter, 44-space commuter car park; OSM building at the match is a vet clinic and was NOT used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     4.6,
+     40
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a8a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a8a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "edge-line",
+   "footprint": {
+    "rect": [
+     0.5,
+     40
+    ]
+   },
+   "at": [
+    1.6,
+    18
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2c52d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2c52d"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "edge-kerb",
+   "footprint": {
+    "rect": [
+     0.5,
+     40
+    ]
+   },
+   "at": [
+    2.4,
+    18
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e2da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da"
+   },
+   "z0": 0.8
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    5.6,
+    18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ballast",
+   "footprint": {
+    "rect": [
+     4.2,
+     40
+    ]
+   },
+   "at": [
+    6.4,
+    18
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6b625a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b625a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-back",
+   "footprint": {
+    "rect": [
+     3.4,
+     0.6
+    ]
+   },
+   "at": [
+    -0.3,
+    34
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2d3033",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3033"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "shelter-post1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    1.3,
+    31.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2d3033",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3033"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "shelter-post2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.9,
+    31.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2d3033",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3033"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "shelter-roof",
+   "footprint": {
+    "rect": [
+     3.8,
+     5.4
+    ]
+   },
+   "at": [
+    -0.3,
+    32.6
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a2a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a2a2a",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 0.2
+   },
+   "z0": 3.3
+  },
+  {
+   "type": "mass",
+   "id": "shelter-wall",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -1.8,
+    34.3
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "mast0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.9,
+    2
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 0.0
+  },
+  {
+   "type": "mass",
+   "id": "arm0",
+   "footprint": {
+    "rect": [
+     5.2,
+     0.5
+    ]
+   },
+   "at": [
+    5.5,
+    2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "drop0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    7.2,
+    2
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 5.2
+  },
+  {
+   "type": "mass",
+   "id": "mast1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.9,
+    16
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 0.0
+  },
+  {
+   "type": "mass",
+   "id": "arm1",
+   "footprint": {
+    "rect": [
+     5.2,
+     0.5
+    ]
+   },
+   "at": [
+    5.5,
+    16
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "drop1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    7.2,
+    16
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 5.2
+  },
+  {
+   "type": "mass",
+   "id": "mast2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.9,
+    30
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 0.0
+  },
+  {
+   "type": "mass",
+   "id": "arm2",
+   "footprint": {
+    "rect": [
+     5.2,
+     0.5
+    ]
+   },
+   "at": [
+    5.5,
+    30
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "drop2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    7.2,
+    30
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3b22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b22"
+   },
+   "z0": 5.2
+  },
+  {
+   "type": "mass",
+   "id": "signal-cab",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.6
+    ]
+   },
+   "at": [
+    9.0,
+    8
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8bcb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "undercroft",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    -9,
+    22
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f5fa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "warehouse",
+   "footprint": {
+    "rect": [
+     12.5,
+     31
+    ]
+   },
+   "at": [
+    -9,
+    22
+   ],
+   "z0": 2.8,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e5e1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfd4d2",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dirt",
+   "footprint": {
+    "rect": [
+     10,
+     30
+    ]
+   },
+   "at": [
+    -10,
+    22
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a7d68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7d68"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hill",
+   "footprint": {
+    "rect": [
+     50,
+     22
+    ]
+   },
+   "at": [
+    10,
+    50
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4f6b3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b3a",
+    "pitch": 40
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    41,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    41,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    43,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    8,
+    52
+   ],
+   "z0": 14,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a4a6a",
+    "pitch": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-transit",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "platform is straight not curved, camera cannot sit at platform height so scene is seen from outside, hill is a plain hipped block with few trees, no overhead wires, masts are blocky, shelter small and hidden"
+ }
+}

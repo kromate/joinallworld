@@ -1,0 +1,699 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Colonel_Samuel_Smith_Park_(93962).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rhododendrites",
+   "view": "side",
+   "file": "/tmp/places-evidence/toronto/m10_33711256_0.jpg",
+   "used": "curving pebble beach, limestone block breakwater with trees behind, open Lake Ontario to the right, low skyline on the horizon, water colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Colonel_Samuel_Smith_Park_Toronto.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Martin from Toronto, Canada",
+   "view": "detail",
+   "file": "/tmp/places-evidence/toronto/m10_33711256_2.jpg",
+   "used": "white purple-martin nest box on a pole among shrubs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/33711256",
+   "used": "park extent (1.3 km shoreline, 440,000 m2); a representative 100 m shore stretch is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Curving beach bay and limestone breakwater headland are stylised flat prisms; water is a flat sheet with no ripples; skyline is simple blocks; no driftwood or grassy bank detail; trees and shelter are representative."
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    60,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 130,
+    "colour": "#3d8ca6",
+    "bank": false
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "park-pavilion",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#8b6b4a"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "pier-boardwalk",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 18,
+    "width": 3,
+    "height": 0.8,
+    "colour": "#8b6b4a"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "park-pavilion",
+   "at": [
+    3,
+    -20,
+    0.8
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 2.8,
+    "kind": "hip",
+    "roof_colour": "#8b6b4a"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/prism",
+   "at": [
+    -30,
+    35,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 5.5,
+    "colour": "#9a6b4a"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/prism",
+   "at": [
+    -30,
+    35,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 1.2,
+    "colour": "#f2e8e4",
+    "topScale": 0.9
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/prism",
+   "at": [
+    -30,
+    35,
+    6.7
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     1.9
+    ],
+    "height": 0.5,
+    "colour": "#e9ddd8",
+    "topScale": 0.5
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -34,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 40,
+    "line": 60
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 30,
+    "line": 50
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/lamp",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 24
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "park-bench",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -55
+     ],
+     [
+      -3,
+      -55
+     ],
+     [
+      2,
+      -42
+     ],
+     [
+      7,
+      -26
+     ],
+     [
+      11,
+      -10
+     ],
+     [
+      11,
+      6
+     ],
+     [
+      7,
+      19
+     ],
+     [
+      0,
+      29
+     ],
+     [
+      -8,
+      35
+     ],
+     [
+      -16,
+      35
+     ]
+    ],
+    "height": 0.45,
+    "colour": "#a8a395",
+    "topColour": "#a8a395"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -55
+     ],
+     [
+      -8,
+      -55
+     ],
+     [
+      -3,
+      -42
+     ],
+     [
+      0,
+      -26
+     ],
+     [
+      3,
+      -10
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      -1,
+      19
+     ],
+     [
+      -8,
+      29
+     ],
+     [
+      -16,
+      35
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#d0cbbd",
+    "topColour": "#d0cbbd"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5,
+      2.2
+     ]
+    },
+    "points": [
+     [
+      -6,
+      34,
+      1
+     ],
+     [
+      6,
+      38,
+      1
+     ],
+     [
+      18,
+      46,
+      1
+     ],
+     [
+      30,
+      50,
+      1
+     ],
+     [
+      40,
+      48,
+      1
+     ]
+    ],
+    "curve": true,
+    "colour": "#cfcabd"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.4,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      -6,
+      36,
+      2
+     ],
+     [
+      6,
+      40,
+      2
+     ],
+     [
+      18,
+      48,
+      2
+     ],
+     [
+      30,
+      52,
+      2
+     ],
+     [
+      39,
+      50,
+      2
+     ]
+    ],
+    "curve": true,
+    "colour": "#b5b0a2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -26,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.3,
+      -55
+     ],
+     [
+      1.3,
+      -55
+     ],
+     [
+      1.3,
+      35
+     ],
+     [
+      -1.3,
+      35
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#a69f90",
+    "topColour": "#a69f90"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 8,
+    "line": 28
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    3,
+    -45,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     10,
+     28
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 5,
+      "radius": 1.2,
+      "height": 0.5,
+      "colour": "#d9d4c6",
+      "topScale": 0.8
+     }
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 7,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 12,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 9,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3
+    ],
+    "height": 24,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 10,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 14,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 8,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    112,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 6,
+    "colour": "#9fb2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-33711256"
+}

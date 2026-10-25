@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/468322535",
+   "used": "footprint 16 x 12 m (containing the venue point)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "room",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c8a0",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "bands": "#f2f0ea",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a3f",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.4,
+    "height": 2.6,
+    "colours": [
+     "#f2f0ea",
+     "#a9c8a0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 2.6,
+    "colour": "#f2f0ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline only, green walls and rust roof taken from the brief style. Verandah and sign are guesses."
+ }
+}

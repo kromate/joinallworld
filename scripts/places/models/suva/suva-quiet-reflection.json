@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/656339144",
+   "used": "real cruciform/zig-zag church outline about 53 x 29 m, named match, building=cathedral"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "large gabled Catholic cathedral, flat-fronted facade, separate bell tower, cream render, red corrugated roof, arched windows; Sacred Heart Cathedral deliberately not copied"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "fit": 70
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "bands": "#9fbfd6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3412f",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    26,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 22,
+    "cap": "pyramid",
+    "cap_height": 5,
+    "colour": "#efe9da",
+    "cap_colour": "#a3412f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 2.0,
+    "count": 5,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.4,
+    "kind": "wall",
+    "pillarEvery": 8,
+    "colour": "#efe9da"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.4,
+    "colour": "#9fbfd6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; gable roof fitted to bounding rectangle of irregular outline; bell tower position typed"
+ }
+}

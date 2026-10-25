@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-way-456252083",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/456252083",
+   "used": "real 13x11 m outline, one-storey, hip roof tag-level facts from brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "fit": 14
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "bands": "#7fa6bd",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0452f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b0452f",
+    "material": "metal-sheet",
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -6.6,
+    2.9
+   ],
+   "params": {
+    "size": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.0,
+    "colour": "#7fa6bd",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM outline with hip roof and red cross plate typed from brief"
+ }
+}

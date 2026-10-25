@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/562915545",
+   "used": "real 42 x 42 m footprint of the Asamblea Legislativa (name match, Wikidata Q1812873)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Legislative_Assembly_of_El_Salvador",
+   "used": "seat of the unicameral legislature, 1970s modernist civic block, flags and a front stair"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-body",
+   "footprint": {
+    "osm": true
+   },
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#c7c2b0",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -23
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2bd",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "overhang": 1.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 7,
+    "columns": 6,
+    "pediment": false,
+    "steps": 5,
+    "colour": "#f0ece0",
+    "roofColour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#1f4e9c",
+     "#ffffff"
+    ],
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building: outline is the real OSM footprint, facade and portico are typed civic-modernist guesses."
+ }
+}

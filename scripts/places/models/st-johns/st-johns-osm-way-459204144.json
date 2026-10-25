@@ -1,0 +1,436 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-way-459204144",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/459204144",
+   "used": "real 194 x 184 m park polygon (name-matched) as the grass field"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/st-johns.json#st-johns-osm-way-459204144",
+   "used": "playing field with floodlights, small shelter and kiosk, fence; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "field",
+   "params": {
+    "points": [
+     [
+      -57.4,
+      -35.9
+     ],
+     [
+      -53.5,
+      2.5
+     ],
+     [
+      -44.6,
+      43.0
+     ],
+     [
+      -40.3,
+      57.9
+     ],
+     [
+      -38.5,
+      63.0
+     ],
+     [
+      -30.4,
+      59.6
+     ],
+     [
+      -27.1,
+      66.8
+     ],
+     [
+      3.7,
+      55.7
+     ],
+     [
+      24.4,
+      48.7
+     ],
+     [
+      41.6,
+      43.9
+     ],
+     [
+      40.3,
+      26.2
+     ],
+     [
+      53.0,
+      23.4
+     ],
+     [
+      51.5,
+      -63.0
+     ],
+     [
+      19.1,
+      -56.2
+     ],
+     [
+      -17.6,
+      -46.7
+     ],
+     [
+      -51.4,
+      -38.6
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#7aa05a",
+    "topColour": "#79a057"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "football-pitch",
+   "id": "pitch",
+   "at": [
+    0,
+    -3,
+    0.25
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 70,
+    "width": 45,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    -32,
+    0.2
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38,
+    30,
+    0.2
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    40,
+    -20,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -42,
+    24,
+    0.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "gable",
+    "rise": 1.4,
+    "colour": "#e8e4d6",
+    "cap_colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -36
+     ],
+     [
+      -32,
+      -24
+     ],
+     [
+      -32,
+      24
+     ]
+    ],
+    "width": 2.5,
+    "colour": "#b4a98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.4,
+      -35.9
+     ],
+     [
+      -53.5,
+      2.5
+     ],
+     [
+      -44.6,
+      43.0
+     ],
+     [
+      -40.3,
+      57.9
+     ],
+     [
+      -38.5,
+      63.0
+     ],
+     [
+      -30.4,
+      59.6
+     ],
+     [
+      -27.1,
+      66.8
+     ],
+     [
+      3.7,
+      55.7
+     ],
+     [
+      24.4,
+      48.7
+     ],
+     [
+      41.6,
+      43.9
+     ],
+     [
+      40.3,
+      26.2
+     ],
+     [
+      53.0,
+      23.4
+     ],
+     [
+      51.5,
+      -63.0
+     ],
+     [
+      19.1,
+      -56.2
+     ],
+     [
+      -17.6,
+      -46.7
+     ],
+     [
+      -51.4,
+      -38.6
+     ],
+     [
+      -57.4,
+      -35.9
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "mesh",
+    "colour": "#8a8d90"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -51,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -49,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27,
+    57,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    54,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    49,
+    -57,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -54,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline real, pitch, floodlights, shelter and kiosk positions typed from the brief."
+ }
+}

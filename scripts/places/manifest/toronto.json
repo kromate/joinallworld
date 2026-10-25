@@ -1,0 +1,536 @@
+{
+ "schema": "allworld-place-models",
+ "version": 1,
+ "city": "toronto",
+ "atlas": {
+  "url": "/assets/places/trim-e7a4676b261e7dfcdc74397467ea89aa344f6b714d3aa3210fb16cf80465aaff.webp",
+  "sha256": "e7a4676b261e7dfcdc74397467ea89aa344f6b714d3aa3210fb16cf80465aaff"
+ },
+ "venues": {
+  "toronto-airport-toronto-airport": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "f0321cc993b6df77ebf8a0e7f3373054c32b87453bcf2484f21215e151f6cc5c",
+    "bytes": 192028,
+    "brotliBytes": 53208,
+    "triangles": 17039
+   },
+   "lod1": {
+    "sha256": "12a30b4c7f6cd9b072a38ccf0f4e7ea733237ba20ca68f56c099c8075bf6bf6e",
+    "bytes": 45940,
+    "brotliBytes": 15623,
+    "triangles": 3652
+   },
+   "lod2": {
+    "sha256": "289c8500b1c4b0ee58abe6b7301b2d5cd1e71361e1668b2cde8ecec9b600833f",
+    "bytes": 4616,
+    "brotliBytes": 2049,
+    "triangles": 258
+   }
+  },
+  "toronto-clinic": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "a398842e293d1b743a2041f9ae707a13ea8e825a09d305a5baf7172b5b67bb00",
+    "bytes": 236864,
+    "brotliBytes": 46451,
+    "triangles": 19305
+   },
+   "lod1": {
+    "sha256": "abb7c121afa0fa33da51a6cfc177e59aa42a2c440f9a67826a187360020d664f",
+    "bytes": 44164,
+    "brotliBytes": 14820,
+    "triangles": 3546
+   },
+   "lod2": {
+    "sha256": "18bd0a73929cd1d856236654fd71a6c489b0e61c59c6b337a45bb956df37e09e",
+    "bytes": 4928,
+    "brotliBytes": 1902,
+    "triangles": 224
+   }
+  },
+  "toronto-community-notices": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "f65160fe070befe4c30351f38d7ca0a56d93ab5833d4d02abee5acbabdf4efd4",
+    "bytes": 242436,
+    "brotliBytes": 47060,
+    "triangles": 18549
+   },
+   "lod1": {
+    "sha256": "a148dbe4c6aa102aadbc9962b1f7ae3267f72fffde13a1784574ae26d3ae376f",
+    "bytes": 34572,
+    "brotliBytes": 11713,
+    "triangles": 2808
+   },
+   "lod2": {
+    "sha256": "5e6ca78b4a8f891b38baf73a26b3b99236a48cbf635dfd0e67f0d5f5f9407878",
+    "bytes": 6304,
+    "brotliBytes": 2166,
+    "triangles": 366
+   }
+  },
+  "toronto-community-voting-game": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "cfabfa230b7a5a85473e1a9275120a8363578d9f613b9ab08248863a1c6083fd",
+    "bytes": 153284,
+    "brotliBytes": 39082,
+    "triangles": 12393
+   },
+   "lod1": {
+    "sha256": "737d37226a618e51fce276b0c66f410e13ad8a74bb3f29a1a8890031f7fd60a6",
+    "bytes": 37808,
+    "brotliBytes": 12881,
+    "triangles": 2931
+   },
+   "lod2": {
+    "sha256": "0e1c3cf9f77bd4ecf67239f5a42e5bdf6a8615416bfe32320115e641af0e79f1",
+    "bytes": 4492,
+    "brotliBytes": 1717,
+    "triangles": 192
+   }
+  },
+  "toronto-community-workshop": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "6c1860b4ae6b8901d43bd279dabc015a2283ea1a89b6fa064bc99310c62b0070",
+    "bytes": 245528,
+    "brotliBytes": 63755,
+    "triangles": 18080
+   },
+   "lod1": {
+    "sha256": "50726898cd40ab29559539d26c63b6e7f10f3bc8838744a44137c663710a4c5d",
+    "bytes": 41696,
+    "brotliBytes": 16775,
+    "triangles": 3338
+   },
+   "lod2": {
+    "sha256": "0c034c452178c6a958b16a81189e92925421717ed3b03ee952eb437cac741dc1",
+    "bytes": 4296,
+    "brotliBytes": 1846,
+    "triangles": 157
+   }
+  },
+  "toronto-market-game": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "d213483534f692ee754c6aba304eabceef0bb912f34238cfc9aae2f556792051",
+    "bytes": 111992,
+    "brotliBytes": 51141,
+    "triangles": 8443
+   },
+   "lod1": {
+    "sha256": "8189e90e1bce83b41c155aaa44dbe5d9329be186b25e3b7c58dd9c8c923e0607",
+    "bytes": 31244,
+    "brotliBytes": 16039,
+    "triangles": 2291
+   },
+   "lod2": {
+    "sha256": "8478b38f6d0163ed1b5ac30573ab1f06f1f5aff41dbef3036cc96917813be4da",
+    "bytes": 6108,
+    "brotliBytes": 2720,
+    "triangles": 375
+   }
+  },
+  "toronto-meal-stop": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "6b382a38f510df09369995b9619ec4d4398319728df2ebc5650f4276a883b630",
+    "bytes": 64460,
+    "brotliBytes": 25160,
+    "triangles": 4875
+   },
+   "lod1": {
+    "sha256": "6e9b2edade5e69324fd5cc10747a5d96ce267df8ccabf6c6d3e216c49cbe9b54",
+    "bytes": 14264,
+    "brotliBytes": 6884,
+    "triangles": 859
+   },
+   "lod2": {
+    "sha256": "e6893bc151f9f6cff0cbf0d96348cd38a22e451e85a513f57c273bc77a74d967",
+    "bytes": 4284,
+    "brotliBytes": 1647,
+    "triangles": 148
+   }
+  },
+  "toronto-osm-node-2424870841": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "0bb08ccd340594c7b62bf439f18c5691c0746fcdb76fca657865653473c6b4e0",
+    "bytes": 64280,
+    "brotliBytes": 21436,
+    "triangles": 5156
+   },
+   "lod1": {
+    "sha256": "4905e9269dd672919d33c95e73c0a996926b7fe416a427761b6d28f7ef921bd4",
+    "bytes": 31824,
+    "brotliBytes": 13708,
+    "triangles": 2353
+   },
+   "lod2": {
+    "sha256": "eef14765d97d24538b7e6c0d5e8fbac7e5249cfb04dce08cfa42b1c4bb652d86",
+    "bytes": 6288,
+    "brotliBytes": 2543,
+    "triangles": 366
+   }
+  },
+  "toronto-osm-node-5369170123": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "885de210110fa98514360977948afa61f1aefe2ee638750e4fa659ff92cf1b55",
+    "bytes": 26548,
+    "brotliBytes": 11399,
+    "triangles": 1807
+   },
+   "lod1": {
+    "sha256": "73875566d065de5ab8e68ab14b1660d1009a2341d51f88c17c22d9c3e248b49d",
+    "bytes": 9644,
+    "brotliBytes": 4493,
+    "triangles": 477
+   },
+   "lod2": {
+    "sha256": "92264236f839e4a13c32ac4888a37f6560e9a030c360b352c910202607ec17e0",
+    "bytes": 5168,
+    "brotliBytes": 1940,
+    "triangles": 228
+   }
+  },
+  "toronto-osm-relation-11005099": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "38e583a6d5aae2da3f8d7bdd593f813cbeb26df9e43ad51650f9b6886af46697",
+    "bytes": 73092,
+    "brotliBytes": 29499,
+    "triangles": 5291
+   },
+   "lod1": {
+    "sha256": "93cf2bf422850aaae5c56d098e2f8aa68c2bc37597bede5695c020de3d7d69eb",
+    "bytes": 44964,
+    "brotliBytes": 19672,
+    "triangles": 2991
+   },
+   "lod2": {
+    "sha256": "971a4c0d756ed4b1a27e7b004810eede0498f82ec5729eb938885ac70877529a",
+    "bytes": 5680,
+    "brotliBytes": 2524,
+    "triangles": 354
+   }
+  },
+  "toronto-osm-way-299944185": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "c573c656fda4697f09066d34b6f9e28b24692d97d9826a6bfab0cde422a394cc",
+    "bytes": 146448,
+    "brotliBytes": 28841,
+    "triangles": 12503
+   },
+   "lod1": {
+    "sha256": "4c6daff9f5e77b66b1cfefb95bb15be7412c03ba908e3f7ba78889d98951fd6f",
+    "bytes": 37752,
+    "brotliBytes": 11502,
+    "triangles": 3056
+   },
+   "lod2": {
+    "sha256": "906065d6aa011c1b46cd47bead84e6fb9716f5e639454529184e56a0e00153c0",
+    "bytes": 4400,
+    "brotliBytes": 1621,
+    "triangles": 174
+   }
+  },
+  "toronto-osm-way-30082934": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "eec86d1d8951b5d63dee7672c0e4504baefe5c983c7ce855c957f2d2b1085d40",
+    "bytes": 149824,
+    "brotliBytes": 62160,
+    "triangles": 12229
+   },
+   "lod1": {
+    "sha256": "f968ee09130a01ad9f21be16b8da7700770adf74848dbcbb9a209648ba0266a6",
+    "bytes": 40932,
+    "brotliBytes": 18368,
+    "triangles": 3244
+   },
+   "lod2": {
+    "sha256": "3a4231270b5bab37aaa49825814da1ff645656530d954d72f2ffe84b6aa735b6",
+    "bytes": 4920,
+    "brotliBytes": 2072,
+    "triangles": 239
+   }
+  },
+  "toronto-osm-way-33711256": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "c10669a8b15be5bcfec3cf426463cb448b711a43b60e94582d2b7c177eb1abf9",
+    "bytes": 115788,
+    "brotliBytes": 41191,
+    "triangles": 9584
+   },
+   "lod1": {
+    "sha256": "1ead9aaedd5a05d60c5416eb6338d912368f6ab98882af6e4e62e871244db961",
+    "bytes": 41912,
+    "brotliBytes": 18392,
+    "triangles": 3273
+   },
+   "lod2": {
+    "sha256": "e43ebbb23e5293344bc5c2f3a03892767dfab37041b8d0ce4d48a3028ea06e3b",
+    "bytes": 4216,
+    "brotliBytes": 1582,
+    "triangles": 167
+   }
+  },
+  "toronto-osm-way-35545706": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "431a7f6381548f82cd92ce6e06052d1b7d49e14ee09466867c12f2634990a45d",
+    "bytes": 122836,
+    "brotliBytes": 39205,
+    "triangles": 10739
+   },
+   "lod1": {
+    "sha256": "dbbeddef6450543fe763aeb557bd60f162dfabf00dbaa5c4a66c4a4fac0d476d",
+    "bytes": 44324,
+    "brotliBytes": 17935,
+    "triangles": 3785
+   },
+   "lod2": {
+    "sha256": "fe1b90f18f0e6bfaae7d16ef3b348781e4d96bf69ae128695ef7719d233a2057",
+    "bytes": 4440,
+    "brotliBytes": 1773,
+    "triangles": 186
+   }
+  },
+  "toronto-osm-way-60483157": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "8249127aee794ad62108f6984dfaa807323a98f3c5071a1666c6835888135b44",
+    "bytes": 86112,
+    "brotliBytes": 37683,
+    "triangles": 6438
+   },
+   "lod1": {
+    "sha256": "18089699cb2a69f8c5c7f268f1c553685705effea906e8ddced164eda298ebf8",
+    "bytes": 15692,
+    "brotliBytes": 6646,
+    "triangles": 1008
+   },
+   "lod2": {
+    "sha256": "1d08d10afe60c68132fe15b11204732acd0d898334b25e90102b7d7a5d408c6f",
+    "bytes": 2972,
+    "brotliBytes": 966,
+    "triangles": 34
+   }
+  },
+  "toronto-osm-way-61956858": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "1c05e7c3cb6f3896625b374e2c644c2bf4d688ac6265fb9747e0336c1c78b807",
+    "bytes": 105680,
+    "brotliBytes": 39441,
+    "triangles": 7916
+   },
+   "lod1": {
+    "sha256": "f4c50ffc146516a320bc73173bcd1386effdb18a23f531cbc92c50418220df93",
+    "bytes": 28716,
+    "brotliBytes": 10732,
+    "triangles": 1857
+   },
+   "lod2": {
+    "sha256": "07998fb646481bae0d53610f90421114f65af7bed794cdb224e90ecd1f5f3e48",
+    "bytes": 4108,
+    "brotliBytes": 1693,
+    "triangles": 136
+   }
+  },
+  "toronto-osm-way-656128849": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "75bd1c670ac61de81989114cde28fd183e7b697e8160f6c823e09cb698b0804d",
+    "bytes": 61064,
+    "brotliBytes": 28922,
+    "triangles": 4189
+   },
+   "lod1": {
+    "sha256": "f97ac37488f861ebec7a9423f6e13700c3c411372d27e46b1af13a2ae49c7a42",
+    "bytes": 20928,
+    "brotliBytes": 10526,
+    "triangles": 1250
+   },
+   "lod2": {
+    "sha256": "cee2b93a8860ca75db51cd1daf6d05b42a6bea2f5ddc7eb28ea0199d7e5302f5",
+    "bytes": 4360,
+    "brotliBytes": 1831,
+    "triangles": 148
+   }
+  },
+  "toronto-osm-way-661050155": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "6691323f432ff0a14d69e3a75b3c74b3b6c1f4992d30188058833fbfa5273453",
+    "bytes": 205184,
+    "brotliBytes": 41961,
+    "triangles": 18035
+   },
+   "lod1": {
+    "sha256": "b1a3e26cb647163982f79da9ac172dccbd1e3158a6ed15cf98c8464a260b0c78",
+    "bytes": 45692,
+    "brotliBytes": 12324,
+    "triangles": 3847
+   },
+   "lod2": {
+    "sha256": "6001bc74e590d4bfd154a13f6c4b65bf95855921aa14da8266e19a73a85dd548",
+    "bytes": 4420,
+    "brotliBytes": 1585,
+    "triangles": 184
+   }
+  },
+  "toronto-osm-way-681295729": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "d5f0e017e6f47e87f9e21a94d4293a22365b576cf31f7eee33503907c338bc04",
+    "bytes": 247132,
+    "brotliBytes": 66691,
+    "triangles": 19340
+   },
+   "lod1": {
+    "sha256": "e657b13c37683e76c7996167781f21db596515a9eae630be385e837786132343",
+    "bytes": 47924,
+    "brotliBytes": 16997,
+    "triangles": 3545
+   },
+   "lod2": {
+    "sha256": "79224f53daba3402679964ef2a83b8bafebb1d489db1a1b7b1a23c80b9ae9dad",
+    "bytes": 5920,
+    "brotliBytes": 2236,
+    "triangles": 346
+   }
+  },
+  "toronto-osm-way-702100748": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "6c4134d6221ef87efc4710aeb820486c5b622d9978b792385043759ccf21f084",
+    "bytes": 204060,
+    "brotliBytes": 70854,
+    "triangles": 15822
+   },
+   "lod1": {
+    "sha256": "3ae86061a0d9a0e3749ea75590afc58e1db1f9dda2c25a6de43c2abee8699b7f",
+    "bytes": 36048,
+    "brotliBytes": 13715,
+    "triangles": 2503
+   },
+   "lod2": {
+    "sha256": "605daee1149792149504ed95335ba50b95489a03e214ae2d5de522bd172c7284",
+    "bytes": 4592,
+    "brotliBytes": 1947,
+    "triangles": 186
+   }
+  },
+  "toronto-osm-way-703666033": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "477fd36ff6f1c1dac79277c338a8dcd8e885f5ac84ee12efe99aa4b2e59470e5",
+    "bytes": 208044,
+    "brotliBytes": 37816,
+    "triangles": 15831
+   },
+   "lod1": {
+    "sha256": "beccb2db0464ae55082c89c7144e3321b305f964fd87addb0310db54386995e0",
+    "bytes": 34668,
+    "brotliBytes": 11711,
+    "triangles": 2661
+   },
+   "lod2": {
+    "sha256": "94f6320a9e993774ed0e1e13800abb7241a7111cfd962b056b128d7b53ad1a81",
+    "bytes": 5020,
+    "brotliBytes": 1827,
+    "triangles": 238
+   }
+  },
+  "toronto-osm-way-85544826": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "3c679af45ee4d1ebab85a15439b02a938b2a5d25071f633aad4584c6eba4d819",
+    "bytes": 192448,
+    "brotliBytes": 62459,
+    "triangles": 16432
+   },
+   "lod1": {
+    "sha256": "05ac8af6f3a3b155567381174a089c3479ecf404f40f58b8369f6c7c0cfdd8d6",
+    "bytes": 33964,
+    "brotliBytes": 11894,
+    "triangles": 2480
+   },
+   "lod2": {
+    "sha256": "52835fc6d05a7039477d1b00f5be2e753b3c1e3c952950a148fd8caad7019ad7",
+    "bytes": 4332,
+    "brotliBytes": 1757,
+    "triangles": 162
+   }
+  },
+  "toronto-quiet-reflection": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "0b5abc0080d4630227e675a3961b8f6fb4c7df499ee8ebdb15285e69b2762144",
+    "bytes": 98676,
+    "brotliBytes": 41031,
+    "triangles": 8036
+   },
+   "lod1": {
+    "sha256": "228fdd4dd9f9d3fc01817164550e4909c8dc5f05352261a1ccbcc04e637f9fb6",
+    "bytes": 26044,
+    "brotliBytes": 9792,
+    "triangles": 1648
+   },
+   "lod2": {
+    "sha256": "edf5e50577ebd24bd752b3397c8f2b622572224d823bc3a42067b405e9f85db7",
+    "bytes": 4368,
+    "brotliBytes": 1782,
+    "triangles": 158
+   }
+  },
+  "toronto-recreation": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "fe234648968965d9ba9e82a5248341d0702973d247943d4524be099a3df163f4",
+    "bytes": 201900,
+    "brotliBytes": 51295,
+    "triangles": 18658
+   },
+   "lod1": {
+    "sha256": "779dcb73c572b644327094a45013686ce3ab553ccc6f6192e8becc32791931f1",
+    "bytes": 39284,
+    "brotliBytes": 15603,
+    "triangles": 3372
+   },
+   "lod2": {
+    "sha256": "6e7d7f4434a5fcfb9da746658036c844a8a067217608322e181f8432ce7d56dd",
+    "bytes": 4192,
+    "brotliBytes": 1452,
+    "triangles": 140
+   }
+  },
+  "toronto-transit": {
+   "archetype": "compose",
+   "lod0": {
+    "sha256": "59446d85eb10eacead2b46d45dca78c117acb6734cf4a15d367b2efe86e6fb89",
+    "bytes": 243112,
+    "brotliBytes": 37337,
+    "triangles": 19686
+   },
+   "lod1": {
+    "sha256": "544a34c297a56bbba15d5f4e7f92c283b8eff4a16c83d3767fb1cbf33790e417",
+    "bytes": 39944,
+    "brotliBytes": 12076,
+    "triangles": 3156
+   },
+   "lod2": {
+    "sha256": "06c2b87a71ffee156a8777fe3b086358c7cc2c01500cc14d87ee8f93074266f7",
+    "bytes": 4300,
+    "brotliBytes": 1568,
+    "triangles": 172
+   }
+  }
+ }
+}

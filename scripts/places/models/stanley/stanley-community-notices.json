@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gilbert-House.jpg",
+   "licence": "Public domain",
+   "author": "Apcbg",
+   "view": "front",
+   "file": "/tmp/places-evidence/stanley/gilbert.jpg",
+   "used": "white timber-clad long single-and-a-half storey house, green corrugated gabled roof with a white end gable, central glazed porch with green lean-to, white chimney, low white post-and-rail fence, flagpole"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/211749548",
+   "used": "footprint 18 x 12 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.47,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     17,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f2ec",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f8f66",
+    "material": "corrugated",
+    "pitch": 42,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    9.5,
+    2.5
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f2ec",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f8f66",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.2,
+     2
+    ]
+   },
+   "at": [
+    -1,
+    -4.6
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f2ec",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6fae8a",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -1,
+    1,
+    5.2
+   ],
+   "params": {
+    "width": 1,
+    "height": 2,
+    "pots": 0,
+    "colour": "#f0efe9"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2c4a8c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fence is posts only, no white rails; no window sash detail, wall timber texture too grey; wing/porch positions approximate"
+ }
+}

@@ -1,0 +1,427 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KiribatiParliamentHouse.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jopolopy",
+   "view": "front",
+   "file": "/tmp/places-evidence/tarawa/parl.jpg",
+   "used": "pale mint concrete, steep pointed central gable with dark edge and deep overhang, two leaning sail-shaped fins, low hip porch with red-brown glazing, flagpole, pale paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/541856638",
+   "used": "overall size (45 x 28 m); outline not used, plan composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 28,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a9c7b8",
+    "topColour": "#8ea79b",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       26,
+       20
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       25.5,
+       20
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       21,
+       20
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       13,
+       20
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       5,
+       20
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       0.6,
+       20
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -12.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d2c6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "glassColour": "#7a4a3c",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f9a8c",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -46,
+    8
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c3d9cd",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#5b5f66",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab8b0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    47,
+    8
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c3d9cd",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "glassColour": "#5b5f66",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab8b0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -21,
+    -4,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#c4dccf",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       15,
+       1.6
+      ],
+      "cx": 0
+     },
+     {
+      "z": 5.75,
+      "rect": [
+       10.5,
+       1.6
+      ],
+      "cx": -1.3
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       5.5,
+       1.6
+      ],
+      "cx": -3.6
+     },
+     {
+      "z": 17.25,
+      "rect": [
+       0.7,
+       1.6
+      ],
+      "cx": -7
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    21,
+    -4,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#c4dccf",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       15,
+       1.6
+      ],
+      "cx": 0
+     },
+     {
+      "z": 5.75,
+      "rect": [
+       10.5,
+       1.6
+      ],
+      "cx": 1.3
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       5.5,
+       1.6
+      ],
+      "cx": 3.6
+     },
+     {
+      "z": 17.25,
+      "rect": [
+       0.7,
+       1.6
+      ],
+      "cx": 7
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    27,
+    -16,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#6f7a74",
+    "sections": [
+     {
+      "z": 3,
+      "rect": [
+       4,
+       0.3
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       3.2,
+       0.3
+      ],
+      "cx": -0.2
+     },
+     {
+      "z": 10,
+      "rect": [
+       1.6,
+       0.3
+      ],
+      "cx": -1.2
+     },
+     {
+      "z": 11.2,
+      "rect": [
+       0.4,
+       0.3
+      ],
+      "cx": -2
+     }
+    ],
+    "capBottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 0.5,
+    "colour": "#b8b4aa"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "colour": "#c8d0d4",
+    "count": 1
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    21,
+    -4.9,
+    0
+   ],
+   "params": {
+    "colour": "#7a8a82",
+    "curve": true,
+    "sections": [
+     {
+      "z": 3,
+      "rect": [
+       12,
+       0.2
+      ],
+      "cx": 0.9
+     },
+     {
+      "z": 8,
+      "rect": [
+       7,
+       0.2
+      ],
+      "cx": 2.9
+     },
+     {
+      "z": 13,
+      "rect": [
+       2.5,
+       0.2
+      ],
+      "cx": 5.6
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "central roof is a stepped cone approximating the swept gable (no crest, no overhang curve); fins lack open glazed bases and diagonal struts; wing boxes pushed back"
+ }
+}

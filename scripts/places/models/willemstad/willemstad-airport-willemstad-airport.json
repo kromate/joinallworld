@@ -1,0 +1,384 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Curacao_International_Airport_New_Terminal.jpg",
+   "licence": "CC BY-SA (Commons)",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/willemstad/air1.jpg",
+   "used": "landside entrance: curved-roof grey metal-panel gable head, louvre-screened glazed upper floor, white slab canopy band, glazed ground floor, terracotta paving, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Airport_and_control_tower_at_the_Cura\u00e7ao_International_Airport_(CUR).jpg",
+   "licence": "CC BY-SA (Commons)",
+   "author": "Commons contributor",
+   "view": "back",
+   "used": "yellow and white control tower with yellow cab, long two-level airside front with ribbon glazing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hato_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "used": "low scrub setting, long runway beside the sea"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.54,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-hall",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f80",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain"
+    },
+    "bay": 2.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0ee",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "canopy",
+   "at": [
+    2,
+    -16.5,
+    6.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 120,
+    "depth": 5.5,
+    "height": 0,
+    "thickness": 1.4,
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-louvre",
+   "footprint": {
+    "rect": [
+     70,
+     24
+    ]
+   },
+   "at": [
+    30,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 6.2,
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8a86",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ],
+     "colour": "#f2f2ee"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0ee",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "head",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b4babe",
+    "windows": "none",
+    "bands": "#9aa1a6",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left"
+     ],
+     "colours": [
+      "#b4babe",
+      "#a9b0b5"
+     ]
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#f4f4f0",
+    "curve": "arch",
+    "rise": 5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "head-edge",
+   "params": {
+    "rect": [
+     36,
+     32
+    ],
+    "z0": 22,
+    "height": 0.9,
+    "colour": "#f4f4f0"
+   },
+   "at": [
+    -26,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "paving",
+   "params": {
+    "rect": [
+     120,
+     24
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#c98a6a"
+   },
+   "at": [
+    2,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "fin-hi",
+   "params": {
+    "rect": [
+     68,
+     1.6
+    ],
+    "z0": 11.6,
+    "height": 0.25,
+    "colour": "#f2f2ee"
+   },
+   "at": [
+    30,
+    -11.2,
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "fin-lo",
+   "params": {
+    "rect": [
+     68,
+     1.6
+    ],
+    "z0": 9.0,
+    "height": 0.25,
+    "colour": "#f2f2ee"
+   },
+   "at": [
+    30,
+    -11.2,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    -44,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3da",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    12,
+    22,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#f1f1ec",
+    "shaftRadius": 3.2,
+    "cabRadius": 6,
+    "cabColour": "#e5b92e",
+    "bandColour": "#e5b92e"
+   }
+  },
+  {
+   "type": "core/array",
+   "id": "bridges",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/jet-bridge",
+     "params": {
+      "length": 14
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     10,
+     16
+    ],
+    "end": [
+     55,
+     16
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -24
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -22
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -28
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "head roof is a plain arch (no diagonal cut end), louvre fins on upper floor are thin, no handrails or ATM kiosk, no signage, annex and tower positions inferred"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-airport-willemstad-airport"
+}

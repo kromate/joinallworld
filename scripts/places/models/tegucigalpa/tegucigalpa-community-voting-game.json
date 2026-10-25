@@ -1,0 +1,184 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/542906181",
+   "used": "size only (35 x 14 m); matched polygon is the neighbouring plaza church so it was NOT used as the outline"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/tegucigalpa.json",
+   "used": "single-storey colonial whitewashed municipal hall, clay-tile hip roof, arched porch, flags on the plaza (typical Honduran alcaldia; no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ece0",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#d9b36b",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 3.8,
+    "thickness": 2.6,
+    "bays": 6,
+    "shape": "round",
+    "recess": 0.8,
+    "roof": true,
+    "colour": "#f0ece0",
+    "trim": "#d9b36b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-gable",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -5.5
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ece0",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -8.4,
+    2.2
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#8c5a3f",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -13,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    13,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 32
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or description of this town hall; shape is a typical Honduran colonial municipal hall sized from the neighbouring OSM building."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-community-voting-game"
+}

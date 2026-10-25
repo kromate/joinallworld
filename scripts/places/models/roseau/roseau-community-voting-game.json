@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/271661481",
+   "used": "real 18 x 9.6 m outline (townhall tag)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: village community centre, cream render, green corrugated gable roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true,
+    "fit": 20
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#7a8f5a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a52",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3,
+    "height": 3,
+    "columns": 3,
+    "colour": "#ffffff",
+    "edgeColour": "#7a8f5a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -9,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#7a8f5a",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   45,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; colours and gable form from the city style, outline is real"
+ }
+}

@@ -1,0 +1,172 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/558583652",
+   "used": "8.6 x 5 m named hospital building; plot area 3583 m2 used for extra wards"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1065417644",
+   "used": "site area"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-ward",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#8fb6c9"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-ward",
+   "footprint": {
+    "rect": [
+     8.6,
+     5
+    ]
+   },
+   "at": [
+    -18,
+    10
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    19,
+    12
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    -2,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "round": false,
+    "colour": "#f2f0ea",
+    "roofColour": "#a8aeb2"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    6,
+    -4.6,
+    2.2
+   ],
+   "params": {
+    "size": 1.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   80,
+   55
+  ],
+  "forecourt": "road"
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; wards beyond the real 9 x 5 m building and canopy are assumed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-1065417644"
+}

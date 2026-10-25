@@ -1,0 +1,651 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/",
+   "used": "nearest OSM building is the 1980 Estrella Polar hostel (about 34 x 10 m, 5 m away); the recreation area itself is a game placeholder with no photo, so only its brief (40 x 30 m gravel and snow area, fence, sign board, flags) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists for this placeholder venue; layout (court, goals, hut) is a plausible reading of the brief, not a surveyed plan"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "gravel-pad",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     28
+    ],
+    "height": 0.12,
+    "colour": "#4a4744",
+    "topColour": "#4a4744",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-edge-n",
+   "at": [
+    0,
+    13.2,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     38,
+     2.5
+    ],
+    "height": 0.25,
+    "colour": "#e8ecee",
+    "topColour": "#f2f5f6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-edge-s",
+   "at": [
+    -6,
+    -13.4,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     22,
+     2
+    ],
+    "height": 0.2,
+    "colour": "#e8ecee",
+    "topColour": "#f2f5f6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-line-a",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-line-b",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     14
+    ],
+    "height": 0.03,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-rect-s",
+   "at": [
+    0,
+    -7,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-rect-n",
+   "at": [
+    0,
+    7,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "centre-ring",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e3b93b",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      0.03
+     ],
+     [
+      2.45,
+      0.03
+     ],
+     [
+      2.45,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "goal-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 2.4,
+      "colour": "#e8ecee",
+      "topColour": "#e8ecee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12.8,
+     -1.6,
+     0.12
+    ],
+    "end": [
+     -12.8,
+     1.6,
+     0.12
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-bar-w",
+   "at": [
+    -12.8,
+    0,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3.45
+    ],
+    "height": 0.2,
+    "colour": "#e8ecee",
+    "topColour": "#e8ecee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "goal-posts-e",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 2.4,
+      "colour": "#e8ecee",
+      "topColour": "#e8ecee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     12.8,
+     -1.6,
+     0.12
+    ],
+    "end": [
+     12.8,
+     1.6,
+     0.12
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-bar-e",
+   "at": [
+    12.8,
+    0,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3.45
+    ],
+    "height": 0.2,
+    "colour": "#e8ecee",
+    "topColour": "#e8ecee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -19,
+      -14,
+      1.1
+     ],
+     [
+      19,
+      -14,
+      1.1
+     ],
+     [
+      19,
+      14,
+      1.1
+     ],
+     [
+      -19,
+      14,
+      1.1
+     ]
+    ],
+    "closed": true,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts-s",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0.12
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 1.2,
+      "colour": "#d9622b",
+      "topColour": "#d9622b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19,
+     -14,
+     0
+    ],
+    "end": [
+     19,
+     -14,
+     0
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts-n",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0.12
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 1.2,
+      "colour": "#d9622b",
+      "topColour": "#d9622b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19,
+     14,
+     0
+    ],
+    "end": [
+     19,
+     14,
+     0
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts-w",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0.12
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 1.2,
+      "colour": "#d9622b",
+      "topColour": "#d9622b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19,
+     -14,
+     0
+    ],
+    "end": [
+     -19,
+     14,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts-e",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0.12
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 1.2,
+      "colour": "#d9622b",
+      "topColour": "#d9622b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     19,
+     -14,
+     0
+    ],
+    "end": [
+     19,
+     14,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "warming-hut",
+   "at": [
+    -13,
+    9.5
+   ],
+   "z0": 0.12,
+   "height": 2.6,
+   "storeys": 1,
+   "footprint": {
+    "rect": [
+     6,
+     2.5
+    ]
+   },
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9622b",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "material": "metal-sheet",
+    "rise": 0.3,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "bench",
+     "at": [
+      0,
+      0,
+      0.12
+     ],
+     "params": {
+      "rect": [
+       2.2,
+       0.5
+      ],
+      "height": 0.45,
+      "colour": "#2f5f9a",
+      "topColour": "#2f5f9a",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5,
+     -11.8,
+     0
+    ],
+    "end": [
+     5,
+     -11.8,
+     0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-post-l",
+   "at": [
+    7.5,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.6,
+    "colour": "#8c9296",
+    "topColour": "#8c9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-post-r",
+   "at": [
+    11.5,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.6,
+    "colour": "#8c9296",
+    "topColour": "#8c9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    9.5,
+    -14.6,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.18
+    ],
+    "height": 1.0,
+    "colour": "#2f5f9a",
+    "topColour": "#2f5f9a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    15,
+    -14.8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 1.6,
+    "colours": [
+     "#b5352c",
+     "#e8ecee",
+     "#2f5f9a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-airport-road-town-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beef_Island_(2074569801).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Joe Shlabotnik",
+   "view": "front",
+   "file": "/tmp/places-evidence/road-town/airport2.jpg",
+   "used": "airside elevation: long two-storey terminal, a scalloped run of white arched roof bays over a glazed clerestory, white piers, low arcaded wing at the left end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terrance_B_Lettsome_International_Airport.JPG",
+   "licence": "Public domain",
+   "author": "Legis",
+   "view": "street",
+   "file": "/tmp/places-evidence/road-town/airport1.jpg",
+   "used": "landside: blue-grey wall with round porthole windows, white arched canopy bays at the end, rough stone entrance sign wall, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/424714243",
+   "used": "overall size 112 x 60 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     96,
+     26
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e8e8",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 8,
+      "depth": 0.5,
+      "width": 0.6,
+      "colour": "#f4f4f2",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "overhang": 0.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    8,
+    0,
+    9.5
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 98,
+    "depth": 27,
+    "rise": 1.6,
+    "waves": 12,
+    "thickness": 0.6,
+    "colour": "#f4f4f2",
+    "material": "metal-roof"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -52,
+    -2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9cfd2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     70,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -16
+   ],
+   "z0": 4.2,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -18.5,
+     0
+    ],
+    "end": [
+     40,
+     -18.5,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "mass",
+     "id": "pier",
+     "footprint": {
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     "height": 4.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f4f4f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    66,
+    8,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#e4e6e6",
+    "cabColour": "#4d6370",
+    "bandColour": "#c9382f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.8,
+    "bottom": 0,
+    "colour": "#6c7168",
+    "frameColour": "#8a8f86",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1c3f94",
+     "#d8d8d8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 16,
+  "extent": [
+   150,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -32
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -28
+    ],
+    "height": 8
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -4,
+     -34,
+     0
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     10,
+     -34,
+     0
+    ],
+    "colour": "#2a3a58"
+   },
+   {
+    "at": [
+     24,
+     -34,
+     0
+    ],
+    "colour": "#c9c9c9"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "roof scallops are a wave surface, not true arched bays with lunette glazing; tower position and apron lamp mast not matched; west wing arcade simplified"
+ }
+}

@@ -1,0 +1,315 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-osm-way-209298805",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Falkland_Islands_Museum_(15693010410).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "front",
+   "file": "/tmp/places-evidence/stanley/museum1.jpg",
+   "used": "two-storey cedar-shingle gabled block with green roof and black timber balcony and stair, white weatherboard single-storey wing with hipped green roof, small green-roofed sheds, gravel yard, anchor sculpture on a gabion drum"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/209298805",
+   "used": "overall extent (about 21 x 20 m) and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shingle",
+   "footprint": {
+    "rect": [
+     8.5,
+     19
+    ]
+   },
+   "at": [
+    -6,
+    0.5
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#b07050",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "punched",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f6b45",
+    "material": "corrugated",
+    "rise": 3.6,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-wing",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    3.5,
+    -2.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9e7df",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#1f6b45",
+    "material": "corrugated",
+    "rise": 2.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    3.5,
+    6.5
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9e7df",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f6b45",
+    "material": "corrugated",
+    "rise": 2.4,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    7.5,
+    -8
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e4dccb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f6b45",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "params": {
+    "rect": [
+     4.2,
+     1.6
+    ],
+    "z0": 3.0,
+    "height": 0.25,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -6.0,
+    -10.2
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "balcony-rail",
+   "at": [
+    -8.1,
+    -11.0,
+    3.25
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#1f1f1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair",
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      1.2,
+      0
+     ],
+     [
+      1.2,
+      5
+     ],
+     [
+      0,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1f1f1f",
+    "topScale": 1.0
+   },
+   "at": [
+    -1.2,
+    -11.0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "anchor-drum",
+   "at": [
+    -13,
+    -8,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      2.6,
+      0,
+      "#8d8b84"
+     ],
+     [
+      2.6,
+      1.0,
+      "#8d8b84"
+     ],
+     [
+      2.6,
+      1.2,
+      "#a8794e"
+     ],
+     [
+      0.2,
+      1.2,
+      "#a8794e"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "anchor-shaft",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 1.2,
+    "height": 3.6,
+    "colour": "#1a1a1a"
+   },
+   "at": [
+    -13,
+    -8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "anchor-arm",
+   "params": {
+    "rect": [
+     3.8,
+     0.25
+    ],
+    "z0": 4.6,
+    "height": 0.25,
+    "colour": "#1a1a1a"
+   },
+   "at": [
+    -13,
+    -8
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "red-box",
+   "at": [
+    1.5,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 0.6,
+    "height": 1.3,
+    "thickness": 0.5,
+    "colour": "#b02a24"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "shingle texture is plain timber boards; no gravel yard texture (asphalt stand-in); sheds, phone box, pier and the long shingle flank are approximate; stair is a flat strip"
+ }
+}

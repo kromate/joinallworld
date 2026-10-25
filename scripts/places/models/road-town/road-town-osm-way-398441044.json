@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-way-398441044",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/398441044",
+   "used": "no photo of this place found on Commons or Wikidata; named marketplace outline 9.7 x 9.3 m used as the kiosk footprint; painted-timber look, shed roof, stalls and umbrellas follow the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8b4a6",
+    "windows": "none",
+    "bands": "#7cc4c0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#7cc4c0",
+     "#f2d98a",
+     "#e8b4a6",
+     "#c8483f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    9,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 2.5,
+    "colours": [
+     "#7cc4c0",
+     "#f2d98a"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural-board",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7cc4c0",
+    "windows": "none",
+    "bands": "#f2d98a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2d98a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; kiosk colours and stalls are typed from the brief, only the outline is real"
+ }
+}

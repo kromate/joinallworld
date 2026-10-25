@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-way-292559681",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/292559681",
+   "used": "45 x 33 m parallelogram marketplace outline, bearing 101"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6d1be",
+    "windows": "louvre",
+    "windowRatio": 0.4,
+    "bands": "#a3412f",
+    "plinth": 0.5,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f72",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -9,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a3412f",
+     "#2f6aa0",
+     "#d9a441",
+     "#4f8a3f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -25,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#a3412f",
+     "#efeee8",
+     "#2f6aa0"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 3,
+    "colour": "#a3412f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; stalls and roof typed from the brief"
+ }
+}

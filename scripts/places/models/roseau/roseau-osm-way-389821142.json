@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-osm-way-389821142",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:All_Saints_University_in_Roseau_(1).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Tournasol7",
+   "view": "street",
+   "file": "/tmp/places-evidence/roseau/as1.jpg",
+   "used": "salmon-peach rendered two-storey long block with boarded white window panels, white gable end, flat-roofed entrance porch on slim peach columns with a long white fascia board, white breeze-block panels beside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dominica,_Karibik_-_All_Saints_University_School_of_Medicine_%E2%80%93_Corner_Hillsborough_Steet-_Great_George_Street_-_panoramio.jpg",
+   "licence": "see Commons",
+   "author": "panoramio contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/roseau/as2.jpg",
+   "used": "earlier look: pale yellow walls with red breeze-block panels, same porch type, silver low-pitch roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/389821142",
+   "used": "37 x 12 m, 2 levels, gabled silver metal roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.17,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     12,
+     37
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a07c",
+    "windows": "punched",
+    "plinth": 0.5,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "plain",
+     "front": "plain"
+    },
+    "windowRatio": 0.12,
+    "windowShape": "rect",
+    "glassColour": "#eeeeea"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfd2d6",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -21
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7a47f",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "colour": "#e8a07c",
+      "backColour": "#2b2b2b",
+      "spacing": 3.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9dce0",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -23.6,
+    2.6
+   ],
+   "params": {
+    "width": 10.5,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#f4f4f2",
+    "frameColour": "#f4f4f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    6.3,
+    -14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 3,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   70,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Porch columns and breeze-block panels simplified; boarded white window panels approximated by pale small windows; signage is a blank board."
+ }
+}

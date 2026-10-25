@@ -1,0 +1,100 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/40654222",
+   "used": "real footprint"
+  },
+  {
+   "kind": "text",
+   "used": "colonial town hall, hip slate roof, painted ochre render per brief; harbour-town palette from aerial photo of Saint-Pierre (File:Saint-Pierre, Saint Pierre and Miquelon, France.jpg, CC BY 4.0)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mairie-osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b84a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f2efe6",
+    "trimColour": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 35,
+    "colour": "#4a4f57",
+    "material": "slate",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "rotDeg": 15,
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building: outline real, facade, colour and storeys typed"
+ }
+}

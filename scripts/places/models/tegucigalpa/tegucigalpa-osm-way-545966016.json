@@ -1,0 +1,503 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-way-545966016",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/545966016",
+   "used": "site outline (176 x 147 m) as the airfield park ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NA-16_FAH-21_EDUARDO_SOSA_2005.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Eduardo Sosa",
+   "view": "side",
+   "file": "/tmp/places-evidence/tegucigalpa/air1.jpg",
+   "used": "open-air display only: a blue NA-16 trainer with white star roundel parked on a corrugated steel mat on grass, yellow trainer beside, hills behind. It shows aircraft, not the hall, so verified stays footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -43.7,
+      -56.9
+     ],
+     [
+      37.8,
+      -49.7
+     ],
+     [
+      59.8,
+      29.0
+     ],
+     [
+      -42.6,
+      66.4
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#7f8a68",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     48,
+     28
+    ]
+   },
+   "at": [
+    -16,
+    25
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b0aca3",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#2f5fa0",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#a8aeb2",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    10.8,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -25,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     70,
+     50
+    ],
+    "height": 0.1,
+    "colour": "#6f7173"
+   },
+   "rotDeg": 10
+  },
+  {
+   "type": "airliner",
+   "at": [
+    30,
+    -18,
+    0.1
+   ],
+   "rotDeg": 100,
+   "params": {
+    "scale": 0.5,
+    "colour": "#d9dcdc",
+    "tailColour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#2f5fa0",
+     "#f2f0ea"
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -25,
+    -8,
+    1.6
+   ],
+   "rotDeg": 20,
+   "params": {
+    "section": {
+     "circle": 0.9
+    },
+    "points": [
+     [
+      -4.0,
+      0,
+      0
+     ],
+     [
+      4.0,
+      0,
+      0
+     ]
+    ],
+    "colour": "#2f5fa0",
+    "n": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -25,
+    -8,
+    1.4
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     2.2,
+     11.0
+    ],
+    "height": 0.25,
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28.38289343482927,
+    -9.231272515972407,
+    1.6
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     1.2,
+     4.0
+    ],
+    "height": 0.2,
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28.47686269690786,
+    -9.265474530304974,
+    1.7
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "height": 2.2,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -35,
+    1.6
+   ],
+   "rotDeg": -15,
+   "params": {
+    "section": {
+     "circle": 0.9
+    },
+    "points": [
+     [
+      -4.0,
+      0,
+      0
+     ],
+     [
+      4.0,
+      0,
+      0
+     ]
+    ],
+    "colour": "#c9c6a0",
+    "n": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -35,
+    1.4
+   ],
+   "rotDeg": -15,
+   "params": {
+    "rect": [
+     2.2,
+     11.0
+    ],
+    "height": 0.25,
+    "colour": "#c9c6a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.477332974640646,
+    -34.06825143763093,
+    1.6
+   ],
+   "rotDeg": -15,
+   "params": {
+    "rect": [
+     1.2,
+     4.0
+    ],
+    "height": 0.2,
+    "colour": "#c9c6a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.573925557269554,
+    -34.04236953312067,
+    1.7
+   ],
+   "rotDeg": -15,
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "height": 2.2,
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    5,
+    -40,
+    1.6
+   ],
+   "rotDeg": 80,
+   "params": {
+    "section": {
+     "circle": 0.9
+    },
+    "points": [
+     [
+      -4.0,
+      0,
+      0
+     ],
+     [
+      4.0,
+      0,
+      0
+     ]
+    ],
+    "colour": "#e0b43a",
+    "n": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -40,
+    1.4
+   ],
+   "rotDeg": 80,
+   "params": {
+    "rect": [
+     2.2,
+     11.0
+    ],
+    "height": 0.25,
+    "colour": "#e0b43a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.374866560399051,
+    -43.545307910843945,
+    1.6
+   ],
+   "rotDeg": 80,
+   "params": {
+    "rect": [
+     1.2,
+     4.0
+    ],
+    "height": 0.2,
+    "colour": "#e0b43a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.3575017426323575,
+    -43.64378868614517,
+    1.7
+   ],
+   "rotDeg": 80,
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "height": 2.2,
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -5,
+    -20,
+    1.6
+   ],
+   "rotDeg": 35,
+   "params": {
+    "section": {
+     "circle": 0.81
+    },
+    "points": [
+     [
+      -3.6,
+      0,
+      0
+     ],
+     [
+      3.6,
+      0,
+      0
+     ]
+    ],
+    "colour": "#9aa3a8",
+    "n": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -20,
+    1.4
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     1.9800000000000002,
+     9.9
+    ],
+    "height": 0.25,
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.654052623496334,
+    -21.85838765377739,
+    1.6
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     1.08,
+     3.6
+    ],
+    "height": 0.2,
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.727776307482342,
+    -21.910009533048985,
+    1.7
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     1.62,
+     0.2
+    ],
+    "height": 1.9800000000000002,
+    "colour": "#2f5fa0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10,
+    "line": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the hall exists; hall shape, colours and aircraft are guesses on the real site outline (drawn at 0.7 scale)."
+ }
+}

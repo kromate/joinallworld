@@ -1,0 +1,323 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Place_du_General_de_Gaulle_square,_St_Pierre.JPG",
+   "licence": "Public domain",
+   "author": "Yu210148",
+   "view": "street",
+   "file": "/tmp/places-evidence/saint-pierre/square.jpg",
+   "used": "paved plaza of grey brick with pale yellow inlay bands, brick planters, globe lamp posts, tall flagpole, fountain at right, colourful two and three storey houses along the far side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1352967166",
+   "used": "square outline (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8e8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a86",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-l",
+   "footprint": {
+    "rect": [
+     18,
+     2.4
+    ]
+   },
+   "at": [
+    -18,
+    -4
+   ],
+   "height": 1.4,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5a34",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-m",
+   "footprint": {
+    "rect": [
+     10,
+     1.8
+    ]
+   },
+   "at": [
+    4,
+    -1
+   ],
+   "height": 1.3,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5a34",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    22
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bands": "#b8a98c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3a",
+    "material": "clay-tile",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-white",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    12,
+    24
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#eeeeea",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#4a4f57",
+    "material": "metal-sheet",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-teal",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    20.5,
+    24
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f7a7c",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#3d4a4e",
+    "material": "metal-sheet",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-blue",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    31,
+    24
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#4b6f9a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3a32",
+    "material": "metal-sheet",
+    "pitch": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-green",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    44,
+    24
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9b8",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#3f6a5a",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -3,
+    3,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fountain-base",
+   "at": [
+    34,
+    8,
+    0
+   ],
+   "params": {
+    "height": 0.6,
+    "thickness": 0.5,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -2,
+      -2
+     ],
+     [
+      2,
+      -2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      -2,
+      2
+     ],
+     [
+      -2,
+      -2
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-way-1352967166",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "outline is a diagonal strip so plaza edges differ; no fountain statue, planter hedges, inlay bands or radio mast; house fronts simplified"
+ }
+}

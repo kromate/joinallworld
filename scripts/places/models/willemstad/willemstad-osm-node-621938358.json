@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-node-621938358",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/462959136",
+   "used": "17 x 10 m visitor cafe outline (nearest match, 16 m, size agrees with the brief)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Hato_Caves",
+   "used": "caves in the limestone terrace on the north coast; Commons photos are cave interiors only so skipped"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b3472f",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -5,
+    34,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 40,
+    "height": 16,
+    "seed": 5,
+    "stairs": false,
+    "boulders": 8,
+    "rock_colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -5,
+    24,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 22,
+    "height": 8,
+    "seed": 9,
+    "stairs": false,
+    "boulders": 4,
+    "rock_colour": "#d4c8a8"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -6,
+    17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 8,
+    "colour": "#c9bfa4"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "colour": "#6e5a44",
+    "board_colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "colour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 4.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    20,
+    22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 14,
+    "count": 8,
+    "min_height": 2.5,
+    "max_height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only cave interiors available; cafe outline real, cliff and entrance typed"
+ }
+}

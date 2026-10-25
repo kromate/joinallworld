@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-way-305168533",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_gonzalez_viquez_sjo.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mariel Morales Montes de Oca",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-jose/cleto.png",
+   "used": "dusk silhouette only: a statue on a tall plinth, a flat-roofed concrete shelter at left, street lamps; too dark to colour-match, so not counted as verification"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/305168533",
+   "used": "plaza outline 73 x 58 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-shelter",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "z0": 0.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d6d2",
+    "windows": "none",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e2",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "plinth_height": 2.4,
+    "colour": "#4a4440",
+    "figure_colour": "#3b3633"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -40,
+      -8
+     ],
+     [
+      -8,
+      -4
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      -8
+     ],
+     [
+      26,
+      -18
+     ]
+    ],
+    "width": 3,
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      14
+     ],
+     [
+      22,
+      28
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -8,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 5,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     8,
+     -12,
+     0.5
+    ],
+    "end": [
+     20,
+     -16,
+     0.5
+    ],
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       3,
+       0.7
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#a9a59c",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b3afa6"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    25,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a dusk silhouette exists; statue, shelter and lamps are placed from it, layout and colours are typical for a San Jose plaza."
+ }
+}

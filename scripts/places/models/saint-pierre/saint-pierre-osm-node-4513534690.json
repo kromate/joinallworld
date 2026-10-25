@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-node-4513534690",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/527302379",
+   "used": "house footprint 8.1 x 7.6 m (contains the point); no photo of Maison Morel was found; ochre clapboard, white trim, gable and steps follow the brief and the island's wooden-house style"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true,
+    "fit": 11.5,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.4,
+   "height": 5.0,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#d98c5a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "trimColour": "#f2efe6",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "pitch": 36,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    1.5,
+    0,
+    5.9
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.6,
+    "pots": 1
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.4,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "salt-shed",
+   "footprint": {
+    "rect": [
+     3.5,
+     2.5
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "z0": 0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8d8f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "rise": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   40,
+   32
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of Maison Morel; colours and details from the brief only, salt-works shed is a guess."
+ }
+}

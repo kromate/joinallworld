@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399684164",
+   "used": "named church outline 29.5 x 13.9 m (bearing 46 deg), no photo found; Wikidata Q23681839 gives the 1957 date"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ea",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "bands": "#b9b2a2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    -13,
+    -11
+   ],
+   "rotDeg": 46,
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ea",
+    "windows": "none",
+    "bands": "#b9b2a2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 40
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -16.5,
+    0
+   ],
+   "rotDeg": 46,
+   "params": {
+    "width": 5,
+    "rise": 0.8,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -13,
+    -11,
+    12
+   ],
+   "params": {
+    "baseWidth": 0.5,
+    "height": 2.5,
+    "shaftHeight": 0.0,
+    "colour": "#f6f3ea",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; real outline and year, white gabled body and short front bell tower typed from the brief"
+ }
+}

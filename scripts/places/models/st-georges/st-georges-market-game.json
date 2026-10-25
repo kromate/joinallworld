@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Gouyave",
+   "used": "weekly Friday street festival of fish stalls along the seafront in Gouyave"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1367666586",
+   "used": "considered and rejected as the footprint: a 67 m2 nearest-match building, not the street festival"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "stall-row-north",
+   "params": {
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 3.2,
+      "depth": 2.4,
+      "drop": 0.4,
+      "height": 2.4,
+      "colours": [
+       "#e5c56a",
+       "#ffffff"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -33,
+     6
+    ],
+    "end": [
+     33,
+     6
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "stall-row-south",
+   "params": {
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 3.2,
+      "depth": 2.4,
+      "drop": 0.4,
+      "height": 2.4,
+      "colours": [
+       "#7fa6bd",
+       "#ffffff"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     -6
+    ],
+    "end": [
+     27,
+     -6
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "grill-shed",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "roof_rise": 0.9,
+    "cladding": "metal-cladding",
+    "goods": "sacks",
+    "roof_colour": "#b0452f",
+    "wall_colour": "#e5c56a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "stage-shed",
+   "at": [
+    30,
+    13,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_rise": 1.5,
+    "cladding": "metal-cladding",
+    "goods": "none",
+    "roof_colour": "#b0452f",
+    "wall_colour": "#7fa6bd"
+   }
+  },
+  {
+   "type": "beach-row",
+   "id": "umbrellas",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 8,
+    "umbrellas": true,
+    "loungers": false,
+    "colours": [
+     "#e5c56a",
+     "#7fa6bd",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "festival-board",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 2.6,
+    "colour": "#7fa6bd",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: street festival typed as two stall rows, two sheds and parasols on asphalt; real layout of Gouyave seafront street unknown."
+ }
+}

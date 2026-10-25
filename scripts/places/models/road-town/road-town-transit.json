@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:British_Virgin_Islands_%E2%80%94_Jost_van_Dyke_%E2%80%94_Great_Harbour_(view_3).JPG",
+   "licence": "CC BY 2.0 de",
+   "author": "Wikimedia Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/road-town/gh3.jpg",
+   "used": "setting only: low beach strip with small low buildings and palms at the head of a turquoise bay, boats moored, steep green hills behind; no photo of the dock itself found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/329515788",
+   "used": "nearest match only (30 m): shelter size ~14 x 9 m only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8b4a6",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#7cc4c0",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f7a58",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "waiting",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 3,
+    "height": 3,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#f6f3ea",
+    "roof_colour": "#3f7a58"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    -5.5,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.2,
+    "bottom": 2.4,
+    "colour": "#7cc4c0",
+    "frameColour": "#f6f3ea",
+    "posts": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "ferry-jetty",
+   "id": "pier",
+   "at": [
+    0,
+    5,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 4.2,
+    "shelter": false,
+    "timber": true
+   }
+  },
+  {
+   "type": "launch-boat",
+   "id": "ferry",
+   "at": [
+    7,
+    22,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 4,
+    "colour": "#f6f3ea",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "sea",
+   "at": [
+    0,
+    22,
+    0.02
+   ],
+   "params": {
+    "width": 70,
+    "depth": 40,
+    "shape": "rect",
+    "colour": "#4fbfc4",
+    "bank": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the dock itself exists; shelter, jetty and ferry are typed from the brief and the beach-strip setting photo; colours (pink walls, green roof) come from the brief."
+ }
+}

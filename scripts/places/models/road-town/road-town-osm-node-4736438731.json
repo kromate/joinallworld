@@ -1,0 +1,316 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cane_Garden_Bay,_Tortola.JPG",
+   "licence": "Public domain",
+   "author": "Legis (en.wikipedia)",
+   "view": "street",
+   "file": "/tmp/places-evidence/road-town/cgb1.jpg",
+   "used": "pale sand crescent, turquoise water, palms at left, steep dark-green forested hills behind, a few small low buildings at the back beach"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TortolaCaneGardenBay.jpg",
+   "licence": "Public domain",
+   "author": "OldPine (Wikivoyage)",
+   "view": "street",
+   "used": "second view of the same bay, not downloaded for comparison"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1186113754",
+   "used": "nearest building 40 x 37 m only to judge scale of the beach bars"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 60
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8b4a6",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   },
+   "id": "bar0",
+   "at": [
+    -30,
+    10
+   ]
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7cc4c0",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   },
+   "id": "bar1",
+   "at": [
+    -6,
+    13
+   ]
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2d98a",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   },
+   "id": "bar2",
+   "at": [
+    24,
+    16
+   ]
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -30,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 5.5,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#e8b4a6",
+     "#7cc4c0",
+     "#f2d98a"
+    ]
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 5.5,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#7cc4c0",
+     "#f6f3ea",
+     "#e8b4a6"
+    ]
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "shelter": false,
+    "timber": true,
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 8,
+    "spread": 14,
+    "colour": "#4d7a5c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 6,
+    "spread": 12,
+    "colour": "#4d7a5c"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12,
+    52,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#2f5a34",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       72,
+       30
+      ]
+     },
+     {
+      "z": 10.4,
+      "ellipse": [
+       57.6,
+       22.5
+      ]
+     },
+     {
+      "z": 20.8,
+      "ellipse": [
+       28.8,
+       10.5
+      ]
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       7.2,
+       3.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    50,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#3a6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       44,
+       26
+      ]
+     },
+     {
+      "z": 6.800000000000001,
+      "ellipse": [
+       35.2,
+       19.5
+      ]
+     },
+     {
+      "z": 13.600000000000001,
+      "ellipse": [
+       17.6,
+       9.1
+      ]
+     },
+     {
+      "z": 17,
+      "ellipse": [
+       4.4,
+       2.6
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Bay is a landscape: three pastel beach bars, umbrella rows, jetty, palms and two lofted forested hills; sea, curved shoreline and long hillside not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-node-4736438731"
+}

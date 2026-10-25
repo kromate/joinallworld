@@ -1,0 +1,424 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-way-193760181",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Padre_Hurtado,_San_Ram%C3%B3n,_Santiago_20240421_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos yo",
+   "view": "front",
+   "file": "/tmp/places-evidence/santiago/hosp0.jpg",
+   "used": "low flat-roofed front wing clad in white and grey vertical panels, shallow canopy over the entrance with a brick-coloured core, taller blue-grey ribbon-glazed ward blocks behind, palm and lawn in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Padre_Hurtado,_San_Ram%C3%B3n,_Santiago_20240421_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos yo",
+   "view": "street",
+   "file": "/tmp/places-evidence/santiago/hosp1.jpg",
+   "used": "low blue-and-white emergency pavilions with flat canopies and ambulance forecourt, blue ward block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/193760181",
+   "used": "campus outline (282 x 275 m) shrunk to 0.34 as the ground plate; block sizes and positions are composed, not surveyed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -49.88,
+      -37.23
+     ],
+     [
+      -41.24,
+      15.2
+     ],
+     [
+      -38.9,
+      30.8
+     ],
+     [
+      -38.18,
+      36.96
+     ],
+     [
+      -38.32,
+      42.5
+     ],
+     [
+      -39.24,
+      48.18
+     ],
+     [
+      -41.68,
+      56.34
+     ],
+     [
+      51.54,
+      33.05
+     ],
+     [
+      36.14,
+      -51.88
+     ],
+     [
+      35.8,
+      -52.87
+     ],
+     [
+      -17.61,
+      -43.01
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8e9094",
+    "top": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    8,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f93ab",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#d5dbe2",
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa4a8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    8,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f93ab",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#d5dbe2",
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa4a8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     14,
+     46
+    ]
+   },
+   "at": [
+    -26,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6e8e8",
+    "windows": "none",
+    "bands": "#8c95a0",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#e6e8e8",
+      "#9aa2ab",
+      "#e6e8e8"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b8bb",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    26,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9dcdc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b8bb",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -34,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b79a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b0a0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -34,
+    -44,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 8,
+    "height": 3.8,
+    "thickness": 0.35,
+    "columns": 4,
+    "colour": "#d9d3c2",
+    "edgeColour": "#b4aa94"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    26,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#dfe2e2",
+    "roofColour": "#b4b8bb",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    8,
+    22,
+    13
+   ],
+   "params": {
+    "radius": 6,
+    "colour": "#8c9096"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 28
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -48
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -44
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ward blocks are heavier and more regular than the varied low pavilions in the photo; entrance canopy and white-grey panelling are approximated; campus outline is a shrunk ground plate."
+ }
+}

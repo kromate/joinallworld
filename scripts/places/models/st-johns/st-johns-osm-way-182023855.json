@@ -1,0 +1,140 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antigua_-_Clarence_House.jpg",
+   "licence": "Public domain",
+   "author": "John R. Anjo (postcard)",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-johns/p16_clarence.jpg",
+   "used": "old postcard: arched stone ground storey under a clapboard upper floor, shuttered sash windows, front gallery with white balustrade, hipped shingle roof, iron fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/182023855",
+   "used": "footprint 22 x 20 m, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.58,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-ground",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39a86",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front",
+      "back"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8878",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-upper",
+   "footprint": {
+    "osm": true,
+    "scale": 0.97
+   },
+   "z0": 3.2,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cfc6b0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "glassColour": "#3a3f44",
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a746a",
+    "material": "slate",
+    "pitch": 13,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -2,
+    -12.6,
+    3.2
+   ],
+   "rotDeg": 14,
+   "params": {
+    "length": 12,
+    "depth": 2.0,
+    "height": 3.0,
+    "balustrade": true,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#26282b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -12
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-way-182023855",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Compact OSM footprint is shorter than the long postcard house; no entrance stair or arched stone doors, gallery rails simplified, current restored colours assumed from the brief."
+ }
+}

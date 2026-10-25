@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-260864068",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:James_Smith_Corner,_Wellington,_NZ.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/wellington/m15_jsc.jpg",
+   "used": "Art Deco facade: cream-yellow rendered walls, lilac-pink vertical piers with stepped tops, pale green spandrel panels, arched upper windows, vertical blade sign, dark shopfront band with red fascia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/260864068",
+   "used": "real corner-block footprint, 5 levels, 21.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21.7,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a4",
+    "windows": "arched",
+    "windowRatio": 0.26,
+    "bay": 7,
+    "faces": {
+     "back": "plain"
+    },
+    "windowShape": "arched",
+    "glassColour": "#2a3238",
+    "bands": "#a9d3a0",
+    "cornice": true,
+    "parapet": 2.0,
+    "groundKind": "curtain",
+    "groundHeight": 4.2,
+    "trimColour": "#d98fb0",
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#e3c3d3",
+      "width": 1.3,
+      "depth": 0.9,
+      "spacing": 5,
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blade",
+   "at": [
+    0.3,
+    -45.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 5,
+    "height": 15,
+    "colour": "#d9788f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "points": [
+     [
+      -6,
+      -44
+     ],
+     [
+      6,
+      -44
+     ],
+     [
+      6,
+      -46.5
+     ],
+     [
+      -6,
+      -46.5
+     ]
+    ],
+    "z0": 4.0,
+    "height": 1.0,
+    "colour": "#c4302b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stepped Art Deco parapet and tall blade sign not read in render (blade hidden at corner); piers wider and spandrels stronger; shopfront still dark glass with red fascia only at corner; top windows not paired"
+ }
+}

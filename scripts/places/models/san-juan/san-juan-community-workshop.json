@@ -1,0 +1,171 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/7765349",
+   "used": "real outline (89x64 m, two angled wings), 3 storeys"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 26,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece7d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3e6a8a",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 2.0,
+      "rail": 1.05,
+      "every": 4,
+      "floors": "upper",
+      "continuous": true,
+      "colour": "#d8d3c3",
+      "railColour": "#3e6a8a",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#3e6a8a",
+      "height": 0.25,
+      "at": 0.9,
+      "floors": [
+       2
+      ],
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f3ec",
+    "windows": "none",
+    "bands": "#3e6a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3e6a8a",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#3e6a8a",
+    "frameColour": "#f5f3ec"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 5,
+    "spacing": 3,
+    "yaw": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building (Commons photo was a different building in Ponce, not used): real OSM outline and 3 storeys, walkway balconies and colours are typed guesses"
+ }
+}

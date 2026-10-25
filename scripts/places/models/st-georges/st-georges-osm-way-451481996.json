@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-way-451481996",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/451481996",
+   "used": "real 65x40 m park outline used as the sand strip"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "sand",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3d3a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 3.5,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -24,
+    0.5
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#2f6b4f",
+    "frameColour": "#6f5a3c"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    6,
+    12,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.4,
+    "colour": "#d94f4f"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -6,
+    16,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; sand strip from OSM outline, sign/steps/umbrellas/palms are typed"
+ }
+}

@@ -1,0 +1,220 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Government_House_(46265572904).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user 79721788@N00",
+   "view": "front",
+   "file": "/tmp/places-evidence/roseau/gov1.jpg",
+   "used": "white two-storey neoclassical block, hipped moss-green tile roof, central pedimented portico with four tall columns, second-floor iron-railed gallery bays, regular rectangular windows, long drive and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/525939745",
+   "used": "overall size only (46 x 26 m, containing match); outline is a rotated polygon so a rectangular mass matching the photo is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#ffffff",
+    "faces": {
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6a44",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 3.0,
+    "height": 9.5,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "kind": "round",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "floors": 2,
+    "storeyHeight": 4.6,
+    "proud": 0.5,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -3,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#2f7a43"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -11,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    11,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -18,
+    0.01
+   ],
+   "params": {
+    "width": 44,
+    "depth": 14,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -12
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -12
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -17,
+    -16
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -18
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#3a3d40"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico columns only one storey tall in render vs full height, roof lacks tile texture, no garden planting or street lamps like the photo, wing ends not stepped."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-osm-node-5779237653"
+}

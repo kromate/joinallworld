@@ -1,0 +1,254 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/231551186",
+   "used": "171 x 117 m school-site outline (not a single building): sets the extent and orientation of the yard; dormitory wings are composed within it"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/way/231551186",
+   "used": "OSM name EBS Dormitory, amenity college"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     56
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c8a0",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a3f",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 1.9,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     56
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c8a0",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a3f",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 1.9,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wing",
+   "footprint": {
+    "rect": [
+     56,
+     12
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a3f",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 1.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah",
+   "footprint": {
+    "rect": [
+     56,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5b0a5",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -34,
+    -34,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 4,
+    "colour": "#7f8a90"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    34,
+    -34,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 4,
+    "colour": "#7f8a90"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-231551186",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM is the whole school site, U of dormitory wings is composed, not surveyed"
+ }
+}

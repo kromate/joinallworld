@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6393738",
+   "used": "real footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital-osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#3f6fa0",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece6d6",
+       "#e2dccb"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 4,
+    "thickness": 0.35,
+    "columns": 4,
+    "colour": "#3f6fa0",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    25
+   ],
+   "z0": 11,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c7bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     66,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real OSM outline, three storeys and ribbon windows are typed; entrances and wing heights unverified"
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: open canopy over eight minibus bays beside the Carenage harbour; nearest OSM building (15x14 m) is not a reliable match, so only its scale was used. Nearby Commons photos show the market and Church Street, not the terminus."
+  }
+ ],
+ "parts": [
+  {
+   "type": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 20,
+    "height": 0.25,
+    "tiers": 1,
+    "colour": "#8e8e8a"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    4,
+    0.25
+   ],
+   "params": {
+    "length": 28,
+    "depth": 7,
+    "height": 4.6,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8b9396",
+    "accent": "#b0452f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -12,
+    10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#b0452f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0452f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -9,
+    -5,
+    0.25
+   ],
+   "params": {
+    "colour": "#f4f4f1",
+    "stripe": "#b0452f",
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    6,
+    -5,
+    0.25
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "stripe": "#1f1f22",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -8,
+    0.25
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.2,
+    "colour": "#b0452f",
+    "frameColour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    12,
+    12,
+    0.25
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "colour": "#7fa6bd"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no terminus photo; canopy, bays and minibuses typed from brief"
+ }
+}

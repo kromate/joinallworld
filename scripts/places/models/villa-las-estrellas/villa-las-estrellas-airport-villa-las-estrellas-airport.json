@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-airport-villa-las-estrellas-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AQ_Aeropuerto_Rey_Jorge_1202_(1)_(16603573763).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Diego Tirira",
+   "view": "street",
+   "file": "/tmp/places-evidence/villa-las-estrellas/air1.jpg",
+   "used": "hangar glimpsed at left edge: orange-red cladding with a pale roof, grey gravel apron; no terminal photo exists"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Teniente_Rodolfo_Marsh_Martin_Airport",
+   "used": "five small buildings incl. hangar and control tower, gravel apron, no passenger terminal"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ops",
+   "footprint": {
+    "polygon": [
+     [
+      -14,
+      -3
+     ],
+     [
+      10,
+      -3
+     ],
+     [
+      10,
+      3
+     ],
+     [
+      -2,
+      3
+     ],
+     [
+      -2,
+      9
+     ],
+     [
+      -14,
+      9
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e7e8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bands": "#b5352c",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "tower",
+   "at": [
+    -9,
+    6,
+    3.8
+   ],
+   "params": {
+    "height": 7,
+    "style": "square",
+    "colour": "#e4e7e8",
+    "cabColour": "#8aa3b0",
+    "bandColour": "#b5352c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     18,
+     15
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9531e",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#dfe3e5",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "hangar-door",
+   "at": [
+    28,
+    -5.8,
+    0.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "bottom": 0.1,
+    "colour": "#b5461c",
+    "frameColour": "#8c9296",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fuel-store",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -26,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5f9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "material": "metal-sheet",
+    "pitch": 6
+   }
+  },
+  {
+   "type": "radio-mast",
+   "id": "mast",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "banded": true
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flag",
+   "at": [
+    12,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colours": [
+     "#d52b1e",
+     "#ffffff",
+     "#0039a6"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photos show only an aircraft and a sliver of the orange hangar; ops building, tower, mast and layout are typed from the brief; the other small buildings are not modelled."
+ }
+}

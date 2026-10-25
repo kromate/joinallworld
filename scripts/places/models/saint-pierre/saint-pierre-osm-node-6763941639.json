@@ -1,0 +1,184 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2022-10-21_Arm%C3%A9e_de_l%27air_68-IO_(France)_plane_%E2%80%93_Saint-Pierre_Airport.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Gordon Leggett",
+   "view": "side",
+   "file": "/tmp/places-evidence/saint-pierre/airport.jpg",
+   "used": "terminal: low pale-grey block with a glazed barrel-vaulted hall front, flat roof wings at the sides; hangar with large arched roof to the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40484246",
+   "used": "terminal footprint 99 x 33 m, the cafe is inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7dadc",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#7f9aa6",
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "axis": "x",
+    "colour": "#c4c9cc",
+    "material": "metal-sheet",
+    "rise": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    17,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dfd8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    -13
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "curtain",
+     "right": "none"
+    },
+    "trimColour": "#3f6fa0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4,
+    -19.5,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 2.5,
+    "height": 3,
+    "colour": "#3f6fa0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "board",
+   "at": [
+    -4,
+    -18.2,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#3f6fa0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-node-6763941639",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "photo shows the glazed vaulted terminal end and a hangar, not the cafe itself; the cafe wing and its awning are invented from the brief, hangar not modelled"
+ }
+}

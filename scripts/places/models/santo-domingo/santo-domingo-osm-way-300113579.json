@@ -1,0 +1,150 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/300113579",
+   "used": "real outline of the hall (48.8 x 32.2 m, bearing 9 deg)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered museum and auditorium with a flat entrance canopy; the geo-tagged Commons photos nearby show a car in front of a different building, so they were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#5d7f96",
+    "bands": "#cfc9b6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca2",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.5,
+    "columns": 2,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#cfc9b6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.8,
+    "colour": "#5d7f96",
+    "frameColour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-300113579",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Nearby Commons photos show a different building, so none used; facade, canopy and colours come from the brief only."
+ }
+}

@@ -1,0 +1,325 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Puerto_Rico_%E2%80%94_San_Juan_%E2%80%94_Luis_Mu%C3%B1oz_Mar%C3%ADn_International_Airport_(outside,_pick-up-drop-off_area).jpg",
+   "licence": "CC BY 2.0",
+   "author": "de User:Mattes",
+   "view": "front",
+   "used": "low cream arched-parapet Terminal A frontage with dark blue sign band, curving glazed wall on the right, control tower behind, curb road, lamp poles",
+   "file": "/tmp/places-evidence/san-juan/san-juan-airport-san-juan-airport-0.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luis_Munoz_Marin_Airport.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Thank You (23 Millions+) views",
+   "view": "back",
+   "used": "long glazed gridded terminal block with a blue panel, tower with octagonal cab and flared shaft in warm concrete",
+   "file": "/tmp/places-evidence/san-juan/airport-4.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26793888",
+   "used": "not used: tagged apron, not the terminal; overall size from the brief (300 m terminal, 3 storeys)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arcade-wing",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    -35,
+    -8
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5d8",
+    "windows": "none",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 0.8,
+      "colour": "#59606a"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     60,
+     32
+    ]
+   },
+   "at": [
+    30,
+    8
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4b6b82",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#d8d9d4",
+    "faces": {
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e4e3dc",
+      "height": 0.7,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "curved-glass",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    3,
+    2
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7390",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd8cc",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -8,
+    22
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd0",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -14,
+    32,
+    0
+   ],
+   "params": {
+    "height": 52,
+    "style": "round",
+    "colour": "#d9cdb6",
+    "shaftRadius": 3.4,
+    "cabRadius": 6.2,
+    "cabColour": "#4a4f55",
+    "bandColour": "#8b8f93"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -35,
+    -17,
+    2.5
+   ],
+   "params": {
+    "width": 20,
+    "height": 2.6,
+    "bottom": 2.2,
+    "colour": "#1f3f78",
+    "frameColour": "#f2f1ec",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    36,
+    -8.2,
+    11
+   ],
+   "params": {
+    "width": 26,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#1f4a8c",
+    "frameColour": "#1f4a8c",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 56,
+    "depth": 8,
+    "height": 6.2,
+    "colour": "#d9dad6",
+    "edgeColour": "#2f5f7f",
+    "columns": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -56,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -28,
+    0
+   ],
+   "params": {
+    "colour": "#d5d8dc",
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 24,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-airport-san-juan-airport",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Only about 120 m of the 300 m terminal is modelled; curving glazed frontage approximated by an oval; arched parapet is a cut arcade; tower cab simpler; no hotel in the background"
+ }
+}

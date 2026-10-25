@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Etobicoke_Civic_Centre.jpg",
+   "licence": "Public domain",
+   "author": "GTD Aquitaine",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/toronto-community-voting-game-0.jpg",
+   "used": "low limestone front wing with ribbon of tall glass bays between piers, recessed glass entrance under a thin flat canopy with a blank number board, wide steps with railings, two tall flagpoles, pale slim concrete tower with a cross, taller block behind with dark roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/79664993",
+   "used": "campus is 188 x 122 m; massing of the front wing, chamber block and east wing follows its proportions loosely"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     96,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9aa93",
+    "windows": "curtain",
+    "windowRatio": 0.62,
+    "glassColour": "#7f98a3",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d3d3b",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     14,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -9.6
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f8a90",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe6",
+    "overhang": 0.8,
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    8,
+    25
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b2a48d",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#6f8691",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6e6b",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     40
+    ]
+   },
+   "at": [
+    60,
+    14
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9aa93",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#7f98a3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     2.4
+    ],
+    "z0": 0,
+    "height": 34,
+    "colour": "#cfcdc6",
+    "material": "smooth-concrete",
+    "topColour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.3
+    ],
+    "z0": 23,
+    "height": 7.5,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.3
+    ],
+    "z0": 27.2,
+    "height": 0.35,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#a6a39b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "count": 2,
+    "spacing": 5,
+    "colours": [
+     "#cc2a2a",
+     "#2b4fa3"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -11.9,
+    5.5
+   ],
+   "params": {
+    "width": 8,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#dedcd5",
+    "frameColour": "#dedcd5",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#7b8794",
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": 9,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Taller dark-edged wing, 5 m bays, taller flagpoles and slender cross tower added; no entrance railings or number lettering, flagpoles not splayed"
+ }
+}

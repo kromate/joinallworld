@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L%27%C3%AEle_aux_Marins_Saint-Pierre-et-Miquelon.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marie975",
+   "view": "front",
+   "file": "/tmp/places-evidence/saint-pierre/jez.jpg",
+   "used": "long gable-roofed shingle house, three upper windows, barn door at left, balcony and outside stair at right, grey shingle and blue-grey trim, small shed at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint-Pierre-et-Miquelon_L%27%C3%AEle.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marie975",
+   "view": "side",
+   "used": "gable end with two-level windows, lean-to shed beside, stair on end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220423505",
+   "used": "footprint size 11.5 x 9.6 m (name match), drawn as an axis-aligned rectangle to match the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     11.5,
+     9.0
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.4,
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8f918b",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "trimColour": "#5d7f8c",
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b7a75",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -10.5,
+    -1
+   ],
+   "z0": 0.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8d8f8a",
+    "windows": "none",
+    "trimColour": "#5d7f8c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#74736f",
+    "material": "slate",
+    "pitch": 30,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    3.0,
+    -5.6,
+    3.6
+   ],
+   "params": {
+    "width": 4.2,
+    "depth": 1.4,
+    "railing_colour": "#e9ece9"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    5.6,
+    -5.4,
+    0.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 1.0,
+    "height": 3.2,
+    "run": 3.2,
+    "colour": "#5d7f8c",
+    "rails": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2,
+    -9,
+    0.4
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#a0422f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   50,
+   40
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Shingle texture is vertical boards; outside stair is a solid block rather than open treads; no sign board, slipway or capstan detail; ground is plain sand not shingle beach."
+ }
+}

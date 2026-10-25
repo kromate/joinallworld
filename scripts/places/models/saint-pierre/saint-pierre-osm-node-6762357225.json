@@ -1,0 +1,132 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/749505691",
+   "used": "23 x 13 m building outline (nearest match 26 m, used as the battery footprint)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small stone battery on the hill above the harbour, ramparts and two cannon, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fort",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a9299",
+    "windows": "none",
+    "parapet": 0.8,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rampart",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 1.6,
+    "thickness": 1.4,
+    "colour": "#7d8588",
+    "points": [
+     [
+      -17,
+      -12
+     ],
+     [
+      17,
+      -12
+     ],
+     [
+      17,
+      12
+     ],
+     [
+      -17,
+      12
+     ],
+     [
+      -17,
+      -12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -6,
+    -10.5,
+    1.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 2,
+    "spacing": 8,
+    "yaw": 270,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    2,
+    4.2
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#2a4a8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-node-6762357225",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: block with perimeter rampart and two cannon from the OSM outline, real fort layout unknown"
+ }
+}

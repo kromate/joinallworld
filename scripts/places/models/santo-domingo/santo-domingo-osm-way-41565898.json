@@ -1,0 +1,486 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "carved Plateresque relief, statues, double arched tympanum and the heavy atrium walls on the right are not modelled; arch-portal part not visible"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-41565898",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bas%C3%ADlica_Menor_de_Santa_Mar%C3%ADa_CCSD_07_2017_4676.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mariordo (Mario Roberto Duran Ortiz)",
+   "view": "front",
+   "file": "/tmp/places-evidence/santo-domingo/cath2.jpg",
+   "used": "golden coral-limestone west front: central Gothic-Plateresque portal block with pilasters, niches, round-arched tympanum with two glazed lights, gable behind with oculus, corner pinnacles, lower side aisle walls with two pointed grilled windows, three-step platform"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_Catedral_Primada_CCSD_09_2019_0074.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mariordo",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/santo-domingo/cath3.jpg",
+   "used": "long terracotta gable nave, lower side chapel roofs, belfry at south-east corner, paved plaza with battlemented wall on west side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41565898",
+   "used": "checked only: outline includes chapels, bell house and atrium so masses are composed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     50
+    ]
+   },
+   "at": [
+    0,
+    25
+   ],
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d0a255",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#94583a",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5,
+     44
+    ]
+   },
+   "at": [
+    -11,
+    24
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b88a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#94583a",
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5,
+     44
+    ]
+   },
+   "at": [
+    11,
+    24
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b88a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#94583a",
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-block",
+   "footprint": {
+    "rect": [
+     17.4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9b46c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#b58a4a",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.5,
+      "spacing": 4.3,
+      "colour": "#e0bd78",
+      "margin": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a15c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    0,
+    53
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b88a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#94583a",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapels-l",
+   "footprint": {
+    "rect": [
+     6,
+     16
+    ]
+   },
+   "at": [
+    -14.5,
+    34
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b88a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#94583a",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapels-r",
+   "footprint": {
+    "rect": [
+     6,
+     16
+    ]
+   },
+   "at": [
+    14.5,
+    34
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b88a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#94583a",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-house",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    20,
+    12
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8b777",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9573d",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "main-portal",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8.5,
+    "depth": 0.8,
+    "archWidth": 4.6,
+    "springHeight": 4.6,
+    "pointed": false,
+    "colour": "#dbb872"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "doors",
+   "footprint": {
+    "rect": [
+     4.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.4
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a2a22",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinnacle-l",
+   "at": [
+    -7.7,
+    -0.5,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.2,
+    "topScale": 0.6,
+    "colour": "#d9b46c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinnacle-r",
+   "at": [
+    7.7,
+    -0.5,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.2,
+    "topScale": 0.6,
+    "colour": "#d9b46c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lights",
+   "at": [
+    0,
+    -3.3,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#46535c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "window-l",
+   "at": [
+    -10.5,
+    -2.7,
+    5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 4,
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "window-r",
+   "at": [
+    10.5,
+    -2.7,
+    5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 4,
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#bdb09a"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "atrium-wall",
+   "at": [
+    -19,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 2.8,
+    "thickness": 0.7,
+    "colour": "#c9a15c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   100
+  ]
+ }
+}

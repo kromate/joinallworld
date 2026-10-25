@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/544423051",
+   "used": "real 47 x 32 m outline of Hospital El Salvador (name match)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CIFCO.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-salvador/cifco.jpg",
+   "used": "neighbouring CIFCO halls: low blue-grey roofs with raised clerestory ridge, pale cream walls, red-white ground-floor trim (context only, not the same building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d2",
+    "windows": "none",
+    "bands": "#9fb3c4",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7f93",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     34,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 143,
+   "z0": 9,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd8ca",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7f93",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 6,
+    "height": 4,
+    "columns": 2,
+    "colour": "#f2f0ea",
+    "edgeColour": "#b8433b"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.5,
+    "colour": "#f2f0ea",
+    "frameColour": "#4d7fa3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Outline real; no ground photo of the field hospital, roof and trim taken from neighbouring CIFCO halls."
+ }
+}

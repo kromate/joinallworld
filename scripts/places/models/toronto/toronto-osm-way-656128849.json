@@ -1,0 +1,380 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-656128849",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edward_Gardens_Cafe_and_Garage_2023.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Commons contributor (2023)",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/m15-eg2.jpg",
+   "used": "paved central courtyard, long cream barn-like building with low brown gable roof and cupola, small cream outbuilding, glasshouse at right, flower beds"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edward_Gardens_The_Greensward_2023.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Commons contributor (2023)",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/m15-eg.jpg",
+   "used": "lawns, curved flower beds, conifers and broadleaf trees around the Greensward"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/656128849",
+   "used": "park is 870 x 680 m; the outline is not modelled, only the central courtyard buildings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 75,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe-barn",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    10
+   ],
+   "rotDeg": 8,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c4a3d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outbuilding",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    16,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe8de",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a6866",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glasshouse",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    24,
+    3
+   ],
+   "rotDeg": -6,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d6d8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.5,
+    "glassColour": "#bfd2d6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdd6d8",
+    "pitch": 30,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "cupola",
+   "at": [
+    -10,
+    11,
+    8.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 9,
+    "colour": "#7a8a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 10,
+    "line": 14,
+    "colour": "#8a7a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 6,
+    "colour": "#a04a38"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#5b7a3a",
+    "topColour": "#8a6a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#6a8a3a",
+    "topColour": "#a8622a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    13,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.0,
+    "colour": "#a89a80",
+    "topColour": "#9a8c74"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    19,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.0,
+    "colour": "#a89a80",
+    "topColour": "#9a8c74"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    13,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.0,
+    "colour": "#a89a80",
+    "topColour": "#9a8c74"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    19,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.0,
+    "colour": "#a89a80",
+    "topColour": "#9a8c74"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-roof",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    38,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 3.0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a5048",
+    "material": "slate",
+    "pitch": 35,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    30,
+    8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.8,
+    "thickness": 0.6,
+    "merlons": false,
+    "points": []
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Evidence photo for the courtyard is correct (earlier critic compared a different pavilion photo); stone-pier pavilion added as secondary feature from a second view, not photographed here; paving colour is grey not pink; beds are slabs."
+ }
+}

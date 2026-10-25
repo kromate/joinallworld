@@ -1,0 +1,331 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-way-1031834593",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FORT_JAMES,_ST._JOHN'S,_ANTIGUA.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jerrye & Roy Klotz MD",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/st-johns/fj1.jpg",
+   "used": "low rocky headland, white veranda house at the seaward end, ruined stone buildings with red-orange roofs inland, grass and scrub cover"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antigua_-_Fort_James_from_north.jpg",
+   "licence": "Public domain",
+   "author": "Jose Anjo (postcard)",
+   "view": "side",
+   "used": "stone gabled magazine with grey roof, red hip-roofed veranda house, muzzle-loading cannon in a row along the water wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1031834593",
+   "used": "outline of the headland battery (platform and wall line, scaled to the 118 m scene fit)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "headland",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b09a74",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7a55",
+    "material": "membrane"
+   },
+   "z0": 0
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    0,
+    3.0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.6,
+    "thickness": 0.9,
+    "merlons": false,
+    "ruin": 0.5,
+    "points": [
+     [
+      -32.7,
+      55.1
+     ],
+     [
+      -19.2,
+      56.2
+     ],
+     [
+      -7.5,
+      68.0
+     ],
+     [
+      4.7,
+      33.1
+     ],
+     [
+      -0.7,
+      18.9
+     ],
+     [
+      18.1,
+      -3.8
+     ],
+     [
+      27.9,
+      3.8
+     ],
+     [
+      52.0,
+      -10.4
+     ],
+     [
+      30.7,
+      -20.1
+     ],
+     [
+      31.0,
+      -28.8
+     ],
+     [
+      6.9,
+      -31.9
+     ],
+     [
+      -3.5,
+      -46.5
+     ],
+     [
+      -7.1,
+      -50.0
+     ],
+     [
+      -20.6,
+      -45.3
+     ],
+     [
+      -24.2,
+      -31.0
+     ],
+     [
+      -20.2,
+      -19.2
+     ],
+     [
+      -25.4,
+      -17.7
+     ],
+     [
+      -17.5,
+      -0.1
+     ],
+     [
+      -16.5,
+      18.9
+     ],
+     [
+      -20.8,
+      41.9
+     ],
+     [
+      -32.7,
+      55.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    18
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3a34",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.6
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "mass",
+   "id": "magazine",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39a86",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e6a63",
+    "material": "slate",
+    "pitch": 36,
+    "overhang": 0.3
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "mass",
+   "id": "ruin-store",
+   "footprint": {
+    "rect": [
+     9,
+     5.5
+    ]
+   },
+   "at": [
+    22,
+    8
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b3a98f",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0623f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.4
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -18,
+    -30,
+    3.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 7,
+    "spacing": 3.5,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    6,
+    3.0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#c8c0aa"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is an aerial from the sea: cliffs, vegetation cover and sea are not modelled; ruin buildings placed approximately; wall line is the scaled OSM outline."
+ }
+}

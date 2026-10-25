@@ -1,0 +1,376 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Holy_Trinity_Church,_Ohariu_Valley_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "DB Thats-Me",
+   "view": "side",
+   "file": "/tmp/places-evidence/wellington/ht1.jpg",
+   "used": "white weatherboard walls, dark green-grey corrugated roof, red gable porch door, red-trimmed pointed windows, bell turret on ridge, crosses on gables, grass churchyard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/844548436",
+   "used": "size about 11 x 7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f6f2",
+    "windows": "none",
+    "faces": {
+     "front": "pointed",
+     "back": "pointed"
+    },
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "bay": 3.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3b4743",
+    "material": "corrugated",
+    "pitch": 44,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.0,
+     3.2
+    ]
+   },
+   "at": [
+    -4.5,
+    -3.4
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f6f2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3b4743",
+    "material": "corrugated",
+    "pitch": 48,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.1,
+     0.6
+    ]
+   },
+   "at": [
+    -4.5,
+    -4.9
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9d2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d2f33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -3.8,
+    0
+   ],
+   "z0": 5.6,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#eceeea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3b4743",
+    "pitch": 45,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    -4.5,
+    -3.4,
+    5.0
+   ],
+   "params": {
+    "height": 0.8,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    5,
+    0,
+    5.0
+   ],
+   "params": {
+    "height": 0.8,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -12,
+      -12
+     ],
+     [
+      -4.5,
+      -7
+     ]
+    ],
+    "width": 1.6,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 9,
+    "height": 0.8,
+    "thickness": 0.08,
+    "colour": "#7a5f45",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5.5,
+    -6.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 3.4,
+    "height": 0.8,
+    "thickness": 0.08,
+    "colour": "#7a5f45",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    3.5,
+    -6.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 3.4,
+    "height": 0.8,
+    "thickness": 0.08,
+    "colour": "#7a5f45",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -7
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d7cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d7cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    1.2,
+    -6.6
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d7cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d7cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone3",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    2.8,
+    -7.2
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d7cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d7cc"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    7,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -3,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-844548436",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "porch is a plain gable without red bargeboards or finial, turret smaller but still boxy, headstones blocky, picket fence sparse, no hillside, conifers instead of dense bush"
+ }
+}

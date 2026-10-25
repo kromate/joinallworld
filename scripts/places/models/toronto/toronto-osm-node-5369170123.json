@@ -1,0 +1,414 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-node-5369170123",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shoushin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Silver Dovelet",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/osm-node-5369170123-0.jpg",
+   "used": "two-storey narrow shopfront: black-framed ground storey with grey tile band, dark recessed door, large stone slab panel, black canopy slab; upper storey in weathered vertical timber boards with one big two-pane dark window; black fascia, dark red brick parapet strip, black chimney stubs; tan stucco neighbour right, dark neighbour left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/661943998",
+   "used": "strip size only (irregular 39 x 14 m slice; the photographed unit is one narrow bay)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 28,
+  "aspect": 0.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "timber board weathering and stone slab texture are flat colour; neighbours simplified; photo is a slightly raised street view"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-storey",
+   "footprint": {
+    "rect": [
+     6.4,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#8a8c8f",
+    "windows": "none",
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-timber",
+   "footprint": {
+    "rect": [
+     6.2,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8b7b68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-window",
+   "at": [
+    0.1,
+    -7.55
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     0.5
+    ],
+    "z0": 4.55,
+    "height": 2.1,
+    "colour": "#1c2225"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window-mullion",
+   "at": [
+    0.1,
+    -7.8
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.5
+    ],
+    "z0": 4.55,
+    "height": 2.1,
+    "colour": "#0e1011"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     15.2
+    ],
+    "z0": 7.6,
+    "height": 0.55,
+    "colour": "#232326"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-brick",
+   "footprint": {
+    "rect": [
+     6.0,
+     14.4
+    ]
+   },
+   "at": [
+    0,
+    0.2
+   ],
+   "z0": 8.15,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a3f32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-left",
+   "at": [
+    -2.95,
+    -6.8
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 7.6,
+    "height": 1.7,
+    "colour": "#1b1b1d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-right",
+   "at": [
+    3.0,
+    -6.8
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 7.6,
+    "height": 1.5,
+    "colour": "#1b1b1d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-left",
+   "at": [
+    -3.0,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#17171a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-recess",
+   "at": [
+    -2.1,
+    -7.55
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.1,
+    "height": 3.1,
+    "colour": "#0f1012"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-handle",
+   "at": [
+    -1.55,
+    -7.85
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.2,
+    "colour": "#b07a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-slab",
+   "at": [
+    0.85,
+    -7.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     0.5
+    ],
+    "z0": 0.1,
+    "height": 2.8,
+    "colour": "#cdbf95"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-right",
+   "at": [
+    2.75,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#2c2e33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    0,
+    -7.9
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     0.9
+    ],
+    "z0": 3.45,
+    "height": 0.25,
+    "colour": "#141416"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-letters",
+   "at": [
+    -1.5,
+    -7.45
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.5
+    ],
+    "z0": 3.75,
+    "height": 0.22,
+    "colour": "#c0284a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-right",
+   "footprint": {
+    "rect": [
+     4.5,
+     15
+    ]
+   },
+   "at": [
+    5.5,
+    0.2
+   ],
+   "z0": 0,
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#bfb496",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "groundKind": "curtain",
+    "groundHeight": 3.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55545a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-left",
+   "footprint": {
+    "rect": [
+     3.0,
+     15
+    ]
+   },
+   "at": [
+    -4.7,
+    0.2
+   ],
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#44464b",
+    "windows": "none",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d3d40",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "neighbour-left-shop",
+   "at": [
+    -4.7,
+    -7.6
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.5
+    ],
+    "z0": 0.3,
+    "height": 2.8,
+    "colour": "#ecebe6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "extent": [
+   16,
+   30
+  ]
+ }
+}

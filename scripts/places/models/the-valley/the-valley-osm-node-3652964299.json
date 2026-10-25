@@ -1,0 +1,212 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522380051",
+   "used": "nearest building 12 x 5 m, modelled as the park pavilion (nearest match, 15 m away)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d98a",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#6b8f71"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b94a3a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -26,
+      -30
+     ],
+     [
+      26,
+      -30
+     ],
+     [
+      26,
+      -6
+     ],
+     [
+      -26,
+      -6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#8fb87a",
+    "topColour": "#8fb87a",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -3,
+      -30
+     ],
+     [
+      3,
+      -30
+     ],
+     [
+      3,
+      -6
+     ],
+     [
+      -3,
+      -6
+     ]
+    ],
+    "z0": 0.08,
+    "height": 0.06,
+    "colour": "#d9d2c0",
+    "topColour": "#d9d2c0",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -34
+     ],
+     [
+      30,
+      -34
+     ],
+     [
+      30,
+      12
+     ],
+     [
+      -30,
+      12
+     ],
+     [
+      -30,
+      -34
+     ]
+    ],
+    "height": 1.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#6b8f71"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#6b8f71"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "park layout typed; pavilion from nearest 12x5 m OSM building"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-osm-node-3652964299"
+}

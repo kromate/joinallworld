@@ -1,0 +1,107 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/villa-las-estrellas.json",
+   "used": "game placeholder: 6 x 5 m prefab polling hut, yellow wall like the settlement's yellow-roofed houses; nearby photos show other objects"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e3b93b",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4a52",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.6,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 1.2,
+    "bottom": 0.9,
+    "colour": "#2f5f9a",
+    "frameColour": "#e8ecee"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    4,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#2f5f9a",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   24,
+   20
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Game placeholder with no real building or photo; look is typed."
+ }
+}

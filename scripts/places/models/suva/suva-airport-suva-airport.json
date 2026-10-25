@@ -1,0 +1,260 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nausori_International_Airport_(SUV).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Walmaul",
+   "view": "front",
+   "file": "/tmp/places-evidence/suva/airport1.jpg",
+   "used": "single-storey white terminal with deep blue fascia and blue posts over an open walkway, glazed left bay with blue frames, square cream control tower with cab and gallery set behind, annex at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23920194",
+   "used": "identity only: the polygon is the whole 2.7 km airfield, so a terminal-sized block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f56c4",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bay",
+   "footprint": {
+    "rect": [
+     14,
+     0.6
+    ]
+   },
+   "at": [
+    -15,
+    -6.7
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3236",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f56c4"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "walkway",
+   "at": [
+    6,
+    -8.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 5,
+    "height": 4.4,
+    "thickness": 0.9,
+    "columns": 8,
+    "colour": "#1f56c4",
+    "edgeColour": "#1f56c4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -17,
+    -8.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 3,
+    "height": 4.4,
+    "thickness": 0.9,
+    "columns": 3,
+    "colour": "#1f56c4",
+    "edgeColour": "#1f56c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-shaft",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    4.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6d6",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdbf",
+    "overhang": 1.0,
+    "parapet": 0.3
+   },
+   "z0": 4.8
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    -6,
+    4.5
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46545a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d8cc",
+    "overhang": 0.7,
+    "parapet": 0.2
+   },
+   "z0": 13.3
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    30,
+    0.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe4",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f56c4",
+    "overhang": 0.4,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -0.2,
+    6.6
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#e2531c",
+    "frameColour": "#e2531c",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower cab is a box without gallery rail or external stair; terminal front glazing and posts simplified; no apron equipment"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-airport-suva-airport"
+}

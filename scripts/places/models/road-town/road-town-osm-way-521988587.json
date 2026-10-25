@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-way-521988587",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/521988587",
+   "used": "no photo of this place found on Commons or Wikidata; named restaurant outline 26 x 17 m (irregular, bearing 168 deg) as the building; timber two-level body, shed roof, solar panels, terrace, umbrellas and pier follow the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "club",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a3a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b9b2a2",
+    "plinth": 0.5,
+    "groundKind": "stone"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5a6a78",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    0,
+    2,
+    8.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 5,
+    "tilt": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     24,
+     8
+    ]
+   },
+   "at": [
+    2,
+    -20
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a77b52"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    -20,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "spread": 9,
+    "colours": [
+     "#f6f3ea",
+     "#5a6a78"
+    ]
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    2,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 2.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; outline real, materials and terrace/pier placement typed"
+ }
+}

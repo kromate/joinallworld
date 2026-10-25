@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/338969590",
+   "used": "exact 8.4 x 7.6 m skewed rectangle, name-quality match; no photo of this outlet found (Commons has only a corporate HQ image of the chain), so form, colours and details come from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": {
+     "colour": "#c9453a",
+     "height": 0.5
+    },
+    "plinth": 0.3,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 6.5,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#c9453a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 4.5,
+    "bottom": 0.5,
+    "colour": "#c9453a",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this outlet (footprint verified only); facade colours, awning and shopfront typed from the brief"
+ }
+}

@@ -1,0 +1,941 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Silver_Stream_Railway_-_2002-03-06_(cropped).jpg",
+   "licence": "Public domain",
+   "author": "Voice of Clam",
+   "view": "side",
+   "file": "/tmp/places-evidence/wellington/709886856_1.jpg",
+   "used": "short tank locomotive with red carriage on gravel tracks, tall tapering red-brown water tower on a braced timber/steel frame, cream timber shed with red doors, bush-covered hillside and conifers behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:C847_Silver_Stream_Railway.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tom Ackroyd",
+   "view": "front",
+   "used": "loco livery (black boiler, red buffer beam) and gravel ballast, gorse-covered hillside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/709886856",
+   "used": "7 x 3 m station building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 3,
+  "fovDeg": 26,
+  "aspect": 1.4,
+  "margin": 0.0,
+  "fit": "all",
+  "shiftX": 0.05
+ },
+ "parts": [
+  {
+   "type": "rail-track",
+   "id": "tracks",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 3,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "scale": 1.15
+   },
+   "at": [
+    -24,
+    9
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d6c8a4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 2,
+    "plinth": 0.3,
+    "trimColour": "#7a3b2c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "id": "platform",
+   "at": [
+    -24,
+    5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 3.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "engine-shed",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    8,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9bd98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6d7276",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-doors",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    8,
+    5.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a2f24"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "station-board",
+   "at": [
+    -18,
+    4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#f0ece0",
+    "frameColour": "#7a3b2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carriage",
+   "footprint": {
+    "rect": [
+     11,
+     2.6
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "z0": 0.9,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8f2a22",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 1.2,
+    "glassColour": "#2a2f33"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3c",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loco-cab",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.5
+    ]
+   },
+   "at": [
+    -4.5,
+    0
+   ],
+   "z0": 0.9,
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7e3a1f",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2a22",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "boiler",
+   "params": {
+    "section": {
+     "circle": 0.85
+    },
+    "points": [
+     [
+      -3.3,
+      0,
+      2.1
+     ],
+     [
+      -0.2,
+      0,
+      2.1
+     ]
+    ],
+    "colour": "#8a4a22",
+    "n": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "smokebox",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.8
+    ]
+   },
+   "at": [
+    0.3,
+    0
+   ],
+   "z0": 1.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f1f1f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f1f1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "at": [
+    0.3,
+    0
+   ],
+   "params": {
+    "radius": 0.28,
+    "n": 8,
+    "z0": 2.9,
+    "height": 1.1,
+    "topScale": 1.4,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dome",
+   "at": [
+    -1.8,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 8,
+    "z0": 2.9,
+    "height": 0.5,
+    "topScale": 0.8,
+    "colour": "#b8742f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tanks-low",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "z0": 0.9,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5a2a1c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a2a1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buffer-beam",
+   "footprint": {
+    "rect": [
+     0.5,
+     2.8
+    ]
+   },
+   "at": [
+    1.1,
+    0
+   ],
+   "z0": 0.9,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c0261f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0261f"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "water-tower-tank",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "colour": "#8a3a2a",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 8,
+      "circle": 3.3,
+      "colour": "#7a3326"
+     },
+     {
+      "z": 9.5,
+      "circle": 3.6,
+      "colour": "#5a2a22"
+     },
+     {
+      "z": 10.5,
+      "circle": 3.8,
+      "colour": "#8a3a2a"
+     },
+     {
+      "z": 12.5,
+      "circle": 4.0,
+      "colour": "#5a2a22"
+     },
+     {
+      "z": 13.5,
+      "circle": 4.1,
+      "colour": "#8a3a2a"
+     },
+     {
+      "z": 14.0,
+      "circle": 4.0,
+      "colour": "#7a3326"
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg0",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -3.4,
+      -3.4,
+      0
+     ],
+     [
+      -2.4,
+      -2.4,
+      8
+     ]
+    ],
+    "colour": "#5a2a22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg1",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      -3.4,
+      0
+     ],
+     [
+      2.4,
+      -2.4,
+      8
+     ]
+    ],
+    "colour": "#5a2a22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg2",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      3.4,
+      0
+     ],
+     [
+      2.4,
+      2.4,
+      8
+     ]
+    ],
+    "colour": "#5a2a22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg3",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -3.4,
+      3.4,
+      0
+     ],
+     [
+      -2.4,
+      2.4,
+      8
+     ]
+    ],
+    "colour": "#5a2a22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace0",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -3.4,
+      -3.4,
+      0
+     ],
+     [
+      2.4,
+      -2.4,
+      8
+     ]
+    ],
+    "colour": "#6a3a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace1",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      -3.4,
+      0
+     ],
+     [
+      -2.4,
+      -2.4,
+      8
+     ]
+    ],
+    "colour": "#6a3a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace2",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      -3.4,
+      0
+     ],
+     [
+      2.4,
+      2.4,
+      8
+     ]
+    ],
+    "colour": "#6a3a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace3",
+   "at": [
+    16,
+    7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      3.4,
+      0
+     ],
+     [
+      -2.38,
+      -2.4,
+      8
+     ]
+    ],
+    "colour": "#6a3a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone0",
+   "at": [
+    -43.175862912443,
+    33.478274870593495,
+    0
+   ],
+   "params": {
+    "colour": "#1f3a2a",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.169743990317843
+     },
+     {
+      "z": 9.93930820636085,
+      "circle": 2.501846394190706
+     },
+     {
+      "z": 16.565513677268086,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone2",
+   "at": [
+    -32.85706223305452,
+    30.812461849926628,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 5.276942676209387
+     },
+     {
+      "z": 15.598312775671614,
+      "circle": 3.166165605725632
+     },
+     {
+      "z": 25.997187959452692,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone4",
+   "at": [
+    -17.927037033402687,
+    24.359243293928575,
+    0
+   ],
+   "params": {
+    "colour": "#264530",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.929787724194624
+     },
+     {
+      "z": 9.764669142544914,
+      "circle": 2.9578726345167747
+     },
+     {
+      "z": 16.27444857090819,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone6",
+   "at": [
+    -4.055506371539751,
+    24.238580791407824,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.2733947859729335
+     },
+     {
+      "z": 11.55085757256696,
+      "circle": 2.56403687158376
+     },
+     {
+      "z": 19.2514292876116,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone8",
+   "at": [
+    12.187039685686559,
+    31.34401691893978,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 5.525770967666142
+     },
+     {
+      "z": 15.039561899385365,
+      "circle": 3.3154625805996853
+     },
+     {
+      "z": 25.06593649897561,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone10",
+   "at": [
+    25.860603592949815,
+    28.614066977419775,
+    0
+   ],
+   "params": {
+    "colour": "#264530",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.980027843700382
+     },
+     {
+      "z": 12.78213429674067,
+      "circle": 2.9880167062202294
+     },
+     {
+      "z": 21.30355716123445,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cone12",
+   "at": [
+    38.40309922598914,
+    31.25885204377252,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.9131022317202175
+     },
+     {
+      "z": 12.945497118999345,
+      "circle": 2.9478613390321304
+     },
+     {
+      "z": 21.575828531665575,
+      "circle": 0.3
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "bush-bank",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "colour": "#33502f",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       60,
+       14
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       45,
+       8
+      ]
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       25,
+       3
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-709886856",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "loco, carriage and tapering braced water tower rebuilt but everything is small in frame (camera fit all) and hillside is smooth; tank hoop bands only colour stripes; no smoke; ballast colour flat; station building from OSM outline"
+ }
+}

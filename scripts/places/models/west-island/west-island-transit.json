@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "west-island",
+ "venueId": "west-island-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/west-island.json#west-island-transit",
+   "used": "ferry jetty on Home Island: short concrete and timber pier with small shelter and a passenger boat; no real outline"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Direction_Island_Jetty_(25248676255).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/west-island/jetty.jpg",
+   "used": "Typical Cocos jetty form (a different jetty, on Direction Island): narrow walkway on piles to a wider timber landing deck with black capped mooring posts, rails, lifebuoy, palm shore, turquoise water"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "ferry-jetty",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "width": 3.2,
+    "shelter": true,
+    "timber": true,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    5,
+    16,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "width": 3.0,
+    "colour": "#6f8f9a",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    18,
+    -0.2
+   ],
+   "params": {
+    "width": 40,
+    "depth": 36,
+    "colour": "#3fb0b8",
+    "bank": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 1.2,
+    "count": 2,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.1,
+    "bottom": 1.3,
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -5
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Jetty is a different one (Direction Island) used for form only."
+ }
+}

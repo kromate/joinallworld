@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-way-103593737",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/103593737",
+   "used": "name-matched outline about 91 x 61 m, 3 levels (building:levels tag); no photo found (the only Wikipedia image is a crest), so wall colours, punched windows, portico and flag court are typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd8c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6.5,
+    "faces": {
+     "back": "none"
+    },
+    "bands": "#f2efe6",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.5,
+    "height": 8,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2efe6",
+    "roofColour": "#a9aeb2"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    22,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#7b5b45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#7b5b45"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#d52b1e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#d52b1e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#d52b1e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists: outline, three storeys, punched windows, portico, gate and flags are typed from the brief."
+ }
+}

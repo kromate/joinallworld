@@ -1,0 +1,666 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-53622354",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faro_colon.jpg",
+   "licence": "GPL",
+   "author": "Jefry Lagrange Reyes",
+   "view": "front",
+   "file": "/tmp/places-evidence/santo-domingo/faro-colon.jpg",
+   "used": "two tall marble-panelled slabs with a dark slot at the cross junction, long stepped concrete wings with vertical joints and small basement windows, wide stair plaza, beige-grey colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/53622354",
+   "used": "overall scale (209 x 52 m cross) only; arm lengths reduced to fit the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     112,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8d8777",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "rise": 0.4,
+    "run": 1.4,
+    "count": 6,
+    "colour": "#a39e90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wl0",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    -19.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wr0",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    19.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wl1",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    -28.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wr1",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    28.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 25,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wl2",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    -37.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wr2",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    37.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wl3",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    -46.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wr3",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    46.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wl4",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    -55.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 11,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wr4",
+   "footprint": {
+    "rect": [
+     9,
+     28
+    ]
+   },
+   "at": [
+    55.5,
+    8
+   ],
+   "z0": 2.5,
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb7a4",
+    "windows": "none",
+    "bands": "#a39d8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-a",
+   "footprint": {
+    "rect": [
+     16,
+     50
+    ]
+   },
+   "at": [
+    -9.5,
+    19
+   ],
+   "z0": 2.5,
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "marble",
+    "colour": "#aeb4b6",
+    "windows": "none",
+    "bands": "#8a8e8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-b",
+   "footprint": {
+    "rect": [
+     16,
+     50
+    ]
+   },
+   "at": [
+    9.5,
+    19
+   ],
+   "z0": 2.5,
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "marble",
+    "colour": "#aeb4b6",
+    "windows": "none",
+    "bands": "#8a8e8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slot",
+   "footprint": {
+    "rect": [
+     3,
+     50
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "z0": 2.5,
+   "height": 26,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#2c2a28",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crown",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "z0": 36.5,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a396",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib0",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -40,
+    -5.9
+   ],
+   "z0": 2.5,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib1",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -26,
+    -5.9
+   ],
+   "z0": 2.5,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib2",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    26,
+    -5.9
+   ],
+   "z0": 2.5,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib3",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    40,
+    -5.9
+   ],
+   "z0": 2.5,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib4",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    52,
+    -5.9
+   ],
+   "z0": 2.5,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib5",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -52,
+    -5.9
+   ],
+   "z0": 2.5,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   118,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Long arm shortened to fit the 120 m clamp; no sloped wall ramp, basement windows, crown ring detail or panel joints; the camera sees the whole cross-arm end, not the full 210 m."
+ }
+}

@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/486885422",
+   "used": "real outline 60 x 24 m, amenity=townhall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey municipal office, painted render, clay hip roof, flags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#8a6f4d",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0613f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "rotDeg": -37,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6f4d",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    16,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    19,
+    -27,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    22,
+    -28,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 0.8,
+    "colour": "#8a6f4d"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo found; real outline used, facade typed from the brief."
+ }
+}

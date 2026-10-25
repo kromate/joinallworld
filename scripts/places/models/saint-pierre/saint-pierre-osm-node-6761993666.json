@@ -1,0 +1,156 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_Heritage_in_Saint-Pierre.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Keizers",
+   "view": "front",
+   "file": "/tmp/places-evidence/saint-pierre/heritage.jpg",
+   "used": "two-storey green clapboard front, 5 upper and 4 ground windows with maroon frames, central white door, red low-pitch metal roof, green sign board, grey clapboard neighbour at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/704769970",
+   "used": "not used: outline is a contained blob that disagrees with the photo, size taken from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     14.5,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#3c6b57",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.0,
+    "plinth": 0.7,
+    "trimColour": "#8a4a4e",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#c8505a",
+    "material": "metal-sheet",
+    "pitch": 13,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -10.8,
+    0.4
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#555a62",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#4a4f57",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "door",
+   "at": [
+    0.4,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sign",
+   "at": [
+    0.3,
+    -5.25,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     0.2
+    ],
+    "height": 1.0,
+    "colour": "#20483a",
+    "trimColour": "#c9a24a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-node-6761993666",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "no clapboard courses visible, door and signage are plain boxes, sign sits between floors but is not lettered, neighbour is generic grey; ground windows are evenly spaced"
+ }
+}

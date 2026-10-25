@@ -1,0 +1,143 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/San_Salvador",
+   "used": "city context; the brief found no description or photo of this statue"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/379795809",
+   "used": "nearest feature is Cafe Dorena (74.7 m away), not the statue; not used for the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "border": 1.2,
+    "colour": "#d9d4c6",
+    "border_colour": "#b7b3a8"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "steps": 3,
+    "shape": "tapered",
+    "figure": "raised",
+    "figure_colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10.2,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10.2,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-node-4236378091",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or description found; typed Christ statue on stepped plinth in a walled plaza"
+ }
+}

@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Our_Lady_of_Fair_Haven_Catholic_Cathedral_(40046740253).jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/roseau/cath2.jpg",
+   "used": "west front: square grey volcanic-stone tower with stepped string courses, three niches with statues, pointed central door, flat parapet with corner pinnacles, belfry openings with a clock, climbing steps, lower side bays"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dominica,_Karibik_-_Roseau_-_Our_Lady_of_Fair_Haven_Cathedral_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "side",
+   "file": "/tmp/places-evidence/roseau/cath1.jpg",
+   "used": "cream-yellow plastered nave walls with brown stone-edged pointed windows and white shutters, dark grey slate roof, small louvred dormer, stone tower with domed cap, slim slate spire"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/361451997",
+   "used": "overall cross plan 52 x 44 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15,
+     34
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dca8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "bands": "#8b8378",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4b50",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     40,
+     11
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dca8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "bands": "#8b8378"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4b50",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-front",
+   "footprint": {
+    "rect": [
+     17,
+     4
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8b8378",
+    "windows": "none",
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e695f",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9.5,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    3.5
+   ],
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#8b8378",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#a89f91",
+    "plinth": 1.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d766b",
+    "material": "concrete",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.56,
+    0.2,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.2,
+    "topScale": 0.3,
+    "colour": "#8b8378"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.56,
+    0.2,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.2,
+    "topScale": 0.3,
+    "colour": "#8b8378"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.56,
+    6.8,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.2,
+    "topScale": 0.3,
+    "colour": "#8b8378"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.56,
+    6.8,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.2,
+    "topScale": 0.3,
+    "colour": "#8b8378"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    12,
+    26,
+    9
+   ],
+   "params": {
+    "colour": "#6c6f76",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       3.6,
+       3.6
+      ],
+      "colour": "#8b8378"
+     },
+     {
+      "z": 13,
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "colour": "#6c6f76"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 1.0,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#7d766b"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -11,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     5
+    ],
+    "height": 6,
+    "colour": "#8b8378"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    11,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     5
+    ],
+    "height": 6,
+    "colour": "#8b8378"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -9
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -4
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower is too wide and tall for its front, no niches/statues/clock, front door not modelled; nave roof and window rhythm from side photo; grey stone more uniform than the multicolour real masonry"
+ }
+}

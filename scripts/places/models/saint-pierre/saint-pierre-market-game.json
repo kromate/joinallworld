@@ -1,0 +1,114 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/847981911",
+   "used": "footprint 9.4 x 7.1 m, 67 m2, nearest match 4.5 m; no photo of this placeholder market was found; stalls, awning and kiosk follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true,
+    "fit": 12,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.15,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b5483a",
+    "windows": "none",
+    "trimColour": "#e8e4da",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f57",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7.5,
+    0.15
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.8,
+    "height": 2.6,
+    "colours": [
+     "#b5483a",
+     "#e8e4da"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -7,
+    -9,
+    0.15
+   ],
+   "params": {
+    "count": 3,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e8e4da",
+     "#b5483a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -4,
+    0.15
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#e8e4da"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   40,
+   32
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; placeholder market shed with stalls and kiosk from the brief."
+ }
+}

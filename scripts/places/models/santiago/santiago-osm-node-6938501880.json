@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-node-6938501880",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/923964930",
+   "used": "hut outline 9 x 6.2 m, one level (nearest match, 30 m, but size and name Ruca Traro Lafkenche agree with the brief)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ruca_Mapuche_en_comunidad_Quelhue.JPG",
+   "licence": "Commons (see file page)",
+   "author": "see Commons file page",
+   "view": "front",
+   "file": "/tmp/places-evidence/santiago/ruca1.jpg",
+   "used": "typology only (a different ruca): thatch roof sweeping almost to the ground, steep gable front, small smoke gap at the ridge, low timber-plank door in the gable wall, straw colour #c4a96b; not compared as this place so verified stays footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ruca",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8b6a43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4a96b",
+    "material": "thatch",
+    "pitch": 58,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -3.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "height": 1.5,
+    "colour": "#5a3d22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "thickness": 0.15,
+    "colour": "#8b6a43",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 4,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo of this exact hut; hip thatch roof is a pyramid-like hip rather than the ridge-and-gable ruca front with smoke gap; door is a plain box"
+ }
+}

@@ -1,0 +1,342 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-299944185",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trillium_Health_Centre.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Trilliumhealthcentre",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/tri1.jpg",
+   "used": "brick end piers around a grey precast-panel block with a ribbon window band, white-and-glass wing behind with brick end, flat roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trillium_Hospital_(5983672950).jpg",
+   "licence": "CC BY 2.0",
+   "author": "^ Missi ^",
+   "view": "side",
+   "file": "/tmp/places-evidence/toronto/tri2.jpg",
+   "used": "8-storey tower: dark brick end with punched windows, white glass-panel face with horizontal sunshades"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32804163",
+   "used": "footprint of the low podium (hospital outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -58,
+      -18
+     ],
+     [
+      58,
+      -18
+     ],
+     [
+      58,
+      34
+     ],
+     [
+      -58,
+      34
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4aa",
+    "windows": "none",
+    "bands": "#9b6a52",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "heart-block",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    -26,
+    -28
+   ],
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b3aa",
+    "windows": "none",
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-pier-l",
+   "footprint": {
+    "rect": [
+     7,
+     24
+    ]
+   },
+   "at": [
+    -47,
+    -28
+   ],
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-pier-r",
+   "footprint": {
+    "rect": [
+     7,
+     24
+    ]
+   },
+   "at": [
+    -5,
+    -28
+   ],
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     56,
+     17
+    ]
+   },
+   "at": [
+    18,
+    10
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 7,
+    "glassColour": "#8fa9b3",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-brick-end",
+   "footprint": {
+    "rect": [
+     9,
+     17
+    ]
+   },
+   "at": [
+    50.5,
+    10
+   ],
+   "height": 24,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    8,
+    -24
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a47",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    8,
+    -33,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "colour": "#9b5a47",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -40.6,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "height": 2,
+    "bottom": 6,
+    "colour": "#59666e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -40.6,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#2e3338",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -15,
+    -40.6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 13,
+    "colour": "#1d5a46",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Podium is a simplified polygon of the irregular outline; front slab has one low ribbon band and glass-block plinth but no wall lettering; white glass wing has no sunshade bands (budget); brick canopy is simplified."
+ }
+}

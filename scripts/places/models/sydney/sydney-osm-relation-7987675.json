@@ -1,0 +1,351 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Boronia_(Mosman).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "J Bar",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/bor2.jpg",
+   "used": "two-storey cream-rendered villa, shuttered openings, double-storey cast-iron verandah in dark red with lace valance, red-and-white striped verandah roof, central gable over the door, dark hip roof with two chimneys, box-hedge parterre in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:(1)Boronia-1a.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sardaka",
+   "view": "front",
+   "used": "verandah lace and balustrade detail, hip roof colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7987675",
+   "used": "size (25 x 19 m) and orientation; main block simplified to a rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     19,
+     13
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdca0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    },
+    "windowShape": "rect",
+    "bands": "#8c3c35",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6d5a54",
+    "pitch": 24,
+    "material": "slate",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah-roof-low",
+   "footprint": {
+    "rect": [
+     25,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -6.2
+   ],
+   "rotDeg": 0,
+   "z0": 6.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8c3c35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b4584b",
+    "rise": 0.7,
+    "overhang": 0.2,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah-floor-up",
+   "footprint": {
+    "rect": [
+     25,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -6.2
+   ],
+   "rotDeg": 0,
+   "z0": 3.45,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6e2f2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b2a2a",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable",
+   "footprint": {
+    "rect": [
+     5.5,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -6.2
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ede0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#f1ede0",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -7.8,
+    0.5
+   ],
+   "params": {
+    "length": 25,
+    "depth": 0.6,
+    "height": 2.9,
+    "balustrade": false,
+    "steps": true,
+    "roof": "flat",
+    "wall_colour": "#7a3433",
+    "posts": 10
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -7.8,
+    3.75
+   ],
+   "params": {
+    "length": 25,
+    "depth": 0.6,
+    "height": 3.0,
+    "balustrade": true,
+    "steps": false,
+    "roof": "flat",
+    "wall_colour": "#7a3433",
+    "posts": 10
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -6.5,
+    2,
+    8.4
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.6,
+    "pots": 2,
+    "colour": "#efe9dd"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    6.8,
+    3,
+    8.4
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.6,
+    "pots": 2,
+    "colour": "#efe9dd"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6e3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    4,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6e3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8.5,
+    -16,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6,
+    "height": 0.7,
+    "depth": 0.8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8.5,
+    -16,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6,
+    "height": 0.7,
+    "depth": 0.8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-relation-7987675",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No cast-iron lace or shutters, verandah roof not striped, walls read grey, parterre hedges simplified, plan is a rectangle."
+ }
+}

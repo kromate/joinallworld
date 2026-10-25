@@ -1,0 +1,255 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lawrence_Square_Shopping_Centre.jpg",
+   "licence": "Public domain",
+   "author": "GTD Aquitaine",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/m10_30082934_0.jpg",
+   "used": "long two-level tan masonry block, blue glazed ribbon on the upper level, arched corner entrance, frame tower with arched crest over the anchor store entrance, blue door frames, flat roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lawrence_Allen_Centre_2021.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Canmenwalker",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/m10_30082934_1.jpg",
+   "used": "current look: tan and brown cladding with glazed corners and orange-red accent panels over a large surface car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30082934",
+   "used": "footprint, 2 levels, grey building colour"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Outline scaled to fit clamp; upper blue glazing is a uniform band rather than stepping down, no stepped parapets, arched corner entrance niche omitted, signs are blank flat boards, tower position approximate."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "anchor-tower",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    12,
+    -38
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c2b08a",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#4a7aa8",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true,
+    "bay": 3.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    12,
+    -41.5,
+    17
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.6
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 5,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#4a7aa8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -55,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -35,
+    -62,
+    0
+   ],
+   "params": {
+    "colour": "#7b8a96",
+    "count": 8,
+    "spacing": 8,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 110,
+    "simplify": 2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b78f",
+    "windows": "none",
+    "glassColour": "#3d6e8c",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3f74a3"
+      ],
+      "height": 3.2,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    12,
+    -41.5,
+    17
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 2.8,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#4a7aa8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.5,
+    -42.2,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#2f6aa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    17.5,
+    -42.2,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#2f6aa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    25,
+    -42.2,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#c0392b",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-30082934"
+}

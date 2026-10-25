@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/stanley.json#stanley-recreation",
+   "used": "generic recreation green; OSM match is a nearby house (nearest, 20 m) so not used. Local Stanley style from street photos (Commons GreenFenceRossRdStanley): green corrugated-iron fences, grey stone gate piers, white timber and coloured corrugated roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     9,
+     4.5
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f1f0ea",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6f4a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.4,
+    "thickness": 0.1,
+    "kind": "wall",
+    "pillarEvery": 9.5,
+    "colour": "#2f7d3f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.4,
+    "thickness": 0.1,
+    "kind": "wall",
+    "pillarEvery": 9.5,
+    "colour": "#2f7d3f"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.5,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#8d8c86",
+    "leafColour": "#2f7d3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "swing-a",
+   "at": [
+    -10,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     3.2
+    ],
+    "height": 2.4,
+    "colour": "#c9462f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "swing-bar",
+   "at": [
+    -10,
+    2,
+    2.3
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3.6
+    ],
+    "height": 0.15,
+    "colour": "#c9462f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -11.4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.1,
+    "bottom": 1.0,
+    "colour": "#2f7d3f",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 2,
+    "spread": 4,
+    "line": 4,
+    "colour": "#2f5a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the actual green; shelter, swing frame and fence are typical of Stanley, not surveyed"
+ }
+}

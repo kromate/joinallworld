@@ -1,0 +1,371 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-60449170",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/60449170",
+   "used": "real park outline, five-sided, 108 x 95 m, rotated 30 degrees; no photo found on Commons, Wikipedia or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -64,
+      -20
+     ],
+     [
+      -8.5,
+      -58.5
+     ],
+     [
+      23.2,
+      -56.2
+     ],
+     [
+      65.1,
+      17.4
+     ],
+     [
+      -14.2,
+      69.4
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#5f9a4d",
+    "topColour": "#5f9a4d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-slab",
+   "at": [
+    -16,
+    -6,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     32,
+     17
+    ],
+    "height": 0.12,
+    "colour": "#4f8a5b",
+    "topColour": "#4f8a5b"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -16,
+    -6,
+    6.0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 34,
+    "depth": 19,
+    "rise": 1.8,
+    "folds": 2,
+    "thickness": 0.3,
+    "colour": "#b7b3a8",
+    "edgeColour": "#d9d5c8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -31,
+     -13.5,
+     0.1
+    ],
+    "end": [
+     -1,
+     -13.5,
+     0.1
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 6.0,
+      "colour": "#d9d5c8"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -31,
+     1.5,
+     0.1
+    ],
+    "end": [
+     -1,
+     1.5,
+     0.1
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 6.0,
+      "colour": "#d9d5c8"
+     }
+    }
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    26,
+    6,
+    0.1
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#f2efe6",
+    "cap_colour": "#b7b3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    18,
+    -30
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    2,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.14
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -14
+     ],
+     [
+      -4,
+      -40
+     ],
+     [
+      10,
+      -10
+     ],
+     [
+      40,
+      12
+     ],
+     [
+      2,
+      48
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d9d5c8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#3b3f44",
+    "points": [
+     [
+      -52,
+      -26
+     ],
+     [
+      -30,
+      -42
+     ],
+     [
+      -10,
+      -52
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   130,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -6
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     24
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -46
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     34
+    ],
+    "height": 11
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists for this park: the outline is the real OSM polygon, but the roofed court, pavilion, kiosk and floodlights are placed from the brief (typed municipal park), not seen."
+ }
+}

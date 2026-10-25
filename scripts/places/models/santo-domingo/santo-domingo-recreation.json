@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Colon.JPG",
+   "licence": "Public domain",
+   "author": "Siso84",
+   "view": "front",
+   "file": "/tmp/places-evidence/santo-domingo/parque-colon.jpg",
+   "used": "red brick-paved square, Columbus statue pointing from a stepped stone plinth ringed by chain posts, weathered limestone colonial palace with arched ground arcade, crenellated parapet and terracotta roof, black multi-lantern lamp, broadleaf trees right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28101419",
+   "used": "square size about 94 x 68 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building",
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    -22,
+    22
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a8977a",
+    "windows": "rect",
+    "windowRatio": 0.08,
+    "windowShape": "arched",
+    "faces": {
+     "front": "rect",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "count": 7,
+      "width": 3.4,
+      "height": 5.2,
+      "shape": "arched",
+      "depth": 0.8
+     }
+    ],
+    "cornice": true,
+    "parapet": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8573a",
+    "material": "clay-tile",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    15,
+    28
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#9c8767",
+    "windows": "rect",
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "rect",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8573a",
+    "material": "clay-tile",
+    "pitch": 15
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -42,
+    14.8,
+    11
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.6,
+    "colour": "#b3a283"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "width": 8,
+    "steps": 3,
+    "figure_colour": "#3f3d3a",
+    "figure_ratio": 0.3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    34,
+    6,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 30,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Plaza shown from afar; real ground is red brick pavers (cobble ground is pale), no chain posts, statue plinth/figure is crude and taller than real, palace is a plain arcaded box instead of the weathered cathedral-side facade with big portal, ornate lamp is a plain pole, trees are low-poly."
+ }
+}

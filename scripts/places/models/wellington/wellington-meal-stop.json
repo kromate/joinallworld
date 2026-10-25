@@ -1,0 +1,557 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Bank_now_Logan_Browns.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Tony",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/meal-stop-2.jpg",
+   "used": "corner massing with a chamfered entrance corner, dark rusticated stone ground storey, cream rendered upper two storeys, pairs of fluted columns with capitals either side of the corner, red door under a small pediment, balustraded flat parapet with cornice"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Logan_Brown_in_Cuba_Street_crop.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Geoff Pedder",
+   "view": "side",
+   "file": "/tmp/places-evidence/wellington/meal-stop-0.jpg",
+   "used": "fluted Corinthian column pairs, cream wall colour, window proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/254945192",
+   "used": "corner footprint with chamfer (pentagon about 21 x 16 m), rotated so the chamfer faces the street corner"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "polygon": [
+     [
+      0.04,
+      14.98
+     ],
+     [
+      12.34,
+      5.39
+     ],
+     [
+      6.0,
+      -8.5
+     ],
+     [
+      -6.0,
+      -9.5
+     ],
+     [
+      -12.38,
+      -1.21
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#4d4e50",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.9,
+    "bands": {
+     "colour": "#3f4042",
+     "height": 0.35
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7b78",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "polygon": [
+     [
+      0.04,
+      14.98
+     ],
+     [
+      12.34,
+      5.39
+     ],
+     [
+      6.0,
+      -8.5
+     ],
+     [
+      -6.0,
+      -9.5
+     ],
+     [
+      -12.38,
+      -1.21
+     ]
+    ]
+   },
+   "z0": 4.4,
+   "height": 10.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "trimColour": "#f1ecdd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5a8",
+    "parapet": 1.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "params": {
+    "z0": 4.4,
+    "height": 9.4,
+    "colour": "#e6dfcc",
+    "material": "painted-render",
+    "radius": 0.5,
+    "n": 16,
+    "topColour": "#e6dfcc"
+   },
+   "at": [
+    -5.2,
+    -10.333333333333334,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap0",
+   "params": {
+    "z0": 13.8,
+    "height": 0.9,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    -5.2,
+    -10.333333333333334,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base0",
+   "params": {
+    "z0": 4.4,
+    "height": 0.4,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    -5.2,
+    -10.333333333333334,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "params": {
+    "z0": 4.4,
+    "height": 9.4,
+    "colour": "#e6dfcc",
+    "material": "painted-render",
+    "radius": 0.5,
+    "n": 16,
+    "topColour": "#e6dfcc"
+   },
+   "at": [
+    -3.9,
+    -10.225,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap1",
+   "params": {
+    "z0": 13.8,
+    "height": 0.9,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    -3.9,
+    -10.225,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base1",
+   "params": {
+    "z0": 4.4,
+    "height": 0.4,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    -3.9,
+    -10.225,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "params": {
+    "z0": 4.4,
+    "height": 9.4,
+    "colour": "#e6dfcc",
+    "material": "painted-render",
+    "radius": 0.5,
+    "n": 16,
+    "topColour": "#e6dfcc"
+   },
+   "at": [
+    3.9,
+    -9.575000000000001,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap2",
+   "params": {
+    "z0": 13.8,
+    "height": 0.9,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    3.9,
+    -9.575000000000001,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base2",
+   "params": {
+    "z0": 4.4,
+    "height": 0.4,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    3.9,
+    -9.575000000000001,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "params": {
+    "z0": 4.4,
+    "height": 9.4,
+    "colour": "#e6dfcc",
+    "material": "painted-render",
+    "radius": 0.5,
+    "n": 16,
+    "topColour": "#e6dfcc"
+   },
+   "at": [
+    5.2,
+    -9.466666666666667,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap3",
+   "params": {
+    "z0": 13.8,
+    "height": 0.9,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    5.2,
+    -9.466666666666667,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base3",
+   "params": {
+    "z0": 4.4,
+    "height": 0.4,
+    "colour": "#d4ccb6",
+    "material": "painted-render",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    5.2,
+    -9.466666666666667,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entab",
+   "params": {
+    "z0": 14.7,
+    "height": 1.0,
+    "colour": "#ebe5d3",
+    "material": "painted-render",
+    "rect": [
+     13,
+     1.5
+    ]
+   },
+   "at": [
+    0,
+    -10.0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "z0": 0.4,
+    "height": 3.0,
+    "colour": "#9c2a2a",
+    "material": "painted-render",
+    "rect": [
+     1.8,
+     0.3
+    ]
+   },
+   "at": [
+    0,
+    -9.35,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pediment",
+   "params": {
+    "z0": 3.5,
+    "height": 0.6,
+    "colour": "#e6dfcc",
+    "material": "painted-render",
+    "rect": [
+     3.0,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -9.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-l",
+   "params": {
+    "z0": 6.8,
+    "height": 1.5,
+    "colour": "#b3262c",
+    "material": "painted-render",
+    "rect": [
+     1.1,
+     0.2
+    ]
+   },
+   "at": [
+    -2.1,
+    -10.175,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-r",
+   "params": {
+    "z0": 6.8,
+    "height": 1.5,
+    "colour": "#b3262c",
+    "material": "painted-render",
+    "rect": [
+     1.1,
+     0.2
+    ]
+   },
+   "at": [
+    2.1,
+    -9.825,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balust",
+   "params": {
+    "z0": 15.7,
+    "height": 0.9,
+    "colour": "#d9d2bf",
+    "material": "painted-render",
+    "rect": [
+     13,
+     0.4
+    ]
+   },
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag",
+   "params": {
+    "z0": 16.6,
+    "height": 5,
+    "colour": "#8a8a88",
+    "material": "painted-render",
+    "rect": [
+     0.12,
+     0.12
+    ]
+   },
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "columns are fluted-style 16-sided shafts with plain block capitals, no real Corinthian detail; balustrade is a solid rail; ground storey is dark plinth plus band not true rustication; no street context"
+ }
+}

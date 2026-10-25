@@ -1,0 +1,237 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-node-7009112985",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cl%C3%ADnica_RedSalud_Santiago,_Estaci%C3%B3n_Central,_Santiago_20230327_02.jpg",
+   "licence": "CC BY-SA 4.0 (Commons)",
+   "author": "Carlos Figueroa Rojas",
+   "view": "front",
+   "file": "/tmp/places-evidence/santiago/clinic-rs2.jpg",
+   "used": "slender slab tower of about 19 storeys with a chequerboard of pale cladding panels and blue-green glass, grey side frame, teal roof cap band, glazed podium block on the left, dark glazed lobby base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cl%C3%ADnica_RedSalud_Santiago,_Estaci%C3%B3n_Central,_Santiago_20230327_01.jpg",
+   "licence": "CC BY-SA 4.0 (Commons)",
+   "author": "Carlos Figueroa Rojas",
+   "view": "front",
+   "used": "facade rhythm, podium of about 6 storeys in green-tinted glass with a deep canopy, steps and taxi rank at street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/185100544",
+   "used": "stepped 121 x 53 m outline with 7 levels, used for the podium block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 2,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 0.62,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c4bd",
+    "windows": "none",
+    "windowRatio": 0.7,
+    "glassColour": "#7fa9a4",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       6,
+       4
+      ],
+      "colours": [
+       "#9fbfb8",
+       "#7fa9a4",
+       "#b4cdc6"
+      ],
+      "mode": "stripes-h"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a2",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     36,
+     15
+    ]
+   },
+   "at": [
+    3,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 20,
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe7e3",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.5,
+       3.7
+      ],
+      "colours": [
+       "#e3ebe7",
+       "#4d6f86",
+       "#e3ebe7"
+      ],
+      "mode": "checker",
+      "gap": 0.1,
+      "proud": 0.05
+     }
+    ],
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a2",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "teal-cap",
+   "at": [
+    3,
+    6,
+    72
+   ],
+   "params": {
+    "rect": [
+     37,
+     16
+    ],
+    "height": 1.8,
+    "colour": "#1a9a9c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -2.2,
+    73.8
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#f4f4f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4.199999999999999,
+    -20.25,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 32,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#cfd6d4",
+    "edgeColour": "#e8ece9"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21.0,
+    -25.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 8,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -48
+    ],
+    "yawDeg": 0,
+    "colour": "#1d1d1f"
+   },
+   {
+    "at": [
+     -14,
+     -48
+    ],
+    "yawDeg": 0,
+    "colour": "#e0b81a"
+   },
+   {
+    "at": [
+     6,
+     -48
+    ],
+    "yawDeg": 0,
+    "colour": "#e8e8e8"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "facade is a regular checker instead of the irregular pale/blue panel rhythm; podium is a simplified OSM block with striped glass, no stair terrace; adjacent hospital wings not modelled"
+ }
+}

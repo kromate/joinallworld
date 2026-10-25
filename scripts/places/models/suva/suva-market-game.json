@@ -1,0 +1,138 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/730227260",
+   "used": "real outline of the Hexagon block, 2 levels (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3bf",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#c98f7b",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -12,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "colours": [
+     "#c98f7b",
+     "#f2f2ee"
+    ]
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "colours": [
+     "#c98f7b",
+     "#f2f2ee"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c98f7b",
+     "#f2f2ee",
+     "#4f7f8f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "colour": "#c98f7b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; real OSM outline and 2 levels only, facade detail typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-market-game"
+}

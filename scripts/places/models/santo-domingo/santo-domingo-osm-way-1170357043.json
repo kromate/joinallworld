@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-1170357043",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1170357043",
+   "used": "46 x 46 m rotated square plot (name match) as the park outline and fence line"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30.1,
+      12.1
+     ],
+     [
+      -11.9,
+      -30.2
+     ],
+     [
+      30.1,
+      -12.1
+     ],
+     [
+      11.9,
+      30.2
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     40,
+     3
+    ],
+    "height": 0.06,
+    "colour": "#e6dcc0"
+   },
+   "rotDeg": -23
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     3,
+     40
+    ],
+    "height": 0.06,
+    "colour": "#e6dcc0"
+   },
+   "rotDeg": -23
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30.1,
+      12.1
+     ],
+     [
+      -11.9,
+      -30.2
+     ],
+     [
+      30.1,
+      -12.1
+     ],
+     [
+      11.9,
+      30.2
+     ],
+     [
+      -30.1,
+      12.1
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.25,
+    "colour": "#e6dcc0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d8d0b8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -10,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     2.5
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photograph of this place found on Commons, Wikidata or Wikipedia; modelled from the brief's text description. Paths, bandstand and tree positions are plausible, not surveyed."
+ }
+}

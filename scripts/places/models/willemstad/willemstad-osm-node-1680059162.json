@@ -1,0 +1,321 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kokomo_Beach.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Baklu23",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/willemstad/kokomo.jpg",
+   "used": "small white bar hut with dark brown roof and a blue lower trim at the foot of the cliff, narrow white-sand cove, short timber pier with a ladder into clear turquoise water, loungers, bare acacia scrub"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/401020641",
+   "used": "25 x 19 m outline of the beach club building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 30,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "club",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#cfc4ae",
+    "windows": "none",
+    "bands": "#4aa3c9",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c6a55",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    17,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    2,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 10,
+    "count": 8,
+    "kind": "acacia",
+    "min_height": 4,
+    "max_height": 6
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -52,
+    20,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 90,
+    "shape": "ellipse",
+    "colour": "#1fb0c8",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sand",
+   "at": [
+    -21,
+    40
+   ],
+   "params": {
+    "rect": [
+     7,
+     26
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#e8dcc0",
+    "material": "plain"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    10,
+    66,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 34,
+    "height": 14,
+    "seed": 5,
+    "boulders": 14,
+    "rock_colour": "#7a6652",
+    "stairs": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -20,
+    50
+   ],
+   "height": 2.4,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#3f7fc0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3528",
+    "material": "timber-shingle",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -19,
+    18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 13,
+    "width": 1.2,
+    "height": 0.5,
+    "rails": false,
+    "piles": true,
+    "colour": "#a58559"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -20.5,
+    30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "spacing": 2.6,
+    "umbrellas": false,
+    "loungers": true,
+    "colours": [
+     "#d9d2c0",
+     "#d9d2c0"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Cove, brown pantile roof, acacia ring, cliff mass, hut and jetty now follow the photo; the cliff is a smooth mound, no scrub texture, trees are sparse low-poly and the sand is wider than the real strip."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-node-1680059162"
+}

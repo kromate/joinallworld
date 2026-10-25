@@ -1,0 +1,227 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-osm-way-220421609",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cathedral_of_St_Pierre_and_Miquelon.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jrbbopp",
+   "view": "front",
+   "file": "/tmp/places-evidence/saint-pierre/cath.jpg",
+   "used": "rubble stone bell tower over the porch with louvred arched belfry and grey pyramid spire, low stone porch with three arched doors, long pink rendered nave with tall narrow side windows and grey gabled roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220421609",
+   "used": "overall extent about 60 x 27 m and height tag 19.5 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.77
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     36
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa6a9",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "left": "arched",
+     "right": "arched",
+     "front": "none",
+     "back": "none"
+    },
+    "plinth": 0.5,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#6f6a6c",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     5,
+     12
+    ]
+   },
+   "at": [
+    -9.5,
+    14
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7aeb0",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "faces": {
+     "left": "arched",
+     "front": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a5a52",
+    "rise": 1.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     19,
+     5.5
+    ]
+   },
+   "at": [
+    0,
+    2.75
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a6a5e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a4e",
+    "material": "clay-tile",
+    "rise": 1.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    3.4
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a6a60",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.2
+    ]
+   },
+   "at": [
+    0,
+    3.4
+   ],
+   "z0": 19,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7e6256",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#737d88",
+    "material": "metal-sheet",
+    "rise": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -0.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 1,
+    "colour": "#9a8f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "no stone arched doors, clock, statue or cross; brick-like stone texture; nave windows narrower than the real tall slits"
+ }
+}

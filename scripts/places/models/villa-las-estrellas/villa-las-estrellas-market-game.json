@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+   "used": "small souvenir shop run by local women; building not identified, so a modest prefab shop module with 17 x 10 m size from the brief; colours typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     17,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e3b93b",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#e8ecee",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a2e22",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 1.8,
+    "height": 2.7,
+    "colours": [
+     "#c8372d",
+     "#e8ecee"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.1,
+    "bottom": 2.2,
+    "colour": "#f2efe6",
+    "frameColour": "#7a2e22",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4.5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 2,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    11,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#2f5f9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the shop exists; shape, colours and kiosk are typed from the brief; OSM node was 62 m away so the outline was not used."
+ }
+}

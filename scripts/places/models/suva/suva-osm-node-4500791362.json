@@ -1,0 +1,115 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/948125266",
+   "used": "nearest building outline, 7.7 m from the park node (nearest match, treated as indicative)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c8bfa6",
+    "windows": "none",
+    "bands": "#7aa05a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3412f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.6,
+    "run": 1.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 24,
+    "count": 9,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; hall outline is the nearest OSM building, setting typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-node-4500791362"
+}

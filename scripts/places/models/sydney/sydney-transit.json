@@ -1,0 +1,139 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/595660904",
+   "used": "real building outline (St Leonards Exchange, tagged service, 36 x 29 m); no photo of this building was found, the Commons images show other towers of St Leonards"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "exchange",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b2a6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6f8794",
+    "bands": "#8c8f93",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 8
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    -44,
+    1
+   ],
+   "params": {
+    "width": 40,
+    "depth": 5.5,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -54,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -34,
+    0,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "kind": "coach",
+    "density": 0.6,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building exists; outline is real but facade, platform canopy and bus bays are typical, not observed"
+ }
+}

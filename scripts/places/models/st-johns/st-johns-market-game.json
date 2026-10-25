@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/7553158",
+   "used": "real marketplace outline (name match, 67 x 56 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: covered trading hall, concrete walls with cream render, grey corrugated roof, open stalls and umbrellas; the nearby Commons photos show produce only, not the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 0.9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bands": "#a5473a",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "louvre",
+     "left": "louvre"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8084",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#a5473a",
+     "#efeee8",
+     "#3f7f8f"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the hall; outline is real, interior stalls and roof pitch from brief"
+ }
+}

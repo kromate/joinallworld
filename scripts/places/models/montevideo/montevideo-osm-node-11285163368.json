@@ -1,0 +1,218 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-node-11285163368",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:INET.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/montevideo/mv-inet.jpg",
+   "used": "board-marked concrete upper box on slender round columns over a recessed yellow-brown brick ground floor with clerestory glazing; blank concrete end wall; long side with fixed horizontal louvre blades in front of window bands; flat roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1217913917",
+   "used": "45 x 9.6 m footprint, 3 levels, bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 48,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     10,
+     34
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 4.2,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7f7e79",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    },
+    "pattern": {
+     "type": "louvres",
+     "colour": "#e0d8c4",
+     "backColour": "#2c3236",
+     "pitch": 0.45,
+     "depth": 0.5,
+     "band": 0.7,
+     "faces": [
+      "right"
+     ],
+     "margin": 0.8
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a85",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     8.4,
+     32.4
+    ]
+   },
+   "at": [
+    -0.8,
+    5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a3835f",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     4.0,
+     -10,
+     0
+    ],
+    "end": [
+     4.0,
+     20,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.22,
+        0,
+        "#9c9a94"
+       ],
+       [
+        0.22,
+        4.2,
+        "#9c9a94"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4.2,
+    -12,
+    1.8
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#2f4a3e",
+    "frameColour": "#555555",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8.5,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 5.2,
+    "yaw": 90,
+    "colour": "#c8cacc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    16,
+    34
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4553a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a85",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   60,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "blank concrete end wall and cream louvres with brick base and pilotis, neighbour building added; louvre blades are flat bands, brick base has no grid relief, no street trees or parked-car row detail"
+ }
+}

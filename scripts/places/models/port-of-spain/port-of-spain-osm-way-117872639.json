@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-117872639",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TnT_PoS_M7-5_Archbishop%27s_Palace.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Grueslayer",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-of-spain/archbishop.jpg",
+   "used": "two-storey cream house with terracotta arcaded loggias on both floors, galvanised hip roof, crenellated square corner tower with terracotta merlons and bands, terracotta string courses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/117872639",
+   "used": "extent about 41 x 38 m, bearing 95 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 6,
+  "fovDeg": 44,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     17
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 10.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f0dfc2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.9,
+    "bands": "#b5573a",
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d5dadb",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -10,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 10.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f0dfc2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.9,
+    "bands": "#b5573a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#cfd4d4",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    16,
+    -3
+   ],
+   "rotDeg": 0,
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#f0dfc2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.9,
+    "bands": "#b5573a",
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8ccb8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    16,
+    -6.5,
+    20
+   ],
+   "params": {
+    "length": 7.4,
+    "height": 1.0,
+    "merlon": 1.0,
+    "gap": 0.8,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    12.5,
+    -3,
+    20
+   ],
+   "params": {
+    "length": 7.4,
+    "height": 1.0,
+    "merlon": 1.0,
+    "gap": 0.8,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    19.5,
+    -3,
+    20
+   ],
+   "params": {
+    "length": 7.4,
+    "height": 1.0,
+    "merlon": 1.0,
+    "gap": 0.8,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    16,
+    0.5,
+    20
+   ],
+   "params": {
+    "length": 7.4,
+    "height": 1.0,
+    "merlon": 1.0,
+    "gap": 0.8,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porte-cochere",
+   "at": [
+    18,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "height": 4.4,
+    "z0": 0,
+    "colour": "#ece0cc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "depth": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper-floor arched loggia and terracotta arch mouldings simplified; crenellated tower is a single volume, the lower second tower is omitted"
+ }
+}

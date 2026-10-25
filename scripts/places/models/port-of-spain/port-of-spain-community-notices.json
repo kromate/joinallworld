@@ -1,0 +1,443 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:POS_Redhouse.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Random 00021 (Anthony Mendenhall)",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-of-spain/notices1.jpg",
+   "used": "crimson render, tall central block with arched windows and cornice, green-grey dome with white lantern cupola, pedimented front bay, lower red wings with pale grey roofs, red railings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Red_House_of_Trinidad_and_Tobago.jpg",
+   "licence": "CC BY 3.0",
+   "author": "David Stanley",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-of-spain/notices2.jpg",
+   "used": "dome, two-storey arched window rhythm, pedimented bay on the side street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/138155533",
+   "used": "overall size (142 x 45 m); the outline is too fine to use directly"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     36,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#f0e4dc",
+    "bands": "#e8d8d0",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "bay": 3.6,
+    "cornice": true,
+    "trimColour": "#f0e4dc",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "parapet": 0.9
+   },
+   "z0": 19
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    29
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      11.5,
+      0,
+      "#b0b8b0"
+     ],
+     [
+      11,
+      0.6,
+      "#9fc2b0"
+     ],
+     [
+      9.8,
+      2.8,
+      "#9fc2b0"
+     ],
+     [
+      7,
+      4.6,
+      "#9fc2b0"
+     ],
+     [
+      3.5,
+      5.8,
+      "#9fc2b0"
+     ],
+     [
+      3.0,
+      6.0,
+      "#9fc2b0"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    34.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "n": 8,
+    "height": 3.6,
+    "colour": "#f0e4dc",
+    "windows": "arched",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    38.4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      3.4,
+      0,
+      "#7c8590"
+     ],
+     [
+      3.0,
+      0.5,
+      "#7c8590"
+     ],
+     [
+      1.6,
+      1.8,
+      "#7c8590"
+     ],
+     [
+      0.2,
+      2.6,
+      "#7c8590"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    -46,
+    2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#f0e4dc",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2aab0",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    46,
+    2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#f0e4dc",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2aab0",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment-bay",
+   "footprint": {
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -22.5
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "none",
+    "trimColour": "#f0e4dc",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8d8d0",
+    "pitch": 18,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-balcony-west",
+   "footprint": {
+    "rect": [
+     22,
+     3.5
+    ]
+   },
+   "at": [
+    -28,
+    -13.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d8d0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-balcony-east",
+   "footprint": {
+    "rect": [
+     22,
+     3.5
+    ]
+   },
+   "at": [
+    28,
+    -13.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8334a",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d8d0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#a8334a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#c8102e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -48
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Red House dome, lantern and arched stage are close; real facade has far more ornament, balconies and a louvred upper arcade; wings simplified; side iron-roofed market not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-community-notices"
+}

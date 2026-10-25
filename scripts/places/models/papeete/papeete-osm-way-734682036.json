@@ -1,0 +1,543 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-osm-way-734682036",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Temple_mormon_Tahiti.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Saga70",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/temp1.jpg",
+   "used": "white walls, low blue-tile hip roofs either side, projecting central entrance pavilion with white pilasters and its own blue pyramid roof, stepped tower base and slim white spire with a gold figure, flat white entrance canopy, lawn, flower beds and palms, flagpoles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Temple_Mormon_Papeete.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Saga70",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/temp2.jpg",
+   "used": "spire proportions: needle shaft over a stepped crown, deep blue roofs, tall slim pilasters, bollard lights along the path"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/734682036",
+   "used": "overall size only (about 42 x 34 m); the wings are composed as clean rectangles to match the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 4.2,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f4c8f",
+    "material": "clay-tile",
+    "rise": 2.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0ede4",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f4c8f",
+    "material": "clay-tile",
+    "rise": 3.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-pavilion",
+   "footprint": {
+    "rect": [
+     8.6,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 10.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6f4ee",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "glassColour": "#9fb4bd",
+    "bay": 2.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f4c8f",
+    "material": "clay-tile",
+    "rise": 0.7,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.6,
+     0
+    ],
+    "end": [
+     3.6,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.5
+      ],
+      "height": 10.4,
+      "colour": "#fbfaf5"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.5,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     5.0
+    ],
+    "height": 3.0,
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -1.5,
+    14.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.6,
+     -1.9
+    ],
+    "end": [
+     2.6,
+     -1.9
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "height": 0.9,
+      "colour": "#f7f5ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -1.5,
+    14.5
+   ],
+   "params": {
+    "colour": "#f8f6ef",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       2.4
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       2.4,
+       2.2
+      ]
+     },
+     {
+      "z": 1.7,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 3.1,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.5,
+    26.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.35
+    ],
+    "height": 1.8,
+    "colour": "#d9ae34",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.3,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     12.5,
+     2.6
+    ],
+    "height": 0.3,
+    "colour": "#fbfaf5"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.4,
+     0
+    ],
+    "end": [
+     5.4,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 4.3,
+      "colour": "#fbfaf5"
+     }
+    }
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -17,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#d4423a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    17,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#2f4c8f",
+     "#ffffff",
+     "#d4423a"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -20,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     12
+    ],
+    "height": 0.08,
+    "colour": "#9d9d98"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    27,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.25,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.45,
+    -1.5,
+    26.9
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#d9ae34"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.8
+    ],
+    "height": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#7a6a55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     2
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -1
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -9
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -9
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion roof reads as a heavy pyramid, not a flared canopy over slim glazing; gold figure is a small block; wings lack pilastered glazing; lawn hedge/bench simplified; palms are generic."
+ }
+}

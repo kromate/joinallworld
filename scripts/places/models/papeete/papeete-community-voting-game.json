@@ -1,0 +1,384 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mairie_de_Arue.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mlgd (Wikimedia Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/mairie1.jpg",
+   "used": "colonial timber villa: two storeys, big red corrugated hip roof with a small hipped porch gable, deep ground-floor veranda with lace valance and white balustrade, upper balcony, double stair with white balusters, louvred shutters, cream walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mairie_d%27Arue.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Saga70 (Wikimedia Commons)",
+   "view": "front",
+   "used": "same front, confirms the red veranda roof and the flanking low wings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/728937900",
+   "used": "overall size only (about 23 x 16 m); the outline is fragmentary so a clean rectangle is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b64a3c",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.6,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bands": "#c9c2a8",
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4453b",
+    "material": "corrugated",
+    "pitch": 33,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6.5,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -5.4
+   ],
+   "z0": 3.6,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2ead6",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4453b",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 2.6,
+    "eaveHeight": 3.2,
+    "attachHeight": 3.6,
+    "post": "square",
+    "postEvery": 3.3,
+    "railHeight": 1.0,
+    "colour": "#fafafa",
+    "roofColour": "#c4453b"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -6.4,
+    3.6
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "postEvery": 1.2,
+    "colour": "#fbfbf6"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -5,
+    3,
+    8.4
+   ],
+   "params": {
+    "width": 0.6,
+    "height": 2,
+    "pots": 1
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    5,
+    3,
+    8.4
+   ],
+   "params": {
+    "width": 0.6,
+    "height": 2,
+    "pots": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3.8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -3.8,
+    -9.6,
+    0.2
+   ],
+   "params": {
+    "length": 2.4,
+    "height": 1.0,
+    "postEvery": 0.5,
+    "colour": "#fbfbf6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3.8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    3.8,
+    -9.6,
+    0.2
+   ],
+   "params": {
+    "length": 2.4,
+    "height": 1.0,
+    "postEvery": 0.5,
+    "colour": "#fbfbf6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -5.2,
+    -10.4,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1.3
+     ]
+    ],
+    "colour": "#fbfbf6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    5.2,
+    -10.4,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1.3
+     ]
+    ],
+    "colour": "#fbfbf6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.4
+      ],
+      "height": 1.1,
+      "topScale": 1,
+      "colour": "#ffffff",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6.4,
+     -5.1,
+     4.5
+    ],
+    "end": [
+     6.4,
+     -5.1,
+     4.5
+    ],
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "two storeys with taller hip roof, double stair, chimneys moved; still no scalloped lace valance or porch canopy hip, roof overhang smaller than the real corrugated roof, steps are small"
+ }
+}

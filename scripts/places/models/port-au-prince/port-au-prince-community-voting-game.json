@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/420576002",
+   "used": "irregular 23 x 18 m outline, 15 vertices"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mairie-annex",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#6fa8c8",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 2,
+    "colour": "#e8c94f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

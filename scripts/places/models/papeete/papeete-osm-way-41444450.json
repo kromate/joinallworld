@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-osm-way-41444450",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/41444450",
+   "used": "real outline: an oval about 145 m x 209 m with the long axis north-south and a flatter eastern side; modelled as an oval bowl at 0.55 scale (long axis along y) to stay inside the scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://fr.wikipedia.org/wiki/Stade_Pater_Te_Hono_Nui",
+   "used": "built 1971 for the Pacific Games, about 15,000 seats, six-lane tartan track, natural grass pitch, concrete stands; no usable exterior photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 62,
+    "n": 48,
+    "z0": 0.0,
+    "height": 0.1,
+    "colour": "#c9c5b8",
+    "topScale": [
+     0.75,
+     1.08
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "radius": 34,
+    "n": 40,
+    "height": 0.05,
+    "colour": "#6f9a4f",
+    "topScale": [
+     0.62,
+     0.95
+    ]
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 104,
+    "width": 60,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 39,
+    "radiusY": 57,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 15,
+    "rise": 0.62,
+    "run": 0.85,
+    "firstHeight": 2.4,
+    "facetDeg": 10,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "blocks": 4,
+    "seatColours": [
+     "#3d6f9e",
+     "#e8e4d8",
+     "#3d6f9e"
+    ],
+    "concreteColour": "#c9c5b8",
+    "underColour": "#a9a597"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 39,
+    "radiusY": 57,
+    "startDeg": 150,
+    "endDeg": 210,
+    "rows": 17,
+    "rise": 0.62,
+    "run": 0.85,
+    "firstHeight": 2.4,
+    "offset": 0.0,
+    "facetDeg": 10,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#3d6f9e",
+    "concreteColour": "#c9c5b8",
+    "underColour": "#a9a597",
+    "canopy": {
+     "height": 3.8,
+     "depth": 11,
+     "thickness": 0.6,
+     "slopeDeg": 3,
+     "colour": "#9a9d9e",
+     "edgeColour": "#e8e4d8",
+     "overhangBack": 0.5
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    50,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    50,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    58,
+    6
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 5,
+    "colour": "#1f3a52",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#e8e4d8",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hut",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    14,
+    -64
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -62
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -42,
+     -66
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -62
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     38
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the stadium exists on Commons/Wikipedia; real OSM oval only, modelled at 0.55 scale. Covered west stand is unverified. NOT RENDERED (queue hung)."
+ }
+}

@@ -1,0 +1,902 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Constitutional_Court_of_Sint_Maarten.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/philipsburg/court.jpg",
+   "used": "white clapboard gable-fronted courthouse, green trim and corner quoins, first-floor balcony with white rail over the green double door, square clock turret with pyramid cap and pineapple finial, white picket fence and gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261373945",
+   "used": "size 27 x 10 m footprint; ridge runs along the 27 m depth, gable end at front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10.4,
+     27
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bands": "#2f6a45",
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4a46",
+    "material": "slate",
+    "rise": 3.8,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "at": [
+    0,
+    -14.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     1.7
+    ],
+    "z0": 3.4,
+    "height": 0.25,
+    "colour": "#f6f6f2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-front",
+   "at": [
+    0,
+    -15.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     0.15
+    ],
+    "z0": 3.65,
+    "height": 1.0,
+    "colour": "#f6f6f2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail-l",
+   "at": [
+    -3.3,
+    -14.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     1.7
+    ],
+    "z0": 3.65,
+    "height": 1.0,
+    "colour": "#f6f6f2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail-r",
+   "at": [
+    3.3,
+    -14.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     1.7
+    ],
+    "z0": 3.65,
+    "height": 1.0,
+    "colour": "#f6f6f2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "french-0",
+   "at": [
+    -1.5,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.18
+    ],
+    "z0": 3.7,
+    "height": 2.2,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "french-1",
+   "at": [
+    1.5,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.18
+    ],
+    "z0": 3.7,
+    "height": 2.2,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -13.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 0.3,
+    "height": 2.7,
+    "colour": "#2f6a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter-0",
+   "at": [
+    -4.4,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.15
+    ],
+    "z0": 0.8,
+    "height": 2.0,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-1",
+   "at": [
+    -2.6,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.15
+    ],
+    "z0": 0.8,
+    "height": 2.0,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-2",
+   "at": [
+    2.6,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.15
+    ],
+    "z0": 0.8,
+    "height": 2.0,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-3",
+   "at": [
+    4.4,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.15
+    ],
+    "z0": 0.8,
+    "height": 2.0,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.14
+    ],
+    "z0": 6.15,
+    "height": 0.55,
+    "colour": "#9b2d2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crest",
+   "at": [
+    0,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "z0": 8.0,
+    "height": 1.1,
+    "colour": "#b3262e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      -5.75,
+      -13.6,
+      6.85
+     ],
+     [
+      0,
+      -13.6,
+      10.9
+     ],
+     [
+      5.75,
+      -13.6,
+      6.85
+     ]
+    ],
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.15,
+     -13.6,
+     0.5
+    ],
+    "end": [
+     -5.15,
+     -13.6,
+     6.4
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "id": "q",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.75,
+        0.3
+       ],
+       "z0": 0,
+       "height": 0.5,
+       "colour": "#2f6a45"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     5.15,
+     -13.6,
+     0.5
+    ],
+    "end": [
+     5.15,
+     -13.6,
+     6.4
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "id": "q",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.75,
+        0.3
+       ],
+       "z0": 0,
+       "height": 0.5,
+       "colour": "#2f6a45"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "clock-turret",
+   "at": [
+    0,
+    -12.2,
+    9.6
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.6,
+    "height": 3.6,
+    "cap": "pyramid",
+    "capRise": 0.9,
+    "windows": "none",
+    "colour": "#f3f1ea",
+    "capColour": "#3b3a37"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-louvre",
+   "at": [
+    0,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "z0": 12.2,
+    "height": 0.9,
+    "colour": "#5a5f58"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "turret-shutter-l",
+   "at": [
+    -0.75,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.1
+    ],
+    "z0": 12.2,
+    "height": 0.9,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "turret-shutter-r",
+   "at": [
+    0.75,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.1
+    ],
+    "z0": 12.2,
+    "height": 0.9,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "at": [
+    0,
+    -13.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "z0": 10.9,
+    "height": 0.9,
+    "colour": "#e8e6da"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -1.2,
+     -13.55,
+     9.8
+    ],
+    "end": [
+     -1.2,
+     -13.55,
+     13.0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "id": "tq",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.3,
+        0.2
+       ],
+       "z0": 0,
+       "height": 0.35,
+       "colour": "#2f6a45"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     1.2,
+     -13.55,
+     9.8
+    ],
+    "end": [
+     1.2,
+     -13.55,
+     13.0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "id": "tq",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.3,
+        0.2
+       ],
+       "z0": 0,
+       "height": 0.35,
+       "colour": "#2f6a45"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -12.2,
+    13.4
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4a82f",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.3,
+      0.3
+     ],
+     [
+      0.35,
+      0.7
+     ],
+     [
+      0.2,
+      1.1
+     ],
+     [
+      0.05,
+      1.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#f0f0f0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.1,
+    "thickness": 0.12,
+    "pillarEvery": 0.8,
+    "colour": "#ffffff",
+    "points": [
+     [
+      -7,
+      -13
+     ],
+     [
+      -7,
+      -20
+     ],
+     [
+      -1.3,
+      -20
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.1,
+    "thickness": 0.12,
+    "pillarEvery": 0.8,
+    "colour": "#ffffff",
+    "points": [
+     [
+      1.3,
+      -20
+     ],
+     [
+      7,
+      -20
+     ],
+     [
+      7,
+      -13
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-post-l",
+   "at": [
+    -1.3,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-post-r",
+   "at": [
+    1.3,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.2,
+    "colour": "#2f6a45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -16.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6.4
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#8d8d8a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -5.5,
+     -16.5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     5.5,
+     -16.5
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No picket gaps/ball finials on gate posts, no louvre arch or round clock face, clapboard texture coarse, blank (not crest-painted) plaque, palms are stand-ins, balcony rail is a solid board."
+ }
+}

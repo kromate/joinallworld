@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-airport-port-au-prince-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PAP_-_Porto_Pr%C3%ADncipe_-_2010_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vitorabdala",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-au-prince/pap2.jpg",
+   "used": "airside elevation: long two-storey block with ribbon glazing and a pale render band, taller three-storey central-left block carrying a small control cab with rail, lower annex and canopy to the right, warm grey colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_PAP_2010-01-26_2.JPG",
+   "licence": "Public domain",
+   "author": "Tech. Sgt. James L. Harper, USAF",
+   "view": "aerial",
+   "used": "terminal position along the apron, long thin plan"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27151970",
+   "used": "terminal footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc8b4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon"
+    },
+    "bands": "#e4dfd0",
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    -26,
+    -4
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c0a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -26,
+    -4,
+    17
+   ],
+   "params": {
+    "height": 5,
+    "style": "square",
+    "colour": "#b8b09c",
+    "shaftRadius": 2.0,
+    "cabRadius": 3.2,
+    "cabColour": "#9a9a8c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 4.5,
+    "form": "flat",
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.4,
+    "bottom": 6.5,
+    "colour": "#7f9aa6",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ground-level tower block and canopy simplified; no rooftop antennas/dishes, terminal scaled 0.5 from OSM, wings and apron vehicles omitted"
+ }
+}

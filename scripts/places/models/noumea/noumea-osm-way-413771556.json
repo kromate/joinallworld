@@ -1,0 +1,112 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/413771556",
+   "used": "real 32 x 32 m irregular outline, name-quality match, amenity=restaurant"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead9",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#c97b63"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5c7a58",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -13.6,
+    0
+   ],
+   "rotDeg": -22,
+   "params": {
+    "width": 14,
+    "depth": 2.6,
+    "drop": 0.6,
+    "height": 3,
+    "colours": [
+     "#c97b63",
+     "#f1ead9"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -17.5,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 3.5,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#c97b63",
+     "#f1ead9",
+     "#a98f6c"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo: outline is real; roof, colours, awning and umbrellas are guesses from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-way-413771556"
+}

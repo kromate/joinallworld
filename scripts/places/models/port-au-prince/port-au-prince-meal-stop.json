@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hotel_Montana.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-au-prince/montana1.jpg",
+   "used": "style only: white stucco blocks, deep terraces with thin white rails, flat roofs with thin cornice, palms and bougainvillea; the photo shows the pre-2010 hotel so it is not a match to the rebuilt one"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/274291979",
+   "used": "footprint 25 x 24 m, building=hotel"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#b9b2a4",
+    "cornice": true,
+    "plinth": 0.5,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-block",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -17
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "bands": "#b9b2a4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "floors": 2,
+    "storeyHeight": 3.5,
+    "proud": 1.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#5f9d6e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#5f9d6e",
+     "#f2efe6"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Rebuilt hotel massing unknown; OSM outline plus the style of the old white terraced blocks, with a guessed lower terrace wing."
+ }
+}

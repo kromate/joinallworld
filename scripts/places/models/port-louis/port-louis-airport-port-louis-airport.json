@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-airport-port-louis-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mauritius_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "susan",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/port-louis/airport3.jpg",
+   "used": "long terminal: three glazed gable pavilions on the left wing, tall blue-grey vaulted central hall, lower curved wing with glazed end on the right, silver-blue roof colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flughafen_Mauritius_2019-10-01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Z thomas",
+   "view": "street",
+   "used": "kerbside canopy: cream soffit panels, dark steel ribs, slim white round columns, blue-green glazed upper wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/200519316",
+   "used": "overall size (240 x 208 m, fan-shaped wings); modelled as 3 straight bays"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 2.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     52,
+     28
+    ]
+   },
+   "at": [
+    -52,
+    0
+   ],
+   "rotDeg": -8,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb1c4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aaabb",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-hall",
+   "footprint": {
+    "rect": [
+     46,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa7c0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#7f93ac",
+    "material": "metal-sheet",
+    "rise": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     56,
+     30
+    ]
+   },
+   "at": [
+    50,
+    2
+   ],
+   "rotDeg": 17,
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8aa0b6",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#98a6b6",
+    "material": "metal-sheet",
+    "rise": 6,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 120,
+    "depth": 18,
+    "height": 6.2,
+    "columns": 9,
+    "colour": "#d9cdb6",
+    "edgeColour": "#2f3a44"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    80,
+    20,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "style": "round",
+    "colour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    46,
+    24,
+    6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    64,
+    24,
+    6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "mosque-domed/gable-roof",
+   "at": [
+    -66,
+    -6,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "length": 16,
+    "rise": 5,
+    "overhang": 0.3,
+    "colour": "#7fa0c0",
+    "wall_colour": "#a9c4dc",
+    "scale": 1.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/gable-roof",
+   "at": [
+    -52,
+    -6,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "length": 16,
+    "rise": 5,
+    "overhang": 0.3,
+    "colour": "#7fa0c0",
+    "wall_colour": "#a9c4dc",
+    "scale": 1.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/gable-roof",
+   "at": [
+    -38,
+    -6,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "length": 16,
+    "rise": 5,
+    "overhang": 0.3,
+    "colour": "#7fa0c0",
+    "wall_colour": "#a9c4dc",
+    "scale": 1.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -20,
+     0,
+     22
+    ],
+    "end": [
+     20,
+     0,
+     22
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.7,
+        1.2
+       ]
+      },
+      "arc": {
+       "centre": [
+        0,
+        0,
+        0
+       ],
+       "radius": 20,
+       "radiusY": 11,
+       "startDeg": 180,
+       "endDeg": 0,
+       "plane": "yz"
+      },
+      "colour": "#5e7690"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     28,
+     2,
+     13
+    ],
+    "end": [
+     72,
+     2,
+     13
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.9
+       ]
+      },
+      "arc": {
+       "centre": [
+        0,
+        0,
+        0
+       ],
+       "radius": 15,
+       "radiusY": 6,
+       "startDeg": 180,
+       "endDeg": 0,
+       "plane": "yz"
+      },
+      "colour": "#5e7690"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "ribbed vaults only approximate the swooping real roof; fan wings rotated but gable pavilions are simple pitched boxes"
+ }
+}

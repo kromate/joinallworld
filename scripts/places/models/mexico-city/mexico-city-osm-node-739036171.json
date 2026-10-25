@@ -1,0 +1,275 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-node-739036171",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Instituto_Nacional_de_Pediatria.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Valdemar (Commons user)",
+   "view": "street",
+   "file": "/tmp/places-evidence/mexico-city/w59-peds.jpg",
+   "used": "stone-grey concrete slab of about nine storeys with deep balcony bands and dark ribbon windows, a taller square stair/lift tower at the left end with a steel stair frame, a low wide grey wing in front with a large glazed corner; night photo so colours are inferred"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/287461958",
+   "used": "93 x 25 m slab footprint, 6 levels tag (photo shows more floors on the tower)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 25,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c84",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#2f3740",
+    "plinth": 0.5,
+    "bands": "#6a6862",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c7a75",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    -44,
+    -4
+   ],
+   "rotDeg": 4,
+   "height": 47,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c84",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "glassColour": "#4b5560",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -24
+   ],
+   "rotDeg": 4,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8881",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "glassColour": "#566069",
+    "faces": {
+     "left": "curtain",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#74726d",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     3.6
+    ],
+    "height": 36,
+    "colour": "#9a9aa0",
+    "windows": "none",
+    "storeys": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    34,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 6,
+    "height": 3.6,
+    "colour": "#d8d6cf",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    24,
+    -30,
+    0
+   ],
+   "params": {
+    "heading": 90
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52.5,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     6
+    ],
+    "height": 38,
+    "colour": "#c9c9c9",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "glassColour": "#3a3f45",
+    "storeys": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -44,
+    -4,
+    47
+   ],
+   "params": {
+    "rect": [
+     7,
+     1
+    ],
+    "height": 3,
+    "colour": "#d63a35",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -2,
+    25
+   ],
+   "params": {
+    "rect": [
+     8,
+     1
+    ],
+    "height": 2.5,
+    "colour": "#d63a35",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -32
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Night photo, colours inferred; stair frame is a simple perforated box, red roof signs are blank bars, balcony depth approximate."
+ }
+}

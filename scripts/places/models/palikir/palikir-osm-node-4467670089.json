@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-osm-node-4467670089",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1251876326",
+   "used": "5x4 m hut footprint, rotated 40 deg, 16 m from the bridge node"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/palikir.json#palikir-osm-node-4467670089",
+   "used": "plank footbridge over forest stream beside an open thatched sakau nahs, broadleaf trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut-floor",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    10,
+    6
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    10,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 5.5,
+    "depth": 4.4,
+    "height": 2.6,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 4,
+    "colour": "#8a6a4a",
+    "cap_colour": "#a8855a",
+    "floor_colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -6,
+      -4,
+      0.7
+     ],
+     [
+      -2,
+      -2.5,
+      0.9
+     ],
+     [
+      2,
+      -1.5,
+      0.9
+     ],
+     [
+      6,
+      0,
+      0.7
+     ]
+    ],
+    "curve": true,
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -6,
+      -4.7,
+      1.7
+     ],
+     [
+      -2,
+      -3.2,
+      1.9
+     ],
+     [
+      2,
+      -2.2,
+      1.9
+     ],
+     [
+      6,
+      -0.7,
+      1.7
+     ]
+    ],
+    "curve": true,
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "rotDeg": 15,
+   "params": {
+    "length": 16,
+    "height": 0.5,
+    "thickness": 3.5,
+    "colour": "#556a45"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -7.5,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "rise": 0.7,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ }
+}

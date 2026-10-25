@@ -1,0 +1,309 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Punta_Carretas_shopping.JPG",
+   "licence": "CC0",
+   "author": "Ypsilon",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/punta4.jpg",
+   "used": "former prison front: taupe stone facade with carved cornice and finials, round-arched gated portal block on the right, domed corner pavilion with small lantern on the left, dark grey metal-clad mall volume rising behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Punta_Carretas_Shopping_-_1.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Jacobin",
+   "view": "side",
+   "file": "/tmp/places-evidence/montevideo/punta3.jpg",
+   "used": "two-storey stone street front with tall rectangular windows, long blank studded perimeter wall to the left, dark metal roof band, car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/81796454",
+   "used": "name only: the OSM way is just a 58 x 57 m car park, not the building; massing follows the photos and the brief (120 x 90 m, 3 storeys)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "street-front",
+   "footprint": {
+    "rect": [
+     62,
+     11
+    ]
+   },
+   "at": [
+    -6,
+    -26
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#bcae95",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "plinth": 0.8,
+    "bay": 3.4,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9684",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-pavilion",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    -34,
+    -26
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b299",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "cornice": true,
+    "plinth": 0.8,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9684",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall-volume",
+   "footprint": {
+    "rect": [
+     96,
+     50
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#383f45",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bands": "#2f353a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7d80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "prison-wall",
+   "footprint": {
+    "rect": [
+     34,
+     3
+    ]
+   },
+   "at": [
+    -52,
+    -26
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b6a88f",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "cornice": true,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9684",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.4,
+    "colour": "#3b3f44",
+    "kind": "bars",
+    "thickness": 0.15,
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#f2f2f2",
+    "count": 2,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    24,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "height": 11,
+    "openings": 1,
+    "kind": "round",
+    "pier": "#c2b49b",
+    "pinnacles": 4,
+    "relief": true
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -34,
+    -26,
+    11
+   ],
+   "params": {
+    "radius": 3.5,
+    "profile": "hemi",
+    "drum": 1.5,
+    "lantern": 2.2,
+    "finial": 1.2,
+    "colour": "#8fa5a5",
+    "drumColour": "#c0b299"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -38,
+    32
+   ],
+   "height": 55,
+   "storeys": 18,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9c9b4",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d9c9b4",
+      "#6b7478"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9684",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    24,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 6,
+    "pillar": 0.3,
+    "leaf": "bars",
+    "colour": "#2d3033",
+    "arch": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -20
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -36
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-81796454",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Deep round gateway with pinnacles, domed corner pavilion and hotel tower added; no medallions, iron gate simple, hotel windows are stripes, no studded wall texture; OSM way is only a car park"
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-250026584",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kings_Plaza_Macys_jeh.JPG",
+   "licence": "Public domain",
+   "author": "Jim.henderson",
+   "view": "street",
+   "file": "/tmp/places-evidence/new-york/kings.jpg",
+   "used": "windowless brick block, dark maroon fascia band at the top, tall blank cream panels between brown brick piers, cream Macy's anchor wing at the far left, no legible signage reproduced"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/250026584",
+   "used": "real outline, height 21.6 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.73,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 12
+   },
+   "height": 21.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7d5a48",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 2.0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 6,
+      "depth": 0.15,
+      "spacing": 9.5,
+      "colour": "#e4d8bf",
+      "margin": 2
+     },
+     {
+      "type": "bands",
+      "colour": "#4a3328",
+      "height": 2.0,
+      "proud": 0.3,
+      "at": 0.05
+     },
+     {
+      "type": "bands",
+      "colour": "#5e1f22",
+      "height": 2.5,
+      "proud": 0.3,
+      "at": 0.94
+     },
+     {
+      "type": "bands",
+      "colour": "#f2f0ea",
+      "height": 1.0,
+      "proud": 0.45,
+      "at": 0.94,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e1f22",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "macys",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    -92,
+    6
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc4",
+    "windows": "none",
+    "plinth": 1.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9bd9f",
+      "height": 2.0,
+      "proud": 0.3,
+      "at": 0.9
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    -61,
+    -8
+   ],
+   "params": {
+    "rect": [
+     8,
+     4
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#2e3f47",
+    "topColour": "#4a3328"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Macy's wing is a simple cream block placed approximately; no raised lettering (signage left blank), no street furniture, panel rhythm scaled with the 0.38 outline fit; entrance is a small dark box"
+ }
+}

@@ -1,0 +1,461 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mural_en_su_memoria_en_la_fachada_del_estadio_Abraham_Paladino.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Siemprerocho",
+   "view": "street",
+   "file": "/tmp/places-evidence/montevideo/paladino.jpg",
+   "used": "outer perimeter wall about 3 m high painted in the club's yellow, orange and red tones, pole flags in red and yellow above it, grass verge, trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37663273",
+   "used": "hexagonal ground outline (rotated square to the axes and scaled 0.85 for the scene clamp), 8,000 capacity"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 2.2,
+  "margin": -0.15,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "mural is three flat colour bands not artwork; stands, canopy, scoreboard and floodlights are plausible from capacity and brief only; flags small; outline scaled 0.85"
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 3.8,
+    "thickness": 0.5,
+    "colour": "#d4742a",
+    "points": [
+     [
+      -53.2,
+      40.5
+     ],
+     [
+      43.7,
+      39.7
+     ],
+     [
+      60.4,
+      27.1
+     ],
+     [
+      59.6,
+      -14.7
+     ],
+     [
+      35.8,
+      -42.2
+     ],
+     [
+      -58.0,
+      -39.4
+     ],
+     [
+      -53.2,
+      40.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     78,
+     50
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4d8a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8c3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -40,
+     -30
+    ],
+    "end": [
+     40,
+     -30
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "concreteColour": "#cfcac0",
+    "seatColour": "#c8472f",
+    "seatColours": [
+     "#c8472f",
+     "#e6b32b"
+    ],
+    "blocks": 2,
+    "canopy": {
+     "depth": 8,
+     "height": 10.5,
+     "colour": "#8f8f8b"
+    },
+    "backWall": 1.0,
+    "under": "closed"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     34
+    ],
+    "end": [
+     -40,
+     34
+    ],
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "concreteColour": "#c4bfb3",
+    "seatColour": "#e6b32b",
+    "backWall": 0.0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -44,
+     32
+    ],
+    "end": [
+     -44,
+     -30
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "concreteColour": "#c4bfb3",
+    "seatColour": "#c8472f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     44,
+     -30
+    ],
+    "end": [
+     44,
+     32
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "concreteColour": "#c4bfb3",
+    "seatColour": "#c8472f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     9,
+     1.2
+    ]
+   },
+   "at": [
+    -20,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 1.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3b3f44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3f44"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -48,
+    -41.5,
+    3.8
+   ],
+   "params": {
+    "height": 4.5,
+    "colours": [
+     "#d6261f",
+     "#e9b82a"
+    ],
+    "count": 5,
+    "spacing": 19
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-low",
+   "footprint": {
+    "rect": [
+     93,
+     0.5
+    ]
+   },
+   "at": [
+    -11,
+    -41.1
+   ],
+   "rotDeg": -1.7,
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9b53a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9b53a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-mid",
+   "footprint": {
+    "rect": [
+     93,
+     0.5
+    ]
+   },
+   "at": [
+    -11,
+    -41.1
+   ],
+   "rotDeg": -1.7,
+   "z0": 1.2,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9772a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9772a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-top",
+   "footprint": {
+    "rect": [
+     93,
+     0.5
+    ]
+   },
+   "at": [
+    -11,
+    -41.1
+   ],
+   "rotDeg": -1.7,
+   "z0": 2.5,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3a20",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a20"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verge",
+   "footprint": {
+    "rect": [
+     130,
+     5
+    ]
+   },
+   "at": [
+    -5,
+    -46
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "street",
+   "footprint": {
+    "rect": [
+     140,
+     9
+    ]
+   },
+   "at": [
+    -5,
+    -54
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3f4144",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f4144"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   118,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     54
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     50
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     40
+    ],
+    "height": 16
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-37663273"
+}

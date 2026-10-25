@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/256786456",
+   "used": "footprint 27.5 x 8.1 m, name match (Kalaaliaraq Marked), bearing 40 deg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuuk_-_fisch_und_wild_markt.JPG",
+   "licence": "Public domain",
+   "author": "Rabbit without ears",
+   "view": "interior",
+   "file": "/tmp/places-evidence/nuuk/market.jpg",
+   "used": "interior only: grey corrugated steel-clad walls, open stall tables with fish and seabirds, raw timber boarding at left; no exterior view"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#2f5f8f",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3a3d42",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-end",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    -3,
+    -1
+   ],
+   "rotDeg": 40,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a23a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3d42",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "width": 7,
+    "depth": 2,
+    "colours": [
+     "#2f5f8f",
+     "#e8e3d8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 4.7,
+    "colour": "#2f5f8f",
+    "posts": false
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "count": 4,
+    "pitch": 3,
+    "kind": "table",
+    "colours": [
+     "#e8e3d8",
+     "#2f5f8f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Only an interior photo exists; exterior cladding colours and roof pitch are inferred from the interior steel cladding and brief; stalls are approximate."
+ }
+}

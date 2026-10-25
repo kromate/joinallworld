@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-way-105052376",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port_Vila_-_the_market_house_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jean Van Jean",
+   "view": "interior",
+   "file": "/tmp/places-evidence/port-vila/market1.jpg",
+   "used": "curved white concrete portal ribs on slim columns, orange-brown ceiling soffit, tiled floor, open sides with stalls, orange end wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/105052376",
+   "used": "hall footprint 68 x 66 m, 3526 m2 (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "floor",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     50
+    ],
+    "height": 0.4,
+    "colour": "#c9b79c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 3,
+    "dx": 7,
+    "dy": 18,
+    "centred": true,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.4
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        0.7
+       ],
+       "height": 6.4,
+       "colour": "#e9e6df",
+       "material": "concrete"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "rib-beams",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     0
+    ],
+    "end": [
+     28,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       6.6
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        40
+       ],
+       "height": 0.9,
+       "colour": "#e9e6df",
+       "material": "concrete"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-deck",
+   "footprint": {
+    "rect": [
+     62,
+     46
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 7.5,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c85a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8d4cc",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wall",
+   "footprint": {
+    "rect": [
+     62,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    23
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e07a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6df"
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    -8,
+    0.4
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 6,
+    "kind": "table",
+    "size": 1.2,
+    "colours": [
+     "#4d6fb0",
+     "#e3b86b",
+     "#f5f3ee"
+    ],
+    "goods_colours": [
+     "#e3a02b",
+     "#4f8a3f",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    6,
+    0.4
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 6,
+    "kind": "table",
+    "size": 1.2,
+    "colours": [
+     "#4d6fb0",
+     "#e3b86b",
+     "#f5f3ee"
+    ],
+    "goods_colours": [
+     "#e3a02b",
+     "#4f8a3f",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 10,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo is an interior; exterior is built from ribs/columns/roof by inference, OSM outline not used (irregular), no photo of the exterior"
+ }
+}

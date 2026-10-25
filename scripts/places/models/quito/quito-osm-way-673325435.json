@@ -1,0 +1,625 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-673325435",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_de_Santo_Domingo,_Quito,_Ecuador,_2015-07-22,_DD_194.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Diego Delso",
+   "view": "front",
+   "file": "/tmp/places-evidence/quito/sd1.jpg",
+   "used": "white stucco church front with a tall square bell tower at its left (two storeys, arched belfry, balustrade, clock drum and small white dome with cross), brown carved stone portal in the facade, balustraded parapet, long white convent wing with a dark tile roof to the left, cobbled plaza, Sucre monument on stepped plinth at right, peach neighbour building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/673325435",
+   "used": "identity, 55.8 m tag (tower plus cross), gabled red roof, overall extent about 67 x 48 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.3,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    4,
+    22
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true,
+    "parapet": 0.9,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8522f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7.6,
+     7.6
+    ]
+   },
+   "at": [
+    -7.8,
+    3.8
+   ],
+   "height": 28,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ece0",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "plain"
+    },
+    "bands": "#d9d2c0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     6.0,
+     6.0
+    ]
+   },
+   "at": [
+    -7.8,
+    3.8
+   ],
+   "z0": 28,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4efe4",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "cornice": true,
+    "parapet": 0.6,
+    "bay": 2.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -7.8,
+    3.8,
+    36.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f1ece0",
+    "profile": [
+     [
+      2.8899999999999997,
+      0
+     ],
+     [
+      2.8899999999999997,
+      1.6,
+      "#e2dccb"
+     ],
+     [
+      2.21,
+      2.0
+     ],
+     [
+      2.21,
+      4.2
+     ],
+     [
+      2.55,
+      4.5,
+      "#cfc7b2"
+     ],
+     [
+      1.87,
+      5.0
+     ],
+     [
+      1.785,
+      6.0
+     ],
+     [
+      1.36,
+      7.3
+     ],
+     [
+      0.765,
+      8.3
+     ],
+     [
+      0.255,
+      8.9
+     ],
+     [
+      0.17,
+      9.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.8,
+    3.8,
+    45.9
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 3.0,
+    "colour": "#6c6a66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.8,
+    3.8,
+    47.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 0.35,
+    "colour": "#6c6a66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "convent",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    7
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ebde",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.6,
+    "bay": 3.4,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "groundKind": "arched",
+    "groundHeight": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a2f26",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rosario",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    17.5,
+    34
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e2d2",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bd",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     9,
+     1.0
+    ]
+   },
+   "at": [
+    4,
+    0.6
+   ],
+   "z0": 13,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e6dfcf",
+    "pitch": 30,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -0.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     1.8
+    ],
+    "height": 11,
+    "colour": "#7a5a42",
+    "windows": "none",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -0.7,
+    11
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     2.0
+    ],
+    "height": 0.6,
+    "colour": "#8a6a50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    4,
+    -1.65,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 5.2,
+    "arch": true,
+    "colour": "#1f1610"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -1.3,
+    -0.02,
+    0
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.8,
+    "arch": true,
+    "colour": "#3a2a20"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    10.2,
+    -0.02,
+    0
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.8,
+    "arch": true,
+    "colour": "#3a2a20"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    36,
+    12
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e8967a",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 3.4,
+    "faces": {
+     "front": "arched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#efe3d0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8522f",
+    "material": "clay-tile",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     9
+    ],
+    "height": 0.3,
+    "colour": "#9d9487"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    -16,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     10,
+     6.5
+    ],
+    "height": 0.3,
+    "colour": "#8f877b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    22,
+    -12,
+    0.6
+   ],
+   "params": {
+    "height": 10,
+    "plinthHeight": 6.5,
+    "colour": "#2e2822",
+    "plinthColour": "#8a8780"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -0.7,
+    11.6
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     1.7
+    ],
+    "height": 1.6,
+    "colour": "#7a5a42"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-gable",
+   "footprint": {
+    "rect": [
+     6.2,
+     1.4
+    ]
+   },
+   "at": [
+    4,
+    -0.5
+   ],
+   "z0": 13.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7a5a42",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a6a50",
+    "pitch": 35,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -4.2,
+    0.2,
+    13.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "postEvery": 1.2,
+    "colour": "#eee8da"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    -26,
+    -0.05,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 0.5,
+    "springHeight": 2.2,
+    "topHeight": 3.2,
+    "bayWidth": 3.4,
+    "pierWidth": 0.6,
+    "shape": "round",
+    "colour": "#d8d0bd",
+    "roofColour": "#d8d0bd"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "portal is a plain brown block with a gable (no carved retablo detail); tower cupola is a smooth dome without ribbed clock drum; convent arcade is an applied bay strip; statue figure is simple; neighbour facade simplified"
+ }
+}

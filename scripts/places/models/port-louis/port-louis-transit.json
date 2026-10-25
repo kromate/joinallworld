@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:M%C3%A9tro_express_de_Maurice_-_arr%C3%AAt.jpg",
+   "licence": "CC0",
+   "author": "Benoit Prieur",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-louis/transit1.jpg",
+   "used": "long blue-edged steel canopy with white fascia lights on slender white columns, sloping towards the track, green mesh security fence and grey rail on the platform edge, departure screens, grey concrete platform"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/737570938",
+   "used": "platform strip 47.6 x 12.8 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     47,
+     7
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#b6b8b8",
+    "topColour": "#b0b3b3"
+   },
+   "at": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    2.5,
+    0.9
+   ],
+   "params": {
+    "length": 44,
+    "depth": 5.5,
+    "height": 4.6,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#2d56a0",
+    "accent": "#eef1f3"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -1.5,
+    0
+   ],
+   "params": {
+    "length": 47,
+    "height": 1.4,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 47,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "array",
+   "id": "screens",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -16,
+     4.5,
+     2.4
+    ],
+    "end": [
+     16,
+     4.5,
+     2.4
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.3
+      ],
+      "height": 0.8,
+      "colour": "#1f2228"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -22,
+    5.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#b6b8b8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "canopy is a generic shed shelter, no tapered column heads or ticket machines; adjoining bus terminal not modelled"
+ }
+}

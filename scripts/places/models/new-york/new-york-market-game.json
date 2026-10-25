@@ -1,0 +1,332 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:American_Dream_Mall,_Drone_Aerial_at_NJ-3_(May_2026).jpg",
+   "licence": "CC BY 4.0",
+   "author": "MiracleMiles",
+   "view": "front",
+   "file": "/tmp/places-evidence/new-york/ad1.jpg",
+   "used": "white angular volumes, colourful LED drum at the left, glazed blue barrel vault, entrance rotunda, observation wheel behind, low blue-white sign board and long low east wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/907577618",
+   "used": "overall length (897 m) and 3 storeys; a 118 m portion is composed by hand as the full outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    2,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 12,
+    "n": 20,
+    "height": 4,
+    "colour": "#d8453a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    2,
+    4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 12,
+    "n": 20,
+    "height": 4,
+    "colour": "#e8648c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    2,
+    8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 12,
+    "n": 20,
+    "height": 4,
+    "colour": "#f08a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -41,
+    8
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6e9ea",
+    "windows": "ribbon",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbe",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-body",
+   "footprint": {
+    "rect": [
+     104,
+     16
+    ]
+   },
+   "at": [
+    8,
+    2
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f0f1f1",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbe",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -12,
+    -8
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f4f5f5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "dome",
+    "colour": "#e8eaea",
+    "rise": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-vault",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    8,
+    -1
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5b87b3",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#7ea3c8",
+    "axis": "y",
+    "rise": 5,
+    "material": "glass"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    80,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e6e6",
+    "windows": "none",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbe",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    10,
+    18,
+    0
+   ],
+   "params": {
+    "radius": 16,
+    "gondolas": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -22,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -65,
+      -15
+     ],
+     [
+      65,
+      -15
+     ],
+     [
+      65,
+      15
+     ],
+     [
+      -65,
+      15
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#a98a56"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    2,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "radius": 12,
+    "n": 12,
+    "height": 12,
+    "colour": "#e8648c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "forecourtDepth": 110,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Main body windowless, scene clamp limits water/marsh depth, LED drum bands are plain colours, wheel generic"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-market-game"
+}

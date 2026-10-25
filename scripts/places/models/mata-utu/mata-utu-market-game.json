@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/659556359",
+   "used": "7x6 m rotated shelter footprint (nearest, 9 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: market shelter on the central square with 3 stalls, timber and corrugated shed roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "polygon": [
+     [
+      -4.3,
+      -0.4
+     ],
+     [
+      0.3,
+      4.4
+     ],
+     [
+      4.3,
+      0.4
+     ],
+     [
+      -0.3,
+      -4.4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.3,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a07a52",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#6e5a43"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e9396",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-a",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.6
+    ]
+   },
+   "at": [
+    -7,
+    -4
+   ],
+   "rotDeg": 44,
+   "z0": 0,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c5a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e5a43",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-b",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.6
+    ]
+   },
+   "at": [
+    7.5,
+    -3.5
+   ],
+   "rotDeg": 44,
+   "z0": 0,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a07a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e9396",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-c",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 44,
+   "z0": 0,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c5a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e9396",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1,
+    "bottom": 1.8,
+    "colour": "#c5a98a",
+    "frameColour": "#6e5a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; game placeholder built from OSM outline and brief"
+ }
+}

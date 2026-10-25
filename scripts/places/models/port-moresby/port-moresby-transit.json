@@ -1,0 +1,360 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/956489913",
+   "used": "31 x 26 m rotated outline, amenity=shelter, height 7 m: used for platform and roof slab"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tall open shelter with rust corrugated roof beside PMV minibus loading bays, kiosks, blank signage board; the Commons photos show Boroko shops, not the terminal"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19.1,
+      -7.2
+     ],
+     [
+      3.9,
+      -20.1
+     ],
+     [
+      19.1,
+      7.2
+     ],
+     [
+      -3.9,
+      20.1
+     ]
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#b9b6ad",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19.1,
+      -7.2
+     ],
+     [
+      3.9,
+      -20.1
+     ],
+     [
+      19.1,
+      7.2
+     ],
+     [
+      -3.9,
+      20.1
+     ]
+    ],
+    "z0": 6.2,
+    "height": 0.8,
+    "colour": "#a9422f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19.1,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.9,
+    -20.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.1,
+    7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.9,
+    20.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.6,
+    -13.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.5,
+    -6.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.6,
+    13.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.5,
+    6.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 5.8,
+    "colour": "#7d8489",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 3.4,
+    "height": 1.6,
+    "colour": "#2f5f9e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    14,
+    0,
+    0.4
+   ],
+   "rotDeg": 29,
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -12,
+    3,
+    0.4
+   ],
+   "rotDeg": 29,
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#e6b422"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#2f6b4f",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 119
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "stripe": "#1f1f22",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 119
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    20,
+    22,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#a9422f",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 119
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the terminal: roof, posts and bays follow the OSM outline and brief; vehicle layout and kiosks are typical, not observed"
+ }
+}

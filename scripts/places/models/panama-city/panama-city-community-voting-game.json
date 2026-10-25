@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palacio_Municipal_de_Panama.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Mel Ortega",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/vote1.jpg",
+   "used": "white neoclassical block, two tall Ionic columns flanking arched door, balustraded roofline, set-back tower with arched window and low shallow dome, arched ground windows, corner view"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/301268537",
+   "used": "26 m x 26 m footprint, 3 levels, flat roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ede4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "bands": "#e2ded2",
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 13,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ede4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "cornice": true,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    -2,
+    23
+   ],
+   "params": {
+    "radius": 6.2,
+    "profile": "shallow",
+    "colour": "#dedad0"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "count": 2,
+    "height": 10.5,
+    "radius": 0.8,
+    "kind": "round",
+    "beamHeight": 1.0,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d6d1c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: shared render queue workers A/B were hung (heartbeats stale since 2026-10-24 21:40), jobs queued but unprocessed. Composed from the downloaded photo by eye; massing, roof, colour and placement unchecked."
+ }
+}

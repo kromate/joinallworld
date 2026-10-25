@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-node-899994089",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/484816433",
+   "used": "9.5 x 8.7 m outline size (nearest match, 31 m, so only the size is used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stall",
+   "footprint": {
+    "rect": [
+     9.5,
+     8.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b48f",
+    "windows": "none",
+    "plinth": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8522f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "height": 2.6,
+    "form": "flat",
+    "colour": "#a64b2a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5.8,
+    2.9
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.8,
+    "colour": "#a64b2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; timber stall with tiled gable and awning is typical, not observed."
+ }
+}

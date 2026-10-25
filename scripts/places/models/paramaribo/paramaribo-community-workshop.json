@@ -1,0 +1,293 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/720481283",
+   "used": "the mapped block (20 x 19 m, 11-point outline) as the main teaching block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universiteit_van_Suriname.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pvt pauline",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/univ2.jpg",
+   "used": "entrance sign pylon only: blue board on a pale grey stepped pylon under a round emblem, palms and grass verge (emblem and lettering left blank)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AdeKUS-campus_2022,_09_-_Faculteit_der_Technologische_Wetenschappen.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymnes",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/univ1.jpg",
+   "used": "campus setting only: open grass, big spreading trees, low blocks in the distance, parked cars"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#4d6f80",
+    "plinth": 0.4,
+    "bands": "#2f6a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    30,
+    4
+   ],
+   "rotDeg": 38,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4d6f80",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "rotDeg": 38,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4d6f80",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 3,
+    "height": 3,
+    "thickness": 0.2,
+    "columns": 6,
+    "colour": "#bdb9ac",
+    "edgeColour": "#2f6a8a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#c8ccc6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       0.8
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       1.6,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -20.5,
+    2.4
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#2f5fa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2e7d3a",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -12
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     8,
+     -26
+    ],
+    "colour": "#cfd3d6"
+   },
+   {
+    "at": [
+     12,
+     -26
+    ],
+    "colour": "#7a2d2d"
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the buildings; only the mapped 20 m block is real, the two low blocks and canopy are typical for the campus."
+ }
+}

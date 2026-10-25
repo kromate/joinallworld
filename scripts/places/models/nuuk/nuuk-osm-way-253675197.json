@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-way-253675197",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuuk_kunstmuseum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "C.rosing.nuuk",
+   "view": "front",
+   "file": "/tmp/places-evidence/nuuk/art1.jpg",
+   "used": "green vertical timber boarding, white window frames, dark grey roofs, long low gabled wing with dormers on the left, gable-front block, tall church hall with glazed ridge strip, slender dark spire, ramp and stair"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Nuuk_Art_Museum.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Peter Lovstrom",
+   "view": "front",
+   "file": "/tmp/places-evidence/nuuk/art2.jpg",
+   "used": "massing check: spire stands on the ridge behind the front gables; tall gable end with narrow window slit"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/253675197",
+   "used": "overall extent (36 x 18 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     17,
+     8
+    ]
+   },
+   "at": [
+    -9,
+    -2
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f7045",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "none",
+     "left": "punched"
+    },
+    "trimColour": "#f1f1ec",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d41",
+    "material": "metal-sheet",
+    "pitch": 42,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-gable",
+   "footprint": {
+    "rect": [
+     8,
+     11
+    ]
+   },
+   "at": [
+    4,
+    -0.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f7045",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#f1f1ec",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d41",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10,
+     17
+    ]
+   },
+   "at": [
+    13,
+    5.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f7045",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "trimColour": "#f1f1ec",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d41",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-ridge",
+   "at": [
+    13,
+    6,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     9
+    ],
+    "height": 0.9,
+    "colour": "#b8c8d2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    5.5,
+    7,
+    8.0
+   ],
+   "params": {
+    "baseWidth": 1.6,
+    "height": 5.5,
+    "sides": 4,
+    "colour": "#3f5a45",
+    "finial": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp",
+   "at": [
+    7,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     7,
+     1.4
+    ],
+    "height": 0.9,
+    "colour": "#c8c0b0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.8,
+    "bottom": 0.4,
+    "colour": "#2f6b3e",
+    "posts": true
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -12,
+    -5.8,
+    3.6
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.4,
+    "colour": "#2f7045"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -5,
+    -5.8,
+    3.6
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.4,
+    "colour": "#2f7045"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "left wing is a single gable with two dormers (real one has a hipped, stepped roof and a lower glazed annex); no ramp railing, flag or banners; wall timber texture reads as checked; front wall windows approximate"
+ }
+}

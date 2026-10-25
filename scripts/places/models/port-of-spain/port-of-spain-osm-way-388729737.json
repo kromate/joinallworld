@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-388729737",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trinidad_national_museum_2006-23-02.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-of-spain/museum.jpg",
+   "used": "cream stucco with tan bands, two storeys, Flemish-style shaped gables, balcony, arched ground-floor bays at right, pale roof, iron fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/388729737",
+   "used": "main footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcae",
+    "windows": "rect",
+    "windowRatio": 0.32,
+    "bay": 2.6,
+    "plinth": 0.6,
+    "bands": "#c9a66a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9bcba",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-left",
+   "footprint": {
+    "rect": [
+     7,
+     3.5
+    ]
+   },
+   "at": [
+    -21,
+    -4
+   ],
+   "height": 13.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcae",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "bay": 2.6,
+    "plinth": 0.6,
+    "bands": "#c9a66a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9bcba",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-centre",
+   "footprint": {
+    "rect": [
+     9,
+     3.5
+    ]
+   },
+   "at": [
+    6,
+    -20.5
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcae",
+    "windows": "rect",
+    "windowRatio": 0.35,
+    "bay": 2.6,
+    "plinth": 0.6,
+    "bands": "#c9a66a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9bcba",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-right",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    14.5,
+    -20
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcae",
+    "windows": "rect",
+    "windowRatio": 0.32,
+    "bay": 2.6,
+    "plinth": 0.6,
+    "bands": "#c9a66a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9bcba",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -14,
+    -3.5,
+    5.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.2,
+    "railing_colour": "#f1ead0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -16,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 1.0,
+    "run": 2.0,
+    "count": 4,
+    "colour": "#cfc8b0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 2,
+    "spread": 10,
+    "line": 18,
+    "colour": "#3f6e34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 3,
+    "spread": 4,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Flemish ornamental gables, oriel bays and the cast-iron fence are simplified to plain gables"
+ }
+}

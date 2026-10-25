@@ -1,0 +1,480 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Santuario_Beata_M._Francesca_Rubatto.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hoverfish",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/rubatto.jpg",
+   "used": "narrow grey-cream stucco front with a tall central bell tower, round-arched belfry and window pair, small gabled porch with arched door, low annex at right, stone-coloured cap and cross"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37519468",
+   "used": "27.7 x 10.5 m nave plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "belfry is a single arched window not an open bell arch, tower cap is a steep hip not a dome, pilaster and cornice relief and the porch arch moulding are simplified, annex at right is a plain box"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10.5,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4c1b6",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "bay": 3.6,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f8c",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    10,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8b2a4",
+    "windows": "rect",
+    "windowRatio": 0.14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     4.8,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 12,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c8c4b8",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9ad8a",
+    "pitch": 62
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -12.6
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cdc8b8",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 6,
+     "opening": 0.7,
+     "height": 0.7,
+     "depth": 0.8,
+     "storeys": 1,
+     "colour": "#2a2420",
+     "pierColour": "#d1cbba",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster0",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.2
+    ]
+   },
+   "at": [
+    -3.3,
+    -11.4
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d1cbba",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.2
+    ]
+   },
+   "at": [
+    3.3,
+    -11.4
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d1cbba",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "column0",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -2.4,
+    -14.3
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cfc9b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "column1",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    2.4,
+    -14.3
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cfc9b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche0",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    -4.2,
+    -11.1
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d8b84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche1",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    -3.1,
+    -11.1
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d8b84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche2",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    -2.0,
+    -11.1
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d8b84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche3",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    2.0,
+    -11.1
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d8b84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche4",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    3.1,
+    -11.1
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d8b84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche5",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    4.2,
+    -11.1
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d8b84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b84"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -9,
+    27.6
+   ],
+   "params": {
+    "baseWidth": 0.4,
+    "height": 2.4,
+    "colour": "#3a3a3a",
+    "finial": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   30,
+   34
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-37519468"
+}

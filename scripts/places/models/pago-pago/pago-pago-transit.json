@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/428669656",
+   "used": "real 13.9x10.8 m outline, containing match, bearing 151"
+  },
+  {
+   "kind": "text",
+   "ref": "brief pago-pago-transit",
+   "used": "open roofed bus stand, grey corrugated roof, cream and red colours, blank sign board; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ddc9",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#c0392b"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8b95",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "bay-canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4.5,
+    "height": 3.4,
+    "thickness": 0.25,
+    "columns": 4,
+    "colour": "#7b8b95",
+    "edgeColour": "#c0392b"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "kind": "mixed",
+    "density": 0.6,
+    "colours": [
+     "#c0392b",
+     "#e0b030"
+    ],
+    "yaw": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "params": {
+    "points": [
+     [
+      -2,
+      -8.2
+     ],
+     [
+      2,
+      -8.2
+     ],
+     [
+      2,
+      -8
+     ],
+     [
+      -2,
+      -8
+     ]
+    ],
+    "z0": 3.4,
+    "height": 0.9,
+    "colour": "#c0392b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; real OSM outline used with a shed roof, bus bay canopy and buses typed from the brief; sign board is a blank band."
+ }
+}

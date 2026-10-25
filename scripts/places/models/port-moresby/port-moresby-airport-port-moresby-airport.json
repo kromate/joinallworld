@@ -1,0 +1,252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-airport-port-moresby-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port_Moresby_Intl_Airport_2008.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "JialiangGao",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-moresby/airport1.jpg",
+   "used": "airside elevation: long low terminal, white parapet fascia, dark glazed upper band over taupe piers with carved relief panels, small hipped boarding pods and an aerobridge at the right end, light masts, hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/958322117",
+   "used": "overall size only (153 x 58 m); a straight 118 m run is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     118,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "overhang": 0.6,
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     118,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -15.4
+   ],
+   "z0": 7.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0ef",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-left",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -50,
+    -19
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aeb3b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9cdcd",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-mid",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -36,
+    -19
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aeb3b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9cdcd",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-right",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    34,
+    -19
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aeb3b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9cdcd",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    42,
+    -21,
+    4.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -28,
+    -17,
+    4.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 10,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.45,
+    "colour": "#eef0f2",
+    "tailColour": "#1f6fa8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 18
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No carved relief panels or lettering band; pods and aerobridge simplified; hill backdrop and apron markings not modelled; only a 118 m run of the 153 m terminal."
+ }
+}

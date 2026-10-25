@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/530582690",
+   "used": "real 8x6 m building outline inside the park way 1335555796 (6551 m2); name match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tropical garden with a thatched timber gazebo, fence wall, small fountain, palms; Commons photos nearby are hillside street views of Marigot, not of the garden, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gazebo",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a07a52",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#f4efe4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c7b55",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 2.0,
+    "waterColour": "#6fa8c4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -5
+     ],
+     [
+      4,
+      -12
+     ],
+     [
+      11,
+      -14
+     ],
+     [
+      18,
+      -20
+     ]
+    ],
+    "width": 1.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 3,
+    "spread": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the garden; gazebo on real 8x6 m outline, garden contents typed."
+ }
+}

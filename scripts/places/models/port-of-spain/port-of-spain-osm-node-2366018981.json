@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-node-2366018981",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/557638261",
+   "used": "23 m near-circular building outline (containing match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief + Wikidata: 1973 two-storey rendered institutional block; no photo (offline)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": "#6f7c85"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#e8e1d0",
+    "roofColour": "#9c978d"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 0.8,
+    "colour": "#6f7c85"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -12,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 0.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#d9d2c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   56,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; central courtyard omitted, entrance portico and colours from the brief."
+ }
+}

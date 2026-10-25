@@ -1,0 +1,206 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/100764513",
+   "used": "real 372x160 m park outline fitted to 118 m (about x0.32): lawn shape, bearing"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q49530892",
+   "used": "urban public park; open lawns, tree rows, paved walks, benches"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6d9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9d4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -6
+     ],
+     [
+      -20,
+      0
+     ],
+     [
+      20,
+      2
+     ],
+     [
+      55,
+      -4
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -20
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      0,
+      18
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 9,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 9,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -42,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 20,
+    "count": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    42,
+    4,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 18,
+    "count": 8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.6,
+    "colour": "#f4efe3",
+    "cap_colour": "#9a3b30"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#3a3d41"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   140,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-100764513",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only; tree rows and paths are typical, not surveyed"
+ }
+}

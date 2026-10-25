@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/1557919",
+   "used": "real pavilion outline (clamped and fitted to 118 m): spread low wards"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0cb",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#b9a98a",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5473a",
+    "material": "corrugated",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 4,
+    "columns": 2,
+    "colour": "#f3f0e8",
+    "roofColour": "#b5473a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#d8d0bc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -55
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -35
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the hospital found; wall and roof colours and ward veranda detail are typed from the brief"
+ }
+}

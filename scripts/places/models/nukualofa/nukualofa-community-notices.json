@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/183934808",
+   "used": "unnamed 33 x 16 m office footprint (containing match), rotated to its bearing"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one-storey rendered ministry office, green corrugated hip roof, awning, flags"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebe0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#9ec1a3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3e6b4a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3.5,
+    "height": 3.1,
+    "columns": 2,
+    "colour": "#3e6b4a",
+    "edgeColour": "#f0ebe0"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -7,
+    -16,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: OSM outline plus brief only; colours, roof and porch are typed guesses"
+ }
+}

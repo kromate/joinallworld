@@ -1,0 +1,289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lbj_tropical_medical_center.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fogamaa",
+   "view": "detail",
+   "file": "/tmp/places-evidence/pago-pago/clinic.png",
+   "used": "cream/white low wings with cream-beige metal hip roofs, covered drive-up porte-cochere on square columns, lava-rock sign wall, wooded hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/413141410",
+   "used": "extent and orientation (17 deg) of the multi-wing outline; wings re-composed as rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.3,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo is a close-up of the entrance sign, so only roof colour, porte-cochere and lava wall are checked; wing heights and window rhythm are estimated"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     62,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 17,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#4f9fb5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9d0b8",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger-a",
+   "footprint": {
+    "rect": [
+     13,
+     38
+    ]
+   },
+   "at": [
+    -30,
+    22
+   ],
+   "rotDeg": 17,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d3",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9d0b8",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger-b",
+   "footprint": {
+    "rect": [
+     13,
+     32
+    ]
+   },
+   "at": [
+    -2,
+    34
+   ],
+   "rotDeg": 17,
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": "#4f9fb5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9d0b8",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger-c",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    28,
+    26
+   ],
+   "rotDeg": 17,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d3",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9d0b8",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "height": 0.3,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 12,
+    "dy": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 4.2,
+      "colour": "#e8e4d8"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -14,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     17,
+     10
+    ],
+    "height": 0.5,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2,
+    -14,
+    4.7
+   ],
+   "params": {
+    "colour": "#d9d0b8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       17.5,
+       10.5
+      ]
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       6,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-wall",
+   "footprint": {
+    "rect": [
+     11,
+     1.6
+    ]
+   },
+   "at": [
+    22,
+    -24
+   ],
+   "height": 2.1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3b3a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33322f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ }
+}

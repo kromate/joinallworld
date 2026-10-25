@@ -1,0 +1,108 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-way-257366787",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/257366787",
+   "used": "real outline 19 x 16 m, restaurant"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/nuuk.json#nuuk-osm-way-257366787",
+   "used": "timber restaurant with pitched roof; red board cladding and steep gables taken from Nuuk harbour-area street views (Mapillary, CC BY-SA 4.0) of neighbouring buildings, not of this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8f2f2a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.9,
+    "bay": 3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4348",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#2f5f8f",
+    "frameColour": "#e8e3d8"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#c8362f",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; interior layout, real colour and entrance position are guesses from the harbour-area style"
+ }
+}

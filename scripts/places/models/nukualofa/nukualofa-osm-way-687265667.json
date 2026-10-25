@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-way-687265667",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ha%CA%BBamonga.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tau\u02bbolunga",
+   "view": "front",
+   "file": "/tmp/places-evidence/nukualofa/haamonga.jpg",
+   "used": "two rough coral-limestone uprights with a lintel seated across their tops, grey pitted stone, lawn, low stone bench left, casuarina and frangipani around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/687265667",
+   "used": "site position and orientation (10 x 5 m outline, trilithon spans the long axis)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "upright-left",
+   "params": {
+    "rect": [
+     2.2,
+     2.8
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#6f6c64",
+    "topColour": "#5e5b54",
+    "topScale": 0.92
+   },
+   "at": [
+    -2.0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "upright-right",
+   "params": {
+    "rect": [
+     2.1,
+     2.6
+    ],
+    "z0": 0,
+    "height": 5.0,
+    "colour": "#625f58",
+    "topColour": "#55524b",
+    "topScale": 0.92
+   },
+   "at": [
+    2.2,
+    0.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "params": {
+    "rect": [
+     6.5,
+     2.2
+    ],
+    "z0": 4.3,
+    "height": 1.0,
+    "colour": "#68655d",
+    "topColour": "#5a574f"
+   },
+   "at": [
+    0.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel-moss",
+   "params": {
+    "rect": [
+     1.2,
+     0.9
+    ],
+    "z0": 5.3,
+    "height": 0.08,
+    "colour": "#5f7a3a",
+    "topColour": "#6b8a42"
+   },
+   "at": [
+    1.4,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pit-1",
+   "params": {
+    "rect": [
+     0.5,
+     0.2
+    ],
+    "z0": 2.6,
+    "height": 0.7,
+    "colour": "#4a4741",
+    "topColour": "#4a4741"
+   },
+   "at": [
+    -2.0,
+    -1.45
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pit-2",
+   "params": {
+    "rect": [
+     0.4,
+     0.2
+    ],
+    "z0": 1.2,
+    "height": 0.6,
+    "colour": "#4a4741",
+    "topColour": "#4a4741"
+   },
+   "at": [
+    -1.4,
+    -1.45
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pit-3",
+   "params": {
+    "rect": [
+     0.5,
+     0.2
+    ],
+    "z0": 3.4,
+    "height": 0.6,
+    "colour": "#524f48",
+    "topColour": "#524f48"
+   },
+   "at": [
+    2.5,
+    -1.35
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pit-4",
+   "params": {
+    "rect": [
+     0.4,
+     0.2
+    ],
+    "z0": 1.6,
+    "height": 0.8,
+    "colour": "#4a4741",
+    "topColour": "#4a4741"
+   },
+   "at": [
+    1.9,
+    -1.35
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "params": {
+    "rect": [
+     4.0,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.55,
+    "colour": "#8a8578",
+    "topColour": "#9a9588"
+   },
+   "at": [
+    -7,
+    -2.5
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "colour": "#3f6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "colour": "#3f6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "colour": "#3f6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "colour": "#3f6b3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pitting is only a few dark boxes, stone still reads smooth and lighter than the photo; bench is a plain slab not rubble wall; moss patch tiny; background trees are sparse conifers"
+ }
+}

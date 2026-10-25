@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/48279480",
+   "used": "real nave outline about 43 x 18 m"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Holy_Trinity_Cathedral,_Port-au-Prince",
+   "used": "long single-nave Episcopal cathedral, original destroyed in 2010; no exterior photo (only interior murals), so exterior is a plain gabled stucco nave with a west bell tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9e1cd",
+    "windows": "rect",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 4.5,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    -23.5,
+    5.2
+   ],
+   "rotDeg": -14,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e4dcc6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#a8322d"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f9498",
+    "pitch": 40,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-slit",
+   "at": [
+    -23.5,
+    1.5,
+    13
+   ],
+   "rotDeg": -14,
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#3b3633"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#d8d0bc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -26
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -28
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     10
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   85,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo of the destroyed building; nave form, tower position and colours typed; only the outline is real."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-way-48279480"
+}

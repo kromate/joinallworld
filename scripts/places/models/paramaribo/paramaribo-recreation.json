@@ -1,0 +1,371 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palmentuin,_Paramaribo_(30394425793).jpg",
+   "licence": "CC BY 2.0",
+   "author": "-JvL- from Netherlands",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/palm1.jpg",
+   "used": "dense even rows of very tall pale-trunked royal palms (about 25 m) over bright lawn, a narrow paved path, low open shelters in the distance"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_van_de_palmentuin_-_Paramaribo_-_20417693_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Loek Tangel (RCE)",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/palm2.jpg",
+   "used": "round open thatched pavilion on a stepped platform with red-brown posts, stone cairns in brick-edged beds, gravel paths, benches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/155987984",
+   "used": "park is 265 x 167 m; a 118 x 100 m portion is modelled at real scale so the 25 m palms keep their true proportion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.7,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 100,
+    "colour": "#6c9f48"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -50
+     ],
+     [
+      0,
+      50
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#d7d1c1"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      6
+     ],
+     [
+      58,
+      6
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d7d1c1"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    34,
+    28,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "shape": "rect",
+    "colour": "#6b9aa4",
+    "bank": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -27,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 8,
+    "dx": 7.5,
+    "dy": 7.5,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 25
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    27,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 6,
+    "dx": 7.5,
+    "dy": 7.5,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 24
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -27,
+    30,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 4,
+    "dx": 7.5,
+    "dy": 7.5,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 25
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -22,
+    8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "deck_height": 0.8,
+    "post_height": 3.0,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    24,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "deck_height": 0.4,
+    "post_height": 2.6,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    5,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -25,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 0.25,
+    "colour": "#b49a82"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9,
+    -25,
+    0.25
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#85807a",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      1.9,
+      0.8
+     ],
+     [
+      1.2,
+      1.5
+     ],
+     [
+      0.6,
+      2.0
+     ],
+     [
+      0.2,
+      2.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 0.25,
+    "colour": "#b49a82"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    12,
+    16,
+    0.25
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#85807a",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      1.9,
+      0.8
+     ],
+     [
+      1.2,
+      1.5
+     ],
+     [
+      0.6,
+      2.0
+     ],
+     [
+      0.2,
+      2.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -59,
+    -50,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 118,
+    "height": 1.0,
+    "thickness": 0.2,
+    "colour": "#d9d6cc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-recreation",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos but NOT render-compared (render queue hung): palm triangle cost and the 3 grid arrays may exceed budget; only a 118 x 100 m portion of the 265 m park is modelled."
+ }
+}

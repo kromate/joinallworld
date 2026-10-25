@@ -1,0 +1,497 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-relation-4104543",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_de_LDU_Tribuna_E.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paulce1527",
+   "view": "interior",
+   "file": "/tmp/places-evidence/quito/ldu.jpg",
+   "used": "east stand: red lower seating tier, dark band of boxes and glazed palco level between, upper tier, long cantilever roof with pale fascia board and exposed dark truss underside, green pitch; near half of the bowl omitted to show the interior as in the photo"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9144404",
+   "used": "oval outline about 222 x 170 m, modelled at reduced scale to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "points": [
+     [
+      49.0,
+      0.0
+     ],
+     [
+      47.33,
+      9.58
+     ],
+     [
+      42.44,
+      18.5
+     ],
+     [
+      34.65,
+      26.16
+     ],
+     [
+      24.5,
+      32.04
+     ],
+     [
+      12.68,
+      35.74
+     ],
+     [
+      0.0,
+      37.0
+     ],
+     [
+      -12.68,
+      35.74
+     ],
+     [
+      -24.5,
+      32.04
+     ],
+     [
+      -34.65,
+      26.16
+     ],
+     [
+      -42.44,
+      18.5
+     ],
+     [
+      -47.33,
+      9.58
+     ],
+     [
+      -49.0,
+      0.0
+     ],
+     [
+      -47.33,
+      -9.58
+     ],
+     [
+      -42.44,
+      -18.5
+     ],
+     [
+      -34.65,
+      -26.16
+     ],
+     [
+      -24.5,
+      -32.04
+     ],
+     [
+      -12.68,
+      -35.74
+     ],
+     [
+      -0.0,
+      -37.0
+     ],
+     [
+      12.68,
+      -35.74
+     ],
+     [
+      24.5,
+      -32.04
+     ],
+     [
+      34.65,
+      -26.16
+     ],
+     [
+      42.44,
+      -18.5
+     ],
+     [
+      47.33,
+      -9.58
+     ]
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#3f8a35",
+    "topColour": "#4a9a3d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "line-centre",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     52
+    ],
+    "z0": 0.3,
+    "height": 0.05,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "line-side-a",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     66,
+     0.4
+    ],
+    "z0": 0.3,
+    "height": 0.05,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    25
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-side-b",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     66,
+     0.4
+    ],
+    "z0": 0.3,
+    "height": 0.05,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -25
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-goal-a",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     50
+    ],
+    "z0": 0.3,
+    "height": 0.05,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2",
+    "windows": "none"
+   },
+   "at": [
+    33,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-goal-b",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     50
+    ],
+    "z0": 0.3,
+    "height": 0.05,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2",
+    "windows": "none"
+   },
+   "at": [
+    -33,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "circle",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 7,
+    "n": 20,
+    "z0": 0.3,
+    "height": 0.04,
+    "colour": "#f2f2f2",
+    "topColour": "#4a9a3d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "lower-tier",
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": -15,
+    "endDeg": 195,
+    "facetDeg": 16,
+    "under": "solid",
+    "concreteColour": "#d9d4c8",
+    "tiers": [
+     {
+      "rows": 8,
+      "rise": 0.5,
+      "run": 0.8
+     }
+    ],
+    "seatColours": [
+     "#b3322e",
+     "#a82c2a"
+    ],
+    "blocks": 6
+   }
+  },
+  {
+   "type": "stand",
+   "id": "box-band",
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": -15,
+    "endDeg": 195,
+    "facetDeg": 20,
+    "under": "solid",
+    "concreteColour": "#2a2d33",
+    "offset": 6.4,
+    "firstHeight": 4.4,
+    "tiers": [
+     {
+      "rows": 3,
+      "rise": 0.9,
+      "run": 1.0
+     }
+    ],
+    "seatColours": [
+     "#23262c",
+     "#2d3036"
+    ],
+    "blocks": 1
+   }
+  },
+  {
+   "type": "stand",
+   "id": "upper-tier",
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": -15,
+    "endDeg": 195,
+    "facetDeg": 16,
+    "under": "solid",
+    "concreteColour": "#d9d4c8",
+    "offset": 9.4,
+    "firstHeight": 7.1,
+    "tiers": [
+     {
+      "rows": 9,
+      "rise": 0.55,
+      "run": 0.8
+     }
+    ],
+    "seatColours": [
+     "#b3322e",
+     "#a82c2a"
+    ],
+    "blocks": 6,
+    "backWall": 1.2,
+    "canopy": {
+     "height": 5.5,
+     "depth": 9,
+     "thickness": 0.5,
+     "slopeDeg": 7,
+     "colour": "#eeece6",
+     "overhangBack": 2,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "floodlights",
+   "params": {
+    "mode": "arc",
+    "count": 4,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 64,
+    "radiusY": 50,
+    "startDeg": 45,
+    "endDeg": 405,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 26
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bowl-lo",
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      56.0,
+      0.0
+     ],
+     [
+      51.74,
+      16.46
+     ],
+     [
+      39.6,
+      30.41
+     ],
+     [
+      21.43,
+      39.73
+     ],
+     [
+      0.0,
+      43.0
+     ],
+     [
+      -21.43,
+      39.73
+     ],
+     [
+      -39.6,
+      30.41
+     ],
+     [
+      -51.74,
+      16.46
+     ],
+     [
+      -56.0,
+      0.0
+     ],
+     [
+      -51.74,
+      -16.46
+     ],
+     [
+      -39.6,
+      -30.41
+     ],
+     [
+      -21.43,
+      -39.73
+     ],
+     [
+      -0.0,
+      -43.0
+     ],
+     [
+      21.43,
+      -39.73
+     ],
+     [
+      39.6,
+      -30.41
+     ],
+     [
+      51.74,
+      -16.46
+     ]
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#b3322e",
+    "topColour": "#7d2a28"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   105
+  ],
+  "trees": [],
+  "cars": 0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "bowl shown cut away on the near side to match the interior photo; red lower tier, dark box band, upper tier and sloped pale-fascia roof over rear tiers now present; truss lattice, advertising boards and end stands simplified; scaled to scene clamp"
+ }
+}

@@ -1,0 +1,360 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hermitage_Mall,_2022_-_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymnes",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/170813028_0.jpg",
+   "used": "two-storey block: open ground-floor arcade on slim posts, recessed first-floor gallery with railing, cream curved corrugated canopy roofs over the gallery, pale grey parapet band above with blank blue signage, glazed gable pavilion at left end, brick-paved car park with kerbs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/477833874",
+   "used": "size 48 x 24 m, bearing 28 (rectangular plan used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     70
+    ],
+    "height": 0.1,
+    "colour": "#a8826a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     48,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "pilotis",
+     "colour": "#4a4d50",
+     "spacing": 6,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     48,
+     20
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 4.4,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd8dc",
+    "glassColour": "#4b6b78",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-band",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "z0": 8.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9cfd6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea3a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -13,
+    8.0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 48,
+    "depth": 4.5,
+    "height": 0.3,
+    "rise": 1.2,
+    "thickness": 0.3,
+    "colour": "#f0e8d6",
+    "edgeColour": "#e0d6c0"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -13,
+    4.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 48,
+    "depth": 2.5,
+    "height": 0.2,
+    "thickness": 0.25,
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     -12.5,
+     0
+    ],
+    "end": [
+     21,
+     -12.5,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 8.0,
+      "colour": "#555a5e"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     12
+    ]
+   },
+   "at": [
+    -26,
+    -1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aebdc4",
+    "glassColour": "#7d97a4",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b6bcc0",
+    "rise": 2.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-left",
+   "footprint": {
+    "rect": [
+     11,
+     0.6
+    ]
+   },
+   "at": [
+    -6,
+    -5.6
+   ],
+   "z0": 9.4,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f4aa8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f4aa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-right",
+   "footprint": {
+    "rect": [
+     12,
+     0.6
+    ]
+   },
+   "at": [
+    12,
+    -5.6
+   ],
+   "z0": 9.4,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f4aa8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f4aa8"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#9aa3ab",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-170813028",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the photos but never rendered or compared: the shared render queue was stalled (no worker progress since 24 Oct 21:40, 90 jobs waiting). Roof ridge directions, spire lofts and part placements are unchecked; re-run submit.ts and raise verified to photo after comparing."
+ }
+}

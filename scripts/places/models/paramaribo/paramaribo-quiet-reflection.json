@@ -1,0 +1,933 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arya_Dewaker2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Freek L. Bakker",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/arya1.jpg",
+   "used": "wide white steps up to the hall, two flanking towers of white columns with lace-edged tier plates and orange stacked onion tops, central low orange ribbed dome with a smaller tiered finial, open white veranda with balustrade on the octagonal hall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arya_Dewaker_temple_Paramaribo.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mark Ahsmann",
+   "view": "side",
+   "file": "/tmp/places-evidence/paramaribo/arya2.jpg",
+   "used": "twisted columns, pale blue-teal scalloped eaves, paned windows in the upper hall, big pumpkin-ribbed tower onion"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/315124289",
+   "used": "overall size (about 43 x 41 m site, octagonal hall inside)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 56,
+  "aspect": 1.77,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plinth",
+   "rotDeg": 22.5,
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 14.5,
+    "n": 8,
+    "height": 1.8,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-low",
+   "rotDeg": 22.5,
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 12.2,
+    "n": 8,
+    "z0": 1.8,
+    "height": 3.4,
+    "colour": "#f1eee3",
+    "windows": "rect",
+    "windowRatio": 0.45,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 13.2,
+    "count": 16,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.3,
+       "n": 8,
+       "height": 3.4,
+       "colour": "#f4f2ea"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    5.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      14.0,
+      0,
+      "#86c4cc"
+     ],
+     [
+      14.0,
+      0.3,
+      "#f4f2ea"
+     ],
+     [
+      14.0,
+      0.5
+     ],
+     [
+      11.8,
+      0.8
+     ],
+     [
+      0.5,
+      0.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-up",
+   "rotDeg": 22.5,
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 11.0,
+    "n": 8,
+    "z0": 6.0,
+    "height": 3.2,
+    "colour": "#f2efe6",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    6.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 12.2,
+    "count": 16,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.26,
+       "n": 8,
+       "height": 3.2,
+       "colour": "#f4f2ea"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    9.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      13.0,
+      0,
+      "#86c4cc"
+     ],
+     [
+      13.0,
+      0.25,
+      "#f6efe4"
+     ],
+     [
+      12.6,
+      0.6,
+      "#e2653c"
+     ],
+     [
+      11.2,
+      1.8
+     ],
+     [
+      8.8,
+      3.6
+     ],
+     [
+      6.0,
+      5.2
+     ],
+     [
+      3.0,
+      6.4
+     ],
+     [
+      1.4,
+      6.9
+     ],
+     [
+      0.9,
+      7.1
+     ]
+    ],
+    "openTop": false
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    16.1
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      0.7,
+      0
+     ],
+     [
+      1.2,
+      0.4
+     ],
+     [
+      1.4,
+      1.0
+     ],
+     [
+      1.0,
+      1.6
+     ],
+     [
+      0.6,
+      1.9
+     ],
+     [
+      1.0,
+      2.4
+     ],
+     [
+      1.1,
+      3.0
+     ],
+     [
+      0.5,
+      3.6
+     ],
+     [
+      0.1,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 9,
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -17,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 9,
+    "colour": "#f4f2e8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    17,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 9,
+    "colour": "#f4f2e8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "height": 4.2,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -23,
+    -3,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 4.2,
+    "count": 10,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.28,
+       "n": 8,
+       "height": 4.0,
+       "colour": "#f4f2ea"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -23,
+    -3,
+    8.2
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      5.6,
+      0,
+      "#86c4cc"
+     ],
+     [
+      5.8,
+      0.25,
+      "#f4f2ea"
+     ],
+     [
+      5.8,
+      0.55
+     ],
+     [
+      5.0,
+      0.7
+     ],
+     [
+      0.5,
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -23,
+    -3,
+    8.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 3.0,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.22,
+       "n": 8,
+       "height": 3.0,
+       "colour": "#f4f2ea"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -23,
+    -3,
+    11.9
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      4.4,
+      0,
+      "#86c4cc"
+     ],
+     [
+      4.5,
+      0.25,
+      "#f4f2ea"
+     ],
+     [
+      4.5,
+      0.5
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      0.5,
+      0.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -23,
+    -3,
+    12.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      2.8499999999999996,
+      0.3,
+      "#e2653c"
+     ],
+     [
+      3.0,
+      0.9
+     ],
+     [
+      2.7,
+      1.5
+     ],
+     [
+      1.8599999999999999,
+      1.7
+     ],
+     [
+      1.6500000000000001,
+      1.8
+     ],
+     [
+      2.7,
+      2.3
+     ],
+     [
+      2.8499999999999996,
+      3.0
+     ],
+     [
+      2.4000000000000004,
+      3.6
+     ],
+     [
+      1.5,
+      3.8
+     ],
+     [
+      1.2000000000000002,
+      3.9
+     ],
+     [
+      2.25,
+      4.4
+     ],
+     [
+      2.4000000000000004,
+      5.0
+     ],
+     [
+      1.7999999999999998,
+      5.6
+     ],
+     [
+      0.8999999999999999,
+      6.0
+     ],
+     [
+      0.48,
+      9.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -23,
+    -3,
+    8.2
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      5.5,
+      0
+     ],
+     [
+      5.5,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      3.0,
+      10
+     ],
+     [
+      0.3,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    23,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "height": 4.2,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    23,
+    -3,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 4.2,
+    "count": 10,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.28,
+       "n": 8,
+       "height": 4.0,
+       "colour": "#f4f2ea"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23,
+    -3,
+    8.2
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      5.6,
+      0,
+      "#86c4cc"
+     ],
+     [
+      5.8,
+      0.25,
+      "#f4f2ea"
+     ],
+     [
+      5.8,
+      0.55
+     ],
+     [
+      5.0,
+      0.7
+     ],
+     [
+      0.5,
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    23,
+    -3,
+    8.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 3.0,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.22,
+       "n": 8,
+       "height": 3.0,
+       "colour": "#f4f2ea"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23,
+    -3,
+    11.9
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      4.4,
+      0,
+      "#86c4cc"
+     ],
+     [
+      4.5,
+      0.25,
+      "#f4f2ea"
+     ],
+     [
+      4.5,
+      0.5
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      0.5,
+      0.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23,
+    -3,
+    12.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      2.8499999999999996,
+      0.3,
+      "#e2653c"
+     ],
+     [
+      3.0,
+      0.9
+     ],
+     [
+      2.7,
+      1.5
+     ],
+     [
+      1.8599999999999999,
+      1.7
+     ],
+     [
+      1.6500000000000001,
+      1.8
+     ],
+     [
+      2.7,
+      2.3
+     ],
+     [
+      2.8499999999999996,
+      3.0
+     ],
+     [
+      2.4000000000000004,
+      3.6
+     ],
+     [
+      1.5,
+      3.8
+     ],
+     [
+      1.2000000000000002,
+      3.9
+     ],
+     [
+      2.25,
+      4.4
+     ],
+     [
+      2.4000000000000004,
+      5.0
+     ],
+     [
+      1.7999999999999998,
+      5.6
+     ],
+     [
+      0.8999999999999999,
+      6.0
+     ],
+     [
+      0.48,
+      9.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23,
+    -3,
+    8.2
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      5.5,
+      0
+     ],
+     [
+      5.5,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      3.0,
+      10
+     ],
+     [
+      0.3,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -8,
+    -12.8,
+    5.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "postEvery": 1.4,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -28,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     8
+    ],
+    "height": 7
+   }
+  ],
+  "cars": 4,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-quiet-reflection",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos but NOT render-compared (render queue hung): tower onion profiles, dome rise, step layout and triangle budget unchecked; OSM outline not traced, octagon assumed."
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/745041337",
+   "used": "real irregular outline of the nearest building to Le Life Resort (13 m away, 25 x 18 m, 341 m2)"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q111235569",
+   "used": "identity: resort hotel on the north-east coast of Efate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a8",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#7aa37a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b6b4a",
+    "material": "thatch",
+    "pitch": 32,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "height": 2.8,
+    "roof": "lean-to",
+    "steps": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -16,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#f1ece0",
+     "#7aa37a"
+    ]
+   }
+  },
+  {
+   "type": "chalet",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "width": 5.5,
+    "depth": 6.5,
+    "height": 3,
+    "thatch": true
+   }
+  },
+  {
+   "type": "chalet",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "width": 5.5,
+    "depth": 6.5,
+    "height": 3,
+    "thatch": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the resort; thatch/timber style assumed from typical Efate resorts, outline is the nearest OSM building."
+ }
+}

@@ -1,0 +1,507 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-63058770",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/63058770",
+   "used": "park outline (259 x 105 m irregular, auto-fitted to 118 m) as the paved ground of the amusement park; ride set from Wikipedia TeleferiQo text (go-kart track, rides, food court)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb6a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    8,
+    -8,
+    0.5
+   ],
+   "params": {
+    "radius": 11,
+    "gondolas": 16
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    -22,
+    2,
+    0.5
+   ],
+   "params": {
+    "radius": 5,
+    "height": 6.5,
+    "colour": "#d94f4f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      -16.0,
+      14.0,
+      0.5
+     ],
+     [
+      -16.48,
+      15.81,
+      0.5
+     ],
+     [
+      -17.88,
+      17.5,
+      0.5
+     ],
+     [
+      -20.1,
+      18.95,
+      0.5
+     ],
+     [
+      -23.0,
+      20.06,
+      0.5
+     ],
+     [
+      -26.38,
+      20.76,
+      0.5
+     ],
+     [
+      -30.0,
+      21.0,
+      0.5
+     ],
+     [
+      -33.62,
+      20.76,
+      0.5
+     ],
+     [
+      -37.0,
+      20.06,
+      0.5
+     ],
+     [
+      -39.9,
+      18.95,
+      0.5
+     ],
+     [
+      -42.12,
+      17.5,
+      0.5
+     ],
+     [
+      -43.52,
+      15.81,
+      0.5
+     ],
+     [
+      -44.0,
+      14.0,
+      0.5
+     ],
+     [
+      -43.52,
+      12.19,
+      0.5
+     ],
+     [
+      -42.12,
+      10.5,
+      0.5
+     ],
+     [
+      -39.9,
+      9.05,
+      0.5
+     ],
+     [
+      -37.0,
+      7.94,
+      0.5
+     ],
+     [
+      -33.62,
+      7.24,
+      0.5
+     ],
+     [
+      -30.0,
+      7.0,
+      0.5
+     ],
+     [
+      -26.38,
+      7.24,
+      0.5
+     ],
+     [
+      -23.0,
+      7.94,
+      0.5
+     ],
+     [
+      -20.1,
+      9.05,
+      0.5
+     ],
+     [
+      -17.88,
+      10.5,
+      0.5
+     ],
+     [
+      -16.48,
+      12.19,
+      0.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#3d4147"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      -14.2,
+      14.0,
+      0.55
+     ],
+     [
+      -14.74,
+      16.23,
+      0.55
+     ],
+     [
+      -16.32,
+      18.3,
+      0.55
+     ],
+     [
+      -18.83,
+      20.08,
+      0.55
+     ],
+     [
+      -22.1,
+      21.45,
+      0.55
+     ],
+     [
+      -25.91,
+      22.31,
+      0.55
+     ],
+     [
+      -30.0,
+      22.6,
+      0.55
+     ],
+     [
+      -34.09,
+      22.31,
+      0.55
+     ],
+     [
+      -37.9,
+      21.45,
+      0.55
+     ],
+     [
+      -41.17,
+      20.08,
+      0.55
+     ],
+     [
+      -43.68,
+      18.3,
+      0.55
+     ],
+     [
+      -45.26,
+      16.23,
+      0.55
+     ],
+     [
+      -45.8,
+      14.0,
+      0.55
+     ],
+     [
+      -45.26,
+      11.77,
+      0.55
+     ],
+     [
+      -43.68,
+      9.7,
+      0.55
+     ],
+     [
+      -41.17,
+      7.92,
+      0.55
+     ],
+     [
+      -37.9,
+      6.55,
+      0.55
+     ],
+     [
+      -34.09,
+      5.69,
+      0.55
+     ],
+     [
+      -30.0,
+      5.4,
+      0.55
+     ],
+     [
+      -25.91,
+      5.69,
+      0.55
+     ],
+     [
+      -22.1,
+      6.55,
+      0.55
+     ],
+     [
+      -18.83,
+      7.92,
+      0.55
+     ],
+     [
+      -16.32,
+      9.7,
+      0.55
+     ],
+     [
+      -14.74,
+      11.77,
+      0.55
+     ]
+    ],
+    "closed": true,
+    "colour": "#a64b2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    30,
+    10
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5f86a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#e3b86b"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a64b2a",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -2,
+    -24
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e3b86b",
+    "windows": "none",
+    "bands": "#5f86a8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f86a8",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    42,
+    -10,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#a64b2a",
+     "#5f86a8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -14,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 3,
+    "colour": "#a64b2a",
+    "frameColour": "#5f86a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "thickness": 0.15,
+    "colour": "#5f6a72",
+    "points": [
+     [
+      -56,
+      -26
+     ],
+     [
+      -20,
+      -33
+     ],
+     [
+      30,
+      -30
+     ],
+     [
+      44,
+      -40
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 9,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 6,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the park was found; ride set (wheel, carousel, kart loop, two pavilions) is typical for an amusement park of this size, not individually verified"
+ }
+}

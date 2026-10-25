@@ -1,0 +1,104 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/318689869",
+   "used": "28.8 x 18.2 m townhall outline (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey hall, wide pitched red corrugated roof, louvre windows, front steps and awning"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e1d0",
+    "windows": "louvre",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "bands": "#b9d3e0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33a2f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3,
+    "height": 2.9,
+    "columns": 2,
+    "colour": "#a33a2f",
+    "edgeColour": "#e8e1d0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: OSM outline plus brief only; colours, roof and porch are typed guesses"
+ }
+}

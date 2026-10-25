@@ -1,0 +1,432 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-osm-way-1265064150",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1265064150",
+   "used": "real 110 x 47 m outline (a skewed rectangle) used as the plot; blocks follow its -25.5 degree axis"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mata-utu.json",
+   "used": "long two-storey academy block with an entrance porch, flags, steps; cream render, pale-blue accent, red corrugated hip roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entr%C3%A9e_de_l%27h%C3%B4tel_Lomipeau",
+   "licence": "CC BY-SA 2.0",
+   "author": "Brigitte & Heinz",
+   "view": "street",
+   "file": "/tmp/places-evidence/mata-utu/1265064150_1.jpg",
+   "used": "rejected: shows a neighbouring hotel (balconies, dark timber screens), not the academy"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plot",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -54.8,
+      4.4
+     ],
+     [
+      -40.1,
+      44.4
+     ],
+     [
+      55.4,
+      -0.8
+     ],
+     [
+      39.2,
+      -44.7
+     ],
+     [
+      -48.5,
+      -2.1
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#8fae78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     90,
+     12
+    ]
+   },
+   "at": [
+    -5.6,
+    -11.7
+   ],
+   "rotDeg": -25.5,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#c9c9c5",
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5402f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     70,
+     11
+    ]
+   },
+   "at": [
+    9.6,
+    10.9
+   ],
+   "rotDeg": -25.5,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#c9c9c5",
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5402f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    -36.1,
+    17.2
+   ],
+   "rotDeg": -25.5,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#c9c9c5",
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5402f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    36.1,
+    -17.2
+   ],
+   "rotDeg": -25.5,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#c9c9c5",
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5402f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -9.5,
+    -19.9
+   ],
+   "rotDeg": -25.5,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c9c5",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9bc3c8",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -11.2,
+    -23.5,
+    0
+   ],
+   "rotDeg": -25.5,
+   "params": {
+    "width": 12,
+    "depth": 3.5,
+    "height": 5.4,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#f3efe4",
+    "roofColour": "#9bc3c8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -22.4,
+    -23.7,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c9423a",
+    "count": 2,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.0,
+    -36.7,
+    0
+   ],
+   "rotDeg": -25.5,
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#9bc3c8",
+    "frameColour": "#c9c9c5",
+    "posts": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -11.2,
+      -23.5
+     ],
+     [
+      -18.1,
+      -37.9
+     ]
+    ],
+    "width": 4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40.0,
+    -14.2
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14.2,
+    -40.0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -54.1,
+    -1.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32.6,
+    -43.2
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -49.0,
+    36.7
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58.5,
+    -16.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photos found show a neighbouring hotel and were rejected. U-shaped layout inside the real plot is typed from the brief; porch and flags per brief."
+ }
+}

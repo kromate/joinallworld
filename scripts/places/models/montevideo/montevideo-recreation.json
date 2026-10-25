@@ -1,0 +1,314 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museo_Fernando_Garc%C3%ADa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "PPedemonti",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/fg1.jpg",
+   "used": "villa: cream stucco two storeys, ground arcade of round arches, red tile eave band, upper floor with black iron balcony railings and shuttered doors"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museo_y_Parque_Fernando_Garc%C3%ADa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hoverfish",
+   "view": "side",
+   "file": "/tmp/places-evidence/montevideo/fg2.jpg",
+   "used": "long red-brick outbuilding with stone corner quoins and base, grey corrugated gable roof, three green carriage doors, tall eucalyptus and pine trees, dry lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/205235361",
+   "used": "park is 507 x 317 m, far beyond the 118 m scene clamp; only the villa and one outbuilding are modelled inside a wooded lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dccaa0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.2
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "mass",
+   "id": "villa-wing",
+   "footprint": {
+    "rect": [
+     12,
+     11
+    ]
+   },
+   "at": [
+    -23,
+    6
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c59a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "cornice": true,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-stable",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    34,
+    16
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4573b",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "plinth": 1.0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a0",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "colour": "#2d3033",
+    "kind": "bars",
+    "thickness": 0.12,
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 4.2,
+    "thickness": 4.5,
+    "bays": 4,
+    "shape": "round",
+    "recess": 2.4,
+    "colour": "#dccaa0",
+    "trim": "#c9b88c",
+    "roof": true,
+    "parapet": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eave-band",
+   "footprint": {
+    "rect": [
+     27,
+     13.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "z0": 4.0,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#a2573f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2573f"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -13,
+    -6,
+    4.2
+   ],
+   "params": {
+    "length": 26,
+    "floors": 1,
+    "storeyHeight": 3,
+    "proud": 0.9,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#1f2224"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -15.5,
+    -4
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dccaa0",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "cornice": true,
+    "bay": 3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25.2,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30.239999999999995,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -34,
+     -8
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -12
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-recreation",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ground arcade, tile eave band, balcony rail, corner tower, sand ground and conifers added; arcade bays read as small round openings, rail partial, carriage and palm absent, photo is a close crop so framing differs"
+ }
+}

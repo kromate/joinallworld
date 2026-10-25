@@ -1,0 +1,327 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mauritius,_Reduit_-_Country_Residence_of_Governor.jpg",
+   "licence": "public domain (no restrictions)",
+   "author": "unknown",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-louis/reduit.jpg",
+   "used": "style reference only (1860s Reduit residence, not this venue): steep shingle hips, dormers, pale plaster, ground veranda, tall palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1006065313",
+   "used": "L-shaped plan with two long arms, 79 x 39 m, bearing ~50 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.35
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-arm",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4038",
+    "material": "timber-shingle",
+    "pitch": 47,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-arm",
+   "footprint": {
+    "rect": [
+     13,
+     34
+    ]
+   },
+   "at": [
+    -27,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4038",
+    "material": "timber-shingle",
+    "pitch": 47,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4038",
+    "material": "timber-shingle",
+    "pitch": 47,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 22,
+    "count": 1,
+    "spread": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1,
+    "spread": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -6,
+    -19.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "depth": 3,
+    "height": 3.2,
+    "balustrade": false,
+    "steps": false,
+    "roof": "lean-to",
+    "wall_colour": "#ffffff",
+    "roof_colour": "#4a4038",
+    "trim_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -17.5,
+    13,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 3,
+    "height": 3.2,
+    "balustrade": false,
+    "steps": false,
+    "roof": "lean-to",
+    "wall_colour": "#ffffff",
+    "roof_colour": "#4a4038",
+    "trim_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -20,
+    -13,
+    5.0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#ffffff",
+    "roof_colour": "#4a4038"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -8,
+    -13,
+    5.0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#ffffff",
+    "roof_colour": "#4a4038"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    4,
+    -13,
+    5.0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#ffffff",
+    "roof_colour": "#4a4038"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    16,
+    -13,
+    5.0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#ffffff",
+    "roof_colour": "#4a4038"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 24,
+    "count": 1,
+    "spread": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 26,
+    "count": 1,
+    "spread": 8
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is Reduit, not this venue (style reference only); verified downgraded to footprint"
+ }
+}

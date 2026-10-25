@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-node-5978898986",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Casa_de_Dr._Lu\u00eds_Alberto_de_Herrera.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/mv-herrera.jpg",
+   "used": "two-storey cream-rendered villa: steep front gable with dark trim, brown scalloped-tile roofs, orange brick course bands, dark brown shutters, lower right wing with hip roof and small timber-braced porch, lawn and large trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1238893986",
+   "used": "overall size 23 x 22 m (nearest match 77 m away, so only the size, not the outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gable-block",
+   "footprint": {
+    "rect": [
+     10,
+     11
+    ]
+   },
+   "at": [
+    -4,
+    3
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#4a3022",
+    "bay": 3.0,
+    "trimColour": "#d08a52",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9703e",
+      "height": 0.35,
+      "at": 0.45
+     },
+     {
+      "type": "bands",
+      "colour": "#c9703e",
+      "height": 0.35,
+      "at": 0.95
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3022",
+    "material": "clay-tile",
+    "pitch": 55,
+    "axis": "y",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    8.5,
+    4
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#4a3224",
+    "bay": 2.6,
+    "trimColour": "#c9703e",
+    "plinth": 0.6,
+    "pattern": {
+     "type": "bands",
+     "colour": "#c9703e",
+     "height": 0.3,
+     "at": 0.85
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3022",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay",
+   "footprint": {
+    "rect": [
+     3.4,
+     2
+    ]
+   },
+   "at": [
+    -4,
+    -3.4
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2ead8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#4a3224",
+    "trimColour": "#c9703e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3022",
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.5,
+     2.6
+    ]
+   },
+   "at": [
+    6,
+    -1
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6d2",
+    "windows": "none",
+    "trimColour": "#c9703e"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a3022",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     5.5,
+     -1.8,
+     0
+    ],
+    "end": [
+     9.5,
+     -1.8,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.15,
+        0,
+        "#4a3022"
+       ],
+       [
+        0.15,
+        3.0,
+        "#4a3022"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "profile": [
+     [
+      0.2,
+      0,
+      "#2a1f18"
+     ],
+     [
+      0.04,
+      1.6,
+      "#2a1f18"
+     ]
+    ]
+   },
+   "at": [
+    -4,
+    3,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -8
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     -7
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     16
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     15
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   70,
+   65
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pitch 55 dark trim, dark roofs, bigger trees; no fretwork edge or finial detail beyond a spike, porch not timber-braced, trees are green not bare/autumn (no bare kind)"
+ }
+}

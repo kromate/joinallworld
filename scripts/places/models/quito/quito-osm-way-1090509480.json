@@ -1,0 +1,391 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-1090509480",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Templo_de_Quito_(Arrebol).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Molina Studios",
+   "view": "front",
+   "file": "/tmp/places-evidence/quito/temple_arrebol.jpg",
+   "used": "front elevation: white limestone, central portico of four broad piers with three recessed bays and lit door, low flanking wings with tall narrow windows and pilasters, stepped tower with tall glazed slot window, small spire with gold angel Moroni, entrance steps, small fountain, royal palms and clipped cypresses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1090509480",
+   "used": "overall plan size about 53 x 43 m (cross plan), modelled with rectangular masses"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.6,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     52,
+     18
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-block",
+   "footprint": {
+    "rect": [
+     15,
+     12
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 12,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 15,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slot-window",
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 17,
+    "height": 7.5,
+    "colour": "#e8c776",
+    "topColour": "#e8c776"
+   },
+   "at": [
+    0,
+    0.6,
+    0
+   ]
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    3,
+    25
+   ],
+   "params": {
+    "baseWidth": 2.2,
+    "height": 5.5,
+    "colour": "#f2eee4",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "moroni",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 29.5,
+    "height": 2.2,
+    "colour": "#d9a441",
+    "topColour": "#d9a441"
+   },
+   "at": [
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "recess",
+   "params": {
+    "rect": [
+     13,
+     0.4
+    ],
+    "z0": 0.8,
+    "height": 6,
+    "colour": "#6b5530",
+    "topColour": "#6b5530"
+   },
+   "at": [
+    0,
+    -11.4,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.5,
+     -12.1
+    ],
+    "end": [
+     7.5,
+     -12.1
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.4
+      ],
+      "z0": 0,
+      "height": 9.6,
+      "colour": "#f2eee4",
+      "topColour": "#f2eee4"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.0,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "radius": 3,
+    "rimColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cypress",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -20
+    ],
+    "end": [
+     11,
+     -20
+    ],
+    "count": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 6
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -26
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -26
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -8
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "recessed door bays, pilaster windows and gilded Moroni are simplified; curved entrance drive and lamp posts omitted; limestone shown as smooth panels"
+ }
+}

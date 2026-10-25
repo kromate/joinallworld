@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/332685523",
+   "used": "real courthouse footprint 31 x 14 m (turned so the long side is the front)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long low courthouse near Parliament and Independence Park; nearby Commons photos show other things so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 48,
+  "aspect": 1.33,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -90
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#8fb7c4",
+    "cornice": true,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a94a3b",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "count": 9,
+    "height": 3.6,
+    "radius": 0.22,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "colour": "#f7f3ea",
+    "roofColour": "#a94a3b",
+    "roofDepth": 2.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 1.8,
+    "colours": [
+     "#d21034",
+     "#009543"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     19,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM 31x14 m courthouse outline, verandah and hip roof inferred from the brief"
+ }
+}

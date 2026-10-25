@@ -1,0 +1,115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/366770416",
+   "used": "real outline 14x12 m, 2 levels, flat metal roof; named match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small two-storey restaurant, yellow render with coral band, flat tin roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d98a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "colour": "#e8836b"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 1.6,
+    "height": 2.6,
+    "colours": [
+     "#e8836b",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 5.2,
+    "colour": "#e8836b",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; footprint and levels real, colours from city style"
+ }
+}

@@ -1,0 +1,308 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Banco_de_Pr%C3%B3tesis_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marinna",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/clinic.jpg",
+   "used": "entrance front: single-storey dark glazed pavilion with brown-maroon mullions, deep pale grey metal fascia band, flat roof, wide pinkish exposed-aggregate steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Banco_de_Pr%C3%B3tesis_en_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marinna",
+   "view": "front",
+   "used": "two fascia bands at different heights, stone retaining wall left, taller stone-faced block behind right, car park with cobbles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/153029522",
+   "used": "overall footprint of the hospital block behind the front pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-pavilion",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#252b2f",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 2.5,
+    "plinth": 0.5,
+    "bands": "#6b3a32"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab0b2",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-fascia",
+   "footprint": {
+    "rect": [
+     46,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -20.4
+   ],
+   "z0": 4.4,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c4c9cb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "fit": 70
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5aa",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#a9a698"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d8a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-block",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -27,
+    -14
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a99f8d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a2",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 46,
+    "rise": 0.85,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#c9a99c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3.2,
+    "bottom": 0.5,
+    "colour": "#f2f2f0",
+    "frameColour": "#2b4d86",
+    "posts": true
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    14,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    6,
+    -20.9
+   ],
+   "z0": 4.6,
+   "height": 0.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8e9496",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9496"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -6,
+    -26.5,
+    0.9
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    10,
+    -26.5,
+    0.9
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -22
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -8,
+     -33
+    ],
+    "colour": "#8b8c88",
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     6,
+     -33
+    ],
+    "colour": "#2d4a7a",
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     16,
+     -33
+    ],
+    "colour": "#c9c9c9",
+    "yawDeg": 90
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-clinic",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Single-storey glazed pavilion with maroon bands, deep grey fascia, wide pink steps with rails now match; mullions are only banded, lettering band and directory sign are blank, OSM block behind still reads as a big roof."
+ }
+}

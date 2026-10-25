@@ -1,0 +1,130 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/564146435",
+   "used": "nearest OSM building 5.8 m away: 16x6 m outline, bearing 18 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/nukualofa.json",
+   "used": "small roadside market shed with stalls; nearby Commons photos show a cemetery and beach, not this building, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 13,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b59a6a",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a33a2f",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "colours": [
+     "#e8e1cf",
+     "#d9a441",
+     "#3f6fa8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#a33a2f",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#d0d3d6",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   56,
+   46
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this shed; outline is nearest OSM building, stalls and colours typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-osm-node-3230856831"
+}

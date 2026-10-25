@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-1058026060",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/571041217",
+   "used": "restaurant outline 29 x 12 m, area way 1058026060"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a8c3da",
+    "windows": "screen",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "faces": {
+     "front": "screen",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f4efe3"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a3b30",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -7.4,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 2.6,
+    "height": 3.0,
+    "balustrade": true,
+    "steps": true,
+    "roof": "lean-to",
+    "wall_colour": "#8d6e4a",
+    "roof_colour": "#9a3b30"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -9.5,
+    3.2
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "colour": "#f4efe3"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 8,
+    "radius": 1.6,
+    "height": 2.4,
+    "colours": [
+     "#f4efe3",
+     "#a8c3da",
+     "#9a3b30"
+    ],
+    "tables": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: OSM outline and brief only; veranda, roof and colours typical for the city"
+ }
+}

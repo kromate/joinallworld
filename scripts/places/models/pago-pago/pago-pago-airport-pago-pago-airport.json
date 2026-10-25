@@ -1,0 +1,391 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-airport-pago-pago-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Airside_at_the_airport_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Peter Gill / UK",
+   "view": "front",
+   "file": "/tmp/places-evidence/pago-pago/airport2.jpg",
+   "used": "low white terminal with colonnaded veranda under an orange-brown tile hip roof, green mesh security fence, carved wooden gateposts with blank board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/747915768",
+   "used": "identity only (aerodrome polygon is 3.6 km; terminal composed from Wikipedia: eight linked low buildings, no tower)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "terminal layout beyond the single photographed wing is inferred; carved post relief and board lettering omitted"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arrivals",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "departures",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    32,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cargo",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    12,
+    24
+   ],
+   "rotDeg": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     2.6
+    ],
+    "height": 0.3,
+    "colour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     0,
+     0
+    ],
+    "end": [
+     20,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 4.4,
+      "colour": "#f1eee6"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.2,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     42,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     0,
+     0
+    ],
+    "end": [
+     30,
+     0,
+     0
+    ],
+    "count": 13,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 2.0,
+      "colour": "#2f6a45"
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     60,
+     0.05
+    ],
+    "height": 1.0,
+    "colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -37,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 6.0,
+    "colour": "#4b3226"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 6.0,
+    "colour": "#4b3226"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33,
+    -22,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.5
+    ],
+    "height": 1.8,
+    "colour": "#5a2a1e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    44,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ }
+}

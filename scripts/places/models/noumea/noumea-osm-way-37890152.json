@@ -1,0 +1,236 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parc_in_Noum%C3%A9a.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vinbenito",
+   "view": "street",
+   "file": "/tmp/places-evidence/noumea/Parc_in_Nouméa.jpg",
+   "used": "setting only: red-brown laterite track, tall columnar Araucaria pines, areca and fan palms; shows no building so no comparison was made"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37890152",
+   "used": "identity only: 845 x 566 m park polygon is far larger than the scene, so only the entrance area is modelled"
+  }
+ ],
+ "parts": [
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.6,
+    "colour": "#8a7a62",
+    "board_colour": "#5c7a58"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "fence",
+    "colour": "#8a7a62"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "fence",
+    "colour": "#8a7a62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hut",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -10,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a62",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5c7a58",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "pitch": 25
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 2,
+    "colour": "#8a7a62",
+    "cap_colour": "#5c7a58"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    16,
+    20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 2,
+    "colour": "#8a7a62",
+    "cap_colour": "#5c7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -2.2,
+      -16
+     ],
+     [
+      2.2,
+      -16
+     ],
+     [
+      4,
+      30
+     ],
+     [
+      -4,
+      30
+     ]
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#a5603f",
+    "topColour": "#a5603f"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "count": 6,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 5,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 10,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 8,
+    "spread": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No building photo exists; entrance gate, huts and pavilions are modest vernacular guesses, vegetation follows the path photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-way-37890152"
+}

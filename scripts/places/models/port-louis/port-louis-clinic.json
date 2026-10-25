@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/784223084",
+   "used": "real 28 x 22 m rotated outline (name match, 0 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#5e8aa3",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -19,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#5e8aa3",
+    "edgeColour": "#d9d4c7"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.2,
+    "colour": "#5e8aa3"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; volumes from OSM outline and brief only"
+ }
+}

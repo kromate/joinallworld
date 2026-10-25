@@ -1,0 +1,178 @@
+{
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "boulder",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8d8a82",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.0,
+       2.5
+      ],
+      "colour": "#6d6a63"
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       3.4,
+       2.8
+      ],
+      "cx": 0.2,
+      "colour": "#8d8a82"
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       2.9,
+       2.3
+      ],
+      "cx": 0.4,
+      "cy": -0.1,
+      "colour": "#8d8a82"
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       1.6,
+       1.2
+      ],
+      "cx": 0.2,
+      "colour": "#9a978e"
+     },
+     {
+      "z": 3.1,
+      "ellipse": [
+       0.5,
+       0.4
+      ],
+      "colour": "#9a978e"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "engraved-face",
+   "at": [
+    0.3,
+    -2.7,
+    1.0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      0
+     ],
+     [
+      1.2,
+      0
+     ],
+     [
+      1.0,
+      0.1
+     ],
+     [
+      -1.0,
+      0.1
+     ]
+    ],
+    "height": 1.5,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#6d6a63"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.0,
+    "bottom": 0.8,
+    "colour": "#6d6a63"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#b7b2a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   25
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-node-3324470538",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no outline or photo; boulder and engraved face typed"
+ }
+}

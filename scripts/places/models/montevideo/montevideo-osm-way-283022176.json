@@ -1,0 +1,406 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antel_Arena_en_2019_-_jfg7419.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "unknown (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/arena1.jpg",
+   "used": "massing: grey metal-panelled box cantilevered over a recessed full-height glass lobby, solid panel end core at left, dark end wall at right, wide granite steps and plaza in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/283022176",
+   "used": "139 x 93 m footprint, 32 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": -26,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftX": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "panel joints simplified to bands, steps are five flat slabs without handrails, right end face is square not angled, name sign blank board"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lobby-glass",
+   "footprint": {
+    "rect": [
+     92,
+     12
+    ]
+   },
+   "at": [
+    2,
+    -26
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7686",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby-back",
+   "footprint": {
+    "rect": [
+     118,
+     20
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7378"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-core",
+   "footprint": {
+    "rect": [
+     13,
+     15
+    ]
+   },
+   "at": [
+    -52.5,
+    -37.5
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb6bd",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#929ca5"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-core-r",
+   "footprint": {
+    "rect": [
+     13,
+     15
+    ]
+   },
+   "at": [
+    52.5,
+    -37.5
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3e4a55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-box",
+   "footprint": {
+    "rect": [
+     118,
+     90
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 14,
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#66747f",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#566472"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b949c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     104,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -39.5
+   ],
+   "z0": 13.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1c2025",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c2025"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rim",
+   "footprint": {
+    "rect": [
+     118,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "z0": 29.6,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e8ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e8ea"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    40,
+    -45.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "bottom": 24,
+    "colour": "#dfe3e5",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step0",
+   "footprint": {
+    "rect": [
+     104,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -46.3
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aea8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step1",
+   "footprint": {
+    "rect": [
+     104,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -44.1
+   ],
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aea8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step2",
+   "footprint": {
+    "rect": [
+     104,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -41.9
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aea8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step3",
+   "footprint": {
+    "rect": [
+     104,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -39.7
+   ],
+   "z0": 0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aea8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step4",
+   "footprint": {
+    "rect": [
+     104,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -37.5
+   ],
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aea8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   118,
+   118
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     56,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     -52
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-283022176"
+}

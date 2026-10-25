@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/332758749",
+   "used": "real multi-wing outline of Port Vila Central Hospital (name match, 100 x 54 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 2014 JICA extension, hillside above the lagoon, outpatient/emergency/radiology wings, red corrugated roof; no usable exterior photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a94a3b",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "heading": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 3.2,
+    "legs": 4.5
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found; real multi-wing OSM outline extruded with a hip roof, wing heights and facade colours from the brief only; roof drawn flat (hip roof exceeded the LOD1 budget on the multi-wing outline)"
+ }
+}

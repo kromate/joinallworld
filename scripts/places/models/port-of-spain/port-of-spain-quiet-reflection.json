@@ -1,0 +1,413 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TnT_St._Augustine_Mount_St._Benedict.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Grueslayer",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-of-spain/benedict.jpg",
+   "used": "white four-storey wing with red hip roof and end pavilions, lower white wing, tall square white bell tower with red pyramid cap at right, arched stone viaduct beside it, forested hillside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/229950409",
+   "used": "overall size only (72 x 25 m, nearest match, zig-zag outline not followed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     70
+    ],
+    "height": 0.2,
+    "colour": "#5f8a3f",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     44,
+     11
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "bay": 4.4,
+    "plinth": 0.3,
+    "bands": "#e2ddcc"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8353a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -28,
+    0
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "bay": 4.2,
+    "plinth": 0.3,
+    "bands": "#e2ddcc"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8353a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    12,
+    0
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "bay": 4.4,
+    "plinth": 0.3,
+    "bands": "#e2ddcc"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8353a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-wing",
+   "footprint": {
+    "rect": [
+     32,
+     9
+    ]
+   },
+   "at": [
+    20,
+    -2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "bay": 4.4,
+    "plinth": 0.3,
+    "bands": "#e2ddcc"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8353a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-annex",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -42,
+    -1
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "plinth": 0.3,
+    "bands": "#e2ddcc"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c25a4a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#f2efe6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       9
+      ]
+     },
+     {
+      "z": 24,
+      "rect": [
+       8,
+       8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -3,
+    24
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     8.4
+    ],
+    "height": 1.0,
+    "colour": "#e4e0d2"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    -3,
+    24
+   ],
+   "params": {
+    "colour": "#b8353a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.4,
+       8.4
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -3,
+    35
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     48,
+     -4,
+     0
+    ],
+    "end": [
+     62,
+     -4,
+     0
+    ],
+    "count": 4,
+    "lod2Step": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       3
+      ],
+      "height": 6,
+      "colour": "#a8a08c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    55,
+    -4,
+    6
+   ],
+   "params": {
+    "rect": [
+     16,
+     3.2
+    ],
+    "height": 0.8,
+    "colour": "#bdb5a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 4,
+    "spread": 5,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 2,
+    "spread": 12,
+    "line": 120,
+    "colour": "#2f5f2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22,
+    "count": 2,
+    "spread": 12,
+    "line": 120,
+    "colour": "#2a5528"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Hillside setting, stone viaduct and tower belfry louvres absent; wings simplified to flat-fronted blocks"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   100
+  ]
+ }
+}

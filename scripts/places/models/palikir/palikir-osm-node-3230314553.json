@@ -1,0 +1,270 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Japanese_WWII_guns_in_Sokehs_6.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zykasaa",
+   "view": "detail",
+   "file": "/tmp/places-evidence/palikir/lookout1.jpg",
+   "used": "taken 4 m from the node: grassed earth rampart mounds, weathered stone pedestal, dense vine-hung forest; the lookout structure itself is not visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316847451",
+   "used": "containing area is a 315 x 134 m heritage site, too large to use as the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#8f8f84",
+    "material": "concrete",
+    "topColour": "#6a6a60",
+    "windows": "none",
+    "plinth": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -4
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      4,
+      4
+     ],
+     [
+      -4,
+      4
+     ]
+    ],
+    "z0": 3.2,
+    "height": 0.9,
+    "colour": "#6a6a60",
+    "topColour": "#6a6a60",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cab",
+   "at": [
+    1.5,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 4.1,
+    "height": 1.8,
+    "colour": "#6a6a60",
+    "topColour": "#8f8f84",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "id": "steps",
+   "at": [
+    -1,
+    -4.1,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 3.2,
+    "run": 4,
+    "count": 14,
+    "colour": "#8f8f84"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rampart",
+   "at": [
+    -10,
+    2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       13
+      ],
+      "colour": "#6b5a3c"
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       3,
+       10
+      ],
+      "colour": "#7a6a45"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       1.8,
+       8
+      ],
+      "colour": "#556a45"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rampart-e",
+   "at": [
+    10,
+    1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       11
+      ],
+      "colour": "#6b5a3c"
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       3,
+       8
+      ],
+      "colour": "#7a6a45"
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       1.8,
+       6
+      ],
+      "colour": "#556a45"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal",
+   "at": [
+    -7,
+    -6
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#a39e8e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-cap",
+   "at": [
+    -7,
+    -6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 1.1,
+    "height": 0.25,
+    "colour": "#a39e8e",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "lookout platform typed from the brief; photo only evidences the surrounding earth mounds and pedestal"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-osm-node-3230314553"
+}

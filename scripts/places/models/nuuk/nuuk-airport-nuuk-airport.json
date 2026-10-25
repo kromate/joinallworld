@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-airport-nuuk-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuuk_Airport_new_terminal_under_construction_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons page",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/nuuk/nuuk-airport-nuuk-airport-6.jpg",
+   "used": "terminal massing: long low glazed block with a sloping grey roof, salmon-orange end panels and a covered end bay, tower beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuuk_Airport_2024.jpg",
+   "licence": "CC0",
+   "author": "Laketown",
+   "view": "aerial",
+   "used": "setting: runway on a rock terrace above the fjord, tower and sheds beside the apron"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     55,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7c848a",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b9196",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-hall",
+   "footprint": {
+    "rect": [
+     10,
+     20
+    ]
+   },
+   "at": [
+    -33,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9805e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9775a",
+    "overhang": 1.5,
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    34,
+    4
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-1",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    44,
+    -12
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9297",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-2",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -44,
+    -14
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#868c91",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    52,
+    16,
+    0
+   ],
+   "params": {
+    "colour": "#b8332b",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 28,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    48,
+    -2
+   ],
+   "params": {
+    "colour": "#e8ecef",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       85,
+       22
+      ]
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       55,
+       12
+      ]
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       20,
+       5
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real terminal has a tilted glazed facade and angled roof ends; modelled as a plain shed block with salmon end hall; no apron or hills."
+ }
+}

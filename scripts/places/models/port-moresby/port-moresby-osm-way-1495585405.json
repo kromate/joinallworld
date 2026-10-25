@@ -1,0 +1,207 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1495585405",
+   "used": "checked only: 1045x777 m compound outline too large to model, a representative cluster is built"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered barracks and classroom blocks around a parade ground, green roofs, flags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "barracks",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e1c9",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#f2efe6",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-w",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    -42,
+    -10
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e1c9",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#f2efe6",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-e",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    42,
+    -10
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e1c9",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#f2efe6",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    4.8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "floors": 2,
+    "storeyHeight": 3.6
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    6,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    4.5,
+    0
+   ],
+   "params": {
+    "width": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -60,
+     -35
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     62,
+     -35
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-1495585405",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; footprint/brief only, details and colours are plausible not observed"
+ }
+}

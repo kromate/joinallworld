@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-419060582",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/270313703",
+   "used": "real building outline 98.7 x 36.5 m, 2 levels"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/419060582",
+   "used": "public university founded 1855; the P18 image shows a different building (Liberty Hall fire co) so was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65c46",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "bands": "#e0dacb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8186",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entry",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 4,
+    "form": "flat",
+    "colour": "#6f7479"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    20,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "colour": "#2e4a7a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; real outline plus typed brick-and-ribbon facade, courtyard not modelled"
+ }
+}

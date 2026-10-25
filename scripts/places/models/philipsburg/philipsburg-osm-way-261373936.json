@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-way-261373936",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Methodistenkerk,_voorgevel_-_20652685_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Coenraad Liebrecht Temminck Groll",
+   "view": "front",
+   "file": "/tmp/places-evidence/philipsburg/church1.jpg",
+   "used": "shingled front gable, pointed windows with white shutters, small columned porch, square shingled belfry with pyramid roof on the ridge, side window rhythm"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Maarten_Philipsburg_Methodist_Church.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dr. Thomas Liptak",
+   "view": "front",
+   "file": "/tmp/places-evidence/philipsburg/church2.jpg",
+   "used": "warm shingle colour, belfry proportions, white picket fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261373936",
+   "used": "overall size only (24 x 12 m); the outline polygon is malformed, a clean rectangle is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#6f5a4c",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "bay": 3.0,
+    "plinth": 0.5,
+    "faces": {
+     "front": "pointed",
+     "back": "plain",
+     "left": "rect",
+     "right": "rect"
+    },
+    "trimColour": "#f1eee6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    0,
+    -8.0,
+    8.2
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 6.0,
+    "cap": "pyramid",
+    "cap_height": 5.0,
+    "belfry": true,
+    "colour": "#5e4b3f",
+    "cap_colour": "#4a4a4c"
+   }
+  },
+  {
+   "type": "mosque-domed/portico",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "depth": 2.4,
+    "height": 3.4,
+    "columns": 4,
+    "pediment": true,
+    "steps": 2,
+    "colour": "#f4f1ea",
+    "cap_colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "wall",
+    "colour": "#f4f2ec"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     -12
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   40,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "white shutters beside the windows and the picket fence are not modelled; belfry louvres simplified; church fence is a plain wall"
+ }
+}

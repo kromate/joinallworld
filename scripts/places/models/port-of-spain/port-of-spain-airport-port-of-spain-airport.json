@@ -1,0 +1,504 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Piarco_airport.JPG",
+   "licence": "Public domain",
+   "author": "Ssm132",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-of-spain/airport1.jpg",
+   "used": "airside elevation: long low cream building with teal glazing, grey hipped metal roofs, taller gabled end blocks, central pyramidal glass roof with tower drum, jet bridges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Piarco_Airport.jpg",
+   "licence": "CC BY 2.0",
+   "author": "madmack66",
+   "view": "street",
+   "used": "landside: low pitched grey roof with deep eaves on columns, trees and car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre-hall",
+   "footprint": {
+    "rect": [
+     40,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c4c2",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.5,
+    "bands": "#e3d6a2",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#7f9aa3",
+    "material": "metal-sheet",
+    "rise": 6,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    20
+   ],
+   "params": {
+    "radius": 4.2,
+    "n": 12,
+    "height": 4,
+    "colour": "#e3d6a2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    24
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 12,
+    "height": 3.2,
+    "colour": "#6f8f98",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    27.2
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#9aa3a7",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    14
+   ],
+   "params": {
+    "radius": 2.6,
+    "n": 12,
+    "height": 6,
+    "colour": "#9fb2b6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    -42,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6a2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6fa3a6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa1a5",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-clerestory",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    -46,
+    4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a9296",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f767a",
+    "overhang": 0.5
+   },
+   "z0": 9.8
+  },
+  {
+   "type": "mass",
+   "id": "west-pier-end",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    -72,
+    2
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cc96",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6fa3a6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8287",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    42,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6a2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6fa3a6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa1a5",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-clerestory",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    46,
+    4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a9296",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f767a",
+    "overhang": 0.5
+   },
+   "z0": 9.8
+  },
+  {
+   "type": "mass",
+   "id": "east-pier-end",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    72,
+    2
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cc96",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6fa3a6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8287",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -52,
+    -14,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -34,
+    -14,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    34,
+    -14,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    52,
+    -14,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -70,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -35,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    35,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    70,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    52,
+    -40,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "scale": 0.7,
+    "tailColour": "#2f5d8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     50
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real terminal is more continuous with a lower hipped roof ring and a conical glass hall roof; tower drum, jet bridge shapes and wing glazing are simplified; no 300 m length (scaled to 160 m)."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-airport-port-of-spain-airport"
+}

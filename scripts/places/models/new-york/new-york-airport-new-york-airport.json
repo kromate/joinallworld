@@ -1,0 +1,547 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-airport-new-york-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JFK_Aerial_Nov_14_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "KenzieAbraham",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/new-york/jfk.jpg",
+   "used": "terminal ring layout: headhouses on the landside arc with finger concourses extending airside, pale concrete aprons, grey roofs; used for plan arrangement only, no ground-level photo of Terminal 4 was found"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JFK_T5_May_2019_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Epicgenius",
+   "view": "street",
+   "used": "TWA Flight Center: low white curved concrete shell with glazed gable, dark glass hotel block behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 30,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34.9647246772135,
+      -0.5910738863212784
+     ],
+     [
+      -31.062860330815194,
+      -6.561325454223099
+     ],
+     [
+      -26.1533695103607,
+      -11.734849306067368
+     ],
+     [
+      -20.395507766438147,
+      -15.943825107803647
+     ],
+     [
+      -13.976050362669207,
+      -19.051720827245447
+     ],
+     [
+      -7.103233603123314,
+      -20.957721601493322
+     ],
+     [
+      0.0,
+      -21.599999999999998
+     ],
+     [
+      7.103233603123309,
+      -20.957721601493322
+     ],
+     [
+      13.976050362669211,
+      -19.051720827245443
+     ],
+     [
+      20.395507766438147,
+      -15.943825107803647
+     ],
+     [
+      26.1533695103607,
+      -11.734849306067368
+     ],
+     [
+      31.062860330815198,
+      -6.561325454223095
+     ],
+     [
+      34.9647246772135,
+      -0.5910738863212784
+     ],
+     [
+      26.488427785767804,
+      3.915853116423275
+     ],
+     [
+      23.53246994758727,
+      -0.6070647380478015
+     ],
+     [
+      19.81315871997023,
+      -4.526400989444974
+     ],
+     [
+      15.451142247301625,
+      -7.715019021063368
+     ],
+     [
+      10.587916941416065,
+      -10.069485475185944
+     ],
+     [
+      5.381237578123723,
+      -11.513425455676764
+     ],
+     [
+      0.0,
+      -12.0
+     ],
+     [
+      -5.381237578123719,
+      -11.513425455676764
+     ],
+     [
+      -10.587916941416069,
+      -10.069485475185939
+     ],
+     [
+      -15.451142247301625,
+      -7.715019021063368
+     ],
+     [
+      -19.81315871997023,
+      -4.526400989444974
+     ],
+     [
+      -23.532469947587277,
+      -0.6070647380477993
+     ],
+     [
+      -26.488427785767804,
+      3.915853116423275
+     ]
+    ],
+    "height": 11,
+    "colour": "#cfd6da",
+    "windows": "none",
+    "glassColour": "#7f98a8",
+    "windowRatio": 0.5,
+    "topColour": "#a9aeb2",
+    "storeys": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger0",
+   "footprint": {
+    "rect": [
+     7.199999999999999,
+     42.0
+    ]
+   },
+   "at": [
+    -20.4,
+    33.0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d5",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "glassColour": "#6f8798",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger1",
+   "footprint": {
+    "rect": [
+     7.199999999999999,
+     50.4
+    ]
+   },
+   "at": [
+    0.0,
+    37.199999999999996
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d5",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "glassColour": "#6f8798",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger2",
+   "footprint": {
+    "rect": [
+     7.199999999999999,
+     42.0
+    ]
+   },
+   "at": [
+    20.4,
+    33.0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d5",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "glassColour": "#6f8798",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -31.2,
+    48.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.5,
+    "colour": "#eceff1",
+    "tailColour": "#c0392b"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -10.2,
+    57.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.5,
+    "colour": "#eceff1",
+    "tailColour": "#1f4a8a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    10.2,
+    60.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.5,
+    "colour": "#eceff1",
+    "tailColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    31.2,
+    49.199999999999996,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.5,
+    "colour": "#eceff1",
+    "tailColour": "#eceff1"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -10.2,
+    36.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.5,
+    "colour": "#eceff1",
+    "tailColour": "#8a1c2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45.0,
+      18.0
+     ],
+     [
+      45.0,
+      18.0
+     ],
+     [
+      45.0,
+      75.0
+     ],
+     [
+      -45.0,
+      75.0
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#bdbdb8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -72.0,
+      82.8
+     ],
+     [
+      72.0,
+      82.8
+     ],
+     [
+      72.0,
+      94.8
+     ],
+     [
+      -72.0,
+      94.8
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#3a3d41",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -63.0,
+     88.8,
+     0.12
+    ],
+    "end": [
+     63.0,
+     88.8,
+     0.12
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -2.4,
+        -0.24
+       ],
+       [
+        2.4,
+        -0.24
+       ],
+       [
+        2.4,
+        0.24
+       ],
+       [
+        -2.4,
+        0.24
+       ]
+      ],
+      "height": 0.05,
+      "colour": "#f2f2ee",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    52.8,
+    70.8,
+    0
+   ],
+   "params": {
+    "height": 45,
+    "style": "round",
+    "colour": "#d6d8d9",
+    "cabColour": "#6f8798"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "twa-base",
+   "footprint": {
+    "rect": [
+     14.399999999999999,
+     10.799999999999999
+    ]
+   },
+   "at": [
+    -55.199999999999996,
+    -18.0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e8e8e4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#8fa3b1"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f2ee"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -55.199999999999996,
+    -18.0,
+    4
+   ],
+   "params": {
+    "kind": "hypar",
+    "width": 25.2,
+    "depth": 13.2,
+    "rise": 3.5,
+    "thickness": 0.8,
+    "colour": "#f4f3ef",
+    "edgeColour": "#f4f3ef"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "twa-hotel",
+   "footprint": {
+    "rect": [
+     20.4,
+     7.199999999999999
+    ]
+   },
+   "at": [
+    -55.199999999999996,
+    -4.8
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b4650",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "glassColour": "#26313b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7378",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18.0,
+    -30.0,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 5,
+    "colour": "#9aa0a6",
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Compact schematic of JFK: curved ring terminal with three fingers, runway and TWA shell are simplified; no ground-level Terminal 4 photo, real airport is far larger"
+ }
+}

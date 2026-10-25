@@ -1,0 +1,107 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/521666200",
+   "used": "real 6x4 m footprint, nearest match 4.5 m; the only nearby photo is an aerial of Anse Marcel (a different bay), not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6c4c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f7c5d",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#f2eee2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     7,
+     2
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-node-14181701799",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only; shelter details typed"
+ }
+}

@@ -1,0 +1,289 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_ecol%C3%B3gico_Lago_de_Texcoco_y_Lago_Nabor_Carrillo_desde_el_aire_03.jpg",
+   "licence": "CC0",
+   "author": "Alvaro de la Paz Franco",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/mexico-city/411608827_0.jpg",
+   "used": "colours only: turquoise-green lagoon, pale sandy flats, flat low horizon; too oblique to compare"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1411608827",
+   "used": "park is 2446 x 1233 m; only a small lagoon-shore slice is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -20
+     ],
+     [
+      -30,
+      -34
+     ],
+     [
+      10,
+      -30
+     ],
+     [
+      40,
+      -22
+     ],
+     [
+      58,
+      -8
+     ],
+     [
+      50,
+      10
+     ],
+     [
+      20,
+      18
+     ],
+     [
+      -20,
+      14
+     ],
+     [
+      -52,
+      6
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f9a93",
+    "topColour": "#6aa79d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -66,
+      -26
+     ],
+     [
+      -30,
+      -40
+     ],
+     [
+      12,
+      -36
+     ],
+     [
+      46,
+      -27
+     ],
+     [
+      64,
+      -9
+     ],
+     [
+      56,
+      16
+     ],
+     [
+      20,
+      24
+     ],
+     [
+      -20,
+      20
+     ],
+     [
+      -58,
+      10
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#c9bc9a",
+    "topColour": "#c9bc9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c3",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8a39a",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      18,
+      0.6
+     ],
+     [
+      -8,
+      2,
+      0.6
+     ],
+     [
+      -8,
+      -14,
+      0.6
+     ]
+    ],
+    "section": {
+     "rect": [
+      2.2,
+      0.25
+     ]
+    },
+    "colour": "#8a7a62"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 7
+     }
+    },
+    "mode": "line",
+    "start": [
+     -55,
+     34,
+     0
+    ],
+    "end": [
+     55,
+     34,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 5,
+      "height": 2.3,
+      "colour": "#9a9a4f",
+      "topScale": 0.3
+     }
+    },
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 2.2,
+    "dy": 2.2,
+    "centre": [
+     -40,
+     -12,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    38,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    30,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-1411608827",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "single aerial photo is too oblique to compare; park slice is typed from brief and colours"
+ }
+}

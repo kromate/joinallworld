@@ -1,0 +1,273 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-way-154287619",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/154287619",
+   "used": "overall bowl 184 x 115 m, long axis north-south, pitch and stands sized inside it"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Sir_Ga%C3%ABtan_Duval_Stadium",
+   "used": "opened 1972, capacity about 6,500, football/athletics ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    2,
+    1,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     122
+    ],
+    "height": 0.05,
+    "colour": "#a8523b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    1,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     68,
+     106
+    ],
+    "height": 0.06,
+    "colour": "#6f9d4b"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -44,
+     52
+    ],
+    "end": [
+     -44,
+     -52
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f6b4f",
+    "seatColours": [
+     "#2f6b4f",
+     "#d9d4c7"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9d4c7",
+    "backWall": 1.0,
+    "under": "solid",
+    "canopy": {
+     "height": 7.5,
+     "depth": 10,
+     "colour": "#6e7a85",
+     "slopeDeg": 4,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     -52
+    ],
+    "end": [
+     50,
+     52
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColour": "#d9d4c7",
+    "concreteColour": "#d9d4c7",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     34,
+     66
+    ],
+    "end": [
+     -30,
+     66
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColour": "#d9d4c7",
+    "concreteColour": "#cfc9bb",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     -64
+    ],
+    "end": [
+     34,
+     -64
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColour": "#d9d4c7",
+    "concreteColour": "#cfc9bb",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -52,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    56,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -52,
+    76,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    56,
+    76,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     10,
+     1
+    ]
+   },
+   "at": [
+    18,
+    80
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a4a42",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f",
+    "material": "metal-sheet"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: layout inferred from outline; bowl trimmed to scene clamp; single covered west stand assumed"
+ }
+}

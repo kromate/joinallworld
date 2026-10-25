@@ -1,0 +1,422 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadhuis_VMG.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "VMG1231",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/community-voting-game-0.jpg",
+   "used": "emerald-green painted walls with white trim, pedimented central gable with finials, white porch with fretwork frieze and balustraded balcony above, white railed steps, white pillar gate posts and green iron fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:City_Hall_Aruba_.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SMFA",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/community-voting-game-1.jpg",
+   "used": "flat parapet roofline with balustrade, porch of four white columns, arched shutter doors, wall pilasters"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38755794",
+   "used": "16.4 x 15.5 m footprint size (modelled square to the camera)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     16.4,
+     15.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#0e9a6a",
+    "windows": "rect",
+    "faces": {
+     "back": "plain",
+     "left": "rect",
+     "right": "rect"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f4f2ec",
+    "windowRatio": 0.2,
+    "bay": 3.6,
+    "trimColour": "#f4f2ec",
+    "windowShutter": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     8,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -8.9
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#0e9a6a",
+    "windows": "arched",
+    "plinth": 0.4,
+    "faces": {
+     "front": "arched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#0e9a6a",
+    "pitch": 24,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 4,
+    "colour": "#2a8f70"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin",
+   "at": [
+    -3.8,
+    -7.9
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 8.6,
+    "height": 0.9,
+    "topScale": 0.3,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin",
+   "at": [
+    3.8,
+    -7.9
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 8.6,
+    "height": 0.9,
+    "topScale": 0.3,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "at": [
+    0,
+    -10.6
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     3.6
+    ],
+    "z0": 4.0,
+    "height": 0.35,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-top",
+   "at": [
+    0,
+    -10.6
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     3.6
+    ],
+    "z0": 4.35,
+    "height": 0.3,
+    "topScale": 0.9,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "z0": 0,
+      "height": 3.9,
+      "colour": "#f4f2ec"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.4,
+     -12.2
+    ],
+    "end": [
+     3.4,
+     -12.2
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -12.2,
+    5.0
+   ],
+   "params": {
+    "length": 7.6,
+    "height": 0.9,
+    "postEvery": 0.4,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -19
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "bars",
+    "pillarEvery": 6,
+    "colour": "#1f7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l",
+   "at": [
+    -2.4,
+    -19
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "topScale": 1,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-r",
+   "at": [
+    2.4,
+    -19
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "topScale": 1,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-gl",
+   "at": [
+    -2.4,
+    -19
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 0.7,
+    "topScale": 0.05,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-gr",
+   "at": [
+    2.4,
+    -19
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 0.7,
+    "topScale": 0.05,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-c",
+   "at": [
+    -8.2,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 7.4,
+    "height": 1.0,
+    "topScale": 0.1,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-c2",
+   "at": [
+    8.2,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 7.4,
+    "height": 1.0,
+    "topScale": 0.1,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-apex",
+   "at": [
+    0,
+    -8.9
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.5,
+    "height": 1.0,
+    "topScale": 0.05,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fretwork frieze, finials, shutters, pilasters, stepped gate and green iron fence are simplified; porch is a flat white canopy on four columns; wing roofline flat with parapet only."
+ }
+}

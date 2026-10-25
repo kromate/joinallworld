@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-525253713",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sir._John_Guise_Stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "derivative work: Rhinen",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/port-moresby/sjg.jpg",
+   "used": "red athletics track around a grass infield, yellow-seated raked stands on the far side and both ends, white-roofed main stand on the near side, floodlight mast, stand layout and colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25396063",
+   "used": "match is the whole sports precinct (500 m), not used for the footprint; size from the brief and photo (scaled to fit the 160 m scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 45,
+  "fovDeg": 50,
+  "aspect": 1.52,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "width": 68,
+    "lane_width": 6,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b5483f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -44,
+     42
+    ],
+    "end": [
+     44,
+     42
+    ],
+    "rows": 18,
+    "seatColour": "#d9b04c",
+    "under": "solid",
+    "concreteColour": "#d8d4ca",
+    "backWall": 1.0,
+    "canopy": {
+     "height": 13,
+     "depth": 6,
+     "colour": "#eeeeea",
+     "slopeDeg": 3,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 70,
+    "radiusY": 43,
+    "startDeg": -52,
+    "endDeg": 52,
+    "rows": 14,
+    "seatColour": "#d9b04c",
+    "under": "solid",
+    "concreteColour": "#d8d4ca",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 70,
+    "radiusY": 43,
+    "startDeg": 148,
+    "endDeg": 212,
+    "rows": 10,
+    "seatColour": "#d9b04c",
+    "under": "open",
+    "concreteColour": "#d8d4ca",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -54,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     15
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#e8e6df",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -57,
+    7
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 108,
+    "depth": 24,
+    "rise": 2,
+    "folds": 10,
+    "thickness": 0.4,
+    "colour": "#eeeeea",
+    "edgeColour": "#cfd3d6",
+    "slopeY": 0.12
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    46,
+    13
+   ],
+   "params": {
+    "rect": [
+     36,
+     7
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#f2f2ee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    44,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    44,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -56,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     16
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#2f5fa8",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     78,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     78,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -78,
+     52
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "scaled down to the scene clamp; infield is a football pitch not plain grass; end stands are plain arcs; no adjacent buildings"
+ }
+}

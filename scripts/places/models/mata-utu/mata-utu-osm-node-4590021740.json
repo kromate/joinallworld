@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-osm-node-4590021740",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Wallis_and_Futuna",
+   "used": "Lake Lalolalo is a Pleistocene volcanic crater lake on Uvea; no building, no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "crater",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      62,
+      0,
+      "#4d7a5c"
+     ],
+     [
+      46,
+      5,
+      "#4d7a5c"
+     ],
+     [
+      38,
+      6,
+      "#6f7a82"
+     ],
+     [
+      30,
+      1,
+      "#6f7a82"
+     ],
+     [
+      26,
+      0.3,
+      "#3d6f86"
+     ],
+     [
+      0,
+      0.3,
+      "#3d6f86"
+     ]
+    ],
+    "segments": 28,
+    "colour": "#6f7a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -6
+     ],
+     [
+      8,
+      -6
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      -10,
+      0
+     ]
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#a39d8f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    6
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -0.3
+     ],
+     [
+      -9,
+      1
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      9,
+      -0.3
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a39d8f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 1,
+    "run": 1.2,
+    "count": 6,
+    "colour": "#a39d8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 1.4,
+    "colour": "#4d7a5c",
+    "frameColour": "#a39d8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     16
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; crater scale and rim shape stylised, platform and wall are generic"
+ }
+}

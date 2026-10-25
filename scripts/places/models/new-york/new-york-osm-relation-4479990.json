@@ -1,0 +1,239 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gateway_Spring_Creek_Park_09.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tdorante10",
+   "view": "street",
+   "file": "/tmp/places-evidence/new-york/sc1.jpg",
+   "used": "park entrance edge: dark green sign on a post, mown lawn with autumn broadleaf trees and a conifer, low bollard/post row along the road, paved path"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4479990",
+   "used": "park identity and extent (1033 x 791 m); a 118 m edge portion is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      6
+     ],
+     [
+      -5,
+      4
+     ],
+     [
+      12,
+      7
+     ],
+     [
+      24,
+      10
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 0.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 1.4,
+    "colour": "#8c8a80"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 3.6,
+    "bottom": 2.2,
+    "colour": "#2a3a30",
+    "frameColour": "#d6dbd0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#d9a43c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "colour": "#d9742e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#e0b040"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#b0402e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#d9742e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#c8602c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "colour": "#244a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#d9a43c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#b0402e"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Close-up photo of sign and trees; park edge composed, no sign lettering, tree shapes generic"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-relation-4479990"
+}

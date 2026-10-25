@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1271437228",
+   "used": "6.7 x 5.7 m footprint, bearing 12 degrees (nearest match, 6.6 m)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     6.7,
+     5.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 12,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e4d6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#2f6f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8b95",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -3.5
+   ],
+   "rotDeg": 12,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e4d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8b95",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.5,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.0,
+    "bottom": 1.2,
+    "colour": "#f2efe6",
+    "frameColour": "#2f6f9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; tiny OSM-sized gabled dispensary, details typed."
+ }
+}

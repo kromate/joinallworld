@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-node-3969654359",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/393917745",
+   "used": "containing outline 8.8 x 6.8 m, bearing 16 deg; modelled as its bounding rectangle"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/marigot.json#marigot-osm-node-3969654359",
+   "used": "timber bird hide, shed roof, louvres, fence, palms (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hide",
+   "footprint": {
+    "polygon": [
+     [
+      -4.5,
+      -2.5
+     ],
+     [
+      4,
+      -2.5
+     ],
+     [
+      4,
+      3.5
+     ],
+     [
+      -4.5,
+      3.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 16,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6c4c",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#6e5a43"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e5a43",
+    "material": "timber-shingle",
+    "rise": 1.0,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#6e5a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 2.5,
+    "count": 4,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; modest timber hide from brief and OSM outline only."
+ }
+}

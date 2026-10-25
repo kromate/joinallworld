@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-osm-node-9049560470",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fagalele_Boys_School_1_-_Leone_American_Samoa.jpg",
+   "licence": "public domain (NPS/HABS-era)",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/pago-pago/fagalele.jpg",
+   "used": "long low timber hall, tall hipped corrugated roof over a clerestory band with small vents, lower skirt roof over a screened veranda with rail, palms behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/9049560470",
+   "used": "nearest building only 17 x 14 m; scale cue, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 0,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.9,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cfcdc4",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.04
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#aeb3b3",
+    "material": "corrugated",
+    "pitch": 34,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "floor",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     12.5
+    ],
+    "height": 0.9,
+    "colour": "#b9b6aa"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "veranda-skirt",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     28.5,
+     3.6
+    ],
+    "z0": 3.0,
+    "height": 0.25,
+    "colour": "#aeb3b3",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -9.7,
+    0.9
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 2.2,
+      "colour": "#7a6f5e"
+     }
+    },
+    "count": 10,
+    "mode": "line",
+    "start": [
+     -13.5,
+     0
+    ],
+    "end": [
+     13.5,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "rail",
+   "at": [
+    0,
+    -9.7,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     27.2,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#bdb8a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     6
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     2
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     8
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     10
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof pitch/colour guessed from a B/W photo; window band too prominent; veranda screens and garden planting simplified"
+ }
+}

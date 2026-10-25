@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-relation-14750287",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port_Louis,_Mauritius,_Natural_History_Museum.jpg",
+   "licence": "Wikimedia Commons (see file page)",
+   "author": "see file page",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-louis/museum.jpg",
+   "used": "yellow ochre stucco two-storey Mauritius Institute, central arcaded ground floor with an open upper loggia on paired white columns, arched side windows with shutters, white cornice bands, hipped grey roof, black railings and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14750287",
+   "used": "overall size 48 x 23 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     48,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3c779",
+    "windows": "arched",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain"
+    },
+    "trimColour": "#f4efe2",
+    "cornice": true,
+    "plinth": 0.8,
+    "bands": "#f1ead6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#868b90",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     21,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3c779",
+    "windows": "none",
+    "windowRatio": 0,
+    "trimColour": "#f4efe2",
+    "cornice": true,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.66,
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9b96",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -16.2,
+    6.1
+   ],
+   "params": {
+    "length": 17,
+    "count": 8,
+    "height": 5,
+    "radius": 0.28,
+    "kind": "round",
+    "beamHeight": 0.5,
+    "colour": "#f4efe2",
+    "roofColour": "#f1ead6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d5cfc2"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -15.6,
+    6.2
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -17
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -15
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no black railings or hedge; upper loggia is modelled as a flat colonnade rather than open arches; no signage band"
+ }
+}

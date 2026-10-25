@@ -1,0 +1,136 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/415616293",
+   "used": "winged town hall outline 129 x 46 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e9d8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#c97b63",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5473a",
+    "material": "corrugated",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    18,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "rise": 1.0,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#d6cfbd"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#2f4a8a",
+     "#b3262a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "colour": "#9aa0a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     25
+    ]
+   }
+  ],
+  "extent": [
+   115,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or description found; wing massing from OSM, finishes typed"
+ }
+}

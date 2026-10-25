@@ -1,0 +1,155 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief: tiny heliport shelter beside a marked landing pad on the Kerguelen base",
+   "used": "program, 12x9 m size, 4 m height; nearest OSM building (CF, 12x9 m, 58 m away) not the heliport so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dad8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#a33b32",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-lean-to",
+   "footprint": {
+    "rect": [
+     5,
+     9
+    ]
+   },
+   "at": [
+    8.5,
+    0
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a33b32",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "radius": 8,
+    "colour": "#5d6468",
+    "markColour": "#e8e8e2",
+    "ringColour": "#a33b32",
+    "ground": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e8742a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 0.8,
+    "colour": "#a33b32",
+    "frameColour": "#d8dad8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the heliport exists; modest shelter and pad from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-airport-port-aux-francais-airport"
+}

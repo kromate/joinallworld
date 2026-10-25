@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-way-33142632",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mauritius_citadelle_fort_adelaide.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Arne M\u00fcseler",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/port-louis/fort.jpg",
+   "used": "dark basalt-block ramparts with battered walls, arched gallery on the near face, crenellated parapet, inner courtyard with flat grey terrace and low blue-roofed quarters, dry brown hillside, tall pylon behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13476393",
+   "used": "real 118 x 53 m irregular fort outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ramparts",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4c4e",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#5f5f5c",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "bay": 7,
+     "opening": 0.55,
+     "depth": 0.9,
+     "colour": "#2a2b2d"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6865",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "officers-quarters",
+   "footprint": {
+    "rect": [
+     38,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "rotDeg": -41,
+   "z0": 9,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d887c",
+    "windows": "rect",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e7a96",
+    "material": "metal-sheet",
+    "pitch": 15
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    10,
+    -14,
+    9
+   ],
+   "params": {
+    "rect": [
+     24,
+     16
+    ],
+    "height": 0.4,
+    "colour": "#8d9296"
+   },
+   "rotDeg": -41
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM outline only covers part of the fort; no hill terrain, no inner courtyard wings, front arcade only approximately placed, no pylon"
+ }
+}

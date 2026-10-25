@@ -1,0 +1,191 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/6074914982",
+   "used": "point only; the matched Maho Beach polygon is not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "runway-end",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     16
+    ],
+    "height": 0.12,
+    "colour": "#55585b",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "threshold-bar",
+   "at": [
+    0,
+    7.2,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     40,
+     1.2
+    ],
+    "height": 0.02,
+    "colour": "#e8e8e2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 3.4,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blast-wall",
+   "at": [
+    -36,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.6
+    ],
+    "height": 1.1,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blast-wall2",
+   "at": [
+    36,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.6
+    ],
+    "height": 1.1,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    2.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#c93c3c",
+    "frameColour": "#555a5e",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    2.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#e8c13a",
+    "frameColour": "#555a5e",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    2.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#c93c3c",
+    "frameColour": "#555a5e",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "rise": 0.8,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    -3,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "forecourt": "none",
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the fenced strip; sign wording not modelled; fence is posts and rails, not mesh; nearby Commons photos were of other subjects and were not used"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-node-6074914982"
+}

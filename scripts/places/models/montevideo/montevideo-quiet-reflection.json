@@ -1,0 +1,427 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Colegio_Pio_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nelly grabino",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/aux1.jpg",
+   "used": "red-orange front with stone-rubble panels and a big arched recess, round window, central square belfry with balustrade and arched bell opening, dark slate spire, sloped tile wings, white perimeter wall with pointed blind windows, palms and a monument in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1194306225",
+   "used": "size 31 x 16.5 m; nave behind the front modelled at that scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 40,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     17,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4502f",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "cornice": true,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#b8643f",
+       "#a9583a",
+       "#c27148"
+      ],
+      "slits": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4502f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     19
+    ]
+   },
+   "at": [
+    0,
+    5.5
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c8a8",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0583d",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-shaft",
+   "footprint": {
+    "rect": [
+     5,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9573a",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true,
+    "bay": 2.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb9",
+    "parapet": 1.0
+   },
+   "z0": 15
+  },
+  {
+   "type": "mass",
+   "id": "spire-base",
+   "footprint": {
+    "rect": [
+     4.4,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb9",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3e434a",
+    "material": "slate",
+    "rise": 8.5,
+    "overhang": 0.1
+   },
+   "z0": 26
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    -3
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c7ae",
+    "windows": "arched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0583d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    12,
+    -3
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c7ae",
+    "windows": "arched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-wall-l",
+   "footprint": {
+    "rect": [
+     26,
+     0.6
+    ]
+   },
+   "at": [
+    -21.5,
+    -10.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ede4",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "pointed"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-wall-r",
+   "footprint": {
+    "rect": [
+     26,
+     0.6
+    ]
+   },
+   "at": [
+    21.5,
+    -10.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ede4",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "pointed"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -10.3,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 5.5,
+    "arch": true,
+    "colour": "#3a2d28"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.5,
+    "colour": "#2b2e31",
+    "kind": "bars",
+    "thickness": 0.12,
+    "pillarEvery": 3
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "plinth_height": 3.5,
+    "colour": "#8f8c84",
+    "figure_colour": "#4d5a52"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -10.3,
+    11
+   ],
+   "params": {
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "count": 3,
+    "rise": 0.2,
+    "run": 0.6,
+    "colour": "#b8b0a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -16
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -18
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-quiet-reflection",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Red-orange tall facade, red belfry with slate spire, statue and tile wings added; no arched recess, balustrade, or pale belfry upper detail; rubble panels still coarse"
+ }
+}

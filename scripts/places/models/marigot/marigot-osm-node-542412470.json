@@ -1,0 +1,725 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-node-542412470",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Martin_Fort_Louis_2010.jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/marigot/fort1.jpg",
+   "used": "grassy hilltop with dark basalt outcrops, low ragged dark stone ruin walls, squat keep with flagpole at the crest, tricolour flag"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Top_of_Fort_Louis_-_Flickr_-_gadl.jpg",
+   "licence": "see Commons page",
+   "author": "gadl",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/marigot/fort2.jpg",
+   "used": "summit plan: walls around a grassy crest above the harbour, round platform near the flag"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/marigot.json#marigot-osm-node-542412470",
+   "used": "ruined 1789 fort, low stone walls, gate, cannon; OSM match is the marina so no outline taken"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 72,
+    "height": 18,
+    "seed": 4,
+    "stairs": false,
+    "rock_colour": "#6c7340",
+    "boulders": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    16
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 1.6,
+    "thickness": 1.4,
+    "colour": "#3f3c38",
+    "points": [
+     [
+      -16,
+      -6
+     ],
+     [
+      -12,
+      -10
+     ],
+     [
+      -5,
+      -11
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    16
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 3,
+    "thickness": 1.5,
+    "colour": "#4a4743",
+    "points": [
+     [
+      -3,
+      -11
+     ],
+     [
+      6,
+      -10.5
+     ],
+     [
+      12,
+      -9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    16
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2,
+    "thickness": 1.5,
+    "colour": "#45423e",
+    "points": [
+     [
+      14,
+      -7
+     ],
+     [
+      19,
+      -2
+     ],
+     [
+      18,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    16
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.6,
+    "thickness": 1.5,
+    "colour": "#3f3c38",
+    "points": [
+     [
+      -17,
+      -3
+     ],
+     [
+      -17,
+      4
+     ],
+     [
+      -12,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    16
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 1.2,
+    "thickness": 1.4,
+    "colour": "#4a4743",
+    "points": [
+     [
+      -8,
+      10
+     ],
+     [
+      0,
+      11
+     ],
+     [
+      6,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keep",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    11,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4a45",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#403d39",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ruin-w",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -14,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#46433f",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3835"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#55524c",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    11,
+    1,
+    23
+   ],
+   "params": {
+    "height": 14,
+    "count": 1,
+    "colours": [
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -6,
+    -10,
+    17.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 5,
+    "yaw": 270,
+    "scale": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -2,
+    17
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 2.5,
+    "count": 4,
+    "spread": 14,
+    "colour": "#7d8548"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.45,
+    0.94,
+    35.4
+   ],
+   "params": {
+    "rect": [
+     0.72,
+     0.05
+    ],
+    "height": 1.4,
+    "colour": "#1f3f8f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.15,
+    0.94,
+    35.4
+   ],
+   "params": {
+    "rect": [
+     0.72,
+     0.05
+    ],
+    "height": 1.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.85,
+    0.94,
+    35.4
+   ],
+   "params": {
+    "rect": [
+     0.72,
+     0.05
+    ],
+    "height": 1.4,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.673980882854083,
+    1.7691690118380734,
+    11.183949620016163
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.282510673307563,
+    4.156801543847777,
+    13.111309190029864
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.0403370300510275,
+    -17.378845630407476,
+    8.026516512559974
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27.262592472927047,
+    13.498763283858402,
+    5.174594606699311
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.476175197631573,
+    -10.626761558132145,
+    9.600444054433911
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27.756110788585914,
+    -1.1894596991020805,
+    6.817033146740552
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.841841271365773,
+    -0.9458716520266037,
+    9.826649494242696
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.787815870473068,
+    -13.975343039059043,
+    9.383935089247732
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.552196863970551,
+    14.721812285731872,
+    9.101767760577994
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      0,
+      -1.8
+     ],
+     [
+      2,
+      -0.6
+     ],
+     [
+      1.5,
+      1.2
+     ],
+     [
+      -1,
+      1.6
+     ]
+    ],
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#2e2c2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Knoll is now an olive-green irregular mound with tricolour flag, cannon and darker ruin walls, but basalt outcrops are mostly buried in the mound, ruin walls are low and regular, and the camera is higher/wider than the photo."
+ }
+}

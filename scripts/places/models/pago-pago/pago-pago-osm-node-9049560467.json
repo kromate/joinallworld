@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-osm-node-9049560467",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "WWII coastal concrete defensive position, about 10 x 7 m, 3 m high, low parapet, steps, overgrown by scrub; OSM nearest building is a church so its outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bunker",
+   "footprint": {
+    "polygon": [
+     [
+      -5,
+      -3.5
+     ],
+     [
+      5,
+      -3.5
+     ],
+     [
+      5,
+      3.5
+     ],
+     [
+      -5,
+      3.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 8,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a89a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a7a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "gun-slit-block",
+   "at": [
+    0,
+    -3.2,
+    1.4
+   ],
+   "rotDeg": 8,
+   "params": {
+    "rect": [
+     4.2,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#7b7b6c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "upper-step",
+   "at": [
+    2.5,
+    2.2,
+    2.4
+   ],
+   "rotDeg": 8,
+   "params": {
+    "rect": [
+     3.5,
+     2.2
+    ],
+    "height": 0.6,
+    "colour": "#7b7b6c"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -5.8,
+    0,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.6
+      ],
+      "height": 0.2,
+      "colour": "#7b7b6c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -1
+    ],
+    "end": [
+     -1.2,
+     -1
+    ],
+    "count": 4,
+    "dz": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 3,
+    "count": 6,
+    "spread": 4,
+    "colour": "#5a6a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 2.5,
+    "count": 5,
+    "spread": 3,
+    "colour": "#5a6a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -4
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     12
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the site: typed WWII bunker, outline not from OSM (nearest building is a church)"
+ }
+}

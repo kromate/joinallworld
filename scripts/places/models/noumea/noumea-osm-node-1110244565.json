@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-node-1110244565",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/95790082",
+   "used": "20 x 13 m outline of the Naia viewpoint plot, modelled as a low platform at the tower foot"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a958a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a958a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#c4bfb2",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      2.0,
+      1.5
+     ],
+     [
+      1.7,
+      3
+     ],
+     [
+      1.7,
+      13
+     ],
+     [
+      2.6,
+      14.5
+     ],
+     [
+      4.6,
+      15.2,
+      "#9a958a"
+     ],
+     [
+      4.6,
+      19.8,
+      "#e5e0d2"
+     ],
+     [
+      4.9,
+      20.2
+     ],
+     [
+      4.9,
+      20.8,
+      "#8a8f94"
+     ],
+     [
+      2.5,
+      21.8
+     ],
+     [
+      0.3,
+      22.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.2,
+    "count": 4,
+    "startDeg": 45,
+    "endDeg": 315,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 13,
+      "colour": "#b5b0a3",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 4,
+    "colour": "#9a958a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; tank-on-column shape and height (22 m) typed, only the plot outline is measured."
+ }
+}

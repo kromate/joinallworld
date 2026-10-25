@@ -1,0 +1,381 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palikir_2025-Congress.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zykasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/palikir/congress.jpg",
+   "used": "steep dark-grey gabled roofs with wide eaves, large brown timber-clad gable ends, cream fascia band over a ground storey with black basalt piers and dark glazing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palikir_Government_Buildings.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MaxMonaco",
+   "view": "street",
+   "used": "capital complex style: dark hipped and gabled roofs, red-brown timber, palm-lined lawns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/548354582",
+   "used": "33 x 30 m footprint with front porch notch"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b2b2d",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#d9b97a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-gable",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "rotDeg": 90,
+   "z0": 4.2,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3b2c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b5855",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-gable",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    9,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3b2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b5855",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -9,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3b2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b5855",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -12.0,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -7.4,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -2.8000000000000007,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    1.799999999999999,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier4",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    6.399999999999999,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier5",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    11.0,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -19.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#bdb9ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gable ridges still run across the front instead of facing the viewer as in the photo; no cream fascia band texture, no aircons or side canopy; basalt piers oversized."
+ }
+}

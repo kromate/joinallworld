@@ -1,0 +1,332 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-1445648071",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1445648071",
+   "used": "leisure=park outline, 285 x 85 m, drawn at 0.4 scale (114 m) to fit the scene limit; lawn slab, perimeter fence, trees and a shelter placed inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -19.3,
+      44.8
+     ],
+     [
+      -15.2,
+      14.4
+     ],
+     [
+      -13.6,
+      11.3
+     ],
+     [
+      -12.6,
+      2.7
+     ],
+     [
+      -13.1,
+      -0.2
+     ],
+     [
+      -9.2,
+      -30.6
+     ],
+     [
+      -7.9,
+      -34.2
+     ],
+     [
+      -3.6,
+      -66.9
+     ],
+     [
+      2.2,
+      -65.6
+     ],
+     [
+      5.2,
+      -59.9
+     ],
+     [
+      6.9,
+      -54.1
+     ],
+     [
+      17.4,
+      23.8
+     ],
+     [
+      16.9,
+      30.2
+     ],
+     [
+      15.1,
+      38.3
+     ],
+     [
+      14.4,
+      39.5
+     ],
+     [
+      13.3,
+      40.8
+     ],
+     [
+      11.6,
+      41.8
+     ],
+     [
+      -16.5,
+      46.1
+     ],
+     [
+      -17.8,
+      46.0
+     ],
+     [
+      -18.8,
+      45.5
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#7f9a4e"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19.3,
+      44.8
+     ],
+     [
+      -15.2,
+      14.4
+     ],
+     [
+      -13.6,
+      11.3
+     ],
+     [
+      -12.6,
+      2.7
+     ],
+     [
+      -13.1,
+      -0.2
+     ],
+     [
+      -9.2,
+      -30.6
+     ],
+     [
+      -7.9,
+      -34.2
+     ],
+     [
+      -3.6,
+      -66.9
+     ],
+     [
+      2.2,
+      -65.6
+     ],
+     [
+      5.2,
+      -59.9
+     ],
+     [
+      6.9,
+      -54.1
+     ],
+     [
+      17.4,
+      23.8
+     ],
+     [
+      16.9,
+      30.2
+     ],
+     [
+      15.1,
+      38.3
+     ],
+     [
+      14.4,
+      39.5
+     ],
+     [
+      13.3,
+      40.8
+     ],
+     [
+      11.6,
+      41.8
+     ],
+     [
+      -16.5,
+      46.1
+     ],
+     [
+      -17.8,
+      46.0
+     ],
+     [
+      -18.8,
+      45.5
+     ],
+     [
+      -19.3,
+      44.8
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.08,
+    "kind": "wall",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    14,
+    -52,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "height": 2.2,
+    "pillar": 0.4,
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 6,
+    "spread": 6,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 6,
+    "line": 40
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter-slab",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 0.3,
+    "colour": "#c9b98f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -2,
+    0.3
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 4.5,
+    "dy": 2.6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 2.5,
+      "colour": "#8d6e4a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter-roof",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 2.8,
+    "height": 0.3,
+    "colour": "#4f7a5c",
+    "topScale": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   60,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; park drawn at 0.4 scale, tree and shelter positions generic"
+ }
+}

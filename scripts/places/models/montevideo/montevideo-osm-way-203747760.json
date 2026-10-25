@@ -1,0 +1,286 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fortaleza_del_Cerro.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hoverfish",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/p14.jpg",
+   "used": "dark grey fieldstone rampart base, white-washed upper bastion and parapet, central entrance block with brown door, white cylindrical lighthouse with gallery and glazed lantern, cannon on the glacis, grass slope"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/203747760",
+   "used": "real 49.4 x 48.6 m outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rampart",
+   "footprint": {
+    "osm": true,
+    "scale": 1.18
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3e3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glacis",
+   "footprint": {
+    "osm": true,
+    "scale": 1.08
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a463f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7d3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fort-body",
+   "footprint": {
+    "osm": true,
+    "scale": 0.92
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.6,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0,
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "colour": "#e2dfd4"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e3da",
+    "parapet": 1.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "z0": 5.6,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e3da",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -26.7
+   ],
+   "z0": 5.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a4a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a4a2c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lighthouse",
+   "at": [
+    0,
+    -24,
+    9.6
+   ],
+   "params": {
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      2.4,
+      0,
+      "#f6f5f0"
+     ],
+     [
+      1.9,
+      1.0,
+      "#f6f5f0"
+     ],
+     [
+      1.7,
+      8.0,
+      "#f6f5f0"
+     ],
+     [
+      2.7,
+      8.2,
+      "#f0eee8"
+     ],
+     [
+      2.7,
+      8.7,
+      "#f0eee8"
+     ],
+     [
+      1.6,
+      8.8,
+      "#a9d0d6"
+     ],
+     [
+      1.6,
+      11.0,
+      "#a9d0d6"
+     ],
+     [
+      2.0,
+      11.1,
+      "#f0eee8"
+     ],
+     [
+      0.2,
+      13.0,
+      "#e8e6e0"
+     ],
+     [
+      0.2,
+      14.0,
+      "#444"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -14,
+    -30,
+    0.2
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 6,
+    "yaw": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 3,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    20,
+    0,
+    11.6
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#7fb2e5",
+    "count": 2,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-203747760",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "white lighthouse, stepped glacis and parapet added; stone base still regular blocks and vertical, no garitas (removed, floated off the fort)"
+ }
+}

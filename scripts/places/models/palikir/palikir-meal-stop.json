@@ -1,0 +1,182 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1245702505",
+   "used": "real 19.8 x 18.2 m footprint at bearing 37 (nearest, 2.8 m); front veranda placed on its long south-west edge"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#f2efe3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a33b2d",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "veranda",
+   "id": "veranda",
+   "at": [
+    -6.7,
+    -9.0,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "length": 14,
+    "depth": 2.4,
+    "height": 3.0,
+    "roof": "lean-to",
+    "roof_colour": "#a33b2d",
+    "wall_colour": "#f2efe3"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    -10.5,
+    -6.0,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "width": 3.0,
+    "depth": 1.4,
+    "colours": [
+     "#c0392b",
+     "#f2efe3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -4.2,
+    -10.8,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 3.4,
+    "colour": "#f2efe3",
+    "frameColour": "#c0392b"
+   }
+  },
+  {
+   "type": "neon-strip",
+   "id": "neon",
+   "at": [
+    -5.5,
+    -8.5,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "length": 6,
+    "height": 3.4,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t1",
+   "at": [
+    -9,
+    -11.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t2",
+   "at": [
+    -4,
+    -13.2,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "car",
+   "id": "cars",
+   "at": [
+    6,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#d9dde0",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; veranda, awning, sign and lamp strip typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-meal-stop"
+}

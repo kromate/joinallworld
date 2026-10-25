@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522407960",
+   "used": "park polygon outline (about 155 x 129 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -79.3,
+      -34.5
+     ],
+     [
+      -18.1,
+      -39.1
+     ],
+     [
+      -8.1,
+      -67.8
+     ],
+     [
+      63.9,
+      -76.8
+     ],
+     [
+      77.1,
+      43.3
+     ],
+     [
+      -74.5,
+      70.8
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#7aa05a",
+    "topColour": "#7aa05a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -20
+     ],
+     [
+      -30,
+      -10
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      40,
+      20
+     ],
+     [
+      65,
+      30
+     ]
+    ],
+    "width": 3,
+    "colour": "#d9cfb8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      5
+     ],
+     [
+      -10,
+      -40
+     ],
+     [
+      -8,
+      -60
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d9cfb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -10,
+    10
+   ],
+   "z0": 0.2,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9cfb8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6460",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    0,
+    0.2
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -70,
+    -25,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -10,
+    4,
+    0.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     35
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or estate description found; park outline is real but the low house, paths, pavilion and gate are plausible placeholders, not claimed structures."
+ }
+}

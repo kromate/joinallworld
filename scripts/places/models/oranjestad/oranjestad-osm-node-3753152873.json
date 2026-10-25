@@ -1,0 +1,110 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/639896524",
+   "used": "real 30 x 23 m rotated footprint (nearest match 0.8 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one-storey rendered strip shop, flat membrane roof, awning, blank sign board, neon strip; no photo of this building found (nearby Commons photos show other subjects)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#c0392b",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -3,
+    3.0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "at": [
+    -6,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#c0392b",
+    "frameColour": "#f7f4ee",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-3753152873",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building; massing from OSM outline and brief only; shopfront detail generic."
+ }
+}

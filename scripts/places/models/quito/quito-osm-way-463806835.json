@@ -1,0 +1,376 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:USFQ_Campus_(421112587).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Pete from USA",
+   "view": "street",
+   "file": "/tmp/places-evidence/quito/usfq2.jpg",
+   "used": "cream and yellow rendered blocks with red-terracotta ground storey, beige tower with green pyramid roof, paved checker plaza, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:USFQ_in_the_Morning_(430375384).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Pete from USA",
+   "view": "detail",
+   "used": "cream columns of the covered walkway, green-framed skylights, tiled floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/463806835",
+   "used": "campus is 298 x 217 m; a 130 m portion modelled, wings aligned to the 24 degree bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     100
+    ],
+    "height": 0.15,
+    "colour": "#b9a67a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     48,
+     14
+    ]
+   },
+   "at": [
+    -8.13,
+    18.27
+   ],
+   "rotDeg": 24,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe0a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "trimColour": "#f1e8c8",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#a9452f",
+      "#e8d9a6",
+      "#e8d9a6"
+     ]
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    12.78,
+    25.39
+   ],
+   "rotDeg": 24,
+   "z0": 0,
+   "height": 30,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "trimColour": "#efe4c4",
+    "cornice": true,
+    "windowShape": "arched",
+    "bay": 6,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#a9452f",
+      "#d9c9a0",
+      "#d9c9a0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4f8a62",
+    "material": "metal-sheet",
+    "rise": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    -28.62,
+    -19.31
+   ],
+   "rotDeg": 24,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe0a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "trimColour": "#f1e8c8",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#a9452f",
+      "#e8d9a6",
+      "#e8d9a6"
+     ]
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    33.5,
+    8.35
+   ],
+   "rotDeg": 24,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe0a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "trimColour": "#f1e8c8",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#a9452f",
+      "#e8d9a6",
+      "#e8d9a6"
+     ]
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    10.58,
+    -23.75
+   ],
+   "rotDeg": 24,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9452f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 5,
+     "opening": 0.62
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f9a7a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.63,
+    -3.65,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     50,
+     34
+    ],
+    "height": 0.06,
+    "colour": "#d8c9a4"
+   },
+   "rotDeg": 24
+  },
+  {
+   "type": "array",
+   "at": [
+    1.63,
+    -3.65,
+    0.22
+   ],
+   "rotDeg": 24,
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 6,
+    "dx": 6,
+    "dy": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2,
+        2
+       ],
+       "height": 0.03,
+       "colour": "#8a6a4a"
+      }
+     }
+    ],
+    "lod1Step": 100,
+    "lod2Step": 50
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.78,
+    25.39,
+    0
+   ],
+   "rotDeg": 24,
+   "params": {
+    "rect": [
+     7,
+     4
+    ],
+    "height": 1.2,
+    "colour": "#c8bda4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower now dominant with arched windows, green pyramid roof, red ground storey, checker paving and palms; no stone stair/arched entry detail, wings are simple blocks, campus portion only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-463806835"
+}

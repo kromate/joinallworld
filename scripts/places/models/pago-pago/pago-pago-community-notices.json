@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AmericanSamoaLegislatureBuilding.jpg",
+   "licence": "Public domain",
+   "author": "NOAA",
+   "view": "front",
+   "file": "/tmp/places-evidence/pago-pago/fono.jpg",
+   "used": "fale-inspired domed hall under dark brown shingle roof, glazed arched entrance with white columns, lava-stone side walls and stairs, two flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/434715072",
+   "used": "73 x 48 m lobed extent: central hall with a lobe at each end"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "shingle texture is smooth, entry arch is a flat glazed box not an arched gable, no lava-stone stair flanks detail, lobed OSM wings omitted as the photo shows one hall"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     52,
+     28
+    ],
+    "height": 3.2,
+    "colour": "#e9e6dc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    2.6
+   ],
+   "params": {
+    "colour": "#4a3a32",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       27.0,
+       15.0
+      ]
+     },
+     {
+      "z": 1.36,
+      "ellipse": [
+       26.62,
+       14.79
+      ]
+     },
+     {
+      "z": 2.73,
+      "ellipse": [
+       25.46,
+       14.14
+      ]
+     },
+     {
+      "z": 4.09,
+      "ellipse": [
+       23.38,
+       12.99
+      ]
+     },
+     {
+      "z": 5.46,
+      "ellipse": [
+       20.12,
+       11.18
+      ]
+     },
+     {
+      "z": 6.83,
+      "ellipse": [
+       14.92,
+       8.29
+      ]
+     },
+     {
+      "z": 10.5,
+      "ellipse": [
+       3.24,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     16,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efece2",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.5,
+     0,
+     0
+    ],
+    "end": [
+     7.5,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 8.6,
+      "colour": "#f5f3ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "wall-l",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -12,
+    -16
+   ],
+   "height": 2.8,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4a48",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-r",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    12,
+    -16
+   ],
+   "height": 2.8,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4a48",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a38"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -17,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#b22234"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    17,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#3a4a9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ }
+}

@@ -1,0 +1,113 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/187212508",
+   "used": "real 359 m2 footprint, one storey"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chaudron_phoquier_et_ex-batiment_m%C3%A9t%C3%A9o_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "franek2",
+   "view": "street",
+   "used": "base building language only (prefab clad boxes, dark red trim, grey gravel ground); the clinic itself is not in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f2ee",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a33b32"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "material": "membrane",
+    "overhang": 0.4,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -3,
+    -19.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f2f2ee",
+    "roofColour": "#6f777c",
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0.2,
+    -16.5,
+    2.4
+   ],
+   "params": {
+    "size": 2,
+    "facing": "front"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 0.8,
+    "colour": "#f2f2ee",
+    "frameColour": "#a33b32"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only the outline is real; wall colours and the ambulance bay are typical for the base."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-clinic"
+}

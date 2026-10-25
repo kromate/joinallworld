@@ -1,0 +1,202 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+   "used": "dry limestone plateau, cactus and sparse scrub"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "cliff",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -18,
+        -6
+       ],
+       [
+        16,
+        -8
+       ],
+       [
+        19,
+        6
+       ],
+       [
+        8,
+        12
+       ],
+       [
+        -14,
+        10
+       ]
+      ],
+      "colour": "#a8956c"
+     },
+     {
+      "z": 4,
+      "poly": [
+       [
+        -17,
+        -5
+       ],
+       [
+        15,
+        -7
+       ],
+       [
+        18,
+        5
+       ],
+       [
+        7,
+        11
+       ],
+       [
+        -13,
+        9
+       ]
+      ],
+      "colour": "#b8a47c"
+     },
+     {
+      "z": 6.2,
+      "poly": [
+       [
+        -20,
+        -11
+       ],
+       [
+        19,
+        -12
+       ],
+       [
+        22,
+        5
+       ],
+       [
+        8,
+        12
+       ],
+       [
+        -16,
+        10
+       ]
+      ],
+      "colour": "#d8c8a0"
+     },
+     {
+      "z": 8,
+      "poly": [
+       [
+        -19,
+        -10
+       ],
+       [
+        18,
+        -11
+       ],
+       [
+        21,
+        4
+       ],
+       [
+        8,
+        11
+       ],
+       [
+        -15,
+        9
+       ]
+      ],
+      "colour": "#d8c8a0"
+     }
+    ],
+    "topColour": "#c8b78c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plateau",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     25
+    ],
+    "height": 0.8,
+    "colour": "#c4b189"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "height": 2,
+    "stairs": false,
+    "boulders": 3,
+    "rock_colour": "#b8a47c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 3.5,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-11591843520",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; typed limestone ledge with overhanging lip and scrub"
+ }
+}

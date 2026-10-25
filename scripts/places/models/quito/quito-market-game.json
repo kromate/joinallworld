@@ -1,0 +1,398 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palacio_Arzobispal_(Quito_DM).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "H3kt0r",
+   "view": "front",
+   "file": "/tmp/places-evidence/quito/palacio1.jpg",
+   "used": "white stucco plaza facade: arched ground-floor portal bays, open upper gallery of paired slim columns behind a balustrade, end pavilion with pediment and square upper window, cornice with garlands"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palacio_Arzobispal,_Quito_from_Calle_Venezuela,_Quito.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "David Adam Kess",
+   "view": "street",
+   "used": "side street wall: white render, pedimented windows with dark balconies, wide clay tile eaves"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/424993603",
+   "used": "overall extent about 75 x 75 m (outline is irregular, so the plan is composed as a U)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 28,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05,
+  "shiftX": 0.18
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-range",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f3f1ea",
+    "windows": "none",
+    "plinth": 0.7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6.2,
+      "opening": 0.62,
+      "height": 0.82,
+      "depth": 1.0,
+      "pierColour": "#f3f1ea",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd9cf",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-range",
+   "footprint": {
+    "rect": [
+     56,
+     7
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 5.8,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 5,
+    "faces": {
+     "front": "none",
+     "back": "punched"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd9cf",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    1.6,
+    5.8
+   ],
+   "params": {
+    "length": 52,
+    "count": 18,
+    "height": 4.2,
+    "radius": 0.3,
+    "kind": "round",
+    "beamHeight": 0.7,
+    "roofDepth": 3.0,
+    "colour": "#f6f4ee",
+    "roofColour": "#e4e0d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0.7,
+    5.8
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "balustrade",
+    "pillarEvery": 2.6,
+    "colour": "#f6f4ee"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     11,
+     15.5
+    ]
+   },
+   "at": [
+    -33.5,
+    6.2
+   ],
+   "height": 11.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "plinth": 0.7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 9,
+      "opening": 0.6,
+      "height": 0.8,
+      "depth": 1.0,
+      "pierColour": "#f6f4ee",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8e4d8",
+    "pitch": 14,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     11,
+     15.5
+    ]
+   },
+   "at": [
+    33.5,
+    6.2
+   ],
+   "height": 11.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "plinth": 0.7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 9,
+      "opening": 0.6,
+      "height": 0.8,
+      "depth": 1.0,
+      "pierColour": "#f6f4ee",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8e4d8",
+    "pitch": 14,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     10,
+     54
+    ]
+   },
+   "at": [
+    -35,
+    41
+   ],
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "punched",
+     "right": "none",
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8522f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     10,
+     54
+    ]
+   },
+   "at": [
+    35,
+    41
+   ],
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "right": "punched",
+     "left": "none",
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8522f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-range",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    0,
+    63
+   ],
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 7,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8522f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "tiers": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": 0,
+  "extent": [
+   110,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion pediments, garlanded cornice, balcony and relief ornaments missing; gallery columns read faintly; arch openings filled dark; rear U wings are composed, not the irregular OSM outline."
+ }
+}

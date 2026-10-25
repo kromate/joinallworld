@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/papeete.json#papeete-recreation",
+   "used": "no OSM geometry and no photo: a modest forest trailhead on the Taravao plateau, an open timber shelter under a green corrugated gable roof, a blank trail board, a lookout rail and dense broadleaf forest around a small gravel clearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "gable",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#9a7b55",
+    "cap_colour": "#3f7a58",
+    "floor_colour": "#6b5539"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#6b5539",
+    "frameColour": "#9a7b55"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "colour": "#9a7b55"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    22,
+    8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "colour": "#9a7b55"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -6
+     ],
+     [
+      -4,
+      -16
+     ],
+     [
+      -12,
+      -28
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#cbc2ae"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      4,
+      4
+     ],
+     [
+      14,
+      8
+     ],
+     [
+      26,
+      8
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#a99a7e"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -3,
+    3.5,
+    0.1
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 30,
+    "count": 26,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 40,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered (queue hung): typed trailhead, no photo or geometry exists"
+ }
+}

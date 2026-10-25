@@ -1,0 +1,138 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1309116119",
+   "used": "real outline of the building containing Naskip Lelydorp (about 20 x 17 m, front porch notch, bearing 4 degrees)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/paramaribo.json paramaribo-meal-stop",
+   "used": "single-storey roadside Surinamese eatery, hip corrugated roof, covered terrace, umbrellas (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "bands": "#7a5f42"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "id": "terrace-roof",
+   "at": [
+    -1.5,
+    -11.6,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "depth": 3.2,
+    "eaveHeight": 2.6,
+    "attachHeight": 3.4,
+    "post": "square",
+    "postEvery": 3,
+    "colour": "#7a5f42",
+    "roofColour": "#a8472f"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -1.5,
+    -14.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#f0e8d2",
+     "#a8472f",
+     "#7a5f42"
+    ],
+    "radius": 1.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.4,
+    "bottom": 2.4,
+    "colour": "#a8472f",
+    "frameColour": "#7a5f42",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue workers hung since 2026-10-24 21:40, never rendered; no photo exists; terrace and signage placement guessed"
+ }
+}

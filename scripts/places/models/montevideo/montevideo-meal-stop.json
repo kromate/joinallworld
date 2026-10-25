@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cafe_Brasilero_-_20230613dicimouysm17871.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Santiago Mazzarovich / Intendencia de Montevideo",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/mv-cafe.jpg",
+   "used": "ground-floor wood and glass shopfront with dark green frame, red-and-white striped awning, grey stone pilasters, cream upper facade with large arched windows in green frames, street furniture"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/456269414",
+   "used": "footprint size 23 x 17 m and 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 36,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     23,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9d2c0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.6,
+    "glassColour": "#4f6b5e",
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 5.0,
+    "cornice": true,
+    "plinth": 0.5,
+    "trimColour": "#8d8a82",
+    "groundKind": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a84",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     18,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -8.9
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4d3224",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#2a3a34",
+    "plinth": 0.45,
+    "trimColour": "#1f5a44",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5a44",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.0
+    ]
+   },
+   "at": [
+    -9.9,
+    -8.9
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a948a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a847a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.0
+    ]
+   },
+   "at": [
+    9.9,
+    -8.9
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a948a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a847a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "drop": 0.7,
+    "height": 3.4,
+    "colours": [
+     "#7a1f33",
+     "#8a2a40"
+    ],
+    "stripe": 4,
+    "posts": false
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -8.6,
+    4.0
+   ],
+   "params": {
+    "length": 23,
+    "floors": 1,
+    "storeyHeight": 3.7,
+    "proud": 0.15,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#9aa58f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter",
+   "footprint": {
+    "rect": [
+     10,
+     1.0
+    ]
+   },
+   "at": [
+    -3,
+    -11.2
+   ],
+   "height": 0.8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3d3f41",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b6a38"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    -11.2,
+    0.6
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    7,
+    -11.5,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "height": 2.2,
+    "colour": "#2f5a44"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -9.9,
+    2.9
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.6,
+    "bottom": 0,
+    "colour": "#f0e8e0",
+    "frameColour": "#7a1f33",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     -13
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pilastered wider bays with arched windows, burgundy awning and planter added; photo is a tight crop so upper facade rhythm is inferred, no bench/umbrella detail or tall grasses, planter small"
+ }
+}

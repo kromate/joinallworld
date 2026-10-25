@@ -1,0 +1,699 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/40987182",
+   "used": "leisure=water_park outline, 222 x 150 m, name match (California), used as the fenced paved site; model drawn at 0.6 scale because of the 170 m size limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "park-deck",
+   "params": {
+    "points": [
+     [
+      -85.98,
+      1.7999999999999998
+     ],
+     [
+      -2.94,
+      55.08
+     ],
+     [
+      74.34,
+      12.12
+     ],
+     [
+      21.66,
+      -61.199999999999996
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#cfc6ad",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#d9d2bd",
+    "points": [
+     [
+      -85.98,
+      1.7999999999999998
+     ],
+     [
+      -2.94,
+      55.08
+     ],
+     [
+      74.34,
+      12.12
+     ],
+     [
+      21.66,
+      -61.199999999999996
+     ],
+     [
+      -85.98,
+      1.7999999999999998
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -18.0,
+    21.0,
+    0.3
+   ],
+   "rotDeg": 31,
+   "params": {
+    "width": 46,
+    "depth": 30,
+    "shape": "rect",
+    "colour": "#4db6d6",
+    "bank": true
+   }
+  },
+  {
+   "type": "swimming-pool",
+   "at": [
+    21.0,
+    -6.0,
+    0.25
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 34,
+    "length": 14,
+    "umbrellas": 5,
+    "water_colour": "#3fb8e0",
+    "coping_colour": "#efe6cf"
+   }
+  },
+  {
+   "type": "swimming-pool",
+   "at": [
+    -33.0,
+    -3.0,
+    0.25
+   ],
+   "rotDeg": 31,
+   "params": {
+    "width": 20,
+    "length": 12,
+    "umbrellas": 3,
+    "water_colour": "#5fc7e8",
+    "coping_colour": "#efe6cf"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    12.0,
+    21.0,
+    0.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5,
+      0.5
+     ]
+    },
+    "closed": true,
+    "points": [
+     [
+      -17.6,
+      0.0,
+      0
+     ],
+     [
+      -9.600000000000001,
+      -11.200000000000001,
+      0
+     ],
+     [
+      9.600000000000001,
+      -11.200000000000001,
+      0
+     ],
+     [
+      19.200000000000003,
+      0.0,
+      0
+     ],
+     [
+      9.600000000000001,
+      11.200000000000001,
+      0
+     ],
+     [
+      -9.600000000000001,
+      11.200000000000001,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#4fb3d6"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -42.0,
+    -27.0,
+    0.25
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       5,
+       5
+      ]
+     }
+    ],
+    "colour": "#d8d2c4",
+    "capTop": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -42.0,
+    -27.0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      1.2
+     ]
+    },
+    "curve": true,
+    "steps": 6,
+    "points": [
+     [
+      0,
+      0,
+      16
+     ],
+     [
+      10,
+      8,
+      12.8
+     ],
+     [
+      8,
+      22,
+      8.0
+     ],
+     [
+      -6,
+      30,
+      4.0
+     ],
+     [
+      -8,
+      42,
+      1.2
+     ]
+    ],
+    "colour": "#e3b86b"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -31.2,
+    -36.0,
+    0.25
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       5,
+       5
+      ]
+     }
+    ],
+    "colour": "#d8d2c4",
+    "capTop": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -31.2,
+    -36.0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      1.2
+     ]
+    },
+    "curve": true,
+    "steps": 6,
+    "points": [
+     [
+      0,
+      0,
+      12
+     ],
+     [
+      10,
+      8,
+      9.600000000000001
+     ],
+     [
+      8,
+      22,
+      6.0
+     ],
+     [
+      -6,
+      30,
+      3.0
+     ],
+     [
+      -8,
+      42,
+      1.2
+     ]
+    ],
+    "colour": "#5f86a8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -49.199999999999996,
+    -16.8,
+    0.25
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       5,
+       5
+      ]
+     }
+    ],
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -49.199999999999996,
+    -16.8,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      1.2
+     ]
+    },
+    "curve": true,
+    "steps": 6,
+    "points": [
+     [
+      0,
+      0,
+      20
+     ],
+     [
+      12,
+      -6,
+      16
+     ],
+     [
+      22,
+      6,
+      11
+     ],
+     [
+      14,
+      22,
+      6
+     ],
+     [
+      2,
+      26,
+      1.2
+     ]
+    ],
+    "colour": "#d94f4f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    36.0,
+    15.0,
+    0.25
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#f2eee4",
+    "cap_colour": "#5f86a8"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -12.0,
+    -18.0,
+    0.25
+   ],
+   "rotDeg": 31,
+   "params": {
+    "width": 12,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "colour": "#f2eee4",
+    "cap_colour": "#e3b86b"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    6.0,
+    3.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    30.0,
+    -21.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -27.0,
+    30.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    45.0,
+    -3.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -9.0,
+    6.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -48.0,
+    6.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    0.0,
+    -36.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    24.0,
+    36.0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#e3b86b",
+     "#5f86a8",
+     "#f2eee4"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    52.8,
+    -37.199999999999996
+   ],
+   "rotDeg": -29,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f86a8",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    36.0,
+    -45.6,
+    0
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#5f86a8",
+    "frameColour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60.0,
+    16.8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 6,
+    "line": 42.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60.0,
+    15.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 6,
+    "line": -36.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this water park; pools, slide tower, pavilions are composed from the brief; outline drawn at 0.6 scale."
+ }
+}

@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-node-3265809565",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Missionary_Hans_Egede_Nuuk_Greenland.jpg",
+   "licence": "CC BY 2.0",
+   "author": "amanderson2",
+   "view": "front",
+   "file": "/tmp/places-evidence/nuuk/egede2.jpg",
+   "used": "robed bronze figure, staff in right hand, book in left, dark inscription plate, tall coursed granite block plinth with stone cap, rock outcrop base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Egede_nuuk.JPG",
+   "licence": "Public domain",
+   "author": "Svickova",
+   "view": "side",
+   "file": "/tmp/places-evidence/nuuk/egede1.jpg",
+   "used": "plinth proportions, chain posts, rock rise setting"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 30,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.1,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rock",
+   "footprint": {
+    "polygon": [
+     [
+      -4.5,
+      -3
+     ],
+     [
+      -1,
+      -4.2
+     ],
+     [
+      3.5,
+      -3.4
+     ],
+     [
+      4.8,
+      0.5
+     ],
+     [
+      2.5,
+      3.8
+     ],
+     [
+      -2.5,
+      4
+     ],
+     [
+      -5,
+      1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "z0": 0.5,
+    "height": 2.7,
+    "topScale": 0.88,
+    "colour": "#55565a",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-cap",
+   "params": {
+    "rect": [
+     3.1,
+     3.1
+    ],
+    "z0": 3.2,
+    "height": 0.25,
+    "colour": "#6a6b6e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plate",
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 3.45,
+    "height": 0.28,
+    "colour": "#2f2c27"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "robe",
+   "at": [
+    0,
+    0,
+    3.73
+   ],
+   "params": {
+    "colour": "#4a4a3f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.7474999999999999,
+       0.5175
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.6669999999999999,
+       0.45999999999999996
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.575,
+       0.391
+      ]
+     },
+     {
+      "z": 1.55,
+      "ellipse": [
+       0.6325,
+       0.368
+      ]
+     },
+     {
+      "z": 1.85,
+      "ellipse": [
+       0.575,
+       0.345
+      ]
+     },
+     {
+      "z": 1.98,
+      "ellipse": [
+       0.22999999999999998,
+       0.22999999999999998
+      ]
+     },
+     {
+      "z": 2.05,
+      "ellipse": [
+       0.207,
+       0.207
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "head",
+   "at": [
+    0,
+    0,
+    4.0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#4a4a3f",
+    "profile": [
+     [
+      0.0,
+      1.78
+     ],
+     [
+      0.2,
+      1.8
+     ],
+     [
+      0.26,
+      1.98
+     ],
+     [
+      0.28,
+      2.18
+     ],
+     [
+      0.2,
+      2.4
+     ],
+     [
+      0.0,
+      2.45
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "staff",
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 3.73,
+    "height": 3.1,
+    "colour": "#3b3a34"
+   },
+   "at": [
+    -0.85,
+    -0.05,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arm-book",
+   "params": {
+    "rect": [
+     0.5,
+     0.35
+    ],
+    "z0": 5.3,
+    "height": 0.4,
+    "colour": "#4a4a3f"
+   },
+   "at": [
+    0.25,
+    -0.35,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "chain-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.35
+      ],
+      "z0": 0,
+      "height": 0.7,
+      "colour": "#8e8b83"
+     }
+    },
+    "mode": "arc",
+    "count": 5,
+    "radius": 4.0,
+    "startDeg": 200,
+    "endDeg": 340
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   14,
+   14
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo render framing is far and wide (camera auto-fit ignores fov for a tiny model); statue silhouette is a simplified loft without sleeves/book detail, plinth stone courses coarser than photo, no chain links"
+ }
+}

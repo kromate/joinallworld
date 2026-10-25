@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/668160301",
+   "used": "real outline of the Parque ESPE green (152 x 91 m) as the lawn"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/quito.json",
+   "used": "campus green and central plaza at Sangolqui with flagpoles, steps, fountain, conifers/eucalyptus"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7aa37a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7ea86a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    -2
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b48f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb994",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -14,
+    1.0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.4,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -6,
+    -2,
+    1.0
+   ],
+   "params": {
+    "radius": 3.2
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    6,
+    1.0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 4.5,
+    "colours": [
+     "#f2d21b",
+     "#1d4fa3",
+     "#d02a2a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 5,
+    "spread": 5,
+    "line": 40,
+    "colour": "#3f6a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 4,
+    "spread": 5,
+    "line": 28,
+    "colour": "#42703f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    4,
+    -8,
+    1.0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this green exists in the evidence; layout of plaza, fountain, flags and trees is typical, not surveyed"
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-570814678",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/902689558",
+   "used": "size of the nearest tagged university building (about 64 x 23 m); match is nearest at 45 m, so only the proportions are used"
+  },
+  {
+   "kind": "text",
+   "ref": "brief panama-city-osm-way-570814678",
+   "used": "3 levels, exposed walkways, ribbon windows, brick-red accent, flat membrane roof; typed from public-university blocks, no photo of the building exists (nearby Commons photos are editathon group photos)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "rect": [
+     64,
+     23
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c7",
+    "glassColour": "#5f7f8f",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 2.0,
+      "width": 3.0,
+      "every": 4.2,
+      "slab": 0.3,
+      "railKind": "solid",
+      "colour": "#b64a3a",
+      "railColour": "#ffffff",
+      "floors": "upper",
+      "continuous": true
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "colour": "#b64a3a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9295",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    13.5
+   ],
+   "height": 14.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b64a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9295",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 4,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#b64a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -24
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     22
+    ],
+    "height": 8
+   }
+  ],
+  "cars": 3,
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (render queue hung). Text only; generic teaching block, proportions from brief."
+ }
+}

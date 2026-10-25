@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-osm-way-585464416",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/585464416",
+   "used": "real 124 x 121 m ward-block outline (name match, 7,500 m2)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: linked concrete ward blocks, ribbon windows, blue accent, grey corrugated roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7e1d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e7e1d0",
+      "#9fb3bb"
+     ]
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8b95",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -18,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 7,
+    "height": 4.0,
+    "colour": "#2f7f9a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -5,
+    -47,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -18,
+    -48,
+    6.5
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -50,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -55,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -52,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; real OSM outline used, window rhythm dropped to colour bands for triangle budget; wings uniformly 2 storeys."
+ }
+}

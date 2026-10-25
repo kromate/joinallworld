@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-airport-paramaribo-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JAP_Airport,_2022_-_1.jpg",
+   "licence": "CC0",
+   "author": "Ymnes",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/airport1.jpg",
+   "used": "long low two-storey terminal seen from apron: pale blue-grey low-pitched roof, blue structural columns, glazed ribbon, entrance canopy, blue control tower with red-white cab behind the roof, tall apron floodlights"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/143975630",
+   "used": "overall extent only (244 m arrivals building); a 100 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     96,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6ea",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#4b6272",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#2f6ea8",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9bfcc",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     "height": 8.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#2f6ea8",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#2f6ea8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -14.5
+    ],
+    "end": [
+     44,
+     -14.5
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 7,
+    "height": 5.2,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#2f6ea8",
+    "edgeColour": "#2f6ea8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -12.2,
+    6.2
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.3,
+    "bottom": 0,
+    "colour": "#3a4650",
+    "posts": false
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    6,
+    4,
+    9.5
+   ],
+   "params": {
+    "height": 16,
+    "style": "round",
+    "colour": "#2f6ea8",
+    "shaftRadius": 3.1,
+    "cabRadius": 4.2,
+    "cabColour": "#2f6ea8",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 5,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     54,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared: render queue server was down (no heartbeat). Composed from the front photo; footprint simplified to a 96 x 24 m portion, glazing/column rhythm and canopy estimated."
+ }
+}

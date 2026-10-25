@@ -1,0 +1,138 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-osm-node-6781735685",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/640280921",
+   "used": "nearest (51 m) building, 5.1 x 4.7 m at bearing 30; plausibly the intake house, used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "intake",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b2a6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    5.5,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2.2,
+    "legs": 0.0,
+    "colour": "#6b6a60"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2,
+    -4.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -7,
+      -7
+     ],
+     [
+      7,
+      -7
+     ],
+     [
+      7,
+      7
+     ],
+     [
+      -7,
+      7
+     ],
+     [
+      -7,
+      -7
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.2,
+    "colour": "#d0cdc1",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 20,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; ~5 m outline from a nearest match, tank, fence and valley trees typed."
+ }
+}

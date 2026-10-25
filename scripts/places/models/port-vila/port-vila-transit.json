@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/319765330",
+   "used": "52 x 23 m outline (nearest match, tagged Domestic Terminal); used as the roofed bus-bay footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: roofed bus bays with shed canopy, small minibuses; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bfc4c2",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#e3b86b"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa0a2",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "rotDeg": -27,
+   "params": {
+    "length": 44,
+    "kind": "van",
+    "density": 0.8,
+    "colours": [
+     "#f5f3ee",
+     "#e3b86b",
+     "#bfc4c2"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.8,
+    "colour": "#e3b86b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; bays, vehicles and shed canopy are assumed; outline is of a nearby terminal polygon."
+ }
+}

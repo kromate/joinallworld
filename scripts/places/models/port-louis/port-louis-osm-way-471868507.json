@@ -1,0 +1,130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-way-471868507",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/471868507",
+   "used": "real 70 x 31 m outline (name match, 16-vertex plan with annex)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: exposed-concrete lecture/theatre block, blank fly tower, covered entrance canopy, steps, flags (photo of a different UoM block at Reduit not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d3cec0",
+    "windows": "screen",
+    "windowRatio": 0.15,
+    "bands": "#9c978d",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fly-tower",
+   "at": [
+    3,
+    -10,
+    0
+   ],
+   "rotDeg": -16,
+   "params": {
+    "rect": [
+     26,
+     22
+    ],
+    "height": 19,
+    "colour": "#c8c3b4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -31,
+    3.2
+   ],
+   "rotDeg": -16,
+   "params": {
+    "width": 18,
+    "depth": 6,
+    "height": 0.5,
+    "form": "flat",
+    "colour": "#9c978d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "rotDeg": -16,
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building; fly tower and entrance placement guessed from outline and brief"
+ }
+}

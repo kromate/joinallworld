@@ -1,0 +1,309 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Jardines_del_Hip%C3%B3dromo_Maria_Mincheff_de_Lazarof.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SebaZX",
+   "view": "interior",
+   "file": "/tmp/places-evidence/montevideo/p12.jpg",
+   "used": "open uncovered concrete bowl with pale grey/white bucket seats, long side stands, shorter far-end stand with white back wall, fenced green pitch, no roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16365009",
+   "used": "overall extent about 160 x 145 m used for the site; stand plan from the photo (oval outline is polluted with the surrounding plot)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 2.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     92,
+     60
+    ],
+    "height": 0.12,
+    "colour": "#4f8f3c"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "south",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -56,
+     -35
+    ],
+    "end": [
+     56,
+     -35
+    ],
+    "rows": 16,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#e8e8e2",
+    "seatColours": [
+     "#e8e8e2",
+     "#d4d6d2",
+     "#bfc4c8"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8d8d2",
+    "backWall": 1.0,
+    "under": "solid",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "stand",
+   "id": "north",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     35
+    ],
+    "end": [
+     -56,
+     35
+    ],
+    "rows": 16,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#e8e8e2",
+    "seatColours": [
+     "#e8e8e2",
+     "#d4d6d2",
+     "#bfc4c8"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8d8d2",
+    "backWall": 1.0,
+    "under": "solid",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     -35
+    ],
+    "end": [
+     56,
+     35
+    ],
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#e8e8e2",
+    "seatColours": [
+     "#e8e8e2",
+     "#d4d6d2",
+     "#bfc4c8"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d8d8d2",
+    "backWall": 1.0,
+    "under": "solid",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -56,
+     35
+    ],
+    "end": [
+     -56,
+     -35
+    ],
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#e8e8e2",
+    "seatColours": [
+     "#e8e8e2",
+     "#d4d6d2",
+     "#bfc4c8"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d8d8d2",
+    "backWall": 1.0,
+    "under": "solid",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall-s",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#cfcfc9",
+    "points": [
+     [
+      -46,
+      -31
+     ],
+     [
+      46,
+      -31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall-n",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#cfcfc9",
+    "points": [
+     [
+      -46,
+      31
+     ],
+     [
+      46,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall-e",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#cfcfc9",
+    "points": [
+     [
+      50,
+      -31
+     ],
+     [
+      50,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall-w",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#cfcfc9",
+    "points": [
+     [
+      -50,
+      -31
+     ],
+     [
+      -50,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "length": 88,
+    "width": 58,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-179188519",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "raked pale seating bowl with perimeter walls and pitch lines now; stray site props on pitch remain, no far-end white back wall or track fence"
+ }
+}

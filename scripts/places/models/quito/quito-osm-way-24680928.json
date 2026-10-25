@@ -1,0 +1,819 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-24680928",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_La_Alameda_(panor%C3%A1mica).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "H3kt0r",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/quito/alameda.jpg",
+   "used": "open lawns under tall mixed broadleaf and conifer trees, brick-paved curving paths, lagoon with a small arched bridge at the centre, apartment blocks around the edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24680928",
+   "used": "real park outline (diagonal wedge about 429 x 232 m), scaled by 0.275 to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://es.wikipedia.org/wiki/Parque_La_Alameda",
+   "used": "lagoon, 1873-75 observatory with circular sections and three towers, Bolivar monument 1935, French Geodesic Missions pyramid with condor, tree species"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "park",
+   "params": {
+    "points": [
+     [
+      -61.66,
+      -45.73
+     ],
+     [
+      -51.07,
+      -33.0
+     ],
+     [
+      -35.34,
+      -11.36
+     ],
+     [
+      -6.71,
+      28.88
+     ],
+     [
+      3.96,
+      41.53
+     ],
+     [
+      10.89,
+      47.52
+     ],
+     [
+      13.97,
+      47.49
+     ],
+     [
+      33.06,
+      24.75
+     ],
+     [
+      51.59,
+      0.8
+     ],
+     [
+      49.45,
+      -3.3
+     ],
+     [
+      -13.5,
+      -28.27
+     ],
+     [
+      -50.13,
+      -45.43
+     ],
+     [
+      -43.15,
+      -42.08
+     ],
+     [
+      -58.99,
+      -48.76
+     ],
+     [
+      -59.35,
+      -46.91
+     ]
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#94bd6c",
+    "topColour": "#94bd6c"
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "lagoon",
+   "at": [
+    -12,
+    -6,
+    0.62
+   ],
+   "params": {
+    "width": 40,
+    "depth": 22,
+    "shape": "oval",
+    "colour": "#5f8ea3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-deck",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     26
+    ],
+    "z0": 1.3,
+    "height": 0.5,
+    "colour": "#b9ad98",
+    "topColour": "#c8bca6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-a",
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.14
+     ]
+    },
+    "points": [
+     [
+      -50,
+      -38,
+      0.7
+     ],
+     [
+      -34,
+      -26,
+      0.7
+     ],
+     [
+      -24,
+      -8,
+      0.7
+     ],
+     [
+      -6,
+      6,
+      0.7
+     ],
+     [
+      10,
+      14,
+      0.7
+     ],
+     [
+      30,
+      10,
+      0.7
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#b8826a",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-b",
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.14
+     ]
+    },
+    "points": [
+     [
+      -6,
+      30,
+      0.7
+     ],
+     [
+      0,
+      16,
+      0.7
+     ],
+     [
+      8,
+      2,
+      0.7
+     ],
+     [
+      20,
+      -10,
+      0.7
+     ],
+     [
+      36,
+      -6,
+      0.7
+     ],
+     [
+      48,
+      0,
+      0.7
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#b8826a",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-c",
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.14
+     ]
+    },
+    "points": [
+     [
+      10,
+      44,
+      0.7
+     ],
+     [
+      18,
+      30,
+      0.7
+     ],
+     [
+      12,
+      14,
+      0.7
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#b8826a",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-d",
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.14
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -30,
+      0.7
+     ],
+     [
+      -8,
+      -24,
+      0.7
+     ],
+     [
+      14,
+      -20,
+      0.7
+     ],
+     [
+      30,
+      -8,
+      0.7
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#b8826a",
+    "caps": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obs-core",
+   "at": [
+    -3,
+    22,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "z0": 0.6,
+    "height": 8,
+    "colour": "#e3dcc3",
+    "topColour": "#c9b48f"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -3,
+    22,
+    8.6
+   ],
+   "params": {
+    "radius": 4.2,
+    "colour": "#d8d2c4",
+    "lantern": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "obs-towers",
+   "params": {
+    "mode": "arc",
+    "count": 3,
+    "centre": [
+     -3,
+     22
+    ],
+    "radius": 7.5,
+    "startDeg": 200,
+    "endDeg": 340,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 2,
+      "n": 10,
+      "z0": 0.6,
+      "height": 13,
+      "colour": "#e3dcc3",
+      "topColour": "#8d8a82"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "id": "geodesic-pyramid",
+   "at": [
+    10,
+    26,
+    0.6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       4.8,
+       4.8
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     }
+    ],
+    "colour": "#cfc7b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bolivar-plinth",
+   "at": [
+    28,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "z0": 0.6,
+    "height": 7,
+    "colour": "#bdb5a2",
+    "topColour": "#bdb5a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bolivar",
+   "at": [
+    28,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 7.6,
+    "height": 5,
+    "colour": "#7d6a4f",
+    "topColour": "#7d6a4f"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    14,
+    -10,
+    0.6
+   ],
+   "params": {
+    "radius": 2.4,
+    "rimColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-0",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#f1ece0",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-1",
+   "at": [
+    -14,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     12
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#e4ddcc",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-2",
+   "at": [
+    45,
+    30,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 0,
+    "height": 18,
+    "colour": "#f6f3ea",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-3",
+   "at": [
+    62,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     16
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#e9e1cf",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-4",
+   "at": [
+    28,
+    50,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     10
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#f1ece0",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-5",
+   "at": [
+    -48,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#e4ddcc",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-6",
+   "at": [
+    -62,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     14
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#f6f3ea",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-7",
+   "at": [
+    62,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#e9e1cf",
+    "topColour": "#bfb8a8",
+    "windows": "grid"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -40
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -46,
+     -44
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     -26
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -26
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     14
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     12
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     40
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     36
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     44
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     16
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     22
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -2
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -12
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     4,
+     6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -2,
+     34
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     30
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -22
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     -12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -6
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "real outline, lagoon with deck bridge (arch not modelled), sparse broadleaf/conifer trees on open lawn, curving brick paths and larger observatory, pyramid and Bolivar plinth placed approximately; apartment blocks are plain boxes; scaled by 0.275"
+ }
+}

@@ -1,0 +1,505 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:183_Street_both_platforms_vc.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Adam Moss",
+   "view": "detail",
+   "file": "/tmp/places-evidence/new-york/transit2.jpg",
+   "used": "elevated steel viaduct with teal girders, two side platforms with yellow edge strips, long maroon canopies over glazed screens, mesh fences, grey curved lamp posts, track bed"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:183irtlongjeh.JPG",
+   "licence": "Public domain",
+   "author": "Jim.henderson",
+   "view": "street",
+   "used": "cream street-level station house with dark red roof under the viaduct"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/276144417",
+   "used": "station house size 30.5 x 15.3 m, 4.5 m high; platforms cropped to 112 m for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 86,
+  "pitchDeg": 4,
+  "fovDeg": 56,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     15
+    ],
+    "z0": 9.0,
+    "height": 2.0,
+    "colour": "#4c8582"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -6.5
+    ],
+    "end": [
+     52,
+     -6.5
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 9.0,
+      "colour": "#3f6a68"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     6.5
+    ],
+    "end": [
+     52,
+     6.5
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 9.0,
+      "colour": "#3f6a68"
+     }
+    }
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    0,
+    11.0
+   ],
+   "params": {
+    "length": 112,
+    "tracks": 2,
+    "spacing": 4.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     4.2
+    ],
+    "z0": 10.6,
+    "height": 0.7,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     4.2
+    ],
+    "z0": 10.6,
+    "height": 0.7,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     0.5
+    ],
+    "z0": 11.3,
+    "height": 0.02,
+    "colour": "#d8b83a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    5.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     0.5
+    ],
+    "z0": 11.3,
+    "height": 0.02,
+    "colour": "#d8b83a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     0.2
+    ],
+    "z0": 11.3,
+    "height": 2.3,
+    "colour": "#7f908c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    9.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     0.2
+    ],
+    "z0": 11.3,
+    "height": 2.3,
+    "colour": "#7f908c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -8.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     3.6
+    ],
+    "z0": 14.3,
+    "height": 0.45,
+    "colour": "#7b2f3d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    8.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     3.6
+    ],
+    "z0": 14.3,
+    "height": 0.45,
+    "colour": "#7b2f3d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.2
+    ],
+    "z0": 11.3,
+    "height": 3.0,
+    "colour": "#3f6a68"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.2
+    ],
+    "z0": 11.3,
+    "height": 3.0,
+    "colour": "#3f6a68"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -6.9
+    ],
+    "end": [
+     36,
+     -6.9
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "z0": 11.3,
+      "height": 3.0,
+      "colour": "#3f6a68"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     6.9
+    ],
+    "end": [
+     36,
+     6.9
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "z0": 11.3,
+      "height": 3.0,
+      "colour": "#3f6a68"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -6.4,
+    11.3
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 4,
+    "spacing": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    6.4,
+    11.3
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 4,
+    "spacing": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "station-house",
+   "footprint": {
+    "rect": [
+     30.5,
+     13
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cdb0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 3.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3d3a",
+    "overhang": 0.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -22,
+    -6.8,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#2f6b4f",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    -5,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#9a9a96"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -14
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "viaduct steel detail, third track, curved lamp heads and mesh screens simplified; platforms cropped to 112 m"
+ }
+}

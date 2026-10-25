@@ -1,0 +1,115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-node-5341017574",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/820668261",
+   "used": "real outline of the nearest building (7.4 x 6.1 m, 45 m2, skewed rectangle)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Efate_-_Port_Havannah_-_Remains_of_WW2_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jean Van Jean",
+   "view": "street",
+   "used": "setting only (204 m away): narrow sealed coast road lined with coconut palms and bush, open timber huts with thatch and rusty corrugated roofs, a van pulled in at the verge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true
+   },
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b48f",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a2",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "depth": 1.8,
+    "height": 2.4,
+    "roof": "lean-to",
+    "steps": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the hut itself; small corrugated hut assumed from nearby roadside photo."
+ }
+}

@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-osm-node-9049637848",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "WWII coastal emplacement near Masefau: short curved concrete and stone wall about 24 m long facing the sea, 2.5 m high, a gun position; OSM nearest building is unrelated so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "core/sweep-path",
+   "id": "curved-wall",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      2.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 13,
+     "startDeg": 215,
+     "endDeg": 325
+    },
+    "colour": "#9c9a8c",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "id": "parapet-cap",
+   "at": [
+    0,
+    6,
+    2.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.1,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 13,
+     "startDeg": 215,
+     "endDeg": 325
+    },
+    "colour": "#7b7b6c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "gun-platform",
+   "at": [
+    0,
+    2.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -3
+     ],
+     [
+      4,
+      -3
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      0,
+      3.2
+     ],
+     [
+      -5,
+      1
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#8a8a7a"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    0,
+    2.5,
+    0.5
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.5
+      ],
+      "height": 0.2,
+      "colour": "#7b7b6c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3,
+     0
+    ],
+    "end": [
+     3,
+     0
+    ],
+    "count": 3,
+    "dz": 0.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 3,
+    "count": 6,
+    "spread": 4,
+    "colour": "#556a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 3,
+    "count": 5,
+    "spread": 4,
+    "colour": "#556a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     14
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     16
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     18
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: typed curved concrete/stone wall and gun platform from brief; real curvature unknown"
+ }
+}

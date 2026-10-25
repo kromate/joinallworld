@@ -1,0 +1,817 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-255583481",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_de_San_Juan_Bautista_a.jpg",
+   "licence": "CC BY 2.0",
+   "author": "oquendo (Flickr)",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-juan/p0_0.jpg",
+   "used": "cream stepped neoclassical front: wide lower block with three arched doors between white pilasters, entablature, narrower upper block with niche and window, pediment with cross, white statues on the end pedestals"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255583481",
+   "used": "overall extent: about 56 x 49 m cross plan of nave and transept"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 0.75
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "pilasters too chunky, no volute wings, statues, bell niche, balustrade, side wings simplified; camera framing wider than photo"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     24,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9d3a1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9d3c2",
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9d3a1",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c2",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lower",
+   "at": [
+    0.0,
+    -21.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     26,
+     3
+    ],
+    "z0": 0,
+    "height": 12.5,
+    "colour": "#e9d3a1",
+    "topColour": "#e9d3a1",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entab",
+   "at": [
+    0.0,
+    -21.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     27.2,
+     3.6
+    ],
+    "z0": 12.5,
+    "height": 1.1,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper",
+   "at": [
+    0.0,
+    -20.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     11,
+     2.2
+    ],
+    "z0": 13.6,
+    "height": 7.5,
+    "colour": "#e9d3a1",
+    "topColour": "#e9d3a1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice2",
+   "at": [
+    0.0,
+    -20.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     12.4,
+     2.8
+    ],
+    "z0": 21.1,
+    "height": 0.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedcorn",
+   "at": [
+    0.0,
+    -20.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     12.8,
+     3.0
+    ],
+    "z0": 22.0,
+    "height": 0.5,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pediment",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.0,
+    -20.4,
+    0
+   ],
+   "params": {
+    "colour": "#f3efe4",
+    "sections": [
+     {
+      "z": 22.5,
+      "rect": [
+       12.8,
+       2.6
+      ]
+     },
+     {
+      "z": 23.4,
+      "rect": [
+       8.5,
+       2.2
+      ]
+     },
+     {
+      "z": 24.3,
+      "rect": [
+       4.2,
+       1.8
+      ]
+     },
+     {
+      "z": 25.1,
+      "rect": [
+       0.6,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil0",
+   "at": [
+    -12.2,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil1",
+   "at": [
+    -10.2,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil2",
+   "at": [
+    -3.6,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil3",
+   "at": [
+    -1.6,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil4",
+   "at": [
+    1.6,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil5",
+   "at": [
+    3.6,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil6",
+   "at": [
+    10.2,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil7",
+   "at": [
+    12.2,
+    -22.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11.9,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upil0",
+   "at": [
+    -4.8,
+    -21.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.0,
+     0.4
+    ],
+    "z0": 13.6,
+    "height": 7.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upil1",
+   "at": [
+    -3.2,
+    -21.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.0,
+     0.4
+    ],
+    "z0": 13.6,
+    "height": 7.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upil2",
+   "at": [
+    3.2,
+    -21.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.0,
+     0.4
+    ],
+    "z0": 13.6,
+    "height": 7.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upil3",
+   "at": [
+    4.8,
+    -21.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.0,
+     0.4
+    ],
+    "z0": 13.6,
+    "height": 7.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door0",
+   "at": [
+    -8.0,
+    -22.55
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 6.6,
+    "colour": "#2a2622",
+    "topColour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doorhead0",
+   "at": [
+    -8.0,
+    -22.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.6,
+     0.5
+    ],
+    "z0": 7.199999999999999,
+    "height": 1.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door1",
+   "at": [
+    0.0,
+    -22.55
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.2,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 8,
+    "colour": "#2a2622",
+    "topColour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doorhead1",
+   "at": [
+    0.0,
+    -22.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     5.6,
+     0.5
+    ],
+    "z0": 8.6,
+    "height": 1.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door2",
+   "at": [
+    8.0,
+    -22.55
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 6.6,
+    "colour": "#2a2622",
+    "topColour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doorhead2",
+   "at": [
+    8.0,
+    -22.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.6,
+     0.5
+    ],
+    "z0": 7.199999999999999,
+    "height": 1.4,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win",
+   "at": [
+    0.0,
+    -22.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.7,
+     0.4
+    ],
+    "z0": 16,
+    "height": 3.2,
+    "colour": "#3a4650",
+    "topColour": "#3a4650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "niche",
+   "at": [
+    0.0,
+    -22.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "z0": 19.2,
+    "height": 2.6,
+    "colour": "#d6bd88",
+    "topColour": "#d6bd88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "vol-1",
+   "at": [
+    -7.4,
+    -20.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.6,
+     1.6
+    ],
+    "z0": 12.5,
+    "height": 2.4,
+    "colour": "#e9d3a1",
+    "topColour": "#e9d3a1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedest-1",
+   "at": [
+    -12.3,
+    -21.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.9,
+     1.9
+    ],
+    "z0": 12.5,
+    "height": 1.3,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "vol1",
+   "at": [
+    7.4,
+    -20.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.6,
+     1.6
+    ],
+    "z0": 12.5,
+    "height": 2.4,
+    "colour": "#e9d3a1",
+    "topColour": "#e9d3a1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedest1",
+   "at": [
+    12.3,
+    -21.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.9,
+     1.9
+    ],
+    "z0": 12.5,
+    "height": 1.3,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crossv",
+   "at": [
+    0.0,
+    -20.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 25.0,
+    "height": 2.4,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crossh",
+   "at": [
+    0.0,
+    -20.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.35
+    ],
+    "z0": 26.2,
+    "height": 0.35,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0.0,
+    4.0,
+    13.5
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d9d3c2",
+    "profile": [
+     [
+      6.2,
+      0,
+      "#e9d3a1"
+     ],
+     [
+      6.2,
+      3.2
+     ],
+     [
+      6.6,
+      3.2,
+      "#f3efe4"
+     ],
+     [
+      6.6,
+      3.6
+     ],
+     [
+      5.6,
+      5
+     ],
+     [
+      3.8,
+      7
+     ],
+     [
+      1.6,
+      8.4
+     ],
+     [
+      0,
+      8.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    0.0,
+    4.0
+   ],
+   "params": {
+    "radius": 1.5,
+    "n": 8,
+    "z0": 22.2,
+    "height": 2.2,
+    "colour": "#f3efe4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

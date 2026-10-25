@@ -1,0 +1,278 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Foto_a%C3%A9rea_Universidad_del_Caribe_(UNICARIBE).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Universidad del Caribe (UNICARIBE)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/santo-domingo/unicaribe.jpg",
+   "used": "white four-storey left block with dark glazed bands and big blank board, long white right wing, taller square stair tower, gable-roofed hall behind, flat canopies and car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13729136",
+   "used": "checked only: 72 x 69 m footprint agrees with the overall cluster size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#3d4b58",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     46,
+     22
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3d4b58",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    30,
+    30
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e9e9e6",
+    "parapet": 0.5,
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched"
+    },
+    "glassColour": "#3d4b58"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "canopy-1",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#e4e4e0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "canopy-2",
+   "at": [
+    28,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#e4e4e0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "logo-board",
+   "at": [
+    -30,
+    -10.2,
+    3
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#f4f4f1",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "lot",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -34
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -34
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -34
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no street or median; left block glazing bands approximate; hall roof, rooftop plant and branding simplified; trees schematic"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-410061868"
+}

@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Knox_Presbyterian,_Agincourt.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "SimonP",
+   "view": "detail",
+   "file": "/tmp/places-evidence/toronto/p2024-knox.jpg",
+   "used": "dark red brick walls, steep slate gable roofs, shingled gable end, tall arched windows with white frames, small square windows, open timber bell cupola with slate pyramid cap on the roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/67140605",
+   "used": "irregular church plan (about 45 x 26 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 3,
+  "fovDeg": 32,
+  "aspect": 0.75,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    -3,
+    4
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2e",
+    "windows": "pointed",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.5,
+    "trimColour": "#f2f0ea",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d4046",
+    "material": "slate",
+    "pitch": 48,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    8,
+    -8
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2e",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "faces": {
+     "left": "plain"
+    },
+    "plinth": 0.5,
+    "trimColour": "#f2f0ea"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d4046",
+    "material": "slate",
+    "pitch": 45,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b5b0a4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -26
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -3,
+    -12.5
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2e",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "trimColour": "#f2f0ea"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3226",
+    "material": "slate",
+    "pitch": 55,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cupola-base",
+   "at": [
+    -3,
+    0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 1.6,
+    "topScale": 0.9,
+    "colour": "#3d4046"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 2.4,
+    "dy": 2.4,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 2.6,
+      "colour": "#e3d6b8"
+     }
+    }
+   },
+   "at": [
+    -3,
+    0,
+    10.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell",
+   "at": [
+    -3,
+    0,
+    11.4
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 1.0,
+    "colour": "#7a5a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cupola-cap",
+   "at": [
+    -3,
+    0,
+    13.4
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 2.2,
+    "topScale": 0.05,
+    "colour": "#3d4046"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-l",
+   "at": [
+    -11.5,
+    -26,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.4
+    ],
+    "height": 1.0,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-r",
+   "at": [
+    -8.5,
+    -26,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.4
+    ],
+    "height": 1.0,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-slate-base",
+   "at": [
+    -3,
+    0,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 3.0,
+    "topScale": 0.9,
+    "colour": "#3d4046"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "only a corner detail photo exists; camera framing still wide (tool-fitted), curved slate roof forms and shingle gable face are plain, belfry is simplified posts, windows lack brick arch trim"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     -6
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

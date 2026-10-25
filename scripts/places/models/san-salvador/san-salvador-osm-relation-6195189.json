@@ -1,0 +1,415 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Cuscatl%C3%A1n.jpg",
+   "licence": "CC BY 4.0",
+   "author": "JMRAFFi",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-salvador/cusc1.jpg",
+   "used": "pale herringbone paved plaza, open lawns with big broadleaf trees, black iron fence along the street, green fenced court at the back, planted beds with gravel edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pergolas_dentro_del_Parque.jpg",
+   "licence": "CC BY 4.0",
+   "author": "JMRAFFi",
+   "view": "detail",
+   "file": "/tmp/places-evidence/san-salvador/cusc2.jpg",
+   "used": "dark slatted timber deck pergola platform among trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6195189",
+   "used": "park outline 372x212 m (auto-fitted to 118 m wide)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 14,
+  "fovDeg": 70
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7da05a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -18,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "path-long",
+   "footprint": {
+    "rect": [
+     100,
+     3
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    24,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f8a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "culture-centre",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    2,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e1d3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "exhibition-hall",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d3c6",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-pergola",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -5,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3b3a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3a3a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#1c1c1e",
+    "points": [
+     [
+      -16,
+      6
+     ],
+     [
+      -6,
+      6
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    -30,
+    -4,
+    0.25
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 2.8,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    30,
+    10,
+    0.25
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 2.8,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#222222",
+    "points": [
+     [
+      -58,
+      -34
+     ],
+     [
+      0,
+      -36
+     ],
+     [
+      58,
+      -34
+     ]
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "head_width": 1.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    34,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "head_width": 1.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "count": 9,
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    18,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 12,
+    "count": 9,
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "count": 8,
+    "min_height": 10,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -10,
+    -12,
+    0.25
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#4f8a5b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-relation-6195189",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Herringbone paving pattern, planted beds and gravel edge are plain; only 118 m of the 372 m park is fitted; sports facilities placed approximately."
+ }
+}

@@ -1,0 +1,405 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Carretera_PR-2,_intersecci%C3%B3n_con_la_carretera_PR-5,_Bayam%C3%B3n,_Puerto_Rico_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yarfpr",
+   "view": "front",
+   "used": "raised tan block bridging the road on piers, orange-brown overhanging roof slab, bands of blue ribbon glazing, yellow diagonal bracing, rooftop plant boxes and mast, palms at left",
+   "file": "/tmp/places-evidence/san-juan/san-juan-community-voting-game-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/338720301",
+   "used": "overall size only (105x82 m); front block width from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     90
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#3c3e42",
+    "topColour": "#46484c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    -38,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a398",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a398",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-block",
+   "footprint": {
+    "rect": [
+     84,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9ad98",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#3d6fa6",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d8d0bf",
+      "height": 0.18,
+      "at": 0.0,
+      "floors": "all",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   },
+   "z0": 7
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    -1
+   ],
+   "params": {
+    "rect": [
+     90,
+     34
+    ],
+    "z0": 21,
+    "height": 2.2,
+    "colour": "#c78b4c",
+    "topColour": "#b9743a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-walk",
+   "at": [
+    -6,
+    -8
+   ],
+   "params": {
+    "rect": [
+     16,
+     6
+    ],
+    "z0": 6,
+    "height": 1.6,
+    "colour": "#7f8488",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#4d7090"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        7.4
+       ],
+       [
+        7,
+        0,
+        21
+       ]
+      ],
+      "colour": "#e2b324"
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -38,
+     -16.2,
+     0
+    ],
+    "end": [
+     38,
+     -16.2,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        21
+       ],
+       [
+        7,
+        0,
+        7.4
+       ]
+      ],
+      "colour": "#e2b324"
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -38,
+     -16.2,
+     0
+    ],
+    "end": [
+     38,
+     -16.2,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-l",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a398",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9ea0"
+   },
+   "z0": 23.2
+  },
+  {
+   "type": "mass",
+   "id": "plant-r",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    36,
+    6
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a398",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9ea0"
+   },
+   "z0": 23.2
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -48,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -7,
+    -17,
+    8
+   ],
+   "params": {
+    "width": 16,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#1f7a4d",
+    "frameColour": "#f2f1ec",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 2,
+    "spacing": 9,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Bracing drawn as X pairs not the real irregular yellow frame; road passes under as a flat strip and the glass-floored bridge is a simple slab; plant boxes and mast simplified; main block 84 m wide not the full 105 m"
+ }
+}

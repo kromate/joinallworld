@@ -1,0 +1,400 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edificio_de_Bibliotecas_y_Laboratorios_Especializados_(EBLE)_de_la_Universidad_Francisco_Gavidia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ralfaro.85",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/ufg1.jpg",
+   "used": "tan rusticated stone-clad tower with vertical glass curtain bays, blank signage band at the top, lower cream block with blue roof, white block at right, blue steel carport with solar roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UNIVERSIDAD_FRANCISCO_GAVIDIA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mkeiichi",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-salvador/ufg2.jpg",
+   "used": "cream block with open balcony tiers, blue corrugated deep roof, brown stair canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8166884",
+   "used": "campus is 215x207 m; only the EBLE tower cluster is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 10,
+  "fovDeg": 60
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-tower",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a62",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 7,
+    "glassColour": "#7fa3c4",
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#8d6e4c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d6e4c",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-stair-core",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    -15,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a62",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 8,
+    "glassColour": "#7fa3c4",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d6e4c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-wing",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8bd",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#d8c7a6"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f6f92",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    21,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efede6",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "fin-row",
+   "at": [
+    21,
+    -5.2,
+    0
+   ],
+   "params": {
+    "length": 2,
+    "height": 22,
+    "colour": "#3a3d41",
+    "pitch": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -9.2,
+    22
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#8d6e4c",
+    "frameColour": "#8d6e4c",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 5.2,
+      "colour": "#3f78b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -20
+    ],
+    "end": [
+     14,
+     -20
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 4.6,
+      "colour": "#3f78b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -13
+    ],
+    "end": [
+     14,
+     -13
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carport-roof",
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "points": [
+     [
+      -19,
+      -21
+     ],
+     [
+      15,
+      -21
+     ],
+     [
+      15,
+      -12
+     ],
+     [
+      -19,
+      -12
+     ]
+    ],
+    "height": 0.4,
+    "topOffset": [
+     0,
+     0
+    ],
+    "colour": "#6b7f98"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -2,
+    -16.5,
+    5.4
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 9,
+    "panelWidth": 3.4,
+    "panelDepth": 2.6,
+    "tilt": 10,
+    "gap": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -24,
+      -24
+     ],
+     [
+      18,
+      -24
+     ],
+     [
+      18,
+      -23
+     ],
+     [
+      -24,
+      -23
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#3a5f95"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 2,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-relation-8166884",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the EBLE cluster modelled; stone rustication is a flat brick tint; carport frames simplified; tower proportions approximate."
+ }
+}

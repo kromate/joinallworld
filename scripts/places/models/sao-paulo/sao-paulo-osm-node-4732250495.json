@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-node-4732250495",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shopping_SP_Market_-_Avenida_das_Na%C3%A7%C3%B5es_Unidas,_22540_-_Jurubatuba_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CORRETOR-CARVALHO",
+   "view": "street",
+   "used": "long low white and pale-blue box with a blue wavy band and dotted frieze, grey parapet, curved glass entrance arch on pink columns, white cylindrical silo at far end, hedge and wall along the avenue"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shopping_SP_Market_-_Avenida_das_Na%C3%A7%C3%B5es_Unidas,_22540_-_Jurubatuba_-_panoramio_(2).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CORRETOR-CARVALHO",
+   "view": "front",
+   "used": "entrance arch proportions and blank mural panel"
+  }
+ ],
+ "camera": {
+  "yawDeg": 60,
+  "pitchDeg": 5,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     116,
+     62
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dbe5ee",
+    "windows": "none",
+    "plinth": 1.0,
+    "bands": {
+     "colour": "#9bbbd8",
+     "height": 2.0
+    },
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9094",
+    "material": "membrane",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frieze",
+   "footprint": {
+    "rect": [
+     116.4,
+     62.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.4,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3d4f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9094"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -52,
+    -18,
+    0
+   ],
+   "params": {
+    "radius": 6.5,
+    "n": 20,
+    "height": 17,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 24,
+    "depth": 7,
+    "height": 7,
+    "thickness": 0.4,
+    "rise": 3,
+    "colour": "#6f8a93",
+    "edgeColour": "#8a8f93",
+    "columns": 0
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -8,
+    -35.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "radius": 0.45,
+      "n": 8,
+      "height": 7,
+      "colour": "#c4606c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9,
+     0
+    ],
+    "end": [
+     9,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 5,
+    "bottom": 4,
+    "colour": "#6aa7d8",
+    "frameColour": "#d8d8d8",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#8b8d8e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -37,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 8,
+    "line": 100
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "groundColour": "#5a5c5e",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wavy blue mural band, dotted frieze, tall silo and dark hedge/wall only approximated; mall size from brief (116 m clipped), not photo"
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-node-13459831357",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522140601",
+   "used": "nearest-quality 35 x 9 m rectangular block outline (8.5 m from the point), used for size and bearing only"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long low academic block, two storeys, render with ribbon glazing and balcony bands; no photo of this building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 35
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#5d7d8a",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -5.3,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "floors": 2,
+    "storeyHeight": 4,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -5.4,
+    5
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; nearest-quality outline, generic block"
+ }
+}

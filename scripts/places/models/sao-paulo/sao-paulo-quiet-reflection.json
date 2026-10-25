@@ -1,0 +1,632 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IGREJA_NOSSA_SENHORA_DO_ROSARIO_-_RUA_HAVA%C3%8D,_430_PARQUE_SANTA_INES_07700-000_-_CAIEIRAS-SP-BRASIL_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CORRETOR-CARVALHO",
+   "view": "side",
+   "file": "/tmp/places-evidence/sao-paulo/basilica.jpg",
+   "used": "cream walls, twin green spires on the west towers, pointed windows, pinnacle row, diamond-patterned roof, lower side aisle and apse"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1499108656",
+   "used": "overall extent 48 x 39 m; own composition used because the outline is a rough cross"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     18,
+     46
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfae",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c6a62",
+    "material": "clay-tile",
+    "rise": 7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     6,
+     40
+    ]
+   },
+   "at": [
+    12,
+    24
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfae",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f7a5c",
+    "material": "clay-tile",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     6,
+     40
+    ]
+   },
+   "at": [
+    -12,
+    24
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfae",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f7a5c",
+    "material": "clay-tile",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a4",
+    "windows": "pointed",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f7a5c",
+    "material": "clay-tile",
+    "rise": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -6.5,
+    2.5
+   ],
+   "height": 32,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe2b2",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "pointed",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf8e",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    6.5,
+    2.5
+   ],
+   "height": 32,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe2b2",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "pointed",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf8e",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -2.5
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e5b8",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "groundKind": "arched",
+    "groundHeight": 5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a7f5c",
+    "rise": 5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6.5,
+    2.5,
+    32
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      4.4,
+      0
+     ],
+     [
+      2.728,
+      13.5
+     ],
+     [
+      1.32,
+      24.0
+     ],
+     [
+      0.1,
+      30
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6.5,
+    2.5,
+    32
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      4.4,
+      0
+     ],
+     [
+      2.728,
+      17.1
+     ],
+     [
+      1.32,
+      30.400000000000002
+     ],
+     [
+      0.1,
+      38
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.6,
+    1.0,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.1,
+      0
+     ],
+     [
+      0.682,
+      3.6
+     ],
+     [
+      0.33,
+      6.4
+     ],
+     [
+      0.1,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.6,
+    9.0,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.1,
+      0
+     ],
+     [
+      0.682,
+      3.6
+     ],
+     [
+      0.33,
+      6.4
+     ],
+     [
+      0.1,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.6,
+    1.0,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.1,
+      0
+     ],
+     [
+      0.682,
+      3.6
+     ],
+     [
+      0.33,
+      6.4
+     ],
+     [
+      0.1,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.6,
+    9.0,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.1,
+      0
+     ],
+     [
+      0.682,
+      3.6
+     ],
+     [
+      0.33,
+      6.4
+     ],
+     [
+      0.1,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.2,
+     8,
+     17.6
+    ],
+    "end": [
+     -8.2,
+     44,
+     17.6
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 2.6,
+      "colour": "#efe2b2",
+      "topScale": 0.2
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     8.2,
+     8,
+     17.6
+    ],
+    "end": [
+     8.2,
+     44,
+     17.6
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 2.6,
+      "colour": "#efe2b2",
+      "topScale": 0.2
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     15.3,
+     6,
+     0
+    ],
+    "end": [
+     15.3,
+     42,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       1.3
+      ],
+      "height": 13,
+      "colour": "#e8d9a4",
+      "topScale": 0.5
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.3,
+     6,
+     0
+    ],
+    "end": [
+     -15.3,
+     42,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       1.3
+      ],
+      "height": 13,
+      "colour": "#e8d9a4",
+      "topScale": 0.5
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#d7cdb0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-quiet-reflection",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Twin spires are plain cones without the dark/green striping, crockets and lanterns; roof lacks the diamond-patterned tile; no tracery on the nave parapet; facade gable and rose window simplified."
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/531435361",
+   "used": "containing building outline (71x58 m) used as the roofed grandstand and clubhouse block; outfield fence, floodlights and scoreboard are typical for a municipal ballpark, not seen"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d4d0c4",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#4b6e8f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -60,
+    60,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#4b6e8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    90,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "bottom": 4,
+    "colour": "#1f2a33",
+    "frameColour": "#d4d0c4"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -50,
+    50,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 4,
+    "spacing": 35
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-node-357273264",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; outline treated as grandstand block, field furniture typical not seen"
+ }
+}

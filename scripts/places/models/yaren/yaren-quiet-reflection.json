@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Christ_the_King_Catholic_Church_(15219795409).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user via Wikimedia Commons",
+   "view": "street",
+   "file": "/tmp/places-evidence/yaren/ctk-15219795409.jpg",
+   "used": "white rendered church with arched windows and a low-pitched dark corrugated roof, square white belfry with louvred openings and a small pyramid cap with cross, red-brick parish hall with grey roof in front, red brick gate piers, hexagonal open pavilion, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Christ_the_King_Catholic_Church_(15406563575).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user via Wikimedia Commons",
+   "view": "interior",
+   "used": "pointed-arch window proportion only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160584951",
+   "used": "footprint of the church body (36 x 15 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9ece6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5d5a52",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    -1.5,
+    -9
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d9dedf",
+    "windows": "none",
+    "plinth": 0.4,
+    "windowRatio": 0.1,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f1f2f0",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     23,
+     6.5
+    ]
+   },
+   "at": [
+    9.5,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2e32",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {},
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9498",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "depth": 3.5,
+    "height": 5.5,
+    "roof": "hip",
+    "rise": 5.5,
+    "posts": 4,
+    "colour": "#eceeea",
+    "cap_colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -17,
+     0
+    ],
+    "end": [
+     24,
+     -17,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "mass",
+      "id": "pier",
+      "footprint": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "z0": 0,
+      "height": 2.0,
+      "storeys": 1,
+      "wall": {
+       "material": "brick",
+       "colour": "#9a3f38",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#c9c6bd",
+       "overhang": 0.08
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.05,
+    "kind": "railing",
+    "pillarEvery": 2.5,
+    "colour": "#6e7377"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -3,
+     -17
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -15
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     12
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM outline rotated 134 deg so church sits diagonal to the photo axis; hall and gate piers aligned to the model axes not the street; pavilion spire is a plain pyramid; no coral gravel apron or lamp posts"
+ }
+}

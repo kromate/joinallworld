@@ -1,0 +1,253 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: rocky limestone headland, scrub and sea-cliffs at the south-west tip; no building, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -60,
+      -18
+     ],
+     [
+      -35,
+      -34
+     ],
+     [
+      0,
+      -38
+     ],
+     [
+      34,
+      -30
+     ],
+     [
+      58,
+      -8
+     ],
+     [
+      52,
+      22
+     ],
+     [
+      30,
+      36
+     ],
+     [
+      -8,
+      40
+     ],
+     [
+      -40,
+      30
+     ],
+     [
+      -58,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#e3dcc4",
+    "topColour": "#d8cfb5",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -44,
+      -10
+     ],
+     [
+      -20,
+      -24
+     ],
+     [
+      14,
+      -24
+     ],
+     [
+      36,
+      -8
+     ],
+     [
+      30,
+      16
+     ],
+     [
+      6,
+      26
+     ],
+     [
+      -24,
+      22
+     ],
+     [
+      -42,
+      8
+     ]
+    ],
+    "z0": 1.6,
+    "height": 1.6,
+    "colour": "#d8cfb5",
+    "topColour": "#cfc6aa",
+    "topScale": 0.92
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -26,
+      -4
+     ],
+     [
+      -6,
+      -14
+     ],
+     [
+      16,
+      -8
+     ],
+     [
+      20,
+      8
+     ],
+     [
+      0,
+      16
+     ],
+     [
+      -20,
+      10
+     ]
+    ],
+    "z0": 3.2,
+    "height": 1.4,
+    "colour": "#cfc6aa",
+    "topColour": "#c4ba9c",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -4,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 50,
+    "depth": 10,
+    "z": 0.4,
+    "rise": 0.5,
+    "waves": 3,
+    "thickness": 0.3,
+    "colour": "#7d9a6a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -30
+     ],
+     [
+      -30,
+      -34
+     ],
+     [
+      -20,
+      -32
+     ]
+    ],
+    "height": 0.8,
+    "thickness": 0.5,
+    "colour": "#f1ede2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -14,
+     6
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     2
+    ],
+    "height": 3
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 2.8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     -2
+    ],
+    "height": 3.2
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -4,
+     -16
+    ],
+    "height": 2.6
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or building; generic stepped limestone headland, scrub and sand"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-osm-node-2107724413"
+}

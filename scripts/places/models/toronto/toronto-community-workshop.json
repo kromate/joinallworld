@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_York_Centre_2023.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Canmenwalker",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/toronto-community-workshop-0.jpg",
+   "used": "tall mirror-glass tower with fine dark grid mullions and a wedge plan with a vertical corner edge, twin tower behind, 3-4 storey taupe stone-banded podium, brick low block, colours of the teal-black glass"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31443988",
+   "used": "complex is 175 x 100 m irregular and contains the library; photo massing used for the tower and podium, outline agrees in scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 0.885,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -30,
+      -18
+     ],
+     [
+      18,
+      -18
+     ],
+     [
+      28,
+      -12
+     ],
+     [
+      34,
+      0
+     ],
+     [
+      34,
+      14
+     ],
+     [
+      26,
+      26
+     ],
+     [
+      16,
+      30
+     ],
+     [
+      -30,
+      30
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#6b6055",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 16,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#857a6c",
+    "plinth": 0.4,
+    "groundKind": "shopfront",
+    "groundHeight": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6d68",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    2,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -16
+     ],
+     [
+      3,
+      -16
+     ],
+     [
+      20,
+      6
+     ],
+     [
+      22,
+      18
+     ],
+     [
+      -16,
+      18
+     ],
+     [
+      -26,
+      -2
+     ]
+    ],
+    "z0": 14,
+    "height": 104,
+    "colour": "#264a55",
+    "material": "glass-curtain",
+    "glassColour": "#4a8a96",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 20,
+    "storeys": 13,
+    "faces": {
+     "back": "plain"
+    },
+    "trimColour": "#16303a",
+    "topColour": "#8aa4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-twin",
+   "at": [
+    -44,
+    26
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -12
+     ],
+     [
+      8,
+      -12
+     ],
+     [
+      16,
+      -4
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      -16,
+      12
+     ]
+    ],
+    "z0": 0,
+    "height": 74,
+    "colour": "#2d4854",
+    "material": "glass-curtain",
+    "glassColour": "#42707e",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 20,
+    "storeys": 10,
+    "faces": {
+     "back": "plain"
+    },
+    "trimColour": "#22363d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-block",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -62,
+    -6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8b6f5e",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-peak",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    -28,
+    -2
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb3b8",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 50,
+    "colour": "#7fb3b8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -35,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "prism",
+   "id": "twin-step",
+   "at": [
+    -44,
+    26
+   ],
+   "params": {
+    "rect": [
+     20,
+     16
+    ],
+    "z0": 74,
+    "height": 10,
+    "colour": "#2d4854",
+    "material": "glass-curtain",
+    "glassColour": "#42707e",
+    "windows": "curtain",
+    "bay": 20,
+    "windowRatio": 0.85,
+    "storeys": 3,
+    "topColour": "#8aa4aa"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wedge tower and mirror-teal skin applied but window grid is coarse (about 8 m x 8 m cells) for triangle budget; twin has stepped top but coarse grid; podium is dark taupe with curved corner but no arcade base or real stone banding; low neighbour brick"
+ }
+}

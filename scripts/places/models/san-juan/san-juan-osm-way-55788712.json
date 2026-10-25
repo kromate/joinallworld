@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-55788712",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roberto_Clemente_Coliseum.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mtmelendez",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-juan/mine-coliseo.jpg",
+   "used": "boxy weathered grey-beige concrete block with horizontal slit-window ribbons, lower stepped service sheds with grey roofs, raised curved white roof shell behind, entrance wing at left with large blank sign wall, palms and car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/55788712",
+   "used": "real irregular footprint 129 x 120 m, 5 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.7,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5,
+    "fit": 100
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a79f8d",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "glassColour": "#4a4f52",
+    "plinth": 1.0,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    15.8
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#dcdcd6",
+    "profile": [
+     [
+      32,
+      0,
+      "#cfcfc8"
+     ],
+     [
+      32,
+      1.0
+     ],
+     [
+      29,
+      2.8
+     ],
+     [
+      21,
+      4.6
+     ],
+     [
+      10,
+      5.7
+     ],
+     [
+      0,
+      6.0
+     ]
+    ],
+    "topColour": "#e4e4de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-wall",
+   "at": [
+    -37,
+    -52,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     10
+    ],
+    "height": 1,
+    "colour": "#a79f8d"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -50,
+     0
+    ],
+    "end": [
+     26,
+     -50,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       9,
+       5
+      ]
+     },
+     "height": 4.2,
+     "wall": {
+      "material": "exposed-concrete",
+      "colour": "#9e968a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#b2b4b3",
+      "pitch": 8
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -80,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   150
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -74
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -72
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -72
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -70
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -70
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Massing and dome shell agree with the photo; the OSM outline is scaled to 65 percent to fit the 120 m clamp. Missing the stepped entrance wing and sign wall at left, the upper ribbon windows are simpler, no planted shrubs; ribbon slits only on the front face."
+ }
+}

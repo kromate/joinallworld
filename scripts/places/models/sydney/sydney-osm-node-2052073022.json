@@ -1,0 +1,294 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mortuary_receiving_railway_station_1_b.jpg",
+   "licence": "Public domain",
+   "author": "unknown (Wikimedia Commons)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/sydney/cem2.jpg",
+   "used": "surviving remains: row of square weathered pale-stone stubs on a grey paved platform, low sandstone block footings stepping along it, gravel and conifers beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Haslem%27s_Creek_Cemetery_Station_c1865.jpg",
+   "licence": "Public domain",
+   "author": "John Dalton (en.wikipedia)",
+   "view": "front",
+   "used": "original gabled sandstone station with bell turret, used only to place the footings of the hall and tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/194704016",
+   "used": "footprint of the ruin (31 x 15 m, bearing 9 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -72,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5d6066",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6066",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "stub",
+     "footprint": {
+      "rect": [
+       1.3,
+       1.3
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0.4,
+     "height": 2.0,
+     "wall": {
+      "material": "limestone",
+      "colour": "#cfcbc0",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#bdb8ab",
+      "parapet": 0.0
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -4.6,
+     -13
+    ],
+    "end": [
+     -3.4,
+     13
+    ]
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    2.5,
+    -12.5,
+    0.4
+   ],
+   "rotDeg": 84,
+   "params": {
+    "length": 8,
+    "height": 0.8,
+    "thickness": 1.1,
+    "colour": "#c3ac86",
+    "gaps": 0.05
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    3.8,
+    -3,
+    0.4
+   ],
+   "rotDeg": 84,
+   "params": {
+    "length": 7,
+    "height": 1.0,
+    "thickness": 1.1,
+    "colour": "#b49a72",
+    "gaps": 0.2
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    5.0,
+    5,
+    0.4
+   ],
+   "rotDeg": 84,
+   "params": {
+    "length": 8,
+    "height": 0.7,
+    "thickness": 1.1,
+    "colour": "#c3ac86",
+    "gaps": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    3.0,
+    -15.6
+   ],
+   "z0": 0.4,
+   "height": 1.3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9a07a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89066",
+    "parapet": 0.0
+   },
+   "rotDeg": 9
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.2
+    ]
+   },
+   "at": [
+    7,
+    -1
+   ],
+   "z0": 0.4,
+   "height": 0.9,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a8896a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7c5c",
+    "parapet": 0.0
+   },
+   "rotDeg": 9
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    7.4,
+    9.4
+   ],
+   "z0": 0.4,
+   "height": 0.7,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9a885",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a78",
+    "parapet": 0.0
+   },
+   "rotDeg": 9
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-node-2052073022",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stubs are square not round; footing walls are schematic; ground is grass not gravel, 1865 station building not modelled."
+ }
+}

@@ -1,0 +1,340 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Bay_TTC_Subway_Station,_June_28_2026.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "PascalHD (Dillan)",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/p2024-bay.jpg",
+   "used": "dark brown brick corner entrance pavilion with dark soffit overhang, glazed door, brick-framed stair opening with blank name board, ribbed beige concrete office tower above, yellow guard rail on the roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/71187354",
+   "used": "1240 Bay office block, about 62 x 20 m, 9 levels, grey concrete"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     56,
+     19
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 4.5,
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b0a08a",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.55,
+      "depth": 0.7,
+      "spacing": 1.8,
+      "colour": "#a89883",
+      "skipGround": true,
+      "margin": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8680",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     56,
+     19
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6b4a3a",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2a29",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    -11.5
+   ],
+   "height": 8.0,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#6b4a3a",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "left"
+      ],
+      "size": [
+       0.6,
+       0.6
+      ],
+      "colours": [
+       "#6b4a3a",
+       "#664636"
+      ],
+      "mode": "checker",
+      "slits": {
+       "fraction": 0.22,
+       "colour": "#1a1412"
+      }
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2a24",
+    "parapet": 0.2,
+    "overhang": 1.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-bay",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -12.5,
+    -11.5
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a5642",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2a29",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-opening",
+   "at": [
+    -12.5,
+    -15.55,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#8a8680"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-door",
+   "at": [
+    -25,
+    -15.55,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.2
+    ],
+    "height": 2.6,
+    "colour": "#7f949c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12.5,
+    -15.9,
+    4.0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#f1eee8",
+    "frameColour": "#d6d2c9",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -16.4,
+    3.6
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#c9332b",
+    "frameColour": "#7a1d18",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -11.5,
+    8.0
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#e3b81f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    2,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -3,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.6,
+    "kind": "glass",
+    "sign_colour": "#e9e6df",
+    "sign_height": 0.9
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.6,
+    "kind": "glass",
+    "sign_colour": "#2f3d4a",
+    "sign_height": 0.9
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    7,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.6,
+    "kind": "glass",
+    "sign_colour": "#c9332b",
+    "sign_height": 0.9
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "yellow rail is thin, stair bay is a flat dark panel not a recessed stair, no real signage text or roundel, ribbed tower is uniform, street shopfronts generic"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -20
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ }
+}

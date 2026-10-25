@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "west-island",
+ "venueId": "west-island-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:William_Keeling_Crescent_(24516896231).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "street",
+   "file": "/tmp/places-evidence/west-island/crescent.jpg",
+   "used": "West Island setting only: low pale buildings with grey metal roofs under big green trees, grass verge, coral-sand edges, palms; no building of this venue is visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/198325318",
+   "used": "scale only (20 x 15 m nearest building, outline is a skewed polygon so not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0.7,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d6",
+    "windows": "louvre",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.2,
+    "bands": "#6f8f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-skirt",
+   "footprint": {
+    "rect": [
+     19,
+     9
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cfc8b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    -4,
+    -4.6
+   ],
+   "z0": 0.7,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f9a",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.7,
+    "run": 1.4,
+    "count": 3,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    11,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 2,
+    "vans": 1,
+    "colour": "#f2f0ea",
+    "roofColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     9
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the clinic; size from nearest OSM building, appearance typed."
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/266407585",
+   "used": "containing building 40x25 m, bearing 15 deg; function from Wikidata Q25702525 (national library)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1d56a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "bands": "#f3efe6",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b3472f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.5,
+    "colour": "#a14a3c"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; yellow stucco, galleries and hip roof typed on the real 40x25 m outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-community-workshop"
+}

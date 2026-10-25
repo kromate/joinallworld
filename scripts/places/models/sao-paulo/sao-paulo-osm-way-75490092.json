@@ -1,0 +1,230 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/75490092",
+   "used": "footprint of the hospital cluster (362 x 185 m, auto-fitted to 118 m), glazed podium"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Albert_Einstein_Hospital",
+   "used": "Morumbi hospital, opened 1971, expanded into glazed towers; the only P18 photo is an interior restaurant and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bfca",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#a9bfca",
+      "#e6ebee"
+     ]
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6b9b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    -4
+   ],
+   "rotDeg": 48,
+   "z0": 14,
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bfd0d8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 18,
+    "bands": "#eeeeea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6b9b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    16,
+    12
+   ],
+   "rotDeg": 48,
+   "z0": 14,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c2cf",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 18,
+    "bands": "#eeeeea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6b9b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-c",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -34,
+    -22
+   ],
+   "rotDeg": 48,
+   "z0": 14,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece9e2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6b9b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -12,
+    -4,
+    42.2
+   ],
+   "params": {
+    "radius": 5
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    -6,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "height": 4.6,
+    "columns": 4,
+    "round": false,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 12,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-75490092",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo (P18 is an interior restaurant); tower positions and heights are generic over the real outline; no signage or atrium."
+ }
+}

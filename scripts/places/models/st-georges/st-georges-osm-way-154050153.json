@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-way-154050153",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/154050153",
+   "used": "real building outline (name match, 22.8 x 21.8 m, stepped plan); two storeys, hip roof, cream render and terracotta metal roof follow the brief since no photo of this building exists on Commons"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "glassColour": "#4f6f82",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7fa6bd"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2523a",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "floors": 2,
+    "storeyHeight": 3.6,
+    "proud": 1.0,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 1.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 0.8,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   60,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; facade colours, balcony bands and roof pitch are from the brief"
+ }
+}

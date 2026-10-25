@@ -1,0 +1,420 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-301913181",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hiram_Bithorn_Stadium_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mtmelendez",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-juan/p1_1.jpg",
+   "used": "sawtooth folded-plate roof over a dark concourse, cream lattice screen panels, large blue banner boards, white slanted floodlight mast, flat green lawn forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:San_Juan_-_Bithorn_Stadium.jpg",
+   "licence": "Public domain",
+   "author": "Rahola Photo Supply (publisher)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-juan/p1_0.jpg",
+   "used": "horseshoe bowl open to the outfield, tall floodlight masts around the field, folded roof edge, surrounding car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/301913181",
+   "used": "overall extent about 199 x 106 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "lattice screen and signage board text not modelled, masts are plain vertical not leaning twin-leg, bowl is a simplified horseshoe, concourse wall plain"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "field",
+   "at": [
+    0,
+    12
+   ],
+   "params": {
+    "radius": 44,
+    "n": 28,
+    "height": 0.2,
+    "colour": "#5f8f45",
+    "topColour": "#5f8f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "infield",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 13,
+    "n": 20,
+    "z0": 0.2,
+    "height": 0.05,
+    "colour": "#b78c5e",
+    "topColour": "#b78c5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "polygon": [
+     [
+      -54.09,
+      -11.39
+     ],
+     [
+      -48.5,
+      -22.0
+     ],
+     [
+      -39.6,
+      -31.11
+     ],
+     [
+      -28.0,
+      -38.11
+     ],
+     [
+      -14.49,
+      -42.5
+     ],
+     [
+      -0.0,
+      -44.0
+     ],
+     [
+      14.49,
+      -42.5
+     ],
+     [
+      28.0,
+      -38.11
+     ],
+     [
+      39.6,
+      -31.11
+     ],
+     [
+      48.5,
+      -22.0
+     ],
+     [
+      54.09,
+      -11.39
+     ],
+     [
+      47.33,
+      -9.84
+     ],
+     [
+      42.44,
+      -19.0
+     ],
+     [
+      34.65,
+      -26.87
+     ],
+     [
+      24.5,
+      -32.91
+     ],
+     [
+      12.68,
+      -36.71
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      -12.68,
+      -36.71
+     ],
+     [
+      -24.5,
+      -32.91
+     ],
+     [
+      -34.65,
+      -26.87
+     ],
+     [
+      -42.44,
+      -19.0
+     ],
+     [
+      -47.33,
+      -9.84
+     ]
+    ]
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8576",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "bands": "#d6cdb5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 32,
+    "startDeg": 195,
+    "endDeg": 345,
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColours": [
+     "#2f5a8a",
+     "#3d7a6a"
+    ],
+    "blocks": 6,
+    "under": "solid",
+    "facetDeg": 18
+   }
+  },
+  {
+   "type": "array",
+   "id": "roofs",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 54,
+    "radiusY": 43,
+    "startDeg": 203,
+    "endDeg": 337,
+    "count": 8,
+    "facing": "outward",
+    "of": {
+     "type": "surface",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "folded",
+      "width": 15,
+      "depth": 14,
+      "rise": 3.2,
+      "folds": 1,
+      "z": 13.5,
+      "thickness": 0.5,
+      "colour": "#7e858a",
+      "edgeColour": "#aeb4b8"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30.7,
+    -39.0
+   ],
+   "rotDeg": -32,
+   "params": {
+    "rect": [
+     19,
+     0.5
+    ],
+    "z0": 6.0,
+    "height": 6.5,
+    "colour": "#1d3f86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -0.0,
+    -46.0
+   ],
+   "rotDeg": -360,
+   "params": {
+    "rect": [
+     19,
+     0.5
+    ],
+    "z0": 6.0,
+    "height": 6.5,
+    "colour": "#1d3f86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30.7,
+    -39.0
+   ],
+   "rotDeg": -328,
+   "params": {
+    "rect": [
+     19,
+     0.5
+    ],
+    "z0": 6.0,
+    "height": 6.5,
+    "colour": "#1d3f86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0
+   ],
+   "id": "mast0",
+   "at": [
+    -58,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "head_width": 6,
+    "colour": "#e8ebee"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0
+   ],
+   "id": "mast1",
+   "at": [
+    58,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "head_width": 6,
+    "colour": "#e8ebee"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0
+   ],
+   "id": "mast2",
+   "at": [
+    -66,
+    6,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 6,
+    "colour": "#e8ebee"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0
+   ],
+   "id": "mast3",
+   "at": [
+    66,
+    6,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 6,
+    "colour": "#e8ebee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -80
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ }
+}

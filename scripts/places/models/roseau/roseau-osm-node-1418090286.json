@@ -1,0 +1,422 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-osm-node-1418090286",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: jungle waterfall in a river gorge at Delices, rock gorge, plunge pool, rainforest, short stepped trail; no photo located (Commons has none, no OSM outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      45.0,
+      0.0
+     ],
+     [
+      42.8,
+      11.74
+     ],
+     [
+      36.41,
+      22.34
+     ],
+     [
+      26.45,
+      30.74
+     ],
+     [
+      13.91,
+      36.14
+     ],
+     [
+      0.0,
+      38.0
+     ],
+     [
+      -13.91,
+      36.14
+     ],
+     [
+      -26.45,
+      30.74
+     ],
+     [
+      -36.41,
+      22.34
+     ],
+     [
+      -42.8,
+      11.74
+     ],
+     [
+      -45.0,
+      0.0
+     ],
+     [
+      -42.8,
+      -11.74
+     ],
+     [
+      -36.41,
+      -22.34
+     ],
+     [
+      -26.45,
+      -30.74
+     ],
+     [
+      -13.91,
+      -36.14
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      13.91,
+      -36.14
+     ],
+     [
+      26.45,
+      -30.74
+     ],
+     [
+      36.41,
+      -22.34
+     ],
+     [
+      42.8,
+      -11.74
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#4f7a3a",
+    "top": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#5a5a52",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       44,
+       14
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       38,
+       11
+      ],
+      "cy": 2
+     },
+     {
+      "z": 22,
+      "rect": [
+       32,
+       9
+      ],
+      "cy": 4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20,
+    18,
+    0
+   ],
+   "params": {
+    "colour": "#4e4e47",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12,
+       12
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       9,
+       9
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       6,
+       7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    20,
+    18,
+    0
+   ],
+   "params": {
+    "colour": "#4e4e47",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12,
+       12
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       9,
+       9
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       6,
+       7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    18.4,
+    0
+   ],
+   "params": {
+    "colour": "#eef3f1",
+    "sections": [
+     {
+      "z": 1,
+      "rect": [
+       7,
+       1.6
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       5,
+       0.6
+      ],
+      "cy": 1.2
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       4.5,
+       0.6
+      ],
+      "cy": 2.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    8,
+    0.05
+   ],
+   "params": {
+    "width": 28,
+    "depth": 18,
+    "shape": "oval",
+    "colour": "#6f9a9c",
+    "bank": false
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -18,
+    0.05
+   ],
+   "params": {
+    "width": 6,
+    "depth": 22,
+    "shape": "rect",
+    "colour": "#6f9a9c",
+    "bank": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -4
+    ],
+    "end": [
+     12,
+     10
+    ],
+    "count": 6,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#62625b",
+      "sections": [
+       {
+        "z": 0,
+        "ellipse": [
+         2.0,
+         1.7
+        ]
+       },
+       {
+        "z": 1.3,
+        "ellipse": [
+         1.4,
+         1.2
+        ]
+       },
+       {
+        "z": 1.9,
+        "ellipse": [
+         0.7,
+         0.6
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 6,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 6,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 6,
+    "spread": 40
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -18,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 6,
+    "colour": "#8a867b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -14,
+    0.3
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#6b4a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline found: typical Dominican gorge fall with plunge pool and trail, unverified"
+ }
+}

@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-node-5890753625",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Capela_de_S%C3%A3o_Miguel_Paulista_2024.jpg",
+   "licence": "CC0",
+   "author": "Commons user Cassio (2024)",
+   "view": "front",
+   "used": "whitewashed gabled nave behind a deep front veranda on square white columns with green railings, clay-tile lean-to roof, round oculus, green shutters, lower side wing, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S%C3%A3o_Paulo_-_Capela_de_S%C3%A3o_Miguel_Arcanjo_-_bairro_S%C3%A3o_Miguel_Paulista_por_Carlos_Alkmin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos Alkmin (CarlosAlk)",
+   "view": "side",
+   "used": "veranda wraps the front and one side, nave ridge runs front to back, cross on ridge"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sao-paulo.json#sao-paulo-osm-node-5890753625",
+   "used": "17th-century Jesuit chapel of Sao Miguel Arcanjo; the OSM match is the railway station, so the outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     8.6,
+     13
+    ]
+   },
+   "at": [
+    2.2,
+    8.5
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f5f2ea",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0653f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     15,
+     6
+    ]
+   },
+   "at": [
+    -0.5,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ede2",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c46a42",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     6.5,
+     9
+    ]
+   },
+   "at": [
+    10.8,
+    5.5
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f5f2ea",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#bd5f3a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -0.5,
+    -3.2,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "count": 6,
+    "height": 3.1,
+    "radius": 0.33,
+    "kind": "square",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -0.5,
+    -3.1,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.95,
+    "thickness": 0.12,
+    "kind": "wall",
+    "colour": "#3f6b58"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4.3,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.15,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4.2,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3.3,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "groundColour": "#6e5d52",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "veranda roof low-poly and eaves thinner than photo, green rails read as a band, no ramp/benches, palms are generic, nave oculus and green shutters small"
+ }
+}

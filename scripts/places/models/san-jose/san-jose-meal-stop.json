@@ -1,0 +1,121 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/381272433",
+   "used": "real footprint 38 x 24 m, rotated parallelogram; Wikidata: Isla Verde Hotel"
+  },
+  {
+   "kind": "text",
+   "used": "brief: hotel with restaurant, four storeys, cream render with teal accent, flat membrane roof"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dfc9",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "teal-band",
+   "at": [
+    0,
+    -12
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 1.1,
+    "colour": "#3f7a8a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -14,
+    3.4
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#3f7a8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; real outline and brief only, colours and storeys typed"
+ }
+}

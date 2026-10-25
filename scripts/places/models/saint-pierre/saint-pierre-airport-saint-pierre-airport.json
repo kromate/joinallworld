@@ -1,0 +1,234 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-airport-saint-pierre-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint-Pierre_Pointe-Blanche_Airport_Exterior.png",
+   "licence": "CC BY 4.0",
+   "author": "Hayden Soloviev",
+   "view": "front",
+   "file": "/tmp/places-evidence/saint-pierre/airport-ext.png",
+   "used": "white clapboard cargo wing with flat grey roof edge on slim posts at the left, dark glazed passenger hall on the right under a long swept grey roof with a rounded end and a low glass canopy, red-brown tarmac forecourt, planters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Pierre_Airport.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Yu210148",
+   "view": "street",
+   "file": "/tmp/places-evidence/saint-pierre/airport-road.jpg",
+   "used": "cream control tower with a green-glass cab beside the terminal, low white sheds, treeless moorland setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40484246",
+   "used": "terminal footprint 99 x 33 m, slightly curved"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal-osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f3ee",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7176",
+    "material": "membrane",
+    "overhang": 1.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     42,
+     25
+    ]
+   },
+   "at": [
+    27,
+    -1
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#26343f",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#2a3b47",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": false
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "sweep",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cargo-block",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -34,
+    -1
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f6f5f0",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe1e0",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    33,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 4,
+    "colour": "#9aa3a8",
+    "edgeColour": "#d9dde0"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 3,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 6,
+    "colour": "#7b8085",
+    "edgeColour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -62,
+    4,
+    0
+   ],
+   "params": {
+    "height": 21,
+    "style": "square",
+    "colour": "#d6ccb2",
+    "cabColour": "#2e6a62",
+    "bandColour": "#8a8f93"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -16.6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "bottom": 3.8,
+    "colour": "#d9dde0",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    2,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "cars": 0,
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clapboard texture reads grey-blue, curved roof tip and red tarmac forecourt not reproduced, glass hall simplified to a box with swept roof, no planters"
+ }
+}

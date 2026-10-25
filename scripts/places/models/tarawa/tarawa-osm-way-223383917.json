@@ -1,0 +1,153 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2747746",
+   "used": "real comb-shaped outline of the ward blocks, scaled to fit the 118 m scene limit"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/South_Tarawa",
+   "used": "national hospital at Nawerewere; whitewashed low ward blocks with corrugated roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 8.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bay": 10,
+    "bands": {
+     "colour": "#8fb6c9",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -20,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 2.0,
+    "tankHeight": 3,
+    "legHeight": 6,
+    "colour": "#7f8a90"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    28,
+    26,
+    0
+   ],
+   "params": {
+    "radius": 2.0,
+    "tankHeight": 3,
+    "legHeight": 6,
+    "colour": "#7f8a90"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#f2f0ea",
+    "frameColour": "#8fb6c9",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -55,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -70,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-223383917",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo found; real comb outline only, louvres/walkways omitted for budget, roof flat grey"
+ }
+}

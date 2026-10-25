@@ -1,0 +1,356 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-airport-sao-paulo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sao_paulo_airport_terminal_3.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Arne M\u00fcseler",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-paulo/t3b.jpg",
+   "used": "landside facade of Terminal 3: glazed hall under a row of staggered swept dark-grey roof planes, long flat canopy on white columns, green-roof podium in the foreground, control tower behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_3_de_Guarulhos.jpg",
+   "licence": "CC BY 3.0 BR",
+   "author": "Portal da Copa / Governo Brasileiro",
+   "view": "aerial",
+   "used": "pier proportions and jet-bridge gates, tower position"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.9,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     80,
+     30
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4d6670",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5e62",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof0",
+   "at": [
+    -34,
+    4
+   ],
+   "params": {
+    "rect": [
+     28,
+     44
+    ],
+    "z0": 14,
+    "height": 2.0,
+    "topScale": 0.55,
+    "topOffset": [
+     0,
+     -5
+    ],
+    "colour": "#6b6f73",
+    "topColour": "#4f5357"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof1",
+   "at": [
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     40
+    ],
+    "z0": 14,
+    "height": 2.0,
+    "topScale": 0.55,
+    "topOffset": [
+     0,
+     -5
+    ],
+    "colour": "#6b6f73",
+    "topColour": "#4f5357"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof2",
+   "at": [
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     28,
+     48
+    ],
+    "z0": 14,
+    "height": 2.0,
+    "topScale": 0.55,
+    "topOffset": [
+     0,
+     -5
+    ],
+    "colour": "#6b6f73",
+    "topColour": "#4f5357"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof3",
+   "at": [
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     40
+    ],
+    "z0": 14,
+    "height": 2.0,
+    "topScale": 0.55,
+    "topOffset": [
+     0,
+     -5
+    ],
+    "colour": "#6b6f73",
+    "topColour": "#4f5357"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof4",
+   "at": [
+    35,
+    3
+   ],
+   "params": {
+    "rect": [
+     28,
+     44
+    ],
+    "z0": 14,
+    "height": 2.0,
+    "topScale": 0.55,
+    "topOffset": [
+     0,
+     -5
+    ],
+    "colour": "#6b6f73",
+    "topColour": "#4f5357"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     18,
+     28
+    ]
+   },
+   "at": [
+    -50,
+    8
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#56707a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5e62",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     18,
+     28
+    ]
+   },
+   "at": [
+    50,
+    8
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#56707a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5e62",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "canopy",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 104,
+    "depth": 14,
+    "height": 7,
+    "thickness": 0.8,
+    "columns": 10,
+    "colour": "#7a7e82",
+    "edgeColour": "#d8dadb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     110,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -38
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b7ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f4a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    8,
+    28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#d9dbdc",
+    "cabColour": "#4d6670"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    36,
+    26,
+    4.2
+   ],
+   "params": {
+    "length": 16,
+    "colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a ~110 m portion; roof planes are tapered slabs not swept folded plates; canopy lacks white column pairs and the car-park green-roof terraces are one slab."
+ }
+}

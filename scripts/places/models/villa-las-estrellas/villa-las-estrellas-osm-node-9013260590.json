@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-osm-node-9013260590",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antarctic_Great_Wall_Station.JPG",
+   "licence": "CC0",
+   "author": "Seleonov",
+   "view": "street",
+   "used": "station palette: blue clad two-storey blocks with white trim, outside metal stairs, white modules with red roof band, dish and street lamp; the heating house itself is not identifiable"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/561759624",
+   "used": "25 x 25 m heating house outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "heating",
+   "footprint": {
+    "rect": [
+     25,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#1f4fb5",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#e8ecee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f4fb5",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "boiler-wing",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -17.5,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8ecee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#c8372d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8372d",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    7,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 2.0,
+    "run": 3.5,
+    "count": 8,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    9,
+    8,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.6,
+    "height": 14,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#c9ced2"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "radius": 0.25,
+    "banded": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    13,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2,
+    "colours": [
+     "#de2910",
+     "#ffde00"
+    ]
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.4,
+    "legHeight": 2.0,
+    "legs": 4,
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No view of the heating house; blue cladding taken from neighbouring station blocks; chimney, tank and flags typed."
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-way-24281973",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/24281973",
+   "used": "252 x 136 m stadium outline (bearing 142) for field and ground size"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ratu_Cakobau_Park",
+   "used": "8000 capacity grass multi-use ground, one roofed grandstand plus open bank (brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -47
+     ],
+     [
+      70,
+      -47
+     ],
+     [
+      70,
+      47
+     ],
+     [
+      -70,
+      47
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#7fa35a",
+    "bottom": false
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     44
+    ],
+    "end": [
+     48,
+     44
+    ],
+    "flip": true,
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#8a8f92",
+    "seatColours": [
+     "#2f6aa0",
+     "#d9d3bf"
+    ],
+    "blocks": 4,
+    "backWall": 0.8,
+    "under": "solid",
+    "underColour": "#d9d3bf",
+    "concreteColour": "#d9d3bf",
+    "canopy": {
+     "height": 9.5,
+     "depth": 13,
+     "thickness": 0.6,
+     "slopeDeg": 6,
+     "colour": "#8a8f92",
+     "supports": 7
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -60,
+     -42
+    ],
+    "end": [
+     60,
+     -42
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 1.4,
+    "firstHeight": 0.5,
+    "seatColour": "#7fa35a",
+    "concreteColour": "#8aa862",
+    "under": "solid",
+    "underColour": "#7fa35a"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 1.8,
+    "thickness": 0.25,
+    "colour": "#d9d3bf",
+    "points": [
+     [
+      -72,
+      -50
+     ],
+     [
+      72,
+      -50
+     ],
+     [
+      72,
+      50
+     ],
+     [
+      -72,
+      50
+     ],
+     [
+      -72,
+      -50
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -78,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 5,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    66,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; roofed grandstand and grass bank typed from the brief, oval bowl simplified to a rectangle of stands"
+ }
+}

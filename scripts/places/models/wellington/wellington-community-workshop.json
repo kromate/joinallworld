@@ -1,0 +1,486 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_New_Zealand_Police_College,_across_Aotea_Lagoon.jpg",
+   "licence": "Public domain",
+   "author": "Karora",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/police.jpg",
+   "used": "hillside campus: long cream three-storey blocks with ochre-yellow hipped roofs, clock tower with pyramid cap at the left, lower white blocks to the right with grey roofs, dark pine hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220216627",
+   "used": "footprint of one block (56 x 48 m) only; the photo shows a larger complex"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 2.3,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-range",
+   "footprint": {
+    "rect": [
+     38,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    2
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3c8",
+    "windows": "punched",
+    "windowRatio": 0.28
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e3c04a",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-low",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -40,
+    -10
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3c8",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9bf6a",
+    "material": "metal-sheet",
+    "pitch": 34,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    -4
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc6",
+    "windows": "none",
+    "bands": "#8f8a80"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e3c04a",
+    "material": "metal-sheet",
+    "pitch": 45
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     28,
+     12
+    ]
+   },
+   "at": [
+    1,
+    0
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-range",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    34,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#9aa0a3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7c8286",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-annex",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    26,
+    -6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efede6",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "z0": 9,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "dormer",
+     "footprint": {
+      "rect": [
+       1.8,
+       1.6
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 11,
+     "height": 1.4,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f0ece0",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#e3c04a",
+      "material": "metal-sheet",
+      "pitch": 35
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -44,
+     -3.5
+    ],
+    "end": [
+     -16,
+     -3.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "rect": [
+     160,
+     60
+    ],
+    "height": 26,
+    "topScale": [
+     0.55,
+     0.3
+    ],
+    "colour": "#33442f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-low",
+   "at": [
+    -10,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     26
+    ],
+    "height": 9,
+    "topScale": [
+     0.8,
+     0.5
+    ],
+    "colour": "#4b6a3a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "radius": 5,
+      "n": 5,
+      "height": 13.6,
+      "topScale": 0.15,
+      "colour": "#1f3a26"
+     }
+    },
+    "mode": "line",
+    "count": 28,
+    "start": [
+     -72,
+     26
+    ],
+    "end": [
+     72,
+     26
+    ],
+    "vary": {}
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      6
+     ],
+     "params": {
+      "radius": 5,
+      "n": 5,
+      "height": 17.0,
+      "topScale": 0.15,
+      "colour": "#24402a"
+     }
+    },
+    "mode": "line",
+    "count": 26,
+    "start": [
+     -70,
+     34
+    ],
+    "end": [
+     70,
+     34
+    ],
+    "vary": {}
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      13
+     ],
+     "params": {
+      "radius": 5,
+      "n": 5,
+      "height": 18.7,
+      "topScale": 0.15,
+      "colour": "#1c3523"
+     }
+    },
+    "mode": "line",
+    "count": 24,
+    "start": [
+     -68,
+     44
+    ],
+    "end": [
+     68,
+     44
+    ],
+    "vary": {}
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -28
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     28
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     26
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     26
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hillside is a flat-topped slab with conifer cones, no scaffolded centre block, layout approximate, dormers and clock face simplified (no round clock face)"
+ }
+}

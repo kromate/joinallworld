@@ -1,0 +1,329 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D9%85%D8%B3%D8%AC%D8%AF_%D8%A7%D9%85%D8%A7%D9%85_%D8%B9%D9%84%DB%8C_%D8%A7%D8%A8%D9%86_%D8%A7%D8%A8%DB%8C_%D8%B7%D8%A7%D9%84%D8%A8_%D8%AF%D8%B1_%D8%AD%D8%A7%D9%84_%D8%B3%D8%A7%D8%AE%D8%AA.png",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/lak2.png",
+   "used": "front elevation under construction: white-painted brick hall, row of tall pointed arches with dark windows, scalloped parapet, central minaret behind the facade, ribbed hemispherical dome frame"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eid_Prayer_at_Lakemba_Mosque.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "interior",
+   "used": "white walls and pointed-arch windows with star motifs; no exterior shown, colours only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1126413889",
+   "used": "80 x 64 m complex outline, used as the low surrounding annexes and forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     50,
+     38
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f2e8",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "none",
+     "back": "plain",
+     "left": "pointed",
+     "right": "pointed"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 6.0,
+      "opening": 0.85,
+      "height": 0.9,
+      "depth": 2.4,
+      "storeys": 1
+     }
+    ],
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c3",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    5,
+    -3,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe9da",
+    "profile": [
+     [
+      1.6,
+      0
+     ],
+     [
+      1.6,
+      30.400000000000002
+     ],
+     [
+      0,
+      42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    5,
+    -3,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#efe9da",
+    "profile": [
+     [
+      1.7,
+      0,
+      "#efe9da"
+     ],
+     [
+      1.7,
+      26.599999999999998
+     ],
+     [
+      2.3,
+      26.599999999999998,
+      "#c9a36b"
+     ],
+     [
+      2.3,
+      27.799999999999997
+     ],
+     [
+      1.5,
+      27.799999999999997,
+      "#efe9da"
+     ],
+     [
+      1.5,
+      38
+     ],
+     [
+      2.1,
+      38,
+      "#c9a36b"
+     ],
+     [
+      2.1,
+      38.8
+     ],
+     [
+      1.2,
+      40.5,
+      "#e9e2cf"
+     ],
+     [
+      0.5,
+      43
+     ],
+     [
+      0.1,
+      45.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.7
+      ],
+      "z0": 13.0,
+      "height": 1.2,
+      "topScale": 0.05,
+      "colour": "#f6f2e8",
+      "topColour": "#f6f2e8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -18.4
+    ],
+    "end": [
+     24,
+     -18.4
+    ],
+    "count": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -6,
+    13.0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f4efe2",
+    "profile": [
+     [
+      9.0,
+      0,
+      "#f4efe2"
+     ],
+     [
+      9.0,
+      1.5
+     ],
+     [
+      8.7,
+      3.5
+     ],
+     [
+      7.6,
+      5.8
+     ],
+     [
+      5.8,
+      7.8
+     ],
+     [
+      3.4,
+      9.2
+     ],
+     [
+      1.2,
+      9.9
+     ],
+     [
+      0,
+      10.1
+     ]
+    ],
+    "topColour": "#f4efe2"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    -6,
+    13.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4efe2",
+    "profile": [
+     [
+      9,
+      0
+     ],
+     [
+      9,
+      1.5
+     ],
+     [
+      0,
+      10
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     47,
+     -33
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is a 1970s construction stage with scaffolding; arcade loggia is a flat-backed cut, not a deep recessed colonnade; minaret finish and scallops approximate; OSM wedge outline unused."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-1126413889"
+}

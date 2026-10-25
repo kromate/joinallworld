@@ -1,0 +1,156 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/378243851",
+   "used": "real hospital outline (133 x 83 m), name-matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.4,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d5dde0",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 4.5,
+    "glassColour": "#7f9eae",
+    "bands": "#eeeae0",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b5ac",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance",
+   "at": [
+    14,
+    -47,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#eeeae0"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    -30,
+    -41,
+    0
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "cross",
+   "at": [
+    14,
+    -50.2,
+    8
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    40,
+    -54,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.8,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "lot",
+   "at": [
+    10,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -40,
+    -58,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 3,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; outline only, glazing and canopy positions typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-378243851"
+}

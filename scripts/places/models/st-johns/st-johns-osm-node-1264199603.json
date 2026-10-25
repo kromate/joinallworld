@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-node-1264199603",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antigua_Willikies_Devil%27s_Bridge_National_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dr. Thomas Liptak",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-johns/db1.jpg",
+   "used": "flat limestone shelf with a dark undercut horizontal band, sea inlet with arch under the shelf, pale pitted foreshore rocks at right and front, blue-dark water"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Devils_Bridge_-_Antigua.jpg",
+   "licence": "public domain / see Commons",
+   "author": "see Commons",
+   "view": "side",
+   "used": "layered dark-brown cliff face with cave mouth and rough surf"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "shelf-left",
+   "params": {
+    "points": [
+     [
+      -60,
+      6
+     ],
+     [
+      -10,
+      6
+     ],
+     [
+      -9,
+      14
+     ],
+     [
+      -12,
+      34
+     ],
+     [
+      -60,
+      34
+     ]
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#8a7c5e",
+    "topColour": "#cfc3a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "params": {
+    "points": [
+     [
+      -12,
+      8
+     ],
+     [
+      18,
+      8
+     ],
+     [
+      20,
+      34
+     ],
+     [
+      -12,
+      34
+     ]
+    ],
+    "z0": 5.5,
+    "height": 3.5,
+    "colour": "#8a7c5e",
+    "topColour": "#cfc3a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelf-right",
+   "params": {
+    "points": [
+     [
+      18,
+      12
+     ],
+     [
+      60,
+      10
+     ],
+     [
+      60,
+      34
+     ],
+     [
+      20,
+      34
+     ]
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#8a7c5e",
+    "topColour": "#cfc3a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fore-rocks-r",
+   "params": {
+    "points": [
+     [
+      -60,
+      -30
+     ],
+     [
+      60,
+      -30
+     ],
+     [
+      60,
+      -14
+     ],
+     [
+      22,
+      -10
+     ],
+     [
+      10,
+      -18
+     ],
+     [
+      -10,
+      -14
+     ],
+     [
+      -60,
+      -8
+     ]
+    ],
+    "z0": 0,
+    "height": 3.5,
+    "colour": "#a89c7e",
+    "topColour": "#e6dec6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inland-flat",
+   "params": {
+    "points": [
+     [
+      -60,
+      34
+     ],
+     [
+      60,
+      34
+     ],
+     [
+      60,
+      52
+     ],
+     [
+      -60,
+      52
+     ]
+    ],
+    "z0": 0,
+    "height": 9.4,
+    "colour": "#cfc3a4",
+    "topColour": "#c9bd9a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "width": 130,
+    "depth": 36,
+    "colour": "#2f6f86",
+    "bank": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    40,
+    9.4
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.8,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#6b5a3e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Blocky slabs: no pitted rock texture, spray, or the undercut cave curve; arch is a flat lintel; colours and layout (cliff left, sea inlet, rocks front) agree."
+ }
+}

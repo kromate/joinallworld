@@ -1,0 +1,172 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-way-399518614",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399518614",
+   "used": "no photo of this place found on Commons or Wikidata; park polygon 80 x 45 m used as paved plaza ground; memorial plinth, steps and railings follow the brief (smaller, more paved than the waterfront park)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b2a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    2,
+    0,
+    0.2
+   ],
+   "params": {
+    "width": 26,
+    "depth": 18,
+    "border": 1.2,
+    "colour": "#d9d3c4",
+    "border_colour": "#8d9296"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    2,
+    0,
+    0.3
+   ],
+   "params": {
+    "height": 6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -12,
+    0.2
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    10,
+    0.2
+   ],
+   "rotDeg": -65,
+   "params": {
+    "length": 28,
+    "height": 1.0,
+    "kind": "rail",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -12,
+    16,
+    0.2
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 2,
+    "width": 5,
+    "depth": 3.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; outline real, memorial elements typed"
+ }
+}

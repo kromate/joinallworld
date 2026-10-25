@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-relation-10650174",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_University_of_Costa_Rica.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tillor87",
+   "view": "detail",
+   "file": "/tmp/places-evidence/san-jose/una1.jpg",
+   "used": "pale lilac-white blocks with red-framed louvred windows and sloped window hoods, low pale flat-roofed block with louvre bays beyond, curved translucent covered walkway, paved plaza with lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10650174",
+   "used": "campus is 850 x 450 m: not usable as a building outline, one representative teaching block modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 15,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d3de",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#b5503c",
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e6",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -5,
+    34
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e8e6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0f0",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -20,
+    -9
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0e0e0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "walkway",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "section": "rect",
+    "width": 2.8,
+    "height": 0.3,
+    "points": [
+     [
+      -30,
+      -12,
+      3.4
+     ],
+     [
+      -10,
+      -14,
+      3.4
+     ],
+     [
+      10,
+      -20,
+      3.4
+     ],
+     [
+      28,
+      -30,
+      3.4
+     ]
+    ],
+    "curve": true,
+    "colour": "#8b9296"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.6,
+    "kind": "wall",
+    "colour": "#a9a395"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo is a detail from inside the campus; louvre hoods and red window frames are approximated by bands, walkway is a flat strip not a curved translucent tube, campus layout not modelled"
+ }
+}

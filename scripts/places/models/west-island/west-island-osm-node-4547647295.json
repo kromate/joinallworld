@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "west-island",
+ "venueId": "west-island-osm-node-4547647295",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/west-island.json",
+   "used": "generic small stone plinth memorial with plaque, steps and low wall; no facts attached"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6a64",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6a64"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8b4a8",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d6",
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque",
+   "footprint": {
+    "rect": [
+     1.1,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "z0": 1.0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4a46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a46"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "height": 0.5,
+    "thickness": 0.25,
+    "colour": "#b8b4a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -5,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   22,
+   18
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no outline and no photo; generic plinth memorial"
+ }
+}

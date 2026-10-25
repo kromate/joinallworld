@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-222941453",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/222941453",
+   "used": "real 54-vertex hospital outline (name match, Wikidata Q50036679) as the 4-storey block; height from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5d8",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bands": "#7fa3bf",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e9e5d8",
+      "#cfd6d8"
+     ]
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 2,
+    "colour": "#7fa3bf"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -35
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -36
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photograph of this place found on Commons, Wikidata or Wikipedia; modelled from the brief's text description. Real outline, but facade, wing heights and entrance are typical for 1950s hospitals."
+ }
+}

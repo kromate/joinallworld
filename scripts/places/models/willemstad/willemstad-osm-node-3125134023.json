@@ -1,0 +1,181 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1433594235",
+   "used": "irregular 26 x 14 m outline, nearest-quality match (22 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "bands": "#8a9099",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9099",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -22,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "colour": "#8a9099",
+    "board_colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -22,
+    -4.6,
+    2.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#8a9099",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    26,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "count": 9,
+    "min_height": 3,
+    "max_height": 5
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    36,
+    18,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "width": 1.4,
+    "depth": 1.4,
+    "round": true,
+    "taper": 0.5,
+    "colour": "#eeeeee",
+    "sides": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nacelle",
+   "at": [
+    36,
+    18
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "z0": 30,
+    "height": 1.2,
+    "colour": "#e4e4e4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; typed gatehouse on the nearest outline plus a plain turbine mast; turbine is unconfirmed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-node-3125134023"
+}

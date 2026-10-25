@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L'Eglise_Notre_Dame_des_Marins,_monument_class%C3%A9.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pascal Carrere",
+   "view": "side",
+   "file": "/tmp/places-evidence/saint-pierre/marins.jpg",
+   "used": "long pale blue-grey clapboard nave with pointed arched windows, brown hipped-gable roof, projecting gabled transept, square tower at the right end with a black pyramid roof, yellow clapboard house with dark roof beside it, grassy rise and stone shore"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220422999",
+   "used": "extent about 37 x 24 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.6
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     31,
+     12
+    ]
+   },
+   "at": [
+    -3,
+    6
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b4bfcc",
+    "windows": "pointed-arch",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "pointed-arch",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#5a3f3c",
+    "material": "timber-shingle",
+    "rise": 5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    -2.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b4bfcc",
+    "windows": "pointed-arch",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#5a3f3c",
+    "material": "timber-shingle",
+    "rise": 3.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    13,
+    1.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "timber",
+    "colour": "#9aa7b8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "pointed-arch"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#26262a",
+    "material": "timber-shingle",
+    "rise": 4.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -28,
+    -10
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#d4b94a",
+    "windows": "rect",
+    "windowRatio": 0.15,
+    "bay": 3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#3a3a3e",
+    "material": "timber-shingle",
+    "rise": 3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -38,
+    -6
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a95a8",
+    "windows": "rect",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#2f3340",
+    "rise": 2.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#c9c3b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "no clock, cross, side doorway or fenced yard; clapboard is a generic timber texture; neighbouring houses reduced to two"
+ }
+}

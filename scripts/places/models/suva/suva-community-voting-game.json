@@ -1,0 +1,176 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/622918009",
+   "used": "real outline about 50 x 31 m, ten-vertex stepped plan (containing match)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief suva-community-voting-game",
+   "used": "large community hall used for meetings and polling: wide gabled hall, cream render, red corrugated roof, entrance steps, parking"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5e0cc",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#a9c4a0",
+    "bay": 5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3412f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c0",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3412f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#68b4e0",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.5,
+    "bottom": 1.2,
+    "colour": "#a9c4a0",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; roof and colours typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-community-voting-game"
+}

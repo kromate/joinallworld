@@ -1,0 +1,171 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/142324885",
+   "used": "real park outline, 147 x 126 m (Wikidata Q23756125)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open grass park with a small pavilion, low perimeter wall and bandstand typed from the city style, not observed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f8f4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8f4f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "path",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "rotDeg": 8,
+   "params": {
+    "rect": [
+     3,
+     100
+    ],
+    "height": 0.1,
+    "colour": "#cdbf9d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f7a52",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    8,
+    20,
+    0
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -40
+    ],
+    "end": [
+     -30,
+     40
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     28,
+     -60
+    ],
+    "end": [
+     40,
+     60
+    ],
+    "count": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; park furniture and planting are typical, not observed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-recreation"
+}

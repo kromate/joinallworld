@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Town_Hall_in_Stanley,_Falkland_Islands.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "street",
+   "file": "/tmp/places-evidence/stanley/townhall.jpg",
+   "used": "cream rendered two-storey block, paired sash windows with white stone-look surrounds, blue-green corrugated roof with deep eaves and a dark teal fascia, green clock board on the corner, red phone and post boxes at the left, lamp on the wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/394209968",
+   "used": "footprint 28 x 22 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdfba",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "trimColour": "#f2f0ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f7a86",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    1,
+    -13,
+    5
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 2.2,
+    "bottom": 4.6,
+    "colour": "#2f7f78",
+    "posts": false
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -21,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "phone",
+    "width": 1,
+    "depth": 1,
+    "height": 2.5,
+    "colour": "#b32a24"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "post",
+    "width": 1,
+    "depth": 1,
+    "height": 1.5,
+    "colour": "#b32a24"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 4,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No window surrounds, clock board, scalloped fascia or second wing; roof hips instead of the real lower gabled wing"
+ }
+}

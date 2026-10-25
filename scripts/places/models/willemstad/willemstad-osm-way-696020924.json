@@ -1,0 +1,590 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadion_Ergilio_Hato.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Burgbernd",
+   "view": "interior",
+   "file": "/tmp/places-evidence/willemstad/stadium.jpg",
+   "used": "pitch with blue-grey running track, low concrete far stand with green steps, covered far pavilion, steel roof of the main stand, open ends"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/696020924",
+   "used": "overall extent 205 x 140 m, 23,476 m2 (stands laid out inside it)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     146,
+     110
+    ],
+    "height": 0.1,
+    "colour": "#b9b3a2"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "length": 150,
+    "width": 84,
+    "infield": false,
+    "pitch": false,
+    "colour": "#8fa5b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.16
+   ],
+   "params": {
+    "rect": [
+     116,
+     58
+    ],
+    "height": 0.05,
+    "colour": "#2f5a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane-line-0",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -40,
+    0.14
+   ],
+   "params": {
+    "rect": [
+     150,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane-line-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -36.5,
+    0.14
+   ],
+   "params": {
+    "rect": [
+     150,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane-line-2",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    36.5,
+    0.14
+   ],
+   "params": {
+    "rect": [
+     150,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane-line-3",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    40,
+    0.14
+   ],
+   "params": {
+    "rect": [
+     150,
+     0.15
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "far-pavilion-roof",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    50,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     90,
+     9
+    ],
+    "height": 0.4,
+    "colour": "#7d8288"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     46.5,
+     0
+    ],
+    "end": [
+     42,
+     46.5,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 6.2,
+      "colour": "#6f757b"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -35,
+     0
+    ],
+    "end": [
+     42,
+     -35,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 7,
+      "colour": "#59606a"
+     }
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -45,
+     -46
+    ],
+    "end": [
+     45,
+     -46
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "stepped": false,
+    "bay": 8,
+    "seatColour": "#3f7fa8",
+    "seatColours": [
+     "#3f7fa8",
+     "#d8d4c6"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d9d4c6",
+    "underColour": "#c9c4b4",
+    "canopy": {
+     "height": 1.0,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 2,
+     "colour": "#4a4f55",
+     "edgeColour": "#3a3f45",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     45,
+     46
+    ],
+    "end": [
+     -45,
+     46
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "bay": 8,
+    "seatColour": "#5d8a62",
+    "seatColours": [
+     "#5d8a62",
+     "#d8d4c6"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d4cfbf",
+    "underColour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "rect": [
+     92,
+     10
+    ],
+    "height": 4.5,
+    "colour": "#d4cfbf"
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -72,
+     24
+    ],
+    "end": [
+     -72,
+     -24
+    ],
+    "rows": 2,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "seatColour": "#cfc9b8",
+    "concreteColour": "#d9d4c6",
+    "underColour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     72,
+     -24
+    ],
+    "end": [
+     72,
+     24
+    ],
+    "rows": 2,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "seatColour": "#cfc9b8",
+    "concreteColour": "#d9d4c6",
+    "underColour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -70,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -70,
+    52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    70,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    70,
+    52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "scoreboard",
+   "lod": [
+    0
+   ],
+   "at": [
+    -90,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hut",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    -25,
+    -66
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9099",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hut-2",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    25,
+    -66
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9099",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0
+   ],
+   "at": [
+    -45,
+    -68,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -72
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -72
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-way-696020924",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo is an interior view so exterior unverified; ends are low banks, pavilion and columns approximate"
+ }
+}

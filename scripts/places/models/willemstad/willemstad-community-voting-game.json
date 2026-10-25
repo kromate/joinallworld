@@ -1,0 +1,132 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/372920585",
+   "used": "48x29 m townhall footprint, bearing 87 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9a0a6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "bands": "#f3efe6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b3472f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "colours": [
+     "#a14a3c",
+     "#f3efe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -22
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; pastel pink stucco, arcade and hip roof typed from the city style on the real 48x29 m outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-community-voting-game"
+}

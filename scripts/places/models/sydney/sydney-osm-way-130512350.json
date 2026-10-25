@@ -1,0 +1,501 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hazelhurst_Gallery,_Gymea,_New_South_Wales_(2010-07-05)_01.jpg",
+   "licence": "Public domain",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/haz2.jpg",
+   "used": "entrance elevation: blue-grey rendered walls, terracotta tile hip and gable roofs, recessed glazed entry bay, taller louvred gable wing at right, tall gable wall at left, red brick paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130512350",
+   "used": "overall site extent (about 120 x 135 m): wings spread back behind the entrance building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -1,
+    -25
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.25,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 1.2,
+    "form": "hip",
+    "pitch": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    -24,
+    -25
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "gable",
+    "pitch": 25,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-gable",
+   "footprint": {
+    "rect": [
+     12,
+     13
+    ]
+   },
+   "at": [
+    -37,
+    -25
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "gable",
+    "pitch": 38,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    20,
+    -22
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#4a4f55",
+      "backColour": "#1f2226",
+      "band": 0.18,
+      "at": 0.62
+     }
+    ]
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "gable",
+    "pitch": 30,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-west",
+   "footprint": {
+    "rect": [
+     32,
+     24
+    ]
+   },
+   "at": [
+    -26,
+    12
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "hip",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-east",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    30,
+    22
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "hip",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-rear",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    0,
+    48
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f7a85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "gable",
+    "pitch": 22,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cottage",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    -34,
+    50
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.25
+   },
+   "roof": {
+    "colour": "#a2452e",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "form": "hip",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-court",
+   "at": [
+    0,
+    -40
+   ],
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#8a4b40",
+    "topColour": "#8a4b40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slate-strip",
+   "at": [
+    0,
+    -48
+   ],
+   "params": {
+    "rect": [
+     26,
+     2
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#59606a",
+    "topColour": "#59606a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#18191b",
+      "profile": [
+       [
+        0.25,
+        0
+       ],
+       [
+        0.25,
+        1.0
+       ],
+       [
+        0,
+        1.05
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -34
+    ],
+    "end": [
+     6,
+     -34
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#3f6a3a",
+      "profile": [
+       [
+        0,
+        0.2
+       ],
+       [
+        2.4,
+        0.4
+       ],
+       [
+        3.0,
+        1.6
+       ],
+       [
+        2.2,
+        3.0
+       ],
+       [
+        0,
+        3.6
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     13,
+     -34
+    ],
+    "end": [
+     21,
+     -40
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#4b7a45",
+      "profile": [
+       [
+        0,
+        0.1
+       ],
+       [
+        1.5,
+        0.2
+       ],
+       [
+        1.8,
+        0.9
+       ],
+       [
+        0,
+        1.5
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -33
+    ],
+    "end": [
+     -8,
+     -33
+    ],
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Rear/side wings still approximate masses; brick paving is a flat patch on the plaza (no slate border visible); louvre slots are a band not 6 distinct slots; shrubs are blob stand-ins."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-130512350"
+}

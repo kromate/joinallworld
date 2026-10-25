@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-airport-tarawa-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bonriki_International_Airport.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jopolopy",
+   "view": "front",
+   "file": "/tmp/places-evidence/tarawa/bon1.jpg",
+   "used": "low terminal front: dark band board across the front, brick-brown walls, big dark-green hipped roofs with deep eaves and a taller gable block at left, wire fence and tall flagpoles along the apron edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/90442745",
+   "used": "overall size 82 x 34 m; outline not used (zig-zag, photo shows a long low hall)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     52,
+     20
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a5a46",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": {
+     "colour": "#3a2d28",
+     "height": 1.1
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f5a47",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 2.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-block",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a4c3c",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f5a47",
+    "material": "metal-sheet",
+    "rise": 8,
+    "overhang": 3.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "check-in-band",
+   "footprint": {
+    "rect": [
+     40,
+     2.4
+    ]
+   },
+   "at": [
+    10,
+    -11.5
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a4c3c",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "glassColour": "#2a2420"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a4636",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -12.9,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     50,
+     0.4
+    ],
+    "height": 1.5,
+    "colour": "#3a2418"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    -12.4,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.6,
+    "kind": "chain-link",
+    "colour": "#8a4a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -20,
+     0
+    ],
+    "end": [
+     34,
+     -20,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 16,
+      "colour": "#b0b6ba",
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    12,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "style": "square",
+    "colour": "#d9d6cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a tight crop of the front; gable roof is a plain gable (no swept eave or exposed timber), sign band is blank, fence is simplified, no shingle texture"
+ }
+}

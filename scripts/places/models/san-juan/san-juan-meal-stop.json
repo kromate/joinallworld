@@ -1,0 +1,130 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/365141850",
+   "used": "real footprint (name match, 25x14 m, height 15.5 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Welcome_to_Paradise_(24859897280).jpg",
+   "licence": "CC0",
+   "author": "cogdogblog",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-juan/lover1.jpg",
+   "used": "NOT the venue (neighbouring derelict Paradise theatre); only the street context of weathered ochre concrete and graffiti-pink lower walls"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3c0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e8d3c0",
+       "#f5f1ea"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#b85c7a",
+      "height": 1.0,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "concrete",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    3.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 2.5,
+    "height": 0,
+    "thickness": 0.3,
+    "columns": 0,
+    "colour": "#b85c7a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    6.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#f5f1ea",
+    "frameColour": "#b85c7a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-meal-stop",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the venue; footprint and height only, colours and awning guessed"
+ }
+}

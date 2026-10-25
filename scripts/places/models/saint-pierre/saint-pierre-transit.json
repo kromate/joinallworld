@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/439543610",
+   "used": "real outline 41.7 x 18.6 m, bearing 145 deg, one-storey unnamed building"
+  },
+  {
+   "kind": "text",
+   "used": "brief: placeholder bus shelter and depot, metal cladding grey-blue, shed roof, two bus bays, platform canopy, blank signage board; no photo of this building exists in the evidence (nearby photos show a cathedral, telecom shop and ferry)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "depot",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f9aa3",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#3f6fa0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a4f57",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "platform-canopy",
+   "at": [
+    -9.6,
+    -7,
+    0
+   ],
+   "rotDeg": -54,
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 4.5,
+    "height": 3.4,
+    "thickness": 0.3,
+    "columns": 7,
+    "colour": "#3f6fa0",
+    "edgeColour": "#ffffff",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signage-board",
+   "at": [
+    -12.5,
+    -12.2,
+    3.6
+   ],
+   "rotDeg": -54,
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "height": 1.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "car",
+   "id": "bus-bay-1",
+   "at": [
+    -17,
+    -10,
+    0
+   ],
+   "rotDeg": -54,
+   "params": {
+    "colour": "#3f6fa0"
+   }
+  },
+  {
+   "type": "car",
+   "id": "bus-bay-2",
+   "at": [
+    -3,
+    -29,
+    0
+   ],
+   "rotDeg": -54,
+   "params": {
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists; shape from OSM outline and brief only, bus bays and canopy placement are plausible, not observed."
+ }
+}

@@ -1,0 +1,762 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Olimpico_Drone.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ThePapo309",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/santo-domingo/felixdrone.jpg",
+   "used": "oval single-tier bowl with blue seat blocks, cream cantilever canopies over the north stand and west end, red-brown track round green pitch, corner floodlight masts, small white stand in the foreground, tree belt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_F%C3%A9lix_S%C3%A1nchez.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Rey del Norte",
+   "view": "interior",
+   "file": "/tmp/places-evidence/santo-domingo/felix.jpg",
+   "used": "blue seating, concourse walls, seat block layout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28809979",
+   "used": "overall size (about 225 x 176 m incl. surroundings); bowl modelled as an oval from the aerial photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 33,
+  "fovDeg": 48,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     120
+    ],
+    "z0": -0.05,
+    "height": 0.05,
+    "colour": "#8a8f7c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0.02
+   ],
+   "params": {
+    "points": [
+     [
+      57.0,
+      0.0
+     ],
+     [
+      56.13,
+      6.77
+     ],
+     [
+      53.56,
+      13.34
+     ],
+     [
+      49.36,
+      19.5
+     ],
+     [
+      43.66,
+      25.07
+     ],
+     [
+      36.64,
+      29.88
+     ],
+     [
+      28.5,
+      33.77
+     ],
+     [
+      19.5,
+      36.65
+     ],
+     [
+      9.9,
+      38.41
+     ],
+     [
+      0.0,
+      39.0
+     ],
+     [
+      -9.9,
+      38.41
+     ],
+     [
+      -19.5,
+      36.65
+     ],
+     [
+      -28.5,
+      33.77
+     ],
+     [
+      -36.64,
+      29.88
+     ],
+     [
+      -43.66,
+      25.07
+     ],
+     [
+      -49.36,
+      19.5
+     ],
+     [
+      -53.56,
+      13.34
+     ],
+     [
+      -56.13,
+      6.77
+     ],
+     [
+      -57.0,
+      0.0
+     ],
+     [
+      -56.13,
+      -6.77
+     ],
+     [
+      -53.56,
+      -13.34
+     ],
+     [
+      -49.36,
+      -19.5
+     ],
+     [
+      -43.66,
+      -25.07
+     ],
+     [
+      -36.64,
+      -29.88
+     ],
+     [
+      -28.5,
+      -33.77
+     ],
+     [
+      -19.5,
+      -36.65
+     ],
+     [
+      -9.9,
+      -38.41
+     ],
+     [
+      -0.0,
+      -39.0
+     ],
+     [
+      9.9,
+      -38.41
+     ],
+     [
+      19.5,
+      -36.65
+     ],
+     [
+      28.5,
+      -33.77
+     ],
+     [
+      36.64,
+      -29.88
+     ],
+     [
+      43.66,
+      -25.07
+     ],
+     [
+      49.36,
+      -19.5
+     ],
+     [
+      53.56,
+      -13.34
+     ],
+     [
+      56.13,
+      -6.77
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#a8584f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      47.0,
+      0.0
+     ],
+     [
+      46.29,
+      5.04
+     ],
+     [
+      44.17,
+      9.92
+     ],
+     [
+      40.7,
+      14.5
+     ],
+     [
+      36.0,
+      18.64
+     ],
+     [
+      30.21,
+      22.22
+     ],
+     [
+      23.5,
+      25.11
+     ],
+     [
+      16.07,
+      27.25
+     ],
+     [
+      8.16,
+      28.56
+     ],
+     [
+      0.0,
+      29.0
+     ],
+     [
+      -8.16,
+      28.56
+     ],
+     [
+      -16.07,
+      27.25
+     ],
+     [
+      -23.5,
+      25.11
+     ],
+     [
+      -30.21,
+      22.22
+     ],
+     [
+      -36.0,
+      18.64
+     ],
+     [
+      -40.7,
+      14.5
+     ],
+     [
+      -44.17,
+      9.92
+     ],
+     [
+      -46.29,
+      5.04
+     ],
+     [
+      -47.0,
+      0.0
+     ],
+     [
+      -46.29,
+      -5.04
+     ],
+     [
+      -44.17,
+      -9.92
+     ],
+     [
+      -40.7,
+      -14.5
+     ],
+     [
+      -36.0,
+      -18.64
+     ],
+     [
+      -30.21,
+      -22.22
+     ],
+     [
+      -23.5,
+      -25.11
+     ],
+     [
+      -16.07,
+      -27.25
+     ],
+     [
+      -8.16,
+      -28.56
+     ],
+     [
+      -0.0,
+      -29.0
+     ],
+     [
+      8.16,
+      -28.56
+     ],
+     [
+      16.07,
+      -27.25
+     ],
+     [
+      23.5,
+      -25.11
+     ],
+     [
+      30.21,
+      -22.22
+     ],
+     [
+      36.0,
+      -18.64
+     ],
+     [
+      40.7,
+      -14.5
+     ],
+     [
+      44.17,
+      -9.92
+     ],
+     [
+      46.29,
+      -5.04
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#4f8a3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 62,
+    "radiusY": 44,
+    "startDeg": 35,
+    "endDeg": 145,
+    "rows": 8,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 24,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 7,
+    "seatColours": [
+     "#2f5fa8",
+     "#3b6cb8",
+     "#2a5596"
+    ],
+    "blocks": 2,
+    "concreteColour": "#c9c5ba",
+    "underColour": "#8e8a80",
+    "canopy": {
+     "height": 6,
+     "depth": 12,
+     "thickness": 1.0,
+     "slopeDeg": 3,
+     "colour": "#e9e0c8",
+     "edgeColour": "#efe9d8"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 62,
+    "radiusY": 44,
+    "startDeg": 145,
+    "endDeg": 215,
+    "rows": 8,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 24,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 7,
+    "seatColours": [
+     "#2f5fa8",
+     "#3b6cb8",
+     "#2a5596"
+    ],
+    "blocks": 2,
+    "concreteColour": "#c9c5ba",
+    "underColour": "#8e8a80",
+    "canopy": {
+     "height": 6,
+     "depth": 12,
+     "thickness": 1.0,
+     "slopeDeg": 3,
+     "colour": "#e9e0c8",
+     "edgeColour": "#efe9d8"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 62,
+    "radiusY": 44,
+    "startDeg": 215,
+    "endDeg": 395,
+    "rows": 7,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 24,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 7,
+    "seatColours": [
+     "#2f5fa8",
+     "#3b6cb8",
+     "#2a5596"
+    ],
+    "blocks": 2,
+    "concreteColour": "#c9c5ba",
+    "underColour": "#8e8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foreground-stand",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    16,
+    -72
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e6df",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ea",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-block",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -70,
+    -24
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d6d1c6",
+    "windows": "ribbon",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     10,
+     1.2
+    ]
+   },
+   "at": [
+    -62,
+    -3
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2e3236",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -40,
+    62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -10,
+    66,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    22,
+    64,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    50,
+    58,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -66,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    68,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    36,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-28809979",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Bowl is a plain oval (real one is egg-shaped, east end lower); canopies cover north and west only roughly; floodlights thin; track/pitch colours simplified."
+ }
+}

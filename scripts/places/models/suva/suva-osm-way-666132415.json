@@ -1,0 +1,307 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-way-666132415",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ANZ_Stadium_Fiji.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Stemoc",
+   "view": "front",
+   "file": "/tmp/places-evidence/suva/anz.jpg",
+   "used": "main grandstand seen from the pitch: sky-blue seat bowl, long flat grey cantilever roof with lamp row on its edge, white sloped end wing at right, low white concourse under the stand, red track, tall lattice floodlight mast at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/666132415",
+   "used": "overall size (266 x 217 m oval, bearing 12): modelled as the grandstand side plus track and pitch at reduced extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.34,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 62,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 118,
+    "width": 76,
+    "lane_width": 7,
+    "infield": false,
+    "pitch": false,
+    "colour": "#b5523f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     52,
+     50
+    ],
+    "end": [
+     -52,
+     50
+    ],
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.6,
+    "seatColour": "#5aa6d8",
+    "seatColours": [
+     "#5aa6d8",
+     "#4a93c9"
+    ],
+    "blocks": 6,
+    "backWall": 1.0,
+    "under": "solid",
+    "underColour": "#e8e8e4",
+    "concreteColour": "#6fb0da",
+    "canopy": {
+     "height": 13,
+     "depth": 22,
+     "thickness": 3.0,
+     "slopeDeg": 2,
+     "colour": "#60666c",
+     "edgeColour": "#8d949a",
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    57,
+    47,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      22
+     ],
+     [
+      0,
+      24
+     ]
+    ],
+    "height": 5,
+    "colour": "#eceeea",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    53,
+    48,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      7,
+      -6
+     ],
+     [
+      0,
+      -6
+     ]
+    ],
+    "height": 2.4,
+    "colour": "#eceeea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "rect": [
+     96,
+     5
+    ]
+   },
+   "at": [
+    0,
+    46.5
+   ],
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "glassColour": "#5a6f7c",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d3",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     49,
+     17
+    ],
+    "end": [
+     48,
+     49,
+     17
+    ],
+    "count": 22,
+    "lod1Step": 4,
+    "lod2Step": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 1.1,
+      "colour": "#dfe3e6"
+     }
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66,
+    28,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66,
+    28,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    72,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    76,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stand is a straight 104 m bank not the angled end wing; no concourse windows detail, no sponsor boards, far stands and track bend simplified"
+ }
+}

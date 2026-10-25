@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-node-895373703",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1303189945",
+   "used": "hotel polygon, three wings along the Lami shore (288 m, fitted to the scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#4f7f8f",
+    "bay": 24.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3412f",
+    "material": "clay-tile",
+    "overhang": 1.0,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -14,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d6b98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#a3412f",
+    "material": "thatch",
+    "rise": 7,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#4f7f8f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: real 3-wing OSM outline (simplified, scaled to 118 m), flat red roof instead of hips, ribbon windows only, pavilion is a typed bure-style stand-in placed beside the wings"
+ }
+}

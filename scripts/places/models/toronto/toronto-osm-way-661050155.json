@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-661050155",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pacific_Mall.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user via Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/m15-pacific.jpg",
+   "used": "tall glazed gabled entrance with white mullion grid and steel trusses, flanking tan brick piers with grey stone base, red signage band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/661050155",
+   "used": "overall size 216 x 91 m, white roof, brown building colour, two levels (scaled to the 118 m scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 14,
+  "fovDeg": 60,
+  "aspect": 0.75,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     116,
+     46
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a47c",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#8d6a52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-glass",
+   "footprint": {
+    "rect": [
+     24,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6f9a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#4a6a96",
+    "bands": "#f4f4f0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9dcdc",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-pier-l",
+   "footprint": {
+    "rect": [
+     9,
+     6.5
+    ]
+   },
+   "at": [
+    -16.5,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a47c",
+    "windows": "none",
+    "plinth": 2.2,
+    "trimColour": "#8a8a86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-pier-r",
+   "footprint": {
+    "rect": [
+     9,
+     6.5
+    ]
+   },
+   "at": [
+    16.5,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a47c",
+    "windows": "none",
+    "plinth": 2.2,
+    "trimColour": "#8a8a86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing-l",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    -42,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a47c",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing-r",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    42,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a47c",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11.6,
+    19.2
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#b3202c",
+    "frameColour": "#d9dcdc",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Entrance is a five-storey glass box with a shallow gable and blank red sign board, no steel trusses or true mullion grid; wings simplified; OSM zig-zag replaced with a rectangle."
+ }
+}

@@ -1,0 +1,296 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Villa_Las_Estrellas_en_invierno.jpg",
+   "licence": "Public domain",
+   "author": "Chikomario",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/villa-las-estrellas/ws1.jpg",
+   "used": "long low prefab houses: cream clad walls, strip windows, gabled roofs in red, small entrance stair, snow ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/277045542",
+   "used": "17 x 9 m size and gabled residential type (outline irregular, a plain rectangle is used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     17,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#ece8d8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a40",
+    "pitch": 6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -11,
+    2
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8d3bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6a6e72",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "landing",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.6
+    ]
+   },
+   "at": [
+    2,
+    -5.6
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9096"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 0.7,
+    "bottom": 1.4,
+    "colour": "#8a9096",
+    "frameColour": "#e8ecee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut-yellow",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    22,
+    6
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6e1cf",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9a33a",
+    "pitch": 6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut-blue",
+   "footprint": {
+    "rect": [
+     15,
+     7
+    ]
+   },
+   "at": [
+    -20,
+    -14
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6e1cf",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f5f8f",
+    "pitch": 6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut-red",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    20,
+    -16
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6e1cf",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4036",
+    "pitch": 6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cont1",
+   "footprint": {
+    "rect": [
+     6,
+     2.4
+    ]
+   },
+   "at": [
+    -12,
+    14
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d0702a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b85a20"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cont2",
+   "footprint": {
+    "rect": [
+     6,
+     2.4
+    ]
+   },
+   "at": [
+    -5,
+    16
+   ],
+   "rotDeg": 9,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d0702a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b85a20"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-community-workshop",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Neighbour huts and containers are placed schematically on flat ground; no sloping hillside or uneven snow; real outline is irregular (rectangle used); roofs read slightly saturated."
+ }
+}

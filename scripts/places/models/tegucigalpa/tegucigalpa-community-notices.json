@@ -1,0 +1,896 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Corte_Suprema_de_Justicia_de_Honduras.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "HnLY (Wikimedia Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/tegucigalpa/court.jpg",
+   "used": "stepped concrete block: taller central 5-storey block between two projecting dark vertical fins, ribbon windows between fins, two white blank panels over a glazed entrance on steps, lower wings stepping down both sides with a fin rhythm, grey-beige render, plaza and trees in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/312607114",
+   "used": "overall 117 x 35 m footprint, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "outer-l",
+   "footprint": {
+    "rect": [
+     18,
+     28
+    ]
+   },
+   "at": [
+    -49,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc6b6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 1.3,
+      "spacing": 6.5,
+      "colour": "#7a6d64",
+      "margin": 0.3
+     }
+    ],
+    "glassColour": "#a9bbb4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a198",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outer-r",
+   "footprint": {
+    "rect": [
+     18,
+     28
+    ]
+   },
+   "at": [
+    49,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc6b6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 1.3,
+      "spacing": 6.5,
+      "colour": "#7a6d64",
+      "margin": 0.3
+     }
+    ],
+    "glassColour": "#a9bbb4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a198",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inner-l",
+   "footprint": {
+    "rect": [
+     22,
+     32
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc6b6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 1.3,
+      "spacing": 5.5,
+      "colour": "#7a6d64",
+      "margin": 0.3
+     }
+    ],
+    "glassColour": "#a9bbb4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a198",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inner-r",
+   "footprint": {
+    "rect": [
+     22,
+     32
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc6b6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 1.3,
+      "spacing": 5.5,
+      "colour": "#7a6d64",
+      "margin": 0.3
+     }
+    ],
+    "glassColour": "#a9bbb4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a198",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     28,
+     35
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d2cbbb",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 1.1,
+      "depth": 1.6,
+      "spacing": 7,
+      "colour": "#76695f",
+      "margin": 0.2
+     }
+    ],
+    "glassColour": "#a9bbb4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69d",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 90
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14.5,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     },
+     {
+      "z": 24.5,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -7,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     },
+     {
+      "z": 24.5,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     },
+     {
+      "z": 24.5,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    7,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     },
+     {
+      "z": 24.5,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14.5,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     },
+     {
+      "z": 24.5,
+      "rect": [
+       1.1,
+       3.0
+      ],
+      "cy": -18.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -39,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -21,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    21,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    39,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76695f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       0.9,
+       1.8
+      ],
+      "cy": -16.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8e8c86",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       17,
+       1.2
+      ],
+      "cy": -18
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       17,
+       1.2
+      ],
+      "cy": -18
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4.6,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f1f0ec",
+    "sections": [
+     {
+      "z": 4.6,
+      "rect": [
+       8.4,
+       0.6
+      ],
+      "cy": -18.9
+     },
+     {
+      "z": 8.8,
+      "rect": [
+       8.4,
+       0.6
+      ],
+      "cy": -18.9
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4.6,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f1f0ec",
+    "sections": [
+     {
+      "z": 4.6,
+      "rect": [
+       8.4,
+       0.6
+      ],
+      "cy": -18.9
+     },
+     {
+      "z": 8.8,
+      "rect": [
+       8.4,
+       0.6
+      ],
+      "cy": -18.9
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7f9e95",
+    "sections": [
+     {
+      "z": 0.6,
+      "rect": [
+       8,
+       0.4
+      ],
+      "cy": -18.7
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       8,
+       0.4
+      ],
+      "cy": -18.7
+     }
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "rise": 0.4,
+    "run": 1.4,
+    "count": 6,
+    "colour": "#9b9a94"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12,
+    -31,
+    0
+   ],
+   "params": {
+    "colour": "#7d776c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12,
+    -31,
+    2.4
+   ],
+   "params": {
+    "colour": "#2b2b2b",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.5,
+       0.9
+      ]
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       1.2,
+       0.7
+      ]
+     },
+     {
+      "z": 5.0,
+      "ellipse": [
+       1.3,
+       0.7
+      ]
+     },
+     {
+      "z": 6.4,
+      "ellipse": [
+       0.9,
+       0.5
+      ]
+     },
+     {
+      "z": 7.4,
+      "circle": 0.45
+     },
+     {
+      "z": 8.0,
+      "circle": 0.3
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 0.6,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#a8a398"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0.6
+   ],
+   "params": {
+    "length": 110,
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#f2f2f0",
+    "pillarEvery": 3
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Statue is a simple dark loft without scales; fins slightly too regular and dense on the centre block; wings still step down in two bands; plaza tree and foreground foliage simplified."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-community-notices"
+}

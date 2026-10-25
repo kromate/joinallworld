@@ -1,0 +1,272 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Professional_Hospital_Guaynabo_2019.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Danthelion",
+   "view": "front",
+   "used": "white stepped block, blue stair/lab tower at right, blue glazed tower on left, wide emergency canopy on slim columns, blue window panels, palm",
+   "file": "/tmp/places-evidence/san-juan/san-juan-clinic-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/308741711",
+   "used": "main footprint (name match, 66x56 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#3a73c4",
+      "height": 0.35,
+      "at": 0.55,
+      "floors": [
+       2,
+       3
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-tower",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    30,
+    -6
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f4fb0",
+    "windows": "none",
+    "faces": {
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e8edf5",
+      "height": 0.15,
+      "at": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1a3f90",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-stair",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -20,
+    -17
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa6cf",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-box",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad2",
+    "parapet": 0.5
+   },
+   "z0": 17
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 9,
+    "height": 5.4,
+    "thickness": 0.5,
+    "colour": "#f4f3ee",
+    "edgeColour": "#f4f3ee",
+    "columns": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -20.2,
+    5.6
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#b3202a",
+    "frameColour": "#b3202a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#f1f0ec",
+    "frameColour": "#f1f0ec",
+    "posts": false
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No roof lettering or signage panels; blue window panels are plain bands; stair/lab tower and glazed tower are boxes; OSM wing layout means tower sits at a guessed corner; canopy simpler than the real curved one"
+ }
+}

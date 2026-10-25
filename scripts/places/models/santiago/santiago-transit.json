@@ -1,0 +1,351 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:M_Toesca_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rodrigo Fern\u00e1ndez",
+   "view": "street",
+   "file": "/tmp/places-evidence/santiago/t1_s.jpg",
+   "used": "surface entrance: board-formed grey concrete wall and lintel, blue steel frame and blue louvre gate, brick barrel vault over the stair, blank sign boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:M_Toesca_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rodrigo Fern\u00e1ndez",
+   "view": "front",
+   "used": "entrance hall: blue steel ceiling frame, red-brown side walls, steel mesh above, stair going down"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/180833841",
+   "used": "Plaza Toesca park 196 x 71 m: lawn and trees around the entrance (matched by proximity only, 37 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "The station is underground; only a schematic entrance pavilion is built from two street photos. Exact proportions of the concrete hood, the steel frame and the barrel vault are estimated, and the plaza layout is representative."
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 60,
+    "colour": "#7a9a58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bbbab2",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#2f5fb0",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#6b4a3c",
+    "rise": 1.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     16,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "z0": 3.4,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c2c1b9",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#2f5fb0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3b2aa",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-left",
+   "footprint": {
+    "rect": [
+     5.5,
+     0.6
+    ]
+   },
+   "at": [
+    -4.5,
+    -0.1
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5fb0",
+    "windows": "louvre",
+    "windowRatio": 0.8,
+    "glassColour": "#2f5fb0",
+    "faces": {
+     "front": "louvre"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-right",
+   "footprint": {
+    "rect": [
+     5.5,
+     0.6
+    ]
+   },
+   "at": [
+    4.5,
+    -0.1
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5fb0",
+    "windows": "louvre",
+    "windowRatio": 0.8,
+    "glassColour": "#2f5fb0",
+    "faces": {
+     "front": "louvre"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hood-wall",
+   "footprint": {
+    "rect": [
+     5.5,
+     1.2
+    ]
+   },
+   "at": [
+    -7.5,
+    -1.6
+   ],
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c6c5bc",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#2f5fb0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3b2aa"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7.5,
+    -2.4,
+    2.2
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.1,
+    "bottom": 0.0,
+    "colour": "#e3a62e",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 2,
+    "colour": "#7b7f84"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      -30
+     ]
+    ],
+    "width": 4.5,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      0
+     ],
+     [
+      45,
+      0
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -10,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 4,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 22,
+    "count": 8,
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 22,
+    "count": 8,
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   70
+  ]
+ }
+}

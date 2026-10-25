@@ -1,0 +1,237 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-218678632",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ARENA_CORINTHIANS.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Alexandre Breveglieri",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/sao-paulo/arena2.jpg",
+   "used": "white rounded-rectangle roof slab with open oval over the pitch, white tile-clad walls, raked stands visible inside, big dark LED screen on east, vast car parks around, green mounds and road to the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arena_Corinthians.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Portal Da Copa",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/sao-paulo/arena1.jpg",
+   "used": "stand rake and roof truss structure under construction, plan proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4585475",
+   "used": "overall plan (about 280 x 229 m); modelled at 0.43 scale to fit the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 42,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "roof-ring-n",
+   "footprint": {
+    "rect": [
+     116,
+     24
+    ]
+   },
+   "at": [
+    0,
+    37
+   ],
+   "z0": 0,
+   "height": 17,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#f2f2ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe6",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-ring-s",
+   "footprint": {
+    "rect": [
+     116,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -37
+   ],
+   "z0": 0,
+   "height": 17,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#f2f2ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe6",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-ring-w",
+   "footprint": {
+    "rect": [
+     24,
+     50
+    ]
+   },
+   "at": [
+    -46,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#f2f2ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe6",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-ring-e",
+   "footprint": {
+    "rect": [
+     24,
+     50
+    ]
+   },
+   "at": [
+    46,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#f2f2ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe6",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 36,
+    "radiusY": 27,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.9,
+    "seatColour": "#9aa0a4",
+    "concreteColour": "#c7c9c8",
+    "under": "open",
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "led-screen",
+   "footprint": {
+    "rect": [
+     30,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -46
+   ],
+   "z0": 6,
+   "height": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1f22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1f22"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-front",
+   "footprint": {
+    "rect": [
+     40,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    -49.5
+   ],
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0c4",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 10,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is four flat slabs, not the single tilted curved membrane; no curved west glass front or cantilevered corner; surroundings (rail, station, car parks) reduced to generic asphalt."
+ }
+}

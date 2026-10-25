@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_de_La_Pintana_(1).jpg",
+   "used": "setting only, from the plaza photo https://commons.wikimedia.org/wiki/File:Plaza_de_La_Pintana_(1).jpg (CC BY-SA 4.0, Alexisaherven; not the casona): setting only: red and grey tile paving, tall fan palms in rows, black ornate double lamp posts, stone spheres"
+  },
+  {
+   "kind": "text",
+   "url": "https://es.wikipedia.org/wiki/Centro_C%C3%ADvico_de_La_Pintana",
+   "used": "single-storey late 19th century casona patronal, U plan with veranda and courtyard, hip clay-tile roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north-wing",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c7",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.2,
+    "plinth": 0.7,
+    "cornice": true,
+    "trimColour": "#f7f3ea",
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5513a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    -17,
+    -8
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c7",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.7,
+    "cornice": true,
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5513a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    17,
+    -8
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c7",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.7,
+    "cornice": true,
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5513a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -17,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "count": 4,
+    "height": 3.2,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.4,
+    "roofDepth": 2.2,
+    "colour": "#f7f3ea",
+    "roofColour": "#a5513a"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    17,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "count": 4,
+    "height": 3.2,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.4,
+    "roofDepth": 2.2,
+    "colour": "#f7f3ea",
+    "roofColour": "#a5513a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d9d0bd"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -5,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    5,
+    -30,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -30
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -34
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -30
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -12
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the casona (plaza only); U plan, veranda and tile roof typed from text, OSM outline is the whole civic site so not used."
+ }
+}

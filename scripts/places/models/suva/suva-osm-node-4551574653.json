@@ -1,0 +1,149 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Colo-i-Suva_Waterfall.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tucoxn",
+   "view": "front",
+   "file": "/tmp/places-evidence/suva/colo.jpg",
+   "used": "reference for the Colo-i-Suva pool type only (rock face with a thin fall into a green pool, low timber rail, boulder bank); not confirmed to be this exact pool"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "height": 14,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#4a4d50",
+    "boulders": 10
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 18,
+    "shape": "oval",
+    "colour": "#5f8f8a",
+    "bank": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#6b5136"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.5,
+    "run": 1.8
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    -24,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 3,
+    "roof": "hip",
+    "colour": "#6b5136",
+    "cap_colour": "#7a8f5a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 14,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     12
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "cliff is a generic dome, no thin fall or boulder bank; pool not confirmed to be the photographed one"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-node-4551574653"
+}

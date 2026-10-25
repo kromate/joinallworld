@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-node-1945457564",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: concrete memorial to the 1948 Pacto del Jocote on a plaza. The OSM match is a school 140 m away and was NOT used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza-step-1",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     6
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#bdbdb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza-step-2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     4.5
+    ],
+    "z0": 0.3,
+    "height": 0.3,
+    "colour": "#cfcfc8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "obelisk",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       1.4
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       1.1,
+       0.7
+      ]
+     }
+    ],
+    "colour": "#cfcfc8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief-slab",
+   "at": [
+    0,
+    -1.8
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 1.8,
+    "colour": "#b5503c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -1,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 2,
+    "colours": [
+     "#1f3f8f",
+     "#ffffff",
+     "#c8102e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; OSM match is a school so not used; small obelisk on plinth typed"
+ }
+}

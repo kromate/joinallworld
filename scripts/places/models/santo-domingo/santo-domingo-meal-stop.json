@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1029864274",
+   "used": "size only (16 x 16 m); match is 'nearest' at 58 m so the outline is not trusted for orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b44a3c",
+    "material": "metal-sheet",
+    "overhang": 0.9,
+    "pitch": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     5
+    ],
+    "height": 0.4,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.6,
+    "height": 2.8,
+    "colours": [
+     "#2f6f9f",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 0.8,
+    "rails": true,
+    "piles": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.8,
+    "bottom": 1.6,
+    "colour": "#2f6f9f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     2
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     5
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photograph of this place found on Commons, Wikidata or Wikipedia; modelled from the brief's text description. Terrace and jetty placement are typical for a harbour yacht club."
+ }
+}

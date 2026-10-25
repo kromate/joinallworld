@@ -1,0 +1,237 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Burwood_Westfield.JPG",
+   "licence": "CC BY 3.0",
+   "author": "J Bar",
+   "view": "street",
+   "file": "/tmp/places-evidence/sydney/bur1.jpg",
+   "used": "street corner: sandstone-tan lower storeys with maroon-brown piers and bands, white-grey ribbed cladding above, tall corner sign tower with blank boards, projecting dark awnings and glazed terrace over the entry, car park deck behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/19234830",
+   "used": "282 x 103 m outline, four levels, scaled to fit the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "shiftX": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c79c",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "glassColour": "#6a727a",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4a3e",
+      "height": 1.0,
+      "at": 0.9,
+      "floors": [
+       1
+      ]
+     },
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.5,
+      "spacing": 14,
+      "colour": "#7e4338",
+      "margin": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 8.5,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d7d6d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       12.5
+      ],
+      "colours": [
+       "#dcdad3",
+       "#cfcec8",
+       "#e3e1db"
+      ],
+      "mode": "stripes-v"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-tower",
+   "at": [
+    -46,
+    -9
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 0,
+    "height": 36,
+    "colour": "#dcd8cc",
+    "topColour": "#6f7479",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board-a",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -46,
+    -11.7
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 22,
+    "height": 5,
+    "colour": "#f0efec",
+    "topColour": "#f0efec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board-b",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -46,
+    -11.7
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 29,
+    "height": 5,
+    "colour": "#c23b32",
+    "topColour": "#c23b32"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -22,
+    5.2
+   ],
+   "rotDeg": -9,
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 4,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -44,
+    -16,
+    5.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 4,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#8c8f93"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Long OSM outline is a plain box: no recessed terrace, projecting awnings or setbacks of the real corner; ribbed cladding simplified to stripes; sign boards are blank; car-park deck and rooftop plant absent."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-19234830"
+}

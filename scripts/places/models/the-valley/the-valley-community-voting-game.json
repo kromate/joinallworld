@@ -1,0 +1,103 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/360643395",
+   "used": "named footprint 12.9 x 5.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#3e6f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a4",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#d8d4ca"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.0,
+    "colour": "#3e6f9a",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real small footprint only, appearance typed from city style"
+ }
+}

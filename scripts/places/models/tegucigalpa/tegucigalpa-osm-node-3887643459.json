@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-node-3887643459",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/node/3887643459",
+   "used": "point only; typical roadside restaurant: 20 x 12 m single storey with a clay-tile gable roof, open terrace under an awning, blank sign board, gravel car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#8c5a3f",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-roof",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -6.5
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8c5a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 13,
+    "depth": 1.8,
+    "colours": [
+     "#d9b36b",
+     "#f0ece0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.2,
+    "bottom": 2.4,
+    "colour": "#d9b36b",
+    "frameColour": "#8c5a3f"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -5,
+    2,
+    5.2
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "pots": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     6
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     19,
+     10
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ }
+}

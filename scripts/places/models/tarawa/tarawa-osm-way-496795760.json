@@ -1,0 +1,200 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/496795760",
+   "used": "real 143 x 100 m rotated outline, name match: orientation and extent only, three classroom/workshop blocks composed inside it"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Betio",
+   "used": "founded 1967 by the lagoon at Betio"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     55,
+     13
+    ]
+   },
+   "at": [
+    15,
+    -5
+   ],
+   "rotDeg": 47,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.5,
+    "bands": {
+     "colour": "#3f6f8a",
+     "height": 0.7
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -25,
+    15
+   ],
+   "rotDeg": 47,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.5,
+    "bands": {
+     "colour": "#3f6f8a",
+     "height": 0.7
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 1.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "at": [
+    -25,
+    -20
+   ],
+   "rotDeg": 47,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.5,
+    "bands": {
+     "colour": "#3f6f8a",
+     "height": 0.7
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 1.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#3f6f8a",
+    "frameColour": "#f2f0ea",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    45,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-496795760",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; three blocks composed within the real outline; jetty and wheelhouse not evidenced"
+ }
+}

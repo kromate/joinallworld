@@ -1,0 +1,208 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oku_Street_Reserve_-_Severn_Street_Entrance_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Richlitt",
+   "view": "detail",
+   "file": "/tmp/places-evidence/wellington/oku1.jpg",
+   "used": "timber walkway sign on two posts, rough timber-edged earth steps climbing into dense coastal broadleaf bush, yellow marker posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26585828",
+   "used": "reserve outline 445 x 252 m (80,135 m2), scaled to fit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "reserve",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8c5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8d57"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -22,
+    18,
+    0.5
+   ],
+   "params": {
+    "width": 40,
+    "depth": 36,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 2.5,
+    "max_height": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    -8,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 40,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 2.5,
+    "max_height": 5.5
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -8,
+      -48
+     ],
+     [
+      -4,
+      -30
+     ],
+     [
+      2,
+      -14
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      8,
+      20
+     ],
+     [
+      14,
+      40
+     ]
+    ],
+    "width": 1.6,
+    "colour": "#b3a58a"
+   },
+   "at": [
+    0,
+    0,
+    0.5
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -46,
+    0.5
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -13,
+    -44,
+    0.5
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.7,
+    "bottom": 1.3,
+    "colour": "#7a5a3a",
+    "frameColour": "#5b4430",
+    "posts": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "lawn",
+   "at": [
+    18,
+    28,
+    0.5
+   ],
+   "params": {
+    "width": 40,
+    "depth": 28,
+    "colour": "#8ea65f"
+   }
+  },
+  {
+   "type": "earth-rampart",
+   "at": [
+    -10,
+    30,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "width": 36,
+    "height": 14,
+    "colour": "#5e7a45"
+   }
+  },
+  {
+   "type": "earth-rampart",
+   "at": [
+    25,
+    10,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "width": 24,
+    "height": 8,
+    "colour": "#6d8450"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "park outline scaled 0.26 with hill bulks and tree groves only; photo shows just the entrance steps and signboard in dense bush, so no direct match"
+ }
+}

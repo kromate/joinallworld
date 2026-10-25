@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/464003751",
+   "used": "real 36 x 18 m outline (building=church, name Iglesia Casa De Zion) and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadb",
+    "windows": "rect",
+    "windowRatio": 0.12,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "bands": "#3b5f8f",
+    "plinth": 0.5,
+    "parapet": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9093",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -21
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3b5f8f",
+    "windows": "none",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e0d2",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 2.2,
+    "colour": "#3b5f8f",
+    "frameColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.18,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -20
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo exists; real OSM outline plus the brief's gabled hall, blue trim and blank sign. Real facade, windows and roof colour unknown."
+ }
+}

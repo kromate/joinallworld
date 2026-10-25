@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/226917922",
+   "used": "park is about 489 x 211 m; only the main pitch and stand are modelled at readable scale"
+  },
+  {
+   "kind": "text",
+   "used": "Wikipedia: 4,000 seat stadium for football, Leeward Islands cricket and athletics; stand roof, scoreboard and lights typed from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 52,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      46.0,
+      0.0
+     ],
+     [
+      44.85,
+      8.01
+     ],
+     [
+      41.44,
+      15.62
+     ],
+     [
+      35.96,
+      22.45
+     ],
+     [
+      28.68,
+      28.15
+     ],
+     [
+      19.96,
+      32.43
+     ],
+     [
+      10.24,
+      35.1
+     ],
+     [
+      0.0,
+      36.0
+     ],
+     [
+      -10.24,
+      35.1
+     ],
+     [
+      -19.96,
+      32.43
+     ],
+     [
+      -28.68,
+      28.15
+     ],
+     [
+      -35.96,
+      22.45
+     ],
+     [
+      -41.44,
+      15.62
+     ],
+     [
+      -44.85,
+      8.01
+     ],
+     [
+      -46.0,
+      0.0
+     ],
+     [
+      -44.85,
+      -8.01
+     ],
+     [
+      -41.44,
+      -15.62
+     ],
+     [
+      -35.96,
+      -22.45
+     ],
+     [
+      -28.68,
+      -28.15
+     ],
+     [
+      -19.96,
+      -32.43
+     ],
+     [
+      -10.24,
+      -35.1
+     ],
+     [
+      -0.0,
+      -36.0
+     ],
+     [
+      10.24,
+      -35.1
+     ],
+     [
+      19.96,
+      -32.43
+     ],
+     [
+      28.68,
+      -28.15
+     ],
+     [
+      35.96,
+      -22.45
+     ],
+     [
+      41.44,
+      -15.62
+     ],
+     [
+      44.85,
+      -8.01
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#6f9a52",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cricket-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     3,
+     20
+    ],
+    "height": 0.03,
+    "colour": "#c9b98a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 40,
+    "startDeg": 215,
+    "endDeg": 325,
+    "rows": 12,
+    "rise": 0.6,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "facetDeg": 15,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#3e6f9a",
+    "concreteColour": "#d6d1c4",
+    "underColour": "#c6c1b4",
+    "canopy": {
+     "height": 1.0,
+     "depth": 9,
+     "thickness": 0.5,
+     "slopeDeg": 3,
+     "colour": "#9aa0a4",
+     "edgeColour": "#ffffff",
+     "overhangBack": 1
+    }
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 48,
+    "startDeg": 30,
+    "endDeg": 150,
+    "count": 3,
+    "facing": "outward",
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 26,
+      "head_width": 4
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    -62,
+    -10
+   ],
+   "rotDeg": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "glassColour": "#4a5c6a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     75,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; only main stand and oval modelled, park is 490 m long; stand seen from back in default view."
+ }
+}

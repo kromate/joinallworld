@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-node-6732845827",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Penha_De_Franca_-_Yellow_2013_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Larry LaRose",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-paulo/m10_penha1.jpg",
+   "used": "yellow rendered twin-tower facade, tall arched slit windows in stacked tiers, pyramidal terracotta tower caps with crosses, big central arch with rose window, balustrade between towers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Penha_Da_Franca_Church,_Penha,_Sao_Paulo,_Brazil_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Larry LaRose",
+   "view": "interior",
+   "used": "nave with side aisles and a semicircular domed apse (plan only, no interior modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/340166220",
+   "used": "length about 48 m, width about 18 m, height 14.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": -8,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     40
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecc95e",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#f4e6b4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8532f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -7,
+    4
+   ],
+   "z0": 0,
+   "height": 31,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebc55a",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "plain"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#f4e6b4",
+    "trimColour": "#f4e6b4"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#a8532f",
+    "material": "clay-tile",
+    "rise": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    7,
+    4
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebc55a",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "plain"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#f4e6b4",
+    "trimColour": "#f4e6b4"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#a8532f",
+    "material": "clay-tile",
+    "rise": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-bay",
+   "footprint": {
+    "rect": [
+     22,
+     3
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecc95e",
+    "windows": "none",
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#f4e6b4",
+    "parapet": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d49a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -0.1,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 13,
+    "depth": 0.9,
+    "archWidth": 9,
+    "springHeight": 8,
+    "colour": "#f4e6b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    44
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c457",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#f4e6b4"
+   },
+   "roof": {
+    "form": "dome",
+    "colour": "#a8532f",
+    "material": "clay-tile",
+    "rise": 5
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    -7,
+    4,
+    40.5
+   ],
+   "params": {
+    "height": 3,
+    "colour": "#7a6a50"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    7,
+    4,
+    36.5
+   ],
+   "params": {
+    "height": 3,
+    "colour": "#7a6a50"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -14
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "worm's-eye photo vs 3/4 render; rose window, balustrade and tower pilasters not modelled; photo is of the Penha parish church near the sanctuary point so identity is assumed; nave length from OSM"
+ }
+}

@@ -1,0 +1,453 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sir_Vivian_Richards_Stadium_aerial_view_Oct_2006.jpg",
+   "licence": "Public domain",
+   "author": "uploader on en.wikipedia",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/st-johns/p18_svr.jpg",
+   "used": "Oct 2006 aerial: round outfield, tall white five-storey South Stand with blue steel roof sections on the left, lower North Stand with blue roof and white tower on the right, free-standing floodlight masts and scoreboards (stand fit-out unfinished in photo)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/19881528",
+   "used": "overall ground size; oval modelled about 112 x 96 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 24,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "outfield",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      56.0,
+      0.0
+     ],
+     [
+      55.1,
+      8.3
+     ],
+     [
+      52.6,
+      16.4
+     ],
+     [
+      48.5,
+      24.0
+     ],
+     [
+      42.9,
+      30.9
+     ],
+     [
+      36.0,
+      36.8
+     ],
+     [
+      28.0,
+      41.6
+     ],
+     [
+      19.2,
+      45.1
+     ],
+     [
+      9.7,
+      47.3
+     ],
+     [
+      0.0,
+      48.0
+     ],
+     [
+      -9.7,
+      47.3
+     ],
+     [
+      -19.2,
+      45.1
+     ],
+     [
+      -28.0,
+      41.6
+     ],
+     [
+      -36.0,
+      36.8
+     ],
+     [
+      -42.9,
+      30.9
+     ],
+     [
+      -48.5,
+      24.0
+     ],
+     [
+      -52.6,
+      16.4
+     ],
+     [
+      -55.1,
+      8.3
+     ],
+     [
+      -56.0,
+      0.0
+     ],
+     [
+      -55.1,
+      -8.3
+     ],
+     [
+      -52.6,
+      -16.4
+     ],
+     [
+      -48.5,
+      -24.0
+     ],
+     [
+      -42.9,
+      -30.9
+     ],
+     [
+      -36.0,
+      -36.8
+     ],
+     [
+      -28.0,
+      -41.6
+     ],
+     [
+      -19.2,
+      -45.1
+     ],
+     [
+      -9.7,
+      -47.3
+     ],
+     [
+      -0.0,
+      -48.0
+     ],
+     [
+      9.7,
+      -47.3
+     ],
+     [
+      19.2,
+      -45.1
+     ],
+     [
+      28.0,
+      -41.6
+     ],
+     [
+      36.0,
+      -36.8
+     ],
+     [
+      42.9,
+      -30.9
+     ],
+     [
+      48.5,
+      -24.0
+     ],
+     [
+      52.6,
+      -16.4
+     ],
+     [
+      55.1,
+      -8.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f9a3c",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.16
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     20.1
+    ],
+    "height": 0.03,
+    "colour": "#b8603f"
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": 135,
+    "endDeg": 225,
+    "rows": 6,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 45,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 9,
+     "depth": 24,
+     "thickness": 1.2,
+     "slopeDeg": 6,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 70,
+    "radiusY": 62,
+    "startDeg": 155,
+    "endDeg": 205,
+    "count": 3,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        24,
+        9
+       ],
+       "height": 22,
+       "storeys": 5,
+       "colour": "#e9e6dd",
+       "windows": "none",
+       "pattern": {
+        "type": "floors",
+        "colours": [
+         "#e9e6dd",
+         "#c9d3da"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": -35,
+    "endDeg": 50,
+    "rows": 6,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 45,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#8a9096",
+    "concreteColour": "#d6d3c8",
+    "underColour": "#bfbcb0",
+    "canopy": {
+     "height": 6.5,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 6,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    74,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 15,
+    "colour": "#e9e6dd",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -4,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "facing": "north",
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    66,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "facing": "south",
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -48,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 38
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    48,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 38
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -46,
+    50,
+    0
+   ],
+   "params": {
+    "height": 38
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    46,
+    50,
+    0
+   ],
+   "params": {
+    "height": 38
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo shows stands mid-construction (steel roof frames); model is the finished concept. South Stand backing is four plain 5-storey boxes, North Stand tower and scoreboards approximate, no roads or pond."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   120
+  ],
+  "cars": 0
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-way-19881528"
+}

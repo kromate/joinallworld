@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522250018",
+   "used": "only the knowledge that it is a very long thin strip (458 x 67 m, 'containing' match); a 120 x 40 m portion is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/st-johns.json#st-johns-transit",
+   "used": "long open lot where minibuses load, low shelters, market side, blank signboards; the only nearby Commons photo shows a delegation, not the station, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lot",
+   "params": {
+    "rect": [
+     124,
+     44
+    ],
+    "height": 0.15,
+    "colour": "#5d5f62",
+    "topColour": "#5a5c60"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "shelter-west",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 6,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 8,
+    "colour": "#a5473a",
+    "edgeColour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shelter-east",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 6,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 8,
+    "colour": "#a5473a",
+    "edgeColour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -8,
+    0.15
+   ],
+   "params": {
+    "length": 108,
+    "kind": "van",
+    "density": 0.9,
+    "colours": [
+     "#efeee8",
+     "#a5473a",
+     "#cfc8b4",
+     "#e0c040"
+    ],
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-shed",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc8b4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#a5473a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -56,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.6,
+    "colour": "#a5473a",
+    "frameColour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    56,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.6,
+    "colour": "#a5473a",
+    "frameColour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-shed",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    -40,
+    17
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efeee8",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8d90",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   140,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the station; bays, shelters and sheds typed from the brief and city style."
+ }
+}

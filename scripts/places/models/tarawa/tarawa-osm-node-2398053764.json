@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-node-2398053764",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/871605854",
+   "used": "size only: nearest building (15 m away), 22 x 16 m"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     21,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb6c9",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "bands": "#f2f0ea",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "rise": 1.7,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.6,
+    "height": 2.6,
+    "colours": [
+     "#f2f0ea",
+     "#8fb6c9"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1,
+    "bottom": 2.5,
+    "colour": "#f2f0ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     9
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and the OSM match is not exact; a typical Tarawa cafe block of the same size. Colours from the style brief."
+ }
+}

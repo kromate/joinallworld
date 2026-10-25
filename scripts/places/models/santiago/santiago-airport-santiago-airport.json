@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-airport-santiago-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/727602080",
+   "used": "Terminal 2 outline (366 x 310 m, four-pier comb), scaled to the 118 m scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: glass-fronted processor with four piers, white wave roof, control tower, jet bridges, 22 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 3
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d5db",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.2,
+    "bands": "#3a5f7a",
+    "bay": 9
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "wave",
+    "waves": 4,
+    "rise": 1.8,
+    "colour": "#e6e7e4",
+    "material": "membrane",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    10,
+    24,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#e3e4e1"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 6,
+    "height": 4.5,
+    "colour": "#e3e4e1"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -30,
+    25,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "palm",
+  "cars": [
+   {
+    "at": [
+     -40,
+     -45,
+     0
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -20,
+     -45,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#2f4f6f"
+   },
+   {
+    "at": [
+     20,
+     -45,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#c9c9c9"
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the terminal (only an aircraft); outline scaled 0.32 to 118 m, wave roof fitted to bounding box, piers not coloured per palette, no jet bridges."
+ }
+}

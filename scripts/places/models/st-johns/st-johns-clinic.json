@@ -1,0 +1,104 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522265890",
+   "used": "real building outline (about 35 x 17 m, elongated with a small jog), containing match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc9",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#6f9a8e",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5473a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3.5,
+    "height": 3.2,
+    "colour": "#6f9a8e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#f2f2ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: real outline with a typed hip metal roof and pastel render; hip roof fitted to the bounding rectangle"
+ }
+}

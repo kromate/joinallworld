@@ -1,0 +1,386 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ToncontinTerminal.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr uploader (see Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/tegucigalpa/airport.jpg",
+   "used": "left white control tower with dark cab, salmon brick blocks with small ATC cab, white two-storey band with long dark window strip over a flat apron canopy, dark glass block and jet bridges to the right, stone end block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Toncontinairport.jpg",
+   "licence": "Public domain",
+   "author": "Photograph on en.wikipedia",
+   "view": "front",
+   "used": "pinkish-tan brick colour of the original 1930s block and its cab, context only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29224987",
+   "used": "overall length ~209 m; modelled as a 190 m composed run of blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -72,
+    -4
+   ],
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3cdc2",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft-glass",
+   "at": [
+    -72,
+    -8.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 1,
+    "height": 24,
+    "colour": "#2b3036"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cab",
+   "at": [
+    -72,
+    -4
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 27,
+    "height": 3.6,
+    "topScale": 1.0,
+    "colour": "#2a2f34",
+    "topColour": "#6c7075"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-low",
+   "footprint": {
+    "rect": [
+     24,
+     26
+    ]
+   },
+   "at": [
+    -53,
+    -3
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#d1a095",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#d8cfc4",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a80",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-high",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    -16,
+    6
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c99488",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a80",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atc-cab",
+   "at": [
+    -14,
+    6
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 14,
+    "height": 3,
+    "topScale": 1.1,
+    "colour": "#e8e8e4",
+    "topColour": "#8c8f93"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-band",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    18,
+    -1
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#eceae4",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#c9c6bd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bbbd",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     42,
+     28
+    ]
+   },
+   "at": [
+    66,
+    2
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3035",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8087",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    12,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 140,
+    "depth": 8,
+    "height": 5.2,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#8c8f93",
+    "edgeColour": "#6f7378"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 5.2,
+      "colour": "#7d8186"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -19.5
+    ],
+    "end": [
+     80,
+     -19.5
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    60,
+    -18,
+    4.2
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    74,
+    -18,
+    4.2
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.5,
+    "colour": "#f2f2f0",
+    "tailColour": "#3a6ea5"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -60,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 8,
+    "spacing": 20
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the airside front; roof-top plant, apron vehicles and the dark upper glass volume are simplified; brick tone slightly more saturated than the pinkish original."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -90,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     104,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-airport-tegucigalpa-airport"
+}

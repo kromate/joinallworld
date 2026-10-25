@@ -1,0 +1,89 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/291390814",
+   "used": "full multi-wing outline 100 x 75 m, height 15 m"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5da",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8392e",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    8,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 2,
+    "colour": "#e9e5da",
+    "roofColour": "#3d5f8a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1,
+    "colour": "#3d5f8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline simplified, flat red roofs and window detail typed"
+ }
+}

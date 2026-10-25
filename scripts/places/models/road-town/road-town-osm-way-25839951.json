@@ -1,0 +1,203 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/25839951",
+   "used": "named restaurant outline 26 x 26 m, name match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: timber beach bar on Norman Island with terrace, umbrellas, pier and pirate bunting; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "polygon": [
+     [
+      -11.9,
+      6.9
+     ],
+     [
+      -9.1,
+      6.9
+     ],
+     [
+      -9.2,
+      14.2
+     ],
+     [
+      1,
+      14.3
+     ],
+     [
+      1.1,
+      8.7
+     ],
+     [
+      11.7,
+      8.8
+     ],
+     [
+      11.7,
+      6.5
+     ],
+     [
+      14,
+      6.5
+     ],
+     [
+      14,
+      0.2
+     ],
+     [
+      11.8,
+      0.1
+     ],
+     [
+      11.9,
+      -11.3
+     ],
+     [
+      -11.7,
+      -11.6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a3a",
+    "windows": "none",
+    "bands": "#7cc4c0",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a08a55",
+    "material": "thatch",
+    "pitch": 32,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.2,
+    "umbrellas": true,
+    "loungers": false,
+    "colours": [
+     "#7cc4c0",
+     "#f6f3ea",
+     "#a8372f"
+    ]
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "width": 2.4,
+    "shelter": false,
+    "timber": true,
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "bunting",
+   "at": [
+    -10,
+    -12,
+    3
+   ],
+   "params": {
+    "length": 14,
+    "height": 3.2,
+    "colours": [
+     "#2b2b2b",
+     "#f6f3ea",
+     "#a8372f"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    6,
+    5
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#2b2b2b",
+     "#a8372f"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 10,
+    "colour": "#4d7a5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real outline and brief-typed timber beach bar; thatch/colours assumed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-way-25839951"
+}

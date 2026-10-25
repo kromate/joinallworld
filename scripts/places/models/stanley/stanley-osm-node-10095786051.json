@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-osm-node-10095786051",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/446598382",
+   "used": "long thin outline, 24.6 x 4.2 m, bearing 80 degrees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unnamed_Road,_FIQQ_1ZZ,_Falkland_Islands_(Islas_Malvinas)_-_panoramio_(9).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alex Petrenko",
+   "view": "detail",
+   "file": "/tmp/places-evidence/stanley/sc1.jpg",
+   "used": "detail only (not a full elevation): timber door with glazed upper panel, raised plank deck on dark blue-grey posts and fascia, beach and stone setting; deck and door colours taken from it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true,
+    "fit": 26
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9d8e0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8392e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    -3.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     2.6
+    ],
+    "height": 0.7,
+    "colour": "#7b6a52",
+    "top": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -5.4,
+    0.7
+   ],
+   "params": {
+    "length": 20,
+    "height": 0.9,
+    "colour": "#2f3d4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo shows only a deck and door detail, not the elevation: massing from OSM; timber glazed door, deck posts and pale blue/red colours approximate, no beach props"
+ }
+}

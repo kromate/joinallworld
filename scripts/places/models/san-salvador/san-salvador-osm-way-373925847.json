@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-way-373925847",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Multiplazaoutside.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Guanaco152003 (Wikivoyage shared)",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/mp2.jpg",
+   "used": "saturated terracotta-orange smooth walls, round bay with glazed band, perforated beige/pink block on top, purple square pylons, dark lava-stone retaining wall, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:E_Multiplaza.JPG",
+   "licence": "Public domain",
+   "author": "Samsamofvador",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-salvador/mp1.jpg",
+   "used": "tall orange sign tower with cut lettering (left blank here), orange walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/373925847",
+   "used": "footprint (249 x 163 m, 3 levels, 18 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cf5a35",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b84a2c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-block",
+   "at": [
+    8,
+    -4,
+    14
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     40,
+     12
+    ],
+    "height": 10,
+    "colour": "#d9c7a3",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#d9c7a3",
+       "#e2b3aa",
+       "#cdb98f"
+      ],
+      "slits": 0.35
+     }
+    ],
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-tower",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     8,
+     5
+    ],
+    "height": 22,
+    "colour": "#c24b28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "purple-a",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 16,
+    "colour": "#5d3d9c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "purple-b",
+   "at": [
+    19,
+    -29,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 16,
+    "colour": "#5d3d9c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "rotunda",
+   "at": [
+    10,
+    -18,
+    14
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c24b28",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6,
+      2.5
+     ],
+     [
+      6.4,
+      2.7
+     ],
+     [
+      6.4,
+      3
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Outline is the real OSM plan scaled to 118 m so the sign tower and pylons are placed by eye; the perforated upper block is a plain panel prism without deep square openings; no lava-stone wall, banners or umbrellas; sign tower lettering omitted."
+ }
+}

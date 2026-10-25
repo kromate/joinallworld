@@ -1,0 +1,472 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Open_Polytechnic_Main_Entrance_(15409927572).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/poly.jpg",
+   "used": "entrance block: pale green render wings, central red standing-seam roof with ridge lantern, curved purple-framed glazed arch over a recessed entry, two brown piers, blue column sculpture left, car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/18043662",
+   "used": "campus extent only (290 x 234 m site); the entrance block is modelled, the full outline is far larger than the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c6cfae",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e3a30",
+    "material": "copper",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -25,
+    1
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cbd3b4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#5d7380"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e3a30",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c9d1b6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#5d7380"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e3a30",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     3
+    ],
+    "height": 3.4,
+    "colour": "#2f3a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 15,
+    "depth": 4,
+    "height": 3.4,
+    "thickness": 0.35,
+    "colour": "#707a7c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.5,
+    -15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "height": 6.4,
+    "colour": "#7b5848"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.5,
+    -15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "height": 6.4,
+    "colour": "#7b5848"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    3,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 3.2,
+    "colour": "#4a3530",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    -22,
+    0
+   ],
+   "params": {
+    "radius": 5.2,
+    "n": 16,
+    "height": 0.9,
+    "colour": "#1f2a63"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -31,
+     -22,
+     0.9
+    ],
+    "radius": 3.6,
+    "count": 14,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.2,
+       "n": 6,
+       "height": 10.5,
+       "colour": "#9aa5ad"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    -22,
+    11.4
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 16,
+    "height": 1.6,
+    "colour": "#1f2a63"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -11.9,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.4,
+      "rect": [
+       14.6,
+       2.6
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       14.6,
+       2.6
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       13.8,
+       2.6
+      ]
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       11.6,
+       2.6
+      ]
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       8.4,
+       2.6
+      ]
+     },
+     {
+      "z": 9.9,
+      "rect": [
+       4.0,
+       2.6
+      ]
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       0.8,
+       2.6
+      ]
+     }
+    ],
+    "colour": "#6f8c9b",
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.4,
+      "rect": [
+       15.4,
+       0.5
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       15.4,
+       0.5
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       14.6,
+       0.5
+      ]
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       12.4,
+       0.5
+      ]
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       9.2,
+       0.5
+      ]
+     },
+     {
+      "z": 9.9,
+      "rect": [
+       4.8,
+       0.5
+      ]
+     },
+     {
+      "z": 10.4,
+      "rect": [
+       1.2,
+       0.5
+      ]
+     }
+    ],
+    "colour": "#4a3a63",
+    "capTop": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -13.1,
+     3.6
+    ],
+    "end": [
+     6,
+     -13.1,
+     3.6
+    ],
+    "count": 7,
+    "lod2Step": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.18,
+        0.3
+       ],
+       "height": 5.2,
+       "colour": "#4a3a63"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -21,
+    0
+   ],
+   "params": {
+    "radius": 9,
+    "n": 24,
+    "height": 0.1,
+    "colour": "#d4d2cc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -16
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -18
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved glazed vault, dark lantern, 14-rod sculpture added; vault is a loft with simple mullions, no hill backdrop, wings still generic, entry recess shallow."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-18043662"
+}

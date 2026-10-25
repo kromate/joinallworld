@@ -1,0 +1,143 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: hillside trail with small timber trailhead shelter; no photo or outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    -3,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a3a",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f4a32",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -3.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 1.2,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.5,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#4d7a5c",
+    "frameColour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 7,
+    "spread": 10,
+    "colour": "#3f6f4d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 8,
+    "colour": "#4d7a5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline: a typical open-fronted timber trailhead shelter with steps, trail board and rail on grass among broadleaf trees; hillside slope not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-node-3985384932"
+}

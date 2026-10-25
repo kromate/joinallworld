@@ -1,0 +1,188 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Macquarie_University_New_Library_2011.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/mq1.jpg",
+   "used": "upper storeys clad in vertical fins of red, orange-brown, tan and cream with a leaning face, dark recessed glazed ground floor with umbrellas, lower glass atrium block between two fin-clad blocks, older concrete block at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/141281549",
+   "used": "104 x 45 m outline of the Waranara Library (16MW) with 8 levels tagged; modelled as the fin-clad upper mass; the brief name 'academic core' is matched at 131 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3a40",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 7,
+    "glassColour": "#2f3a40"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0,
+    "scale": 0.97
+   },
+   "z0": 5.0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9a574",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.0,
+       22
+      ],
+      "colours": [
+       "#a9442f",
+       "#c99a62",
+       "#e3cf9f",
+       "#b8603a"
+      ],
+      "mode": "stripes-v",
+      "gap": 0,
+      "proud": 0.12
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    -4,
+    -24
+   ],
+   "params": {
+    "rect": [
+     26,
+     6
+    ],
+    "z0": 0,
+    "height": 16,
+    "colour": "#9fb3bb",
+    "topColour": "#9fb3bb",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bay": 6,
+    "glassColour": "#8aa3ad"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3.2,
+    "colours": [
+     "#e8e8e4",
+     "#d4d4d0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3.2,
+    "colours": [
+     "#e8e8e4",
+     "#d4d4d0"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     36
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fins are flat coloured stripes on the OSM outline, not the leaning, staggered fin faces; the glass atrium is a plain box in front; ground floor is a recessed dark band without terrace umbrellas; adjoining concrete block at right missing."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-207693612"
+}

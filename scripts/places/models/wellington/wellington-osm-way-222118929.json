@@ -1,0 +1,408 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wakefield_Hospital_2024_1.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Stitchbird2",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/wake.jpg",
+   "used": "three-storey block: grey render ground floor with a long ribbon window, two timber-look brown cladding storeys with dark vertical mullions and grouped windows, white rendered parapet frame, dark grey entry canopy tower at left, blue sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19586025",
+   "used": "overall size (83 x 80 m with wings); only the street block is composed, photo-led"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     50,
+     23
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9a9992",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.2,
+    1.9
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#bfe0e0",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     58,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.6,
+   "height": 8.8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#7a6858",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "glassColour": "#2f4251"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    13.4
+   ],
+   "params": {
+    "rect": [
+     58.6,
+     30.6
+    ],
+    "height": 1.0,
+    "colour": "#eceae6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -15.3,
+     4.6
+    ],
+    "end": [
+     27,
+     -15.3,
+     4.6
+    ],
+    "count": 14,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        0.7
+       ],
+       "height": 8.8,
+       "colour": "#2a2d30"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -32,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 9,
+    "colour": "#4d5459",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -30,
+    -19,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 5,
+    "height": 4.6,
+    "thickness": 0.4,
+    "colour": "#454c50"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -44,
+    -22,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "height": 6.4,
+    "colour": "#2e56a3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2
+    ],
+    "height": 0.9,
+    "colour": "#8e8c86"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29.3,
+    0,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     30.6
+    ],
+    "height": 9.4,
+    "colour": "#eceae6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    29.3,
+    0,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     30.6
+    ],
+    "height": 9.4,
+    "colour": "#eceae6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -15.05,
+     5.6
+    ],
+    "end": [
+     24,
+     -15.05,
+     5.6
+    ],
+    "count": 7,
+    "lod2Step": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        6.4,
+        0.25
+       ],
+       "height": 2.1,
+       "colour": "#2f4251",
+       "windows": "curtain",
+       "windowRatio": 0.9,
+       "storeys": 1,
+       "glassColour": "#3d5566"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -15.05,
+     9.4
+    ],
+    "end": [
+     24,
+     -15.05,
+     9.4
+    ],
+    "count": 7,
+    "lod2Step": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        6.4,
+        0.25
+       ],
+       "height": 2.1,
+       "colour": "#2f4251",
+       "windows": "curtain",
+       "windowRatio": 0.9,
+       "storeys": 1,
+       "glassColour": "#3d5566"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     2
+    ],
+    "height": 4.4,
+    "colour": "#7f98a8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "storeys": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     7
+    ],
+    "height": 0.9,
+    "colour": "#4a5f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -26.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.8
+    ],
+    "height": 1.1,
+    "colour": "#8e8c86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -24
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Overhanging brown upper volume over recessed plinth, white end/top frame, grouped window bays, tall entry tower and blue sign slab added; no spandrel panels or vertical timber texture, lobby small, kerb/bank simplified."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-222118929"
+}

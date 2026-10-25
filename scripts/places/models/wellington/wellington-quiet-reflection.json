@@ -1,0 +1,481 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Matthias_Church,_M%C4%81kara,_Wellington,_New_Zealand.jpg",
+   "licence": "CC0",
+   "author": "Arnhemcr",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/sm1.jpg",
+   "used": "cream rendered walls, orange-red tile gable roof, square parapeted tower with three red pointed belfry openings behind, pointed red-framed windows, hillside cemetery"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/326476205",
+   "used": "nave size about 15 x 6 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     6.4
+    ]
+   },
+   "at": [
+    -1,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3bf",
+    "windows": "none",
+    "faces": {
+     "front": "pointed",
+     "back": "pointed"
+    },
+    "windowShape": "pointed",
+    "windowRatio": 0.06,
+    "bay": 3.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4622f",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    6.5,
+    3.6
+   ],
+   "height": 8.0,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3bf",
+    "windows": "none",
+    "faces": {
+     "front": "pointed",
+     "back": "pointed",
+     "left": "pointed",
+     "right": "pointed"
+    },
+    "windowShape": "pointed",
+    "windowRatio": 0.0,
+    "plinth": 0.3,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3bf",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     3.7,
+     3.7
+    ]
+   },
+   "at": [
+    6.5,
+    3.6
+   ],
+   "z0": 6.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3bf",
+    "windows": "none",
+    "faces": {
+     "front": "pointed",
+     "back": "pointed",
+     "left": "pointed",
+     "right": "pointed"
+    },
+    "windowShape": "pointed",
+    "windowRatio": 0.4,
+    "glassColour": "#9b3a30"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3bf",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.2
+    ]
+   },
+   "at": [
+    3.0,
+    -4.2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2dac0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c4622f",
+    "material": "clay-tile",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "thickness": 0.12,
+    "colour": "#7a6a52",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs0",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -9.0,
+    -8.0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -6.7,
+    -9.0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -4.4,
+    -10.0
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs3",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -2.1,
+    -8.0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs4",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    0.2,
+    -9.0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs5",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    2.5,
+    -10.0
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs6",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    4.8,
+    -8.0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs7",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    7.1,
+    -9.0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hs8",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    9.4,
+    -10.0
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    17,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   55,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gable end faces right not left, no knoll or green signboards, windows still tall, lollipop-ish conifers rather than dense bush, tower belfry openings only partly visible"
+ }
+}

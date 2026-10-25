@@ -1,0 +1,523 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Williams_Park_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "AxonsArachnida",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/395210275_0.jpg",
+   "used": "open dry-green lawn, tall clipped hedge block, Norfolk pine and weeping willow at right, post-and-rail fence and benches along the path, steep bush-covered hills with white houses behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/395210275",
+   "used": "park outline (fitted to 118 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Days_Bay",
+   "used": "bay walled by bush slopes on three sides, wharf, small pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 2,
+    "fit": 110
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9a9f52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9f52",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-wall",
+   "at": [
+    -10,
+    22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 3.4,
+    "depth": 3.4,
+    "colour": "#2c5a2e"
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "benches",
+   "at": [
+    30,
+    -8,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "post-rail",
+   "at": [
+    30,
+    -4,
+    0.25
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.6,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#6b5640"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "norfolk-pine",
+   "at": [
+    30,
+    6,
+    0.25
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "willow",
+   "at": [
+    38,
+    -6,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "pohutukawa-left",
+   "at": [
+    -45,
+    -8,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 22
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill0",
+   "at": [
+    -59.016786440882385,
+    58.38501784965021,
+    0
+   ],
+   "params": {
+    "colour": "#3d5a33",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       21.6547017026623,
+       17.32376136212984
+      ]
+     },
+     {
+      "z": 17.975967827828484,
+      "ellipse": [
+       12.992821021597381,
+       10.82735085133115
+      ]
+     },
+     {
+      "z": 35.95193565565697,
+      "ellipse": [
+       3.2482052553993452,
+       2.598564204319476
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill1",
+   "at": [
+    -38.080811402080556,
+    60.91254995331584,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       18.79373592626863,
+       15.034988741014907
+      ]
+     },
+     {
+      "z": 14.145026141418073,
+      "ellipse": [
+       11.276241555761178,
+       9.396867963134316
+      ]
+     },
+     {
+      "z": 28.290052282836147,
+      "ellipse": [
+       2.8190603889402945,
+       2.255248311152236
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill2",
+   "at": [
+    -16.45314626401349,
+    57.08564374391694,
+    0
+   ],
+   "params": {
+    "colour": "#46683a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16.679235787918866,
+       13.343388630335093
+      ]
+     },
+     {
+      "z": 18.504502458753112,
+      "ellipse": [
+       10.007541472751319,
+       8.339617893959433
+      ]
+     },
+     {
+      "z": 37.009004917506225,
+      "ellipse": [
+       2.5018853681878297,
+       2.001508294550264
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill3",
+   "at": [
+    -0.24744761774269008,
+    51.45201965667762,
+    0
+   ],
+   "params": {
+    "colour": "#34552f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       19.443647127568603,
+       15.554917702054883
+      ]
+     },
+     {
+      "z": 16.718804296179652,
+      "ellipse": [
+       11.666188276541162,
+       9.721823563784302
+      ]
+     },
+     {
+      "z": 33.437608592359304,
+      "ellipse": [
+       2.9165470691352904,
+       2.333237655308232
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill4",
+   "at": [
+    16.104913516711218,
+    51.03421720649388,
+    0
+   ],
+   "params": {
+    "colour": "#3d5a33",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       21.498072230851314,
+       17.19845778468105
+      ]
+     },
+     {
+      "z": 15.397411830055551,
+      "ellipse": [
+       12.898843338510789,
+       10.749036115425657
+      ]
+     },
+     {
+      "z": 30.794823660111103,
+      "ellipse": [
+       3.224710834627697,
+       2.5797686677021576
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill5",
+   "at": [
+    42.125803613033135,
+    50.234458973012536,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16.83260451039342,
+       13.466083608314737
+      ]
+     },
+     {
+      "z": 17.985734957156023,
+      "ellipse": [
+       10.099562706236052,
+       8.41630225519671
+      ]
+     },
+     {
+      "z": 35.971469914312046,
+      "ellipse": [
+       2.524890676559013,
+       2.0199125412472103
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill6",
+   "at": [
+    60.93962016372893,
+    49.773789255703775,
+    0
+   ],
+   "params": {
+    "colour": "#46683a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       21.22842846834569,
+       16.982742774676552
+      ]
+     },
+     {
+      "z": 14.008874311012674,
+      "ellipse": [
+       12.737057081007414,
+       10.614214234172845
+      ]
+     },
+     {
+      "z": 28.017748622025348,
+      "ellipse": [
+       3.1842642702518535,
+       2.547411416201483
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "bush1",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "count": 12,
+    "min_height": 8,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "bush2",
+   "at": [
+    30,
+    40,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "count": 12,
+    "min_height": 8,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house0",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -30,
+    52
+   ],
+   "z0": 12,
+   "height": 4.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8d8f",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    5,
+    58
+   ],
+   "z0": 15,
+   "height": 4.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8d8f",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    40,
+    50
+   ],
+   "z0": 18,
+   "height": 4.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8d8f",
+    "pitch": 25
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-395210275",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "hills are still smooth cones (no bush texture, only few houses); lawn renders greener than the dry olive photo; camera framing still leaves grey surround below the lawn; hedge reads small; path outline from OSM is odd"
+ }
+}

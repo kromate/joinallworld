@@ -1,0 +1,147 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1378716139",
+   "used": "177x151 m irregular multi-wing footprint, 4 levels, opened 2019"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Cura%C3%A7ao_Medical_Center",
+   "used": "300-bed hospital, replaced Sint Elisabeth; colours from city style, no facade photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 10,
+    "bands": "#e8935a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "hospital/helipad",
+   "at": [
+    0,
+    0,
+    18.6
+   ],
+   "on": "wings",
+   "params": {
+    "radius": 8
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 14,
+    "pitch": 2.0,
+    "depth": 0.6,
+    "colour": "#6fa7c8"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -45,
+    -55,
+    10
+   ],
+   "params": {
+    "size": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -70
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -75
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -85
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no facade photo of the new hospital found; colours, brise-soleil and helipad positions are plausible placements, only the outline and levels are real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-clinic"
+}

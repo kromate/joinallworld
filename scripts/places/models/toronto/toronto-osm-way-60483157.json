@@ -1,0 +1,132 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/60483157",
+   "used": "real outline, 43 x 17 m, bearing 129 degrees"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Toronto_and_Region_Islamic_Congregation",
+   "used": "box-shaped 1991 building with an oriental motif housing library, gymnasium and prayer hall; cream render with teal accent, arched windows and parapet frieze assumed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building exists in the evidence (the nearby photo shows the highway); the box massing, colours, arched windows and parapet are plausible and not verified; no dome added because the source does not state one."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 50
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9d0bd",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 5,
+    "trimColour": "#f1ede2",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#6b8f9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "pillar": 0.8,
+    "leaf": "bars"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -22,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#9aa3a8",
+    "count": 5,
+    "spacing": 3,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     25
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     38,
+     18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-60483157"
+}

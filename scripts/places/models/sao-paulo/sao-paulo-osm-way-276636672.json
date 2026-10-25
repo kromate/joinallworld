@@ -1,0 +1,90 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-276636672",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6358101",
+   "used": "real stepped outline of the block (75 x 54 m) and 8.2 m height tag"
+  },
+  {
+   "kind": "text",
+   "ref": "https://pt.wikipedia.org/wiki/Escola_Superior_de_Propaganda_e_Marketing",
+   "used": "business school: two-storey glazed block, no usable exterior photo found (nearby geo photos show a portrait and unrelated objects)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d3cb",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "glassColour": "#5a7e96",
+    "plinth": 0.3,
+    "pattern": {
+     "kind": "louvres",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a7a0",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -30,
+    2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "colour": "#f2f2f2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable exterior photo; real outline and 8.2 m height only, glazing and louvres are typical, not observed."
+ }
+}

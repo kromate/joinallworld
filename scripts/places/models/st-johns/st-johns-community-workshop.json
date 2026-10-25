@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AUA_Campus_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Kashif Ahmed",
+   "view": "street",
+   "file": "/tmp/places-evidence/st-johns/aua1.jpg",
+   "used": "white lattice hip-roof gazebo with arched openings and grey shingle roof, low blue-grey clad teaching blocks with white metal gable roofs, lawn and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5969216",
+   "used": "campus extent only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -26,
+    8
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa4ac",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e7e9",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    26,
+    8
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8e9fb2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e7e9",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-rear",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dfce",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gazebo",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f4f0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e6a68",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "gazebo is a closed arched box not an open lattice pavilion; rear two-storey block and block layout are typed (the OSM outline is a campus polygon); no shrubs"
+ }
+}

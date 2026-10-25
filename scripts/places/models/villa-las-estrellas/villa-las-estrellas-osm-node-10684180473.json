@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-osm-node-10684180473",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Base_Presidente_Eduardo_Frei_Montalva.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lorenz King, JLU Giessen",
+   "view": "aerial",
+   "used": "long low cream-yellow prefab blocks with grey roofs, orange accents, flat snow ground; viewed for palette only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/277045517",
+   "used": "real outline of the long module block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9cc8f",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#d9622b"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a9298",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.8,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.2,
+    "bottom": 2,
+    "colour": "#f2efe6",
+    "frameColour": "#2f5f9a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -13,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.4,
+    "colours": [
+     "#d52b1e",
+     "#ffffff",
+     "#0039a6"
+    ]
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    12,
+    14,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "radius": 0.25,
+    "banded": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    14,
+    -8
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9622b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "pitch": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an aerial of the whole base exists; this block is not individually identifiable; outline real, colours from the aerial, flags and mast typed."
+ }
+}

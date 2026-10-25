@@ -1,0 +1,138 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/761273404",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#d9b36b"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9b36b",
+     "#c0392b",
+     "#8fb6c9"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#d9b36b",
+     "#f0ece0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#c0392b",
+     "#f0ece0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "colour": "#d9b36b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market; OSM outline with generic corrugated roof, hall open sides/columns not modelled, props placed by assumption"
+ }
+}

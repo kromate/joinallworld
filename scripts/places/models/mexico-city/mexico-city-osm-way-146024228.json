@@ -1,0 +1,676 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zona_Arqueol%C3%B3gica_de_Tlatelolco,_TlatelolcoTV_6.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "TlatelolcoTV",
+   "view": "front",
+   "file": "/tmp/places-evidence/mexico-city/146024228_0.jpg",
+   "used": "stepped dark volcanic-stone platform with paired stair flights split by a central block, round altar in front, yellow colegio wall behind, white modernist block at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_de_la_Zona_Arqueol%C3%B3gica_de_Tlatelolco.jpg",
+   "licence": "see Commons page",
+   "author": "unknown",
+   "view": "aerial",
+   "used": "sunken lawns between low platforms, church to the east"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/146024228",
+   "used": "site area; modelled as one main temple slice"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza-floor",
+   "footprint": {
+    "rect": [
+     36,
+     30
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4f6b3a",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a524b",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6e63"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     12.5,
+     9.5
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 3.4,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a524b",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6e63"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     9,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 5.0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a6058",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6e63"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -7.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-l",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -7.2,
+    -7.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-r",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    7.2,
+    -7.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3.4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.68,
+    "run": 0.55,
+    "count": 5,
+    "colour": "#6e645b"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3.4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.68,
+    "run": 0.55,
+    "count": 5,
+    "colour": "#6e645b"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -5.0,
+    3.4
+   ],
+   "params": {
+    "width": 3.0,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#6e645b"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3,
+    -5.0,
+    3.4
+   ],
+   "params": {
+    "width": 3.0,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#6e645b"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4d4640",
+    "topColour": "#8a7e70",
+    "profile": [
+     [
+      0,
+      0.8,
+      "#6a6058"
+     ],
+     [
+      2.6,
+      0.8,
+      "#6a6058"
+     ],
+     [
+      2.6,
+      1.4,
+      "#4d4640"
+     ],
+     [
+      3.5,
+      1.4,
+      "#4d4640"
+     ],
+     [
+      3.5,
+      0,
+      "#4d4640"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-platform",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a524b",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-l",
+   "footprint": {
+    "rect": [
+     3,
+     22
+    ]
+   },
+   "at": [
+    -17,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-r",
+   "footprint": {
+    "rect": [
+     3,
+     22
+    ]
+   },
+   "at": [
+    17,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sunk-l",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    -12,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a524b",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sunk-r",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    12,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a524b",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rubble-wall-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     16
+    ]
+   },
+   "at": [
+    -20.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f564f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rubble-wall-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     16
+    ]
+   },
+   "at": [
+    20.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f564f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wall",
+   "footprint": {
+    "rect": [
+     30,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4d4640",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f564f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colegio-wall",
+   "footprint": {
+    "rect": [
+     40,
+     3
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b94c",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3a83f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "modern-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    40,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e7e0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0,
+    "pattern": {
+     "type": "pilotis",
+     "inset": 1.5,
+     "spacing": 5,
+     "width": 0.7,
+     "colour": "#dcd9d0",
+     "backColour": "#2b2f31",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6cf",
+    "overhang": 1.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     22
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-146024228",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "platform is flat-coloured boxes with no rubble texture; sunken lawns and rear terraces simplified; background towers omitted"
+ }
+}

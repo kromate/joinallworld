@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-node-1295226025",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/731210198",
+   "used": "real gravel viewpoint car park outline 78 x 12 m (name match), long axis bearing 133 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "gravel",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26.5,
+      19.1
+     ],
+     [
+      -25,
+      25.3
+     ],
+     [
+      -23.2,
+      30.5
+     ],
+     [
+      -11.7,
+      18.7
+     ],
+     [
+      2.1,
+      2.4
+     ],
+     [
+      25.1,
+      -17
+     ],
+     [
+      34.1,
+      -22.9
+     ],
+     [
+      30,
+      -26.3
+     ],
+     [
+      24,
+      -26
+     ],
+     [
+      17.5,
+      -22.8
+     ],
+     [
+      -24.4,
+      14.7
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "outcrop-up",
+   "at": [
+    -18,
+    30
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 7,
+    "seed": 3,
+    "stairs": false,
+    "boulders": 6,
+    "rock_colour": "#6f6f68"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "outcrop-low",
+   "at": [
+    30,
+    -34
+   ],
+   "params": {
+    "width": 20,
+    "depth": 10,
+    "height": 3.5,
+    "seed": 8,
+    "stairs": false,
+    "boulders": 4,
+    "rock_colour": "#74746c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "railing",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 1.1,
+    "thickness": 0.1,
+    "points": [
+     [
+      18,
+      -26
+     ],
+     [
+      26,
+      -29.5
+     ],
+     [
+      36,
+      -26.5
+     ]
+    ],
+    "colour": "#5a5d62"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    10,
+    0.2
+   ],
+   "rotDeg": 43,
+   "params": {
+    "width": 2.5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#6f6f68",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -5,
+    8,
+    0.2
+   ],
+   "rotDeg": 43,
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real car-park outline plus rock outcrops and railing guessed; grass is nearest ground."
+ }
+}

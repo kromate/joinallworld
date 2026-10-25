@@ -1,0 +1,349 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arend_Petroleummij_17_47_34_873000.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Caribiana",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/community-notices-0.jpg",
+   "used": "cream-yellow walls, red clay-tile roof with a front gable, two-storey colonnaded gallery wrapped round the block, grey-blue banding, arched white-framed windows, balustraded upper gallery, side stair"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:De_Arend_Petroleum_Company_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "VMG1231",
+   "view": "street",
+   "file": "/tmp/places-evidence/oranjestad/community-notices-1.jpg",
+   "used": "same plan seen from the street: hip skirt roof over the gallery, pink-brown gallery beams, boundary wall with breeze-block panels"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/175180276",
+   "used": "24.7 x 17.6 m footprint size (modelled square to the camera; real plot is rotated 67 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     15,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2cf74",
+    "windows": "arched",
+    "windowRatio": 0.38,
+    "bay": 3.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#8fa0b0"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#c8472c",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gal-floor",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     25,
+     17.6
+    ],
+    "z0": 3.4,
+    "height": 0.35,
+    "colour": "#8fa0b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "skirt-roof",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     26.4,
+     19
+    ],
+    "z0": 7.1,
+    "height": 1.9,
+    "topScale": 0.55,
+    "colour": "#c8472c",
+    "topColour": "#c8472c",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 7.2,
+      "colour": "#efe3b8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -8.4
+    ],
+    "end": [
+     12,
+     -8.4
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 7.2,
+      "colour": "#efe3b8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     8.4
+    ],
+    "end": [
+     12,
+     8.4
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 7.2,
+      "colour": "#efe3b8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -5
+    ],
+    "end": [
+     -12,
+     5
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 7.2,
+      "colour": "#efe3b8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     12,
+     -5
+    ],
+    "end": [
+     12,
+     5
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -8.4,
+    3.75
+   ],
+   "params": {
+    "length": 24.5,
+    "height": 1.0,
+    "postEvery": 0.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    8.4,
+    3.75
+   ],
+   "params": {
+    "length": 24.5,
+    "height": 1.0,
+    "postEvery": 0.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#d4cfc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-g",
+   "at": [
+    0,
+    -5.56
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "z0": 0.3,
+    "height": 2.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-u",
+   "at": [
+    0,
+    -5.56
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "z0": 3.75,
+    "height": 2.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic",
+   "at": [
+    0,
+    -5.62
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.15
+    ],
+    "z0": 8.2,
+    "height": 1.2,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -13
+   ],
+   "params": {
+    "rect": [
+     3,
+     14
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#cfc6b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wall colour renders paler/greyer than the photo, arched windows are plain slits without white glazing bars, gallery columns thinner than real, side stair and rotated plot not modelled."
+ }
+}

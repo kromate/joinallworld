@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-952400489",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beth_Israel,_Aruba.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Gerd Fahrenhorst",
+   "view": "front",
+   "used": "pale grey rendered walls, steep dark grey shingle gable roof with diagonal dark buttress fins, low white perimeter wall and railing, palms",
+   "file": "/tmp/places-evidence/oranjestad/syn.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/952400489",
+   "used": "plan outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.62
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7d9d8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4e5258",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "id": "fins",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -7.5,
+     -9.4,
+     0
+    ],
+    "end": [
+     4.5,
+     -9.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.35,
+        0
+       ],
+       [
+        0.35,
+        0
+       ],
+       [
+        0.35,
+        0.7
+       ],
+       [
+        -0.35,
+        0.7
+       ]
+      ],
+      "z0": 0,
+      "height": 9.5,
+      "topScale": 1.0,
+      "topOffset": [
+       0,
+       2.4
+      ],
+      "colour": "#33373c"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "low-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.9,
+    "thickness": 0.3,
+    "colour": "#e4e6e5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    0,
+    -11,
+    0.9
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#f4f4f4"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "name-board",
+   "at": [
+    0,
+    -9.8,
+    2.4
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#e9ecee",
+    "frameColour": "#d0d3d5",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -12.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "diagonal buttress fins are simple slabs, side wing and perimeter railing simplified, ridge orientation approximate"
+ }
+}

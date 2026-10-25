@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-airport-noumea-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerogare_de_Noumea_Magenta.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pilettes",
+   "view": "street",
+   "file": "/tmp/places-evidence/noumea/ap1.jpg",
+   "used": "landside silhouette only (the terminal is masked white in the file): long low terminal with a gently bumpy roofline, small control tower with a square cab at the far left, blank roof sign board right of centre, red banners at the entrance, car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Noum%C3%A9a_Magenta_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Maloff1",
+   "view": "aerial",
+   "used": "setting: runway beside the lagoon, low surroundings (not the terminal itself)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/79263380",
+   "used": "terminal footprint 68 x 35 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-hump-w",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "z0": 6.5,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#8a8f94",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-hump-e",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "z0": 6.5,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#8a8f94",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -37,
+    4,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "style": "square",
+    "colour": "#efe9dc",
+    "cabColour": "#7f9fb0",
+    "shaftRadius": 2.0,
+    "cabRadius": 4.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -6,
+    7.3
+   ],
+   "params": {
+    "width": 16,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#f2f2ee",
+    "frameColour": "#3a3f45",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -6.1,
+    7.4
+   ],
+   "params": {
+    "width": 15,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#2b3036",
+    "frameColour": "#2b3036",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 7,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#d9d2c2",
+    "edgeColour": "#7f9fb0"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spacing": 5.5,
+    "colour": "#b9bdc0"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    -41,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spacing": 5.5,
+    "colour": "#444a50"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#b3262a",
+    "frameColour": "#b3262a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#b3262a",
+    "frameColour": "#b3262a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#b3262a",
+    "frameColour": "#b3262a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo masks the terminal itself so facade colour and glazing are guessed; tower cab and bumpy roofline now follow the silhouette, roof board still sits beside the humps rather than on one"
+ }
+}

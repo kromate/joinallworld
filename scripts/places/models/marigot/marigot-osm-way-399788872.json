@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-way-399788872",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399788872",
+   "used": "real 13x10 m outline of the bar (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: timber and metal-roof cabin beach bar, turquoise walls, green metal roof, louvres, terrace and umbrellas; the only nearby Commons file is a bird, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cabin",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6da1b5",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "bands": "#f4efe4",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7c5d",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     9,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6c4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6c4c"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -8,
+    0.4
+   ],
+   "params": {
+    "count": 4,
+    "spread": 3.5,
+    "radius": 1.4,
+    "height": 2.3,
+    "colours": [
+     "#f4efe4",
+     "#6da1b5",
+     "#f4efe4"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 2.0,
+    "colour": "#f4efe4",
+    "frameColour": "#8a6c4c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the bar exists; real outline plus brief colours, roof and terrace are typed."
+ }
+}

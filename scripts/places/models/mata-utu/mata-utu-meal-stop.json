@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/293511493",
+   "used": "real 154x60 m multi-wing outline (containing)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large flat-roofed trading building, cream render with red and grey accents, blank signage boards, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 20,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -79,
+      -5.2
+     ],
+     [
+      -62.7,
+      52.9
+     ],
+     [
+      -9.4,
+      37.9
+     ],
+     [
+      -16.9,
+      11
+     ],
+     [
+      44.8,
+      -6.3
+     ],
+     [
+      52.4,
+      20.9
+     ],
+     [
+      85.8,
+      11.5
+     ],
+     [
+      69.4,
+      -46.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 14,
+    "bands": "#c5493a",
+    "plinth": 0.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9e",
+    "material": "corrugated",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 6,
+    "colour": "#c5493a",
+    "edgeColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 7.5,
+    "colour": "#c5493a",
+    "frameColour": "#9a9d9e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 3.7,
+    "colour": "#f3efe4",
+    "frameColour": "#9a9d9e",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; massing from OSM outline, storey height and colours from brief"
+ }
+}

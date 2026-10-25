@@ -1,0 +1,213 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Capilla_del_Hombre,_Quito.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bernard Gagnon",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/quito/cap1.jpg",
+   "used": "square cube of grey stone blocks with pyramid texture, flat brown-pink roof, central truncated cone with dark shingle roof and mast, dark door at right face, row of skylights on the paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31152844",
+   "used": "approximate size only (outline is a stepped polygon including terraces)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     64
+    ],
+    "height": 0.15,
+    "colour": "#a39a8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cube",
+   "footprint": {
+    "rect": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f6a66",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": {
+     "type": "panels",
+     "size": [
+      0.55,
+      0.55
+     ],
+     "colours": [
+      "#75706b",
+      "#7d7772",
+      "#6b6661"
+     ],
+     "mode": "random",
+     "proud": 0.08
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58f80",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    14.3
+   ],
+   "params": {
+    "segments": 28,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5.2,
+      0,
+      "#3f3d3a"
+     ],
+     [
+      5.2,
+      0.1,
+      "#3f3d3a"
+     ],
+     [
+      3.4,
+      6.2,
+      "#3f3d3a"
+     ],
+     [
+      0,
+      6.2,
+      "#3f3d3a"
+     ]
+    ],
+    "colour": "#3f3d3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    20.5
+   ],
+   "params": {
+    "radius": 0.15,
+    "n": 6,
+    "height": 7,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.2,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     2.6
+    ],
+    "height": 3.6,
+    "colour": "#5a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13,
+     -17
+    ],
+    "end": [
+     -1,
+     -17
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.6
+      ],
+      "height": 0.6,
+      "colour": "#8fc3b8"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Stone block texture is approximated by random panels; no stepped terraces, mural or railings, door simplified."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-31152844"
+}

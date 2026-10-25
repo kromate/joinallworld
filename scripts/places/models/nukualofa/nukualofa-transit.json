@@ -1,0 +1,172 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuku%27alofa_harbor,_north_coast_of_Tongatapu_island,_Kingdom_of_Tonga_-_panoramio_(1).jpg",
+   "licence": "CC BY 3.0",
+   "author": "David Broad",
+   "view": "street",
+   "file": "/tmp/places-evidence/nukualofa/ferry.jpg",
+   "used": "low concrete quay with dark stained edge, low pale shed with grey hipped roof and open canopy beside parked vehicles, coral rock shore, sailing boats moored in turquoise water"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/564080236",
+   "used": "nearest small building only (13 x 10 m); not a confirmed match"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "quay",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "depth": 22,
+    "water_depth": 30,
+    "bollards": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d1bf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "bands": "#3f5f8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9096",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 4,
+    "height": 3.4,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8c9096"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -17.4,
+    2.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "colour": "#3f5f8a"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    8,
+    12,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "width": 2.6,
+    "colour": "#e8e6df"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -3,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    14,
+    -4,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Single street photo is a distant harbour view; wharf and shed are typical guesses, water shape is a strip; nearest OSM building not confirmed"
+ }
+}

@@ -1,0 +1,319 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1493413574",
+   "used": "106 x 14.5 m marketplace outline (amenity=marketplace, name JF Betlenut Market): floor slab, roof sheet and post lines follow it; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "floor",
+   "params": {
+    "points": [
+     [
+      -54.8,
+      -3.3
+     ],
+     [
+      50.8,
+      -10.1
+     ],
+     [
+      52.3,
+      4.3
+     ],
+     [
+      -52.7,
+      9.3
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-sheet",
+   "params": {
+    "points": [
+     [
+      -54.8,
+      -3.3
+     ],
+     [
+      50.8,
+      -10.1
+     ],
+     [
+      52.3,
+      4.3
+     ],
+     [
+      -52.7,
+      9.3
+     ]
+    ],
+    "z0": 3.1,
+    "height": 0.25,
+    "colour": "#a9422f",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-ridge",
+   "params": {
+    "points": [
+     [
+      -54.8,
+      -3.3
+     ],
+     [
+      50.8,
+      -10.1
+     ],
+     [
+      52.3,
+      4.3
+     ],
+     [
+      -52.7,
+      9.3
+     ]
+    ],
+    "z0": 3.35,
+    "height": 0.7,
+    "colour": "#b24d37",
+    "topScale": [
+     0.55,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "rotDeg": -3.7,
+   "params": {
+    "mode": "line",
+    "start": [
+     -49,
+     0
+    ],
+    "end": [
+     47,
+     0
+    ],
+    "count": 17,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 3.1,
+      "colour": "#8d6e4a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 17
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    6.4,
+    0
+   ],
+   "rotDeg": -3.2,
+   "params": {
+    "mode": "line",
+    "start": [
+     -49,
+     0
+    ],
+    "end": [
+     47,
+     0
+    ],
+    "count": 17,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 3.1,
+      "colour": "#8d6e4a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 17
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -2.3,
+    0.25
+   ],
+   "rotDeg": -3.5,
+   "params": {
+    "mode": "line",
+    "start": [
+     -47,
+     0
+    ],
+    "end": [
+     45,
+     0
+    ],
+    "count": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.0
+      ],
+      "height": 0.85,
+      "colour": "#7a6a52"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 30,
+    "vary": {}
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    3.2,
+    0.25
+   ],
+   "rotDeg": -3.4,
+   "params": {
+    "mode": "line",
+    "start": [
+     -47,
+     0
+    ],
+    "end": [
+     45,
+     0
+    ],
+    "count": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.0
+      ],
+      "height": 0.85,
+      "colour": "#8d6e4a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 30
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -2.3,
+    1.1
+   ],
+   "rotDeg": -3.5,
+   "params": {
+    "mode": "line",
+    "start": [
+     -47,
+     0
+    ],
+    "end": [
+     45,
+     0
+    ],
+    "count": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.7
+      ],
+      "height": 0.35,
+      "colour": "#5f8a3c",
+      "topScale": 0.6
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   140,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; open shed with posts/stalls under a red corrugated roof from outline only"
+ }
+}

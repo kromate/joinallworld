@@ -1,0 +1,136 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/100822158",
+   "used": "real 125x96 m outline (name match, 6-point slab-and-wing polygon at bearing 20), fitted to 118 m"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q5437829",
+   "used": "boys' secondary school founded 1945 at Mucurapo; three storeys with open galleries, cream render, blue accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe7d2",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5b7aa6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b98f",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "rise": 3,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    8,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 18,
+    "count": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-100822158",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only (no photo of this school found); massing is a plain slab, no courtyard or galleries seen"
+ }
+}

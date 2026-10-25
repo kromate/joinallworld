@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/315858388",
+   "used": "real outline of Maretraite Mall (about 140 x 87 m, name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q110136021",
+   "used": "shopping mall opened 2006, two storeys, glazed entrance, surface car park (no photo found on Commons)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee5d0",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#2f7a9a",
+    "plinth": 0.5,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea3a4",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    -22,
+    -33
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     16,
+     6
+    ],
+    "height": 9.5,
+    "colour": "#2f7a9a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "topColour": "#ffffff",
+    "glassColour": "#5aa0b8",
+    "trimColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -24,
+    -38.5,
+    4.2
+   ],
+   "rotDeg": -30,
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 5,
+    "height": 0,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#2f7a9a",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-a",
+   "at": [
+    -22,
+    -33,
+    9.6
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#2f7a9a",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "id": "car-park",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 58,
+    "depth": 24,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "pylon",
+   "at": [
+    -52,
+    -52,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 3,
+    "height": 6,
+    "bottom": 6,
+    "colour": "#2f7a9a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -8,
+    -52,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -75
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue workers hung since 2026-10-24 21:40, no render at all; entrance side and car-park position guessed from the OSM outline, no photo exists"
+ }
+}

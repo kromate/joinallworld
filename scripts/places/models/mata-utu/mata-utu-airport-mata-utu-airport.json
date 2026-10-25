@@ -1,0 +1,383 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-airport-mata-utu-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wallis_batiments_typiques_de_l%27a%C3%A9rogare.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vogensto",
+   "view": "front",
+   "file": "/tmp/places-evidence/mata-utu/airport1.jpg",
+   "used": "terminal front: steep gables facing the forecourt with dark red-brown timber infill and bracing, grey shingle roofs, deep eaves on raking struts, stone-pattern low wall and plinth, blank signboard band"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:158_Tour_de_contr%C3%B4le_de_l%27a%C3%A9roport_de_Wallis-Hihifo_(36268335953).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Brigitte & Heinz",
+   "view": "side",
+   "used": "control tower: cream clad shaft, wide gallery, flared dark glazed cab with railed roof, flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/293511430",
+   "used": "overall extent 72 x 42 m and wing layout"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3524",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a9c9f",
+    "material": "concrete",
+    "pitch": 57,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -21,
+    4
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3524",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a9c9f",
+    "material": "concrete",
+    "pitch": 57,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    21,
+    4
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3524",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a9c9f",
+    "material": "concrete",
+    "pitch": 57,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 4.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9496",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    33,
+    14
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "timber",
+    "colour": "#e6e0cc",
+    "windows": "none",
+    "plinth": 1.5,
+    "bands": "#c9c7bd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9e",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    27,
+    9,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#2a4a9a",
+     "#f2f2f2",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    33,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "z0": 12,
+    "height": 2.6,
+    "topScale": 1.7,
+    "colour": "#23282c",
+    "material": "glass-dark",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    33,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     7.6
+    ],
+    "z0": 14.6,
+    "height": 0.4,
+    "colour": "#9a9d9e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "z0": 5.6,
+    "height": 1.0,
+    "colour": "#f1f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "z0": 6.8,
+    "height": 0.9,
+    "colour": "#f1f1ec"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -14.5,
+     0
+    ],
+    "end": [
+     12,
+     -14.5,
+     0
+    ],
+    "count": 13,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 1.1,
+      "topScale": 0.7,
+      "colour": "#7b3d28"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11.5,
+     -14.5,
+     0
+    ],
+    "end": [
+     11.5,
+     -14.5,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.6
+      ],
+      "height": 0.7,
+      "colour": "#d9d6cc"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.6,
+    "thickness": 0.6,
+    "colour": "#3a3a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gable steeper but no raking-strut tips, open timber bracing, V-struts or mosaic wall pattern; roof still reads blue-grey; signboard is two plain bands; tower cab simplified."
+ }
+}

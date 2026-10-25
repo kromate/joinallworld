@@ -1,0 +1,449 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-way-371524223",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rococo_Plaza_Aruba.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Caribiana",
+   "view": "front",
+   "used": "twin octagonal white entrance towers with red diamond panels, green copper onion domes with lantern and finial, pale walls, low red roofs",
+   "file": "/tmp/places-evidence/oranjestad/roc1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/371524223",
+   "used": "plaza outline (about 37 x 26 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 28,
+  "aspect": 0.72
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c4a36",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-a",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.6,
+    "z0": 0,
+    "height": 21,
+    "colour": "#eeece4",
+    "trimColour": "#ddd8cb",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -9,
+    21
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.5,
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#5b6b5a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6,
+    -9,
+    21.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4d6a5a",
+    "profile": [
+     [
+      2.5,
+      0
+     ],
+     [
+      2.7,
+      0.3
+     ],
+     [
+      3.0,
+      1.2
+     ],
+     [
+      3.2,
+      2.3
+     ],
+     [
+      2.9,
+      3.3
+     ],
+     [
+      2.0,
+      4.1
+     ],
+     [
+      1.2,
+      4.5
+     ],
+     [
+      1.3,
+      4.6
+     ],
+     [
+      1.7,
+      4.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6,
+    -9,
+    26.3
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#4d6a5a",
+    "profile": [
+     [
+      1.3,
+      0
+     ],
+     [
+      1.3,
+      0.9
+     ],
+     [
+      1.6,
+      1.0
+     ],
+     [
+      1.8,
+      1.8
+     ],
+     [
+      1.3,
+      2.5
+     ],
+     [
+      0.7,
+      2.9
+     ],
+     [
+      0.1,
+      3.5
+     ],
+     [
+      0.1,
+      4.8
+     ],
+     [
+      0.3,
+      5.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-b",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.6,
+    "z0": 0,
+    "height": 21,
+    "colour": "#eeece4",
+    "trimColour": "#ddd8cb",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -9,
+    21
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.5,
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#5b6b5a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6,
+    -9,
+    21.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4d6a5a",
+    "profile": [
+     [
+      2.5,
+      0
+     ],
+     [
+      2.7,
+      0.3
+     ],
+     [
+      3.0,
+      1.2
+     ],
+     [
+      3.2,
+      2.3
+     ],
+     [
+      2.9,
+      3.3
+     ],
+     [
+      2.0,
+      4.1
+     ],
+     [
+      1.2,
+      4.5
+     ],
+     [
+      1.3,
+      4.6
+     ],
+     [
+      1.7,
+      4.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6,
+    -9,
+    26.3
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#4d6a5a",
+    "profile": [
+     [
+      1.3,
+      0
+     ],
+     [
+      1.3,
+      0.9
+     ],
+     [
+      1.6,
+      1.0
+     ],
+     [
+      1.8,
+      1.8
+     ],
+     [
+      1.3,
+      2.5
+     ],
+     [
+      0.7,
+      2.9
+     ],
+     [
+      0.1,
+      3.5
+     ],
+     [
+      0.1,
+      4.8
+     ],
+     [
+      0.3,
+      5.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "diamonds",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -6,
+     -11.45,
+     5
+    ],
+    "end": [
+     6,
+     -11.45,
+     5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        0,
+        -0.5
+       ],
+       [
+        0.7,
+        0
+       ],
+       [
+        0,
+        0.5
+       ],
+       [
+        -0.7,
+        0
+       ]
+      ],
+      "z0": 0,
+      "height": 0.1,
+      "colour": "#b4323a"
+     }
+    }
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 2,
+    "height": 3,
+    "colours": [
+     "#e8c9a8",
+     "#f4efe4"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "array",
+   "id": "band",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -6,
+     -9,
+     9
+    ],
+    "end": [
+     6,
+     -9,
+     9
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 8,
+      "radius": 2.75,
+      "height": 0.5,
+      "colour": "#b4323a"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "towers sized from photo; red diamond panels, door and lantern arches are simplified; building massing behind towers is from OSM only"
+ }
+}

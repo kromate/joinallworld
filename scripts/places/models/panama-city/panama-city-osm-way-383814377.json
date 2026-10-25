@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-383814377",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Cresta,_Panam%C3%A1,_Panama_-_panoramio_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fernandofrancisco",
+   "view": "side",
+   "file": "/tmp/places-evidence/panama-city/383814377_1.jpg",
+   "used": "long 11-storey cream slab with dense vertical fin piers and projecting blue-edged balcony slabs, dark sloping roof edge, blue-banded lower podium with white upper strip, mature mango tree in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Cresta,_Panam%C3%A1,_Panama_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fernandofrancisco",
+   "view": "street",
+   "used": "lower blue-trimmed block with ribbon windows beside a grey 7-storey slab with ribbon balconies"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18586318",
+   "used": "slab footprint and 11 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 9,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 42,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "glassColour": "#3d4a55",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "width": 2.2,
+      "every": 5.4,
+      "slab": 0.35,
+      "railKind": "solid",
+      "colour": "#2a63b0",
+      "railColour": "#2a63b0",
+      "floors": "upper",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "fins",
+      "width": 0.6,
+      "depth": 0.7,
+      "spacing": 5.4,
+      "colour": "#f4efe2",
+      "margin": 1,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#2a63b0",
+      "height": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": {
+     "colour": "#2a63b0",
+     "height": 0.9
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "metal-sheet",
+    "overhang": 2.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -10,
+    -8
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede8da",
+    "glassColour": "#7e8f9c",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "bands": {
+     "colour": "#2a63b0",
+     "height": 1.2
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a63b0",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-machinery",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "z0": 42,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8f8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -34
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -52
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -50
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dense fin piers and blue balcony slabs read on the front face only (budget); side faces plain. Roof edge visor, blue-banded podium and big mango crown are weak or hidden; no glazing recess."
+ }
+}

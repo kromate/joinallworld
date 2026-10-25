@@ -1,0 +1,267 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plachi_di_nomber_di_Cueba_di_Guadirikiri_(Parke_Arikok).jpg",
+   "licence": "CC0",
+   "author": "Ginelly.Q",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/cave1.jpg",
+   "used": "layered tan limestone ledges below a dark grey weathered overhang hung with stalactites, dark cave mouth, rough stone steps climbing at the right, blank information board on posts, pale sandy ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/966343024",
+   "used": "6 m shelter at the cave entrance (nearest match 42 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "strata1",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "height": 2.0,
+    "colour": "#b39a74"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strata2",
+   "at": [
+    0,
+    7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     26,
+     11
+    ],
+    "height": 1.6,
+    "colour": "#a58c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strata3",
+   "at": [
+    0,
+    7.5,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     26,
+     9.5
+    ],
+    "height": 1.5,
+    "colour": "#8f7b5e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "overhang",
+   "at": [
+    0,
+    5.2,
+    5.1
+   ],
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "height": 6.5,
+    "colour": "#5f574d",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mouth",
+   "at": [
+    -1,
+    -0.6,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     1.4
+    ],
+    "height": 3.0,
+    "colour": "#14110f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -0.2
+    ],
+    "end": [
+     11,
+     -0.4
+    ],
+    "count": 14,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      2.6
+     ],
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.06
+       },
+       {
+        "z": 1.3,
+        "circle": 0.315
+       },
+       {
+        "z": 2.6,
+        "circle": 0.45
+       }
+      ],
+      "colour": "#6e6559",
+      "capTop": true,
+      "round": 6
+     }
+    },
+    "vary": {
+     "height": [
+      1.8,
+      3.4
+     ]
+    }
+   }
+  },
+  {
+   "type": "steps",
+   "id": "stairs",
+   "at": [
+    11,
+    -3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.2,
+    "rise": 0.45,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#b8a27c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "info",
+   "at": [
+    -3,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.4,
+    "bottom": 0.9,
+    "colour": "#e2e5dc",
+    "frameColour": "#7a5c3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter-roof",
+   "at": [
+    -14,
+    -12,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "height": 0.25,
+    "colour": "#7b6b52"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.9,
+     -13.9
+    ],
+    "end": [
+     -12.1,
+     -13.9
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 2.6,
+      "colour": "#5a4a38"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-540982491",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Overhang is a smooth slab, not the pitted weathered rock; stalactites are regular cones; stairs and boulders simplified; board is blank blue."
+ }
+}

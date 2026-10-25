@@ -1,0 +1,353 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-1077119324",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Banco_Guayaquil1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rosaelisil4",
+   "view": "interior",
+   "file": "/tmp/places-evidence/quito/idv.jpg",
+   "used": "main stand: two seating tiers in navy and magenta, magenta back-wall fascia board, long white steel truss cantilever roof raked up toward the pitch, low navy concrete wall at pitch edge, corner floodlight mast"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14336440",
+   "used": "compact oval-rectangular bowl about 150 x 136 m, modelled at reduced scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 100,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "params": {
+    "seatColours": [
+     "#2a3f8f",
+     "#d9407a",
+     "#2a3f8f"
+    ],
+    "blocks": 5,
+    "concreteColour": "#c9ccd0",
+    "under": "solid",
+    "backWall": 0.8,
+    "start": [
+     -30,
+     30
+    ],
+    "end": [
+     -30,
+     -30
+    ],
+    "tiers": [
+     {
+      "rows": 9,
+      "rise": 0.5,
+      "run": 0.8
+     },
+     {
+      "rows": 8,
+      "rise": 0.55,
+      "run": 0.8,
+      "gap": 3,
+      "lift": 2.8
+     }
+    ],
+    "canopy": {
+     "height": 6.5,
+     "depth": 15,
+     "colour": "#f2f4f6",
+     "edgeColour": "#e4e7ea",
+     "thickness": 0.9,
+     "slopeDeg": 12,
+     "overhangBack": 1,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "params": {
+    "seatColours": [
+     "#2a3f8f",
+     "#d9407a",
+     "#2a3f8f"
+    ],
+    "blocks": 5,
+    "concreteColour": "#c9ccd0",
+    "under": "solid",
+    "start": [
+     34,
+     -24
+    ],
+    "end": [
+     34,
+     24
+    ],
+    "tiers": [
+     {
+      "rows": 5,
+      "rise": 0.35,
+      "run": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "params": {
+    "seatColours": [
+     "#d9407a",
+     "#2a3f8f"
+    ],
+    "blocks": 5,
+    "concreteColour": "#c9ccd0",
+    "under": "solid",
+    "start": [
+     -26,
+     -34
+    ],
+    "end": [
+     26,
+     -34
+    ],
+    "tiers": [
+     {
+      "rows": 5,
+      "rise": 0.35,
+      "run": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "params": {
+    "seatColours": [
+     "#2a3f8f",
+     "#d9407a",
+     "#2a3f8f"
+    ],
+    "blocks": 5,
+    "concreteColour": "#c9ccd0",
+    "under": "solid",
+    "backWall": 0.8,
+    "start": [
+     26,
+     34
+    ],
+    "end": [
+     -26,
+     34
+    ],
+    "tiers": [
+     {
+      "rows": 7,
+      "rise": 0.45,
+      "run": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     62,
+     46
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#3f8a3a",
+    "topColour": "#4a9a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch-wall",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     60
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#1b2a6b",
+    "topColour": "#26325f"
+   },
+   "at": [
+    -30.6,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "back-fascia",
+   "params": {
+    "rect": [
+     1.0,
+     56
+    ],
+    "z0": 13.5,
+    "height": 8,
+    "colour": "#c9356f",
+    "topColour": "#c9356f"
+   },
+   "at": [
+    -47.5,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "box-band",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     56
+    ],
+    "z0": 8.5,
+    "height": 5,
+    "colour": "#3a3f4a",
+    "topColour": "#3a3f4a",
+    "windows": "strip"
+   },
+   "at": [
+    -47.5,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "navy-base",
+   "params": {
+    "rect": [
+     1.0,
+     56
+    ],
+    "z0": 0,
+    "height": 8.5,
+    "colour": "#1b2a6b",
+    "topColour": "#1b2a6b"
+   },
+   "at": [
+    -47.5,
+    0,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lo-bowl",
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "rect": [
+     100,
+     84
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#2a3f8f",
+    "topColour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "cars": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two-tier main stand with box band, magenta rear fascia, navy pitch-edge wall and sloped white roof now match; roof truss lattice not modelled (solid slab with dark underside); end stands lowered so the interior is visible as in the photo; scaled down"
+ }
+}

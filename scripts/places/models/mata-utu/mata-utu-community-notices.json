@@ -1,0 +1,95 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/325244244",
+   "used": "irregular 55 x 33 m two-part footprint (containing match)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "offices",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#8d8a82",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5402f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; roof hip fitted to bounding rectangle of the irregular outline."
+ }
+}

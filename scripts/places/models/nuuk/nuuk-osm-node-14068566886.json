@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-node-14068566886",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Greenland_National_Museum.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/nuuk/museum.jpg",
+   "used": "oxblood-red timber gabled harbour houses with white window frames, stone ground floor, grey slate-look roofs with dormers, long dark-roofed hall behind, external stairs with white railings, quay with timber retaining wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/256787189",
+   "used": "footprint 22 x 11 m (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a2b26",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "bands": "#e8e3d8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d52",
+    "material": "corrugated",
+    "rise": 5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-house",
+   "footprint": {
+    "rect": [
+     8,
+     11
+    ]
+   },
+   "at": [
+    -7,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f29",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 2.5,
+    "bands": "#e8e3d8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8a85",
+    "material": "slate",
+    "rise": 4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-house",
+   "footprint": {
+    "rect": [
+     8,
+     11
+    ]
+   },
+   "at": [
+    7,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f29",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 2.5,
+    "bands": "#e8e3d8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8a85",
+    "material": "slate",
+    "rise": 4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    3,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#c8362f",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.9,
+    "bottom": 2.2,
+    "colour": "#e8e3d8",
+    "posts": true
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -9.5,
+    -19.4,
+    6.9
+   ],
+   "params": {
+    "colour": "#8a2f29",
+    "roof_colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -4.5,
+    -19.4,
+    6.9
+   ],
+   "params": {
+    "colour": "#8a2f29",
+    "roof_colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    4.5,
+    -19.4,
+    6.9
+   ],
+   "params": {
+    "colour": "#8a2f29",
+    "roof_colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    9.5,
+    -19.4,
+    6.9
+   ],
+   "params": {
+    "colour": "#8a2f29",
+    "roof_colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "external-stair",
+   "id": "ext-stair",
+   "at": [
+    -12.5,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 2.8,
+    "length": 5,
+    "width": 1.1,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "stair-rail",
+   "at": [
+    -13.3,
+    -21,
+    2.8
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 1.0,
+    "thickness": 0.08,
+    "length": 5,
+    "colour": "#f0ece4"
+   }
+  },
+  {
+   "type": "quay",
+   "id": "quay",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 8,
+    "water_depth": 30
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "car",
+   "at": [
+    -1,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 4,
+    "colour": "#e8e8e8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "houses still crowd the hall and the gable orientation is not turned to the water; stone plinth colour not controllable (plinth takes wall colour); quay is a generic paved apron with water beyond, not a timber-piled wall with a stair; the stair and dormers are small; hillside houses not modelled"
+ }
+}

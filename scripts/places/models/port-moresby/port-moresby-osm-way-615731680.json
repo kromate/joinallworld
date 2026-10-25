@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-615731680",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NFS,_PORT_MORESBY,_PNG..jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jim Babwe'e",
+   "view": "interior",
+   "file": "/tmp/places-evidence/port-moresby/nfs.jpg",
+   "used": "main stand: deep raked bowl of red seating, grey fascia band, wide white membrane roof on exposed red-orange steel arches over the central bay only; rectangular grass pitch; flag poles along the rim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/615731680",
+   "used": "outline is irregular (includes car parks); only overall size and bearing considered, bowl modelled as a rectangle scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 36,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -54,
+     42
+    ],
+    "end": [
+     54,
+     42
+    ],
+    "rows": 26,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColours": [
+     "#a9322a",
+     "#c24a35",
+     "#8e2a2a"
+    ],
+    "blocks": 6,
+    "under": "solid",
+    "concreteColour": "#cfcbc2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -54,
+     -40
+    ],
+    "end": [
+     54,
+     -40
+    ],
+    "rows": 18,
+    "flip": true,
+    "seatColours": [
+     "#a9322a",
+     "#c24a35",
+     "#8e2a2a"
+    ],
+    "blocks": 6,
+    "under": "solid",
+    "concreteColour": "#cfcbc2",
+    "backWall": 1.0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -62,
+     -34
+    ],
+    "end": [
+     -62,
+     34
+    ],
+    "rows": 16,
+    "seatColours": [
+     "#a9322a",
+     "#c24a35",
+     "#8e2a2a"
+    ],
+    "blocks": 4,
+    "under": "solid",
+    "concreteColour": "#cfcbc2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62,
+     -34
+    ],
+    "end": [
+     62,
+     34
+    ],
+    "rows": 16,
+    "flip": true,
+    "seatColours": [
+     "#a9322a",
+     "#c24a35",
+     "#8e2a2a"
+    ],
+    "blocks": 4,
+    "under": "solid",
+    "concreteColour": "#cfcbc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    76,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     6
+    ],
+    "z0": 0,
+    "height": 18,
+    "colour": "#7b8085",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    66,
+    14
+   ],
+   "params": {
+    "rect": [
+     72,
+     4
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#5d6166",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    62,
+    21
+   ],
+   "params": {
+    "form": "curved",
+    "width": 78,
+    "depth": 34,
+    "height": 0,
+    "rise": 5,
+    "thickness": 0.5,
+    "colour": "#f0efea",
+    "edgeColour": "#c8452d",
+    "columns": 0,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      -36,
+      46,
+      16
+     ],
+     [
+      -36,
+      58,
+      25
+     ],
+     [
+      -36,
+      82,
+      22
+     ]
+    ],
+    "curve": true,
+    "colour": "#c8452d"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      -18,
+      46,
+      16
+     ],
+     [
+      -18,
+      58,
+      25
+     ],
+     [
+      -18,
+      82,
+      22
+     ]
+    ],
+    "curve": true,
+    "colour": "#c8452d"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      0,
+      46,
+      16
+     ],
+     [
+      0,
+      58,
+      25
+     ],
+     [
+      0,
+      82,
+      22
+     ]
+    ],
+    "curve": true,
+    "colour": "#c8452d"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      18,
+      46,
+      16
+     ],
+     [
+      18,
+      58,
+      25
+     ],
+     [
+      18,
+      82,
+      22
+     ]
+    ],
+    "curve": true,
+    "colour": "#c8452d"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      36,
+      46,
+      16
+     ],
+     [
+      36,
+      58,
+      25
+     ],
+     [
+      36,
+      82,
+      22
+     ]
+    ],
+    "curve": true,
+    "colour": "#c8452d"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    50,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    50,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    -56,
+    12
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "north"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -76,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     76,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is from inside the bowl; far stand seats only visible from above; roof arches simplified to curved ribs; bowl scaled to scene clamp, OSM outline not used"
+ }
+}

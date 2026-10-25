@@ -1,0 +1,525 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrada_Lecocq_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ganimedes",
+   "view": "street",
+   "file": "/tmp/places-evidence/montevideo/lecocq1.jpg",
+   "used": "entrance: leaning rough-log gate posts with a crossbar and a dark wooden name board (left), a flat concrete shelter roof on thin posts, low painted concrete walls, grass bank and tall eucalyptus beyond"
+  },
+  {
+   "kind": "text",
+   "ref": "https://es.wikipedia.org/wiki/Parque_Lecocq",
+   "used": "120 ha zoo on the Santa Lucia wetlands: low visitor buildings, animal houses, fenced enclosures behind the entrance"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate posts leaning but graffiti is plain tint; eucalyptus are generic conifer stand-ins; wedge blocks simplified; background trees sparse"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    -15,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#4a3a2c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "cx": 0.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -13.2,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#4a3a2c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "cx": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#4a3a2c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "cx": 3.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -3.2,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#4a3a2c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "cx": 3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    -17,
+    -4.4
+   ],
+   "z0": 1.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a2c22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2c22"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-beam",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    -13,
+    -4
+   ],
+   "z0": 8.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-beam2",
+   "footprint": {
+    "rect": [
+     7,
+     0.5
+    ]
+   },
+   "at": [
+    -1,
+    -3
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "rotDeg": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "paved-apron",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a89c98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89c98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-slab",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "z0": 3.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8fa398",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fa398"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4,
+    0.5,
+    0
+   ],
+   "params": {
+    "colour": "#a3a894",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": -0.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    16,
+    0.5,
+    0
+   ],
+   "params": {
+    "colour": "#a3a894",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4,
+    5.5,
+    0
+   ],
+   "params": {
+    "colour": "#a3a894",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    16,
+    5.5,
+    0
+   ],
+   "params": {
+    "colour": "#a3a894",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wall-back",
+   "footprint": {
+    "rect": [
+     14,
+     0.6
+    ]
+   },
+   "at": [
+    10,
+    6.2
+   ],
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6fa59a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa89c"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    2,
+    0
+   ],
+   "params": {
+    "colour": "#a9b3a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       5
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       8,
+       3.2
+      ],
+      "cy": 1
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    24,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a9b3a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       5
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       8,
+       3.2
+      ],
+      "cy": 1
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   70,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     16
+    ],
+    "height": 22
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -6,
+     18
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     17
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     16
+    ],
+    "height": 23
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     12
+    ],
+    "height": 20
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-205235002"
+}

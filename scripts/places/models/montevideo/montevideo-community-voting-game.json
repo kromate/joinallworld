@@ -1,0 +1,274 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2016_Canteras_del_PArque_Rod%C3%B3,_lago.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Felipe Restrepo Acosta",
+   "view": "street",
+   "file": "/tmp/places-evidence/montevideo/park.jpg",
+   "used": "green lake with low dressed-stone edging, small humped stone arch bridge, big Canary palms, mixed broadleaf trees, lawns beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/36807838",
+   "used": "park is about 900 x 600 m: only the lake corner is modelled, not the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all",
+  "shiftY": 0.05
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    27,
+    0.02
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "colour": "#6f9a5a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 54,
+    "depth": 24,
+    "shape": "rect",
+    "colour": "#2f5a45",
+    "bank": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    2,
+    -3,
+    0.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.8,
+      1.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 11,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 4.2
+    },
+    "colour": "#5b554c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "height": 1.6,
+    "colour": "#7a7365"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.5,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "height": 1.6,
+    "colour": "#7a7365"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -13.2,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 0.5,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#7d786c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    13.2,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 0.5,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#7d786c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 27.200000000000003,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 24.0,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20.8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19.200000000000003,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-community-voting-game",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Only one lake corner of a 900 m park: bridge is a smooth grey arc not dressed stone, trees and palms are low-poly and too dense, close-up photo not matchable at this zoom."
+ }
+}

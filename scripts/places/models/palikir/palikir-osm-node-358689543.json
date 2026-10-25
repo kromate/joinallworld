@@ -1,0 +1,470 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanish_church_in_Kolonia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zykasaa",
+   "view": "street",
+   "file": "/tmp/places-evidence/palikir/tower1.jpg",
+   "used": "slender square weathered stone tower about 16 m, arched belfry openings on the top stage, slits below, small dark dome with cross, roofless ruined nave wall to its left, low stone terrace wall at the foot, grey-cream stained stucco"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/683023964",
+   "used": "nearest building 26 m away: not used as the tower footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#6f7068",
+    "windows": "none",
+    "topColour": "#6f7068"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "z0": 1.6,
+    "height": 12.8,
+    "colour": "#9b988b",
+    "windows": "rect",
+    "topColour": "#7a786d",
+    "topScale": 0.96,
+    "windowShape": "arched",
+    "windowRatio": 0.07,
+    "storeys": 3,
+    "faces": {
+     "front": "windows",
+     "back": "windows",
+     "left": "windows",
+     "right": "windows"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "streak-f",
+   "at": [
+    0,
+    -2.3
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "z0": 2,
+    "height": 11,
+    "colour": "#6d6b60",
+    "windows": "none",
+    "topColour": "#6d6b60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "streak-f2",
+   "at": [
+    1.2,
+    -2.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.1
+    ],
+    "z0": 4,
+    "height": 9,
+    "colour": "#7d7b70",
+    "windows": "none",
+    "topColour": "#7d7b70"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "z0": 13.4,
+    "height": 2.6,
+    "colour": "#a09d90",
+    "windows": "rect",
+    "topColour": "#6f6e64",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "windows",
+     "back": "windows",
+     "left": "windows",
+     "right": "windows"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "z0": 16,
+    "height": 0.3,
+    "colour": "#77756a",
+    "windows": "none",
+    "topColour": "#77756a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap",
+   "at": [
+    0,
+    0,
+    16.3
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.0,
+      0,
+      "#5b5a52"
+     ],
+     [
+      1.9,
+      0.3,
+      "#5b5a52"
+     ],
+     [
+      1.2,
+      0.75
+     ],
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0,
+      1.1
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 17.4,
+    "height": 1.2,
+    "colour": "#3b3b36",
+    "windows": "none",
+    "topColour": "#3b3b36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "z0": 18.0,
+    "height": 0.1,
+    "colour": "#3b3b36",
+    "windows": "none",
+    "topColour": "#3b3b36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-w",
+   "at": [
+    -11,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     14
+    ],
+    "z0": 0,
+    "height": 5.0,
+    "colour": "#7e7b6e",
+    "windows": "none",
+    "topColour": "#55534a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-w2",
+   "at": [
+    -11,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     5
+    ],
+    "z0": 5.0,
+    "height": 1.5,
+    "colour": "#756f62",
+    "windows": "none",
+    "topColour": "#55534a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-e",
+   "at": [
+    -3.2,
+    7
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     10
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#7e7b6e",
+    "windows": "none",
+    "topColour": "#55534a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-e2",
+   "at": [
+    -3.2,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     3
+    ],
+    "z0": 4.2,
+    "height": 2.4,
+    "colour": "#716c60",
+    "windows": "none",
+    "topColour": "#55534a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-end",
+   "at": [
+    -7,
+    12
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.9
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#7a766a",
+    "windows": "rect",
+    "topColour": "#55534a",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "windows"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-end-gable",
+   "at": [
+    -7,
+    12
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.9
+    ],
+    "z0": 6.0,
+    "height": 2.2,
+    "colour": "#6f6a5e",
+    "windows": "none",
+    "topColour": "#55534a",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-stump",
+   "at": [
+    -7.5,
+    2
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#6a665a",
+    "windows": "none",
+    "topColour": "#55534a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-wall",
+   "at": [
+    0,
+    -3.2
+   ],
+   "params": {
+    "rect": [
+     8,
+     1.6
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#6f7068",
+    "windows": "none",
+    "topColour": "#6f7068"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -13,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     -7
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     7,
+     -3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -1
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-osm-node-358689543",
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "critic fixes applied (arched windows on all faces, broken irregular nave attached to tower, darker stone, small dark dome, denser trees) but render queue had no server so not re-rendered or compared"
+ }
+}

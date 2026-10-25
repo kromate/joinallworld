@@ -1,0 +1,114 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-way-445169724",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/445169724",
+   "used": "real 14.5 x 11 m clinic outline (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey rendered Mauritian community health centre, hip roof, covered entrance"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "bands": "#5e8aa3",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3.5,
+    "height": 2.9,
+    "form": "flat",
+    "colour": "#5e8aa3"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.6,
+    "colour": "#f4f1ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline + typical Mauritian clinic; hip roof fitted to bounding rectangle of irregular plan"
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/787815039",
+   "used": "real footprint, 66 x 46 m, name match (two notched wings)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Universidad_An%C3%A1huac_M%C3%A9xico_Sur",
+   "used": "institution only; no exterior photo of this building verified"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9c9a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#7e5f45",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-atrium",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     4
+    ],
+    "height": 13,
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "colour": "#7fa0ad"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     35
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real footprint with typed storeys, stucco and glass colours; no verified exterior photo, atrium position guessed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-community-workshop"
+}

@@ -1,0 +1,92 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/252790917",
+   "used": "angular civic footprint 70 x 58 m, townhall"
+  },
+  {
+   "kind": "text",
+   "used": "brief; nearby street photos show other buildings (a curved gabion-based block) and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "town-hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#7a2a24",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3d42",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c8102e"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "height": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint only; colours and storeys from brief, no photo of this building."
+ }
+}

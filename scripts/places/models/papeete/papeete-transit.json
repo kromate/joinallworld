@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/734654692",
+   "used": "real Gare Maritime outline (119 x 41 m, 2 levels, name-quality match), long wing turned to face the camera"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yuan_Wang_6_in_port_at_Papeete_5.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Michael R Perry",
+   "view": "detail",
+   "file": "/tmp/places-evidence/papeete/port5.jpg",
+   "used": "the quay side only: tent-like sail canopies on slim white posts over the passenger quay, dark paved quay, ship moored alongside, harbour railings. The terminal facade itself is not visible."
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Look_from_the_town_to_the_mountains_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Peter Gill",
+   "view": "street",
+   "file": "/tmp/places-evidence/papeete/town.jpg",
+   "used": "long low white building with a pale roof beyond the harbour car park, big shade trees, mountain backdrop"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 14,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece7d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3d6f9e",
+    "plinth": 0.5,
+    "bands": "#3d6f9e",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ece7d8",
+      "#e2ddcb"
+     ]
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 118,
+    "depth": 26,
+    "water_depth": 30
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -36,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 5,
+    "height": 3.9,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 5,
+    "height": 3.9,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    36,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 5,
+    "height": 3.9,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "kind": "mixed",
+    "density": 0.6
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "width": 7,
+    "colour": "#f2f2ee",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    20,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 8,
+    "colour": "#3d6f9e",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -45,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 6.4,
+    "colour": "#3d6f9e",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -50,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 7,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "spread": 8,
+    "line": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered (queue hung): quay side, canopy and footprint rotation unchecked; terminal facade has no photo"
+ }
+}

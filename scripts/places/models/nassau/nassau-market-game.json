@@ -1,0 +1,848 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Artesanos_-_nassau_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Gervacio Rosales",
+   "view": "front",
+   "file": "/tmp/places-evidence/nassau/pv1.jpg",
+   "used": "street photo 30 m from the venue: small pastel timber-look craft kiosks (yellow, pale blue) with low hip roofs of grey shingle, shopfront hatch with yellow awning, pink paved plaza, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/368833938",
+   "used": "main footprint 15.7 x 10.7 m, bearing 125"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -8.7,
+      -0.4
+     ],
+     [
+      -3.4,
+      8.9
+     ],
+     [
+      8.7,
+      0.4
+     ],
+     [
+      3.4,
+      -8.9
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d98a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e7174",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1,
+    "bottom": 2.8,
+    "colour": "#8fb6d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza-pink",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": -0.44,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8a8a0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8a8a0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass-w",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": -0.42,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a48",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a48",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass-e",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    24,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": -0.42,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a48",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a48",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass-s",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -23
+   ],
+   "rotDeg": 0,
+   "z0": -0.42,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a48",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a48",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-0",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -6.75,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb6d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f5a56",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hatch-0",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -6.75,
+    -15.85
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2522",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2522",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trim-0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4.85,
+    -16.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6.75,
+    -16.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 1.0,
+    "height": 2.4,
+    "colours": [
+     "#f2d23c",
+     "#f2efe6"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rack-0",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    -6.75,
+    -17.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4584a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4584a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -2.25,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d23c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f5a56",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hatch-1",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -2.25,
+    -15.85
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2522",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2522",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trim-1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -0.3500000000000001,
+    -16.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2.25,
+    -16.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 1.0,
+    "height": 2.4,
+    "colours": [
+     "#8fb6d8",
+     "#f2efe6"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rack-1",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    -2.25,
+    -17.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d23c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2d23c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    2.25,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb6d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f5a56",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hatch-2",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    2.25,
+    -15.85
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2522",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2522",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trim-2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.15,
+    -16.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2.25,
+    -16.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 1.0,
+    "height": 2.4,
+    "colours": [
+     "#f2d23c",
+     "#f2efe6"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rack-2",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    2.25,
+    -17.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5aa05a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5aa05a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-3",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    6.75,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d98a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f5a56",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hatch-3",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    6.75,
+    -15.85
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2522",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2522",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trim-3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.65,
+    -16.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6.75,
+    -16.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 1.0,
+    "height": 2.4,
+    "colours": [
+     "#8fb6d8",
+     "#f2efe6"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rack-3",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    6.75,
+    -17.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98a3a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d98a3a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-prop",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -6.75,
+    -16.0
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d23c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2d23c",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -3
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Kiosks now 4x4 m with dark hatch, awning, pink plaza slab and grass; hanging goods are plain coloured rack boxes, no timber siding detail, palms and extra kiosks beyond the cluster not matched to photo."
+ }
+}

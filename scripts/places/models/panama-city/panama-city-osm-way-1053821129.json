@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-1053821129",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1053821129",
+   "used": "real campus outline (about 469 x 271 m, 9.8 ha) drawn as the lawn plate at reduced scale; teaching blocks are a representative group of the new-build campus at the edge of Tocumen, no photo found"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/1053821129",
+   "used": "technical college, Wikidata inception 2019: low modern blocks with ribbon windows and blue accents around open yards"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa05a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-main-a",
+   "params": {
+    "points": [
+     [
+      -26,
+      -3
+     ],
+     [
+      26,
+      -3
+     ],
+     [
+      26,
+      3
+     ],
+     [
+      -26,
+      3
+     ]
+    ],
+    "z0": 0.5,
+    "height": 11,
+    "colour": "#ece8de",
+    "topColour": "#9fa5a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2f6f9e",
+    "storeys": 3,
+    "faces": {
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2f6f9e"
+     }
+    ]
+   },
+   "at": [
+    0,
+    8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-wing-w",
+   "params": {
+    "rect": [
+     6,
+     26
+    ],
+    "z0": 0.5,
+    "height": 11,
+    "colour": "#ece8de",
+    "topColour": "#9fa5a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2f6f9e",
+    "storeys": 3
+   },
+   "at": [
+    -23,
+    -8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-wing-e",
+   "params": {
+    "rect": [
+     6,
+     26
+    ],
+    "z0": 0.5,
+    "height": 11,
+    "colour": "#ece8de",
+    "topColour": "#9fa5a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2f6f9e",
+    "storeys": 3
+   },
+   "at": [
+    23,
+    -8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-lab",
+   "params": {
+    "rect": [
+     22,
+     12
+    ],
+    "z0": 0.5,
+    "height": 7.5,
+    "colour": "#f4f2ec",
+    "topColour": "#9fa5a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#2f6f9e",
+    "storeys": 2
+   },
+   "at": [
+    -6,
+    -42
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-entry",
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "z0": 0.5,
+    "height": 9,
+    "colour": "#9ec1d6",
+    "topColour": "#2f6f9e",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 2
+   },
+   "at": [
+    0,
+    3
+   ]
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -14,
+    4.9,
+    0.5
+   ],
+   "params": {
+    "length": 14,
+    "height": 10,
+    "pitch": 1.2,
+    "depth": 0.4,
+    "colour": "#2f6f9e"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.6,
+    "colour": "#2f6f9e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -30,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 3,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -52,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 2.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; blocks are representative on a reduced-scale campus plate; not rendered (queue hung)"
+ }
+}

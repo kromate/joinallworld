@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-airport-quito-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Acceso_NAIQ.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jordy Vaca",
+   "view": "front",
+   "file": "/tmp/places-evidence/quito/airport.jpg",
+   "used": "landside access: stone-clad end wall with blank sign band, long low blue-grey canopy over a glazed ground floor, row of masts with stay cables, taller sloping metal-roofed upper volume with wide overhang"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/210400359",
+   "used": "overall size only (449 x 125 m): a 100 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 2.1,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     84,
+     34
+    ]
+   },
+   "at": [
+    -8,
+    10
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "bands": "#c4bdad"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 3.5,
+    "colour": "#7d7870",
+    "material": "metal-sheet",
+    "overhang": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     84,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    -14
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f95a3",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#47586c",
+    "material": "metal-sheet",
+    "overhang": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-end",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    51,
+    -4
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b48a",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#b39f78"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa4",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    51,
+    -19.6,
+    8
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.8,
+    "bottom": 0,
+    "colour": "#cfc7b2",
+    "frameColour": "#c9b48a",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -9,
+     7
+    ],
+    "end": [
+     -6,
+     -9,
+     7
+    ],
+    "count": 8,
+    "of": {
+     "type": "core/tower",
+     "params": {
+      "width": 0.45,
+      "height": 7,
+      "colour": "#8a9096",
+      "cap": "flat",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "circle",
+    "radius": 0.08,
+    "points": [
+     [
+      -48,
+      -9,
+      14
+     ],
+     [
+      -6,
+      -9,
+      14
+     ],
+     [
+      -2,
+      4,
+      11
+     ]
+    ],
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 10,
+    "height": 7,
+    "columns": 10,
+    "colour": "#3f5068"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -38,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#3a6d6f",
+    "count": 1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "circle",
+    "radius": 0.06,
+    "points": [
+     [
+      -40,
+      -9,
+      14
+     ],
+     [
+      -37,
+      -1,
+      11.2
+     ],
+     [
+      -36,
+      6,
+      10.6
+     ]
+    ],
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "circle",
+    "radius": 0.06,
+    "points": [
+     [
+      -28,
+      -9,
+      14
+     ],
+     [
+      -25,
+      -1,
+      11.2
+     ],
+     [
+      -24,
+      6,
+      10.6
+     ]
+    ],
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "circle",
+    "radius": 0.06,
+    "points": [
+     [
+      -16,
+      -9,
+      14
+     ],
+     [
+      -13,
+      -1,
+      11.2
+     ],
+     [
+      -12,
+      6,
+      10.6
+     ]
+    ],
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    51,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   116,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "upper shed roof and masts approximate, stays simplified, canopy colour and forecourt generic"
+ }
+}

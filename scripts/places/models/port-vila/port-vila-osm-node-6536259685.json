@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-node-6536259685",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/332765370",
+   "used": "nearest building 6 m away, 17.8 x 12.4 m, bearing 5 deg: bar pavilion size and rotation"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "open thatched beachfront bar on sand with umbrellas; no photo of the venue found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "height": 0.7,
+    "colour": "#b59a73",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 5,
+   "z0": 0.7,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9c9a8",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#8fb7c4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b6b4a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -1,
+    -6,
+    0.7
+   ],
+   "rotDeg": 5,
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 3.0,
+    "columns": 4,
+    "colour": "#8b6b4a"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4,
+    "umbrellas": true,
+    "loungers": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic thatched beach bar sized from nearest OSM building"
+ }
+}

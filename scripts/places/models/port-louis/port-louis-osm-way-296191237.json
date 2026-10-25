@@ -1,0 +1,477 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-way-296191237",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mauritius_anjalay_coopen_stadium.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Arne M\u00fcseler",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/port-louis/anjalay.jpg",
+   "used": "red athletics track around a dry grass pitch, one roofed main stand with blue/yellow/red seat blocks and a pale blue-grey roof, open grey bowl stands on the other sides, white concourse building under the near stand, tall floodlight masts outside, ring road"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9126798",
+   "used": "overall size (217 x 161 m oval) and bowl orientation (scene scaled to 0.62 of real size)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      52.08,
+      0.0
+     ],
+     [
+      49.53,
+      9.58
+     ],
+     [
+      42.14,
+      18.22
+     ],
+     [
+      30.61,
+      25.08
+     ],
+     [
+      16.1,
+      29.48
+     ],
+     [
+      0.0,
+      31.0
+     ],
+     [
+      -16.1,
+      29.48
+     ],
+     [
+      -30.61,
+      25.08
+     ],
+     [
+      -42.14,
+      18.22
+     ],
+     [
+      -49.53,
+      9.58
+     ],
+     [
+      -52.08,
+      0.0
+     ],
+     [
+      -49.53,
+      -9.58
+     ],
+     [
+      -42.14,
+      -18.22
+     ],
+     [
+      -30.61,
+      -25.08
+     ],
+     [
+      -16.1,
+      -29.48
+     ],
+     [
+      -0.0,
+      -31.0
+     ],
+     [
+      16.1,
+      -29.48
+     ],
+     [
+      30.61,
+      -25.08
+     ],
+     [
+      42.14,
+      -18.22
+     ],
+     [
+      49.53,
+      -9.58
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b5533f",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0.0,
+    0.0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      40.92,
+      0.0
+     ],
+     [
+      38.92,
+      6.13
+     ],
+     [
+      33.11,
+      11.66
+     ],
+     [
+      24.05,
+      16.05
+     ],
+     [
+      12.65,
+      18.87
+     ],
+     [
+      0.0,
+      19.84
+     ],
+     [
+      -12.65,
+      18.87
+     ],
+     [
+      -24.05,
+      16.05
+     ],
+     [
+      -33.11,
+      11.66
+     ],
+     [
+      -38.92,
+      6.13
+     ],
+     [
+      -40.92,
+      0.0
+     ],
+     [
+      -38.92,
+      -6.13
+     ],
+     [
+      -33.11,
+      -11.66
+     ],
+     [
+      -24.05,
+      -16.05
+     ],
+     [
+      -12.65,
+      -18.87
+     ],
+     [
+      -0.0,
+      -19.84
+     ],
+     [
+      12.65,
+      -18.87
+     ],
+     [
+      24.05,
+      -16.05
+     ],
+     [
+      33.11,
+      -11.66
+     ],
+     [
+      38.92,
+      -6.13
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#8c8a55",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     29.76,
+     34.1
+    ],
+    "end": [
+     -29.76,
+     34.1
+    ],
+    "rows": 10,
+    "seatColour": "#3f6aa0",
+    "seatColours": [
+     "#3f6aa0",
+     "#e8c33a",
+     "#c0392b",
+     "#e8c33a",
+     "#3f6aa0"
+    ],
+    "blocks": 5,
+    "canopy": {
+     "height": 13,
+     "depth": 14,
+     "colour": "#9fb2c4",
+     "slopeDeg": 3,
+     "supports": 8
+    },
+    "backWall": 2.0,
+    "under": "solid",
+    "underColour": "#ece9e2",
+    "concreteColour": "#d9d4c7",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "stand",
+   "id": "far-west-bowl",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -29.76,
+     0.0
+    ],
+    "radius": 26.04,
+    "radiusY": 35.96,
+    "startDeg": 100,
+    "endDeg": 260,
+    "rows": 10,
+    "seatColour": "#8e969c",
+    "under": "solid",
+    "underColour": "#ece9e2",
+    "concreteColour": "#cfcbc0",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-bowl",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "centre": [
+     29.76,
+     0.0
+    ],
+    "radius": 26.04,
+    "radiusY": 35.96,
+    "startDeg": -80,
+    "endDeg": 80,
+    "rows": 10,
+    "seatColour": "#8e969c",
+    "under": "open",
+    "concreteColour": "#cfcbc0",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "stand",
+   "id": "near-stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     -29.76,
+     -34.1
+    ],
+    "end": [
+     29.76,
+     -34.1
+    ],
+    "rows": 9,
+    "seatColour": "#8e969c",
+    "under": "solid",
+    "underColour": "#f2efe8",
+    "concreteColour": "#d9d4c7",
+    "backWall": 1.0,
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "near-concourse",
+   "footprint": {
+    "rect": [
+     43.4,
+     4.3
+    ]
+   },
+   "at": [
+    0.0,
+    -42.78
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     7.4,
+     9.9
+    ]
+   },
+   "at": [
+    64.48,
+    -18.6
+   ],
+   "z0": 3,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7a85"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66.96,
+    -32.24,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    68.2,
+    -37.2,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58.9,
+    43.4,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58.9,
+    44.64,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -74,
+     -43
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     73,
+     37
+    ]
+   }
+  ],
+  "forecourt": "none",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stands simplified to arcs plus a straight roofed main stand; scene scaled to 0.62; no ring road, concourse arcade detail or cantilever roof struts"
+ }
+}

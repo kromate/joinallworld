@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/113775364",
+   "used": "real 35.5 x 10 m nave outline, bearing 52 deg"
+  },
+  {
+   "kind": "text",
+   "used": "Commons search found no exterior photo of this church; the geo photo supplied shows sea water, not the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bands": "#a8a290"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5473a",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    -15,
+    -12.5
+   ],
+   "rotDeg": 38,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5473a",
+    "material": "corrugated",
+    "rise": 4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the church was found; hall from the real outline, small front tower and red corrugated roof are typed guesses."
+ }
+}

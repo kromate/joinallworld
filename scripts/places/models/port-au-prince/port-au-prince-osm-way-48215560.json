@@ -1,0 +1,446 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palacio_presidencial_de_Haiti.jpg",
+   "licence": "CC BY 2.0",
+   "author": "MichelleWalz (Michelle Walz Eriksson)",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-au-prince/pal1.jpg",
+   "used": "pre-2010 palace: white two-storey E-plan, centre pavilion with four-column pedimented portico and tall drum dome with lantern, low shallow domes on end pavilions, balustraded parapet, railing with gate on a low white wall, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48215560",
+   "used": "overall size 88 x 54 m (OSM shows only the ruins comb outline, so the pre-2010 form is composed from the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     76,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.6,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 0.5,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-pavilion",
+   "footprint": {
+    "rect": [
+     24,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 0.5,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    -38,
+    0.5
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "bay": 3.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 0.5,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    38,
+    0.5
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "bay": 3.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 0.5,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing-west",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    -30,
+    25
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 0.5,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing-east",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    30,
+    20
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "overhang": 0.5,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/portico",
+   "id": "portico",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 17,
+    "depth": 5,
+    "height": 15,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#f6f4ee",
+    "roofColour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "centre-dome",
+   "at": [
+    0,
+    0.5,
+    17
+   ],
+   "params": {
+    "radius": 8,
+    "height": 8,
+    "profile": "hemi",
+    "drum": 4.5,
+    "drumRadius": 7.5,
+    "lantern": 4,
+    "finial": 4,
+    "colour": "#f6f4ee",
+    "drumColour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "dome-west",
+   "at": [
+    -38,
+    0.5,
+    16
+   ],
+   "params": {
+    "radius": 7,
+    "height": 3.5,
+    "profile": "hemi",
+    "drum": 1.8,
+    "drumRadius": 7.2,
+    "lantern": 0,
+    "finial": 1,
+    "colour": "#f6f4ee",
+    "drumColour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "dome-east",
+   "at": [
+    38,
+    0.5,
+    16
+   ],
+   "params": {
+    "radius": 7,
+    "height": 3.5,
+    "profile": "hemi",
+    "drum": 1.8,
+    "drumRadius": 7.2,
+    "lantern": 0,
+    "finial": 1,
+    "colour": "#f6f4ee",
+    "drumColour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 2.6,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#2a2a2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    0,
+    0.5,
+    30
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#2b4a9a",
+    "colours": [
+     "#2b4a9a",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "low-wall",
+   "at": [
+    0,
+    -27.2,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 0.9,
+    "thickness": 0.6,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drive",
+   "params": {
+    "rect": [
+     6,
+     14
+    ],
+    "height": 0.05,
+    "colour": "#b5b0a4",
+    "topColour": "#b5b0a4"
+   },
+   "at": [
+    0,
+    -20
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -21
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -21
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     -24
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-way-48215560",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Domes are plain ribbed hemispheres without lantern detail or ribs on drum; no ornate green iron gate, pedimented end pavilions or balustraded parapet; fence is simple railing on low white wall."
+ }
+}

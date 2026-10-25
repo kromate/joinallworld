@@ -1,0 +1,177 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/199148896",
+   "used": "real 6-point outline, 217 x 86 m, bearing 93"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede4cf",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#b5523b",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9b5aa",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -8,
+    -38,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 7,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#b5523b"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    6,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -40,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -37,
+    4.8
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -45
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-199148896",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists; massing from OSM outline and brief, facade colours typed"
+ }
+}

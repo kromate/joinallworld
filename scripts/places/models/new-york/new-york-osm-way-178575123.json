@@ -1,0 +1,1409 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-178575123",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Riverside_Park_03.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Momos",
+   "view": "street",
+   "file": "/tmp/places-evidence/new-york/rp1.jpg",
+   "used": "curving grey asphalt promenade with rows of slatted benches, heavy pink flowering cherry trees along it, low rough stone retaining wall, green lawn, black lamp standards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RPPC_Riverside_Park_north_from_116th_St,_New_York_A.jpg",
+   "licence": "Public domain",
+   "author": "Thaddeus Wilkerson",
+   "view": "street",
+   "file": "/tmp/places-evidence/new-york/rp2.jpg",
+   "used": "tiered river-side park with a round colonnaded drum and low dome (the Soldiers' and Sailors' form) among trees above the river"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/178575123",
+   "used": "park identity; the 2.7 km ribbon cannot be shown, so a representative promenade, terrace and monument segment is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 14,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      8.5,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -40,
+      -11.98163183100706,
+      0.1
+     ],
+     [
+      -30,
+      -11.795938477422345,
+      0.1
+     ],
+     [
+      -20,
+      -10.96070741278415,
+      0.1
+     ],
+     [
+      -10,
+      -9.618858254244499,
+      0.1
+     ],
+     [
+      0,
+      -8.0,
+      0.1
+     ],
+     [
+      10,
+      -6.381141745755501,
+      0.1
+     ],
+     [
+      20,
+      -5.039292587215852,
+      0.1
+     ],
+     [
+      30,
+      -4.204061522577655,
+      0.1
+     ],
+     [
+      40,
+      -4.01836816899294,
+      0.1
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#85827d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     18
+    ],
+    "height": 1.0,
+    "colour": "#6f9a4c",
+    "topColour": "#78a655"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     18
+    ],
+    "height": 3.2,
+    "colour": "#6a964a",
+    "topColour": "#74a152"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    55,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     12
+    ],
+    "height": 5.2,
+    "colour": "#668f48",
+    "topColour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "height": 1.3,
+    "thickness": 0.9,
+    "kind": "wall",
+    "colour": "#7a6a58"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     90
+    ],
+    "height": 0.04,
+    "colour": "#5d86a5",
+    "topColour": "#5d86a5"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    28,
+    0.0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.55,
+    "run": 1.3,
+    "count": 6,
+    "colour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    40,
+    3.2
+   ],
+   "params": {
+    "n": 14,
+    "radius": 12.5,
+    "height": 2.2,
+    "colour": "#bdb6a6",
+    "topColour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    40,
+    5.4
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#c4bdad",
+    "profile": [
+     [
+      11,
+      0
+     ],
+     [
+      11,
+      3.2
+     ],
+     [
+      10,
+      3.5
+     ],
+     [
+      8.8,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    40,
+    9.2
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "count": 14,
+    "radius": 8.6,
+    "startDeg": 0,
+    "endDeg": 334,
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 6,
+      "radius": 0.7,
+      "height": 8.8,
+      "colour": "#e7e2d4",
+      "topColour": "#e7e2d4"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 100
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    40,
+    18.0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d9d3c3",
+    "profile": [
+     [
+      9.8,
+      0
+     ],
+     [
+      9.8,
+      0.9
+     ],
+     [
+      9.2,
+      1.4
+     ],
+     [
+      8.4,
+      1.9
+     ],
+     [
+      6.6,
+      3.2
+     ],
+     [
+      4,
+      4.2
+     ],
+     [
+      0.4,
+      4.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -30,
+    -7.495938477422345,
+    0
+   ],
+   "rotDeg": 183.0083392238353,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -25,
+    -7.152986917992345,
+    0
+   ],
+   "rotDeg": 183.0083392238353,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -27.5,
+    -15.995938477422346,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -20,
+    -6.6607074127841495,
+    0
+   ],
+   "rotDeg": 186.3943831566478,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -15,
+    -6.04038909176185,
+    0
+   ],
+   "rotDeg": 186.3943831566478,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -17.5,
+    -15.160707412784149,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -10,
+    -5.318858254244499,
+    0
+   ],
+   "rotDeg": 188.6656039326061,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -5,
+    -4.527318238194565,
+    0
+   ],
+   "rotDeg": 188.6656039326061,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -7.5,
+    -13.8188582542445,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    0,
+    -3.7,
+    0
+   ],
+   "rotDeg": 189.46232220802563,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    5,
+    -2.8726817618054357,
+    0
+   ],
+   "rotDeg": 189.46232220802563,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    2.5,
+    -12.2,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    10,
+    -2.0811417457555015,
+    0
+   ],
+   "rotDeg": 188.6656039326061,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    15,
+    -1.3596109082381513,
+    0
+   ],
+   "rotDeg": 188.6656039326061,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    12.5,
+    -10.581141745755502,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    20,
+    -0.7392925872158518,
+    0
+   ],
+   "rotDeg": 186.3943831566478,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    25,
+    -0.2470130820076557,
+    0
+   ],
+   "rotDeg": 186.3943831566478,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    22.5,
+    -9.239292587215852,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    30,
+    0.09593847742234463,
+    0
+   ],
+   "rotDeg": 183.0083392238353,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    35,
+    0.2747308006327467,
+    0
+   ],
+   "rotDeg": 183.0083392238353,
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    32.5,
+    -8.404061522577656,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    -3.1777799170150196,
+    0
+   ],
+   "params": {
+    "n": 7,
+    "radius": 0.55,
+    "height": 4.6,
+    "topScale": 0.7,
+    "colour": "#4d4036",
+    "topColour": "#4d4036"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -28,
+    -4.67777991701502,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c85c92",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      6.4,
+      2.4
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      5.6,
+      5.8
+     ],
+     [
+      3.0,
+      7.0
+     ],
+     [
+      0.1,
+      7.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -25.4,
+    -2.1777799170150196,
+    5.4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d474a6",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.0,
+      0.5
+     ],
+     [
+      5.0,
+      2.0
+     ],
+     [
+      5.2,
+      3.4
+     ],
+     [
+      4.0,
+      4.8
+     ],
+     [
+      0.1,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -28,
+    -3.1777799170150196,
+    3.5
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c85c92",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      0.1,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -1.9734792122789475,
+    0
+   ],
+   "params": {
+    "n": 7,
+    "radius": 0.55,
+    "height": 4.6,
+    "topScale": 0.7,
+    "colour": "#4d4036",
+    "topColour": "#4d4036"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -16,
+    -3.4734792122789475,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d474a6",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      6.4,
+      2.4
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      5.6,
+      5.8
+     ],
+     [
+      3.0,
+      7.0
+     ],
+     [
+      0.1,
+      7.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -13.4,
+    -0.9734792122789475,
+    5.4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#b84d86",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.0,
+      0.5
+     ],
+     [
+      5.0,
+      2.0
+     ],
+     [
+      5.2,
+      3.4
+     ],
+     [
+      4.0,
+      4.8
+     ],
+     [
+      0.1,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -16,
+    -1.9734792122789475,
+    3.5
+   ],
+   "lod": [
+    9
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d474a6",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      0.1,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -0.16358453077365986,
+    0
+   ],
+   "params": {
+    "n": 7,
+    "radius": 0.55,
+    "height": 4.6,
+    "topScale": 0.7,
+    "colour": "#4d4036",
+    "topColour": "#4d4036"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4,
+    -1.6635845307736599,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#b84d86",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      6.4,
+      2.4
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      5.6,
+      5.8
+     ],
+     [
+      3.0,
+      7.0
+     ],
+     [
+      0.1,
+      7.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -1.4,
+    0.8364154692263401,
+    5.4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d97fae",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.0,
+      0.5
+     ],
+     [
+      5.0,
+      2.0
+     ],
+     [
+      5.2,
+      3.4
+     ],
+     [
+      4.0,
+      4.8
+     ],
+     [
+      0.1,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4,
+    -0.16358453077365986,
+    3.5
+   ],
+   "lod": [
+    9
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#b84d86",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      0.1,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    1.8087787871846093,
+    0
+   ],
+   "params": {
+    "n": 7,
+    "radius": 0.55,
+    "height": 4.6,
+    "topScale": 0.7,
+    "colour": "#4d4036",
+    "topColour": "#4d4036"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8,
+    0.30877878718460927,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d97fae",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      6.4,
+      2.4
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      5.6,
+      5.8
+     ],
+     [
+      3.0,
+      7.0
+     ],
+     [
+      0.1,
+      7.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.6,
+    2.8087787871846093,
+    5.4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#c85c92",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.0,
+      0.5
+     ],
+     [
+      5.0,
+      2.0
+     ],
+     [
+      5.2,
+      3.4
+     ],
+     [
+      4.0,
+      4.8
+     ],
+     [
+      0.1,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8,
+    1.8087787871846093,
+    3.5
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d97fae",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      0.1,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    3.4607074127841484,
+    0
+   ],
+   "params": {
+    "n": 7,
+    "radius": 0.55,
+    "height": 4.6,
+    "topScale": 0.7,
+    "colour": "#4d4036",
+    "topColour": "#4d4036"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    20,
+    1.9607074127841484,
+    4.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c85c92",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      6.4,
+      2.4
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      5.6,
+      5.8
+     ],
+     [
+      3.0,
+      7.0
+     ],
+     [
+      0.1,
+      7.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22.6,
+    4.460707412784148,
+    5.4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d474a6",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.0,
+      0.5
+     ],
+     [
+      5.0,
+      2.0
+     ],
+     [
+      5.2,
+      3.4
+     ],
+     [
+      4.0,
+      4.8
+     ],
+     [
+      0.1,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    20,
+    3.4607074127841484,
+    3.5
+   ],
+   "lod": [
+    9
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c85c92",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      0.1,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    50,
+    3.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#6f9a4c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    50,
+    3.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#6f9a4c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    50,
+    3.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#6f9a4c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    50,
+    3.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#6f9a4c"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   84,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Recomposed with a curving asphalt promenade, slatted benches and lamps along it, dense pink blossom canopies on thick trunks, tiered terraces, a river strip and a larger colonnaded drum with dome and stair; the final reduced-scale version could not be re-rendered (render queue had no live server), so LOD1 budget and composition are unconfirmed visually; camera fit-to-bounds still frames the whole segment so the path reads small; benches and lamps are small."
+ }
+}

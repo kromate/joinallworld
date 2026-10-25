@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Temple_of_Israel_-_Rockaway_Beach_-_01_-_Front.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Peter Greenberg",
+   "view": "front",
+   "file": "/tmp/places-evidence/new-york/temple.jpg",
+   "used": "tall tan-brick gable front with limestone cornice and pediment, big arched window with limestone surround, two small arched side windows, yellow-painted ground storey with white Greek-key band, two white columns carrying a small pediment over the door, framed grilled windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/0",
+   "used": "containing building 31.8 x 12.4 m, 14.4 m high: the narrow gable end faces the street (way id not in facts; outline taken from facts/new-york.json)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 32,
+  "aspect": 0.667,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12.4,
+     31.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98a55",
+    "windows": "none",
+    "bands": "#d8c9a4",
+    "cornice": false,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 14,
+    "rise": 2.0,
+    "colour": "#a98a55",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-ground",
+   "footprint": {
+    "rect": [
+     13.2,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -16.2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2a92c",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ede0"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -16.6,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 1.3,
+    "height": 4.0,
+    "columns": 2,
+    "pediment": true,
+    "steps": 1,
+    "colour": "#f1ede0",
+    "roofColour": "#f1ede0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.6,
+     0.3
+    ],
+    "z0": 10.6,
+    "height": 1.4,
+    "colour": "#e0d2ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.9,
+     0.3
+    ],
+    "z0": 12.0,
+    "height": 0.25,
+    "colour": "#e0d2ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.3
+    ],
+    "z0": 5.2,
+    "height": 7.0,
+    "colour": "#e0d2ae"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -16.2,
+    5.6
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch",
+    "trim": "#e0d2ae"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -4.4,
+    -16.0,
+    6.8
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.8,
+    "kind": "arch",
+    "trim": "#e0d2ae"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    4.4,
+    -16.0,
+    6.8
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.8,
+    "kind": "arch",
+    "trim": "#e0d2ae"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -16.0,
+    12.6
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.6,
+    "kind": "arch",
+    "trim": "#e0d2ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.62,
+    0
+   ],
+   "params": {
+    "rect": [
+     13.4,
+     0.12
+    ],
+    "z0": 3.9,
+    "height": 0.7,
+    "colour": "#f1ede0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.62,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 3.5,
+    "colour": "#c79a5a"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -4.4,
+    -16.6,
+    1.0
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 2.4,
+    "kind": "arch",
+    "trim": "#f1ede0"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    4.4,
+    -16.6,
+    1.0
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 2.4,
+    "kind": "arch",
+    "trim": "#f1ede0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     7.2,
+     -19
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   50,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "low gable, frieze band, tall arched window with limestone surround, door pediment and Greek-key band added; arched windows are pointed not round-headed, frieze reads as a brick slab, oculus sits proud above the gable, no radial mullions or carved ornament"
+ }
+}

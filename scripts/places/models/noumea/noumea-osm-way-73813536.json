@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-way-73813536",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SaintLouisEglise1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Torbenbrinker",
+   "view": "side",
+   "file": "/tmp/places-evidence/noumea/sl1.jpg",
+   "used": "white nave under steep red roof, square white tower at the west end with tall red pyramidal spire, two small white gabled bays with red edge trim on the nave, long lower verandah wing with red lean-to roof in front, arched windows, tropical garden"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SaintLouisEglise2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Torbenbrinker",
+   "view": "interior",
+   "file": "/tmp/places-evidence/noumea/sl2.jpg",
+   "used": "pointed-arch window shape only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/73813536",
+   "used": "overall extent about 32 x 20 m and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    3,
+    5
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "pointed-arch",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b8312f",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay1",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -1,
+    -1.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f3f0e8",
+    "material": "corrugated",
+    "pitch": 45,
+    "overhang": 0.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay2",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -1.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f3f0e8",
+    "material": "corrugated",
+    "pitch": 45,
+    "overhang": 0.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     34,
+     6
+    ]
+   },
+   "at": [
+    2,
+    -6.5
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3d3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#d9d2bd"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b8312f",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    -12.5,
+    5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ec",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b8312f",
+    "material": "corrugated",
+    "rise": 12,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    -12.5,
+    5,
+    24
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#5a4a40",
+    "profile": [
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      2.2
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Verandah wing windows are plain rather than an open arcaded gallery; tower louvre/bell opening simplified; no mountain backdrop or araucaria trees; footprint is a simplified composition, not the irregular OSM outline."
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-387387459",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/387387459",
+   "used": "footprint of a zigzag, stepped run of classroom wings (about 76 x 35 m); no photo of the building found (Commons has none, brief has none)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classroom-block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "glassColour": "#5d7f9e",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": {
+     "colour": "#2a4f8a",
+     "height": 0.5
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 2.0,
+      "width": 3.0,
+      "every": 6,
+      "slab": 0.25,
+      "railKind": "solid",
+      "colour": "#2a4f8a",
+      "railColour": "#ffffff",
+      "floors": "upper",
+      "continuous": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     22
+    ],
+    "height": 0.08,
+    "colour": "#5f7f5a",
+    "top": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -18,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     40
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (render queue hung). Footprint only, no photo exists; colours are a guess."
+ }
+}

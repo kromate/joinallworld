@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/325278483",
+   "used": "19 x 12 m footprint of the open shelter (nearest match, unnamed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a07a52",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c7b55",
+    "material": "thatch",
+    "rise": 2.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    24,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     2
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Game placeholder; open timber shelter on OSM footprint plus bandstand, no real place to compare."
+ }
+}

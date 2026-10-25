@@ -1,0 +1,226 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:San_Lorenzo_Tezonco.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mashpics",
+   "view": "front",
+   "file": "/tmp/places-evidence/mexico-city/175507039_1.jpg",
+   "used": "two pale-concrete slab blocks with a glazed long face, steel-blue canted roof edges, orange balcony stairs, paved plaza between"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/175507039",
+   "used": "campus footprint scale; one block pair modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 8,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab-right",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    16,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cfcabb",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f7690",
+    "overhang": 2,
+    "pitchDeg": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    30
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f9a9a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "curtain",
+     "right": "curtain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f7690",
+    "overhang": 2.5,
+    "pitchDeg": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-end",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d4c4",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7690",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       3.5,
+       2.4
+      ]
+     },
+     "height": 0.5,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#d99a2b",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d99a2b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28.5,
+     -3,
+     4
+    ],
+    "end": [
+     -28.5,
+     -3,
+     20
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    16,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#b8342c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-osm-way-175507039",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glass wall is a flat curtain without louvres; balconies only on slab; red stair is a simple flight; roofs are monopitch not canted-wing"
+ }
+}

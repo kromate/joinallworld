@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pago-pago",
+ "venueId": "pago-pago-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Commons Pago_Park_Soccer_Stadium.png (CC BY-SA 3.0, Oceania Football), a football pitch: only the setting taken (mown grass banks, palms, small green-stepped concrete stand); not compared",
+   "ref": "https://commons.wikimedia.org/wiki/File:Pago_Park_Soccer_Stadium.png"
+  },
+  {
+   "kind": "text",
+   "ref": "wikidata Q21848610",
+   "used": "existence and type of park; no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "id": "fale",
+   "at": [
+    -12,
+    2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 2.6,
+    "posts": 10,
+    "colour": "#c9a77c",
+    "cap_colour": "#a33b2d"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "fale2",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.0,
+    "roof": "hip",
+    "rise": 2.0,
+    "posts": 6,
+    "colour": "#c9a77c",
+    "cap_colour": "#a33b2d"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2f4f9a",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "plinthHeight": 1.8,
+    "colour": "#6b5a3c",
+    "plinthColour": "#d9d4c7"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    30,
+    16
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ddc9",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9bb8a3",
+    "parapet": 0.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 14,
+  "treeKind": "palm",
+  "extent": [
+   100,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the actual park; layout (fale shelters, flags, statue, small stand, palms) is typed from the brief and Wikidata only; no OSM outline."
+ }
+}

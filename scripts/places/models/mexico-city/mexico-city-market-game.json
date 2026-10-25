@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Corporativo_Toreo_Parque_Central.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tbhotch",
+   "view": "street",
+   "file": "/tmp/places-evidence/mexico-city/w59-toreo.jpg",
+   "used": "white faceted diagonal-grid podium skin with a curved canopy edge, tall office slab behind in blue-grey glass with dark vertical fin cladding on one side and a stepped glazed top, lower tower beside it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1140049541",
+   "used": "podium footprint (264 x 163 m), auto-fitted to the 118 m clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe9e3",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       6,
+       6
+      ],
+      "colours": [
+       "#eceae4",
+       "#d9d7d0",
+       "#f4f3ee"
+      ],
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e6e4de",
+    "material": "membrane",
+    "rise": 6,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     20
+    ],
+    "height": 108,
+    "colour": "#6f8296",
+    "windows": "none",
+    "windowRatio": 0.8,
+    "storeys": 10,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "colour": "#2e3841"
+     },
+     {
+      "type": "floors",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "colours": [
+       "#5f7f9a",
+       "#7f9fb6"
+      ]
+     }
+    ],
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    38,
+    108
+   ],
+   "params": {
+    "rect": [
+     20,
+     16
+    ],
+    "height": 14,
+    "colour": "#5f8fb0",
+    "windows": "none",
+    "windowRatio": 0.85,
+    "storeys": 2,
+    "glassColour": "#5a89a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     22
+    ],
+    "height": 62,
+    "colour": "#6c8195",
+    "windows": "none",
+    "windowRatio": 0.75,
+    "storeys": 5,
+    "glassColour": "#62829b",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#4f6477",
+       "#6a8296"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     22
+    ],
+    "height": 74,
+    "colour": "#6c8195",
+    "windows": "none",
+    "windowRatio": 0.75,
+    "storeys": 5,
+    "glassColour": "#62829b",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#4f6477",
+       "#6a8296"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -52,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 30,
+    "depth": 8,
+    "height": 6,
+    "colour": "#dcdad3",
+    "axis": "x"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -60
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -60
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   124,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Facets approximated with a panel grid, not true diagonals; roof ramp is a simple shed; stepped notches only as a smaller top block."
+ }
+}

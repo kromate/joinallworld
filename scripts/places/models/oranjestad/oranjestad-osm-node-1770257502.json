@@ -1,0 +1,129 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/639839348",
+   "used": "12.6 x 11.7 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true,
+    "fit": 12.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d160",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523b",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "height": 2.7,
+    "colours": [
+     "#6b7b8c",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7.5,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#6b7b8c",
+    "posts": true
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-1770257502",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; yellow hip-roofed hall from OSM footprint, details typical"
+ }
+}

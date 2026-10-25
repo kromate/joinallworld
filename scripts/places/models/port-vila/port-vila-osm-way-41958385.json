@@ -1,0 +1,365 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-way-41958385",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Photo DSCN0145_(9476501064)_(2).jpg (CC BY 2.0, Julie Lyn), campus colour language only: white walls, green window frames, white corrugated roofs on timber-post walkways, a green gabled hall behind (no identified block)"
+  },
+  {
+   "kind": "text",
+   "used": "Photo DSCN0214_(9476640116)_(2).jpg (CC BY 2.0, Julie Lyn), library interior: steel roof trusses, green-framed louvre windows (colour and window type only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41958385",
+   "used": "campus polygon is 580 x 224 m, too large to model: one typical block cluster is shown, not the real layout"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 16,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9de",
+    "windows": "louvre",
+    "windowRatio": 0.4,
+    "bands": "#3f7f5e",
+    "plinth": 0.5,
+    "trimColour": "#3f7f5e",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece9de",
+       "#e0ddcf"
+      ]
+     }
+    ],
+    "faces": {
+     "front": "louvre",
+     "back": "louvre",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#dfe1dc",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     13,
+     34
+    ]
+   },
+   "at": [
+    -26,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9de",
+    "windows": "louvre",
+    "windowRatio": 0.4,
+    "bands": "#3f7f5e",
+    "plinth": 0.5,
+    "trimColour": "#3f7f5e",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece9de",
+       "#e0ddcf"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#dfe1dc",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    32,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4f8f6e",
+    "trimColour": "#3f7f5e",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e6e2",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    26,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f8f6a",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e6e2",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "width": 3,
+    "height": 3.0,
+    "colour": "#b8682e",
+    "roofColour": "#e4e6e2"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -2,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "width": 3,
+    "height": 3.0,
+    "colour": "#b8682e",
+    "roofColour": "#e4e6e2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 5.0,
+    "colour": "#9b9a8e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 2.0,
+    "colour": "#2f6f58"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of an identified building; one plausible block cluster (L classroom range, library, hall, walkways) using campus colours from nearby photos, not the real layout of the 580 m campus."
+ }
+}

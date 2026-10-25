@@ -1,0 +1,611 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Templo_Mormon_en_Panama_por_Dott.jpeg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Tatiana Salazar",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/temple.jpg",
+   "used": "grey-beige stone massing with cornice bands, stepped tower narrowing in tiers to a gilded angel Moroni on a thin pinnacle, arched entrance porch at left with gate, tall narrow windows, low grey wall with pillars, palms and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/379779318",
+   "used": "footprint scale (about 39 x 33 m), irregular outline not copied"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "punched",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "windowRatio": 0.05,
+    "bay": 4.5,
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "pointed-arch",
+     "right": "pointed-arch"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -17,
+    -4
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "punched",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "windowRatio": 0.06,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    17,
+    -4
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "punched",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "windowRatio": 0.06,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -8,
+    -10
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "none",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 11,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "punched",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "windowRatio": 0.05,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 19,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "punched",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "windowRatio": 0.07,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     4.6,
+     4.6
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 26,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a498",
+    "windows": "punched",
+    "trimColour": "#bdb8aa",
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#7f93a6",
+    "windowRatio": 0.1,
+    "bay": 2.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "z0": 31,
+    "height": 8,
+    "colour": "#a9a498",
+    "topColour": "#cfcabc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-cap",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 39,
+    "height": 0.5,
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "moroni-body",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "colour": "#d6a92f",
+    "sections": [
+     {
+      "z": 39.5,
+      "rect": [
+       0.8,
+       0.6
+      ]
+     },
+     {
+      "z": 41.0,
+      "rect": [
+       1.0,
+       0.6
+      ]
+     },
+     {
+      "z": 42.2,
+      "rect": [
+       0.5,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "trumpet",
+   "at": [
+    0.6,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.2
+    ],
+    "z0": 42,
+    "height": 0.25,
+    "colour": "#e0b93d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#bdb9b0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.0,
+    "thickness": 0.6,
+    "colour": "#8f8c82",
+    "pillarEvery": 14
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#7d7a70"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#7d7a70"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    -20.2,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 5,
+    "spread": 6,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5,
+    "count": 4,
+    "spread": 5,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower tiers simplified (no corner pilasters or big arched window detail); front porch with columns and gate is a plain block; shrubs are sparse stand-ins; angel is a gold stub"
+ }
+}

@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-osm-way-527873169",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Calvary_Hospital_Eastchester_Rd_jeh.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jim.henderson",
+   "view": "street",
+   "file": "/tmp/places-evidence/new-york/calvary.jpg",
+   "used": "tall flat-roofed block of orange-red brick with irregular punched windows, pale tan stair/service end at the left, small rooftop plant, low orange entrance canopy at the base, green site fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/527873169",
+   "used": "real hospital footprint and 29.7 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 14
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 29.7,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4613f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "plinth": 0.3,
+    "glassColour": "#4b5a63",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-end",
+   "footprint": {
+    "rect": [
+     11,
+     10
+    ]
+   },
+   "at": [
+    -36,
+    -4
+   ],
+   "rotDeg": 12,
+   "z0": 0,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#d3a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8186"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "rotDeg": 12,
+   "z0": 29.7,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9755a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -47,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 3,
+    "height": 3.0,
+    "colour": "#d0642f",
+    "edgeColour": "#d0642f",
+    "columns": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 0.5,
+    "colour": "#1f4f8f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 3.6,
+    "thickness": 0.15,
+    "colour": "#2f5a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "box0",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -10,
+    0
+   ],
+   "z0": 29.7,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a6a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "box1",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    20,
+    -6
+   ],
+   "z0": 29.7,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a6a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "box2",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 29.7,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a6a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "windows still a regular grid (triangle budget), no dark parapet band, rear wing is an angled block not the true bend; canopy and fence approximate"
+ }
+}

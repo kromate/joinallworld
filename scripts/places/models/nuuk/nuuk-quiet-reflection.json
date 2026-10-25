@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "file": "/tmp/places-evidence/nuuk/egede.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Hans_Egede_Church_(25831675992).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "front",
+   "used": "white rendered church: long low nave wing with low-pitched eaved roof, taller central tower block with slatted belfry crown, lower left wing with steeper eaves, rock outcrop below"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255788841",
+   "used": "footprint of the main building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 4,
+  "fovDeg": 38
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     32,
+     10
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7378",
+    "rise": 0.8,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7378",
+    "rise": 2.2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "outcrop",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 8,
+    "height": 2.8,
+    "seed": 3,
+    "stairs": false,
+    "boulders": 8,
+    "rock_colour": "#5d5a55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-low",
+   "params": {
+    "rect": [
+     12,
+     10
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#f2f0ea",
+    "topColour": "#6e7378"
+   },
+   "at": [
+    -1,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-mid",
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 9,
+    "height": 3.5,
+    "colour": "#f2f0ea",
+    "topColour": "#6e7378"
+   },
+   "at": [
+    -1,
+    1.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "params": {
+    "rect": [
+     7,
+     5.5
+    ],
+    "z0": 12.5,
+    "height": 2.8,
+    "colour": "#eeece6",
+    "topColour": "#6e7378",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.4,
+      "depth": 0.2,
+      "spacing": 0.9,
+      "colour": "#8a8d90",
+      "margin": 0.5
+     }
+    ]
+   },
+   "at": [
+    -1,
+    1.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crosses",
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -14
+    ],
+    "end": [
+     24,
+     -16
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 1.6,
+       "colour": "#f4f4f2"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        0.25
+       ],
+       "z0": 1.0,
+       "height": 0.25,
+       "colour": "#f4f4f2"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped white massing, low eaved nave, steeper left wing, slatted belfry, rock outcrop and crosses now modelled; tower still thinner and nave roof more pitched than the real near-flat eave, rock mound is smooth with stray boulder caps, neighbouring blue/red houses and fence omitted"
+ }
+}

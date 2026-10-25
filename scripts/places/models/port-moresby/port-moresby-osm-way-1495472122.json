@@ -1,0 +1,127 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1495472122",
+   "used": "real outline 56x55 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: square trading hall, high green corrugated roof, shop units, louvres"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e1d9c3",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#4f7a5c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 2.5,
+    "height": 3,
+    "colours": [
+     "#4f7a5c",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -31,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "posts": false
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -42,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "crown_radius": 6,
+    "trunk_radius": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     42,
+     -34
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -44,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-1495472122",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; footprint/brief only, details and colours are plausible not observed"
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1420811440",
+   "used": "33.7 x 30.6 m pentagonal corner plot (containing match, untagged building); levels and colours from the brief, no photo found because the exact Sanborns branch is unknown"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc3",
+    "glassColour": "#5b6168",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#b5523b",
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 3.8,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#b5523b",
+     "#e8dcc3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -15.5,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#b5523b",
+     "#e8dcc3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16,
+    -6,
+    4.6
+   ],
+   "rotDeg": -70,
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#b5523b",
+    "frameColour": "#d4d0c4",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -26
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this branch; massing from the OSM plot and brief, shopfront, awnings and colours are typed from the brief."
+ }
+}

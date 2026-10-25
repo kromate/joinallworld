@@ -1,0 +1,439 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_Market,_Port-au-Prince.jpg",
+   "licence": "Public domain (book by Jacques Nicolas Leger)",
+   "author": "uncredited",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-au-prince/market1.jpg",
+   "used": "hall proportions: long low hall with a taller louvred clerestory under a shallow roof, arched louvred panels in cast-iron bays, small onion cupolas on the ridge, open fenced ground storey"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/March%C3%A9_en_Fer",
+   "used": "two halls of about 2,000 m2 joined by a gate with four domed corner towers and a clock; red walls with green roof details, rebuilt 2011"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 9,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall1",
+   "footprint": {
+    "rect": [
+     44,
+     36
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a8322d",
+    "windows": "arched",
+    "windowRatio": 0.6,
+    "windowShape": "arched",
+    "bay": 7,
+    "cornice": true,
+    "trimColour": "#e8dcc0",
+    "plinth": 0.8,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d3a30",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clere1",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "z0": 8,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f7d4a",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "trimColour": "#e8dcc0",
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c3b2f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.0,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -42,
+    -4,
+    11.5
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2.2,
+    "profile": "onion",
+    "drum": 1.0,
+    "colour": "#3f7d4a",
+    "lantern": 0.6,
+    "finial": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall2",
+   "footprint": {
+    "rect": [
+     44,
+     36
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a8322d",
+    "windows": "arched",
+    "windowRatio": 0.6,
+    "windowShape": "arched",
+    "bay": 7,
+    "cornice": true,
+    "trimColour": "#e8dcc0",
+    "plinth": 0.8,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d3a30",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clere2",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "z0": 8,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f7d4a",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "trimColour": "#e8dcc0",
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c3b2f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.0,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    26,
+    -4,
+    11.5
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2.2,
+    "profile": "onion",
+    "drum": 1.0,
+    "colour": "#3f7d4a",
+    "lantern": 0.6,
+    "finial": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a8322d",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "trimColour": "#e8dcc0",
+    "cornice": true,
+    "bands": "#e8dcc0",
+    "plinth": 0.8,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -9,
+    -8.2,
+    12.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 4,
+    "profile": "onion",
+    "drum": 2.0,
+    "drumRadius": 2.0,
+    "colour": "#3f7d4a",
+    "drumColour": "#e8dcc0",
+    "lantern": 0.8,
+    "finial": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -9,
+    6.2,
+    12.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 4,
+    "profile": "onion",
+    "drum": 2.0,
+    "drumRadius": 2.0,
+    "colour": "#3f7d4a",
+    "drumColour": "#e8dcc0",
+    "lantern": 0.8,
+    "finial": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    9,
+    -8.2,
+    12.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 4,
+    "profile": "onion",
+    "drum": 2.0,
+    "drumRadius": 2.0,
+    "colour": "#3f7d4a",
+    "drumColour": "#e8dcc0",
+    "lantern": 0.8,
+    "finial": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    9,
+    6.2,
+    12.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 4,
+    "profile": "onion",
+    "drum": 2.0,
+    "drumRadius": 2.0,
+    "colour": "#3f7d4a",
+    "drumColour": "#e8dcc0",
+    "lantern": 0.8,
+    "finial": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 14,
+    "cap": "hip",
+    "cap_rise": 2.5,
+    "clock": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 5,
+    "kind": "umbrella",
+    "colours": [
+     "#e8c94f",
+     "#3f7d4a",
+     "#a8322d"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    34,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 5,
+    "kind": "umbrella",
+    "colours": [
+     "#6fa8c8",
+     "#e8c94f",
+     "#a8322d"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "The 1890s photo shows pale iron-and-louvre halls with an open fenced ground storey; the model uses the rebuilt red/green scheme with punched arched bays, one cupola per hall and a simplified gate with four onion towers."
+ }
+}

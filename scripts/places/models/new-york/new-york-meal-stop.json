@@ -1,0 +1,245 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:John%27s_of_Bleecker_Street.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Shannon McGee",
+   "view": "front",
+   "file": "/tmp/places-evidence/new-york/johns1.jpg",
+   "used": "deep-maroon scalloped awning across the whole frontage, maroon shopfront panels with glazing, white-and-red blank projecting sign board, fire escape at upper right, brick tenement above"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/249665695",
+   "used": "5-6 storey apartment building, height 22.1 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 4,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tenement",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a45a42",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#c9bda3",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     13.6,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -10.2
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d1f2c",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e1822",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -11.4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.4,
+    "drop": 1.2,
+    "height": 4.6,
+    "colours": [
+     "#7a1626"
+    ],
+    "stripe": 1,
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.5,
+    -12.4,
+    0
+   ],
+   "params": {
+    "width": 5.2,
+    "height": 2.8,
+    "bottom": 5.4,
+    "colour": "#f6f1ea",
+    "frameColour": "#b4202e",
+    "posts": false
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    4.5,
+    -9.2,
+    5.0
+   ],
+   "params": {
+    "length": 3.5,
+    "floors": 4,
+    "storeyHeight": 3.9,
+    "proud": 1.1,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-neighbour",
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "at": [
+    -11,
+    1
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8856a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-neighbour",
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "at": [
+    11,
+    1
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8e6a54",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blade-box",
+   "footprint": {
+    "rect": [
+     0.5,
+     2.6
+    ]
+   },
+   "at": [
+    -7.2,
+    -10.8
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4202e"
+   },
+   "z0": 5.6
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only the shopfront awning and upper tenement are matched; frame cropped differently, no scalloped awning edge, neon or fire-escape ladder, neighbours typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "new-york",
+ "venueId": "new-york-meal-stop"
+}

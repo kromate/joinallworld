@@ -1,0 +1,374 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-airport-panama-city-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_Internacional_de_Tocumen_-_Panam%C3%A1_-_2015.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "AnelGTR",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/airport1.jpg",
+   "used": "landside terminal front: beige-grey cladded fascia band over deep soffit, pale square piers, dark glazed ground band, green-teal curved canopy, blank green sign board"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_de_Tocumen_en_Panam%C3%A1_en_2025_04.jpg",
+   "licence": "CC BY 4.0",
+   "author": "TomasVial",
+   "view": "detail",
+   "used": "Terminal 2 slatted roof tone and curved glazed edge only (interior), informs rear hall colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1311648672",
+   "used": "apron outline only, too large (1.8 km); a 100 m portion of the terminal front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 10,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glazing",
+   "footprint": {
+    "rect": [
+     96,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3d44",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6a64",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-block",
+   "footprint": {
+    "rect": [
+     100,
+     32
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "bands": "#a8a59b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aea6",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "departures-wing",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    56,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4c1b8",
+    "windows": "none",
+    "bands": "#b3b0a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69e",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aab9bf",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bcbf",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 8,
+    "height": 4.6,
+    "form": "curved",
+    "colour": "#4f9e8c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -16.8,
+    10.8
+   ],
+   "params": {
+    "width": 22,
+    "height": 4.6,
+    "bottom": 0,
+    "colour": "#2f7f5a",
+    "frameColour": "#f2f2ee",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -44,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -24,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -4,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    16,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier4",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    36,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    0,
+    44,
+    4
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: shared render queue workers A/B were hung (heartbeats stale since 2026-10-24 21:40), jobs queued but unprocessed. Composed from the downloaded photo by eye; massing, roof, colour and placement unchecked."
+ }
+}

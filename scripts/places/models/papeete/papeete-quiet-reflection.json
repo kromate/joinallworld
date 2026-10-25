@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eglise_Sainte-Anne_de_Papenoo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Saga70",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/anne.jpg",
+   "used": "small white block-walled church: steep front gable with white fascia, red niche with a statue, open porch on two slim posts with a low flat roof, glazed doors, lower side wings under pale metal roofs, tiled porch step, cross on the ridge, lawn and forest backdrop. There is no bell tower, so the brief's tower was left out."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/548581484",
+   "used": "overall size only (32 x 21 m outline is a rotated blob); the photo shows a much smaller compact building so it was composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee4",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e9ecec",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.7,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -7.4
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee4",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-glass",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a2f2a",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#2c2623"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2f2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     4.5,
+     3
+    ]
+   },
+   "at": [
+    -7.5,
+    -1.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9cdcb",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     4.5,
+     3
+    ]
+   },
+   "at": [
+    7.5,
+    -1.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9cdcb",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-l",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#f6f6f2"
+   },
+   "at": [
+    -2.6,
+    -9.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post-r",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#f6f6f2"
+   },
+   "at": [
+    2.6,
+    -9.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-step",
+   "params": {
+    "rect": [
+     10,
+     3.4
+    ],
+    "height": 0.25,
+    "colour": "#d9b08a"
+   },
+   "at": [
+    0,
+    -9.4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "niche",
+   "params": {
+    "rect": [
+     1.0,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#8a2d3b"
+   },
+   "at": [
+    0,
+    -5.7,
+    4.3
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 6,
+    "spread": 5,
+    "line": 40
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     11.4,
+     0.35
+    ],
+    "height": 0.5,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -9.3,
+    2.55
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "notice",
+   "params": {
+    "rect": [
+     1.4,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#5a4a32"
+   },
+   "at": [
+    -7.5,
+    -3.1,
+    1.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.9,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -5.0,
+    6.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "rect": [
+     0.9,
+     0.14
+    ],
+    "height": 0.14,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -5.0,
+    7.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cream-panel",
+   "params": {
+    "rect": [
+     6,
+     0.55
+    ],
+    "height": 0.9,
+    "colour": "#efe6cf"
+   },
+   "at": [
+    0,
+    -8.5,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "critic fixes applied (symmetric posts, 11 m porch, recessed glass bay, niche, 30 deg gable, low wings, plain cross) but render not completed: no render server running, 110 jobs queued; unchecked against photo"
+ }
+}

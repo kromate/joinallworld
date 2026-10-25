@@ -1,0 +1,421 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-airport-papeete-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C3%A9roport_international_Tahiti_Faa%27a.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "FRED at French Wikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/airport1.jpg",
+   "used": "landside: long low two-level terminal, cream upper band with ribbon windows, dark ground level under a flat canopy with white arched entrances, roof-top white sun-louvre frames, control masts, gabled dark-shingle pavilion at the right with a hip roof and white-cream walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AirTahiti.Aerogare.Faaa.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "FRED at French Wikipedia",
+   "view": "back",
+   "used": "the Polynesian pavilion: steep dark shingle hip roof with a lifted glazed gable, white posts and fence along the apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/83979562",
+   "used": "overall size only (268 m long, 90 m deep zig-zag plan); a 110 m central length is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     110,
+     24
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d8c0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#7a746a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a46",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-dark",
+   "footprint": {
+    "rect": [
+     108,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3e3a36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5d8",
+    "material": "membrane",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -11,
+    4.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 108,
+    "depth": 6,
+    "height": 0,
+    "thickness": 0.5,
+    "columns": 14,
+    "colour": "#e9e5d8",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "arc": {
+       "plane": "xz",
+       "radius": 3,
+       "startDeg": 0,
+       "endDeg": 180
+      },
+      "colour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -10.5,
+     0.2
+    ],
+    "end": [
+     40,
+     -10.5,
+     0.2
+    ],
+    "count": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       10,
+       1.5
+      ],
+      "height": 1.6,
+      "topScale": 1.0,
+      "topOffset": [
+       0,
+       1.2
+      ],
+      "colour": "#f4f2ea",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -42,
+     14,
+     9.5
+    ],
+    "end": [
+     42,
+     14,
+     9.5
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    46,
+    -17
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8c8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#43372f",
+    "material": "timber-shingle",
+    "pitch": 40,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-gable",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    46,
+    -24
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a2",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#43372f",
+    "material": "timber-shingle",
+    "pitch": 40,
+    "overhang": 1.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -30,
+    32,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#e8e5dc",
+    "cabColour": "#6c8793",
+    "bandColour": "#b53a30"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -1,
+    9.5
+   ],
+   "params": {
+    "width": 18,
+    "height": 1.6,
+    "bottom": 0.6,
+    "colour": "#cfcab8",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8,
+    "line": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.25,
+        0.25
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        9
+       ]
+      ],
+      "colour": "#cfcfcf"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     4,
+     9.5
+    ],
+    "end": [
+     46,
+     4,
+     9.5
+    ],
+    "count": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 12,
+    "density": 0.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-door",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    46,
+    -26.2
+   ],
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a3a26",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3a26"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "long low terminal, dark ground level, louvre frames and pavilion now match; camera framing is wider than the photo and the real zig-zag plan is only a 110 m central length"
+ }
+}

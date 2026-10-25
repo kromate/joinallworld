@@ -1,0 +1,229 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flight_Montevideo_to_S%C3%A3o_Paulo_2023_25.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mike Peel",
+   "view": "back",
+   "file": "/tmp/places-evidence/montevideo/ap.jpg",
+   "used": "airside view: long low glazed terminal with a flat grey roof edge, tall multi-level control tower with white cab left of centre, apron and taxiway in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17956926",
+   "used": "runway only, so not used for the footprint; size from the brief (230 m, scaled to 118 m clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.06,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b7c4c8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 5,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b5",
+    "overhang": 2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    -50,
+    -2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a5b3b8",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 4.5,
+    "bands": "#8a949a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0c4c6",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    50,
+    -1
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9dcdc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbf",
+    "overhang": 1.0,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#d8d6cf",
+    "cabColour": "#f1f1ee",
+    "bandColour": "#f3f3f1",
+    "cabRadius": 4.5,
+    "shaftRadius": 2.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 9,
+      "colour": "#c9ced1"
+     },
+     "rotDeg": 0
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -10,
+     16,
+     4
+    ],
+    "end": [
+     10,
+     16,
+     4
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -30
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -12,
+     -34
+    ],
+    "colour": "#3d4a6b"
+   },
+   {
+    "at": [
+     6,
+     -34
+    ],
+    "colour": "#8a1c1c"
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-airport-montevideo-airport",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only a distant airside photo: now a low 2-storey glazed terminal with flat grey fascia, wide-cab tower left of centre and two jet bridges; real terminal detail, roof profile and apron unverified."
+ }
+}

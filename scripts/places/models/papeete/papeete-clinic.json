@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/10242033",
+   "used": "real footprint of the Taaone psychiatric hospital block (two offset ward blocks, 83 x 43 m), rotated so the long wing faces the camera"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/papeete.json#papeete-clinic",
+   "used": "three-storey 1970s concrete ward block, flat membrane roof, cream render with terracotta bands, balcony bands, covered walkways, ambulance bay. The Commons photo of the neighbouring main Taaone hospital shows a different (curved-roof) building and was not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -105
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2d0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#c58b66",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e9e2d0",
+      "#d9b79a"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea3a4",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1,
+    "marking": true
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 3,
+    "line": 40
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photos but never render-compared: the shared render queue workers were stalled (no heartbeat since 24 Oct 21:40), so massing, roof pitch, colours and part positions are unchecked and triangle counts unknown"
+ }
+}

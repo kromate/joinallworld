@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: wide two-level rendered shopping block, 90 x 50 m, long covered front, rooftop sign frames. The nearby OSM outline is a bank (nearest match 42 m) so it was not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "complex",
+   "footprint": {
+    "rect": [
+     90,
+     50
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#c7503a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-core",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f7c85",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b86",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 4,
+    "height": 4.2,
+    "colour": "#c7503a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -24,
+    6
+   ],
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#c7503a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -24,
+    8.5
+   ],
+   "params": {
+    "width": 12,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#6f7c85",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -24,
+    6
+   ],
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#c7503a",
+    "posts": false
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    -35,
+    -25.5,
+    3
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.3,
+    "colour": "#f4efe3"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 3,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo (offline); form from brief and typical Trinidad town shopping complex."
+ }
+}

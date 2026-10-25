@@ -1,0 +1,345 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parroquia_Stella_Maris.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Karora",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/stella1.jpg",
+   "used": "cream stucco facade, central slim tower with arched belfry and dark slate spire, triangular gable with two round oculi, low flat wings with paired arched windows, dark slate nave roof, low boundary wall with railings, palm and pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/734281143",
+   "used": "overall size only (53 x 27 m footprint); the outline is an odd rotated multi-part polygon so the massing follows the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     21,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9c8a0",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "cornice": true,
+    "plinth": 0.5,
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb92",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gablefront",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -13.2
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9c8a0",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none"
+    },
+    "cornice": true,
+    "bay": 2.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdbb92",
+    "pitch": 52,
+    "overhang": 0.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12.5,
+     32
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9c8a0",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "cornice": true,
+    "plinth": 0.4,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3c4048",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -13.8
+   ],
+   "height": 19,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9c8a0",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "none"
+    },
+    "cornice": true,
+    "plinth": 0.3,
+    "bay": 2.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb92",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    0,
+    -13.8
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d3c196",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#454a52",
+    "material": "slate",
+    "rise": 6.5,
+    "overhang": 0.2
+   },
+   "z0": 19
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -13.8,
+    29.2
+   ],
+   "params": {}
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -14.75,
+    0
+   ],
+   "params": {
+    "width": 2.3,
+    "height": 3.4,
+    "arch": true,
+    "colour": "#4a3a2c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16.3,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "count": 3,
+    "rise": 0.25,
+    "run": 0.6,
+    "colour": "#b8ac95"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "colour": "#d6c9a5",
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#d6c9a5"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -12,
+    -23.5,
+    0.9
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.2,
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    12,
+    -23.5,
+    0.9
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.2,
+    "colour": "#2d3033"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -19
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     15,
+     -14
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -17,
+     -10
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     19,
+     -19
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-way-734281143",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gabled front, slender tower, railings and conifers added; oculi, pediment relief and lamps omitted; gable narrower than photo; OSM outline unused"
+ }
+}

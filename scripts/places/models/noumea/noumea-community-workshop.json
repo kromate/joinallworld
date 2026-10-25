@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/184075858",
+   "used": "small library outline 32 x 28 m (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ede0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bands": "#9fc3c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c7a58",
+    "material": "corrugated",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3.5,
+    "height": 3.2,
+    "colour": "#9fc3c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#9fc3c8",
+    "frameColour": "#c9c2b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; OSM is a generic building outline, finishes typed"
+ }
+}

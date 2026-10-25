@@ -1,0 +1,148 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1497930259",
+   "used": "rotated rectangle 22x14 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one-storey painted cafe, grey roof, board, umbrellas"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f2efe6",
+    "windows": "screen",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#a9422f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c868c",
+    "material": "corrugated",
+    "pitch": 17,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#a9422f",
+    "posts": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "height": 2.6,
+    "colours": [
+     "#a9422f",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2.4,
+    "height": 2.3,
+    "colours": [
+     "#a9422f",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2.4,
+    "height": 2.3,
+    "colours": [
+     "#a9422f",
+     "#f2efe6"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -16,
+     -8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-1497930259",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; footprint/brief only, details and colours are plausible not observed"
+ }
+}

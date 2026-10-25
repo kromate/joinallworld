@@ -1,0 +1,261 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hope_Estate,_Collectivity_of_Saint_Martin_-_panoramio_(9).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Remy Gumbs (shady P)",
+   "view": "front",
+   "file": "/tmp/places-evidence/marigot/m9.jpg",
+   "used": "green-tinted glass curtain wall front, dark brown angled cladding wall at left, grey upper volumes behind, stone retaining wall and paved forecourt, palm"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hope_Estate,_Collectivity_of_Saint_Martin_-_panoramio_(8).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Remy Gumbs (shady P)",
+   "view": "side",
+   "file": "/tmp/places-evidence/marigot/m8.jpg",
+   "used": "tall glazed corner with grey-green reflective glass, open parking forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/465741045",
+   "used": "real outline 77x54 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.778,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8a80",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9e",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brown-wedge",
+   "at": [
+    -34,
+    -36,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      22,
+      0
+     ],
+     [
+      22,
+      7
+     ],
+     [
+      0,
+      7
+     ]
+    ],
+    "height": 13,
+    "colour": "#4f3d34",
+    "material": "metal-cladding",
+    "topScale": [
+     1,
+     0.25
+    ],
+    "topOffset": [
+     0,
+     -2.5
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    8,
+    -6
+   ],
+   "z0": 9,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f979a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8adb0",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.8,
+    "thickness": 0.7,
+    "colour": "#8a7e6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bay",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    22,
+    -30
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8a80",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f979a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper2",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "z0": 9,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa0a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8adb0",
+    "rise": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#d9654f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#f2e8c9"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Brown slab is now tall (13 m) but renders as a box, rake not visible; glass still renders bluer than the photo grey-green; stone retaining wall only a low strip; OSM outline is bent"
+ }
+}

@@ -1,0 +1,130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "brief",
+   "used": "game venue placeholder: small shelter 12x9 m with shed roof, ochre/grey/white cladding, platform canopy, vehicle bays, blank sign board. OSM nearest building (CF) is a different building so not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    3
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9a441",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#f2f2ee"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a5258",
+    "material": "metal-sheet",
+    "rise": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -2.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 3.5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#4a5258",
+    "edgeColour": "#6f777c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad",
+   "at": [
+    0,
+    -10,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     22,
+     9
+    ],
+    "height": 0.05,
+    "colour": "#4d5358"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -10,
+    0
+   ],
+   "params": {
+    "colour": "#d9a441",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#6f777c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; generic base shelter and vehicle pad."
+ }
+}

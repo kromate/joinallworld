@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eglise_Notre_Dame_du_vent_Kerguelen.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-aux-francais/church1.jpg",
+   "used": "white flat-roofed box with a ribbon of small window grilles high on the long wall, red entrance canopy on red posts with a red door at the west end, free-standing slim white open-frame bell tower with a cross, low stone retaining wall, bare red-brown tundra"
+  },
+  {
+   "kind": "text",
+   "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-des-Vents",
+   "used": "13 x 6.5 m cement chapel, flat roof, concrete pillars with a cross at the entrance, bell tower of 1961"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3eee8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2da",
+    "material": "membrane",
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     1.6,
+     3.2
+    ]
+   },
+   "at": [
+    7.1,
+    1.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efe9e2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0d9d0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -2.5,
+    -3.28,
+    3.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     8.0,
+     0,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "height": 0.5,
+      "colour": "#6a6864"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    -8.4,
+    0,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     6.9
+    ],
+    "height": 0.3,
+    "colour": "#8f2a22"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -9.9,
+    -2.9,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     5.8,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.4,
+      "colour": "#8f2a22"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -6.55,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     2.0
+    ],
+    "height": 2.5,
+    "colour": "#9c2b22"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-leg-a",
+   "at": [
+    -11.9,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 10.0,
+    "colour": "#f1ece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-leg-b",
+   "at": [
+    -10.6,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 10.0,
+    "colour": "#f1ece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-beam-top",
+   "at": [
+    -11.25,
+    0,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#f1ece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    -11.25,
+    0,
+    10.3
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 0.9,
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    -11.25,
+    0,
+    10.9
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.08
+    ],
+    "height": 0.08,
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "retaining-wall",
+   "at": [
+    -6,
+    -4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#6e6a64"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ground is the laterite option (no moss-tundra or boulders); tower is a plain frame; stone retaining wall is a straight block; window grilles are flat dark tiles."
+ }
+}

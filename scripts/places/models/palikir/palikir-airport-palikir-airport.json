@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-airport-palikir-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PohnpeiAirport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Mike LaMonaca (Flickr)",
+   "view": "front",
+   "file": "/tmp/places-evidence/palikir/airport.jpg",
+   "used": "terminal entrance: red hipped roof, cream fascia band over entrance, black basalt-rubble walls and piers, large blank sign board on basalt plinth, grey volcanic-gravel apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316847461",
+   "used": "terminal footprint 156 x 50 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 4,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "simplify": 4.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c6a2",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d8b88a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c6a2",
+    "windows": "none",
+    "bands": "#d8b88a",
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523f",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "basalt-pier-l",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    -8,
+    -33
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b88a",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "basalt-pier-r",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    8,
+    -33
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b88a",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 3.8,
+    "colour": "#d8b88a",
+    "columns": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.8,
+    "bottom": 1.0,
+    "colour": "#f2efe6",
+    "frameColour": "#8a8a86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is an entrance close-up: model is the whole 156 m terminal (simplified outline), so only roof colour, cream fascia, basalt piers and blank sign are matched; no rubble-pattern texture, no stepped upper roof tiers."
+ }
+}

@@ -1,0 +1,231 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "brief",
+   "used": "game venue placeholder: small leisure hut 22x13 m, red/white/grey base cladding, open sports area, fence, blank sign board. OSM nearest building (Menuiserie) is a different building so not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    3
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f2ee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#a33b32"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "material": "membrane",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a33b32",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a5258",
+    "material": "metal-sheet",
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    0,
+    -9,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     20,
+     10
+    ],
+    "height": 0.05,
+    "colour": "#5f6b66"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -9.5,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     19,
+     0,
+     0
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 1.6,
+      "colour": "#6f777c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -9.5,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     19,
+     0,
+     0
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 1.6,
+      "colour": "#6f777c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-a",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3
+    ],
+    "height": 2,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-b",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3
+    ],
+    "height": 2,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -0.5,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#a33b32"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; generic base leisure hut and court."
+ }
+}

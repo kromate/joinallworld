@@ -1,0 +1,145 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1226222789",
+   "used": "real 13.8 x 6.2 m skewed-rectangle outline, school building, flat roof; nearest match only (43 m), so size and shape are the only facts used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true,
+    "fit": 16
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc9",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 2.6,
+    "plinth": 0.5,
+    "bands": "#c2bcae",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a95",
+    "parapet": 0.35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#c2bcae"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.2,
+    "colour": "#7d8f9a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "thickness": 0.25,
+    "kind": "fence",
+    "pillarEvery": 3,
+    "colour": "#7d8f9a"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "height": 1.5,
+    "legs": 1.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -7
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -9
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-community-workshop",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; only the OSM outline, a flat roof and typical school details."
+ }
+}

@@ -1,0 +1,637 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paramaribo_-_Koninginnestraat_4_-_St_Vincentiusziekenhuis_20160928.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Otter",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/vinc1.jpg",
+   "used": "long two-storey front with ground arcade and open columned upper veranda, taller central block with hip roof and small lantern cupola, dark grey metal roofs, cream walls, blue gate piers and fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Vincentius_Ziekenhuis,_2022,_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymnes",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/vinc2.jpg",
+   "used": "light blue gate piers, guard booth with red-brown awning, low grey-roofed side wing on posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2590990",
+   "used": "overall extent (about 137 x 119 m) and wings round a court; the zigzag outline itself is not traced"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 2.03,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     88,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ebd9",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.4,
+      "opening": 0.62,
+      "height": 0.86,
+      "depth": 0.7,
+      "pierColour": "#f6f1e2",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#59606a",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 13.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3eddb",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "cornice": true,
+    "bands": "#e4dcc4",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f565e",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     16,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -8.6
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f1e2",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.0,
+      "opening": 0.7,
+      "height": 0.88,
+      "depth": 0.6,
+      "pierColour": "#f6f1e2",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e1cb",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     13,
+     52
+    ]
+   },
+   "at": [
+    -37.5,
+    33
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ebd9",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#59606a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     13,
+     52
+    ]
+   },
+   "at": [
+    37.5,
+    33
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ebd9",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#59606a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back",
+   "footprint": {
+    "rect": [
+     62,
+     11
+    ]
+   },
+   "at": [
+    0,
+    64
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5d1",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#59606a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -41,
+     -7.9,
+     0
+    ],
+    "end": [
+     41,
+     -7.9,
+     0
+    ],
+    "count": 18,
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "radius": 0.26,
+       "n": 8,
+       "z0": 4.3,
+       "height": 4.2,
+       "colour": "#fbf8ee"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -42,
+    -7.9,
+    4.3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.0,
+    "postEvery": 2.4,
+    "colour": "#f6f1e2"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lantern",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "on": "centre",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#f2ecd9",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 2.1,
+      "rect": [
+       4.2,
+       4.2
+      ],
+      "colour": "#4b5159"
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 13.2,
+    "height": 4,
+    "colour": "#4b5159"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 5.4,
+    "colour": "#6fa6d4",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 5.4,
+    "colour": "#6fa6d4",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     0,
+     0
+    ],
+    "end": [
+     -12,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.1,
+        1.1
+       ],
+       "height": 2.7,
+       "colour": "#7db2de"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     12,
+     0,
+     0
+    ],
+    "end": [
+     44,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.1,
+        1.1
+       ],
+       "height": 2.7,
+       "colour": "#7db2de"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -44,
+    -23,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.2,
+    "thickness": 0.25,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    12,
+    -23,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.2,
+    "thickness": 0.25,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard",
+   "footprint": {
+    "rect": [
+     5,
+     3.6
+    ]
+   },
+   "at": [
+    -16,
+    -19
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc3a8",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9c4a3a",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    14,
+    -21,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 2.4,
+    "colour": "#ece7d6",
+    "frameColour": "#7a7f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     27,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     28
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     30
+    ],
+    "height": 8
+   }
+  ],
+  "cars": 3,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-968232803",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the front photo but NOT render-compared: the shared render queue workers were hung (no heartbeat since 24 Oct 21:40), so proportions, arcade and veranda read, roof pitch and LOD0 triangles are unchecked."
+ }
+}

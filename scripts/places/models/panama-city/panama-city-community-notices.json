@@ -1,0 +1,294 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Asamblea_Nacional_de_Diputados.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "David A. Nunez Linares",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/notices1.jpg",
+   "used": "tall white-framed blue-glazed 14-storey tower at left, grey administrative block behind, low white hall with red-tile roof in front, row of flagpoles, car park forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/605386929",
+   "used": "overall extents (107 m wide, 6 levels at the chamber); outline not used since the photo shows a tower and separate blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -38,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 46,
+   "storeys": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f78b8",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e8e8e4",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc9",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     72,
+     22
+    ]
+   },
+   "at": [
+    22,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9fa3a3",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#8a8e8e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9090",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-core",
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3338",
+    "windows": "ribbon",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2e32"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber-hall",
+   "footprint": {
+    "rect": [
+     64,
+     28
+    ]
+   },
+   "at": [
+    22,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "ribbon"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523c",
+    "material": "clay-tile",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-wing",
+   "footprint": {
+    "rect": [
+     50,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4b6279",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523c",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -2,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    18,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    28,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    38,
+    -34,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: shared render queue workers A/B were hung (heartbeats stale since 2026-10-24 21:40), jobs queued but unprocessed. Composed from the downloaded photo by eye; massing, roof, colour and placement unchecked."
+ }
+}

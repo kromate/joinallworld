@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-node-6038606685",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/6038606685",
+   "used": "location only; nearest building (24 m away, way/825314928, 22 x 14 m) is not a name match so the building is a typed small roadside coffee house, not its outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     19,
+     11
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "screen",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "screen",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 19,
+    "count": 8,
+    "height": 2.8,
+    "radius": 0.1,
+    "kind": "square",
+    "beamHeight": 0.3,
+    "roofDepth": 3.2,
+    "colour": "#8d6e4a",
+    "roofColour": "#4f7a5c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#4f7a5c",
+    "frameColour": "#8d6e4a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     12,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.5,
+       "n": 8,
+       "height": 0.75,
+       "colour": "#8d6e4a"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "radius": 1.5,
+       "n": 10,
+       "z0": 2.2,
+       "height": 0.12,
+       "colour": "#4f7a5c"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo, building not matched by name; typed small coffee house"
+ }
+}

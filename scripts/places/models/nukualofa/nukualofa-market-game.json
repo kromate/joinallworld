@@ -1,0 +1,152 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/314822748",
+   "used": "named OSM footprint 18x10 m, skewed outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/nukualofa.json",
+   "used": "tin-roofed open market with timber stalls; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b59a6a",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9096",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#d0c9b8",
+     "#a33a2f",
+     "#3f6fa8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colours": [
+     "#3f6fa8",
+     "#e8e1cf"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#d9a441",
+     "#a33a2f",
+     "#e8e1cf"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 1.8,
+    "colour": "#7a8f6a",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the market found; outline is real, roof form, stall layout and colours are typed guesses"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-market-game"
+}

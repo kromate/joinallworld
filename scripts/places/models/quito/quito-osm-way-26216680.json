@@ -1,0 +1,392 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Generales_del_Estadio_Aucas.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Albert7384",
+   "view": "interior",
+   "file": "/tmp/places-evidence/quito/stad1.jpg",
+   "used": "red and yellow seat blocks, pale concrete rim wall, shallow raked tiers, stair/exit gap in the stand"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Chillogallo_(15182945714).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "ground.hopper",
+   "view": "interior",
+   "file": "/tmp/places-evidence/quito/stad2.jpg",
+   "used": "one long roofed main stand with a dark flat canopy, uncovered curved ends, red-brown stair rails, hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8706476",
+   "used": "overall bowl size 174 x 134 m (modelled slightly smaller, 150 x 118)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     124,
+     96
+    ],
+    "height": 0.15,
+    "colour": "#8f8d84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     104,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#4f9a3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.4,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d4d0c6",
+    "underColour": "#c8c4ba",
+    "facetDeg": 10,
+    "start": [
+     -52,
+     -40
+    ],
+    "end": [
+     52,
+     -40
+    ],
+    "seatColours": [
+     "#b3362e",
+     "#b3362e",
+     "#e3c230",
+     "#b3362e",
+     "#b3362e"
+    ],
+    "blocks": 5,
+    "canopy": {
+     "height": 8.2,
+     "depth": 10,
+     "thickness": 0.6,
+     "slopeDeg": 3,
+     "colour": "#3f4144",
+     "edgeColour": "#2f3133",
+     "overhangBack": 0.5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.4,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d4d0c6",
+    "underColour": "#c8c4ba",
+    "facetDeg": 10,
+    "start": [
+     52,
+     40
+    ],
+    "end": [
+     -52,
+     40
+    ],
+    "seatColours": [
+     "#b3362e",
+     "#e3c230",
+     "#b3362e"
+    ],
+    "blocks": 3
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.4,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d4d0c6",
+    "underColour": "#c8c4ba",
+    "facetDeg": 18,
+    "centre": [
+     44,
+     0
+    ],
+    "radius": 10,
+    "radiusY": 34,
+    "startDeg": -90,
+    "endDeg": 90,
+    "seatColours": [
+     "#b3362e"
+    ],
+    "blocks": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.4,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d4d0c6",
+    "underColour": "#c8c4ba",
+    "facetDeg": 18,
+    "centre": [
+     -44,
+     0
+    ],
+    "radius": 10,
+    "radiusY": 34,
+    "startDeg": 90,
+    "endDeg": 270,
+    "seatColours": [
+     "#b3362e"
+    ],
+    "blocks": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 8.2,
+       "colour": "#3f4144"
+      }
+     }
+    ],
+    "start": [
+     -48,
+     -36
+    ],
+    "end": [
+     48,
+     -36
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -66,
+      0
+     ],
+     [
+      -52,
+      -48
+     ],
+     [
+      52,
+      -48
+     ],
+     [
+      66,
+      0
+     ],
+     [
+      52,
+      48
+     ],
+     [
+      -52,
+      48
+     ]
+    ],
+    "height": 9,
+    "colour": "#c4a89a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -85,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     85,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Main stand now one straight roofed block with attached dark canopy and posts; ends low red tiers with yellow block, apron shrunk; photo is interior so exterior view differs, no stair gap or ad boards."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-osm-way-26216680"
+}

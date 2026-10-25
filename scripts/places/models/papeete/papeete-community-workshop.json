@@ -1,0 +1,355 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universite_Polyn%C3%A9sie_fran%C3%A7aise_UPF.jpg",
+   "licence": "CC0",
+   "author": "Saga70",
+   "view": "front",
+   "file": "/tmp/places-evidence/papeete/upf1.jpg",
+   "used": "white concrete teaching block, upper floors covered by white horizontal louvre panels, a perforated grey-white parapet band carrying a blank name board, external white spiral stair drum at the end of each block, tilted white steel pergola frame on the roof, grey retaining walls, white railings, planted terrace"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/283649950",
+   "used": "campus extent only (760 x 270 m, about 12 ha); one teaching block of the campus is modelled, not the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     46,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.0,
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ],
+     "colour": "#ffffff"
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c6c3",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     46,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9c9c96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6b6b0",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -32,
+    3
+   ],
+   "z0": 3,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeeea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c9cbc6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -26,
+    -11,
+    3
+   ],
+   "params": {
+    "profile": [
+     [
+      3.4,
+      0,
+      "#f3f3ef"
+     ],
+     [
+      3.4,
+      12,
+      "#f3f3ef"
+     ],
+     [
+      3.1,
+      12.4,
+      "#d9d9d4"
+     ]
+    ],
+    "segments": 20,
+    "arcade": {
+     "count": 8,
+     "width": 0.9,
+     "height": 8,
+     "sill": 1.2,
+     "shape": "rect"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    26,
+    -11,
+    3
+   ],
+   "params": {
+    "profile": [
+     [
+      3.4,
+      0,
+      "#f3f3ef"
+     ],
+     [
+      3.4,
+      12,
+      "#f3f3ef"
+     ],
+     [
+      3.1,
+      12.4,
+      "#d9d9d4"
+     ]
+    ],
+    "segments": 20,
+    "arcade": {
+     "count": 8,
+     "width": 0.9,
+     "height": 8,
+     "sill": 1.2,
+     "shape": "rect"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.25,
+        0.25
+       ]
+      },
+      "points": [
+       [
+        0,
+        -3,
+        0
+       ],
+       [
+        0,
+        3,
+        4.5
+       ]
+      ],
+      "colour": "#f7f7f5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -6,
+     16
+    ],
+    "end": [
+     18,
+     -6,
+     16
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -8.6,
+    14
+   ],
+   "params": {
+    "width": 20,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#d8dbd9",
+    "frameColour": "#d0d3d1",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#f5f5f2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 4,
+    "spread": 3,
+    "line": 25
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining",
+   "footprint": {
+    "rect": [
+     50,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8e8e88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0a09a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -25,
+    -11.5,
+    2.5
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "white louvred facade, open arcade drums and tilted frame added; stair drums are cylinders with openings not helical treads, retaining wall hidden behind car park, first-round only"
+ }
+}

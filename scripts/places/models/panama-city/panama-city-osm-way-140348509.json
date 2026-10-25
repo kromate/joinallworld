@@ -1,0 +1,564 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-osm-way-140348509",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Panama_Catedral_Metropolitana.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Editorpana",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/cath1.jpg",
+   "used": "two tall white twin towers with clock and belfry arches ending in pyramidal caps, darker brown-grey stone central facade with three arched doors, curved baroque gable, pale plinth, brick-patterned plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_Catedral_Metropolitana_(en_rehabilitaci%C3%B3n).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Javier Alonso",
+   "view": "side",
+   "file": "/tmp/places-evidence/panama-city/cath2.jpg",
+   "used": "tower proportions, white side wall of nave, long nave behind the tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/140348509",
+   "used": "overall size (about 62 x 39 m); OSM outline is rotated to the street grid so the nave is composed in the model frame with the facade facing -y"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 38,
+  "aspect": 0.8
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     40,
+     2.2
+    ],
+    "height": 1.0,
+    "colour": "#5f6b73",
+    "topColour": "#6b7780"
+   },
+   "at": [
+    0,
+    -20.6,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#7c6d5c",
+    "trimColour": "#9a8a74",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "bay": 5,
+    "plinth": 0.8,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#94846f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c6d5c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable",
+   "params": {
+    "colour": "#7c6d5c",
+    "topColour": "#6b5d4d",
+    "curve": true,
+    "sections": [
+     {
+      "z": 11.5,
+      "rect": [
+       16,
+       4
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       14.5,
+       3.6
+      ]
+     },
+     {
+      "z": 14.6,
+      "rect": [
+       12,
+       3.4
+      ]
+     },
+     {
+      "z": 15.8,
+      "rect": [
+       8.5,
+       3.2
+      ]
+     },
+     {
+      "z": 16.6,
+      "rect": [
+       4,
+       3
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       1.2,
+       2.8
+      ]
+     }
+    ]
+   },
+   "at": [
+    0,
+    -17.5,
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    -5.2,
+    -19.55,
+    0.8
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 5.2,
+    "arch": true,
+    "colour": "#5a3a26",
+    "trim": "#4a4034"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    0,
+    -19.55,
+    0.8
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.4,
+    "arch": true,
+    "colour": "#5a3a26",
+    "trim": "#4a4034"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    5.2,
+    -19.55,
+    0.8
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 5.2,
+    "arch": true,
+    "colour": "#5a3a26",
+    "trim": "#4a4034"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "uw-4",
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 8,
+    "height": 1.7,
+    "colour": "#3b3a3a"
+   },
+   "at": [
+    -4,
+    -19.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "uw-1.6",
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 8,
+    "height": 1.7,
+    "colour": "#3b3a3a"
+   },
+   "at": [
+    -1.6,
+    -19.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "uw1.6",
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 8,
+    "height": 1.7,
+    "colour": "#3b3a3a"
+   },
+   "at": [
+    1.6,
+    -19.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "uw4",
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 8,
+    "height": 1.7,
+    "colour": "#3b3a3a"
+   },
+   "at": [
+    4,
+    -19.6
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     52
+    ]
+   },
+   "at": [
+    0,
+    9.5
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee3",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 6,
+    "plinth": 1.0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5573a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -11.5,
+    -16
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.0,
+    "trimColour": "#dcd8cb",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#dcd8cb"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd8cb",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-l",
+   "params": {
+    "rect": [
+     7.8,
+     7.8
+    ],
+    "z0": 19,
+    "height": 0.5,
+    "colour": "#dcd8cb"
+   },
+   "at": [
+    -11.5,
+    -16
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "belfry-l",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -11.5,
+    -16
+   ],
+   "z0": 19.5,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "trimColour": "#dcd8cb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd8cb",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -11.5,
+    -16,
+    25
+   ],
+   "params": {
+    "baseWidth": 5.6,
+    "height": 5.5,
+    "sides": 8,
+    "colour": "#e6e3d8",
+    "finial": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    11.5,
+    -16
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.0,
+    "trimColour": "#dcd8cb",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#dcd8cb"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd8cb",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-r",
+   "params": {
+    "rect": [
+     7.8,
+     7.8
+    ],
+    "z0": 19,
+    "height": 0.5,
+    "colour": "#dcd8cb"
+   },
+   "at": [
+    11.5,
+    -16
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "belfry-r",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    11.5,
+    -16
+   ],
+   "z0": 19.5,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "trimColour": "#dcd8cb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd8cb",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    11.5,
+    -16,
+    25
+   ],
+   "params": {
+    "baseWidth": 5.6,
+    "height": 5.5,
+    "sides": 8,
+    "colour": "#e6e3d8",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "params": {
+    "rect": [
+     2,
+     0.3
+    ],
+    "z0": 13,
+    "height": 2,
+    "colour": "#f8f6ee"
+   },
+   "at": [
+    -11.5,
+    -19.65
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.25,
+    "run": 1.0,
+    "count": 2,
+    "colour": "#b4ab9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "extent": [
+   80,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -32
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "edited to critic fixes (flat stone facade, 3 wooden doors, stockier flush towers with octagonal caps, grey-blue plinth, no dome) but NOT re-rendered: render queue has no server heartbeat (95+ jobs waiting), so proportions, gable shape and triangle count unchecked"
+ }
+}

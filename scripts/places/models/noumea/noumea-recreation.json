@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/488647235",
+   "used": "real 62 x 41 m park outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d1bf",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -2,
+    -4,
+    0.5
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    16,
+    6,
+    0.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "radius": 3.8,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14,
+    -14,
+    0.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -8,
+    0.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     2
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline real, fountain, bandstand and benches positioned from the brief features, not surveyed."
+ }
+}

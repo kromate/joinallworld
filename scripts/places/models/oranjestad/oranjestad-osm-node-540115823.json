@@ -1,0 +1,329 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alto_Vista_Chapel,_Aruba.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Erik Cleves Kristensen",
+   "view": "front",
+   "file": "/tmp/places-evidence/oranjestad/chapel1.jpg",
+   "used": "yellow render nave on a dark stone-pebble plinth, pointed windows, red tile gable roof with white bargeboards, small square bell turret with brown spire and cross at the front end, dark platform, white benches"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alto_Vista_Capel.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "JohnathanBaena",
+   "view": "side",
+   "used": "open pointed door leaves, low rubble boundary wall around the terrace"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/93476341",
+   "used": "overall size (9.8 x 7 m footprint incl. platform)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -42,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     19
+    ],
+    "height": 0.35,
+    "colour": "#2b2b2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     6.4,
+     13.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.35,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3a6",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "plinth": 1.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5523b",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-base",
+   "at": [
+    0,
+    -3.5,
+    5.7
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "height": 1.4,
+    "colour": "#efe3a6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "spire",
+   "at": [
+    0,
+    -3.5,
+    7.1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 0.25,
+      "rect": [
+       1.5,
+       1.5
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.12,
+       0.12
+      ]
+     }
+    ],
+    "colour": "#5a2a22",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -3.5,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 1.3,
+    "colour": "#2b2b2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -3.5,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.1
+    ],
+    "height": 0.1,
+    "colour": "#2b2b2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-left",
+   "at": [
+    -1.5,
+    -6.8,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     1.4
+    ],
+    "height": 3.4,
+    "colour": "#3b2420"
+   },
+   "rotDeg": 50
+  },
+  {
+   "type": "prism",
+   "id": "door-right",
+   "at": [
+    1.5,
+    -6.8,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     1.4
+    ],
+    "height": 3.4,
+    "colour": "#3b2420"
+   },
+   "rotDeg": -50
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     -10.5
+    ],
+    "end": [
+     4.5,
+     -10.5
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.5,
+       0.6
+      ],
+      "height": 0.5,
+      "colour": "#f1ecc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     5.5,
+     -8
+    ],
+    "end": [
+     5.5,
+     8
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       2.6
+      ],
+      "height": 0.5,
+      "colour": "#f1ecc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -14
+     ],
+     [
+      14,
+      -14
+     ],
+     [
+      14,
+      16
+     ],
+     [
+      -14,
+      16
+     ],
+     [
+      -14,
+      -14
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.5,
+    "colour": "#9a8f78"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oranjestad",
+ "venueId": "oranjestad-osm-node-540115823",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Windows render as narrow slits not wide pointed arches; plinth is plain not dark pebble stone; open door leaves, red-tile eave detail and street furniture simplified; ground is sand not paving."
+ }
+}

@@ -1,0 +1,418 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-155987982",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Onafhankelijkheidsplein_Paramaribo.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Forrestjunky",
+   "view": "street",
+   "file": "/tmp/places-evidence/paramaribo/p9_plein_a.jpg",
+   "used": "paved flag platform with a ring of tall flagpoles in front, white timber government house with dark gabled roof and black shutters behind, lower white annex with pale blue roof, red brick wall with piers, trees and palms, flat green lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Presidential_Palace_of_Suriname_(31165680496).jpg",
+   "licence": "CC BY 2.0",
+   "author": "-JvL- from Netherlands",
+   "view": "front",
+   "file": "/tmp/places-evidence/paramaribo/p9_plein_b.jpg",
+   "used": "Presidential Palace: white two-storey front with round-arched ground arcade, balustraded gallery, small pediments, dark hipped roof, hedge and royal palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/155987982",
+   "used": "lawn outline (about 196 x 92 m, shown at reduced scale)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a9a6a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-plaza",
+   "at": [
+    -5,
+    -3
+   ],
+   "params": {
+    "radius": 18,
+    "n": 36,
+    "z0": 0.5,
+    "height": 0.35,
+    "colour": "#bdb8a8",
+    "topColour": "#c9c5b6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza-rim",
+   "at": [
+    -5,
+    -3
+   ],
+   "params": {
+    "radius": 19.2,
+    "n": 36,
+    "z0": 0.0,
+    "height": 0.55,
+    "colour": "#7f8a82",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "flag-ring",
+   "at": [
+    -5,
+    -3,
+    0.8
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 15.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 13,
+    "facing": "centre",
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 19,
+      "colour": "#c8362f",
+      "colours": [
+       "#2f8f4f",
+       "#c8362f",
+       "#f5f2ea",
+       "#2f4f9a",
+       "#d4af37",
+       "#1b6aa0",
+       "#c8362f",
+       "#2f7a4f",
+       "#f5f2ea",
+       "#c8362f",
+       "#2f8f4f",
+       "#f5f2ea",
+       "#d4af37"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ministry",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -5,
+    24
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched"
+    },
+    "bands": "#e4e1d6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#505459",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -19,
+    22
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f9aa6",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "cupola",
+   "at": [
+    -5,
+    24,
+    11.6
+   ],
+   "params": {
+    "radius": 1.0,
+    "drum": 0.8,
+    "colour": "#f3f1ea",
+    "finial": 0.6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "brick-wall",
+   "at": [
+    -5,
+    17,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.5,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     56,
+     12
+    ]
+   },
+   "at": [
+    40,
+    12
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f5f2ea",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "front": "arched"
+    },
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4c4f54",
+    "material": "slate",
+    "pitch": 14,
+    "overhang": 0.4,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ped-centre",
+   "footprint": {
+    "rect": [
+     14,
+     1.6
+    ]
+   },
+   "at": [
+    40,
+    5.7
+   ],
+   "height": 10.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f5f2ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f5f2ea",
+    "material": "concrete",
+    "pitch": 22,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "palms-front",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -14
+    ],
+    "end": [
+     34,
+     -26
+    ],
+    "count": 5,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 16
+     }
+    }
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "palms-back",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     9
+    ],
+    "end": [
+     18,
+     12
+    ],
+    "count": 5,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 16
+     }
+    }
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "shade-tree",
+   "at": [
+    12,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "shade-tree2",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "monument",
+   "at": [
+    18,
+    -8,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "palace widened to 56 m with one central pediment but side pediments dropped for LOD1 budget; flags are green stand-ins and poles shorter than photo; plaza is a round disc not a stepped platform; render is a street-level view of OSM lawn at 0.57 scale"
+ }
+}

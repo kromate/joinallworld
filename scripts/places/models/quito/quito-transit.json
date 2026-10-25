@@ -1,0 +1,444 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "quito",
+ "venueId": "quito-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Teleferiqo.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Martin St-Amant (Commons)",
+   "view": "side",
+   "file": "/tmp/places-evidence/quito/tele1.jpg",
+   "used": "gondola cabin and single grey tubular support mast with a crossarm head, twin hauling cables, green paramo slope (a line view, not the station itself)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/204811259",
+   "used": "station outline (containing building, 26 x 23 m, bearing 107)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#5f86a8",
+    "bands": "#a64b2a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7b86",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     6
+    ],
+    "height": 0.2,
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 6,
+    "height": 4,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#7b8892",
+    "edgeColour": "#a64b2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 2.6,
+    "colour": "#5f86a8",
+    "frameColour": "#a64b2a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "colour": "#c9ced1",
+    "yaw": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     12
+    ],
+    "height": 0.1,
+    "colour": "#7d7f7e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 16,
+    "colour": "#aeb4b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    48,
+    15.6
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#9aa2a7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 22,
+    "colour": "#aeb4b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    95,
+    21.6
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#9aa2a7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -1.9,
+      2,
+      9.5
+     ],
+     [
+      -1.9,
+      48,
+      16.2
+     ],
+     [
+      -1.9,
+      95,
+      22.2
+     ],
+     [
+      -1.9,
+      118,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      1.9,
+      2,
+      9.5
+     ],
+     [
+      1.9,
+      48,
+      16.2
+     ],
+     [
+      1.9,
+      95,
+      22.2
+     ],
+     [
+      1.9,
+      118,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    28,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.4
+    ],
+    "height": 1.8,
+    "colour": "#e8e4da",
+    "topColour": "#c9622f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    28,
+    11.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#555a5e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.9,
+    70,
+    14.799999999999999
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.4
+    ],
+    "height": 1.8,
+    "colour": "#e8e4da",
+    "topColour": "#c9622f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.9,
+    70,
+    16.599999999999998
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#555a5e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    108,
+    19.4
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.4
+    ],
+    "height": 1.8,
+    "colour": "#e8e4da",
+    "topColour": "#c9622f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    108,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#555a5e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 7,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 7,
+    "spread": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   100,
+   116
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo shows the cable line (cabin, mast) not the station, so only mast and cabin colours were checked; station shell is a shed-roofed OSM mass with guessed cladding; terrain is flat instead of the Pichincha slope; cables end at 26 m"
+ }
+}

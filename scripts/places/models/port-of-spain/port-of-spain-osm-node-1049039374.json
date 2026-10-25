@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-node-1049039374",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: whitewashed masonry parish church, front bell tower, galvanize roof, arched windows. The only OSM outline is the church car park, so it was not used for the church"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#c7dcd0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a3b30",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-w",
+   "footprint": {
+    "rect": [
+     5,
+     24
+    ]
+   },
+   "at": [
+    -9.5,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#c7dcd0"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a3b30",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-e",
+   "footprint": {
+    "rect": [
+     5,
+     24
+    ]
+   },
+   "at": [
+    9.5,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#c7dcd0"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a3b30",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#c7dcd0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3b30",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "bands": "#c7dcd0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -13.5,
+    17
+   ],
+   "params": {
+    "baseWidth": 6,
+    "height": 9,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#7d7a74",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "pillar": 0.6,
+    "colour": "#f4efe3"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -16,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e8e1d0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo (offline); proportions and tower style are typical of Trinidad parish churches."
+ }
+}

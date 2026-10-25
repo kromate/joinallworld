@@ -1,0 +1,217 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/222586240",
+   "used": "1189 x 983 m golf course: too large, a clubhouse-and-green crop is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "green",
+   "footprint": {
+    "polygon": [
+     [
+      -60,
+      -10
+     ],
+     [
+      -20,
+      -30
+     ],
+     [
+      50,
+      -25
+     ],
+     [
+      90,
+      0
+     ],
+     [
+      70,
+      35
+     ],
+     [
+      0,
+      45
+     ],
+     [
+      -50,
+      30
+     ]
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "windows": "none",
+    "colour": "#5f9444"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f9444"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pond",
+   "footprint": {
+    "polygon": [
+     [
+      -12,
+      -6
+     ],
+     [
+      14,
+      -8
+     ],
+     [
+      22,
+      4
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      -14,
+      6
+     ]
+    ]
+   },
+   "at": [
+    35,
+    35
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "windows": "none",
+    "colour": "#4aa7a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4aa7a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -5,
+    -14
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e0ddd5",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    18,
+    -14
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb0",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e0ddd5",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -5,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 4,
+    "form": "flat",
+    "colour": "#f2efe6",
+    "columns": 4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "count": 7,
+    "kind": "palm"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-way-222586240",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable exterior photo (P18 is a marina aerial): clubhouse, green and pond are a typical resort crop, not the real layout"
+ }
+}

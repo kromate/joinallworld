@@ -1,0 +1,265 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mary_Star_of_the_Sea_Church,_Simpson_Bay.jpg",
+   "licence": "CC BY 4.0",
+   "author": "LittleT889",
+   "view": "front",
+   "file": "/tmp/places-evidence/philipsburg/church.jpg",
+   "used": "multi-coloured fieldstone walls, steep gable with red-and-white trimmed roof edge and white cross, crenellated stone bell tower at front left, pale blue and white arched portal with brown double doors, small arched side windows, detached white-post shelter with pale blue roof at left, stone-paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/365536085",
+   "used": "size and orientation only (outline is irregular)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.5,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#847769",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.08,
+    "bay": 5,
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a42",
+    "material": "metal-sheet",
+    "pitch": 44,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    -4.8,
+    -1.5
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f655b",
+    "windows": "none",
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f655b",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5.4,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -8.3
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "bands": "#8fb7dc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb7dc",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.3
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b2f26",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b2f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -7.0
+   ],
+   "z0": 9.4,
+   "height": 2.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e7e2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e7e2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crossarm",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -7.0
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e7e2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e7e2"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8.2,
+    -8.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3.6,
+    "depth": 3.2,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#8fb7dc",
+    "edgeColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     6.6,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -10.0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#c79a68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c79a68"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     7,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Porch is a plain white box (no blue-and-white stepped arch, no stained transom); no arched side windows, crenellations or red-white roof trim; stone is a uniform brick-like texture, not multi-coloured fieldstone."
+ }
+}

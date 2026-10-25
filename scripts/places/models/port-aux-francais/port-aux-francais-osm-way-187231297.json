@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-osm-way-187231297",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/187231297",
+   "used": "real 193 m2 outline, name matched"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chaudron_phoquier_et_ex-batiment_m%C3%A9t%C3%A9o_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "franek2",
+   "view": "street",
+   "used": "dark red trim, pale cladding, grey gravel, street lamp style; shows the former weather building, not this one"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "meteo",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dad8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#a33b32"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "material": "membrane",
+    "overhang": 0.4,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "banded": false,
+    "colour": "#c9ced2"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "banded": false,
+    "colour": "#c9ced2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "kind": "fence",
+    "thickness": 0.1,
+    "colour": "#6f777c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Outline real; instrument masts and enclosure typed."
+ }
+}

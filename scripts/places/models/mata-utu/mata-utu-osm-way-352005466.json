@@ -1,0 +1,82 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-osm-way-352005466",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/352005466",
+   "used": "real 41 x 17 m outline (name match, Wikidata Q137792705, no photo exists)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 15,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f7a82",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bands": {
+     "colour": "#f3efe4",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5402f",
+    "material": "corrugated",
+    "rise": 3.6,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; OSM outline gable chapel only, small front bell tower not placed because the rotated outline's front end is unverified."
+ }
+}

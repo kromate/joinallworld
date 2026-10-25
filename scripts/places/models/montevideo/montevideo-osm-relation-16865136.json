@@ -1,0 +1,243 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CostaUrbanaShoppingDia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gabriela Oxilia",
+   "view": "front",
+   "file": "/tmp/places-evidence/montevideo/p10.jpg",
+   "used": "pale mint-glass three-level box with white banding, dark-framed glazed front pavilion with deep overhang on the left, low white glazed wing further left, plaza in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/361998586",
+   "used": "only the car park parcel (85 x 65 m) matches by name, the building outline is not in OSM, so the mall body is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     66,
+     36
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fd8c8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e9f1ee"
+     },
+     {
+      "type": "fins",
+      "colour": "#e4efec"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cfcd",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-pavilion",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    -22,
+    -6
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fb7ae",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f353b",
+    "overhang": 4.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-frame",
+   "footprint": {
+    "rect": [
+     30.4,
+     24.4
+    ]
+   },
+   "at": [
+    -22,
+    -6
+   ],
+   "z0": 14,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3c4249",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4249"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    -40,
+    6
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe9e8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     10,
+     -20
+    ],
+    "end": [
+     56,
+     -20
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 8,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#4a4f55",
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 3,
+    "spread": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza-wall",
+   "footprint": {
+    "rect": [
+     70,
+     1.2
+    ]
+   },
+   "at": [
+    20,
+    -24
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f1ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "montevideo",
+ "venueId": "montevideo-osm-relation-16865136",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "mint glass, fins, taller teal pavilion and plaza wall added; window fins too dense, playground/hedges and true outline not modelled"
+ }
+}

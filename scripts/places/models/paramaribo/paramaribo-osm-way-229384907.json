@@ -1,0 +1,458 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/229384907",
+   "used": "name-matched campus outline, 317 x 260 m, scaled 0.36 to the scene as the grounds; buildings typed as low institute blocks"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/way/229384907",
+   "used": "CELOS agricultural and environmental research centre; low blocks, green surrounds"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.3,
+      28.5
+     ],
+     [
+      -27.6,
+      28.9
+     ],
+     [
+      -25.4,
+      30.2
+     ],
+     [
+      -24.9,
+      46.8
+     ],
+     [
+      2.8,
+      46.6
+     ],
+     [
+      33.6,
+      47.1
+     ],
+     [
+      56.5,
+      34.1
+     ],
+     [
+      57.1,
+      -24.3
+     ],
+     [
+      19.3,
+      -24.9
+     ],
+     [
+      20.3,
+      -46.4
+     ],
+     [
+      -25.4,
+      -43.3
+     ],
+     [
+      -25.1,
+      -9.0
+     ],
+     [
+      -40.9,
+      -8.8
+     ],
+     [
+      -40.9,
+      -5.5
+     ],
+     [
+      -57.1,
+      -5.4
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7fa56e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    -5,
+    -20
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#6f8f66",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-a",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -34,
+    -5
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#6f8f66",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-b",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    22,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#6f8f66",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    16,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#6f8f66",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -32,
+    -30
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#6f8f66",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    34,
+    26
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8d4c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -34,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     40,
+     12
+    ],
+    "height": 0.05,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 18
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.3,
+      28.5
+     ],
+     [
+      -27.6,
+      28.9
+     ],
+     [
+      -25.4,
+      30.2
+     ],
+     [
+      -24.9,
+      46.8
+     ],
+     [
+      2.8,
+      46.6
+     ],
+     [
+      33.6,
+      47.1
+     ],
+     [
+      56.5,
+      34.1
+     ],
+     [
+      57.1,
+      -24.3
+     ],
+     [
+      19.3,
+      -24.9
+     ],
+     [
+      20.3,
+      -46.4
+     ],
+     [
+      -25.4,
+      -43.3
+     ],
+     [
+      -25.1,
+      -9.0
+     ],
+     [
+      -40.9,
+      -8.8
+     ],
+     [
+      -40.9,
+      -5.5
+     ],
+     [
+      -57.1,
+      -5.4
+     ],
+     [
+      -57.3,
+      28.5
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.2,
+    "colour": "#bfb9a8",
+    "kind": "fence"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found and render queue stalled; block layout typed, only the grounds outline is real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-229384907"
+}

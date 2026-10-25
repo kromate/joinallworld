@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "papeete",
+ "venueId": "papeete-osm-way-730928869",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/730928869",
+   "used": "real outline (about 28 x 24 m, name match, building=apartments + amenity=restaurant): the irregular indented plan is used as the main block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tahiti,_French_Polynesia_-_Le_Belv%C3%A9d%C3%A8re_(48030412251).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Matthew Dillon",
+   "view": "interior",
+   "used": "NOT used for the shell (an interior washroom); it only confirms the steep forested hillside and the open view over the valley and lagoon, so a view terrace and big glazing face the slope edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Papeete_et_Moorea_depuis_le_belv%C3%A9d%C3%A8re_de_P%C4%ABra%27e.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jeremie Silvestro",
+   "view": "aerial",
+   "used": "setting only: red laterite ground and green hillside above the coast, so the site ground is laterite with palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 0.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee4cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "front": "curtain"
+    },
+    "glassColour": "#5f7f8f",
+    "plinth": 0.4,
+    "bands": "#7a5f42",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8472f",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      0
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      5
+     ],
+     [
+      -12,
+      5
+     ]
+    ],
+    "height": 3.2,
+    "colour": "#cfc3a8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    3.2
+   ],
+   "params": {
+    "points": [
+     [
+      -12.4,
+      -0.4
+     ],
+     [
+      10.4,
+      -0.4
+     ],
+     [
+      10.4,
+      5.4
+     ],
+     [
+      -12.4,
+      5.4
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#7a5f42",
+    "topColour": "#8b6b4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -16.4,
+    3.45
+   ],
+   "params": {
+    "length": 22.8,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -1,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.4,
+    "drop": 0.5,
+    "height": 3.6,
+    "colours": [
+     "#a8472f",
+     "#eee4cf"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1,
+    -12,
+    8.6
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.2,
+    "bottom": 8.6,
+    "colour": "#7a5f42",
+    "frameColour": "#eee4cf",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     12
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo (Commons images are an interior and a hill view). OSM outline plus brief; terrace and awning inferred from the name. NOT RENDERED (queue hung)."
+ }
+}

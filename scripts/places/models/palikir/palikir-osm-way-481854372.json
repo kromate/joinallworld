@@ -1,0 +1,481 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-osm-way-481854372",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nan_Madol_megalithic_site,_Pohnpei_(Federated_States_of_Micronesia)_4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Patrick Nunn",
+   "view": "side",
+   "file": "/tmp/places-evidence/palikir/nm2.jpg",
+   "used": "corner of stacked basalt logs in alternating header/stretcher courses, overhanging cap, mossy dark grey, canal in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nan_Madol,_Pohnpei.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Uhooep",
+   "view": "detail",
+   "file": "/tmp/places-evidence/palikir/nm1.jpg",
+   "used": "gate between two thick stacked-stone wall ends, steps of basalt logs, green moss and leaf litter"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/481854372",
+   "used": "overall site is 1.5 km; only the 70 x 55 m Nandauwas islet is modelled from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wall-s",
+   "footprint": {
+    "rect": [
+     70,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -24.5
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f4244",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#3f4244",
+       "#6a6f6a"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-n",
+   "footprint": {
+    "rect": [
+     70,
+     6
+    ]
+   },
+   "at": [
+    0,
+    24.5
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f4244",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#3f4244",
+       "#6a6f6a"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-w",
+   "footprint": {
+    "rect": [
+     6,
+     43
+    ]
+   },
+   "at": [
+    -32,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f4244",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-e",
+   "footprint": {
+    "rect": [
+     6,
+     43
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f4244",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     58,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5b605d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6a4c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tomb",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f4244",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f5a45",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tomb-cap",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete"
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "run": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner--1-1",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    -26
+   ],
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4b4e4f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#3b3e40",
+      "#5a5f5c"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner--11",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    26
+   ],
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4b4e4f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#3b3e40",
+      "#5a5f5c"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-1-1",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    34,
+    -26
+   ],
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4b4e4f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#3b3e40",
+      "#5a5f5c"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-11",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    34,
+    26
+   ],
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4b4e4f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#3b3e40",
+      "#5a5f5c"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d4f",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": 6,
+  "treeKind": "palm",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Walls are flat banded blocks, not individually stacked basalt logs with header ends and overhanging corner tips; no moss, vegetation or ruined broken tops; only one islet of the 1.5 km site."
+ }
+}

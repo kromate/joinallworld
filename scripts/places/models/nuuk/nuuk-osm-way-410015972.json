@@ -1,0 +1,94 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-way-410015972",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/253988875",
+   "used": "real outline 66 x 32 m, amenity=university"
+  },
+  {
+   "kind": "photo",
+   "file": "/tmp/places-evidence/nuuk/m15-ilin0.jpg",
+   "url": "https://commons.wikimedia.org/wiki/Category:Buildings_in_Nuuk",
+   "licence": "CC BY-SA 4.0",
+   "author": "sermersooq (Mapillary)",
+   "view": "street",
+   "used": "nearby campus street view: two-storey dark-red clad blocks with white ribbon windows, concrete plinth walls and yellow roof edges; not confirmed as this exact block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8c2f2a",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 1.2,
+    "bands": "#d8d2c4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f4348",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -38,
+    0
+   ],
+   "params": {
+    "colour": "#6b7b8c",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo shows neighbouring blocks only; entrance, roof details and exact colours of this wing are unverified"
+ }
+}

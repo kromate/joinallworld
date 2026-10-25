@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/369030528",
+   "used": "64 x 34 m angled classroom-range footprint (containing match)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classrooms",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#4d7a5c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d7a5c",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.4,
+    "legs": 3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -18,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     36
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; gable roof fitted to the bounding rectangle of a zigzag outline, likely oversize."
+ }
+}

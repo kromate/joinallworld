@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-osm-node-3375689678",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shopping_Center_in_St._Martin_(15649426673).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Paul Sableman",
+   "view": "street",
+   "file": "/tmp/places-evidence/marigot/howell2.jpg",
+   "used": "Creole courtyard: orange and peach walls, golden hip roofs, white fretwork balcony bands, small flat kiosk with planted roof, palms, red brick paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/320701962",
+   "used": "overall extent 69 x 30 m (nearest match only, zig-zag outline not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     62,
+     40
+    ],
+    "height": 0.08,
+    "colour": "#b5593f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     44,
+     11
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f08a48",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#ffffff",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e3c26a",
+    "material": "metal-sheet",
+    "rise": 5.2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    21,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ea7a3a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#ffffff",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e3c26a",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -21,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f08a48",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#ffffff",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e3c26a",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8602f",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2985a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#ffffff",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e3c26a",
+    "material": "metal-sheet",
+    "rise": 4.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 3,
+    "height": 3.4,
+    "colour": "#e8d8c0",
+    "edgeColour": "#c0392b",
+    "columns": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -12,
+    5.5,
+    9.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.8,
+    "roof_colour": "#e3c26a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    0,
+    5.5,
+    9.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.8,
+    "roof_colour": "#e3c26a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    12,
+    5.5,
+    9.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.8,
+    "roof_colour": "#e3c26a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -21,
+    -12,
+    8.5
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "roof_colour": "#e3c26a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    21,
+    -14,
+    8.5
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "roof_colour": "#e3c26a",
+    "wall_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Camera is a high exterior view, not the courtyard eye view; fretwork is small balcony rails not full cutout bands; kiosk hidden behind the near range."
+ }
+}

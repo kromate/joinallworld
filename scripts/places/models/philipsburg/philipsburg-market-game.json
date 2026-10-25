@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/158069802",
+   "used": "real irregular outline (48x46 m, 4 levels, hipped roof); named match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: four-level plaza of shops and offices, painted render in coral/cream with teal accents, red clay-tile hip roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8836b",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#f4f1ea",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5473a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2,
+    "height": 3,
+    "colours": [
+     "#5fb7b0",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 10,
+    "colour": "#5fb7b0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 9,
+    "colour": "#f4f1ea",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the plaza found; outline, levels and roof from OSM, colours from the city style"
+ }
+}

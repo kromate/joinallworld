@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/332682089",
+   "used": "real footprint 11.6 x 10.2 m, rotated 95 degrees"
+  },
+  {
+   "kind": "text",
+   "used": "brief only: small single-storey government office; photos nearby are of other things (airline office/street) so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "fit": 12
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d6",
+    "windows": "louvre",
+    "windowRatio": 0.22,
+    "plinth": 0.35,
+    "bands": "#7aa37a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa0a2",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.5,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.1,
+    "bottom": 1.0,
+    "colour": "#7aa37a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    7,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "colour": "#d21034"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   45,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or description; OSM 12x10 m footprint, small louvred hip-roof office typical of Port Vila"
+ }
+}

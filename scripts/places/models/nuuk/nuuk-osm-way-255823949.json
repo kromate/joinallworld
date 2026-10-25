@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-way-255823949",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255823949",
+   "used": "real park outline 158 x 91 m, centred"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/nuuk.json#nuuk-osm-way-255823949",
+   "used": "open paved square with rock outcrops and sparse planting; photos in the evidence list show a house, not the square, so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paving",
+   "params": {
+    "points": [
+     [
+      -58.8,
+      -21
+     ],
+     [
+      -48.3,
+      3.5
+     ],
+     [
+      -44.2,
+      3.8
+     ],
+     [
+      -33.9,
+      10.8
+     ],
+     [
+      -23.8,
+      25.5
+     ],
+     [
+      -14.5,
+      27.4
+     ],
+     [
+      -9.9,
+      43.5
+     ],
+     [
+      -15.6,
+      71.5
+     ],
+     [
+      14.6,
+      60.6
+     ],
+     [
+      35.4,
+      57.3
+     ],
+     [
+      54.8,
+      52
+     ],
+     [
+      51.9,
+      3.1
+     ],
+     [
+      34.4,
+      -18
+     ],
+     [
+      -3.3,
+      -56.1
+     ],
+     [
+      -7.9,
+      -59.7
+     ],
+     [
+      -14.5,
+      -63.3
+     ],
+     [
+      -47.5,
+      -73.9
+     ],
+     [
+      -50.7,
+      -69.5
+     ],
+     [
+      -50.3,
+      -65.9
+     ],
+     [
+      -45.1,
+      -40.2
+     ],
+     [
+      -42.7,
+      -38.5
+     ],
+     [
+      -40.4,
+      -28.5
+     ],
+     [
+      -50.5,
+      -23.1
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b4b1a6",
+    "topColour": "#b4b1a6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock0",
+   "at": [
+    -25,
+    10,
+    0
+   ],
+   "params": {
+    "colour": "#6f6e68",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7,
+       5
+      ]
+     },
+     {
+      "z": 1.7999999999999998,
+      "ellipse": [
+       4.8999999999999995,
+       3.5
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.1,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock1",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#6f6e68",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       4
+      ]
+     },
+     {
+      "z": 1.32,
+      "ellipse": [
+       3.5,
+       2.8
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       1.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock2",
+   "at": [
+    35,
+    25,
+    0
+   ],
+   "params": {
+    "colour": "#6f6e68",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       8,
+       6
+      ]
+     },
+     {
+      "z": 2.1,
+      "ellipse": [
+       5.6,
+       4.199999999999999
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       2.4,
+       1.7999999999999998
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock3",
+   "at": [
+    -5,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#6f6e68",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       4,
+       3
+      ]
+     },
+     {
+      "z": 0.96,
+      "ellipse": [
+       2.8,
+       2.0999999999999996
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       1.2,
+       0.8999999999999999
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 5,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "birch",
+    "height": 5,
+    "count": 5,
+    "spread": 10,
+    "colour": "#5b7a45"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -55,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the square; paving layout, rock positions and planting are typical Nuuk town-centre guesses"
+ }
+}

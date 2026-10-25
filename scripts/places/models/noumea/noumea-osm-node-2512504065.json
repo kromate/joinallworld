@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "noumea",
+ "venueId": "noumea-osm-node-2512504065",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "cliff",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#6f6a5e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       26,
+       6
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       22,
+       5
+      ],
+      "cy": 0.5
+     },
+     {
+      "z": 6,
+      "rect": [
+       18,
+       4.5
+      ],
+      "cy": 1
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       15,
+       4
+      ],
+      "cy": 1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fall",
+   "at": [
+    0,
+    5.7,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.35
+    ],
+    "height": 8,
+    "colour": "#dfeaee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pool",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#5f8f94",
+    "profile": [
+     [
+      0.1,
+      0.1
+     ],
+     [
+      5.5,
+      0.3
+     ],
+     [
+      7,
+      0.45,
+      "#8c8a80"
+     ],
+     [
+      7.2,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 8.5,
+    "count": 6,
+    "startDeg": 200,
+    "endDeg": 340,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.8,
+        0
+       ],
+       [
+        1.1,
+        0.6
+       ],
+       [
+        0.5,
+        1.1
+       ]
+      ],
+      "colour": "#8c8a80"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#8a7a62",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -13.8,
+    0.5
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#8a7a62"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -8
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the waterfall (only a fern photo nearby); rock face, thin fall, pool and trail platform typed."
+ }
+}

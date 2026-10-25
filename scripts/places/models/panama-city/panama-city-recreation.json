@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/22946547",
+   "used": "park polygon of about 858 x 802 m on forested hills; only an entrance cluster of the park is modelled, the outline is not a building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo of the park structures exists on Commons (only animals and plants); gatehouse, pavilions and aviary are typical and unverified"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -26
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cf",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "trimColour": "#7c5a3a",
+    "bands": "#7c5a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -1,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#7c5a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "bottom": 1.4,
+    "colour": "#3c7a4a",
+    "frameColour": "#7c5a3a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.25,
+    "colour": "#6b6f66",
+    "kind": "fence",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-picnic",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    20,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cf",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#7c5a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "animal-house",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "rotDeg": 12,
+   "z0": 0.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cf",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#7c5a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "harpy-aviary",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    8,
+    22
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4f5a52",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "colour": "#3e463f",
+    "material": "metal-sheet",
+    "rise": 1.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    20,
+    12,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.4,
+    "thickness": 0.15,
+    "colour": "#59615a",
+    "kind": "fence",
+    "pillarEvery": 4,
+    "points": [
+     [
+      -14,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      18
+     ],
+     [
+      -14,
+      18
+     ],
+     [
+      -14,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 9,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 8,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 6,
+    "spread": 6,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 10,
+    "spread": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   100
+  ]
+ }
+}

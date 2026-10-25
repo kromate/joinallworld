@@ -1,0 +1,298 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-vila",
+ "venueId": "port-vila-osm-way-164077407",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Korman_Stadium_(Mar._14,_2015).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Julie Lyn from Washington, DC, USA",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-vila/korman.jpg",
+   "used": "long cream two-level building with a row of windows, shallow white corrugated gable roof with raised clerestory ridge, grass slope behind, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/164077407",
+   "used": "stand polygon 52 x 46 m, bearing 70 deg; capacity 6,500 from Wikipedia sets a small bowl"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-stand",
+   "footprint": {
+    "rect": [
+     62,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -42
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcb4",
+    "windows": "rect",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "bands": "#d9c99a",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#eef0ee",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     52,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -42
+   ],
+   "rotDeg": 0,
+   "z0": 8.4,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6e6a58",
+    "windows": "rect",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -45,
+     38
+    ],
+    "end": [
+     45,
+     38
+    ],
+    "flip": false,
+    "rows": 12,
+    "seatColour": "#4d7a5c",
+    "seatColours": [
+     "#4d7a5c",
+     "#bfc4c2"
+    ],
+    "blocks": 4,
+    "backWall": 0.8,
+    "under": "solid",
+    "concreteColour": "#bfc4c2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 38,
+    "startDeg": -25,
+    "endDeg": 25,
+    "rows": 6,
+    "seatColour": "#bfc4c2",
+    "under": "solid",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 38,
+    "startDeg": 155,
+    "endDeg": 205,
+    "rows": 6,
+    "seatColour": "#bfc4c2",
+    "under": "solid",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    36,
+    0
+   ],
+   "params": {
+    "height": 16
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    36,
+    0
+   ],
+   "params": {
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 6,
+    "line": 60
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hill",
+   "footprint": {
+    "rect": [
+     140,
+     18
+    ]
+   },
+   "at": [
+    0,
+    66
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f8a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f8a45",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 8,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -25,
+     -32
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     22,
+     -33
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hall still reads as two-storey block (storeys:2 drives window rows) and the hill is a green block; stand/bowl inferred, storm-damaged bare trees and leaning palm only approximated"
+ }
+}

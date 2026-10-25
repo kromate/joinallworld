@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pamplemousses,_Eglise_Saint_Fran%C3%A7ois_d%E2%80%98Assise.JPG",
+   "licence": "CC0",
+   "author": "Karsten Ratzke",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-louis/church1.jpg",
+   "used": "dark grey basalt front tower with steep slate-dark pitched roof and small arched door, lighter coursed stone nave with pointed windows, low basalt wall topped with green iron railings, flame-tree canopy"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pamplemousses,_Eglise_Saint_Fran%C3%A7ois_d%E2%80%98Assise_(2).jpg",
+   "licence": "CC0",
+   "author": "Karsten11",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-louis/church2.jpg",
+   "used": "pale limestone-grey rubble nave walls with dark basalt quoins and buttresses, plum-grey corrugated hipped roof, lancet windows with tracery, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/170358867",
+   "used": "stepped nave and transept outline, 61 x 26 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 7.5,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a79f",
+    "windows": "pointed",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "bands": "#4b4d50",
+    "cornice": false
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a525a",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -30,
+    5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "z0": 0,
+   "wall": {
+    "material": "stone",
+    "colour": "#5f6165",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#43464a",
+    "material": "slate",
+    "pitch": 55,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.0,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#2f5a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "hip roof fitted to bounding rectangle; tower is a plain box, no tracery or railing gates; trees simplified"
+ }
+}

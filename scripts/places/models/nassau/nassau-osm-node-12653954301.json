@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-node-12653954301",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522445733",
+   "used": "tiny building footprint 18.6 x 8.9 m, bearing 167 (containing match, untagged building)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/nassau.json#nassau-osm-node-12653954301",
+   "used": "one-storey painted concrete-block roadside cafe, gable corrugated roof, awning, sign board; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "polygon": [
+     [
+      -6.5,
+      8
+     ],
+     [
+      -2.2,
+      -10.1
+     ],
+     [
+      6.5,
+      -8
+     ],
+     [
+      2.2,
+      10.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8cc9c4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a9a96",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "height": 2.5,
+    "colours": [
+     "#f0d98a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#f0d98a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -13,
+    0
+   ],
+   "params": {
+    "umbrella": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline plus typed cafe; signage and colours are guesses."
+ }
+}

@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "marigot",
+ "venueId": "marigot-airport-marigot-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/27615608",
+   "used": "real terminal outline (76 x 32 m, bent), name-quality match"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Grand_Case-Esp%C3%A9rance_Airport",
+   "used": "2017 renovation: new control tower, apron boarding on foot, ATR 72 traffic; Commons photos show only aircraft and the green hill behind the apron, so no terminal photo was usable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#4a7fa6",
+    "parapet": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b8ba",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    3,
+    -17,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "form": "flat",
+    "width": 52,
+    "depth": 5,
+    "height": 3.8,
+    "thickness": 0.35,
+    "columns": 7,
+    "colour": "#4a7fa6",
+    "edgeColour": "#f0ece2"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    24,
+    3,
+    0
+   ],
+   "params": {
+    "height": 17,
+    "style": "square",
+    "colour": "#f0ece2",
+    "cabColour": "#4a7fa6",
+    "bandColour": "#c9c9c5"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#0055a4",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -2,
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.55,
+    "colour": "#f2f4f6",
+    "tailColour": "#4a7fa6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18,
+    32,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     36
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable terminal photo (Commons shows only aircraft); colours, canopy and tower typed from brief; real OSM outline."
+ }
+}

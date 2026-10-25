@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nukualofa",
+ "venueId": "nukualofa-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/380697400",
+   "used": "real park outline (37 x 31 m, seven-sided plot)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -21.3,
+      -7.3
+     ],
+     [
+      -11.9,
+      11.8
+     ],
+     [
+      -7.8,
+      17.5
+     ],
+     [
+      -1.4,
+      20.4
+     ],
+     [
+      5.7,
+      17.8
+     ],
+     [
+      21.6,
+      8
+     ],
+     [
+      4.2,
+      -23.3
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#80a35c",
+    "topColour": "#80a35c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hardstand",
+   "params": {
+    "points": [
+     [
+      -12,
+      -4
+     ],
+     [
+      -8,
+      8
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      2,
+      -10
+     ]
+    ],
+    "z0": 0.15,
+    "height": 0.08,
+    "colour": "#bdb6a5",
+    "topColour": "#c4bdac"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    4,
+    10,
+    0.15
+   ]
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    8,
+    -4,
+    0.15
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.7,
+    "colour": "#b59a6a",
+    "roofColour": "#6f8a5a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint only; hardstand, shelter and palms are plausible, not observed"
+ }
+}

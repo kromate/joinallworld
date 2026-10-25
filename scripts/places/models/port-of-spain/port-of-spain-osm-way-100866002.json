@@ -1,0 +1,350 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-osm-way-100866002",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Memorial_Park_Cenotaph_Port_of_Spain.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chris Fitzpatrick",
+   "view": "detail",
+   "file": "/tmp/places-evidence/port-of-spain/memorial.jpg",
+   "used": "white tapering square shaft with an ornate cornice cap, bronze soldier groups on the base corners, a winged bronze figure holding a wreath on top (the cenotaph only, not the park layout)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/100866002",
+   "used": "park outline 194 x 100 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7fae5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fae5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 0.5,
+    "colour": "#d9d4c6",
+    "topColour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.2,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.15,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 1.5,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    0,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "height": 12,
+    "topScale": 0.62,
+    "colour": "#f7f5ef",
+    "topColour": "#f7f5ef"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0,
+    0,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 1.2,
+    "colour": "#ffffff",
+    "topColour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap-top",
+   "at": [
+    0,
+    0,
+    15.7
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 0.5,
+    "colour": "#ece8de",
+    "topColour": "#ece8de"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    16.2
+   ],
+   "params": {
+    "height": 4.2,
+    "colour": "#3a3028"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -3.6,
+    -3.6,
+    2.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#3a3028"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    3.6,
+    -3.6,
+    2.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#3a3028"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -8
+     ],
+     [
+      0,
+      -60
+     ],
+     [
+      -10,
+      -90
+     ]
+    ],
+    "width": 4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -8,
+      0
+     ],
+     [
+      -60,
+      5
+     ],
+     [
+      -90,
+      5
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      8,
+      0
+     ],
+     [
+      40,
+      2
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 60,
+    "count": 10,
+    "kind": "broadleaf",
+    "keep_out": [
+     [
+      -12,
+      -12,
+      12,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    28,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 70,
+    "count": 7,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    55,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -93,
+    0
+   ],
+   "params": {
+    "length": 95,
+    "height": 1.1,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -9,
+    0.5
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#ce1126",
+    "count": 2,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "cenotaph shaft, cornice, bronze groups and winged figure from photo; lawn outline scaled to fit 118 m, park layout and trees generic"
+ }
+}

@@ -1,0 +1,200 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief: small noticeboard hut at the base centre, 8x6 m",
+   "used": "size and colours; nearest OSM building (34 m, 6x5 m) not matched by name so not used"
+  },
+  {
+   "kind": "text",
+   "licence": "CC BY-SA 4.0",
+   "author": "EmySoleil",
+   "view": "street",
+   "used": "the weathered multi-arrow signpost on the base: tall grey pole carrying many blank arrow boards, over a stone-edged bed, white kerb",
+   "ref": "https://commons.wikimedia.org/wiki/File:Port_aux_Fran%C3%A7ais_-_001.jpg"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9a441",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.35,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "overhang": 0.4,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -3.9
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f2ee",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 0.7,
+    "colour": "#f2f2ee",
+    "frameColour": "#6f777c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    5.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 0.7,
+    "colour": "#d9a441",
+    "frameColour": "#6f777c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signpost",
+   "at": [
+    9,
+    -4
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 6.5,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    9,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     2.6
+    ],
+    "end": [
+     0,
+     0,
+     6.0
+    ],
+    "count": 6,
+    "yaw": 0,
+    "vary": {},
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.2,
+        0.2
+       ],
+       "height": 0.35,
+       "colour": "#e8e6e0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -3.5,
+    -3.5,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#2f5d8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the hut itself; modelled as a small yellow clad box with notice boards."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-community-notices"
+}

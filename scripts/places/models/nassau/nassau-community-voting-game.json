@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahamas_1988_(193)_New_Providence_Rawson_Square,_Nassau_(23927893065).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Rudiger Stehn",
+   "view": "street",
+   "file": "/tmp/places-evidence/nassau/rawson1.jpg",
+   "used": "cream arcaded government building with louvred upper storeys on the left, dolphin fountain basin, palms, hedges, signpost, paved plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliament_Square,_Nassau,_The_Bahamas.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Larry Syverson",
+   "view": "front",
+   "file": "/tmp/places-evidence/nassau/rawson2.jpg",
+   "used": "adjacent House of Assembly: pink stucco, white portico, green shutters, statue on plinth, flagpoles, cannons, clipped hedges; palette for the ring of buildings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/234030479",
+   "used": "64 x 46 m plaza outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b99a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -2,
+    40
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b4b0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f3efe4",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e6e3dc",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     12,
+     36
+    ]
+   },
+   "at": [
+    -36,
+    2
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "louvre",
+    "windowRatio": 0.45,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "verandah-arcade",
+   "id": "arcade",
+   "at": [
+    -29.5,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "depth": 3,
+    "height": 4.2,
+    "kind": "round",
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "id": "fountain",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 3.2
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "statue",
+   "at": [
+    6,
+    10,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#f3efe4",
+    "plinthColour": "#b59a85"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -6,
+    16,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 8,
+    "colours": [
+     "#00778b",
+     "#f9d616",
+     "#000000"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk1",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk2",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#8cc9c4"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.9
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "sign",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "id": "cars",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#1f2326",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render queue workers were stalled (no heartbeat since 24 Oct 21:40), so no comparison render was possible: photos show adjacent Parliament Square and the Rawson Square arcaded building, not the plaza itself; ring buildings, statue and palms are typed from them"
+ }
+}

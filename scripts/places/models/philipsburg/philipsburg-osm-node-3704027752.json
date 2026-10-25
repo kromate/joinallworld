@@ -1,0 +1,170 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/3704027752",
+   "used": "point only; the containing polygon is Orange Grove Center, a different building, not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#5fb7b0",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -9,
+    -14
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7cfc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b0a0"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -9,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#5fb7b0",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#b5473a",
+    "frameColour": "#f4f1ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -18.2,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "line": 6,
+    "colour": "#3f7a35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": 0,
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo and no description; size, colours and layout are typical for a Philipsburg beach bar-restaurant; nearby Commons photos were of other subjects and were not used"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-node-3704027752"
+}

@@ -1,0 +1,585 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bosque_de_Aragon-_picnic_shelter.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Thayne Tuason",
+   "view": "front",
+   "file": "/tmp/places-evidence/mexico-city/m23-bosque.jpg",
+   "used": "picnic pavilion: red clay-tile hip roof with small ridge lantern on four rust-brown posts with green bases over a grey slab, picnic table; dry lawn, Canary palms, olive-grey eucalyptus, paths"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/20008211",
+   "used": "park identity and size only (2,040 x 1,190 m); a lakeside corner with a pavilion is composed (lake and boat dock come from the Wikipedia text, not the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -44,
+      -5
+     ],
+     [
+      50,
+      -5
+     ]
+    ],
+    "width": 66,
+    "colour": "#b4a468"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     7.6
+    ],
+    "z0": 0.03,
+    "height": 0.3,
+    "colour": "#777a7c",
+    "topColour": "#8a8d8e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-0",
+   "at": [
+    3.4,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0.33,
+    "height": 0.6,
+    "colour": "#2f5f45",
+    "topColour": "#2f5f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-0",
+   "at": [
+    3.4,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "z0": 0.93,
+    "height": 2.5,
+    "colour": "#8a3b1f",
+    "topColour": "#8a3b1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-1",
+   "at": [
+    8.6,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0.33,
+    "height": 0.6,
+    "colour": "#2f5f45",
+    "topColour": "#2f5f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-1",
+   "at": [
+    8.6,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "z0": 0.93,
+    "height": 2.5,
+    "colour": "#8a3b1f",
+    "topColour": "#8a3b1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-2",
+   "at": [
+    3.4,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0.33,
+    "height": 0.6,
+    "colour": "#2f5f45",
+    "topColour": "#2f5f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-2",
+   "at": [
+    3.4,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "z0": 0.93,
+    "height": 2.5,
+    "colour": "#8a3b1f",
+    "topColour": "#8a3b1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-3",
+   "at": [
+    8.6,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0.33,
+    "height": 0.6,
+    "colour": "#2f5f45",
+    "topColour": "#2f5f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-3",
+   "at": [
+    8.6,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "z0": 0.93,
+    "height": 2.5,
+    "colour": "#8a3b1f",
+    "topColour": "#8a3b1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-4",
+   "at": [
+    6,
+    -2.9
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0.33,
+    "height": 0.6,
+    "colour": "#2f5f45",
+    "topColour": "#2f5f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-4",
+   "at": [
+    6,
+    -2.9
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "z0": 0.93,
+    "height": 2.5,
+    "colour": "#8a3b1f",
+    "topColour": "#8a3b1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-5",
+   "at": [
+    6,
+    2.9
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0.33,
+    "height": 0.6,
+    "colour": "#2f5f45",
+    "topColour": "#2f5f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-5",
+   "at": [
+    6,
+    2.9
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "z0": 0.93,
+    "height": 2.5,
+    "colour": "#8a3b1f",
+    "topColour": "#8a3b1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     7.8
+    ],
+    "z0": 3.4,
+    "height": 0.35,
+    "colour": "#7a2f1c",
+    "topColour": "#7a2f1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roofx",
+   "at": [
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.2,
+     8.2
+    ],
+    "z0": 3.75,
+    "height": 1.2,
+    "colour": "#b5523b",
+    "topColour": "#b5523b",
+    "topScale": 0.28
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 4.9,
+    "height": 0.8,
+    "colour": "#7a2f1c",
+    "topColour": "#7a2f1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-roof",
+   "at": [
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "z0": 5.7,
+    "height": 0.7,
+    "colour": "#b5523b",
+    "topColour": "#b5523b",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table",
+   "at": [
+    6,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.8
+    ],
+    "z0": 0.33,
+    "height": 0.75,
+    "colour": "#2f5240",
+    "topColour": "#2f5240"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-a",
+   "at": [
+    6,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.4
+    ],
+    "z0": 0.33,
+    "height": 0.45,
+    "colour": "#2f5240",
+    "topColour": "#2f5240"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-b",
+   "at": [
+    6,
+    -0.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.4
+    ],
+    "z0": 0.33,
+    "height": 0.45,
+    "colour": "#2f5240",
+    "topColour": "#2f5240"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      -20
+     ],
+     [
+      -20,
+      -12
+     ],
+     [
+      -8,
+      -6
+     ],
+     [
+      -2,
+      -1
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#a8573a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -45,
+      12
+     ],
+     [
+      -10,
+      10
+     ],
+     [
+      30,
+      14
+     ],
+     [
+      60,
+      16
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    4,
+    44,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 26,
+    "shape": "oval",
+    "colour": "#5f8ea3",
+    "bank": true
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -4,
+    31,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 8,
+    "width": 2.6,
+    "height": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     2
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     22
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -6,
+     -2
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -26,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     16,
+     18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     36,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -34,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dry yellow-brown lawn, rust posts on green bases, flatter roof, grey slab and picnic table now match; lawn strip has a tile texture, trees are still low-poly (palms/acacias, not olive-grey crowns), fisheye view differs."
+ }
+}

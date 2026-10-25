@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:184_Place_%C3%A0_Wallis_(37082868915).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Brigitte & Heinz",
+   "view": "street",
+   "file": "/tmp/places-evidence/mata-utu/place1.jpg",
+   "used": "style reference only (photo taken about 80 m from the place, not proven to be this pavilion): big open Wallisian fale with a steep double-pitch thatched hip roof on low posts, grass square, white bollards (not proven to be this place; model is a plausible fale only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/377541725",
+   "used": "nearest building 28 x 11 m, 72 m away: only the scale of the pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fale",
+   "footprint": {
+    "rect": [
+     25,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#2a2420",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a7a5c",
+    "material": "thatch",
+    "pitch": 24,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fale-upper",
+   "footprint": {
+    "rect": [
+     17,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.8,
+   "height": 0.5,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a7a5c",
+    "material": "thatch",
+    "pitch": 55,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -4.8,
+     0
+    ],
+    "end": [
+     11,
+     -4.8,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 2.5,
+      "colour": "#2a2420"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     4.8,
+     0
+    ],
+    "end": [
+     11,
+     4.8,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 2.5,
+      "colour": "#2a2420"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     -17,
+     0
+    ],
+    "end": [
+     8,
+     -17,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 1.0,
+      "topScale": 0.7,
+      "colour": "#f1f1ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     21,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo not proven to be this pavilion so verified downgraded; double-pitch thatch skirt present but posts are barely visible (dark band), no ridge cap or plinth."
+ }
+}

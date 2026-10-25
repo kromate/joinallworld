@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-way-287506166",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_Germain-Comarmond,_2020_(2).jpg",
+   "licence": "CC0",
+   "author": "see file page",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-louis/comarmond.jpg",
+   "used": "long plain white perimeter wall with raised lettering (blank here) and a coloured athlete mural at the end, grass verge with basalt boulders, a stand roof with a dark underside and light masts behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/287506166",
+   "used": "outline 183 x 95 m, long axis north-south: pitch and wall sized to it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.36,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     76,
+     112
+    ],
+    "height": 0.05,
+    "colour": "#a8523b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     60,
+     96
+    ],
+    "height": 0.06,
+    "colour": "#6f9d4b"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -40,
+     36
+    ],
+    "end": [
+     -40,
+     -36
+    ],
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColour": "#9a3f32",
+    "concreteColour": "#d9d4c7",
+    "backWall": 1.0,
+    "under": "solid",
+    "canopy": {
+     "height": 6.5,
+     "depth": 8,
+     "colour": "#6e7a85",
+     "slopeDeg": 4,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     90
+    ],
+    "height": 3.0,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     0.4
+    ],
+    "height": 2.8,
+    "colour": "#efeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    80,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     0.4
+    ],
+    "height": 2.8,
+    "colour": "#efeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     160
+    ],
+    "height": 2.8,
+    "colour": "#efeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    52,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     160
+    ],
+    "height": 2.8,
+    "colour": "#efeeea"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -80.4,
+    0.6
+   ],
+   "params": {
+    "width": 34,
+    "height": 1.0,
+    "bottom": 1.2,
+    "colour": "#8a8d90",
+    "frameColour": "#8a8d90",
+    "posts": false
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -46,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    46,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -46,
+    72,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    46,
+    72,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo shows only the perimeter wall and a stand roof; stand, embankment and masts positions are inferred; wall shortened to the scene clamp"
+ }
+}

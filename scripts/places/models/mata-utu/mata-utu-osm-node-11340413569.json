@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mata-utu",
+ "venueId": "mata-utu-osm-node-11340413569",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/352168187",
+   "used": "10x7 m rotated footprint (nearest, 22 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: lagoon dive-club hut, turquoise timber, corrugated shed roof, pier, boat, kit racks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "polygon": [
+     [
+      -4.5,
+      -4.4
+     ],
+     [
+      -2.6,
+      5.7
+     ],
+     [
+      4.5,
+      4.4
+     ],
+     [
+      2.6,
+      -5.7
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6da1b5",
+    "windows": "louvre",
+    "windowRatio": 0.1,
+    "plinth": 0.2,
+    "bands": "#f3efe4"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e9396",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3,
+    "height": 2.7,
+    "columns": 2,
+    "colour": "#f3efe4",
+    "edgeColour": "#8a6c4c"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.4,
+    "height": 0.6,
+    "colour": "#8a6c4c"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    3,
+    -22,
+    0.3
+   ],
+   "params": {
+    "length": 6,
+    "width": 2,
+    "colour": "#f3efe4",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1,
+    "bottom": 2.2,
+    "colour": "#f3efe4",
+    "frameColour": "#8a6c4c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    6,
+    2,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#8a6c4c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; boat, pier length and kit racks are plausible, not observed"
+ }
+}

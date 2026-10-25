@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-node-4462598425",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/847437451",
+   "used": "nearest building outline, a rotated 11 x 9 m pavilion (34 degrees)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/paramaribo.json paramaribo-osm-node-4462598425",
+   "used": "Butterfly Plantation: timber visitor pavilion with corrugated gable roof beside a screened butterfly house; Commons photos found only show butterflies, not the buildings"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a08463",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d8f8f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "butterfly-house",
+   "at": [
+    14,
+    3
+   ],
+   "rotDeg": 34,
+   "params": {
+    "rect": [
+     16,
+     10
+    ],
+    "height": 3.6,
+    "colour": "#cfe0cf",
+    "windows": "none",
+    "topColour": "#cfe0cf",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.12,
+      "depth": 0.08,
+      "spacing": 1.0,
+      "colour": "#5f6b5a",
+      "margin": 0.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-roof",
+   "at": [
+    14,
+    3
+   ],
+   "rotDeg": 34,
+   "params": {
+    "rect": [
+     16.4,
+     10.4
+    ],
+    "z0": 3.6,
+    "height": 0.25,
+    "colour": "#7a5f42",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "rotDeg": 34,
+   "params": {
+    "length": 24,
+    "height": 1.2,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#7a5f42"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.3,
+    "colour": "#7a5f42",
+    "frameColour": "#d9c8a5",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue workers hung since 2026-10-24 21:40, never rendered; Commons photos show only butterflies; pavilion and butterfly house placement guessed"
+ }
+}

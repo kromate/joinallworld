@@ -1,0 +1,127 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/217109092",
+   "used": "real campus outline (name match), fitted to the scene"
+  },
+  {
+   "kind": "text",
+   "ref": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Ciencias_M%C3%A9dicas_y_Nutrici%C3%B3n_Salvador_Zubir%C3%A1n",
+   "used": "on Vasco de Quiroga since 1970, teaching hospital; Commons photos found were interiors only and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital-block",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b2a4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "bands": "#a86a4f",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    10,
+    0,
+    26
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 4.5,
+    "colour": "#a68f7c"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "ambulance",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "columns": 3
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -35,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -55
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint only (no exterior photo located); storeys, brick banding and wing heights are assumptions; real outline is 367 m long and is scaled to fit"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mexico-city",
+ "venueId": "mexico-city-clinic"
+}

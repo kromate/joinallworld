@@ -1,0 +1,313 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port_of_Spain_General_Hospital.jpg",
+   "licence": "CC0",
+   "author": "LittleT889",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-of-spain/clinic1.jpg",
+   "used": "colour palette only (red-brick ward block with grey hip roof, orange-brown gate piers, cream render); the photo shows the Charlotte Street gate, not the 1858 main block"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1858 colonial classical stone-and-brick front, portico with pediment, ground-floor loggia, side wings, modern ward blocks behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-front",
+   "footprint": {
+    "rect": [
+     76,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b86a50",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 8,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "bands": "#f1ead8",
+    "cornice": true,
+    "trimColour": "#f1ead8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a98a2",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     34
+    ]
+   },
+   "at": [
+    -48,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b86a50",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#f1ead8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a98a2",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     20,
+     34
+    ]
+   },
+   "at": [
+    48,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b86a50",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#f1ead8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a98a2",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-pavilion",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c7a6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a98a2",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "modern-ward-block",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    12,
+    36
+   ],
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d8d0b8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bay": 8,
+    "glassColour": "#8fb0b8",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c978d",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -22.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 8,
+    "columns": 6,
+    "steps": 6,
+    "colour": "#efe7d3"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#d8c9a8",
+    "roofColour": "#a85f45",
+    "vans": 1
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    24,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.6,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#c4683b"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   160,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -36
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -34
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the gate photo exists (not the 1858 main block), so massing is from the brief; colours from the photo; the model is not compared against the real facade."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-clinic"
+}

@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-of-spain",
+ "venueId": "port-of-spain-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stage_Crossing_at_Trinidad_Carnival.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jean-Marc /Jo BeLo/Jhon-John",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-of-spain/savannah2.jpg",
+   "used": "Grand Stand: long low shed with a single-pitch orange-red roof on red posts, green and blue blank advertising boards along the fascia, floodlight masts, open ground in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queen%27s_Park_Savannah_(13477402524).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-of-spain/savannah.jpg",
+   "used": "flat close-cropped grass with a bare cricket strip, tree line, Northern Range behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/96579810",
+   "used": "identity only: the 1 km park is far too large for the scene, so the Grand Stand and its stage are modelled on the open green"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     160,
+     110
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#7d9a4c",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip",
+   "at": [
+    -15,
+    -25,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     3,
+     22
+    ],
+    "height": 0.04,
+    "colour": "#c9b98c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-body",
+   "footprint": {
+    "rect": [
+     78,
+     14
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4cfc0",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "bands": "#9a3b30",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 3.2,
+    "colour": "#d8602e",
+    "material": "metal-sheet",
+    "overhang": 5.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     12.5,
+     0
+    ],
+    "end": [
+     34,
+     12.5,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 6.3,
+      "colour": "#b8331f"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    11.2,
+    5.3
+   ],
+   "params": {
+    "rect": [
+     76,
+     0.5
+    ],
+    "height": 1.1,
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    11.2,
+    5.3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.52
+    ],
+    "height": 1.1,
+    "colour": "#2d5fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    11.2,
+    5.3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.52
+    ],
+    "height": 1.1,
+    "colour": "#e0b62a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stage",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    -2
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b5148",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -8,
+     0
+    ],
+    "end": [
+     36,
+     -8,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#9fa4a8",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.7,
+         0.7
+        ]
+       },
+       {
+        "z": 20,
+        "rect": [
+         0.4,
+         0.4
+        ]
+       },
+       {
+        "z": 22,
+        "rect": [
+         3.2,
+         1.2
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 6,
+    "spread": 12,
+    "line": 120,
+    "colour": "#3f6e34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 7,
+    "spread": 12,
+    "line": 140,
+    "colour": "#3a6a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Grand Stand reduced to a single shed with blank boards; carnival crowd, tiered seating behind and scaffold stages absent; the 1 km green is only a 150 m patch"
+ }
+}

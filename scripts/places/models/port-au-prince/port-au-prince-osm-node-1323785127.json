@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-node-1323785127",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/450310118",
+   "used": "irregular 33 x 12 m outline, used as the main tin-roofed market shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b2a4",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#6fa8c8"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#6fa8c8",
+     "#e8c94f",
+     "#a8322d"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "count": 4,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#e8c94f",
+     "#6fa8c8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#6fa8c8",
+     "#e8c94f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "bottom": 1.8,
+    "colour": "#e8c94f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; outline and market type only, stalls and awnings are typical rather than observed."
+ }
+}

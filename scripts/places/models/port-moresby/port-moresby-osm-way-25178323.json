@@ -1,0 +1,224 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sir_Hubert_Murray_Stadium_(1993,_cropped).jpg",
+   "licence": "CC BY 2.0",
+   "author": "lindsaybridge",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/port-moresby/pm-stadium.jpg",
+   "used": "open grass pitch beside the bay, long low grandstand with flat canopy on the seaward side, four slender lattice floodlight masts at the corners (1993 state; 2022 rebuild is rectangular with a taller main stand per brief)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25178323",
+   "used": "overall size (308 x 192 m) only; scaled to a ~100 x 80 m bowl, outline not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "width": 48,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     44,
+     29
+    ],
+    "end": [
+     -44,
+     29
+    ],
+    "rows": 9,
+    "seatColour": "#e4e0d6",
+    "seatColours": [
+     "#e4e0d6",
+     "#cfcabd"
+    ],
+    "blocks": 5,
+    "backWall": 0.8,
+    "under": "solid",
+    "concreteColour": "#e4e0d6",
+    "facetDeg": 10,
+    "canopy": {
+     "height": 9,
+     "depth": 9,
+     "colour": "#f0eee8",
+     "slopeDeg": 3,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 6,
+    "colour": "#c4c8cc"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 6,
+    "colour": "#c4c8cc"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    32,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 6,
+    "colour": "#c4c8cc"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    32,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 6,
+    "colour": "#c4c8cc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -64,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     64,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     36
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     46
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     48
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "1993 photo is old stadium from a hill; pitch still large vs real, lattice masts are simple poles with lamp heads, no bay/port context or dense tree cover"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-moresby",
+ "venueId": "port-moresby-osm-way-25178323"
+}

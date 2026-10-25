@@ -1,0 +1,205 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/367015456",
+   "used": "nearest building is 33 m away and tagged residential; the street photos within 150 m show pastel Harborside villas, not a terminal, so only the brief's size (about 47 x 40 m, two storeys, hip roof) and palette are used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d98a",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "bands": "#f2efe6",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9d5cc",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-wing",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -19,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa8c9",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f2efe6",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9d5cc",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "waiting",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 7,
+    "colour": "#f2efe6",
+    "edgeColour": "#7fa8c9"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    0,
+    -15.1,
+    5.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.3,
+    "bottom": 0,
+    "colour": "#7fa8c9",
+    "frameColour": "#f2efe6",
+    "posts": false
+   }
+  },
+  {
+   "type": "office-tower/ferry-jetty",
+   "id": "pier",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "width": 7,
+    "shelter": true,
+    "timber": true,
+    "colour": "#d9d5cc"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo (nearby photos show other buildings); modest ferry terminal from brief size and palette, OSM footprint unreliable."
+ }
+}

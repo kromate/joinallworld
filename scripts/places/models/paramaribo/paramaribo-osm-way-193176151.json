@@ -1,0 +1,289 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centrale_Markt_%26_Vreedzaam_Markt.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sn.fernandez",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/paramaribo/193176151_2.jpg",
+   "used": "two long barrel-vaulted halls in weathered green-grey metal sheet with pale ridge skylight strips, the larger one with a deep arched gable end and a low white-walled ribbon of windows below, the smaller hall attached on the river side, flat white service roofs, riverside promenade"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paramaribo_market_(33557504165).jpg",
+   "licence": "CC BY 2.0",
+   "author": "-JvL- from Netherlands",
+   "view": "interior",
+   "file": "/tmp/places-evidence/paramaribo/193176151_0.jpg",
+   "used": "inside: open hall of square concrete columns, low stall counters, strip lights; confirms open stall hall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/193176151",
+   "used": "main hall footprint 101 x 44 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 28,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     170,
+     120
+    ],
+    "height": 0.1,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "glassColour": "#4b5d66"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#5b6b5c",
+    "material": "corrugated",
+    "rise": 7,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "second-hall",
+   "footprint": {
+    "rect": [
+     48,
+     26
+    ]
+   },
+   "at": [
+    26.19,
+    -28.18
+   ],
+   "rotDeg": 15,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "glassColour": "#4b5d66"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#6a7a6a",
+    "material": "corrugated",
+    "rise": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -19.92,
+    -41.57
+   ],
+   "rotDeg": 15,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f0ea",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-shops",
+   "footprint": {
+    "rect": [
+     70,
+     7
+    ]
+   },
+   "at": [
+    -8.8,
+    32.84
+   ],
+   "rotDeg": 15,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b08e",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "bands",
+     "colour": "#a8453a"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a24b3c",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.42,
+    46.36
+   ],
+   "rotDeg": 15,
+   "params": {
+    "rect": [
+     130,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#8a8378"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.53,
+    57.96
+   ],
+   "rotDeg": 15,
+   "params": {
+    "rect": [
+     180,
+     18
+    ],
+    "height": 0.05,
+    "colour": "#7a6b4a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -37.26,
+    -34.83
+   ],
+   "rotDeg": 15,
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#5e8d6e",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -22.25,
+    -32.88
+   ],
+   "rotDeg": 15,
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#c9532a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8.63,
+    -51.52
+   ],
+   "rotDeg": 15,
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paramaribo",
+ "venueId": "paramaribo-osm-way-193176151",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the photos but never rendered or compared: the shared render queue was stalled (no worker progress since 24 Oct 21:40, 90 jobs waiting). Roof ridge directions, spire lofts and part placements are unchecked; re-run submit.ts and raise verified to photo after comparing."
+ }
+}

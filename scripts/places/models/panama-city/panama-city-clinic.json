@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Nacional_Panama.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "myself",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/clinic1.jpg",
+   "used": "ochre-beige rendered 4-storey front, white-surrounded punched windows in vertical strips, brick-red pilaster strips, red entrance awning with corbelled canopy, flag"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18042490",
+   "used": "rhomboid footprint, 4 levels, rotated so a long side faces the street"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 29.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc08f",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f1ece0",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9e9a90",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#b5532f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    -26,
+    8.5
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#f0e6d2",
+    "frameColour": "#d8caa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -31,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: shared render queue workers A/B were hung (heartbeats stale since 2026-10-24 21:40), jobs queued but unprocessed. Composed from the downloaded photo by eye; massing, roof, colour and placement unchecked."
+ }
+}

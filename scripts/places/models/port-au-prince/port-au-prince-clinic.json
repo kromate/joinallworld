@@ -1,0 +1,100 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/#map=19/18.5545/-72.3108",
+   "used": "size only (23 x 10 m, 2 levels); nearest OSM building is 56 m away so outline not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     23,
+     10
+    ]
+   },
+   "height": 8,
+   "storeys": 2,
+   "rotDeg": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d5",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#6fa8c8",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#6fa8c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.5,
+    "colour": "#ffffff",
+    "frameColour": "#6fa8c8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ }
+}

@@ -1,0 +1,138 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/371851055",
+   "used": "real bent 65 m classroom range outline (name match: Primary School); single storey inferred"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b8",
+    "windows": "louvre",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "bands": "#5f7d5a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f32",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#d9d4c7"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "colours": [
+     "#c8362f",
+     "#2b3f9b",
+     "#e0b43c",
+     "#2f6b4f"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "thickness": 0.25,
+    "colour": "#d9d4c7",
+    "kind": "wall",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#5f7d5a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline, typical Mauritian primary school colours; veranda not modelled separately"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-louis",
+ "venueId": "port-louis-osm-node-3753991177"
+}

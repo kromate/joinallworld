@@ -1,0 +1,634 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-way-301425856",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tommy_Robinson_National_Stadium.jpg",
+   "licence": "CC0",
+   "author": "Iles du francois",
+   "view": "interior",
+   "file": "/tmp/places-evidence/nassau/stadium.jpg",
+   "used": "long covered main stand: pale concrete lower tier, red-blue seating, flat white roof on slender columns with a row of spiked masts along the back, red Mondo track and green pitch in front, floodlight masts at the ends"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/301425856",
+   "used": "overall size (260 x 224 m oval): modelled as an oval bowl scaled to fit the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      58.0,
+      0.0
+     ],
+     [
+      55.16,
+      14.83
+     ],
+     [
+      46.92,
+      28.21
+     ],
+     [
+      34.09,
+      38.83
+     ],
+     [
+      17.92,
+      45.65
+     ],
+     [
+      0.0,
+      48.0
+     ],
+     [
+      -17.92,
+      45.65
+     ],
+     [
+      -34.09,
+      38.83
+     ],
+     [
+      -46.92,
+      28.21
+     ],
+     [
+      -55.16,
+      14.83
+     ],
+     [
+      -58.0,
+      0.0
+     ],
+     [
+      -55.16,
+      -14.83
+     ],
+     [
+      -46.92,
+      -28.21
+     ],
+     [
+      -34.09,
+      -38.83
+     ],
+     [
+      -17.92,
+      -45.65
+     ],
+     [
+      -0.0,
+      -48.0
+     ],
+     [
+      17.92,
+      -45.65
+     ],
+     [
+      34.09,
+      -38.83
+     ],
+     [
+      46.92,
+      -28.21
+     ],
+     [
+      55.16,
+      -14.83
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#b4503b",
+    "topColour": "#b4503b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      42.0,
+      0.0
+     ],
+     [
+      39.94,
+      9.27
+     ],
+     [
+      33.98,
+      17.63
+     ],
+     [
+      24.69,
+      24.27
+     ],
+     [
+      12.98,
+      28.53
+     ],
+     [
+      0.0,
+      30.0
+     ],
+     [
+      -12.98,
+      28.53
+     ],
+     [
+      -24.69,
+      24.27
+     ],
+     [
+      -33.98,
+      17.63
+     ],
+     [
+      -39.94,
+      9.27
+     ],
+     [
+      -42.0,
+      0.0
+     ],
+     [
+      -39.94,
+      -9.27
+     ],
+     [
+      -33.98,
+      -17.63
+     ],
+     [
+      -24.69,
+      -24.27
+     ],
+     [
+      -12.98,
+      -28.53
+     ],
+     [
+      -0.0,
+      -30.0
+     ],
+     [
+      12.98,
+      -28.53
+     ],
+     [
+      24.69,
+      -24.27
+     ],
+     [
+      33.98,
+      -17.63
+     ],
+     [
+      39.94,
+      -9.27
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#4f8a45",
+    "topColour": "#4f8a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": 22,
+    "endDeg": 158,
+    "rows": 26,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "facetDeg": 24,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#a83a3a",
+     "#2f5a8f",
+     "#d6d6d0"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfcbc2",
+    "underColour": "#b5b1a8",
+    "canopy": {
+     "height": 6,
+     "depth": 20,
+     "thickness": 1.2,
+     "slopeDeg": 3,
+     "colour": "#dfe3e4",
+     "edgeColour": "#2f8f9f",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": 202,
+    "endDeg": 338,
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 30,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#2f5a8f",
+     "#a83a3a",
+     "#2f5a8f",
+     "#d6d6d0"
+    ],
+    "concreteColour": "#cfcbc2",
+    "underColour": "#b5b1a8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": 158,
+    "endDeg": 202,
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 30,
+    "under": "open",
+    "slab": 0.5,
+    "seatColours": [
+     "#2f5a8f",
+     "#a83a3a",
+     "#2f5a8f",
+     "#d6d6d0"
+    ],
+    "concreteColour": "#cfcbc2",
+    "underColour": "#b5b1a8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": -22,
+    "endDeg": 22,
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 30,
+    "under": "open",
+    "slab": 0.5,
+    "seatColours": [
+     "#2f5a8f",
+     "#a83a3a",
+     "#2f5a8f",
+     "#d6d6d0"
+    ],
+    "concreteColour": "#cfcbc2",
+    "underColour": "#b5b1a8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 74,
+    "radiusY": 66,
+    "startDeg": 26,
+    "endDeg": 154,
+    "count": 15,
+    "facing": "outward",
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#d5d9da",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.7,
+          0.7
+         ]
+        },
+        {
+         "z": 24,
+         "rect": [
+          0.5,
+          0.5
+         ]
+        },
+        {
+         "z": 29,
+         "rect": [
+          0.12,
+          0.12
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 63,
+    "radiusY": 55,
+    "startDeg": 38,
+    "endDeg": 142,
+    "count": 9,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#d9d9d3",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.0,
+          1.0
+         ]
+        },
+        {
+         "z": 18,
+         "rect": [
+          0.7,
+          0.7
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     4
+    ],
+    "height": 3.5,
+    "colour": "#e4e1d9",
+    "topColour": "#8c8f91"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -80,
+     -52,
+     0
+    ],
+    "end": [
+     80,
+     -52,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#8c8f91",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 42,
+         "rect": [
+          0.5,
+          0.5
+         ]
+        },
+        {
+         "z": 43,
+         "rect": [
+          5,
+          1.6
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -80,
+     52,
+     0
+    ],
+    "end": [
+     80,
+     52,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#8c8f91",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 42,
+         "rect": [
+          0.5,
+          0.5
+         ]
+        },
+        {
+         "z": 43,
+         "rect": [
+          5,
+          1.6
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -100,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     100,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -100,
+     20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is an interior view; canopy is straight not arched, truss and masts simplified, other stands low, bowl scaled to scene clamp."
+ }
+}

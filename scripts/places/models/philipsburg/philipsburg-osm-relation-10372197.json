@@ -1,0 +1,163 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/10372197",
+   "used": "98 x 98 m multi-wing outline, flat concrete roof, name match"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "fit": 98,
+    "simplify": 5
+   },
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6fa3c9",
+      "height": 0.7
+     }
+    ],
+    "bay": 14,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a8ab",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -53
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa3c9",
+    "parapet": 0.3,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -55,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#efece3",
+    "roofColour": "#c8362f",
+    "vans": 2
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    0,
+    0,
+    14.6
+   ],
+   "on": "main",
+   "params": {
+    "radius": 6.5,
+    "colour": "#8c9096"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    30,
+    30,
+    14.6
+   ],
+   "on": "main",
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "legs": 4,
+    "colour": "#d8dcde"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": 0,
+  "forecourt": "parking",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "no photo: storey count, colours and entrance are estimates; helipad and tank placement guessed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-relation-10372197"
+}

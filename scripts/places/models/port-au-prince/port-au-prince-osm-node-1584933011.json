@@ -1,0 +1,130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-au-prince",
+ "venueId": "port-au-prince-osm-node-1584933011",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/448552639",
+   "used": "12.6 x 5.6 m rectangle, bearing 71"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "fit": 20
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a48",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "trimColour": "#b9b2a4",
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 2.2,
+    "height": 2.7,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#5f9d6e",
+     "#e8c94f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1,
+    "bottom": 1.2,
+    "colour": "#5f9d6e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; timber/veranda look inferred from the name and highland location."
+ }
+}

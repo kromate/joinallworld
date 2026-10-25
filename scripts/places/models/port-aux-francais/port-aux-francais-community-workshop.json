@@ -1,0 +1,232 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/221034172",
+   "used": "SuperDARN Kerguelen site area 274 x 136 m; a 105 m portion of the main array is modelled"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SuperDARN.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Drm310",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-aux-francais/superdarn.jpg",
+   "used": "standard SuperDARN design (another site, same type): slender grey lattice masts with a white horizontal cross-boom truss at the top, a long evenly spaced line, a small white equipment hut in the row; 4 interferometer masts as a separate short row"
+  }
+ ],
+ "camera": {
+  "yawDeg": -75,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     105,
+     0,
+     0
+    ],
+    "count": 16,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "lattice-mast",
+      "params": {
+       "height": 15,
+       "baseWidth": 0.9,
+       "topWidth": 0.6,
+       "panels": 7,
+       "colour": "#7a8288",
+       "colour2": "#7a8288"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       14.6
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        11
+       ],
+       "height": 0.6,
+       "colour": "#eef0ee"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     30,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "lattice-mast",
+      "params": {
+       "height": 15,
+       "baseWidth": 0.9,
+       "topWidth": 0.6,
+       "panels": 7,
+       "colour": "#7a8288",
+       "colour2": "#7a8288"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       14.6
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        11
+       ],
+       "height": 0.6,
+       "colour": "#eef0ee"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e9ebe8",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -28,
+    4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      0
+     ],
+     [
+      12,
+      9
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -34,
+    3,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 1,
+    "colour": "#f2f2ee",
+    "frameColour": "#a33b32"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is another SuperDARN site of the same type; wire antennas omitted; real mast layout and hut position at Kerguelen not confirmed; only 105 m of the 274 m site shown."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-community-workshop"
+}

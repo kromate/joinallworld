@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-aux-francais",
+ "venueId": "port-aux-francais-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: 14 x 8 m single-storey prefab supply shed, gable roof, red trim"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a33b32",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#f2f2ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a5258",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     1.6
+    ]
+   },
+   "at": [
+    -3,
+    -4.8
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f2ee",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f777c",
+    "material": "membrane",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    3,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.1,
+    "bottom": 1.6,
+    "colour": "#f2f2ee",
+    "frameColour": "#6f777c"
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    -12,
+    3,
+    0
+   ],
+   "params": {
+    "nx": 1,
+    "ny": 1,
+    "levels": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this venue; brief typed (prefab supply shed), colours from base building language."
+ }
+}

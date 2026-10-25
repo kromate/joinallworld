@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nuuk",
+ "venueId": "nuuk-osm-way-252790932",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuuk_Center_(1)_(Kenny_McFly).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kenny McFly",
+   "view": "front",
+   "file": "/tmp/places-evidence/nuuk/center1.jpg",
+   "used": "low grey-brown metal-clad podium with glazed ground floor and ribbon strip, tall dark grey clad slab tower rising from the podium's left end, stepped glass curtain-wall wing in front of the tower, blank black logo board, flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/252790932",
+   "used": "podium outline (85 x 78 m, 7-sided)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6e6a69",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "groundKind": "curtain",
+    "groundHeight": 3.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b89",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "z0": 9,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5b5c60",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#66676b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4c50",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -26,
+    -7
+   ],
+   "z0": 9,
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa5b5",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#7f99ad",
+    "trimColour": "#c9d2d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "bottom": 3,
+    "colour": "#1a1a1a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    28,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#d52b1e",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower slab and stepped glass wing are simple boxes (real glass wing leans and steps in several facets); podium ground glazing/structure and ribbon band approximated; podium outline orientation from OSM may differ from the photo side"
+ }
+}

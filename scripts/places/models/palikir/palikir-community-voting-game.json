@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "palikir",
+ "venueId": "palikir-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/548354587",
+   "used": "45 x 19 m footprint with stepped west end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palikir_Government_Buildings.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MaxMonaco",
+   "view": "street",
+   "used": "neighbouring capital buildings only (same complex): dark tile hipped roofs, brown timber walls, basalt piers. Not a photo of the Supreme Court itself."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a4632",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#d9b97a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b5855",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -1,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3b2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b5855",
+    "material": "slate",
+    "pitch": 35,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -1,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#2b2b2d",
+    "roofColour": "#d9b97a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the court itself; style borrowed from neighbouring Congress buildings, portico details typed."
+ }
+}

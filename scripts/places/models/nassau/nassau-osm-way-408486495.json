@@ -1,0 +1,818 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nassau",
+ "venueId": "nassau-osm-way-408486495",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Andrew%27s_Presbyterian_Kirk_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "qwesy qwesy",
+   "view": "front",
+   "file": "/tmp/places-evidence/nassau/kirk1.jpg",
+   "used": "white-painted Gothic-revival kirk: stepped front gable with two lancet windows and oculus, dark brown roof, pointed-arch porch arcade with stair at left, pointed door and tracery window on the side wall, low wall with gate pillars"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahamas_1988_(200)_New_Providence_St._Andrew%27s_Kirk,_Nassau_(23649766750).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Ruediger Stehn",
+   "view": "side",
+   "file": "/tmp/places-evidence/nassau/kirk2.jpg",
+   "used": "crenellated square tower behind the front gable, arcaded porch parapet with crenellations, side buttress stepping, louvred pointed windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/408486495",
+   "used": "overall size and cross-shaped plan (nave 22 x 12 m, projections front and back)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     21
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "faces": {
+     "front": "pointed-arch",
+     "left": "pointed-arch",
+     "right": "pointed-arch",
+     "back": "plain"
+    },
+    "bay": 5.5,
+    "trimColour": "#d9d4c6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b4638",
+    "material": "slate",
+    "pitch": 50,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-low",
+   "footprint": {
+    "rect": [
+     12,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -10.9
+   ],
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e9",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "pointed",
+    "plinth": 0.4,
+    "trimColour": "#d9d4c6",
+    "faces": {
+     "front": "pointed-arch",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5d9",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-mid",
+   "footprint": {
+    "rect": [
+     8.4,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -10.9
+   ],
+   "height": 16.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e9",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "windowShape": "pointed",
+    "plinth": 0.4,
+    "trimColour": "#d9d4c6",
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5d9",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-top",
+   "footprint": {
+    "rect": [
+     4.2,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -10.9
+   ],
+   "height": 18.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e9",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "windowShape": "pointed",
+    "plinth": 0.4,
+    "trimColour": "#d9d4c6",
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5d9",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     14,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "shape": "pointed",
+     "faces": [
+      "front"
+     ],
+     "count": 3
+    },
+    "trimColour": "#d9d4c6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5d9",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    -1,
+    13.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5d9",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8e3d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "arched",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b4638",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -14.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5,
+    "rise": 0.22,
+    "run": 0.45,
+    "count": 12,
+    "colour": "#d6d2c6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.35,
+    "colour": "#cfc9bb",
+    "pillarEvery": 7
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    15,
+    -9,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "thickness": 0.35,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.6,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11.7,
+    13.0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.6,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6,
+    -10.9,
+    14.5
+   ],
+   "params": {
+    "colour": "#ece8dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    6,
+    -10.9,
+    14.5
+   ],
+   "params": {
+    "colour": "#ece8dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4.2,
+    -10.9,
+    16.5
+   ],
+   "params": {
+    "colour": "#ece8dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4.2,
+    -10.9,
+    16.5
+   ],
+   "params": {
+    "colour": "#ece8dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.9,
+    18.3
+   ],
+   "params": {
+    "colour": "#ece8dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.3,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.3,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.3,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.3,
+    9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.3,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.3,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.3,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.3,
+    9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5.5,
+    "topScale": 0.6,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.35,
+    -3.5,
+    0.4
+   ],
+   "params": {
+    "width": 0.1,
+    "height": 3.4,
+    "colour": "#3b2c22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 1.9,
+    "colour": "#f1eee6",
+    "topColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 1.9,
+    "colour": "#f1eee6",
+    "topColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0.2
+   ],
+   "params": {
+    "length": 3.2,
+    "height": 1.4,
+    "thickness": 0.08,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.2,
+    0,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.4
+    ],
+    "height": 2.0,
+    "topScale": 0.2,
+    "colour": "#f1eee6",
+    "topColour": "#5b4638"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.2,
+    0,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.4
+    ],
+    "height": 2.0,
+    "topScale": 0.2,
+    "colour": "#f1eee6",
+    "topColour": "#5b4638"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -17
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     -12
+    ],
+    "height": 5
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -17,
+     12
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gable is stepped blocks with a dark oculus board and pinnacles, not a true raked coping; porch stair and wrought-iron gates simplified; dormers and side door are crude."
+ }
+}

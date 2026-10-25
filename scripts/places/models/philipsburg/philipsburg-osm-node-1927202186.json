@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "philipsburg",
+ "venueId": "philipsburg-osm-node-1927202186",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Amsterdam_(Sint_Maarten)_2025_-_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (see file page)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/philipsburg/p59-fort.jpg",
+   "used": "interior of the ruined building: roofless render-and-rubble walls, weathered green-grey plaster with blue paint flecks, rubble stone upper course, bare roof timbers, sea beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sint_Maarten_-_Fort_Amsterdam_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/philipsburg/p59-fort2.jpg",
+   "used": "rubble coral and volcanic stone wall colours (cream, rust, grey), plaque on a plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/525178259",
+   "used": "ruined building outline 11x5 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ruin-building",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    8,
+    2
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9ba596",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a39d8f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "rampart-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 34,
+    "sides": 3,
+    "height": 3.5,
+    "thickness": 2.2,
+    "batter": 0.9,
+    "merlons": false,
+    "ruin": 0.35,
+    "star": false
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -14,
+    -8,
+    3.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 5,
+    "yaw": 200
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "rise": 2.0,
+    "run": 3,
+    "count": 6,
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1,
+    "bottom": 0.8,
+    "colour": "#2f3a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "photos show only the ruined building interior; triangular rampart plan from the brief's text"
+ }
+}

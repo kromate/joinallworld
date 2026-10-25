@@ -1,0 +1,507 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Albrook_mall_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Djluny507",
+   "view": "front",
+   "file": "/tmp/places-evidence/panama-city/albrook1.jpg",
+   "used": "car-park elevation: royal-blue block with white band, yellow entrance with arched canopy and barrel-vaulted hall behind, black box at left, cream wing with white curved front at right, hotel slab behind with blue and teal window panels"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Acceso_al_Centro_comercial_Allbrook.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Djluny507",
+   "view": "street",
+   "used": "vaulted ribbed canopy over entrance on salmon piers, teal and aqua checker panelling on side wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/273732972",
+   "used": "overall size only (1166 x 267 m, 2 levels): a 120 m entrance portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gap-box",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -56,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#222326",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "windowRatio": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-block",
+   "footprint": {
+    "rect": [
+     40,
+     40
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6fd0",
+    "windows": "none",
+    "bands": {
+     "colour": "#f2f6fb",
+     "height": 2.0
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#cfe0f5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     18,
+     26
+    ]
+   },
+   "at": [
+    -1,
+    -2
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6b64e",
+    "windows": "none",
+    "faces": {
+     "front": "curtain"
+    },
+    "windowRatio": 0.55,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrel-hall",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -1,
+    15
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dde0",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 6.5,
+    "colour": "#cfd3d6",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-wing",
+   "footprint": {
+    "rect": [
+     40,
+     40
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7d7a3",
+    "windows": "none",
+    "bands": {
+     "colour": "#fafafa",
+     "height": 1.0
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    38,
+    -10,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f4f4f2",
+    "profile": [
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      8.5
+     ],
+     [
+      10.4,
+      8.8,
+      "#e0d9c4"
+     ],
+     [
+      0.1,
+      8.8,
+      "#e0d9c4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-panel",
+   "footprint": {
+    "rect": [
+     12,
+     0.6
+    ]
+   },
+   "at": [
+    50,
+    -16.2
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8622a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8622a"
+   },
+   "z0": 2.5
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     90,
+     16
+    ]
+   },
+   "at": [
+    -2,
+    42
+   ],
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "glassColour": "#7fa6a4",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "size": [
+      3.6,
+      4.0
+     ],
+     "colours": [
+      "#f1ede4",
+      "#2f8fc4",
+      "#37b3a0",
+      "#f1ede4",
+      "#2f8fc4",
+      "#7fc9d8"
+     ],
+     "mode": "random",
+     "slits": {
+      "fraction": 0.0
+     }
+    },
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c1b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    43.5,
+    37
+   ],
+   "height": 31,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f7f4",
+    "windows": "none",
+    "trimColour": "#e0e0dc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c1b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -1,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 16,
+    "depth": 8,
+    "height": 6.0,
+    "rise": 2.8,
+    "colour": "#d8dadc",
+    "edgeColour": "#e6b64e",
+    "axis": "x",
+    "columns": 0
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.4,
+    "bottom": 5.4,
+    "colour": "#1f55b8",
+    "frameColour": "#cfe0f5",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -58,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "bottom": 6.0,
+    "colour": "#15171a",
+    "frameColour": "#4a4a4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    28,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "bottom": 7.2,
+    "colour": "#f5f5f5",
+    "frameColour": "#c2c2c2",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -30,
+     0
+    ],
+    "end": [
+     52,
+     -30,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 12,
+    "lod2Step": 7,
+    "of": {
+     "type": "car",
+     "params": {}
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    -14.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 5.8,
+    "colour": "#e6b64e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.5,
+    -14.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 5.8,
+    "colour": "#e6b64e",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -42
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -42
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "panama-city",
+ "venueId": "panama-city-market-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hotel checker panels sparser and facade windows missing (triangle budget); barrel vault and white drum are simplified; no legible signage"
+ }
+}

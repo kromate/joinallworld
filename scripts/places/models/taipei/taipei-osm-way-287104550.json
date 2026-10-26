@@ -12,7 +12,7 @@
    "author": "阿道",
    "view": "aerial",
    "file": "/tmp/places-evidence/taipei/hf1.jpg",
-   "used": "campus buildings stepping up a forested hillside: cream blocks with ribbon windows, a few red-tile hip roofs, a detached block on the left"
+   "used": "campus blocks scattered up a steeply forested hillside: cream blocks with ribbon windows on terraces, a detached block on the left, a dark-roofed block on the right, red hip roofs on few"
   },
   {
    "kind": "osm",
@@ -29,20 +29,175 @@
  "parts": [
   {
    "type": "prism",
-   "id": "hill",
+   "id": "base",
    "at": [
-    0,
-    30
+    0.0,
+    20.0
    ],
    "params": {
     "rect": [
      150,
-     64
+     100.0
+    ],
+    "z0": -0.2,
+    "height": 0.24,
+    "colour": "#2b4528"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-back",
+   "at": [
+    0.0,
+    35.0
+   ],
+   "params": {
+    "rect": [
+     150,
+     40.0
     ],
     "z0": 0,
-    "height": 14,
-    "topScale": 0.55,
-    "colour": "#3b5a34"
+    "height": 36.0,
+    "topScale": [
+     0.7,
+     0.35
+    ],
+    "colour": "#2e4a2b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-mid",
+   "at": [
+    0.0,
+    18.0
+   ],
+   "params": {
+    "rect": [
+     150.0,
+     30.0
+    ],
+    "z0": 0,
+    "height": 18.0,
+    "topScale": [
+     0.8,
+     0.4
+    ],
+    "colour": "#34552f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-front",
+   "at": [
+    0.0,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     130.0,
+     20.0
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "topScale": [
+     0.9,
+     0.5
+    ],
+    "colour": "#2b4528"
+   }
+  },
+  {
+   "type": "array",
+   "id": "f1",
+   "at": [
+    0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 6,
+      "radius": 7,
+      "z0": 0,
+      "height": 9,
+      "topScale": 0.5,
+      "colour": "#2f5a2c",
+      "bottom": false
+     }
+    },
+    "mode": "grid",
+    "cols": 10,
+    "rows": 2,
+    "dx": 14.0,
+    "dy": 6.0,
+    "stagger": 0.5,
+    "lod1Step": 6,
+    "lod2Step": 30
+   }
+  },
+  {
+   "type": "array",
+   "id": "f2",
+   "at": [
+    0,
+    20.0,
+    6.0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 6,
+      "radius": 7,
+      "z0": 0,
+      "height": 9,
+      "topScale": 0.5,
+      "colour": "#2f5a2c",
+      "bottom": false
+     }
+    },
+    "mode": "grid",
+    "cols": 9,
+    "rows": 2,
+    "dx": 15.0,
+    "dy": 6.0,
+    "stagger": 0.5,
+    "lod1Step": 6,
+    "lod2Step": 30
+   }
+  },
+  {
+   "type": "array",
+   "id": "f3",
+   "at": [
+    0,
+    35.0,
+    13.2
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 6,
+      "radius": 7,
+      "z0": 0,
+      "height": 9,
+      "topScale": 0.5,
+      "colour": "#2f5a2c",
+      "bottom": false
+     }
+    },
+    "mode": "grid",
+    "cols": 9,
+    "rows": 2,
+    "dx": 16.0,
+    "dy": 6.0,
+    "stagger": 0.5,
+    "lod1Step": 6,
+    "lod2Step": 30
    }
   },
   {
@@ -50,34 +205,29 @@
    "id": "blkL1",
    "footprint": {
     "rect": [
-     50,
-     16
+     31.68,
+     10.08
     ]
    },
    "at": [
-    -58,
-    16
+    -44.0,
+    14.3
    ],
    "rotDeg": 0,
-   "z0": 6,
-   "height": 16,
+   "z0": 14.4,
+   "height": 12.0,
    "storeys": 4,
    "wall": {
     "material": "render",
-    "colour": "#eadfc2",
+    "colour": "#d8cca8",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
     "form": "flat",
-    "colour": "#a9a59a",
+    "colour": "#9a968a",
     "parapet": 0
    }
   },
@@ -86,34 +236,29 @@
    "id": "blkL2",
    "footprint": {
     "rect": [
-     22,
-     12
+     14.399999999999999,
+     7.92
     ]
    },
    "at": [
-    -62,
-    26
+    -47.300000000000004,
+    20.900000000000002
    ],
    "rotDeg": 0,
-   "z0": 10,
-   "height": 13,
+   "z0": 19.200000000000003,
+   "height": 8.0,
    "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#eadfc2",
+    "colour": "#d8cca8",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
     "form": "flat",
-    "colour": "#a9a59a",
+    "colour": "#9a968a",
     "parapet": 0
    }
   },
@@ -122,34 +267,29 @@
    "id": "blkC1",
    "footprint": {
     "rect": [
-     36,
-     16
+     24.48,
+     10.08
     ]
    },
    "at": [
-    -6,
-    10
+    -13.200000000000001,
+    8.8
    ],
    "rotDeg": 0,
-   "z0": 4,
-   "height": 18,
+   "z0": 8.0,
+   "height": 13.600000000000001,
    "storeys": 5,
    "wall": {
     "material": "render",
-    "colour": "#eadfc2",
+    "colour": "#d8cca8",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
     "form": "hip",
-    "colour": "#9c3f36",
+    "colour": "#8a4636",
     "material": "clay-tile",
     "rise": 3,
     "overhang": 1.2
@@ -160,37 +300,30 @@
    "id": "blkC2",
    "footprint": {
     "rect": [
-     30,
-     18
+     20.16,
+     11.52
     ]
    },
    "at": [
-    8,
-    22
+    -2.2,
+    16.5
    ],
    "rotDeg": 0,
-   "z0": 8,
-   "height": 20,
-   "storeys": 6,
+   "z0": 13.600000000000001,
+   "height": 14.4,
+   "storeys": 5,
    "wall": {
     "material": "render",
-    "colour": "#eadfc2",
+    "colour": "#d8cca8",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
-    "form": "hip",
-    "colour": "#a8483a",
-    "material": "clay-tile",
-    "rise": 3,
-    "overhang": 1.2
+    "form": "flat",
+    "colour": "#9a968a",
+    "parapet": 0
    }
   },
   {
@@ -198,34 +331,29 @@
    "id": "blkC3",
    "footprint": {
     "rect": [
-     24,
-     14
+     15.84,
+     8.64
     ]
    },
    "at": [
-    22,
-    8
+    3.3000000000000003,
+    6.6000000000000005
    ],
    "rotDeg": 0,
-   "z0": 4,
-   "height": 14,
-   "storeys": 4,
+   "z0": 6.4,
+   "height": 9.600000000000001,
+   "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#eadfc2",
+    "colour": "#d8cca8",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
     "form": "flat",
-    "colour": "#a9a59a",
+    "colour": "#9a968a",
     "parapet": 0
    }
   },
@@ -234,37 +362,30 @@
    "id": "blkC4",
    "footprint": {
     "rect": [
-     40,
-     14
+     21.599999999999998,
+     8.64
     ]
    },
    "at": [
-    24,
-    22
+    11.0,
+    14.3
    ],
    "rotDeg": 0,
-   "z0": 6,
-   "height": 16,
-   "storeys": 5,
+   "z0": 11.200000000000001,
+   "height": 11.200000000000001,
+   "storeys": 4,
    "wall": {
     "material": "render",
-    "colour": "#eadfc2",
+    "colour": "#e2d8b8",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
-    "form": "hip",
-    "colour": "#9c3f36",
-    "material": "clay-tile",
-    "rise": 3,
-    "overhang": 1.2
+    "form": "flat",
+    "colour": "#9a968a",
+    "parapet": 0
    }
   },
   {
@@ -272,46 +393,43 @@
    "id": "blkR1",
    "footprint": {
     "rect": [
-     34,
-     10
+     24.48,
+     7.92
     ]
    },
    "at": [
-    60,
-    32
+    35.2,
+    20.900000000000002
    ],
    "rotDeg": 0,
-   "z0": 14,
-   "height": 10,
+   "z0": 17.6,
+   "height": 8.8,
    "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#d9cdbf",
+    "colour": "#cfc2ae",
     "windows": "ribbon",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "plinth": 0.4,
-    "bay": 5,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
+    "bay": 9
    },
    "roof": {
-    "form": "flat",
-    "colour": "#5f625f",
-    "overhang": 1.5
+    "form": "hip",
+    "colour": "#4a3a30",
+    "material": "clay-tile",
+    "rise": 2.5,
+    "overhang": 1.4
    }
   },
   {
    "type": "curved-roof",
    "at": [
-    -8,
-    10,
-    22
+    -13.200000000000001,
+    8.8,
+    19.872000000000003
    ],
    "params": {
-    "width": 14,
+    "width": 16,
     "depth": 10,
     "rise": 3,
     "colour": "#8d3a30"
@@ -321,16 +439,16 @@
  "site": {
   "ground": "grass",
   "forecourt": "none",
-  "trees": 8,
+  "trees": 4,
   "treeKind": "broadleaf",
   "extent": [
    160,
-   90
+   100
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Real campus is a loose hillside spread with pagoda-style tiled roofs; model is one compact cluster with plain hip roofs and a simple green hill; no surrounding forest."
+  "gaps": "forest is blocky tree masses on a stepped mound instead of a dense organic canopy; ground pad still shows a pale rim; buildings compressed into the size clamp; few pagoda-style roofs, only plain hips"
  }
 }

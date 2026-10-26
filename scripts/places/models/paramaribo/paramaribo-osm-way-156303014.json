@@ -40,11 +40,11 @@
    ],
    "params": {
     "rect": [
-     170,
-     110
+     150,
+     100
     ],
     "height": 0.12,
-    "colour": "#b08f6c"
+    "colour": "#b5623f"
    }
   },
   {
@@ -79,11 +79,11 @@
      34,
      -42
     ],
-    "rows": 9,
-    "rise": 0.5,
+    "rows": 11,
+    "rise": 0.62,
     "run": 0.8,
     "firstHeight": 1.2,
-    "under": "solid",
+    "under": "open",
     "slab": 0.5,
     "bay": 6,
     "seatColours": [
@@ -94,45 +94,15 @@
     "concreteColour": "#e4e0d4",
     "underColour": "#e4e0d4",
     "canopy": {
-     "height": 1.8,
-     "depth": 13,
-     "thickness": 0.7,
-     "slopeDeg": 6,
+     "height": 12,
+     "depth": 15,
+     "thickness": 0.5,
+     "slopeDeg": 9,
      "colour": "#9aa0a4",
      "edgeColour": "#6c7176",
-     "overhangBack": 1.5
+     "overhangBack": 1.0,
+     "columns": 9
     }
-   }
-  },
-  {
-   "type": "mass",
-   "id": "stand-back",
-   "footprint": {
-    "rect": [
-     72,
-     6
-    ]
-   },
-   "at": [
-    0,
-    -50
-   ],
-   "height": 7,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e4e0d4",
-    "windows": "none",
-    "windowRatio": 0,
-    "plinth": 0.3,
-    "bands": "#2f6a8a"
-   },
-   "roof": {
-    "form": "shed",
-    "colour": "#9aa0a4",
-    "material": "corrugated",
-    "rise": 1.2,
-    "overhang": 0.5
    }
   },
   {
@@ -174,7 +144,7 @@
    ],
    "params": {
     "centre": [
-     55,
+     50,
      0
     ],
     "radius": 30,
@@ -207,7 +177,7 @@
    ],
    "params": {
     "centre": [
-     -55,
+     -50,
      0
     ],
     "radius": 30,
@@ -236,30 +206,30 @@
    "id": "office",
    "footprint": {
     "rect": [
-     22,
-     8
+     18,
+     7
     ]
    },
    "at": [
     52,
     -58
    ],
-   "height": 6.5,
-   "storeys": 2,
+   "height": 5,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#2f8a4a",
+    "colour": "#8fb08a",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0.2,
     "pattern": {
      "type": "bands",
-     "colour": "#1f5a33"
+     "colour": "#7a9a76"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#26302c",
+    "colour": "#d8d6c8",
     "parapet": 0.5
    }
   },
@@ -267,12 +237,12 @@
    "type": "canopy",
    "at": [
     52,
-    -63.5,
+    -62.5,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 14,
+    "width": 16,
     "depth": 3,
     "height": 3.2,
     "thickness": 0.2,
@@ -287,7 +257,7 @@
     0
    ],
    "params": {
-    "height": 34,
+    "height": 44,
     "head_width": 4.5,
     "colour": "#aeb4ba"
    }
@@ -300,7 +270,7 @@
     0
    ],
    "params": {
-    "height": 34,
+    "height": 44,
     "head_width": 4.5,
     "colour": "#aeb4ba"
    }
@@ -313,7 +283,7 @@
     0
    ],
    "params": {
-    "height": 34,
+    "height": 44,
     "head_width": 4.5,
     "colour": "#aeb4ba"
    }
@@ -326,7 +296,7 @@
     0
    ],
    "params": {
-    "height": 34,
+    "height": 44,
     "head_width": 4.5,
     "colour": "#aeb4ba"
    }
@@ -404,7 +374,7 @@
     ],
     "height": 2.0,
     "thickness": 0.2,
-    "colour": "#c8a23a"
+    "colour": "#d9a21c"
    },
    "lod": [
     0
@@ -413,7 +383,7 @@
   {
    "type": "core/tree",
    "at": [
-    -82,
+    -74,
     -30,
     0
    ],
@@ -425,7 +395,7 @@
   {
    "type": "core/tree",
    "at": [
-    82,
+    74,
     20,
     0
    ],
@@ -437,7 +407,7 @@
   {
    "type": "core/tree",
    "at": [
-    -82,
+    -74,
     30,
     0
    ],
@@ -457,6 +427,162 @@
     "kind": "palm",
     "height": 12
    }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -78,
+      -52.6
+     ],
+     [
+      -54,
+      -52.6
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#3b8f5a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -52.6
+     ],
+     [
+      -28,
+      -52.6
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#e8e4d8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -52.6
+     ],
+     [
+      -2,
+      -52.6
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#c63d3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -52.6
+     ],
+     [
+      24,
+      -52.6
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#2f6a8a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      26,
+      -52.6
+     ],
+     [
+      50,
+      -52.6
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#f2b51c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      52,
+      -52.6
+     ],
+     [
+      76,
+      -52.6
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#e8e4d8"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -473,8 +599,8 @@
  "city": "paramaribo",
  "venueId": "paramaribo-osm-way-156303014",
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Composed from the photos but never rendered or compared: the shared render queue was stalled (no worker progress since 24 Oct 21:40, 90 jobs waiting). Roof ridge directions, spire lofts and part placements are unchecked; re-run submit.ts and raise verified to photo after comparing."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Main stand now open raked tiers under a 12 m canopy, red-earth track, pale-green office, 44 m masts, colour hoarding. Outer site ground plane stays pinkish-grey (not a spec colour); lattice columns and canopy pitch simplified."
  }
 }

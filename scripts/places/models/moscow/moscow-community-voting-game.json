@@ -33,21 +33,21 @@
    "id": "slab",
    "footprint": {
     "rect": [
-     78,
+     62,
      13
     ]
    },
    "at": [
-    -6,
+    -14,
     34
    ],
    "height": 27,
    "storeys": 9,
    "wall": {
     "material": "concrete",
-    "colour": "#c9c6bd",
+    "colour": "#b9b6ae",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.38,
     "bay": 9.0,
     "plinth": 0.5,
     "faces": {
@@ -64,18 +64,160 @@
    }
   },
   {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     118,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5d9450",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d9450"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "road",
+   "footprint": {
+    "rect": [
+     118,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6a6d6f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6d6f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    56,
+    38,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      9.5,
+      0,
+      "#cfc8b4"
+     ],
+     [
+      9.5,
+      46,
+      "#cfc8b4"
+     ],
+     [
+      11.8,
+      46,
+      "#d9cdb2"
+     ],
+     [
+      11.8,
+      48.5,
+      "#d9cdb2"
+     ],
+     [
+      6.5,
+      48.5,
+      "#bdb39a"
+     ],
+     [
+      6.5,
+      51,
+      "#bdb39a"
+     ],
+     [
+      3,
+      51,
+      "#bdb39a"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    56,
+    38,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 9.6,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 20,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.25
+      ],
+      "z0": 2,
+      "height": 40,
+      "colour": "#5d6670",
+      "windows": "none"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
    "type": "balcony-bands",
    "at": [
-    -6,
+    -14,
     27.4,
     0
    ],
    "params": {
-    "length": 70,
+    "length": 58,
     "floors": 9,
     "storeyHeight": 3.0,
     "proud": 0.9,
-    "colour": "#b9b6ad"
+    "colour": "#8f8c84"
    },
    "lod": [
     0
@@ -93,10 +235,10 @@
        1.2
       ]
      },
-     "height": 28,
+     "height": 28.4,
      "wall": {
       "material": "concrete",
-      "colour": "#c4c1b8",
+      "colour": "#a7a49c",
       "windows": "none"
      },
      "roof": {
@@ -107,11 +249,11 @@
     "mode": "line",
     "count": 5,
     "start": [
-     -34,
+     -38,
      27.2
     ],
     "end": [
-     22,
+     10,
      27.2
     ]
    },
@@ -121,35 +263,10 @@
    ]
   },
   {
-   "type": "mass",
-   "id": "lawn-edge",
-   "footprint": {
-    "rect": [
-     50,
-     5
-    ]
-   },
-   "at": [
-    -6,
-    -1.5
-   ],
-   "height": 0.5,
-   "wall": {
-    "material": "concrete",
-    "colour": "#4f8a4a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#4f8a4a"
-   },
-   "z0": 0.5
-  },
-  {
    "type": "core/lamp",
    "at": [
-    -34,
-    -16,
+    -40,
+    -12,
     0
    ],
    "params": {
@@ -166,7 +283,7 @@
    "type": "park-bench",
    "at": [
     -20,
-    -16,
+    -10,
     0
    ],
    "params": {
@@ -179,373 +296,6 @@
    ]
   },
   {
-   "type": "revolve",
-   "at": [
-    56,
-    38,
-    0
-   ],
-   "params": {
-    "profile": [
-     [
-      9.5,
-      0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      1.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      1.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      2.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      2.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      3.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      4.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      4.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      5.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      5.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      6.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      7.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      7.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      8.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      8.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      9.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      10.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      10.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      11.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      11.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      12.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      13.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      13.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      14.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      14.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      15.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      16.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      16.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      17.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      17.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      18.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      19.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      19.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      20.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      20.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      21.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      22.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      22.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      23.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      23.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      24.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      25.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      25.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      26.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      26.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      27.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      28.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      28.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      29.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      29.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      30.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      31.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      31.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      32.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      32.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      33.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      34.0,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      34.0,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      35.2,
-      "#b3b4ae"
-     ],
-     [
-      9.5,
-      35.2,
-      "#e2d9c4"
-     ],
-     [
-      9.5,
-      36.0,
-      "#e2d9c4"
-     ],
-     [
-      11.5,
-      36.0,
-      "#d9cdb2"
-     ],
-     [
-      11.5,
-      38.5,
-      "#d9cdb2"
-     ],
-     [
-      6.5,
-      38.5,
-      "#cfc3a6"
-     ],
-     [
-      6.5,
-      41.0,
-      "#bdb39a"
-     ],
-     [
-      3,
-      41.0,
-      "#bdb39a"
-     ]
-    ]
-   }
-  },
-  {
-   "type": "mass",
-   "id": "road",
-   "footprint": {
-    "rect": [
-     110,
-     14
-    ]
-   },
-   "at": [
-    0,
-    -16
-   ],
-   "z0": 0,
-   "height": 0.5,
-   "wall": {
-    "material": "concrete",
-    "colour": "#55585a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#55585a"
-   }
-  },
-  {
    "type": "mass",
    "id": "kiosk",
    "footprint": {
@@ -555,8 +305,8 @@
     ]
    },
    "at": [
-    20,
-    -5
+    28,
+    -8
    ],
    "z0": 0,
    "height": 3,
@@ -581,7 +331,7 @@
    },
    "at": [
     -30,
-    -14
+    -20
    ],
    "z0": 0,
    "height": 1.5,
@@ -606,7 +356,7 @@
    },
    "at": [
     -12,
-    -14
+    -20
    ],
    "z0": 0,
    "height": 1.5,
@@ -631,7 +381,7 @@
    },
    "at": [
     8,
-    -14
+    -20
    ],
    "z0": 0,
    "height": 1.5,
@@ -647,14 +397,13 @@
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "road",
-  "forecourtDepth": 40,
+  "ground": "paving",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     -50,
+     -60,
      14
     ],
     "height": 11
@@ -662,7 +411,7 @@
    {
     "kind": "broadleaf",
     "at": [
-     -44,
+     -54,
      8
     ],
     "height": 12
@@ -670,28 +419,84 @@
    {
     "kind": "broadleaf",
     "at": [
-     36,
-     14
+     -48,
+     16
     ],
     "height": 10
    },
    {
     "kind": "broadleaf",
     "at": [
+     30,
+     16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
      -8,
-     -26
+     -9
     ],
     "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -9
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     76,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -66,
+     -4
+    ],
+    "height": 10
    }
   ],
   "extent": [
-   120,
-   90
+   150,
+   110
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Tower is a smooth shaft with dark window bands, no balconies; road is a flat asphalt pad with box cars and one kiosk, no junction detail; trees and street furniture simplified."
+  "gaps": "Tower is a plain cream cylinder with vertical dark window strips and flared crown (no balconies or facets); slab is a simple grey panel block with balcony bands; street, kiosks and cars simplified, one lawn strip and paved plaza."
  }
 }

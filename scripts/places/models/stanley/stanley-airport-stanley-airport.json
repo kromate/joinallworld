@@ -29,6 +29,40 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "tussock",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     70
+    ],
+    "height": 0.05,
+    "colour": "#b8a560"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "runway",
+   "at": [
+    0,
+    36,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     150,
+     8
+    ],
+    "height": 0.04,
+    "colour": "#6e7072"
+   }
+  },
+  {
    "type": "mass",
    "id": "terminal",
    "footprint": {
@@ -42,21 +76,22 @@
    "storeys": 2,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#9aa0a4",
-    "windows": "ribbon",
-    "windowRatio": 0.12,
+    "colour": "#a5aaad",
+    "windows": "none",
     "plinth": 0.2,
     "faces": {
-     "back": "none",
-     "left": "none",
-     "right": "none"
-    }
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#a5aaad"
    },
    "roof": {
     "form": "gable",
-    "colour": "#b9bdbf",
+    "colour": "#b5b9bb",
     "material": "metal-sheet",
-    "pitch": 10,
+    "pitch": 12,
     "overhang": 0.5
    }
   },
@@ -77,7 +112,7 @@
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#9a9fa3",
+    "colour": "#a5aaad",
     "windows": "none",
     "plinth": 0
    },
@@ -106,12 +141,12 @@
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#e4e2da",
+    "colour": "#f0eee8",
     "windows": "none"
    },
    "roof": {
     "form": "gable",
-    "colour": "#d5d3cb",
+    "colour": "#e2e0da",
     "material": "metal-sheet",
     "pitch": 14,
     "overhang": 0.3
@@ -122,44 +157,47 @@
    "id": "tower-block",
    "footprint": {
     "rect": [
-     11,
-     8
+     9,
+     7
     ]
    },
    "at": [
     -62,
     -6
    ],
-   "height": 6,
+   "height": 5.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#ece9e0",
-    "windows": "ribbon",
-    "windowRatio": 0.25,
+    "windows": "punched",
+    "windowRatio": 0.1,
     "faces": {
      "back": "none"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#cfcdc6",
-    "overhang": 0.4,
-    "parapet": 0.2
+    "colour": "#e8e6df",
+    "overhang": 0.2,
+    "parapet": 0.15
    }
   },
   {
-   "type": "core/control-tower",
+   "type": "prism",
+   "id": "mast",
    "at": [
     -62,
     -6,
-    6
+    5.6
    ],
    "params": {
-    "height": 3.5,
-    "style": "square",
-    "colour": "#ece9e0",
-    "cabColour": "#9fb6c2"
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#d8d8d8"
    }
   },
   {
@@ -176,7 +214,7 @@
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "sand",
   "forecourt": "none",
   "trees": 0,
   "extent": [
@@ -187,6 +225,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Distant photo: real tower is a low white block with mast, terminal and sheds are approximated; flat grass/runway not shown"
+  "gaps": "Distant photo; terminal still shows a blue glazed accent, shed colours approximate, runway strip not visible at this camera"
  }
 }

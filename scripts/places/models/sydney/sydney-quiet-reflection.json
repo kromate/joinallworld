@@ -28,9 +28,9 @@
   "margin": 0.1
  },
  "review": {
-  "rounds": 0,
+  "rounds": 2,
   "match": "fair",
-  "gaps": ""
+  "gaps": "entrance doors render as mullioned windows not timber pointed doors, no tracery, stepped battlemented gable coping and ornate pinnacle simplified to plain spires, no wall-side buttresses"
  },
  "parts": [
   {
@@ -65,7 +65,7 @@
    "roof": {
     "form": "gable",
     "axis": "y",
-    "pitch": 55,
+    "pitch": 40,
     "colour": "#6e7378",
     "material": "corrugated",
     "overhang": 0.15
@@ -267,39 +267,6 @@
    }
   },
   {
-   "type": "prism",
-   "at": [
-    1.4,
-    -12.62,
-    4.6
-   ],
-   "params": {
-    "rect": [
-     5.4,
-     0.3
-    ],
-    "height": 6.2,
-    "topScale": 0.9,
-    "colour": "#cdb48c",
-    "windows": "none"
-   }
-  },
-  {
-   "type": "arched-window",
-   "at": [
-    -0.30000000000000004,
-    -12.55,
-    5.0
-   ],
-   "params": {
-    "width": 1.4,
-    "height": 5.6,
-    "kind": "arch",
-    "stained": true,
-    "trim": "#cdb48c"
-   }
-  },
-  {
    "type": "arched-window",
    "at": [
     1.4,
@@ -307,43 +274,11 @@
     5.0
    ],
    "params": {
-    "width": 1.4,
-    "height": 5.6,
-    "kind": "arch",
+    "width": 3.2,
+    "height": 6.4,
+    "kind": "pointed",
     "stained": true,
     "trim": "#cdb48c"
-   }
-  },
-  {
-   "type": "arched-window",
-   "at": [
-    3.0999999999999996,
-    -12.55,
-    5.0
-   ],
-   "params": {
-    "width": 1.4,
-    "height": 5.6,
-    "kind": "arch",
-    "stained": true,
-    "trim": "#cdb48c"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    -5.3,
-    -12.62,
-    4.4
-   ],
-   "params": {
-    "rect": [
-     2.6,
-     0.3
-    ],
-    "height": 4.6,
-    "colour": "#cdb48c",
-    "windows": "none"
    }
   },
   {
@@ -351,31 +286,14 @@
    "at": [
     -5.3,
     -12.55,
-    4.7
+    4.9
    ],
    "params": {
-    "width": 1.7,
-    "height": 4.0,
-    "kind": "arch",
+    "width": 1.9,
+    "height": 4.8,
+    "kind": "pointed",
     "stained": true,
     "trim": "#cdb48c"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    7.0,
-    -12.62,
-    4.4
-   ],
-   "params": {
-    "rect": [
-     2.6,
-     0.3
-    ],
-    "height": 4.6,
-    "colour": "#cdb48c",
-    "windows": "none"
    }
   },
   {
@@ -383,12 +301,12 @@
    "at": [
     7.0,
     -12.55,
-    4.7
+    4.9
    ],
    "params": {
-    "width": 1.7,
-    "height": 4.0,
-    "kind": "arch",
+    "width": 1.9,
+    "height": 4.8,
+    "kind": "pointed",
     "stained": true,
     "trim": "#cdb48c"
    }
@@ -398,12 +316,12 @@
    "at": [
     1.4,
     -12.55,
-    12.4
+    12.3
    ],
    "params": {
-    "width": 1.0,
-    "height": 1.8,
-    "kind": "round",
+    "width": 0.9,
+    "height": 1.3,
+    "kind": "pointed",
     "stained": true,
     "trim": "#cdb48c"
    }
@@ -411,9 +329,22 @@
   {
    "type": "core/spire",
    "at": [
+    1.4,
+    -12.4,
+    14.6
+   ],
+   "params": {
+    "baseWidth": 1.8,
+    "height": 4.2,
+    "colour": "#cdb48c"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
     -8.2,
     -12.4,
-    9.6
+    9.8
    ],
    "params": {
     "baseWidth": 0.8,
@@ -426,7 +357,7 @@
    "at": [
     8.2,
     -12.4,
-    9.6
+    9.8
    ],
    "params": {
     "baseWidth": 0.8,
@@ -437,14 +368,163 @@
   {
    "type": "core/spire",
    "at": [
-    0,
+    -7.6,
     -12.4,
-    15.0
+    10.0
    ],
    "params": {
-    "baseWidth": 1.1,
-    "height": 3.2,
+    "baseWidth": 0.7,
+    "height": 1.6,
     "colour": "#cdb48c"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    7.6,
+    -12.4,
+    10.0
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 1.6,
+    "colour": "#cdb48c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.2,
+    -12.8,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.35,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.2,
+    -12.8,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.3,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.6,
+    -12.8,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.35,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.6,
+    -12.8,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.3,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -12.8,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.35,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -12.8,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.3,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.2,
+    -12.8,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.35,
+    "colour": "#cdb48c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.2,
+    -12.8,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "height": 0.3,
+    "colour": "#cdb48c",
+    "windows": "none"
    }
   }
  ],

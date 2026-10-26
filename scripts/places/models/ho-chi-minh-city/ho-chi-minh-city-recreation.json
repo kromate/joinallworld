@@ -22,125 +22,689 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 2,
+  "pitchDeg": 14,
   "fovDeg": 45,
   "aspect": 0.75,
-  "fit": "building",
+  "fit": "all",
   "margin": 0.0,
-  "shiftY": -0.1
+  "shiftY": 0.0
  },
  "parts": [
   {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "big-tree",
-     "params": {
-      "height": 34,
-      "crown_radius": 6.5,
-      "trunk_radius": 1.0,
-      "colour": "#2f6a32"
-     }
-    },
-    "mode": "grid",
-    "cols": 5,
-    "rows": 3,
-    "dx": 20,
-    "dy": 24,
-    "stagger": 4,
-    "centred": true,
-    "vary": {
-     "height": [
-      26,
-      38
-     ]
-    },
-    "lod1Step": 2,
-    "lod2Step": 8
-   },
+   "type": "big-tree",
    "at": [
-    0,
-    16,
+    -31.1,
+    19.9,
     0
+   ],
+   "params": {
+    "height": 23.9,
+    "crown_radius": 6.2,
+    "trunk_radius": 0.96,
+    "colour": "#2f6a32"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -7.5,
+    32.5,
+    0
+   ],
+   "params": {
+    "height": 21.3,
+    "crown_radius": 6.2,
+    "trunk_radius": 0.93,
+    "colour": "#2a5a2c"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    11.5,
+    23.5,
+    0
+   ],
+   "params": {
+    "height": 25.0,
+    "crown_radius": 6.3,
+    "trunk_radius": 0.87,
+    "colour": "#27522b"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    32.5,
+    25.4,
+    0
+   ],
+   "params": {
+    "height": 23.5,
+    "crown_radius": 6.1,
+    "trunk_radius": 0.87,
+    "colour": "#27522b"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -33.8,
+    -1.3,
+    0
+   ],
+   "params": {
+    "height": 20.9,
+    "crown_radius": 6.3,
+    "trunk_radius": 0.89,
+    "colour": "#27522b"
+   },
+   "lod": [
+    0,
+    1
    ]
   },
   {
+   "type": "big-tree",
+   "at": [
+    -15.9,
+    8.5,
+    0
+   ],
+   "params": {
+    "height": 23.8,
+    "crown_radius": 6.9,
+    "trunk_radius": 0.96,
+    "colour": "#2a5a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    6.4,
+    2.7,
+    0
+   ],
+   "params": {
+    "height": 23.0,
+    "crown_radius": 7.3,
+    "trunk_radius": 1.03,
+    "colour": "#2f6a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    24.5,
+    -2.3,
+    0
+   ],
+   "params": {
+    "height": 21.8,
+    "crown_radius": 8.0,
+    "trunk_radius": 1.01,
+    "colour": "#2a5a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    35.5,
+    4.8,
+    0
+   ],
+   "params": {
+    "height": 23.0,
+    "crown_radius": 6.9,
+    "trunk_radius": 0.93,
+    "colour": "#27522b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -21.1,
+    -20.3,
+    0
+   ],
+   "params": {
+    "height": 22.5,
+    "crown_radius": 7.9,
+    "trunk_radius": 0.85,
+    "colour": "#2f6a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -0.5,
+    -11.2,
+    0
+   ],
+   "params": {
+    "height": 20.5,
+    "crown_radius": 7.4,
+    "trunk_radius": 1.04,
+    "colour": "#2f6a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    19.0,
+    -20.9,
+    0
+   ],
+   "params": {
+    "height": 23.0,
+    "crown_radius": 8.0,
+    "trunk_radius": 0.82,
+    "colour": "#2a5a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -37.3,
+    -30.2,
+    0
+   ],
+   "params": {
+    "height": 24.0,
+    "crown_radius": 6.2,
+    "trunk_radius": 1.01,
+    "colour": "#27522b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    36.5,
+    -24.9,
+    0
+   ],
+   "params": {
+    "height": 22.7,
+    "crown_radius": 7.8,
+    "trunk_radius": 1.07,
+    "colour": "#2f6a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -6.9,
+    39.8,
+    0
+   ],
+   "params": {
+    "height": 21.0,
+    "crown_radius": 6.3,
+    "trunk_radius": 0.82,
+    "colour": "#2f6a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -24.2,
+    36.5,
+    0
+   ],
+   "params": {
+    "height": 22.3,
+    "crown_radius": 8.2,
+    "trunk_radius": 0.82,
+    "colour": "#2f6a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -8.7,
+    -12.3,
+    0
+   ],
+   "params": {
+    "height": 7.4,
+    "crown_radius": 3.6,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    4.4,
+    21.1,
+    0
+   ],
+   "params": {
+    "height": 10.0,
+    "crown_radius": 4.0,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -10.5,
+    -16.0,
+    0
+   ],
+   "params": {
+    "height": 7.2,
+    "crown_radius": 3.2,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    13.9,
+    -33.1,
+    0
+   ],
+   "params": {
+    "height": 9.5,
+    "crown_radius": 3.3,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -19.2,
+    -22.6,
+    0
+   ],
+   "params": {
+    "height": 8.6,
+    "crown_radius": 3.9,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -16.0,
+    -24.2,
+    0
+   ],
+   "params": {
+    "height": 9.6,
+    "crown_radius": 4.4,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    13.6,
+    23.7,
+    0
+   ],
+   "params": {
+    "height": 8.4,
+    "crown_radius": 4.3,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    39.8,
+    19.1,
+    0
+   ],
+   "params": {
+    "height": 8.7,
+    "crown_radius": 3.6,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -9.3,
+    3.6,
+    0
+   ],
+   "params": {
+    "height": 8.2,
+    "crown_radius": 3.3,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    42.7,
+    0.4,
+    0
+   ],
+   "params": {
+    "height": 7.3,
+    "crown_radius": 3.9,
+    "trunk_radius": 0.3,
+    "colour": "#3f7f3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     24
+    ],
+    "z0": 0.01,
+    "height": 0.04,
+    "colour": "#8a5a30"
+   },
+   "at": [
+    -12,
+    -4
+   ],
+   "rotDeg": 20
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     4,
+     20
+    ],
+    "z0": 0.01,
+    "height": 0.04,
+    "colour": "#8a5a30"
+   },
+   "at": [
+    8,
+    12
+   ],
+   "rotDeg": -30
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     14
+    ],
+    "z0": 0.01,
+    "height": 0.04,
+    "colour": "#8a5a30"
+   },
+   "at": [
+    26,
+    20
+   ],
+   "rotDeg": 10
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     16
+    ],
+    "z0": 0.01,
+    "height": 0.04,
+    "colour": "#8a5a30"
+   },
+   "at": [
+    -30,
+    14
+   ],
+   "rotDeg": 60
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     50
+    ],
+    "z0": 0.01,
+    "height": 0.06,
+    "colour": "#cbbf9f"
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     26
+    ],
+    "z0": 0.01,
+    "height": 0.06,
+    "colour": "#cbbf9f"
+   },
+   "at": [
+    -16,
+    0
+   ],
+   "rotDeg": 10
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     26
+    ],
+    "z0": 0.01,
+    "height": 0.06,
+    "colour": "#cbbf9f"
+   },
+   "at": [
+    14,
+    -6
+   ],
+   "rotDeg": -12
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3,
+     18
+    ],
+    "z0": 0.01,
+    "height": 0.06,
+    "colour": "#cbbf9f"
+   },
+   "at": [
+    30,
+    14
+   ],
+   "rotDeg": 40
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14,
+    -20.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -4,
+    -20.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6,
+    -20.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    16,
+    -20.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    26,
+    -20.5,
+    0
+   ],
+   "params": {}
+  },
+  {
    "type": "array",
+   "lod": [
+    0,
+    1
+   ],
    "params": {
     "of": {
-     "type": "big-tree",
+     "type": "lamp",
      "params": {
-      "height": 14,
-      "crown_radius": 5,
-      "trunk_radius": 0.5,
-      "colour": "#3f7f3a"
+      "height": 4
      }
     },
     "mode": "line",
     "start": [
-     -46,
      -30,
+     -26,
      0
     ],
     "end": [
-     46,
-     -30,
+     34,
+     -26,
      0
     ],
-    "count": 6,
-    "lod1Step": 2,
-    "lod2Step": 6
+    "count": 6
    }
-  },
-  {
-   "type": "prism",
-   "params": {
-    "rect": [
-     110,
-     3.2
-    ],
-    "z0": 0,
-    "height": 0.06,
-    "colour": "#cbbf9f"
-   },
-   "at": [
-    0,
-    -14,
-    0
-   ]
-  },
-  {
-   "type": "prism",
-   "params": {
-    "rect": [
-     3.2,
-     70
-    ],
-    "z0": 0,
-    "height": 0.06,
-    "colour": "#cbbf9f"
-   },
-   "at": [
-    -8,
-    10,
-    0
-   ]
   },
   {
    "type": "mass",
    "id": "hung-king-temple",
    "footprint": {
     "rect": [
-     15,
-     10
+     9,
+     6
     ]
    },
    "at": [
-    26,
-    -4
+    34,
+    -12
    ],
    "z0": 0.9,
-   "height": 4.6,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -171,227 +735,93 @@
     "colour": "#a8523a",
     "material": "clay-tile",
     "pitch": 28,
-    "overhang": 2.2
+    "overhang": 1.4
    }
   },
   {
    "type": "prism",
    "params": {
     "rect": [
-     19,
-     14
+     11,
+     8
     ],
     "z0": 0,
-    "height": 0.9,
+    "height": 0.7,
     "colour": "#c4bba8"
    },
    "at": [
-    26,
-    -4,
+    34,
+    -12,
     0
    ]
   },
   {
-   "type": "steps",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    26,
-    -12,
-    0
-   ],
-   "params": {
-    "width": 6,
-    "rise": 0.2,
-    "run": 0.6,
-    "count": 4,
-    "colour": "#c4bba8"
-   }
-  },
-  {
    "type": "loft",
    "at": [
-    -30,
-    20,
+    -40,
+    -10,
     0
    ],
    "params": {
     "colour": "#b4623f",
     "sections": [
      {
-      "z": 0,
+      "z": 0.0,
       "rect": [
-       5,
-       5
+       2.5,
+       2.5
       ]
      },
      {
-      "z": 3,
+      "z": 1.5,
       "rect": [
-       4.4,
-       4.4
+       2.2,
+       2.2
       ]
      },
      {
-      "z": 3.2,
+      "z": 1.6,
       "rect": [
-       3.8,
-       3.8
+       1.9,
+       1.9
       ]
      },
      {
-      "z": 6,
+      "z": 3.0,
       "rect": [
-       3.2,
-       3.2
+       1.6,
+       1.6
       ]
      },
      {
-      "z": 6.2,
+      "z": 3.1,
       "rect": [
-       2.6,
-       2.6
+       1.3,
+       1.3
       ]
      },
      {
-      "z": 8.6,
+      "z": 4.3,
       "rect": [
-       2.0,
-       2.0
+       1.0,
+       1.0
       ]
      },
      {
-      "z": 8.8,
+      "z": 4.4,
       "rect": [
-       1.4,
-       1.4
+       0.7,
+       0.7
       ]
      },
      {
-      "z": 10.8,
+      "z": 5.4,
       "rect": [
-       0.6,
-       0.6
+       0.3,
+       0.3
       ]
      }
     ]
-   }
-  },
-  {
-   "type": "mosque-domed/statue-on-plinth",
-   "at": [
-    0,
-    -4,
-    0
-   ],
-   "params": {
-    "height": 6.5,
-    "plinth_height": 1.8,
-    "colour": "#cfc7b4",
-    "figure_colour": "#b7ad92"
-   }
-  },
-  {
-   "type": "kiosk",
-   "at": [
-    -24,
-    -8,
-    0
-   ],
-   "params": {
-    "kind": "container",
-    "width": 4,
-    "depth": 3,
-    "height": 3,
-    "colour": "#e6d9a8"
-   }
-  },
-  {
-   "type": "kiosk",
-   "at": [
-    -34,
-    0,
-    0
-   ],
-   "params": {
-    "kind": "container",
-    "width": 4,
-    "depth": 3,
-    "height": 3,
-    "colour": "#e6d9a8"
-   }
-  },
-  {
-   "type": "array",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "of": {
-     "type": "lamp",
-     "params": {
-      "height": 4
-     }
-    },
-    "mode": "line",
-    "start": [
-     -40,
-     -12,
-     0
-    ],
-    "end": [
-     40,
-     -12,
-     0
-    ],
-    "count": 6
-   }
-  },
-  {
-   "type": "array",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "of": {
-     "type": "park-bench",
-     "params": {}
-    },
-    "mode": "line",
-    "start": [
-     -36,
-     -16,
-     0
-    ],
-    "end": [
-     36,
-     -16,
-     0
-    ],
-    "count": 6
-   }
-  },
-  {
-   "type": "fence-wall",
-   "lod": [
-    0
-   ],
-   "at": [
-    -56,
-    -42,
-    0
-   ],
-   "params": {
-    "length": 112,
-    "height": 1.8,
-    "thickness": 0.4,
-    "colour": "#7a8a6a",
-    "kind": "railing",
-    "pillarEvery": 4
    }
   }
  ],
@@ -399,12 +829,12 @@
   "ground": "grass",
   "forecourt": "none",
   "extent": [
-   118,
-   100
+   96,
+   96
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "rough",
   "gaps": "Photo is a ground-level view of old tall trees that the fixed 3/4 camera cannot reproduce; tree crowns are low-poly lumps, no leaf litter or understorey, only a 112 m section of the 500 m park, temple/shrine/statue layout is from text"
  }

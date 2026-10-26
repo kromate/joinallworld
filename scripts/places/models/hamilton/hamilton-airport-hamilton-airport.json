@@ -68,7 +68,7 @@
     ]
    },
    "at": [
-    -62,
+    -58,
     -26
    ],
    "height": 5.0,
@@ -89,13 +89,13 @@
    "id": "annex",
    "footprint": {
     "rect": [
-     12,
-     8
+     14,
+     9
     ]
    },
    "at": [
-    64,
-    -28
+    49,
+    -30
    ],
    "height": 3.6,
    "storeys": 1,
@@ -115,13 +115,14 @@
   {
    "type": "airliner",
    "at": [
-    -62,
-    -48,
+    -36,
+    -44,
     0
    ],
-   "rotDeg": 0,
+   "rotDeg": 90,
    "params": {
-    "scale": 0.45
+    "scale": 0.45,
+    "tailColour": "#c9302c"
    }
   },
   {
@@ -160,16 +161,16 @@
    "id": "roof-landside",
    "footprint": {
     "rect": [
-     112,
-     18
+     104,
+     16
     ]
    },
    "at": [
     0,
     8
    ],
-   "z0": 6.6,
-   "height": 1.2,
+   "z0": 6.8,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -179,10 +180,10 @@
    "roof": {
     "form": "shed",
     "colour": "#cfd5d9",
-    "material": "metal-sheet",
-    "rise": 2.4,
-    "overhang": 4.0,
-    "high": "back"
+    "rise": 1.6,
+    "overhang": 1.0,
+    "high": "back",
+    "material": "metal-sheet"
    }
   },
   {
@@ -190,8 +191,8 @@
    "id": "roof-airside",
    "footprint": {
     "rect": [
-     112,
-     16
+     104,
+     15
     ]
    },
    "at": [
@@ -199,7 +200,7 @@
     -8
    ],
    "z0": 6.6,
-   "height": 0.6,
+   "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -207,12 +208,8 @@
     "windows": "none"
    },
    "roof": {
-    "form": "shed",
-    "colour": "#d3d9dc",
-    "material": "metal-sheet",
-    "rise": 1.2,
-    "overhang": 4.0,
-    "high": "back"
+    "form": "flat",
+    "colour": "#d3d9dc"
    }
   },
   {
@@ -228,7 +225,7 @@
     16,
     10
    ],
-   "z0": 10.2,
+   "z0": 9.8,
    "height": 0.8,
    "storeys": 1,
    "wall": {
@@ -247,19 +244,19 @@
    "footprint": {
     "kind": "round",
     "size": [
-     7,
-     7
+     8,
+     8
     ]
    },
    "at": [
-    -50,
-    -13.5
+    -52,
+    -14.5
    ],
-   "height": 6.4,
+   "height": 8.4,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4a8794",
+    "colour": "#3d7684",
     "windows": "ribbon",
     "windowRatio": 0.5
    },
@@ -271,67 +268,167 @@
   {
    "type": "jet-bridge",
    "at": [
-    -44,
+    -41,
     -17,
-    4.5
+    4.2
    ],
-   "rotDeg": -108,
+   "rotDeg": 180,
    "params": {
-    "length": 16
+    "length": 14
    }
   },
   {
    "type": "jet-bridge",
    "at": [
-    -34,
+    -33,
     -17,
-    4.5
+    4.2
    ],
-   "rotDeg": -108,
+   "rotDeg": 180,
    "params": {
-    "length": 16
+    "length": 14
    }
   },
   {
    "type": "jet-bridge",
+   "at": [
+    -25,
+    -17,
+    4.2
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -17,
+    -17,
+    4.2
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "rect": [
+     80,
+     40
+    ]
+   },
    "at": [
     -24,
-    -17,
-    4.5
+    -38
    ],
-   "rotDeg": -108,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8083",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8083"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -52,
+    34
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2f3f1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8fa6c0",
+    "rise": 2.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    70,
+    0
+   ],
    "params": {
-    "length": 16
+    "width": 112,
+    "depth": 24,
+    "colour": "#2f8fb0",
+    "bank": false
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -76,
+    0
+   ],
+   "params": {
+    "width": 112,
+    "depth": 24,
+    "colour": "#2f8fb0",
+    "bank": false
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "grass",
   "forecourt": "parking",
   "trees": [
    {
     "kind": "palm",
     "at": [
-     40,
-     30
+     44,
+     32
     ]
    },
    {
     "kind": "palm",
     "at": [
-     50,
-     26
+     54,
+     28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     34
     ]
    }
   ],
   "extent": [
-   150,
-   120
-  ]
+   118,
+   130
+  ],
+  "forecourtDepth": 8
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "not rendered or compared: render queue dead. Composed from the aerial photo; camera yaw/pitch, roof plane heights and jet-bridge orientation unchecked"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "terminal angle and exact apron/runway layout simplified; airliner livery approximate; no separate far-shore terminal or marina; roof planes only roughly pitched"
  }
 }

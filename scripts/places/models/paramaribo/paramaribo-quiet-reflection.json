@@ -1,5 +1,5 @@
 {
- "verified": "text",
+ "verified": "photo",
  "evidence": [
   {
    "kind": "photo",
@@ -64,8 +64,7 @@
     "z0": 1.8,
     "height": 3.4,
     "colour": "#f1eee3",
-    "windows": "rect",
-    "windowRatio": 0.45,
+    "windows": "none",
     "storeys": 1
    }
   },
@@ -77,8 +76,7 @@
     1.8
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "mode": "arc",
@@ -133,7 +131,11 @@
       0.8
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -150,8 +152,7 @@
     "z0": 6.0,
     "height": 3.2,
     "colour": "#f2efe6",
-    "windows": "rect",
-    "windowRatio": 0.5,
+    "windows": "none",
     "storeys": 1
    }
   },
@@ -163,8 +164,7 @@
     6.0
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "mode": "arc",
@@ -198,53 +198,57 @@
     "profile": [
      [
       13.0,
-      0,
+      0.0,
       "#86c4cc"
      ],
      [
       13.0,
-      0.25,
+      0.18,
       "#f6efe4"
      ],
      [
       12.6,
-      0.6,
+      0.43,
       "#e2653c"
      ],
      [
       11.2,
-      1.8
+      1.3
      ],
      [
       8.8,
-      3.6
+      2.59
      ],
      [
       6.0,
-      5.2
+      3.74
      ],
      [
       3.0,
-      6.4
+      4.61
      ],
      [
       1.4,
-      6.9
+      4.97
      ],
      [
       0.9,
-      7.1
+      5.11
      ]
     ],
     "openTop": false
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
    "at": [
     0,
     0,
-    16.1
+    14.399999999999999
    ],
    "params": {
     "segments": 12,
@@ -287,7 +291,11 @@
       4.2
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/steps",
@@ -302,7 +310,10 @@
     "run": 0.8,
     "count": 9,
     "colour": "#f6f3ea"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/steps",
@@ -317,7 +328,10 @@
     "run": 0.9,
     "count": 9,
     "colour": "#f4f2e8"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/steps",
@@ -332,7 +346,10 @@
     "run": 0.9,
     "count": 9,
     "colour": "#f4f2e8"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
@@ -343,15 +360,44 @@
    ],
    "params": {
     "rect": [
-     11,
-     11
+     9,
+     9
     ],
-    "height": 4.2,
+    "height": 0.6,
     "colour": "#f4f2ea"
    }
   },
   {
    "type": "array",
+   "at": [
+    -23,
+    -3,
+    0.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 4.4,
+    "count": 10,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.28,
+       "n": 8,
+       "height": 3.6,
+       "colour": "#f4f2ea"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
    "at": [
     -23,
     -3,
@@ -362,51 +408,25 @@
     1
    ],
    "params": {
-    "mode": "arc",
-    "radius": 4.2,
-    "count": 10,
-    "facing": "outward",
-    "of": [
-     {
-      "type": "prism",
-      "params": {
-       "radius": 0.28,
-       "n": 8,
-       "height": 4.0,
-       "colour": "#f4f2ea"
-      }
-     }
-    ],
-    "lod1Step": 2
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    -23,
-    -3,
-    8.2
-   ],
-   "params": {
     "segments": 20,
     "colour": "#f4f2ea",
     "profile": [
      [
-      5.6,
+      6.2,
       0,
       "#86c4cc"
      ],
      [
-      5.8,
+      6.3,
       0.25,
       "#f4f2ea"
      ],
      [
-      5.8,
+      6.3,
       0.55
      ],
      [
-      5.0,
+      5.5,
       0.7
      ],
      [
@@ -421,29 +441,28 @@
    "at": [
     -23,
     -3,
-    8.9
+    4.9
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "mode": "arc",
-    "radius": 3.0,
+    "radius": 3.8,
     "count": 8,
     "facing": "outward",
+    "lod1Step": 2,
     "of": [
      {
       "type": "prism",
       "params": {
-       "radius": 0.22,
+       "radius": 0.28,
        "n": 8,
-       "height": 3.0,
+       "height": 3.1,
        "colour": "#f4f2ea"
       }
      }
-    ],
-    "lod1Step": 2
+    ]
    }
   },
   {
@@ -451,33 +470,106 @@
    "at": [
     -23,
     -3,
-    11.9
+    8.0
+   ],
+   "lod": [
+    0,
+    1
    ],
    "params": {
     "segments": 20,
     "colour": "#f4f2ea",
     "profile": [
      [
-      4.4,
+      5.2,
       0,
       "#86c4cc"
      ],
      [
-      4.5,
+      5.3,
       0.25,
       "#f4f2ea"
      ],
      [
-      4.5,
-      0.5
+      5.3,
+      0.55
      ],
      [
-      3.8,
-      0.6
+      4.5,
+      0.7
      ],
      [
       0.5,
-      0.6
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -23,
+    -3,
+    8.7
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 3.0,
+    "count": 8,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.28,
+       "n": 8,
+       "height": 3.1,
+       "colour": "#f4f2ea"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -23,
+    -3,
+    11.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      4.2,
+      0,
+      "#86c4cc"
+     ],
+     [
+      4.3,
+      0.25,
+      "#f4f2ea"
+     ],
+     [
+      4.3,
+      0.55
+     ],
+     [
+      3.5,
+      0.7
+     ],
+     [
+      0.5,
+      0.7
      ]
     ]
    }
@@ -489,74 +581,57 @@
     -3,
     12.5
    ],
+   "lod": [
+    0,
+    1
+   ],
    "params": {
-    "segments": 20,
-    "colour": "#e2653c",
+    "segments": 16,
+    "colour": "#c4301c",
     "profile": [
      [
-      1.5,
+      1.4,
       0
      ],
      [
-      2.8499999999999996,
-      0.3,
-      "#e2653c"
+      2.2,
+      0.5
      ],
      [
-      3.0,
-      0.9
+      2.0,
+      1.2
      ],
      [
-      2.7,
-      1.5
-     ],
-     [
-      1.8599999999999999,
+      1.2,
       1.7
      ],
      [
-      1.6500000000000001,
-      1.8
+      1.9,
+      2.2
      ],
      [
-      2.7,
-      2.3
+      1.7,
+      2.9
      ],
      [
-      2.8499999999999996,
-      3.0
-     ],
-     [
-      2.4000000000000004,
-      3.6
+      1.0,
+      3.3
      ],
      [
       1.5,
-      3.8
+      3.7
      ],
      [
-      1.2000000000000002,
-      3.9
+      1.3,
+      4.2
      ],
      [
-      2.25,
-      4.4
+      0.6,
+      4.8
      ],
      [
-      2.4000000000000004,
-      5.0
-     ],
-     [
-      1.7999999999999998,
-      5.6
-     ],
-     [
-      0.8999999999999999,
-      6.0
-     ],
-     [
-      0.48,
-      9.0
+      0.1,
+      6.5
      ]
     ]
    }
@@ -566,34 +641,30 @@
    "at": [
     -23,
     -3,
-    8.2
+    0
    ],
    "lod": [
     2
    ],
    "params": {
     "segments": 8,
-    "colour": "#e2653c",
+    "colour": "#c4301c",
     "profile": [
      [
-      5.5,
+      5,
       0
      ],
      [
-      5.5,
-      4
+      5,
+      12
      ],
      [
-      3,
-      6
-     ],
-     [
-      3.0,
-      10
+      2,
+      13
      ],
      [
       0.3,
-      18
+      19
      ]
     ]
    }
@@ -607,15 +678,44 @@
    ],
    "params": {
     "rect": [
-     11,
-     11
+     9,
+     9
     ],
-    "height": 4.2,
+    "height": 0.6,
     "colour": "#f4f2ea"
    }
   },
   {
    "type": "array",
+   "at": [
+    23,
+    -3,
+    0.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 4.4,
+    "count": 10,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.28,
+       "n": 8,
+       "height": 3.6,
+       "colour": "#f4f2ea"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
    "at": [
     23,
     -3,
@@ -626,51 +726,25 @@
     1
    ],
    "params": {
-    "mode": "arc",
-    "radius": 4.2,
-    "count": 10,
-    "facing": "outward",
-    "of": [
-     {
-      "type": "prism",
-      "params": {
-       "radius": 0.28,
-       "n": 8,
-       "height": 4.0,
-       "colour": "#f4f2ea"
-      }
-     }
-    ],
-    "lod1Step": 2
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    23,
-    -3,
-    8.2
-   ],
-   "params": {
     "segments": 20,
     "colour": "#f4f2ea",
     "profile": [
      [
-      5.6,
+      6.2,
       0,
       "#86c4cc"
      ],
      [
-      5.8,
+      6.3,
       0.25,
       "#f4f2ea"
      ],
      [
-      5.8,
+      6.3,
       0.55
      ],
      [
-      5.0,
+      5.5,
       0.7
      ],
      [
@@ -685,29 +759,28 @@
    "at": [
     23,
     -3,
-    8.9
+    4.9
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "mode": "arc",
-    "radius": 3.0,
+    "radius": 3.8,
     "count": 8,
     "facing": "outward",
+    "lod1Step": 2,
     "of": [
      {
       "type": "prism",
       "params": {
-       "radius": 0.22,
+       "radius": 0.28,
        "n": 8,
-       "height": 3.0,
+       "height": 3.1,
        "colour": "#f4f2ea"
       }
      }
-    ],
-    "lod1Step": 2
+    ]
    }
   },
   {
@@ -715,33 +788,106 @@
    "at": [
     23,
     -3,
-    11.9
+    8.0
+   ],
+   "lod": [
+    0,
+    1
    ],
    "params": {
     "segments": 20,
     "colour": "#f4f2ea",
     "profile": [
      [
-      4.4,
+      5.2,
       0,
       "#86c4cc"
      ],
      [
-      4.5,
+      5.3,
       0.25,
       "#f4f2ea"
      ],
      [
-      4.5,
-      0.5
+      5.3,
+      0.55
      ],
      [
-      3.8,
-      0.6
+      4.5,
+      0.7
      ],
      [
       0.5,
-      0.6
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    23,
+    -3,
+    8.7
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 3.0,
+    "count": 8,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.28,
+       "n": 8,
+       "height": 3.1,
+       "colour": "#f4f2ea"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23,
+    -3,
+    11.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f4f2ea",
+    "profile": [
+     [
+      4.2,
+      0,
+      "#86c4cc"
+     ],
+     [
+      4.3,
+      0.25,
+      "#f4f2ea"
+     ],
+     [
+      4.3,
+      0.55
+     ],
+     [
+      3.5,
+      0.7
+     ],
+     [
+      0.5,
+      0.7
      ]
     ]
    }
@@ -753,74 +899,57 @@
     -3,
     12.5
    ],
+   "lod": [
+    0,
+    1
+   ],
    "params": {
-    "segments": 20,
-    "colour": "#e2653c",
+    "segments": 16,
+    "colour": "#c4301c",
     "profile": [
      [
-      1.5,
+      1.4,
       0
      ],
      [
-      2.8499999999999996,
-      0.3,
-      "#e2653c"
+      2.2,
+      0.5
      ],
      [
-      3.0,
-      0.9
+      2.0,
+      1.2
      ],
      [
-      2.7,
-      1.5
-     ],
-     [
-      1.8599999999999999,
+      1.2,
       1.7
      ],
      [
-      1.6500000000000001,
-      1.8
+      1.9,
+      2.2
      ],
      [
-      2.7,
-      2.3
+      1.7,
+      2.9
      ],
      [
-      2.8499999999999996,
-      3.0
-     ],
-     [
-      2.4000000000000004,
-      3.6
+      1.0,
+      3.3
      ],
      [
       1.5,
-      3.8
+      3.7
      ],
      [
-      1.2000000000000002,
-      3.9
+      1.3,
+      4.2
      ],
      [
-      2.25,
-      4.4
+      0.6,
+      4.8
      ],
      [
-      2.4000000000000004,
-      5.0
-     ],
-     [
-      1.7999999999999998,
-      5.6
-     ],
-     [
-      0.8999999999999999,
-      6.0
-     ],
-     [
-      0.48,
-      9.0
+      0.1,
+      6.5
      ]
     ]
    }
@@ -830,34 +959,30 @@
    "at": [
     23,
     -3,
-    8.2
+    0
    ],
    "lod": [
     2
    ],
    "params": {
     "segments": 8,
-    "colour": "#e2653c",
+    "colour": "#c4301c",
     "profile": [
      [
-      5.5,
+      5,
       0
      ],
      [
-      5.5,
-      4
+      5,
+      12
      ],
      [
-      3,
-      6
-     ],
-     [
-      3.0,
-      10
+      2,
+      13
      ],
      [
       0.3,
-      18
+      19
      ]
     ]
    }
@@ -870,8 +995,7 @@
     5.2
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "length": 16,
@@ -890,13 +1014,67 @@
    "params": {
     "kind": "palm",
     "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    9.2
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e2653c",
+    "profile": [
+     [
+      12,
+      0
+     ],
+     [
+      8,
+      4
+     ],
+     [
+      3,
+      6.4
+     ],
+     [
+      0.5,
+      7.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "rotDeg": 22.5,
+   "params": {
+    "radius": 12,
+    "n": 8,
+    "height": 9.2,
+    "colour": "#f2efe6"
    }
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "parking",
-  "forecourtDepth": 16,
+  "forecourt": "none",
   "trees": [
    {
     "kind": "palm",
@@ -915,7 +1093,7 @@
     "height": 7
    }
   ],
-  "cars": 4,
+  "cars": [],
   "extent": [
    100,
    90
@@ -926,8 +1104,8 @@
  "city": "paramaribo",
  "venueId": "paramaribo-quiet-reflection",
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Composed from two photos but NOT render-compared (render queue hung): tower onion profiles, dome rise, step layout and triangle budget unchecked; OSM outline not traced, octagon assumed."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower tier plates are plain teal-edged discs (no scalloped lace); onion bulbs stacked but not pumpkin-ribbed; hall ribs and petal eaves and curved stairs simplified."
  }
 }

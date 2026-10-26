@@ -11,7 +11,7 @@
    "licence": "CC BY 3.0",
    "author": "Drew",
    "view": "front",
-   "file": "/tmp/places-evidence/singapore/zoo1.jpg",
+   "file": "/tmp/places-evidence/sg2/zoo1.jpg",
    "used": "low flat-roofed entrance hall with deep pale soffit overhang, dark vertical timber slat wall above an open ground floor, red decorative frieze band, surrounding rainforest trees"
   },
   {
@@ -31,53 +31,71 @@
  "camera": {
   "yawDeg": 0,
   "pitchDeg": 3,
-  "fovDeg": 40,
+  "fovDeg": 32,
   "aspect": 1.333,
-  "fit": "building"
+  "fit": "building",
+  "margin": 0.02
  },
  "parts": [
   {
-   "type": "mass",
-   "id": "zoo-ground",
-   "footprint": {
-    "osm": true,
-    "simplify": 4
-   },
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#4f6a4a",
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     60,
+     26
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b9b8b0",
     "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#4f6a4a"
    }
   },
   {
    "type": "prism",
-   "id": "entrance-hall",
+   "id": "hall-ground",
    "at": [
     0,
     -14
    ],
    "params": {
     "rect": [
-     34,
-     12
+     44,
+     10
     ],
-    "z0": 0.5,
-    "height": 7.5,
-    "colour": "#2f2723",
+    "z0": 0.15,
+    "height": 3.6,
+    "colour": "#2a211c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slat-wall",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     44,
+     10
+    ],
+    "z0": 3.75,
+    "height": 5.25,
+    "colour": "#1c1816",
     "windows": "none",
     "pattern": [
      {
       "type": "fins",
-      "width": 0.35,
-      "depth": 0.3,
-      "spacing": 0.9,
-      "colour": "#4a3a30",
+      "width": 0.22,
+      "depth": 0.25,
+      "spacing": 0.5,
+      "colour": "#1c1816",
       "faces": [
        "front"
       ]
@@ -87,130 +105,223 @@
   },
   {
    "type": "prism",
-   "id": "entrance-soffit",
+   "id": "hall-roof",
    "at": [
     0,
     -14
    ],
    "params": {
     "rect": [
-     40,
-     15
+     52,
+     17
     ],
-    "z0": 7.8,
-    "height": 0.6,
-    "colour": "#d9d6cc",
+    "z0": 9,
+    "height": 0.7,
+    "colour": "#d6d4cb",
     "windows": "none"
    }
   },
   {
    "type": "prism",
-   "id": "entrance-frieze",
+   "id": "frieze",
    "at": [
     0,
-    -20.4
+    -19.2
    ],
    "params": {
     "rect": [
-     30,
-     0.4
+     40,
+     0.5
     ],
-    "z0": 3.4,
-    "height": 0.9,
+    "z0": 3.0,
+    "height": 1.1,
     "colour": "#b8322a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -18,
+    -19.7,
+    3.55
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 10,
+      "height": 0.4,
+      "colour": "#d9a93a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "medallion",
+   "at": [
+    -1,
+    -19.7,
+    2.4
+   ],
+   "params": {
+    "radius": 1.9,
+    "n": 14,
+    "height": 0.5,
+    "colour": "#c9402f",
     "windows": "none"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    -4,
-    -20.8,
+    -8,
+    -19.9,
     0.5
    ],
    "params": {
-    "width": 14,
-    "height": 2.5,
-    "bottom": 4.8,
+    "width": 16,
+    "height": 3,
+    "bottom": 5.4,
     "colour": "#e8e6dc"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -60,
-    -24
+    -34,
+    -16
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 14,
+    "height": 16,
     "count": 3,
-    "spread": 10,
+    "spread": 6,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 6,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 3,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 6,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 6,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 3,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 3,
+    "spread": 8,
     "line": 30
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -24,
+    10,
     6
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 16,
-    "count": 6,
-    "spread": 12,
-    "line": 48
-   }
-  },
-  {
-   "type": "prism",
-   "id": "pavilion-a",
-   "at": [
-    -30,
-    25
-   ],
-   "params": {
-    "rect": [
-     12,
-     8
-    ],
-    "z0": 0.5,
-    "height": 4,
-    "colour": "#8a6a46",
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "pavilion-b",
-   "at": [
-    28,
-    30
-   ],
-   "params": {
-    "rect": [
-     10,
-     8
-    ],
-    "z0": 0.5,
-    "height": 4,
-    "colour": "#8a6a46",
-    "windows": "none"
+    "height": 22,
+    "count": 3,
+    "spread": 8,
+    "line": 30
    }
   }
  ],
  "site": {
-  "ground": "grass",
-  "forecourt": "plaza",
+  "ground": "paving",
+  "forecourt": "none",
   "extent": [
-   160,
-   130
+   80,
+   40
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Entrance hall only (slat wall, soffit, red frieze); animal exhibits, trails and the 118 m fitted ground are schematic; trees do not match the rainforest density"
+  "gaps": "Hall wide and low with black slat wall, red frieze with gold medallions, pale roof and flanking trees; fins read as flat black, frieze is simplified, trees are lower density than the real rainforest, ground floor is a dark box."
  }
 }

@@ -28,26 +28,27 @@
    "id": "mall",
    "footprint": {
     "osm": true,
-    "simplify": 6
+    "simplify": 10
    },
    "height": 13,
    "storeys": 3,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#8fa3b0",
-    "windows": "curtain",
-    "windowRatio": 0.6,
+    "material": "render",
+    "colour": "#d9d8d0",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "windowShape": "rect",
     "plinth": 0.5,
     "cornice": true,
     "faces": {
-     "front": "curtain",
+     "front": "punched",
      "back": "plain",
      "left": "plain",
      "right": "plain"
     },
     "pattern": [
      {
-      "type": "balconies",
+      "type": "bands",
       "faces": [
        "front"
       ]
@@ -65,22 +66,22 @@
    "id": "hotel",
    "footprint": {
     "rect": [
-     70,
+     40,
      15
     ]
    },
    "at": [
-    12,
-    12
+    28,
+    0
    ],
    "z0": 13,
-   "height": 11,
-   "storeys": 5,
+   "height": 8,
+   "storeys": 3,
    "wall": {
     "material": "render",
     "colour": "#ecebe6",
     "windows": "punched",
-    "windowRatio": 0.35,
+    "windowRatio": 0.3,
     "windowShape": "rect",
     "faces": {
      "front": "punched",
@@ -88,37 +89,30 @@
      "left": "plain",
      "right": "plain"
     },
-    "pattern": [
-     {
-      "type": "balconies",
-      "faces": [
-       "front"
-      ]
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "curved",
-    "colour": "#4f7f5f",
+    "colour": "#4f9a78",
     "rise": 4,
-    "overhang": 2
+    "overhang": 2.5
    }
   },
   {
    "type": "mass",
-   "id": "pier-l",
+   "id": "pier-0",
    "footprint": {
     "rect": [
-     1.5,
-     1.5
+     1.4,
+     1.4
     ]
    },
    "at": [
-    -28,
-    -55
+    -44,
+    -56
    ],
    "z0": 0,
-   "height": 9,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -138,19 +132,19 @@
   },
   {
    "type": "mass",
-   "id": "pier-r",
+   "id": "pier-1",
    "footprint": {
     "rect": [
-     1.5,
-     1.5
+     1.4,
+     1.4
     ]
    },
    "at": [
-    -10,
-    -55
+    -12,
+    -56
    ],
    "z0": 0,
-   "height": 9,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -170,19 +164,83 @@
   },
   {
    "type": "mass",
-   "id": "pier-back",
+   "id": "pier-2",
    "footprint": {
     "rect": [
-     1.5,
-     1.5
+     1.4,
+     1.4
     ]
    },
    "at": [
-    -19,
+    20,
+    -56
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3cf",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-3",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    -44,
     -47
    ],
    "z0": 0,
-   "height": 9,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3cf",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-4",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    20,
+    -47
+   ],
+   "z0": 0,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -205,16 +263,16 @@
    "id": "fascia",
    "footprint": {
     "rect": [
-     24,
-     9
+     70,
+     10
     ]
    },
    "at": [
-    -19,
-    -51
+    -12,
+    -52
    ],
-   "z0": 7.5,
-   "height": 1.5,
+   "z0": 10,
+   "height": 2,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -266,6 +324,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "OSM complex outline simplified and scaled to 118 m; hotel placement/size approximate; portico is a plain frame, no signage band, stair or real balcony detail; green signage band dropped (misplaced)."
+  "gaps": "OSM complex outline is a wide V scaled to 118 m so the mall plan differs from the street view; portico is a flat fascia on 5 piers, no signage or stair; hotel is a simple slab with ribbon windows, no balconies."
  }
 }

@@ -47,10 +47,10 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#e4dfd0",
+    "colour": "#9a9d98",
     "windows": "ribbon",
     "windowRatio": 0.3,
-    "bands": "#c8c4b8",
+    "bands": "#7f827e",
     "plinth": 0.4,
     "faces": {
      "back": "none",
@@ -59,9 +59,9 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d9193",
+    "colour": "#6f7371",
     "material": "concrete",
-    "parapet": 0.5
+    "parapet": 0.9
    }
   },
   {
@@ -69,18 +69,18 @@
    "id": "entrance-canopy",
    "at": [
     -20,
-    -30,
+    -32,
     0
    ],
    "params": {
     "form": "flat",
     "width": 60,
-    "depth": 8,
+    "depth": 10,
     "height": 5.4,
-    "thickness": 1.7,
-    "columns": 8,
-    "colour": "#b7babb",
-    "edgeColour": "#a9adae",
+    "thickness": 2.2,
+    "columns": 7,
+    "colour": "#a4a8a8",
+    "edgeColour": "#8f9393",
     "axis": "x"
    }
   },
@@ -89,13 +89,13 @@
    "id": "fascia-sign",
    "at": [
     -20,
-    -34.2,
+    -37.3,
     0
    ],
    "params": {
     "width": 44,
-    "height": 1.6,
-    "bottom": 3.9,
+    "height": 1.8,
+    "bottom": 3.6,
     "colour": "#2a4fb0",
     "frameColour": "#c4c7c8",
     "posts": false
@@ -106,15 +106,15 @@
    "id": "lawn",
    "footprint": {
     "rect": [
-     70,
-     8
+     90,
+     9
     ]
    },
    "at": [
     -20,
-    -41
+    -43
    ],
-   "height": 0.5,
+   "height": 0.6,
    "wall": {
     "material": "concrete",
     "colour": "#4f8a3f",
@@ -139,7 +139,10 @@
     "count": 6,
     "spread": 4,
     "line": 50
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -154,12 +157,68 @@
     "count": 5,
     "spread": 4,
     "line": 50
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    -20,
+    -32,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     60,
+     10
+    ],
+    "height": 0.4,
+    "colour": "#2c2f30"
    }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.2,
+    "count": 14,
+    "spread": 1.5,
+    "line": 70
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 8,
+    "spread": 3,
+    "line": 60
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "road",
   "extent": [
    150,
    120
@@ -168,6 +227,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo is a close-up of the entrance canopy only; canopy shown as a long flat slab with blank blue band, but landscaping beds, deep dark soffit and the wing behind it are simplified, and the canopy position on the real outline is inferred"
+  "gaps": "canopy fascia and blue band present but wings remain a simple grey OSM extrusion; shrub beds are plain spheres; canopy position inferred"
  }
 }

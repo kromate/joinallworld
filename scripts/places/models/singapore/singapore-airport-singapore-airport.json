@@ -26,127 +26,341 @@
  "parts": [
   {
    "type": "mass",
-   "id": "terminal",
+   "id": "podium",
    "footprint": {
     "rect": [
-     118,
-     40
+     110,
+     22
     ]
    },
    "at": [
     0,
-    22
+    12
    ],
-   "height": 24,
-   "storeys": 4,
+   "height": 10,
+   "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#8fb0a8",
+    "colour": "#6f9a96",
     "windows": "curtain",
-    "windowRatio": 0.85,
+    "windowRatio": 0.9,
+    "bay": 3.0,
     "faces": {
      "back": "plain",
      "left": "plain",
      "right": "plain"
     },
-    "bands": "#c9ced0",
-    "plinth": 0.3
+    "bands": "#b9c0c0",
+    "plinth": 0.2
    },
    "roof": {
     "form": "flat",
-    "colour": "#d5d9da",
+    "colour": "#cfd4d5",
     "material": "metal-sheet",
     "overhang": 3,
     "parapet": 0.4
    }
   },
   {
-   "type": "core/colonnade",
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     100,
+     24
+    ]
+   },
    "at": [
-    0,
-    -6,
-    0
+    -8,
+    34
    ],
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f9a96",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bay": 3.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b9c0c0",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 3.5,
+    "colour": "#cfd4d5",
+    "material": "metal-sheet",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-volume",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    -26,
+    56
+   ],
+   "height": 36,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f9a96",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bay": 3.0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    },
+    "bands": "#b9c0c0",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd4d5",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
    "params": {
-    "length": 112,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#b9bdb8",
+      "profile": [
+       [
+        0.9,
+        0
+       ],
+       [
+        0.9,
+        13.5
+       ],
+       [
+        1.1,
+        13.8
+       ]
+      ]
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "mode": "line",
     "count": 15,
-    "height": 14,
-    "radius": 1.2,
-    "kind": "round",
-    "beamHeight": 1.2,
-    "colour": "#cfc8bd",
-    "roofColour": "#b9bfc2"
+    "start": [
+     -56,
+     -5,
+     0
+    ],
+    "end": [
+     56,
+     -5,
+     0
+    ]
    }
   },
   {
    "type": "core/canopy",
    "at": [
     0,
-    -3,
-    14
+    -14,
+    13.6
    ],
    "params": {
     "form": "flat",
-    "width": 150,
-    "depth": 24,
+    "width": 120,
+    "depth": 28,
     "height": 0,
-    "thickness": 0.6,
-    "colour": "#a8c4c6",
-    "edgeColour": "#cfd4d6"
+    "thickness": 0.35,
+    "colour": "#9fc0c2",
+    "edgeColour": "#d0d4d4"
    }
   },
   {
    "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        0,
+        -1,
+        14.2
+       ],
+       [
+        3.5,
+        -27,
+        14.2
+       ]
+      ],
+      "colour": "#dfe2e2"
+     }
+    },
+    "mode": "line",
+    "count": 22,
+    "start": [
+     -58,
+     0,
+     0
+    ],
+    "end": [
+     58,
+     0,
+     0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
    "at": [
     0,
+    -5,
+    13.8
+   ],
+   "params": {
+    "rect": [
+     120,
+     1.1
+    ],
+    "height": 0.9,
+    "colour": "#d5d9d9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
     0,
+    -15,
+    13.8
+   ],
+   "params": {
+    "rect": [
+     120,
+     0.7
+    ],
+    "height": 0.6,
+    "colour": "#d5d9d9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -25,
+    13.8
+   ],
+   "params": {
+    "rect": [
+     120,
+     0.7
+    ],
+    "height": 0.6,
+    "colour": "#d5d9d9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -38,
     0
    ],
+   "params": {
+    "rect": [
+     116,
+     10
+    ],
+    "z0": 5,
+    "height": 0.9,
+    "colour": "#aeb2b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
    "params": {
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.5,
-       24
+       1.6,
+       1.6
       ],
-      "height": 0.6,
-      "colour": "#d3d8da"
+      "height": 5,
+      "colour": "#b4b8b6"
      }
     },
     "mode": "line",
-    "count": 25,
+    "count": 8,
     "start": [
-     -56,
-     -3,
-     14.2
+     -52,
+     -38,
+     0
     ],
     "end": [
-     56,
-     -3,
-     14.2
+     52,
+     -38,
+     0
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "control-tower",
    "at": [
-    40,
-    80,
+    38,
+    62,
     0
    ],
    "params": {
-    "height": 55,
+    "height": 62,
     "style": "round",
     "colour": "#d8dcdd",
-    "cabColour": "#5f7f86"
+    "cabColour": "#4d6a72",
+    "shaftRadius": 3.6,
+    "cabRadius": 6.5
    }
   },
   {
    "type": "core/car",
    "at": [
     -20,
-    -22,
+    -24,
     0
    ],
    "params": {
@@ -165,28 +379,28 @@
    {
     "kind": "palm",
     "at": [
-     -60,
-     -40
+     -52,
+     -54
     ],
     "height": 9
    },
    {
     "kind": "palm",
     "at": [
-     10,
-     -42
+     44,
+     -54
     ],
     "height": 9
    }
   ],
   "extent": [
-   160,
-   120
+   116,
+   118
   ]
  },
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "canopy is a flat glass slab with thin ribs, not the diagonal-ribbed stepped canopy; no silver-clad cylindrical column detail or interior glow; only a generic 118 m portion of one terminal (T2 kerb) modelled, no OSM outline matched"
+  "gaps": "kerb view only: stepped glass podium, round silver columns, diagonal-ribbed glazed canopy, elevated deck added; single-beam ribs not the full cross-braced frame, no interior glow, generic 118 m T2 portion with no OSM outline"
  }
 }

@@ -44,17 +44,17 @@
     10
    ],
    "height": 24,
-   "storeys": 12,
+   "storeys": 8,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#8a9199",
+    "colour": "#4a4f55",
     "windows": "none",
     "pattern": [
      {
       "type": "floors",
       "colours": [
-       "#2f363d",
-       "#b6bcc2"
+       "#4a4f55",
+       "#6b7076"
       ]
      }
     ],
@@ -62,10 +62,222 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#7a8085",
+    "colour": "#3a3f45",
     "material": "membrane",
-    "parapet": 1.0,
+    "parapet": 1.5,
     "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      52.6,
+      0.0
+     ],
+     [
+      52.15,
+      5.56
+     ],
+     [
+      50.81,
+      11.03
+     ],
+     [
+      48.6,
+      16.3
+     ],
+     [
+      45.55,
+      21.3
+     ],
+     [
+      41.73,
+      25.93
+     ],
+     [
+      37.19,
+      30.12
+     ],
+     [
+      32.02,
+      33.8
+     ],
+     [
+      26.3,
+      36.89
+     ],
+     [
+      20.13,
+      39.36
+     ],
+     [
+      13.61,
+      41.15
+     ],
+     [
+      6.87,
+      42.24
+     ],
+     [
+      0.0,
+      42.6
+     ],
+     [
+      -6.87,
+      42.24
+     ],
+     [
+      -13.61,
+      41.15
+     ],
+     [
+      -20.13,
+      39.36
+     ],
+     [
+      -26.3,
+      36.89
+     ],
+     [
+      -32.02,
+      33.8
+     ],
+     [
+      -37.19,
+      30.12
+     ],
+     [
+      -41.73,
+      25.93
+     ],
+     [
+      -45.55,
+      21.3
+     ],
+     [
+      -48.6,
+      16.3
+     ],
+     [
+      -50.81,
+      11.03
+     ],
+     [
+      -52.15,
+      5.56
+     ],
+     [
+      -52.6,
+      0.0
+     ],
+     [
+      -52.15,
+      -5.56
+     ],
+     [
+      -50.81,
+      -11.03
+     ],
+     [
+      -48.6,
+      -16.3
+     ],
+     [
+      -45.55,
+      -21.3
+     ],
+     [
+      -41.73,
+      -25.93
+     ],
+     [
+      -37.19,
+      -30.12
+     ],
+     [
+      -32.02,
+      -33.8
+     ],
+     [
+      -26.3,
+      -36.89
+     ],
+     [
+      -20.13,
+      -39.36
+     ],
+     [
+      -13.61,
+      -41.15
+     ],
+     [
+      -6.87,
+      -42.24
+     ],
+     [
+      -0.0,
+      -42.6
+     ],
+     [
+      6.87,
+      -42.24
+     ],
+     [
+      13.61,
+      -41.15
+     ],
+     [
+      20.13,
+      -39.36
+     ],
+     [
+      26.3,
+      -36.89
+     ],
+     [
+      32.02,
+      -33.8
+     ],
+     [
+      37.19,
+      -30.12
+     ],
+     [
+      41.73,
+      -25.93
+     ],
+     [
+      45.55,
+      -21.3
+     ],
+     [
+      48.6,
+      -16.3
+     ],
+     [
+      50.81,
+      -11.03
+     ],
+     [
+      52.15,
+      -5.56
+     ]
+    ],
+    "height": 4,
+    "colour": "#27323b",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#e8c27a"
    }
   },
   {
@@ -85,13 +297,14 @@
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#cfc6bd",
-    "windows": "none",
-    "plinth": 0.5
+    "colour": "#a9a8a6",
+    "windows": "curtain",
+    "plinth": 0.5,
+    "windowRatio": 0.5
    },
    "roof": {
-    "form": "flat",
-    "colour": "#9aa0a4",
+    "form": "shed",
+    "colour": "#8a8f94",
     "material": "membrane",
     "overhang": 0.8,
     "parapet": 0.4
@@ -103,25 +316,24 @@
    "id": "tower-block",
    "footprint": {
     "rect": [
-     9,
-     9
+     14,
+     10
     ]
    },
    "at": [
-    30,
+    24,
     -31
    ],
-   "height": 29,
+   "height": 24,
    "storeys": 6,
    "wall": {
     "material": "concrete",
-    "colour": "#bdb3a8",
+    "colour": "#a8a39b",
     "windows": "none",
     "pattern": [
      {
-      "type": "bands",
-      "colour": "#9d948a",
-      "height": 0.5
+      "type": "fins",
+      "colour": "#97928a"
      }
     ]
    },
@@ -142,7 +354,7 @@
     ]
    },
    "at": [
-    -60,
+    -58,
     -12
    ],
    "height": 4.5,
@@ -191,16 +403,16 @@
   {
    "type": "sign-board",
    "at": [
-    30,
-    -35.6,
-    13
+    24,
+    -36.2,
+    17
    ],
    "params": {
     "width": 7,
     "height": 3,
     "bottom": 0,
-    "colour": "#e6e9ea",
-    "frameColour": "#bdb3a8",
+    "colour": "#1d2a4a",
+    "frameColour": "#f2f2f2",
     "posts": false
    }
   },
@@ -226,7 +438,7 @@
    "at": [
     0,
     10,
-    24.9
+    25.6
    ],
    "params": {
     "mode": "arc",
@@ -237,7 +449,7 @@
     ],
     "radius": 51.5,
     "radiusY": 41.5,
-    "count": 40,
+    "count": 60,
     "startDeg": 0,
     "endDeg": 360,
     "facing": "outward",
@@ -247,10 +459,10 @@
       "type": "prism",
       "params": {
        "rect": [
-        0.5,
-        0.5
+        0.9,
+        0.9
        ],
-       "height": 0.5,
+       "height": 0.8,
        "colour": "#fffbe8"
       }
      }
@@ -270,8 +482,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Drum now a banded oval with narrow clad tower and lower pale pavilion; bands are flat colour not glass/metal, no angled pavilion roof, drum partly hidden by tower from this camera, no spotlight glow."
+  "gaps": "Drum now dark grey-bronze with thin bands, thick dark fascia, spotlight ring, glazed base; wider beige tower with navy sign. Pavilion roof is a simple shed, glazed band lacks real glow; cmp image not regenerated by queue (stale), judged from render."
  }
 }

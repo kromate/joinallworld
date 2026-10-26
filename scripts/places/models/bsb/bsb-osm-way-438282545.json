@@ -42,17 +42,32 @@
    "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#d8d2c2",
-    "windows": "punched",
-    "windowRatio": 0.2,
-    "bay": 6,
+    "colour": "#c9c2b2",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bay": 5,
     "plinth": 0.6,
     "pattern": [
      {
       "type": "floors",
       "colours": [
-       "#d8d2c2",
-       "#cfc9b8"
+       "#c9c2b2",
+       "#bdb5a4"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 1.4,
+      "rail": 1.7,
+      "width": 4.2,
+      "every": 6,
+      "slab": 0.3,
+      "railKind": "solid",
+      "colour": "#bfb8a8",
+      "railColour": "#b3ab9a",
+      "floors": "upper",
+      "faces": [
+       "front"
       ]
      },
      {
@@ -60,15 +75,15 @@
       "colours": [
        "#8e918f"
       ],
-      "height": 0.7
+      "height": 0.6
      }
     ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#8e918f",
-    "parapet": 0.9,
-    "overhang": 0.5
+    "colour": "#7f8280",
+    "parapet": 1.2,
+    "overhang": 0.7
    }
   },
   {
@@ -76,16 +91,16 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     9,
-     11
+     10,
+     12
     ]
    },
    "at": [
     -52,
     -14
    ],
-   "height": 21,
-   "storeys": 5,
+   "height": 27,
+   "storeys": 7,
    "wall": {
     "material": "concrete",
     "colour": "#9a9c99",
@@ -102,6 +117,32 @@
     "form": "flat",
     "colour": "#85878a",
     "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cap",
+   "footprint": {
+    "rect": [
+     11.4,
+     13.4
+    ]
+   },
+   "at": [
+    -52,
+    -14
+   ],
+   "z0": 27,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7f8280",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8280"
    }
   },
   {
@@ -166,15 +207,15 @@
     "mode": "line",
     "start": [
      -26,
-     -18,
+     -20,
      0
     ],
     "end": [
-     -22,
-     -17,
+     -18,
+     -19,
      0
     ],
-    "count": 3,
+    "count": 4,
     "of": [
      {
       "type": "flag",
@@ -186,7 +227,6 @@
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "parking",
   "trees": [
    {
     "kind": "palm",
@@ -201,6 +241,30 @@
      -60,
      -25
     ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -24
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -24
+    ],
+    "height": 3
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -24
+    ],
+    "height": 3
    }
   ],
   "extent": [
@@ -209,8 +273,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "projecting upper boxes with slit grilles, crest ornament and stone end panels simplified; bent OSM plan seen from the other long side"
+  "gaps": "projecting boxes are generic balconies; slit grilles, crest ornament and stone end panels simplified; tower lacks real finned crown"
  }
 }

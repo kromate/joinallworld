@@ -71,7 +71,8 @@
    "type": "mass",
    "id": "upper",
    "footprint": {
-    "osm": true
+    "osm": true,
+    "scale": 0.86
    },
    "z0": 8.5,
    "height": 12.5,
@@ -85,15 +86,15 @@
      {
       "type": "panels",
       "size": [
-       2.4,
-       12.5
+       40,
+       1.0
       ],
       "colours": [
        "#dcdad3",
-       "#cfcec8",
+       "#c9c8c2",
        "#e3e1db"
       ],
-      "mode": "stripes-v"
+      "mode": "stripes-h"
      }
     ]
    },
@@ -104,79 +105,16 @@
    }
   },
   {
-   "type": "prism",
-   "id": "sign-tower",
-   "at": [
-    -46,
-    -9
-   ],
-   "params": {
-    "rect": [
-     7,
-     5
-    ],
-    "z0": 0,
-    "height": 36,
-    "colour": "#dcd8cc",
-    "topColour": "#6f7479",
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "sign-board-a",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    -46,
-    -11.7
-   ],
-   "params": {
-    "rect": [
-     5.4,
-     0.3
-    ],
-    "z0": 22,
-    "height": 5,
-    "colour": "#f0efec",
-    "topColour": "#f0efec"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "sign-board-b",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    -46,
-    -11.7
-   ],
-   "params": {
-    "rect": [
-     5.4,
-     0.3
-    ],
-    "z0": 29,
-    "height": 5,
-    "colour": "#c23b32",
-    "topColour": "#c23b32"
-   }
-  },
-  {
    "type": "canopy",
    "at": [
-    -10,
+    0,
     -22,
     5.2
    ],
    "rotDeg": -9,
    "params": {
     "form": "flat",
-    "width": 38,
+    "width": 60,
     "depth": 4,
     "height": 0,
     "thickness": 0.5,
@@ -198,6 +136,423 @@
     "thickness": 0.5,
     "colour": "#8c8f93"
    }
+  },
+  {
+   "type": "prism",
+   "id": "sign-tower",
+   "at": [
+    -46,
+    -10
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     6.5
+    ],
+    "z0": 0,
+    "height": 42,
+    "colour": "#e6e4dc",
+    "topColour": "#e6e4dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-cap",
+   "at": [
+    -46,
+    -10
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     7.2
+    ],
+    "z0": 42,
+    "height": 1.2,
+    "colour": "#6f7479",
+    "topColour": "#6f7479"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board0",
+   "at": [
+    -46,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 12,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board0b",
+   "at": [
+    -42.6,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     5.4
+    ],
+    "z0": 12,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board1",
+   "at": [
+    -46,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 17,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board1b",
+   "at": [
+    -42.6,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     5.4
+    ],
+    "z0": 17,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board2",
+   "at": [
+    -46,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 22,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board2b",
+   "at": [
+    -42.6,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     5.4
+    ],
+    "z0": 22,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board3",
+   "at": [
+    -46,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 27,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board3b",
+   "at": [
+    -42.6,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     5.4
+    ],
+    "z0": 27,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board4",
+   "at": [
+    -46,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.3
+    ],
+    "z0": 32,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board4b",
+   "at": [
+    -42.6,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     5.4
+    ],
+    "z0": 32,
+    "height": 4.2,
+    "colour": "#f4f3ef",
+    "topColour": "#f4f3ef"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "oval-logo",
+   "at": [
+    -46,
+    -13.7,
+    38
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#c23b32",
+    "topColour": "#c23b32",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.0,
+       0.2
+      ]
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       3.0,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-glass",
+   "at": [
+    -24,
+    -24.6
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.4
+    ],
+    "z0": 5.0,
+    "height": 3.2,
+    "colour": "#3c4a52",
+    "topColour": "#3c4a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-rail",
+   "at": [
+    -24,
+    -24.4
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.2
+    ],
+    "z0": 5.0,
+    "height": 1.0,
+    "colour": "#b9bfc0",
+    "topColour": "#b9bfc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant0",
+   "at": [
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 21,
+    "height": 1.8,
+    "colour": "#8a8d8f",
+    "topColour": "#8a8d8f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant1",
+   "at": [
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 21,
+    "height": 1.8,
+    "colour": "#8a8d8f",
+    "topColour": "#8a8d8f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant2",
+   "at": [
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 21,
+    "height": 1.8,
+    "colour": "#8a8d8f",
+    "topColour": "#8a8d8f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant3x",
+   "at": [
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 21,
+    "height": 1.8,
+    "colour": "#8a8d8f",
+    "topColour": "#8a8d8f"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -226,9 +581,9 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Long OSM outline is a plain box: no recessed terrace, projecting awnings or setbacks of the real corner; ribbed cladding simplified to stripes; sign boards are blank; car-park deck and rooftop plant absent."
+  "gaps": "Long OSM outline is still a box; upper volume only inset uniformly; terrace is a glazed strip; no car-park deck; cladding ribs approximated by horizontal stripes."
  },
  "schema": "allworld-place-model",
  "version": 2,

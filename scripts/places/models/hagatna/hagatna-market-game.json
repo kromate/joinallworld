@@ -33,7 +33,8 @@
    "type": "mass",
    "id": "mall",
    "footprint": {
-    "osm": true
+    "osm": true,
+    "simplify": 8
    },
    "at": [
     0,
@@ -238,13 +239,7 @@
     "material": "concrete",
     "colour": "#c9c5b8",
     "windows": "none",
-    "pattern": [
-     {
-      "type": "floors",
-      "colour": "#a6a399"
-     }
-    ],
-    "cornice": true
+    "pattern": []
    },
    "roof": {
     "form": "flat",
@@ -307,7 +302,10 @@
     "height": 10,
     "count": 3,
     "spacing": 3
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -322,7 +320,10 @@
     "count": 4,
     "spread": 8,
     "line": 20
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "car",
@@ -334,29 +335,17 @@
    "params": {
     "count": 6,
     "spacing": 3
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
   "ground": "asphalt",
   "forecourt": "parking",
   "forecourtDepth": 22,
-  "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     -30,
-     -54
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     0,
-     -52
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
    160,
    160

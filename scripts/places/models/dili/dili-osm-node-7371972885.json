@@ -39,100 +39,182 @@
   {
    "type": "prism",
    "id": "sea",
-   "at": [
-    -18,
-    -10
-   ],
    "params": {
     "points": [
      [
-      -80,
-      -30
+      -70,
+      -50
      ],
      [
-      -30,
-      -34
+      -2,
+      -24
      ],
      [
-      10,
-      -26
+      8,
+      -10
      ],
      [
-      30,
-      -6
+      14,
+      4
      ],
      [
-      34,
-      14
+      16,
+      20
      ],
      [
-      22,
-      32
+      12,
+      36
      ],
      [
-      0,
+      2,
       50
      ],
      [
-      -80,
-      56
+      -12,
+      60
+     ],
+     [
+      -50,
+      66
+     ],
+     [
+      -70,
+      70
      ]
     ],
-    "z0": -0.2,
-    "height": 0.2,
-    "colour": "#5f9ea0",
-    "material": "sand"
+    "z0": -0.3,
+    "height": 0.3,
+    "colour": "#2f7fa6"
    }
   },
   {
    "type": "prism",
    "id": "shallows",
-   "at": [
-    -18,
-    -10
-   ],
    "params": {
     "points": [
      [
-      -20,
-      -26
-     ],
-     [
-      8,
-      -20
-     ],
-     [
-      25,
-      -4
-     ],
-     [
-      29,
-      14
-     ],
-     [
-      18,
-      30
-     ],
-     [
-      0,
-      44
-     ],
-     [
-      -14,
-      34
+      -40,
+      -45
      ],
      [
       -2,
+      -24
+     ],
+     [
+      8,
+      -10
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      16,
+      20
+     ],
+     [
+      12,
+      36
+     ],
+     [
+      2,
+      50
+     ],
+     [
+      -12,
+      60
+     ],
+     [
+      -30,
+      62
+     ],
+     [
+      -30,
+      62
+     ],
+     [
+      -26,
+      40
+     ],
+     [
+      -30,
       10
      ],
      [
-      -14,
-      -6
+      -30,
+      -30
      ]
     ],
-    "z0": -0.1,
-    "height": 0.15,
-    "colour": "#7fc3c0"
+    "z0": -0.2,
+    "height": 0.2,
+    "colour": "#5fc3c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "surf",
+   "params": {
+    "points": [
+     [
+      -3.4,
+      -24
+     ],
+     [
+      6.6,
+      -10
+     ],
+     [
+      12.6,
+      4
+     ],
+     [
+      14.6,
+      20
+     ],
+     [
+      10.6,
+      36
+     ],
+     [
+      0.6000000000000001,
+      50
+     ],
+     [
+      -13.4,
+      60
+     ],
+     [
+      -12.200000000000001,
+      61
+     ],
+     [
+      1.8,
+      51
+     ],
+     [
+      11.799999999999999,
+      37
+     ],
+     [
+      15.799999999999999,
+      21
+     ],
+     [
+      13.799999999999999,
+      5
+     ],
+     [
+      7.8,
+      -9
+     ],
+     [
+      -2.2,
+      -24
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#f4f6f6"
    }
   },
   {
@@ -141,53 +223,65 @@
    "params": {
     "points": [
      [
+      -2,
+      -24
+     ],
+     [
       8,
-      -26
+      -10
      ],
      [
       14,
-      -14
+      4
      ],
      [
       16,
-      0
-     ],
-     [
-      13,
-      16
-     ],
-     [
-      5,
-      30
-     ],
-     [
-      -3,
-      42
-     ],
-     [
-      34,
-      46
-     ],
-     [
-      58,
-      40
-     ],
-     [
-      64,
       20
      ],
      [
-      62,
-      -14
+      12,
+      36
      ],
      [
-      40,
-      -26
+      2,
+      50
+     ],
+     [
+      -12,
+      60
+     ],
+     [
+      -6,
+      61
+     ],
+     [
+      8,
+      51
+     ],
+     [
+      18,
+      37
+     ],
+     [
+      22,
+      21
+     ],
+     [
+      20,
+      5
+     ],
+     [
+      14,
+      -9
+     ],
+     [
+      4,
+      -24
      ]
     ],
     "z0": 0,
-    "height": 0.25,
-    "colour": "#d6c9ad",
+    "height": 0.3,
+    "colour": "#d9ccad",
     "material": "sand"
    }
   },
@@ -197,162 +291,350 @@
    "params": {
     "points": [
      [
-      40,
-      -26
+      4,
+      -24
      ],
      [
-      62,
-      -14
+      14,
+      -10
      ],
      [
-      64,
+      20,
+      4
+     ],
+     [
+      22,
       20
      ],
      [
-      58,
-      40
+      18,
+      36
      ],
      [
-      34,
-      46
+      8,
+      50
+     ],
+     [
+      -6,
+      60
+     ],
+     [
+      48,
+      52
+     ],
+     [
+      56,
+      20
+     ],
+     [
+      50,
+      -14
      ],
      [
       30,
-      24
-     ],
-     [
-      34,
-      0
+      -30
      ]
     ],
-    "z0": 0.2,
-    "height": 0.1,
-    "colour": "#c4b79a"
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#bfb08f",
+    "material": "sand"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-slope",
+   "params": {
+    "points": [
+     [
+      50,
+      -14
+     ],
+     [
+      56,
+      20
+     ],
+     [
+      48,
+      52
+     ],
+     [
+      30,
+      66
+     ],
+     [
+      90,
+      70
+     ],
+     [
+      90,
+      -50
+     ],
+     [
+      40,
+      -50
+     ],
+     [
+      30,
+      -30
+     ]
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#7e6247"
    }
   },
   {
    "type": "rock-hill",
    "at": [
     30,
-    64,
+    92,
     0
    ],
    "params": {
-    "width": 85,
-    "depth": 45,
-    "height": 28,
-    "seed": 4,
+    "width": 120,
+    "depth": 34,
+    "height": 58,
+    "seed": 3,
     "stairs": false,
-    "rock_colour": "#8c6e55",
+    "rock_colour": "#6e5441",
     "boulders": 0
    }
   },
   {
    "type": "rock-hill",
    "at": [
-    -18,
-    56,
+    28,
+    68,
     0
    ],
    "params": {
-    "width": 40,
-    "depth": 30,
-    "height": 14,
-    "seed": 7,
+    "width": 80,
+    "depth": 24,
+    "height": 36,
+    "seed": 4,
     "stairs": false,
-    "rock_colour": "#7d6450",
+    "rock_colour": "#7a5c46",
     "boulders": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -36,
+    62,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 20,
+    "height": 18,
+    "seed": 9,
+    "stairs": false,
+    "rock_colour": "#5f4a3a",
+    "boulders": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    66,
+    24,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 60,
+    "height": 34,
+    "seed": 6,
+    "stairs": false,
+    "rock_colour": "#9a7352",
+    "boulders": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace0",
+   "params": {
+    "points": [
+     [
+      32,
+      -42.5
+     ],
+     [
+      56,
+      -36.5
+     ],
+     [
+      56,
+      -31.5
+     ],
+     [
+      32,
+      -37.5
+     ]
+    ],
+    "z0": 4.9,
+    "height": 0.6,
+    "colour": "#5e5852"
    }
   },
   {
    "type": "core/fence-wall",
-   "id": "terrace-rail",
+   "id": "rail0b",
    "lod": [
     0
    ],
    "at": [
-    40,
-    -40,
-    6
+    0,
+    0,
+    5.5
    ],
    "params": {
     "kind": "railing",
     "height": 1.0,
-    "thickness": 0.25,
-    "pillarEvery": 3,
+    "thickness": 0.2,
+    "pillarEvery": 4,
     "colour": "#f0ede6",
     "points": [
      [
-      -24,
-      12
+      32,
+      -37.5
      ],
      [
-      -12,
-      4
-     ],
-     [
-      0,
-      10
-     ],
-     [
-      14,
-      0
-     ],
-     [
-      28,
-      8
+      56,
+      -31.5
      ]
     ]
    }
   },
   {
    "type": "prism",
-   "id": "terrace",
-   "at": [
-    40,
-    -40
-   ],
+   "id": "terrace1",
    "params": {
     "points": [
      [
-      -24,
-      12
+      56,
+      -36.5
      ],
      [
-      -12,
-      4
+      36,
+      -30.5
      ],
      [
-      0,
-      10
+      36,
+      -25.5
      ],
      [
-      14,
-      0
-     ],
-     [
-      28,
-      8
-     ],
-     [
-      28,
-      -4
-     ],
-     [
-      -24,
-      0
+      56,
+      -31.5
      ]
     ],
-    "z0": 5,
-    "height": 1,
-    "colour": "#5a5550"
+    "z0": 7.9,
+    "height": 0.6,
+    "colour": "#5e5852"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rail1b",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    8.5
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.0,
+    "thickness": 0.2,
+    "pillarEvery": 4,
+    "colour": "#f0ede6",
+    "points": [
+     [
+      56,
+      -31.5
+     ],
+     [
+      36,
+      -25.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace2",
+   "params": {
+    "points": [
+     [
+      36,
+      -30.5
+     ],
+     [
+      58,
+      -24.5
+     ],
+     [
+      58,
+      -19.5
+     ],
+     [
+      36,
+      -25.5
+     ]
+    ],
+    "z0": 10.9,
+    "height": 0.6,
+    "colour": "#5e5852"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rail2b",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    11.5
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.0,
+    "thickness": 0.2,
+    "pillarEvery": 4,
+    "colour": "#f0ede6",
+    "points": [
+     [
+      36,
+      -25.5
+     ],
+     [
+      58,
+      -19.5
+     ]
+    ]
    }
   },
   {
    "type": "pavilion",
    "at": [
-    44,
-    18,
+    40,
+    14,
     0.3
    ],
    "params": {
@@ -369,7 +651,7 @@
   {
    "type": "pavilion",
    "at": [
-    52,
+    44,
     -2,
     0.3
    ],
@@ -401,20 +683,30 @@
    }
   },
   {
-   "type": "market-open/kiosk",
-   "at": [
-    56,
-    28,
-    0.3
-   ],
+   "type": "array",
    "params": {
-    "kind": "container",
-    "width": 3.2,
-    "depth": 2.2,
-    "height": 2.5,
-    "colour": "#8a8f94",
-    "roof_colour": "#7a5a3c"
-   }
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 3.5,
+      "colour": "#6b7a4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     26,
+     -18
+    ],
+    "end": [
+     32,
+     50
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
@@ -423,21 +715,24 @@
      "type": "core/tree",
      "params": {
       "kind": "broadleaf",
-      "height": 6,
-      "colour": "#5c7f3f"
+      "height": 2.5,
+      "colour": "#7a8456"
      }
     },
     "mode": "line",
     "start": [
      30,
-     -18
+     -10
     ],
     "end": [
-     44,
-     34
+     38,
+     44
     ],
     "count": 5
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -449,7 +744,7 @@
  },
  "review": {
   "rounds": 2,
-  "match": "fair",
-  "gaps": "beach massing is schematic: sea/sand crescent, two blocky headlands instead of the long dark cliff ridge, no scrub; terrace rail and shelters are typed"
+  "match": "rough",
+  "gaps": "ridge is blobby mounds not a long straight cliff line; terrace zigzag is stepped slabs not a slope path; surf line thin; ground pad shows ragged sand edge; scrub sparse"
  }
 }

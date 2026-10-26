@@ -37,12 +37,12 @@
     -25,
     0
    ],
-   "height": 6.5,
+   "height": 4.5,
    "wall": {
     "material": "painted-render",
-    "colour": "#e4dcc6",
+    "colour": "#f1eee6",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.5,
     "glassColour": "#8a3b2e",
     "faces": {
      "back": "none",
@@ -54,7 +54,7 @@
     "form": "hip",
     "colour": "#2f5d3f",
     "material": "metal-sheet",
-    "pitch": 14,
+    "pitch": 12,
     "overhang": 1.2
    }
   },
@@ -71,12 +71,12 @@
     25,
     0
    ],
-   "height": 6.5,
+   "height": 4.5,
    "wall": {
     "material": "painted-render",
-    "colour": "#e4dcc6",
+    "colour": "#f1eee6",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.5,
     "glassColour": "#8a3b2e",
     "faces": {
      "back": "none",
@@ -88,7 +88,7 @@
     "form": "hip",
     "colour": "#2f5d3f",
     "material": "metal-sheet",
-    "pitch": 14,
+    "pitch": 12,
     "overhang": 1.2
    }
   },
@@ -108,12 +108,12 @@
       0,
       0
      ],
-     "height": 6,
+     "height": 4.6,
      "wall": {
       "material": "painted-render",
       "colour": "#f4f1ea",
       "windows": "ribbon",
-      "windowRatio": 0.35,
+      "windowRatio": 0.45,
       "glassColour": "#7c3a30",
       "faces": {
        "left": "none",
@@ -124,7 +124,7 @@
      "roof": {
       "form": "gable",
       "colour": "#f1efe8",
-      "pitch": 28,
+      "pitch": 32,
       "axis": "y",
       "overhang": 0.5
      }
@@ -152,7 +152,7 @@
     "form": "flat",
     "width": 40,
     "depth": 6,
-    "height": 3.6,
+    "height": 3.0,
     "columns": 8,
     "colour": "#2f6f8f",
     "edgeColour": "#eeeeee"
@@ -171,7 +171,7 @@
     -10,
     -19
    ],
-   "height": 1.8,
+   "height": 1.4,
    "wall": {
     "material": "painted-render",
     "colour": "#f2f2f2",
@@ -181,20 +181,7 @@
     "form": "flat",
     "colour": "#f2f2f2"
    },
-   "z0": 4.2
-  },
-  {
-   "type": "core/control-tower",
-   "at": [
-    44,
-    12,
-    0
-   ],
-   "params": {
-    "height": 14,
-    "style": "round",
-    "colour": "#d8d4c8"
-   }
+   "z0": 3.0
   },
   {
    "type": "mass",
@@ -206,10 +193,10 @@
     ]
    },
    "at": [
-    -58,
-    -2
+    -62,
+    -4
    ],
-   "height": 8,
+   "height": 5.5,
    "wall": {
     "material": "metal-cladding",
     "colour": "#d6dadb",
@@ -235,7 +222,7 @@
     -40,
     -22
    ],
-   "height": 4,
+   "height": 3.5,
    "wall": {
     "material": "painted-render",
     "colour": "#efeee8",
@@ -258,6 +245,51 @@
     "width": 40,
     "depth": 10,
     "density": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast",
+   "at": [
+    30,
+    14,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 30,
+    "height": 9,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#8a7a5c",
+    "boulders": 0
    }
   }
  ],
@@ -286,9 +318,9 @@
   ]
  },
  "review": {
-  "rounds": 1,
-  "match": "close",
-  "gaps": "no hill backdrop or aircraft; tower not visible in photo kept small; sign board blank"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hill backdrop is a smooth mound without trees; no aircraft; control mast kept as a thin pole; gable pavilions regular"
  },
  "schema": "allworld-place-model",
  "version": 2,

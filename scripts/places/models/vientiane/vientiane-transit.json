@@ -52,28 +52,28 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 10,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
     "colour": "#c9c4b6",
-    "glassColour": "#4f5d66",
+    "glassColour": "#2f3a42",
     "windows": "curtain",
     "windowRatio": 0.55,
     "faces": {
      "front": "curtain",
      "back": "curtain",
-     "left": "plain",
-     "right": "plain"
+     "left": "curtain",
+     "right": "curtain"
     },
     "plinth": 0.5
    },
    "roof": {
-    "form": "gable",
+    "form": "hip",
     "colour": "#d9962e",
     "material": "metal-sheet",
-    "rise": 8.5,
-    "overhang": 5
+    "rise": 3.8,
+    "overhang": 8
    }
   },
   {
@@ -91,7 +91,7 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8,
+   "height": 6.5,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
@@ -108,11 +108,11 @@
     "plinth": 0.5
    },
    "roof": {
-    "form": "gable",
+    "form": "hip",
     "colour": "#d9962e",
     "material": "metal-sheet",
-    "rise": 4.5,
-    "overhang": 3.5
+    "rise": 2.2,
+    "overhang": 4.5
    }
   },
   {
@@ -130,7 +130,7 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8,
+   "height": 6.5,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
@@ -147,11 +147,51 @@
     "plinth": 0.5
    },
    "roof": {
-    "form": "gable",
+    "form": "hip",
     "colour": "#d9962e",
     "material": "metal-sheet",
-    "rise": 4.5,
-    "overhang": 3.5
+    "rise": 2.2,
+    "overhang": 4.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      -32,
+      -16,
+      8.6
+     ],
+     [
+      32,
+      -16,
+      8.6
+     ],
+     [
+      32,
+      16,
+      8.6
+     ],
+     [
+      -32,
+      16,
+      8.6
+     ]
+    ],
+    "closed": true,
+    "colour": "#b86a1c"
    }
   },
   {
@@ -174,7 +214,7 @@
    "type": "array",
    "at": [
     0,
-    34,
+    30,
     1.0
    ],
    "params": {
@@ -188,43 +228,199 @@
      0
     ],
     "count": 9,
-    "lod1Step": 2,
-    "lod2Step": 3,
+    "lod1Step": 3,
+    "lod2Step": 9,
     "of": [
      {
-      "type": "canopy",
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5.6
+      ],
       "params": {
-       "form": "flat",
-       "width": 11.5,
-       "depth": 14,
-       "height": 6.2,
-       "thickness": 0.6,
-       "columns": 0,
-       "colour": "#dcdad2"
+       "rect": [
+        11.2,
+        11
+       ],
+       "height": 0.7,
+       "colour": "#dedcd4",
+       "top": true
       }
      },
      {
       "type": "loft",
       "params": {
-       "colour": "#e4e2da",
+       "colour": "#f3f2ec",
        "sections": [
         {
          "z": 0,
          "rect": [
           0.8,
           0.8
-         ],
-         "cx": -5.7,
-         "cy": 6
+         ]
         },
         {
-         "z": 5.6,
+         "z": 4.2,
          "rect": [
-          1.4,
-          1.4
+          0.9,
+          0.9
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f3f2ec",
+       "sections": [
+        {
+         "z": 4.2,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 6.2,
+         "rect": [
+          0.7,
+          0.7
          ],
-         "cx": -5.7,
-         "cy": 6
+         "cx": -3.2
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f3f2ec",
+       "sections": [
+        {
+         "z": 4.2,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 6.2,
+         "rect": [
+          0.7,
+          0.7
+         ],
+         "cx": 3.2
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    44,
+    1.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0
+    ],
+    "end": [
+     50,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5.6
+      ],
+      "params": {
+       "rect": [
+        11.2,
+        11
+       ],
+       "height": 0.7,
+       "colour": "#dedcd4",
+       "top": true
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f3f2ec",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.8,
+          0.8
+         ]
+        },
+        {
+         "z": 4.2,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f3f2ec",
+       "sections": [
+        {
+         "z": 4.2,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 6.2,
+         "rect": [
+          0.7,
+          0.7
+         ],
+         "cx": -3.2
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f3f2ec",
+       "sections": [
+        {
+         "z": 4.2,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 6.2,
+         "rect": [
+          0.7,
+          0.7
+         ],
+         "cx": 3.2
         }
        ]
       }
@@ -289,6 +485,22 @@
    "params": {
     "height": 9
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     12
+    ],
+    "height": 0.08,
+    "colour": "#8e8a80"
+   }
   }
  ],
  "site": {
@@ -318,8 +530,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Gable-roofed hall with wing roofs and flat-slab platform canopy match the colours and layout; the real roof is a faceted multi-pitch with a swept fascia, canopy slabs lack the Y columns, no tracks detail."
+  "gaps": "Low hip-faceted orange roof with wide eaves, orange fascia, glazed concourse on all faces, lower wing roofs and two rows of white slab canopies on Y-shaped columns over grey platform and rails; roof facets are simplified hips and the swept eaves are not curved."
  }
 }

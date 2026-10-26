@@ -36,6 +36,33 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "podium",
+   "params": {
+    "points": [
+     [
+      -11,
+      -9.4
+     ],
+     [
+      8,
+      -9.4
+     ],
+     [
+      8,
+      14
+     ],
+     [
+      -11,
+      14
+     ]
+    ],
+    "height": 2.0,
+    "colour": "#6f6a4c",
+    "material": "rough-concrete"
+   }
+  },
+  {
    "type": "mass",
    "id": "nave",
    "footprint": {
@@ -48,31 +75,32 @@
     0,
     0
    ],
-   "z0": 0.8,
+   "z0": 2.0,
    "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#efe9d8",
+    "colour": "#f2ead4",
     "windows": "punched",
-    "windowShape": "arched",
-    "windowRatio": 0.22,
-    "bay": 3.4,
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "bay": 2.6,
     "plinth": 0.3,
     "faces": {
-     "back": "plain",
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     },
     "bands": "#3f7a5a"
    },
    "roof": {
     "form": "gable",
-    "colour": "#cdd6c9",
+    "colour": "#8c9490",
     "material": "metal-sheet",
-    "pitch": 34,
-    "overhang": 0.7
-   }
+    "pitch": 40,
+    "overhang": 0.5
+   },
+   "rotDeg": 90
   },
   {
    "type": "mass",
@@ -87,18 +115,18 @@
     -6.2,
     -2.5
    ],
-   "z0": 0.8,
+   "z0": 2.0,
    "height": 3.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#efe9d8",
-    "windows": "punched",
+    "windows": "none",
     "plinth": 0.3
    },
    "roof": {
     "form": "shed",
-    "colour": "#c3cfc0",
+    "colour": "#7f8884",
     "material": "metal-sheet",
     "pitch": 14,
     "overhang": 0.8
@@ -117,7 +145,7 @@
     0,
     10
    ],
-   "z0": 0.8,
+   "z0": 2.0,
    "height": 2.6,
    "storeys": 1,
    "wall": {
@@ -127,7 +155,7 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#b9c4b8",
+    "colour": "#7f8884",
     "material": "metal-sheet",
     "pitch": 12,
     "overhang": 0.4
@@ -138,7 +166,7 @@
    "on": "nave",
    "at": [
     0,
-    -4.5,
+    -5.6,
     0
    ],
    "params": {
@@ -153,7 +181,7 @@
    "on": "nave",
    "at": [
     0,
-    3.5,
+    4.5,
     0
    ],
    "params": {
@@ -167,26 +195,26 @@
    "type": "fence-wall",
    "at": [
     -1,
-    -7.5,
+    -9.5,
     0
    ],
    "params": {
-    "length": 16,
-    "height": 0.8,
-    "thickness": 0.6,
-    "colour": "#8c7a60"
+    "length": 18,
+    "height": 2.0,
+    "thickness": 0.7,
+    "colour": "#7d705c"
    }
   },
   {
    "type": "fence-wall",
    "at": [
     -1,
-    -7.5,
-    0.8
+    -9.5,
+    2.0
    ],
    "params": {
-    "length": 16,
-    "height": 1.0,
+    "length": 18,
+    "height": 1.1,
     "thickness": 0.06,
     "kind": "fence",
     "pillarEvery": 2.5,
@@ -196,13 +224,13 @@
   {
    "type": "core/steps",
    "at": [
-    7,
-    -7.5,
+    9,
+    -9.5,
     0
    ],
    "params": {
     "width": 3,
-    "rise": 0.8,
+    "rise": 0.5,
     "run": 2.2,
     "count": 4,
     "colour": "#8c7a60"
@@ -213,7 +241,7 @@
    "at": [
     -8.2,
     -5.2,
-    0.8
+    2.0
    ],
    "params": {
     "length": 3.6,
@@ -228,14 +256,14 @@
   {
    "type": "core/tree",
    "at": [
-    14,
-    -4,
+    18,
+    6,
     0
    ],
    "params": {
     "kind": "conifer",
-    "height": 16,
-    "count": 1,
+    "height": 20,
+    "count": 2,
     "spread": 4
    }
   },
@@ -243,13 +271,13 @@
    "type": "core/tree",
    "at": [
     18,
-    2,
+    6,
     0
    ],
    "params": {
     "kind": "conifer",
-    "height": 14,
-    "count": 1,
+    "height": 20,
+    "count": 2,
     "spread": 4
    }
   },
@@ -266,6 +294,69 @@
     "count": 1,
     "spread": 4
    }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "z0": 2.0,
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.25,
+    "bay": 2.4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9490",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 5,
+    "spread": 9,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 10,
+    "colour": "#2f5a2c"
+   }
   }
  ],
  "site": {
@@ -279,6 +370,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Ridge finials and red barge-boards not visible, side wing windows oversized, retaining wall and hillside backdrop only suggested; exact dimensions estimated."
+  "gaps": "Cross-gable porch, red ridge finial, pointed windows, raised retaining wall and fence match; roof trim and second finial weak, wall reads as bare slab and sits on a podium, pines are cartoon cones, no dense hillside foliage."
  }
 }

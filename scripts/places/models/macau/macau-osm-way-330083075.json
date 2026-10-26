@@ -24,7 +24,7 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "photo is a low steep angle; fine granite panel joints, floodlights, hillside behind and the real stepped footprint are not modelled"
+  "gaps": "recessed entrance, soffit floodlights, blank granite upper block and sign wall added; no granite panel joints, logo is blank colour boards, hillside simplified"
  },
  "parts": [
   {
@@ -33,12 +33,12 @@
    "footprint": {
     "rect": [
      40,
-     24
+     19
     ]
    },
    "at": [
     0,
-    2
+    3
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -47,22 +47,18 @@
     "material": "granite",
     "colour": "#cdb6a4",
     "windows": "punched",
-    "plinth": 0.5,
-    "windowRatio": 0.04,
-    "bay": 9,
+    "plinth": 0.4,
+    "windowRatio": 0.03,
+    "bay": 12,
     "faces": {
-     "front": "none",
-     "back": "punched",
-     "left": "punched",
-     "right": "punched"
+     "front": "none"
     }
    },
    "roof": {
     "form": "flat",
     "colour": "#a9a59c",
     "parapet": 0.4
-   },
-   "storeys": 3
+   }
   },
   {
    "type": "mass",
@@ -70,7 +66,7 @@
    "footprint": {
     "rect": [
      44,
-     28
+     22
     ]
    },
    "at": [
@@ -82,99 +78,90 @@
    "height": 12,
    "wall": {
     "material": "granite",
-    "colour": "#cdb6a4",
+    "colour": "#d3b7a5",
     "windows": "punched",
-    "plinth": 0.5,
-    "windowRatio": 0.05,
-    "bay": 10,
-    "pattern": [
-     {
-      "type": "fins",
-      "spacing": 4,
-      "depth": 0.3,
-      "width": 0.6,
-      "colour": "#bfa896",
-      "faces": [
-       "front"
-      ]
-     }
-    ]
+    "plinth": 0.4,
+    "windowRatio": 0.02,
+    "bay": 12,
+    "faces": {
+     "front": "none"
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#a9a59c",
-    "parapet": 0.5
-   },
-   "storeys": 2
+    "parapet": 0.4
+   }
   },
   {
    "type": "mass",
    "id": "entrance-glass",
    "footprint": {
     "rect": [
-     18,
-     3
+     17,
+     0.8
     ]
    },
    "at": [
     -6,
-    -11.5
+    -6.0
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9,
+   "height": 9.5,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#5b6f7e",
+    "colour": "#3f5a78",
     "windows": "curtain",
-    "windowRatio": 0.8,
-    "glassColour": "#4f6678"
+    "windowRatio": 0.85,
+    "glassColour": "#3a5575"
    },
    "roof": {
     "form": "flat",
-    "colour": "#444444",
+    "colour": "#1f3f78",
     "parapet": 0.2
    }
   },
   {
    "type": "mass",
-   "id": "pier",
+   "id": "door-frame",
    "footprint": {
     "rect": [
-     5,
-     5
+     17.4,
+     0.5
     ]
    },
    "at": [
-    6,
-    -13
+    -6,
+    -6.8
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 13,
+   "height": 0.9,
    "wall": {
     "material": "granite",
-    "colour": "#cdb6a4",
+    "colour": "#1f3f8a",
     "windows": "none",
-    "plinth": 0.5
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#a9a59c"
+    "colour": "#a9a59c",
+    "parapet": 0.4
    }
   },
   {
    "type": "mass",
-   "id": "pier2",
+   "id": "pier-l",
    "footprint": {
     "rect": [
-     5,
-     5
+     5.5,
+     5.5
     ]
    },
    "at": [
-    -18,
-    -13
+    -17.5,
+    -8.5
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -183,11 +170,70 @@
     "material": "granite",
     "colour": "#cdb6a4",
     "windows": "none",
-    "plinth": 0.5
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#a9a59c"
+    "colour": "#a9a59c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    5.5,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit-wing",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    16,
+    -7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "punched",
+    "plinth": 0.4,
+    "windowRatio": 0.02,
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c",
+    "parapet": 0.4
    }
   },
   {
@@ -195,60 +241,73 @@
    "id": "signwall",
    "footprint": {
     "rect": [
-     20,
+     22,
      1.4
     ]
    },
    "at": [
-    24,
-    -15
+    30,
+    -12
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 4.5,
+   "height": 5,
    "wall": {
     "material": "granite",
     "colour": "#cdb6a4",
     "windows": "none",
-    "plinth": 0.5
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#bfa896",
-    "parapet": 0.2
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    24,
-    -15.8,
-    2.4
-   ],
-   "params": {
-    "width": 8,
-    "height": 1.6,
-    "colour": "#1f4fa0"
+    "colour": "#a9a59c",
+    "parapet": 0.4
    }
   },
   {
    "type": "steps",
    "at": [
     -6,
-    -16,
+    -13,
     0
    ],
    "params": {
-    "width": 16,
-    "depth": 4,
-    "height": 1.2
+    "width": 38,
+    "depth": 5,
+    "height": 1.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    28,
+    -13,
+    2.6
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.0,
+    "colour": "#1f4fa0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    26,
+    -13,
+    3.8
+   ],
+   "params": {
+    "width": 2,
+    "height": 0.9,
+    "colour": "#c0392b"
    }
   },
   {
    "type": "steps",
    "at": [
-    24,
-    -18,
+    30,
+    -16,
     0
    ],
    "params": {
@@ -260,40 +319,162 @@
   {
    "type": "array",
    "at": [
-    -8,
-    -17,
+    0,
+    0,
     0
    ],
    "params": {
     "mode": "line",
     "start": [
-     -20,
-     -4,
-     10.8
+     -19,
+     -10.7,
+     12.5
     ],
     "end": [
-     10,
-     -4,
-     10.8
+     19,
+     -10.7,
+     12.5
     ],
-    "count": 6,
+    "count": 10,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.6,
-       0.4
+       1.0,
+       0.6
       ],
-      "height": 0.4,
-      "colour": "#2c2c2c"
+      "height": 0.5,
+      "colour": "#1a1a1a"
      }
     }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -6
+     ],
+     [
+      50,
+      -6
+     ],
+     [
+      45,
+      10
+     ],
+     [
+      -45,
+      10
+     ]
+    ],
+    "z0": 0,
+    "height": 24,
+    "topScale": 0.55,
+    "colour": "#6f8f4a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -28,
+    22,
+    10
+   ],
+   "params": {
+    "height": 9,
+    "crown_radius": 4,
+    "trunk_radius": 0.4,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    26,
+    10
+   ],
+   "params": {
+    "height": 10,
+    "crown_radius": 4,
+    "trunk_radius": 0.4,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    14,
+    24,
+    10
+   ],
+   "params": {
+    "height": 9,
+    "crown_radius": 4,
+    "trunk_radius": 0.4,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    34,
+    20,
+    10
+   ],
+   "params": {
+    "height": 8,
+    "crown_radius": 4,
+    "trunk_radius": 0.4,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    44,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "crown_radius": 4,
+    "trunk_radius": 0.4,
+    "colour": "#3f6f3a"
    }
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "plaza",
+  "forecourt": "none",
   "trees": 0,
   "extent": [
    110,

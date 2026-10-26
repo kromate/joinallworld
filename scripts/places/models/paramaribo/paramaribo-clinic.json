@@ -33,22 +33,22 @@
    "id": "ward-slab",
    "footprint": {
     "rect": [
-     96,
+     58,
      15
     ]
    },
    "at": [
-    6,
+    39,
     10
    ],
    "height": 17.5,
    "storeys": 5,
    "wall": {
     "material": "concrete",
-    "colour": "#dfe0d7",
+    "colour": "#cfd8d3",
     "windows": "ribbon",
     "windowRatio": 0.6,
-    "glassColour": "#5e8a88",
+    "glassColour": "#8fb3ae",
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -58,8 +58,92 @@
     "pattern": {
      "type": "floors",
      "colours": [
-      "#dfe0d7",
-      "#d1d4cb"
+      "#cfd8d3",
+      "#c3cfca"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aca6",
+    "overhang": 1.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-mid",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    -10,
+    7.5
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd8d3",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#8fb3ae",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#cfd8d3",
+      "#c3cfca"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aca6",
+    "overhang": 1.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-step",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -43,
+    5
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd8d3",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#8fb3ae",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#cfd8d3",
+      "#c3cfca"
      ]
     }
    },
@@ -73,53 +157,125 @@
   {
    "type": "balcony-bands",
    "at": [
-    6,
-    -0.2,
+    10.0,
+    2.3,
     0
    ],
    "params": {
-    "length": 96,
+    "length": 58,
     "floors": 5,
     "storeyHeight": 3.5,
-    "proud": 1.4,
+    "proud": 2.2,
     "rail": true,
-    "railHeight": 1.0,
-    "colour": "#eceee6"
-   }
+    "railHeight": 1.1,
+    "colour": "#e4ebe7"
+   },
+   "lod": [
+    0
+   ]
   },
   {
-   "type": "mass",
-   "id": "low-wing",
-   "footprint": {
-    "rect": [
-     34,
-     16
-    ]
-   },
+   "type": "balcony-bands",
    "at": [
-    -62,
-    6
+    10.0,
+    2.3,
+    0
    ],
-   "height": 10.5,
-   "storeys": 3,
-   "wall": {
-    "material": "concrete",
-    "colour": "#dfe0d7",
-    "windows": "ribbon",
-    "windowRatio": 0.55,
-    "glassColour": "#5e8a88",
-    "faces": {
-     "left": "plain",
-     "back": "plain"
-    },
-    "plinth": 0.5
+   "params": {
+    "length": 58,
+    "floors": 5,
+    "storeyHeight": 3.5,
+    "proud": 2.2,
+    "rail": false,
+    "railHeight": 1.1,
+    "colour": "#e4ebe7"
    },
-   "roof": {
-    "form": "flat",
-    "colour": "#a9aca6",
-    "overhang": 1.2,
-    "parapet": 0.5
-   }
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -30.0,
+    0.8,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "floors": 4,
+    "storeyHeight": 3.5,
+    "proud": 2.2,
+    "rail": true,
+    "railHeight": 1.1,
+    "colour": "#e4ebe7"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -30.0,
+    0.8,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "floors": 4,
+    "storeyHeight": 3.5,
+    "proud": 2.2,
+    "rail": false,
+    "railHeight": 1.1,
+    "colour": "#e4ebe7"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -56.0,
+    -0.7,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "floors": 3,
+    "storeyHeight": 3.5,
+    "proud": 2.2,
+    "rail": true,
+    "railHeight": 1.1,
+    "colour": "#e4ebe7"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -56.0,
+    -0.7,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "floors": 3,
+    "storeyHeight": 3.5,
+    "proud": 2.2,
+    "rail": false,
+    "railHeight": 1.1,
+    "colour": "#e4ebe7"
+   },
+   "lod": [
+    1,
+    2
+   ]
   },
   {
    "type": "mass",
@@ -141,7 +297,7 @@
     "colour": "#e9e7da",
     "windows": "curtain",
     "windowRatio": 0.5,
-    "glassColour": "#5e8a88",
+    "glassColour": "#8fb3ae",
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -164,7 +320,7 @@
     ]
    },
    "at": [
-    -4,
+    34,
     12
    ],
    "z0": 17.5,
@@ -175,7 +331,7 @@
     "colour": "#d4d6ce",
     "windows": "ribbon",
     "windowRatio": 0.4,
-    "glassColour": "#5e8a88"
+    "glassColour": "#8fb3ae"
    },
    "roof": {
     "form": "flat",
@@ -226,8 +382,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Not compared: render queue down. Composed from the lead crop photo; wing layout and rooftop pavilion estimated, OSM stepped outline not reproduced."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes applied: stepped three-mass slab, pale teal-grey walls, deeper balcony slabs with rails. Teal frame detail and glazing bay rhythm still simplified; rooftop pavilion estimated."
  }
 }

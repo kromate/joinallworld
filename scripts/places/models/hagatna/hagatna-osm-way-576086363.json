@@ -34,24 +34,24 @@
    "params": {
     "points": [
      [
-      -30,
-      6
+      -14.61,
+      4.32
      ],
      [
-      0,
-      -26
+      0.32,
+      -14.82
      ],
      [
-      28,
-      -6
+      14.82,
+      -3.66
      ],
      [
-      -2,
-      24
+      -0.84,
+      14.47
      ]
     ],
-    "height": 1.2,
-    "topScale": 0.7,
+    "height": 3,
+    "topScale": 0.69,
     "colour": "#6e9c3a",
     "topColour": "#79a842"
    }
@@ -83,12 +83,12 @@
     0,
     0
    ],
-   "z0": 1.0,
-   "height": 3.6,
+   "z0": 2.2,
+   "height": 2.4,
    "storeys": 1,
    "wall": {
-    "material": "rubble",
-    "colour": "#4f524a",
+    "material": "stone",
+    "colour": "#3f423c",
     "windows": "none",
     "plinth": 0
    },
@@ -182,90 +182,173 @@
    }
   },
   {
-   "type": "core/steps",
+   "type": "sweep-path",
    "id": "stair",
    "at": [
-    12,
-    -12,
+    0,
+    0,
     0
    ],
-   "rotDeg": 35,
    "params": {
-    "width": 2.4,
-    "rise": 0.38,
-    "run": 0.9,
-    "count": 12,
+    "section": {
+     "rect": [
+      2.4,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      13.2,
+      -12.5,
+      0.1
+     ],
+     [
+      10.499,
+      -3.08,
+      4.45
+     ]
+    ],
     "colour": "#b8b2a2"
    }
   },
   {
-   "type": "core/fence-wall",
-   "id": "stairraila",
+   "type": "sweep-path",
+   "id": "srailat",
    "at": [
-    12.74564936725636,
-    -13.06489765757569,
-    2.3
-   ],
-   "rotDeg": 35,
-   "params": {
-    "length": 10.8,
-    "height": 1.1,
-    "thickness": 0.05,
-    "kind": "fence",
-    "colour": "#9aa0a4"
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "id": "stairrailb",
-   "at": [
-    11.25435063274364,
-    -10.93510234242431,
-    2.3
-   ],
-   "rotDeg": 35,
-   "params": {
-    "length": 10.8,
-    "height": 1.1,
-    "thickness": 0.05,
-    "kind": "fence",
-    "colour": "#9aa0a4"
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "id": "stairwall",
-   "at": [
-    15,
-    -9,
+    0,
+    0,
     0
    ],
-   "rotDeg": 35,
    "params": {
-    "length": 9,
-    "height": 2.2,
-    "thickness": 0.6,
-    "kind": "wall",
-    "colour": "#4f524a"
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      14.402,
+      -12.155,
+      1.4
+     ],
+     [
+      11.7,
+      -2.735,
+      5.7
+     ]
+    ],
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "srailam",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      14.402,
+      -12.155,
+      0.85
+     ],
+     [
+      11.7,
+      -2.735,
+      5.15
+     ]
+    ],
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "srailbt",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      11.998,
+      -12.845,
+      1.4
+     ],
+     [
+      9.297,
+      -3.424,
+      5.7
+     ]
+    ],
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "srailbm",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      11.998,
+      -12.845,
+      0.85
+     ],
+     [
+      9.297,
+      -3.424,
+      5.15
+     ]
+    ],
+    "colour": "#9aa0a4"
    }
   },
   {
    "type": "prism",
    "id": "door",
    "at": [
-    6.5,
-    -9.6,
-    0
+    5.3,
+    -6.5,
+    1.5
    ],
    "params": {
     "rect": [
      1.6,
      0.6
     ],
-    "height": 2.1,
+    "height": 1.9,
     "colour": "#d9b43a",
     "topColour": "#d9b43a"
-   }
+   },
+   "rotDeg": 37.6
   },
   {
    "type": "prism",
@@ -459,7 +542,7 @@
      3.2
     ],
     "height": 0.08,
-    "colour": "#cfcbc0",
+    "colour": "#e6dcb8",
     "topColour": "#cfcbc0"
    }
   },
@@ -491,9 +574,9 @@
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "applied critic fixes; not render-checked: no render server"
+  "gaps": "mound slope is steeper and flatter-textured than the gentle lawn; stair is a slab with 2 rails per side (no steps or wire infill); no rock texture on wall, curved path and signboard/planter simplified"
  },
  "schema": "allworld-place-model",
  "version": 2,

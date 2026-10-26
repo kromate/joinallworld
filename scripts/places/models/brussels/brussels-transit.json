@@ -52,31 +52,27 @@
    "storeys": 10,
    "wall": {
     "material": "limestone",
-    "colour": "#d4a870",
-    "windows": "none",
+    "colour": "#d2a86f",
+    "windows": "rect",
     "windowRatio": 0.3,
     "plinth": 0.6,
     "faces": {
-     "front": "plain",
+     "front": "rect",
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
     "pattern": [
      {
-      "type": "panels",
-      "size": [
-       4,
-       3.4
-      ],
+      "type": "floors",
       "colours": [
-       "#d4a870",
-       "#c49860",
-       "#dcb482"
-      ],
-      "gap": 0.15
+       "#d2a86f",
+       "#c99f66"
+      ]
      }
-    ]
+    ],
+    "windowShape": "rect",
+    "bay": 4.4
    },
    "roof": {
     "form": "flat",
@@ -101,10 +97,10 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#34505d",
+    "colour": "#243f4a",
     "windows": "curtain",
-    "windowRatio": 0.85,
-    "plinth": 0.3,
+    "windowRatio": 0.8,
+    "plinth": 1.4,
     "faces": {
      "left": "plain",
      "right": "plain"
@@ -112,9 +108,9 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#1d4a4f",
-    "overhang": 7,
-    "rise": 12
+    "colour": "#2a3a40",
+    "overhang": 3,
+    "rise": 6
    }
   },
   {
@@ -176,74 +172,42 @@
     52,
     6
    ],
-   "height": 38,
+   "height": 35,
    "storeys": 11,
    "wall": {
     "material": "concrete",
-    "colour": "#c9b8a0",
+    "colour": "#d6c8ae",
     "windows": "none",
-    "windowRatio": 0.55,
+    "windowRatio": 0.5,
     "plinth": 0.3,
     "pattern": [
      {
       "type": "floors",
       "colours": [
-       "#d8c8ae",
-       "#a98f74"
+       "#dccfb6",
+       "#cdbfa5"
       ]
      },
      {
       "type": "balconies",
-      "depth": 0.8,
+      "depth": 1.3,
       "width": 26,
       "every": 30,
-      "slab": 0.3,
-      "colour": "#7a6450",
-      "railKind": "glass",
-      "continuous": true
+      "slab": 0.45,
+      "colour": "#e8dfcc",
+      "railKind": "solid",
+      "continuous": true,
+      "railColour": "#3d4a50",
+      "rail": 0.9
      }
-    ]
+    ],
+    "storeys": 10
    },
    "roof": {
     "form": "flat",
     "colour": "#8a8f94",
     "parapet": 0.5
    }
-  },
-  {
-   "type": "loft",
-   "id": "glass-crown",
-   "params": {
-    "colour": "#3d6a8a",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       28,
-       14
-      ]
-     },
-     {
-      "z": 3,
-      "rect": [
-       30,
-       14.5
-      ]
-     },
-     {
-      "z": 6,
-      "rect": [
-       22,
-       11
-      ]
-     }
-    ]
-   },
-   "at": [
-    52,
-    6,
-    38
-   ]
   },
   {
    "type": "prism",
@@ -345,41 +309,6 @@
   },
   {
    "type": "array",
-   "id": "canopy-posts",
-   "params": {
-    "mode": "line",
-    "count": 5,
-    "start": [
-     -4,
-     -12
-    ],
-    "end": [
-     28,
-     -12
-    ],
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       0.7,
-       0.7
-      ],
-      "height": 9,
-      "colour": "#1d2f35"
-     }
-    }
-   },
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "array",
    "id": "bollards",
    "params": {
     "mode": "line",
@@ -412,6 +341,82 @@
    "lod": [
     0
    ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-crown",
+   "at": [
+    52,
+    6,
+    35
+   ],
+   "params": {
+    "rect": [
+     28.4,
+     14.4
+    ],
+    "height": 3.6,
+    "colour": "#9fc3d9",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform-slab-canopy",
+   "at": [
+    -5,
+    46,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     118,
+     9
+    ],
+    "height": 0.6,
+    "colour": "#b9b7b0",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "slab-posts",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -60,
+     46
+    ],
+    "end": [
+     50,
+     46
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 6.5,
+      "height": 4,
+      "colour": "#8e8c86"
+     }
+    }
+   }
   }
  ],
  "site": {
@@ -424,8 +429,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "Long sloping teal canopy over glazed hall, panelled tan slab, balcony-banded tower with glass crown; canopy not stepped, taller canopy tried and hid the glazing so reverted; framing differs from street photo, forecourt lamp missing"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Platform canopy hidden behind the buildings from this view; hall roof is a low hip/shed not the long stepped sloping canopy; glazing lacks the tall structural piers; crown is a flat glass box, not the curved glazed bulge"
  }
 }

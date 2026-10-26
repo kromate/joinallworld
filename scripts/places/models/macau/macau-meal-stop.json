@@ -115,7 +115,7 @@
      0.5
     ],
     "height": 9.8,
-    "colour": "#d97a80",
+    "colour": "#f0dcc8",
     "windows": "punched",
     "windowShape": "arched",
     "storeys": 2,
@@ -133,46 +133,82 @@
    "id": "columns-ground",
    "params": {
     "mode": "line",
-    "count": 12,
+    "count": 6,
     "start": [
-     -18.5,
+     -16.5,
      -11.8,
      0
     ],
     "end": [
-     18.5,
+     16.5,
      -11.8,
      0
     ],
-    "of": {
-     "type": "revolve",
-     "params": {
-      "segments": 10,
-      "colour": "#f4f1ea",
-      "profile": [
-       [
-        0.5,
-        0
-       ],
-       [
-        0.35,
-        0.4
-       ],
-       [
-        0.3,
-        1.0
-       ],
-       [
-        0.3,
-        4.6
-       ],
-       [
-        0.45,
-        5.0
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 10,
+       "colour": "#f4f1ea",
+       "profile": [
+        [
+         0.5,
+         0
+        ],
+        [
+         0.35,
+         0.4
+        ],
+        [
+         0.3,
+         1.0
+        ],
+        [
+         0.3,
+         4.6
+        ],
+        [
+         0.45,
+         5.0
+        ]
        ]
+      }
+     },
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 10,
+       "colour": "#f4f1ea",
+       "profile": [
+        [
+         0.5,
+         0
+        ],
+        [
+         0.35,
+         0.4
+        ],
+        [
+         0.3,
+         1.0
+        ],
+        [
+         0.3,
+         4.6
+        ],
+        [
+         0.45,
+         5.0
+        ]
+       ]
+      },
+      "at": [
+       1.5,
+       0,
+       0
       ]
      }
-    }
+    ]
    },
    "lod": [
     0,
@@ -184,42 +220,74 @@
    "id": "columns-upper",
    "params": {
     "mode": "line",
-    "count": 12,
+    "count": 6,
     "start": [
-     -18.5,
+     -16.5,
      -11.8,
      5.2
     ],
     "end": [
-     18.5,
+     16.5,
      -11.8,
      5.2
     ],
-    "of": {
-     "type": "revolve",
-     "params": {
-      "segments": 10,
-      "colour": "#f4f1ea",
-      "profile": [
-       [
-        0.45,
-        0
-       ],
-       [
-        0.3,
-        0.4
-       ],
-       [
-        0.3,
-        3.8
-       ],
-       [
-        0.45,
-        4.2
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 10,
+       "colour": "#f4f1ea",
+       "profile": [
+        [
+         0.45,
+         0
+        ],
+        [
+         0.3,
+         0.4
+        ],
+        [
+         0.3,
+         3.8
+        ],
+        [
+         0.45,
+         4.2
+        ]
        ]
+      }
+     },
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 10,
+       "colour": "#f4f1ea",
+       "profile": [
+        [
+         0.45,
+         0
+        ],
+        [
+         0.3,
+         0.4
+        ],
+        [
+         0.3,
+         3.8
+        ],
+        [
+         0.45,
+         4.2
+        ]
+       ]
+      },
+      "at": [
+       1.5,
+       0,
+       0
       ]
      }
-    }
+    ]
    },
    "lod": [
     0,
@@ -298,11 +366,11 @@
    ],
    "params": {
     "rect": [
-     13,
+     14,
      0.9
     ],
     "z0": 10.0,
-    "height": 3.4,
+    "height": 4.6,
     "topScale": [
      1,
      1
@@ -335,11 +403,11 @@
       0,
       0
      ],
-     "radius": 6.5,
+     "radius": 7.0,
      "startDeg": 180,
      "endDeg": 0,
      "plane": "xz",
-     "radiusY": 3.4
+     "radiusY": 4.6
     },
     "colour": "#f2eee6"
    }
@@ -362,6 +430,175 @@
     0,
     1
    ]
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-roof",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -11.8
+   ],
+   "params": {
+    "rect": [
+     41,
+     0.3
+    ],
+    "z0": 9.9,
+    "height": 1.0,
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-ground",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -11.8
+   ],
+   "params": {
+    "rect": [
+     41,
+     0.25
+    ],
+    "z0": 0.8,
+    "height": 0.9,
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-arch-recess",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.25
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 0.0,
+    "height": 4.2,
+    "colour": "#7a4a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-arch-recess-up",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.25
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 5.3,
+    "height": 4.0,
+    "colour": "#7a4a4a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-ground",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.5,
+    4.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 2.6,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-upper",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.5,
+    9.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 2.6,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cartouche",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.5
+   ],
+   "params": {
+    "radius": 1.3,
+    "n": 12,
+    "z0": 11.2,
+    "height": 0.3,
+    "colour": "#f2eee6"
+   }
   }
  ],
  "site": {
@@ -393,8 +630,8 @@
  "city": "macau",
  "venueId": "macau-meal-stop",
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "loggia is evenly columned (real centre bay is an arch), cartouche left blank, no side wings or balustrade detail beyond front"
+  "gaps": "paired columns, balustrades, taller pediment and central arch recess added; arch is a flat recess not a true arched bay, cartouche blank, loggia back wall reads bluish in shadow"
  }
 }

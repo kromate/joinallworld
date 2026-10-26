@@ -135,8 +135,8 @@
    "params": {
     "radius": 21,
     "n": 32,
-    "height": 0.35,
-    "colour": "#8f8f8a"
+    "height": 0.2,
+    "colour": "#9a948a"
    }
   },
   {
@@ -145,14 +145,42 @@
    "at": [
     -3,
     -20,
-    0.35
+    0.5
    ],
    "params": {
-    "radius": 18.5,
+    "radius": 17.5,
     "n": 32,
     "height": 0.1,
-    "colour": "#7d7e86",
+    "colour": "#8b8478",
     "material": "paving-block"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 19.8,
+    "n": 32,
+    "height": 0.35,
+    "colour": "#a8a193"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 18.6,
+    "n": 32,
+    "height": 0.5,
+    "colour": "#9c9588"
    }
   },
   {
@@ -196,6 +224,38 @@
     "roofDepth": 3,
     "colour": "#f2f0ea",
     "roofColour": "#ece8df"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     20,
+     4.5
+    ]
+   },
+   "at": [
+    -3,
+    36
+   ],
+   "z0": 0.3,
+   "height": 5.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8df",
+    "parapet": 0.5,
+    "overhang": 0.6
    }
   },
   {
@@ -259,17 +319,17 @@
      -5,
      0
     ],
-    "count": 12,
+    "count": 30,
     "of": [
      {
       "type": "prism",
       "params": {
        "rect": [
-        0.6,
-        0.6
+        0.7,
+        0.7
        ],
-       "height": 1.2,
-       "colour": "#e6e4dc"
+       "height": 1.4,
+       "colour": "#efede4"
       }
      }
     ]
@@ -290,10 +350,10 @@
    "params": {
     "rect": [
      58,
-     0.25
+     0.4
     ],
-    "height": 0.7,
-    "colour": "#d9d6cc"
+    "height": 0.95,
+    "colour": "#e4e1d6"
    }
   },
   {
@@ -328,31 +388,31 @@
        "profile": [
         [
          0.4,
-         0
+         0.0
         ],
         [
          0.4,
-         0.4
-        ],
-        [
-         0.18,
          0.6
         ],
         [
          0.18,
-         3.6
+         0.9
+        ],
+        [
+         0.18,
+         5.4
         ],
         [
          0.4,
-         3.8
+         5.7
         ],
         [
          0.4,
-         4.3
+         6.45
         ],
         [
          0.25,
-         4.6
+         6.9
         ]
        ]
       }
@@ -561,8 +621,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "park scaled to 0.55 to fit the scene limit; lattice balustrade, flower planters and the grey stepped rim are simplified; far-end arcade is a plain colonnade"
+  "gaps": "park scaled to 0.55; plaza has 3 stepped rings but is simple; balustrade is a solid wall with piers, not lattice; pavilion is a plain arcade mass; gazebos small"
  }
 }

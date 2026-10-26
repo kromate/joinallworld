@@ -14,6 +14,33 @@
  },
  "parts": [
   {
+   "type": "mass",
+   "id": "pig-shed",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    -20,
+    -6
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a8466",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f9a9a",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
    "type": "water-surface",
    "at": [
     0,
@@ -393,7 +420,7 @@
  "review": {
   "rounds": 0,
   "match": "rough",
-  "gaps": "no photo; flat, pigs and fence are typed from the brief"
+  "gaps": "no photo; flat, pigs and fence are typed from the brief; small farm shed added so the model has a sane height"
  },
  "schema": "allworld-place-model",
  "version": 2,

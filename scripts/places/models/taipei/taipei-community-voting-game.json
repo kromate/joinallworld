@@ -57,13 +57,13 @@
    ],
    "z0": 0,
    "height": 138,
-   "storeys": 4,
+   "storeys": 6,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#a7a5a0",
+    "colour": "#8f8e8a",
     "windows": "punched",
-    "windowRatio": 0.1,
-    "bay": 9,
+    "windowRatio": 0.2,
+    "bay": 14,
     "faces": {
      "back": "none",
      "left": "none"
@@ -80,22 +80,22 @@
    "id": "glass-wedge",
    "footprint": {
     "rect": [
-     14,
-     10
+     5,
+     22
     ]
    },
    "at": [
-    24,
-    -1
+    26,
+    6
    ],
    "z0": 0,
-   "height": 118,
+   "height": 100,
    "storeys": 4,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3f7488",
-    "windows": "curtain",
-    "windowRatio": 0.85,
+    "colour": "#2f5a68",
+    "windows": "none",
+    "windowRatio": 0.5,
     "faces": {
      "back": "none",
      "left": "none",
@@ -122,13 +122,13 @@
    ],
    "z0": 0,
    "height": 104,
-   "storeys": 4,
+   "storeys": 8,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#9d9b97",
+    "colour": "#8a8985",
     "windows": "punched",
-    "windowRatio": 0.1,
-    "bay": 9,
+    "windowRatio": 0.2,
+    "bay": 15,
     "faces": {
      "back": "none",
      "left": "none"
@@ -152,27 +152,27 @@
      [
       0,
       0,
-      "#7f98a4"
+      "#8a9094"
      ],
      [
       11,
       0,
-      "#7f98a4"
+      "#8a9094"
      ],
      [
       11,
       6,
-      "#7f98a4"
+      "#8a9094"
      ],
      [
       10,
       7,
-      "#9aa0a3"
+      "#7d8387"
      ],
      [
       0,
       7,
-      "#9aa0a3"
+      "#7d8387"
      ]
     ],
     "segments": 24
@@ -196,8 +196,8 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4a7c92",
-    "windows": "curtain",
+    "colour": "#3a5a72",
+    "windows": "none",
     "windowRatio": 0.85,
     "faces": {
      "left": "none",
@@ -228,8 +228,8 @@
    "storeys": 4,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#5a8aa0",
-    "windows": "curtain",
+    "colour": "#4a6e80",
+    "windows": "none",
     "windowRatio": 0.85,
     "faces": {
      "back": "none",
@@ -256,14 +256,14 @@
     -32
    ],
    "z0": 0,
-   "height": 22,
-   "storeys": 2,
+   "height": 25,
+   "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#a9a8a3",
+    "colour": "#8f8e8a",
     "windows": "punched",
-    "windowRatio": 0.25,
-    "bay": 9,
+    "windowRatio": 0.35,
+    "bay": 15,
     "faces": {
      "right": "none",
      "back": "none"
@@ -290,48 +290,17 @@
     -38
    ],
    "z0": 0,
-   "height": 26,
-   "storeys": 4,
+   "height": 30,
+   "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#b7b6b2",
+    "colour": "#8e9090",
     "windows": "none",
     "windowRatio": 0.05
    },
    "roof": {
     "form": "flat",
-    "colour": "#9a9a98"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "low-glass",
-   "footprint": {
-    "rect": [
-     50,
-     22
-    ]
-   },
-   "at": [
-    -46,
-    -34
-   ],
-   "z0": 0,
-   "height": 15,
-   "storeys": 2,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#3d5560",
-    "windows": "curtain",
-    "windowRatio": 0.6,
-    "faces": {
-     "back": "none",
-     "left": "none"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8d8f8f"
+    "colour": "#80827f"
    }
   },
   {
@@ -407,8 +376,8 @@
  "city": "taipei",
  "venueId": "taipei-community-voting-game",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Heavily simplified windows to fit 20k budget; stepped notches, glass slices and real twisting podium footprint not modelled; neighbours omitted."
+  "gaps": "Tower windows coarse to fit the 20k budget; glass wedge is a flat slab not a true wedge; stepped notches, glass slices and the twisting podium outline not modelled; neighbours omitted."
  }
 }

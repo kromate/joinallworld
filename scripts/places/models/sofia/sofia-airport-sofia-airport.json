@@ -30,12 +30,12 @@
    "id": "wing-west",
    "footprint": {
     "rect": [
-     46,
+     56,
      20
     ]
    },
    "at": [
-    -34,
+    -39,
     0
    ],
    "rotDeg": 0,
@@ -53,8 +53,8 @@
     "form": "flat",
     "colour": "#f4f5f5",
     "material": "metal-sheet",
-    "overhang": 4,
-    "parapet": 0.4
+    "overhang": 3,
+    "parapet": 0.25
    }
   },
   {
@@ -62,12 +62,12 @@
    "id": "wing-east",
    "footprint": {
     "rect": [
-     44,
+     50,
      20
     ]
    },
    "at": [
-    32,
+    36,
     0
    ],
    "rotDeg": 0,
@@ -85,8 +85,8 @@
     "form": "flat",
     "colour": "#f4f5f5",
     "material": "metal-sheet",
-    "overhang": 4,
-    "parapet": 0.4
+    "overhang": 3,
+    "parapet": 0.25
    }
   },
   {
@@ -125,26 +125,26 @@
    "id": "back-block",
    "footprint": {
     "rect": [
-     30,
-     18
+     36,
+     16
     ]
    },
    "at": [
-    4,
-    26
+    2,
+    24
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15,
+   "height": 21,
    "storeys": 2,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#4b5258",
+    "colour": "#3b4147",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6a7075",
+    "colour": "#555b60",
     "parapet": 0.5
    }
   },
@@ -153,10 +153,14 @@
    "at": [
     0,
     0,
-    10
+    8
+   ],
+   "lod": [
+    0,
+    1
    ],
    "params": {
-    "colour": "#9cc4d6",
+    "colour": "#8fb8cc",
     "material": "glass-curtain",
     "sections": [
      {
@@ -167,51 +171,30 @@
       ]
      },
      {
-      "z": 3,
+      "z": 2.5,
       "rect": [
-       29,
-       19
+       30,
+       17
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       30,
+       12.5
       ]
      },
      {
       "z": 6,
       "rect": [
-       26,
-       17
-      ]
-     },
-     {
-      "z": 9,
-      "rect": [
-       22,
-       14
-      ]
-     },
-     {
-      "z": 12,
-      "rect": [
-       17,
-       11
-      ]
-     },
-     {
-      "z": 14.5,
-      "rect": [
-       11,
+       30,
        7
       ]
      },
      {
-      "z": 16.5,
+      "z": 7,
       "rect": [
-       6,
-       4
-      ]
-     },
-     {
-      "z": 17.5,
-      "rect": [
-       3,
+       30,
        2
       ]
      }
@@ -226,7 +209,7 @@
    "at": [
     0,
     0,
-    10
+    8
    ],
    "params": {
     "colour": "#6f98ab",
@@ -239,61 +222,310 @@
       ]
      },
      {
-      "z": 17,
+      "z": 7,
       "rect": [
-       4,
-       3
+       30,
+       2
       ]
      }
     ]
    }
   },
   {
-   "type": "mass",
-   "id": "connector",
-   "footprint": {
-    "rect": [
-     40,
-     16
-    ]
-   },
-   "at": [
-    58,
-    -12
+   "type": "array",
+   "lod": [
+    0,
+    1
    ],
-   "rotDeg": 0,
-   "z0": 6,
-   "height": 6,
-   "storeys": 1,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#9fb4c4",
-    "windows": "curtain",
-    "windowRatio": 0.7
-   },
-   "roof": {
-    "form": "curved",
-    "curve": "arch",
-    "rise": 6,
-    "colour": "#c4ccd2",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -13,
+     0,
+     0
+    ],
+    "end": [
+     13,
+     0,
+     0
+    ],
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#2c3a44",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.7,
+          20.4
+         ]
+        },
+        {
+         "z": 2.5,
+         "rect": [
+          0.7,
+          17.4
+         ]
+        },
+        {
+         "z": 4.5,
+         "rect": [
+          0.7,
+          12.9
+         ]
+        },
+        {
+         "z": 6,
+         "rect": [
+          0.7,
+          7.4
+         ]
+        },
+        {
+         "z": 7.1,
+         "rect": [
+          0.7,
+          2.4
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    -18,
+    6.3
+   ],
+   "params": {
+    "colour": "#aebfcc",
     "material": "metal-sheet",
-    "overhang": 1.5
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       40,
+       18
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       40,
+       17.6
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       40,
+       16
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       40,
+       13.2
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       40,
+       9
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       40,
+       4.5
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       40,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    2
+   ],
+   "at": [
+    62,
+    -18,
+    6.3
+   ],
+   "params": {
+    "colour": "#aebfcc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       40,
+       18
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       40,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    -18,
+    6.3
+   ],
+   "params": {
+    "mode": "line",
+    "count": 11,
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#6d7e8b",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.6,
+          18.4
+         ]
+        },
+        {
+         "z": 1.5,
+         "rect": [
+          0.6,
+          18
+         ]
+        },
+        {
+         "z": 3,
+         "rect": [
+          0.6,
+          16.4
+         ]
+        },
+        {
+         "z": 4.5,
+         "rect": [
+          0.6,
+          13.6
+         ]
+        },
+        {
+         "z": 6,
+         "rect": [
+          0.6,
+          9.4
+         ]
+        },
+        {
+         "z": 7,
+         "rect": [
+          0.6,
+          4.9
+         ]
+        },
+        {
+         "z": 7.7,
+         "rect": [
+          0.6,
+          1.9
+         ]
+        }
+       ]
+      }
+     }
+    ]
    }
   },
   {
    "type": "prism",
    "at": [
-    -50,
-    -30,
-    7
+    42,
+    -27,
+    5.6
    ],
    "params": {
     "rect": [
-     100,
-     4.5
+     40,
+     18
     ],
-    "height": 1.6,
-    "colour": "#a8a7a3"
+    "height": 0.8,
+    "colour": "#9a9996"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -75,
+    -37,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     150,
+     6
+    ],
+    "height": 1.8,
+    "colour": "#b3b1ac"
    }
   },
   {
@@ -305,15 +537,15 @@
    ],
    "params": {
     "mode": "line",
-    "count": 4,
+    "count": 6,
     "start": [
-     -44,
-     -30,
+     -68,
+     -34,
      0
     ],
     "end": [
-     40,
-     -30,
+     68,
+     -34,
      0
     ],
     "of": [
@@ -326,11 +558,11 @@
       ],
       "params": {
        "rect": [
-        3,
-        4
+        5,
+        5
        ],
-       "height": 7,
-       "colour": "#a2a19e"
+       "height": 6.2,
+       "colour": "#a09f9b"
       }
      }
     ]
@@ -347,13 +579,13 @@
     "mode": "line",
     "count": 3,
     "start": [
-     44,
-     -6,
+     46,
+     -12,
      0
     ],
     "end": [
-     72,
-     -6,
+     78,
+     -12,
      0
     ],
     "of": [
@@ -367,10 +599,50 @@
       "params": {
        "rect": [
         4,
-        5
+        4
        ],
-       "height": 6,
-       "colour": "#b0afac"
+       "height": 5.6,
+       "colour": "#aaa9a5"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     46,
+     -24,
+     0
+    ],
+    "end": [
+     78,
+     -24,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        4,
+        4
+       ],
+       "height": 5.6,
+       "colour": "#aaa9a5"
       }
      }
     ]
@@ -379,21 +651,21 @@
   {
    "type": "lamp",
    "at": [
-    -45,
-    -16,
+    -68,
+    -18,
     0
    ],
    "params": {
     "height": 16,
-    "count": 4,
-    "spacing": 30
+    "count": 5,
+    "spacing": 32
    }
   },
   {
    "type": "flag",
    "at": [
-    -20,
-    -16,
+    -30,
+    -18,
     0
    ],
    "params": {
@@ -409,44 +681,52 @@
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "sand",
   "forecourt": "none",
   "extent": [
    160,
-   120
+   64
   ],
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     -22,
+     -30,
+     -44
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23,
+     -41
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -37,
      -42
     ],
-    "height": 16
+    "height": 10
    },
    {
     "kind": "broadleaf",
     "at": [
-     -16,
-     -38
+     -8,
+     -46
     ],
-    "height": 13
+    "height": 8
    },
    {
     "kind": "broadleaf",
     "at": [
-     -28,
-     -37
-    ],
-    "height": 11
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     70,
+     90,
      -30
     ],
-    "height": 9
+    "height": 10
    }
   ]
  },

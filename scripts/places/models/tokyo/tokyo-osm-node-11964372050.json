@@ -42,7 +42,7 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#9b8366",
+    "colour": "#6e6a60",
     "windows": "punched",
     "windowRatio": 0.2,
     "plinth": 0.7,
@@ -56,116 +56,341 @@
     "form": "hip",
     "colour": "#4a4f55",
     "material": "clay-tile",
-    "pitch": 28,
-    "overhang": 1.6
+    "pitch": 20,
+    "overhang": 0.8
    }
   },
   {
-   "type": "mosque-domed/curved-roof",
-   "id": "ridge",
+   "type": "prism",
+   "id": "post-2.2",
    "at": [
-    0,
-    0,
-    4.5
+    -2.2,
+    -18,
+    0
    ],
    "params": {
-    "width": 13,
-    "depth": 13,
-    "rise": 2.4,
-    "overhang": 1.2,
-    "upturn": 0.3,
-    "colour": "#454a50"
-   },
-   "lod": [
-    1,
-    2
-   ]
-  },
-  {
-   "type": "mass",
-   "id": "post-l",
-   "footprint": {
     "rect": [
-     0.9,
-     0.9
-    ]
-   },
-   "at": [
-    -3.2,
-    -14
-   ],
-   "height": 2.6,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#9a9a96",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8d8d89"
+     1,
+     1
+    ],
+    "height": 3.5,
+    "colour": "#8e8e8a"
    }
   },
   {
-   "type": "mass",
-   "id": "post-r",
-   "footprint": {
-    "rect": [
-     0.9,
-     0.9
-    ]
-   },
+   "type": "prism",
+   "id": "post2.2",
    "at": [
-    3.2,
-    -14
+    2.2,
+    -18,
+    0
    ],
-   "height": 2.6,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#9a9a96",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8d8d89"
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 3.5,
+    "colour": "#8e8e8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    0,
+    -18,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.9
+    ],
+    "height": 0.4,
+    "colour": "#7c7c78"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    0,
-    -14,
+    -1.12,
+    -18,
     0.2
    ],
    "params": {
-    "width": 5.0,
-    "height": 2.0,
-    "bottom": 0.8,
-    "colour": "#8c1d3a",
+    "width": 0.72,
+    "height": 2.3,
+    "bottom": 0.6,
+    "colour": "#a8203f",
     "frameColour": "#8c1d3a"
    }
   },
   {
-   "type": "core/steps",
+   "type": "core/sign-board",
+   "at": [
+    -0.37,
+    -18,
+    0.2
+   ],
+   "params": {
+    "width": 0.72,
+    "height": 2.3,
+    "bottom": 0.6,
+    "colour": "#a8203f",
+    "frameColour": "#8c1d3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.37,
+    -18,
+    0.2
+   ],
+   "params": {
+    "width": 0.72,
+    "height": 2.3,
+    "bottom": 0.6,
+    "colour": "#a8203f",
+    "frameColour": "#8c1d3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1.12,
+    -18,
+    0.2
+   ],
+   "params": {
+    "width": 0.72,
+    "height": 2.3,
+    "bottom": 0.6,
+    "colour": "#a8203f",
+    "frameColour": "#8c1d3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step0",
    "at": [
     0,
-    -13,
+    -27,
     0
    ],
    "params": {
-    "width": 5,
-    "rise": 0.6,
-    "run": 1.2,
-    "count": 4,
+    "rect": [
+     3.4,
+     1.4
+    ],
+    "height": 0.15,
+    "colour": "#85837e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0.2,
+    -25.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.1,
+     1.4
+    ],
+    "height": 0.3,
+    "colour": "#85837e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    -0.2,
+    -24.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     1.4
+    ],
+    "height": 0.45,
+    "colour": "#85837e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step3",
+   "at": [
+    0.15,
+    -22.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.4
+    ],
+    "height": 0.6,
+    "colour": "#85837e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step4",
+   "at": [
+    -0.1,
+    -21.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.4
+    ],
+    "height": 0.75,
+    "colour": "#85837e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step5",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.4
+    ],
+    "height": 0.9,
+    "colour": "#85837e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     9
+    ],
+    "height": 0.2,
+    "colour": "#8a8883"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path2",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     4
+    ],
+    "height": 0.9,
+    "colour": "#8a8883"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "handrail",
+   "at": [
+    2.1,
+    -23,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     6
+    ],
+    "height": 0.1,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "handpost1",
+   "at": [
+    2.1,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 0.9,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "handpost2",
+   "at": [
+    2.1,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 0.9,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    7,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "thickness": 0.5,
     "colour": "#8f8d88"
    }
   },
   {
    "type": "mosque-domed/stone-lantern",
    "at": [
-    -5,
-    -11,
+    -5.5,
+    -14,
     0
    ],
    "params": {
@@ -173,38 +398,34 @@
    }
   },
   {
-   "type": "core/fence-wall",
+   "type": "core/tree",
    "at": [
-    -9,
-    -14,
+    -5,
+    -16,
     0
    ],
    "params": {
-    "length": 5,
-    "height": 1.0,
-    "thickness": 0.5,
-    "colour": "#8f8d88"
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "at": [
-    4,
-    -14,
-    0
-   ],
-   "params": {
-    "length": 6,
-    "height": 1.0,
-    "thickness": 0.5,
-    "colour": "#8f8d88"
+    "kind": "broadleaf",
+    "height": 9
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -9,
-    -9,
+    5.5,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -12,
     0
    ],
    "params": {
@@ -215,7 +436,67 @@
   {
    "type": "core/tree",
    "at": [
+    9,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4.5,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
     10,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
     -10,
     0
    ],
@@ -227,24 +508,47 @@
   {
    "type": "core/tree",
    "at": [
-    -6,
-    -16,
+    3,
+    -9,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 5
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
    }
   }
  ],
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "gate posts and steps lower and tidier than the real ones (stone steps irregular, handrail missing); hall front is hidden behind trees in the photo so its facade is typed (timber, hip roof); gate and steps follow the photo"
+  "gaps": "gate posts, crimson noren, irregular stone steps and handrail now follow the photo; hall is a typed hip roof hidden by trees, trees are low-poly and sparser than the real dense maples"
  },
  "site": {
   "ground": "paving",
-  "forecourt": "garden",
   "extent": [
    50,
    45

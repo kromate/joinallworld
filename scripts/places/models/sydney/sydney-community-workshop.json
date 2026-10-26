@@ -19,9 +19,9 @@
  "camera": {
   "yawDeg": 0,
   "pitchDeg": 4,
-  "fovDeg": 48,
+  "fovDeg": 40,
   "aspect": 1.25,
-  "margin": 0.1
+  "margin": 0.05
  },
  "parts": [
   {
@@ -29,7 +29,7 @@
    "id": "main",
    "footprint": {
     "rect": [
-     45,
+     36,
      15
     ]
    },
@@ -37,15 +37,15 @@
     0,
     0
    ],
-   "height": 11,
+   "height": 12,
    "storeys": 3,
    "wall": {
     "material": "brick",
-    "colour": "#b8714e",
+    "colour": "#c98466",
     "windows": "punched",
-    "windowRatio": 0.17,
-    "bay": 3.6,
-    "bands": "#a9694a",
+    "windowRatio": 0.22,
+    "bay": 4.8,
+    "bands": "#d9b99a",
     "cornice": true,
     "plinth": 0.6,
     "faces": {
@@ -56,7 +56,7 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#6c625a",
+    "colour": "#7a6e66",
     "material": "slate",
     "pitch": 24,
     "overhang": 0.5
@@ -64,27 +64,28 @@
   },
   {
    "type": "mass",
-   "id": "centre-gable",
+   "id": "breakfront",
    "footprint": {
     "rect": [
-     16,
-     2.5
+     17,
+     2.6
     ]
    },
    "at": [
-    0,
-    -8.7
+    -1,
+    -8.8
    ],
-   "height": 11,
+   "height": 12,
    "storeys": 3,
    "wall": {
     "material": "brick",
-    "colour": "#bb7550",
+    "colour": "#c98466",
     "windows": "punched",
-    "windowRatio": 0.17,
-    "bay": 3.6,
-    "bands": "#a9694a",
+    "windowRatio": 0.22,
+    "bay": 4.8,
+    "bands": "#d9b99a",
     "cornice": true,
+    "plinth": 0.6,
     "faces": {
      "left": "none",
      "right": "none"
@@ -92,11 +93,11 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#6c625a",
+    "colour": "#7a6e66",
     "material": "slate",
-    "pitch": 24,
+    "pitch": 28,
     "overhang": 0.3,
-    "axis": "x"
+    "axis": "y"
    }
   },
   {
@@ -109,16 +110,16 @@
     ]
    },
    "at": [
-    0,
-    -10.5
+    -1,
+    -11.4
    ],
-   "height": 4.8,
+   "height": 5,
    "storeys": 1,
    "wall": {
     "material": "brick",
     "colour": "#c0663f",
     "windows": "none",
-    "bands": "#e1c9a4",
+    "bands": "#e8d2ac",
     "plinth": 0.3,
     "faces": {
      "front": "arched"
@@ -126,9 +127,10 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#b8714e",
+    "colour": "#c9a98a",
     "pitch": 28,
-    "overhang": 0.2
+    "overhang": 0.2,
+    "axis": "y"
    }
   },
   {
@@ -141,14 +143,14 @@
     ]
    },
    "at": [
-    -31,
+    -27,
     3
    ],
    "height": 6.5,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#c0805f",
+    "colour": "#cf8a69",
     "windows": "arched",
     "windowRatio": 0.15,
     "bay": 4
@@ -171,14 +173,14 @@
     ]
    },
    "at": [
-    31,
+    27,
     3
    ],
    "height": 6.5,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#c0805f",
+    "colour": "#cf8a69",
     "windows": "arched",
     "windowRatio": 0.15,
     "bay": 4
@@ -192,19 +194,123 @@
    }
   },
   {
+   "type": "mass",
+   "id": "quoin-0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -18,
+    -7.2
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9b4a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    18,
+    -7.2
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9b4a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-2",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -9.6,
+    -9.9
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9b4a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-3",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    7.6,
+    -9.9
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9b4a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6",
+    "parapet": 0
+   }
+  },
+  {
    "lod": [
     0
    ],
    "type": "core/tree",
    "at": [
-    40,
-    -14,
+    30,
+    -12,
     0
    ],
    "params": {
     "kind": "broadleaf",
     "height": 14,
-    "count": 2,
+    "count": 1,
     "spread": 10,
     "line": 8
    }
@@ -243,6 +349,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "Sandstone quoins, window hoods, round gable window and side arcade wings are simplified; OSM outline is irregular so a 45 x 15 m rect is used"
+  "gaps": "Window hoods, striped arch voussoirs and round tympanum window not modelled; facade is a short block rather than the wider real wings; trees in front are generic"
  }
 }

@@ -29,12 +29,12 @@
    "id": "brick-base",
    "footprint": {
     "rect": [
-     16,
+     20,
      11
     ]
    },
    "at": [
-    2,
+    1,
     2
    ],
    "rotDeg": 0,
@@ -45,7 +45,7 @@
     "material": "brick",
     "colour": "#8d4b3a",
     "windows": "punched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.25,
     "faces": {
      "front": "punched",
      "back": "plain",
@@ -64,23 +64,23 @@
    "id": "upper",
    "footprint": {
     "rect": [
-     16,
-     11
+     9,
+     10
     ]
    },
    "at": [
-    2,
-    2
+    5,
+    2.2
    ],
    "rotDeg": 0,
    "z0": 3.4,
-   "height": 4.8,
+   "height": 5.2,
    "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#ece6d2",
+    "material": "timber",
+    "colour": "#E8DFC0",
     "windows": "punched",
-    "windowRatio": 0.14,
+    "windowRatio": 0.16,
     "faces": {
      "front": "punched",
      "back": "plain",
@@ -91,9 +91,9 @@
    },
    "roof": {
     "form": "gable",
-    "axis": "x",
+    "axis": "y",
     "colour": "#7a8087",
-    "pitch": 8,
+    "pitch": 22,
     "material": "metal-sheet"
    }
   },
@@ -102,26 +102,26 @@
    "id": "false-front",
    "footprint": {
     "rect": [
-     16,
+     9,
      0.5
     ]
    },
    "at": [
-    2,
-    -3.3
+    5,
+    -2.9
    ],
    "rotDeg": 0,
-   "z0": 8.2,
-   "height": 2.2,
+   "z0": 8.6,
+   "height": 2.6,
    "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#ece6d2",
+    "material": "timber",
+    "colour": "#E8DFC0",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#ece6d2",
+    "colour": "#E8DFC0",
     "parapet": 0.0
    }
   },
@@ -130,21 +130,21 @@
    "id": "balcony-bay",
    "footprint": {
     "rect": [
-     7,
+     5.2,
      3.2
     ]
    },
    "at": [
-    -1,
-    -4.6
+    2.6,
+    -5.1
    ],
    "rotDeg": 0,
    "z0": 3.5,
-   "height": 4.4,
+   "height": 4.2,
    "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#ece6d2",
+    "material": "timber",
+    "colour": "#E8DFC0",
     "windows": "punched",
     "windowRatio": 0.3,
     "faces": {
@@ -166,21 +166,21 @@
    "id": "west-wing",
    "footprint": {
     "rect": [
-     16,
+     14,
      9
     ]
    },
    "at": [
-    -14,
-    6
+    -17,
+    5
    ],
    "rotDeg": 0,
    "z0": 0,
    "height": 6.8,
    "storeys": 2,
    "wall": {
-    "material": "painted-render",
-    "colour": "#efe9d9",
+    "material": "timber",
+    "colour": "#E8DFC0",
     "windows": "punched",
     "windowRatio": 0.22,
     "faces": {
@@ -199,109 +199,158 @@
   },
   {
    "type": "mass",
-   "id": "east-wing",
+   "id": "terrace-annex",
    "footprint": {
     "rect": [
-     10,
-     10
+     12,
+     8
     ]
    },
    "at": [
-    17,
-    4
+    9,
+    13
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 7.5,
+   "height": 9.5,
    "storeys": 2,
    "wall": {
-    "material": "painted-render",
-    "colour": "#d9c9b2",
-    "windows": "punched",
-    "windowRatio": 0.2
+    "material": "glass-curtain",
+    "colour": "#b9c9d1",
+    "windows": "curtain",
+    "windowRatio": 0.6
    },
    "roof": {
-    "form": "hip",
-    "colour": "#a4533a",
-    "pitch": 24,
-    "material": "clay-tile",
-    "overhang": 0.6
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.3
    }
   },
   {
    "type": "mass",
-   "id": "verandah-roof",
+   "id": "paved-edge",
    "footprint": {
     "rect": [
-     26,
-     4.2
+     44,
+     3
     ]
    },
    "at": [
-    -1,
-    -6.2
+    1,
+    -9.5
    ],
    "rotDeg": 0,
-   "z0": 3.3,
+   "z0": 0,
    "height": 0.5,
    "storeys": 1,
    "wall": {
-    "material": "render",
-    "colour": "#2f5e46",
+    "material": "concrete",
+    "colour": "#9a978c",
     "windows": "none"
    },
    "roof": {
-    "form": "shed",
-    "colour": "#4b5258",
-    "rise": 0.9,
-    "overhang": 0.2,
-    "material": "metal-sheet"
+    "form": "flat",
+    "colour": "#9a978c",
+    "parapet": 0.0
    }
   },
   {
-   "type": "veranda",
+   "type": "mass",
+   "id": "valance",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
    "at": [
-    -1,
-    -8.2,
+    1,
+    -6.7
+   ],
+   "rotDeg": 0,
+   "z0": 2.6,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-awning",
+   "footprint": {
+    "rect": [
+     22,
+     3.0
+    ]
+   },
+   "at": [
+    1,
+    -5.2
+   ],
+   "rotDeg": 0,
+   "z0": 2.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2c4f9e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c4f9e",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "verandah-arcade",
+   "at": [
+    1,
+    -3.5,
     0
    ],
    "params": {
-    "length": 26,
-    "depth": 0.4,
-    "height": 3.3,
-    "balustrade": false,
-    "steps": false,
-    "roof": "flat",
-    "wall_colour": "#2f5e46",
-    "trim_colour": "#f4efe2"
+    "length": 22,
+    "depth": 3.2,
+    "height": 3.4,
+    "count": 6,
+    "kind": "round",
+    "colour": "#2f5e46",
+    "trim_colour": "#f4efe2",
+    "roof_colour": "#4b5258"
    }
   },
   {
-   "type": "awning",
+   "type": "balustrade",
    "at": [
-    7,
-    -3.2,
-    5.4
-   ],
-   "params": {
-    "width": 6,
-    "depth": 1.4,
-    "drop": 0.7,
-    "colours": [
-     "#2f5e46",
-     "#f4efe2"
-    ]
-   }
-  },
-  {
-   "type": "awning",
-   "at": [
-    -1,
+    0.2,
     -6.6,
-    7.4
+    3.5
    ],
    "params": {
-    "width": 7,
+    "length": 5.2,
+    "height": 1.0,
+    "postEvery": 0.6,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2.6,
+    -6.2,
+    7.6
+   ],
+   "params": {
+    "width": 5.6,
     "depth": 1.4,
     "drop": 0.7,
     "colours": [
@@ -313,12 +362,29 @@
   {
    "type": "awning",
    "at": [
-    -14,
-    1.2,
+    8,
+    -2.8,
+    5.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "drop": 0.7,
+    "colours": [
+     "#2f5e46",
+     "#f4efe2"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -17,
+    0.2,
     3.8
    ],
    "params": {
-    "width": 14,
+    "width": 12,
     "depth": 1.4,
     "drop": 0.7,
     "colours": [
@@ -328,21 +394,39 @@
    }
   },
   {
-   "type": "umbrella-cluster",
+   "type": "table-set",
    "at": [
-    -4,
-    -13,
-    0
+    -6,
+    -5.3,
+    0.35
    ],
    "params": {
-    "count": 5,
-    "spread": 9,
-    "radius": 1.5,
-    "colours": [
-     "#2c4f9e",
-     "#f4f4f4"
-    ],
-    "tables": true
+    "chairs": 4,
+    "table_colour": "#2c4f9e"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -5.3,
+    0.35
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#2c4f9e"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    6,
+    -5.3,
+    0.35
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#2c4f9e"
    }
   },
   {
@@ -364,39 +448,89 @@
    }
   },
   {
-   "type": "table-set",
+   "type": "umbrella-cluster",
    "at": [
-    -8,
-    -8,
-    0.4
+    -6,
+    -13,
+    0
    ],
    "params": {
-    "chairs": 4,
-    "table_colour": "#2c4f9e"
+    "count": 3,
+    "spread": 6,
+    "radius": 1.5,
+    "colours": [
+     "#2c4f9e",
+     "#f4f4f4"
+    ],
+    "tables": true
    }
   },
   {
-   "type": "table-set",
+   "type": "mass",
+   "id": "dinghy-14",
+   "footprint": {
+    "rect": [
+     3.8,
+     1.5
+    ]
+   },
    "at": [
-    2,
-    -8,
-    0.4
+    -14,
+    -17
    ],
-   "params": {
-    "chairs": 4,
-    "table_colour": "#2c4f9e"
+   "rotDeg": 10,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e4e7e8",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dinghy-9",
+   "footprint": {
+    "rect": [
+     3.8,
+     1.5
+    ]
+   },
+   "at": [
+    -9,
+    -19
+   ],
+   "rotDeg": -15,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e4e7e8",
+    "pitch": 20
    }
   },
   {
    "type": "sign-board",
    "at": [
-    2,
-    -3.2,
-    9.1
+    5,
+    -2.8,
+    9.4
    ],
    "params": {
-    "width": 5.5,
-    "height": 1.2,
+    "width": 4.6,
+    "height": 1.1,
     "bottom": 0,
     "colour": "#2f5e46",
     "frameColour": "#e8e2cf",
@@ -407,12 +541,12 @@
    "type": "fence-wall",
    "at": [
     20,
-    -14,
-    0
+    -9.5,
+    0.3
    ],
    "params": {
     "length": 10,
-    "height": 1.1,
+    "height": 0.9,
     "thickness": 0.5,
     "colour": "#8c8a82"
    }
@@ -442,6 +576,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Weatherboard texture reads as pale render; no lace valance, arched verandah bays, boats or false-front gable; footprint simplified from OSM."
+  "gaps": "Verandah is round-arched posts without lace valance detail; balcony lattice and false-front gable simplified; terrace annex is a plain glazed box."
  }
 }

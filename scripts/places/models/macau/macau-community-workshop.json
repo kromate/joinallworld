@@ -30,15 +30,15 @@
  "parts": [
   {
    "type": "mass",
-   "id": "main",
+   "id": "deck-block",
    "footprint": {
     "rect": [
-     112,
-     52
+     48,
+     50
     ]
    },
    "at": [
-    0,
+    24,
     0
    ],
    "height": 45.5,
@@ -58,19 +58,7 @@
       ],
       "faces": [
        "front",
-       "left"
-      ]
-     },
-     {
-      "type": "fins",
-      "width": 0.8,
-      "depth": 0.5,
-      "spacing": 2.4,
-      "colour": "#a2805d",
-      "margin": 3,
-      "faces": [
-       "front",
-       "left"
+       "right"
       ]
      }
     ]
@@ -82,15 +70,149 @@
    }
   },
   {
+   "type": "mass",
+   "id": "louvre-core",
+   "footprint": {
+    "rect": [
+     34,
+     50
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "height": 45.5,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.6,
+      "spacing": 2.0,
+      "colour": "#a2805d",
+      "margin": 2,
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     24,
+     44
+    ]
+   },
+   "at": [
+    60,
+    3
+   ],
+   "height": 30,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cdbfa8",
+       "#4b4540"
+      ],
+      "faces": [
+       "front",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-floor",
+   "footprint": {
+    "rect": [
+     44,
+     34
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "z0": 45.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-edge",
+   "at": [
+    -14,
+    -24.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.8
+    ],
+    "z0": 45.5,
+    "height": 1.4,
+    "colour": "#4f8a5a",
+    "topColour": "#4f8a5a"
+   }
+  },
+  {
    "type": "prism",
    "id": "core-pier",
    "at": [
-    -30,
+    0,
     -26
    ],
    "params": {
     "rect": [
-     10,
+     6,
      2
     ],
     "height": 45.5,
@@ -100,28 +222,10 @@
   },
   {
    "type": "prism",
-   "id": "roof-glass",
-   "at": [
-    -30,
-    0
-   ],
-   "params": {
-    "rect": [
-     50,
-     16
-    ],
-    "z0": 45.5,
-    "height": 4,
-    "colour": "#7fa0a8",
-    "topColour": "#6f8f98"
-   }
-  },
-  {
-   "type": "prism",
    "id": "sign-board",
    "at": [
-    -15,
-    -26.4
+    20,
+    -25.4
    ],
    "params": {
     "rect": [
@@ -138,37 +242,55 @@
    "type": "prism",
    "id": "bridge",
    "at": [
-    -70,
+    -46,
     -24
    ],
    "params": {
     "rect": [
-     30,
+     22,
      4
     ],
     "z0": 5,
-    "height": 0.7,
-    "colour": "#5b8a6a",
-    "topColour": "#5b8a6a"
+    "height": 0.9,
+    "colour": "#7a9a86",
+    "topColour": "#8aaa96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-rail",
+   "at": [
+    -46,
+    -26
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.2
+    ],
+    "z0": 5.9,
+    "height": 1.1,
+    "colour": "#e8e8e4",
+    "topColour": "#e8e8e4"
    }
   },
   {
    "type": "array",
    "id": "bridge-posts",
    "at": [
-    -70,
+    -46,
     -24,
     0
    ],
    "params": {
     "mode": "line",
     "start": [
-     -12,
+     -9,
      0,
      0
     ],
     "end": [
-     12,
+     9,
      0,
      0
     ],
@@ -204,8 +326,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Fins cover the whole front instead of alternating with open dark deck slabs; no stepped upper floors, green roof edge or real bridge; height from OSM tag."
+  "gaps": "Open deck bays are alternating dark bands rather than recessed slabs with columns; no real stepped plan beyond a setback top floor and low wing; bridge simplified; sign board blank."
  }
 }

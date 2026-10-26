@@ -36,61 +36,33 @@
  ],
  "camera": {
   "yawDeg": -50,
-  "pitchDeg": 5,
+  "pitchDeg": 8,
   "fovDeg": 55,
   "aspect": 1.33,
-  "fit": "building",
-  "margin": 0.15
+  "fit": "all",
+  "margin": 0.08
  },
  "parts": [
-  {
-   "type": "mass",
-   "id": "pavilion",
-   "footprint": {
-    "osm": true,
-    "scale": 1.0
-   },
-   "at": [
-    20,
-    0
-   ],
-   "z0": 0.4,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8dcc4",
-    "windows": "none",
-    "plinth": 0.3
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#b8432e",
-    "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 2.2
-   }
-  },
   {
    "type": "mass",
    "id": "navy-building",
    "footprint": {
     "rect": [
-     70,
-     16
+     60,
+     14
     ]
    },
    "at": [
-    30,
-    54
+    20,
+    50
    ],
    "height": 14,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6dccb",
+    "colour": "#e3d6b8",
     "windows": "punched",
-    "windowRatio": 0.25,
+    "windowRatio": 0.3,
     "bay": 6,
     "bands": "#cfc4ae",
     "faces": {
@@ -101,7 +73,7 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#8d8f92",
+    "colour": "#7d8083",
     "material": "metal-sheet",
     "pitch": 12,
     "overhang": 1
@@ -110,27 +82,27 @@
   {
    "type": "statue-on-stepped-plinth",
    "at": [
-    -8,
-    22,
+    -4,
+    34,
     0
    ],
    "params": {
-    "height": 6,
-    "plinthHeight": 9,
+    "height": 7,
+    "plinthHeight": 12,
     "colour": "#7a6a3a",
-    "plinthColour": "#6b3a33"
+    "plinthColour": "#6b2a26"
    }
   },
   {
    "type": "pinnacle",
    "at": [
     -12,
-    22,
+    34,
     0
    ],
    "params": {
     "radius": 0.8,
-    "height": 4,
+    "height": 6,
     "colour": "#4d5a45"
    }
   },
@@ -138,32 +110,20 @@
    "type": "pinnacle",
    "at": [
     -4,
-    22,
+    34,
     0
    ],
    "params": {
     "radius": 0.8,
-    "height": 4,
+    "height": 6,
     "colour": "#4d5a45"
-   }
-  },
-  {
-   "type": "pier-boardwalk",
-   "at": [
-    -32,
-    -30,
-    0
-   ],
-   "params": {
-    "length": 14,
-    "width": 4
    }
   },
   {
    "type": "fence-wall",
    "at": [
     -20,
-    -40,
+    -34,
     0
    ],
    "params": {
@@ -177,8 +137,8 @@
   {
    "type": "core/tree",
    "at": [
-    -20,
-    -6,
+    -4,
+    -8,
     0
    ],
    "params": {
@@ -188,21 +148,220 @@
     "spread": 6,
     "line": 40
    }
+  },
+  {
+   "type": "core/prism",
+   "id": "quay",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     70
+    ],
+    "height": 0.3,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "water",
+   "at": [
+    -38,
+    0,
+    -0.1
+   ],
+   "params": {
+    "rect": [
+     40,
+     90
+    ],
+    "height": 0.1,
+    "colour": "#5d8fa8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "granite-step-1",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     48
+    ],
+    "height": 0.5,
+    "colour": "#7a6e66",
+    "topColour": "#7a6e66"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "granite-step-2",
+   "at": [
+    20,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     56,
+     44
+    ],
+    "height": 0.5,
+    "colour": "#8a7e76",
+    "topColour": "#8a7e76"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "deck",
+   "at": [
+    20,
+    0,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     52,
+     40
+    ],
+    "height": 0.2,
+    "colour": "#d8d0bc",
+    "topColour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    20,
+    0,
+    1.2
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 4,
+    "dx": 10.5,
+    "dy": 10,
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.3
+      ],
+      "height": 5,
+      "colour": "#e8dcc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "roof-1",
+   "at": [
+    20,
+    0,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     54,
+     42
+    ],
+    "height": 2.0,
+    "colour": "#b8432e",
+    "topScale": 0.9,
+    "topColour": "#5a1f16"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "roof-2",
+   "at": [
+    20,
+    0,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     40,
+     32
+    ],
+    "height": 2.4,
+    "colour": "#b8432e",
+    "topScale": 0.85,
+    "topColour": "#5a1f16"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "roof-3",
+   "at": [
+    20,
+    0,
+    11.0
+   ],
+   "params": {
+    "rect": [
+     26,
+     20
+    ],
+    "height": 2.6,
+    "colour": "#b8432e",
+    "topScale": 0.25,
+    "topColour": "#4a1a12"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -24,
+     0
+    ],
+    "end": [
+     -6,
+     24,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 5
+     }
+    }
+   }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "water",
+  "forecourt": "plaza",
   "trees": 6,
   "extent": [
-   130,
-   110
+   100,
+   100
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "pavilion is the real OSM outline with one hip roof rather than the photo's stepped multi-roof eaves and columns; statue and pavilion positions estimated; far white building is a simple block"
+  "gaps": "Pavilion roofs are stacked tapered prisms without separate eaves or dark ridges; plain columns; paving is flat; statue is a stock figure on a dark red block; far block simplified; river is a flat plane."
  },
  "schema": "allworld-place-model",
  "version": 2,

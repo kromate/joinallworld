@@ -46,7 +46,7 @@
     "material": "painted-render",
     "colour": "#e5c97c",
     "windows": "punched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.3,
     "bay": 2.6,
     "plinth": 0.6,
     "trimColour": "#f3ead0",
@@ -56,7 +56,7 @@
       "colours": [
        "#f3ead0"
       ],
-      "height": 0.35,
+      "height": 0.5,
       "at": 0.12,
       "proud": 0.1,
       "floors": [
@@ -75,7 +75,7 @@
     "form": "hip",
     "colour": "#5b4437",
     "material": "clay-tile",
-    "pitch": 26,
+    "pitch": 32,
     "overhang": 0.8
    }
   },
@@ -84,13 +84,13 @@
    "id": "gable",
    "footprint": {
     "rect": [
-     7,
-     8
+     8,
+     9
     ]
    },
    "at": [
     3,
-    5
+    4.5
    ],
    "height": 3.0,
    "storeys": 1,
@@ -103,7 +103,7 @@
     "form": "gable",
     "colour": "#5b4437",
     "material": "clay-tile",
-    "pitch": 34,
+    "pitch": 30,
     "overhang": 0.9,
     "axis": "x"
    },
@@ -132,28 +132,10 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#8a4a2b",
-    "material": "clay-tile",
-    "pitch": 8,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "core/colonnade",
-   "at": [
-    -3,
-    -10.6,
-    0
-   ],
-   "params": {
-    "length": 8,
-    "count": 4,
-    "height": 3.2,
-    "radius": 0.3,
-    "kind": "square",
-    "beamHeight": 0.5,
-    "colour": "#f3ead0",
-    "roofColour": "#8a4a2b"
+    "colour": "#d9d3c6",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 0.7
    }
   },
   {
@@ -166,10 +148,10 @@
    "params": {
     "rect": [
      10,
-     0.15
+     0.2
     ],
-    "z0": 2.5,
-    "height": 0.7,
+    "z0": 2.45,
+    "height": 0.75,
     "colour": "#c26a2a",
     "topScale": 1.0
    },
@@ -189,7 +171,7 @@
     "width": 4.2,
     "height": 1.5,
     "bottom": 3.3,
-    "colour": "#b4672f",
+    "colour": "#a8642e",
     "frameColour": "#6b3f2a",
     "posts": false
    }
@@ -197,13 +179,49 @@
   {
    "type": "car",
    "at": [
-    10,
-    -16,
+    6,
+    -17,
     0
    ],
    "params": {
     "colour": "#f2f0ea",
     "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post",
+   "at": [
+    -8.2,
+    -10.6
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.1,
+    "colour": "#5a3a28",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post2",
+   "at": [
+    2.2,
+    -10.6
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.1,
+    "colour": "#f3ead0",
+    "topScale": 1.0
    }
   }
  ],
@@ -212,12 +230,12 @@
   "forecourt": "garden",
   "trees": [
    {
-    "kind": "palm",
+    "kind": "none",
     "at": [
-     9,
-     -6
+     12,
+     -3
     ],
-    "height": 4
+    "height": 1
    }
   ],
   "extent": [
@@ -226,8 +244,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Porch roof too heavy and tile-coloured vs the orange fretwork valance, no timber brackets under the eaves, car and planting simplified"
+  "gaps": "Porch roof now light but plain; no timber brackets under eaves or gable truss detail; car is outside the framed view; planting omitted"
  }
 }

@@ -37,8 +37,8 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     9,
-     9
+     12,
+     12
     ]
    },
    "at": [
@@ -49,7 +49,7 @@
    "storeys": 6,
    "wall": {
     "material": "concrete",
-    "colour": "#d3cdc2",
+    "colour": "#e6e1d6",
     "windows": "none",
     "plinth": 0.3,
     "faces": {
@@ -67,11 +67,11 @@
    "id": "tower-shaft-glass",
    "at": [
     -72,
-    -8.6
+    -10.1
    ],
    "params": {
     "rect": [
-     1.6,
+     2.4,
      0.4
     ],
     "z0": 1,
@@ -88,14 +88,14 @@
    ],
    "params": {
     "rect": [
-     11,
-     11
+     8,
+     8
     ],
     "z0": 27,
-    "height": 3.6,
-    "topScale": 1.0,
-    "colour": "#2a2f34",
-    "topColour": "#6c7075"
+    "height": 3.0,
+    "topScale": 1.25,
+    "colour": "#3b4248",
+    "topColour": "#e8e6e0"
    }
   },
   {
@@ -115,7 +115,7 @@
    "storeys": 2,
    "wall": {
     "material": "brick",
-    "colour": "#d1a095",
+    "colour": "#d6a99c",
     "windows": "punched",
     "windowRatio": 0.2,
     "bay": 4.5,
@@ -146,11 +146,11 @@
     -16,
     6
    ],
-   "height": 14,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "brick",
-    "colour": "#c99488",
+    "colour": "#d6a99c",
     "windows": "punched",
     "windowRatio": 0.2,
     "bay": 5,
@@ -176,14 +176,14 @@
    ],
    "params": {
     "rect": [
-     7,
-     7
+     8,
+     8
     ],
-    "z0": 14,
-    "height": 3,
-    "topScale": 1.1,
-    "colour": "#e8e8e4",
-    "topColour": "#8c8f93"
+    "z0": 17,
+    "height": 3.2,
+    "topScale": 1.25,
+    "colour": "#2f353b",
+    "topColour": "#e8e8e4"
    }
   },
   {
@@ -205,7 +205,7 @@
     "material": "render",
     "colour": "#eceae4",
     "windows": "ribbon",
-    "windowRatio": 0.5,
+    "windowRatio": 0.6,
     "faces": {
      "left": "none",
      "right": "none"
@@ -232,11 +232,11 @@
     66,
     2
    ],
-   "height": 12,
+   "height": 15,
    "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#2a3035",
+    "colour": "#22272b",
     "windows": "curtain",
     "windowRatio": 0.85,
     "bay": 5,
@@ -263,12 +263,12 @@
    "params": {
     "form": "flat",
     "width": 140,
-    "depth": 8,
+    "depth": 9,
     "height": 5.2,
-    "thickness": 0.5,
+    "thickness": 0.9,
     "columns": 0,
-    "colour": "#8c8f93",
-    "edgeColour": "#6f7378"
+    "colour": "#eceae4",
+    "edgeColour": "#f4f2ee"
    }
   },
   {
@@ -295,7 +295,7 @@
      80,
      -19.5
     ],
-    "count": 10
+    "count": 4
    }
   },
   {
@@ -351,9 +351,9 @@
   }
  ],
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Only the airside front; roof-top plant, apron vehicles and the dark upper glass volume are simplified; brick tone slightly more saturated than the pinkish original."
+  "gaps": "Only the airside front; tower cab is a plain dark ring with white lip; ribbon-window detail and apron vehicles simplified."
  },
  "site": {
   "ground": "asphalt",

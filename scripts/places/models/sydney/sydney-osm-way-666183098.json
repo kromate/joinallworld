@@ -53,10 +53,10 @@
     "rise": 0.55,
     "run": 0.8,
     "firstHeight": 0.5,
-    "seatColour": "#b3d3ea",
+    "seatColour": "#a9c0d4",
     "seatColours": [
-     "#b3d3ea",
-     "#c6deef"
+     "#a9c0d4",
+     "#bdd0e0"
     ],
     "blocks": 6,
     "concreteColour": "#c9c2ae",
@@ -120,10 +120,10 @@
     "rise": 0.55,
     "run": 0.8,
     "firstHeight": 0.3,
-    "seatColour": "#b3d3ea",
+    "seatColour": "#a9c0d4",
     "seatColours": [
-     "#b3d3ea",
-     "#c6deef"
+     "#a9c0d4",
+     "#bdd0e0"
     ],
     "blocks": 6,
     "concreteColour": "#c9c2ae",
@@ -143,11 +143,11 @@
     0,
     40
    ],
-   "height": 14.5,
+   "height": 6.8,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#7a5340",
+    "colour": "#6e4a38",
     "windows": "none",
     "faces": {
      "front": "plain",
@@ -226,18 +226,18 @@
    "footprint": {
     "rect": [
      5,
-     8
+     9
     ]
    },
    "at": [
     -32.5,
     36
    ],
-   "height": 25,
+   "height": 21,
    "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#a99f8a",
+    "colour": "#b9a98a",
     "windows": "none"
    },
    "roof": {
@@ -251,18 +251,18 @@
    "footprint": {
     "rect": [
      5,
-     8
+     9
     ]
    },
    "at": [
     32.5,
     36
    ],
-   "height": 25,
+   "height": 21,
    "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#a99f8a",
+    "colour": "#b9a98a",
     "windows": "none"
    },
    "roof": {
@@ -342,11 +342,11 @@
    ],
    "params": {
     "rect": [
-     8,
-     6
+     10,
+     7
     ],
-    "height": 3,
-    "colour": "#d9d2c0",
+    "height": 4,
+    "colour": "#cfc7b0",
     "windows": "none"
    }
   },
@@ -417,6 +417,112 @@
      }
     }
    }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flight--1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -29.6,
+      31.6,
+      1.5
+     ],
+     [
+      -29.6,
+      31.6,
+      1.5
+     ],
+     [
+      -27.2,
+      31.6,
+      10
+     ]
+    ],
+    "colour": "#8a8272",
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flight-1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      29.6,
+      31.6,
+      1.5
+     ],
+     [
+      29.6,
+      31.6,
+      1.5
+     ],
+     [
+      27.2,
+      31.6,
+      10
+     ]
+    ],
+    "colour": "#8a8272",
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31,
+     34.6,
+     20.7
+    ],
+    "end": [
+     31,
+     34.6,
+     20.7
+    ],
+    "count": 24,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 0.6,
+      "colour": "#2b2b2b",
+      "windows": "none"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
   }
  ],
  "site": {
@@ -433,8 +539,8 @@
  "city": "sydney",
  "venueId": "sydney-osm-way-666183098",
  "review": {
-  "rounds": 2,
-  "match": "rough",
-  "gaps": "upper tier still reads as dark void under a too-tall brick back wall, stair towers are plain grey blocks without external flights, seats read grey not pale blue, roof-end plant box small"
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Seats still read grey-white, no diagonal stair aisles on the tiers; external stair flights on the towers barely visible; brick wall under the roof reads very dark; upper tier is a plain ramp."
  }
 }

@@ -51,19 +51,19 @@
    "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#a9c4c4",
+    "colour": "#5f7478",
     "windows": "curtain",
     "windowRatio": 0.92,
     "plinth": 0.4,
     "cornice": true,
     "trimColour": "#a99b8c",
-    "glassColour": "#8fb4b8"
+    "glassColour": "#6f9096"
    },
    "roof": {
     "form": "flat",
-    "colour": "#a8a39c",
+    "colour": "#4a5358",
     "material": "metal-sheet",
-    "overhang": 2.5,
+    "overhang": 1.5,
     "parapet": 0.6
    }
   },
@@ -72,7 +72,7 @@
    "at": [
     0,
     -60,
-    0
+    0.5
    ],
    "rotDeg": 0,
    "params": {
@@ -94,35 +94,36 @@
     52,
     -18
    ],
-   "height": 10,
-   "storeys": 3,
+   "height": 9,
+   "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3f4a50",
+    "colour": "#5a666b",
     "windows": "curtain",
-    "windowRatio": 0.9,
-    "glassColour": "#8fb4b8",
-    "trimColour": "#2f3a40"
+    "windowRatio": 0.92,
+    "glassColour": "#7ea0a6",
+    "trimColour": "#3a454a"
    },
    "roof": {
-    "form": "shed",
+    "form": "flat",
     "colour": "#4a5358",
-    "overhang": 0.3
+    "overhang": 0.5,
+    "parapet": 0.4
    }
   },
   {
    "type": "core/sign-board",
    "at": [
     52,
-    -25.4,
-    4
+    -25.6,
+    5.5
    ],
    "params": {
-    "width": 9,
-    "height": 2.6,
+    "width": 11,
+    "height": 2.2,
     "bottom": 0,
-    "colour": "#f2f2f0",
-    "frameColour": "#f2f2f0",
+    "colour": "#eeeeea",
+    "frameColour": "#dcdcd6",
     "posts": false
    }
   },
@@ -131,16 +132,16 @@
    "id": "pier-l",
    "footprint": {
     "rect": [
-     9,
+     10,
      9
     ]
    },
    "at": [
     -30,
-    -24
+    -26
    ],
    "rotDeg": 3,
-   "height": 22,
+   "height": 24,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -150,9 +151,9 @@
     "pattern": [
      {
       "type": "fins",
-      "spacing": 0.7,
-      "depth": 0.3,
-      "width": 0.3,
+      "spacing": 0.9,
+      "depth": 0.35,
+      "width": 0.45,
       "colour": "#9a8e7a"
      }
     ]
@@ -168,16 +169,16 @@
    "id": "pier-r",
    "footprint": {
     "rect": [
-     9,
+     10,
      9
     ]
    },
    "at": [
     30,
-    -24
+    -26
    ],
    "rotDeg": -3,
-   "height": 22,
+   "height": 24,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -187,9 +188,9 @@
     "pattern": [
      {
       "type": "fins",
-      "spacing": 0.7,
-      "depth": 0.3,
-      "width": 0.3,
+      "spacing": 0.9,
+      "depth": 0.35,
+      "width": 0.45,
       "colour": "#9a8e7a"
      }
     ]
@@ -208,13 +209,13 @@
     0
    ],
    "params": {
-    "colour": "#a8764a",
+    "colour": "#8a5a34",
     "topColour": "#b98556",
     "capBottom": true,
     "capTop": true,
     "sections": [
      {
-      "z": 15.5,
+      "z": 18,
       "rect": [
        66,
        12
@@ -222,15 +223,15 @@
       "cy": -6
      },
      {
-      "z": 18,
+      "z": 19.4,
       "rect": [
        70,
-       40
+       42
       ],
-      "cy": -20
+      "cy": -21
      },
      {
-      "z": 22,
+      "z": 21.4,
       "rect": [
        70,
        46
@@ -245,31 +246,56 @@
    "id": "fascia",
    "footprint": {
     "rect": [
-     70,
-     1.2
+     70.5,
+     1.6
     ]
    },
    "at": [
     0,
-    -45
+    -45.6
    ],
-   "height": 4,
-   "z0": 18,
+   "height": 3.2,
+   "z0": 19.2,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#c08a58",
+    "colour": "#a9703f",
     "windows": "none",
     "plinth": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#b98556"
+    "colour": "#c08a58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "rect": [
+     110,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -56
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9892",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9892"
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "road",
   "forecourtDepth": 22,
   "trees": [
@@ -294,8 +320,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Canopy now a thick bronze wedge with fascia, ribbed piers widened; wing is a sloped dark-framed box without diagonal mullions; no ALA lettering; view foreshortening of photo not reproduced"
+  "gaps": "Canopy thinner bronze with fascia, flat-roofed wing, ALA board blank, apron added; no diagonal mullions, wing glazing still dark, low aerial view not photo close-up"
  }
 }

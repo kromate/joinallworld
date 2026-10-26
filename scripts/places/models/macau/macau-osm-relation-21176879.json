@@ -64,28 +64,32 @@
     "capTop": true,
     "sections": [
      {
-      "z": 0.0,
-      "circle": 5.843
+      "z": 0,
+      "circle": 9.5
      },
      {
-      "z": 5.74,
-      "circle": 3.936
+      "z": 5,
+      "circle": 7.0
      },
      {
-      "z": 16.4,
-      "circle": 2.891
+      "z": 14,
+      "circle": 5.0
+     },
+     {
+      "z": 30,
+      "circle": 4.4
      },
      {
       "z": 49.2,
-      "circle": 2.522
+      "circle": 4.2
      },
      {
       "z": 77.08,
-      "circle": 2.398
+      "circle": 4.0
      },
      {
-      "z": 82.0,
-      "circle": 2.706
+      "z": 82,
+      "circle": 4.6
      }
     ],
     "round": 10,
@@ -102,10 +106,10 @@
      0,
      0
     ],
-    "radius": 2.255,
+    "radius": 3.8,
     "startDeg": 0,
-    "endDeg": 300,
-    "count": 6,
+    "endDeg": 315,
+    "count": 8,
     "facing": "outward",
     "of": {
      "type": "loft",
@@ -113,28 +117,28 @@
       "colour": "#a7a69f",
       "sections": [
        {
-        "z": 0.0,
+        "z": 0,
         "rect": [
-         0.902,
-         0.984
+         2.4,
+         2.6
         ],
-        "cy": 1.558
+        "cy": 3.0
        },
        {
-        "z": 6.56,
+        "z": 10,
         "rect": [
-         0.574,
-         0.656
+         1.4,
+         1.6
         ],
-        "cy": -0.246
+        "cy": -0.2
        },
        {
-        "z": 13.94,
+        "z": 22,
         "rect": [
-         0.41,
-         0.41
+         0.8,
+         0.8
         ],
-        "cy": -0.574
+        "cy": -1.4
        }
       ]
      }
@@ -158,60 +162,66 @@
     "colour": "#bfc3c3",
     "profile": [
      [
-      1.804,
-      0.0
+      3.2,
+      0
      ],
      [
-      3.28,
-      1.23,
+      6.5,
+      2,
       "#b9bcbc"
      ],
      [
-      4.51,
-      3.28
+      9,
+      4.5
      ],
      [
-      5.125,
-      5.33,
+      10.5,
+      6.5,
       "#9fa4a6"
      ],
      [
-      5.125,
-      6.56,
-      "#4a6b82"
+      10.5,
+      8.2,
+      "#3f5a70"
      ],
      [
-      5.535,
-      9.43,
-      "#4a6b82"
+      11.2,
+      11.2,
+      "#3f5a70"
      ],
      [
-      6.765,
-      10.045,
+      14.8,
+      12.0,
       "#d9dcdc"
      ],
      [
-      6.765,
-      10.66,
+      14.8,
+      13.4,
       "#d9dcdc"
      ],
      [
-      4.92,
-      11.07,
+      11,
+      13.9,
       "#c6c9c9"
      ],
      [
-      4.1,
-      11.89
-     ],
-     [
-      2.87,
-      12.71,
+      8.5,
+      14.6,
       "#8d9396"
      ],
      [
-      0.902,
-      13.53
+      6,
+      15.2,
+      "#d9dcdc"
+     ],
+     [
+      5.5,
+      16.4,
+      "#c6c9c9"
+     ],
+     [
+      1.8,
+      17.2
      ]
     ]
    }
@@ -222,46 +232,42 @@
    "at": [
     0,
     0,
-    82.0
+    99.0
    ],
    "params": {
     "segments": 6,
     "colour": "#e7e5df",
     "profile": [
      [
-      0.984,
-      0.0
+      1.1,
+      0
      ],
      [
-      0.984,
-      13.53
+      1.0,
+      10
      ],
      [
-      0.779,
-      17.63
-     ],
-     [
-      0.533,
-      20.91,
+      0.8,
+      16,
       "#c9462f"
      ],
      [
-      0.41,
-      29.93,
+      0.6,
+      26,
       "#e7e5df"
      ],
      [
-      0.246,
-      42.23,
+      0.4,
+      36,
       "#c9462f"
      ],
      [
-      0.123,
-      50.43
+      0.15,
+      40
      ],
      [
-      0.021,
-      56.58
+      0.02,
+      40.5
      ]
     ]
    }
@@ -283,6 +289,101 @@
     "height": 4,
     "colour": "#aeb3b6"
    }
+  },
+  {
+   "type": "array",
+   "id": "podium-wings",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 15,
+    "startDeg": 30,
+    "endDeg": 330,
+    "count": 3,
+    "facing": "outward",
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#aeb3b6",
+      "profile": [
+       [
+        0,
+        0
+       ],
+       [
+        7,
+        0
+       ],
+       [
+        7,
+        3,
+        "#9da3a6"
+       ],
+       [
+        5.5,
+        5.5
+       ],
+       [
+        0,
+        6.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "buttress-fins",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 7.5,
+    "startDeg": 22,
+    "endDeg": 322,
+    "count": 6,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#a7a69f",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.2,
+         6
+        ]
+       },
+       {
+        "z": 25,
+        "rect": [
+         0.6,
+         1.2
+        ],
+        "cy": -2.5
+       }
+      ]
+     }
+    }
+   }
   }
  ],
  "site": {
@@ -299,8 +400,8 @@
  "city": "macau",
  "venueId": "macau-osm-relation-21176879",
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "scaled to 41% (height 138 m, model limit 140 m); base legs, pod ring balconies and lattice mast simplified; podium is a plain drum"
+  "gaps": "thicker shaft, flared base with buttress fins, much larger layered pod and silver podium wings added; mast is solid not lattice and slightly long, ribbed pod rim simplified; scaled to 41%"
  }
 }

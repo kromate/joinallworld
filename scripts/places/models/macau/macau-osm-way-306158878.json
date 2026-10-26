@@ -24,7 +24,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo shows weathered brick piers with white lintel patches and a low brick stall wall; model has regular window bays, striped awnings only, and street furniture is missing"
+  "gaps": "round1 fixes applied (flat roof, dark industrial window grids, weathered brick, stall wall with striped awnings, rooftop plant); street furniture and neighbouring towers missing"
  },
  "parts": [
   {
@@ -44,21 +44,22 @@
    "height": 14,
    "wall": {
     "material": "brick",
-    "colour": "#a8452f",
+    "colour": "#8a4a3a",
     "windows": "punched",
-    "windowRatio": 0.5,
-    "bay": 8,
+    "windowRatio": 0.78,
+    "bay": 6,
     "bands": {
-     "colour": "#d9d3c3",
-     "height": 0.7
+     "colour": "#d4d0c4",
+     "height": 0.9
     },
-    "cornice": true,
-    "plinth": 1.0
+    "cornice": false,
+    "plinth": 1.0,
+    "glassColour": "#2a3238"
    },
    "roof": {
     "form": "flat",
-    "colour": "#8a8f94",
-    "parapet": 0.6
+    "colour": "#7c8084",
+    "parapet": 1.0
    },
    "storeys": 3
   },
@@ -77,17 +78,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18.5,
+   "height": 15.4,
    "wall": {
     "material": "brick",
-    "colour": "#a8452f",
+    "colour": "#8a4a3a",
     "windows": "none",
     "bands": "#d9d3c3"
    },
    "roof": {
     "form": "flat",
     "colour": "#b9b2a2",
-    "parapet": 0.5,
+    "parapet": 0.2,
     "overhang": 0.3
    }
   },
@@ -106,17 +107,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18.5,
+   "height": 15.4,
    "wall": {
     "material": "brick",
-    "colour": "#a8452f",
+    "colour": "#8a4a3a",
     "windows": "none",
     "bands": "#d9d3c3"
    },
    "roof": {
     "form": "flat",
     "colour": "#b9b2a2",
-    "parapet": 0.5,
+    "parapet": 0.2,
     "overhang": 0.3
    }
   },
@@ -135,17 +136,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18.5,
+   "height": 15.4,
    "wall": {
     "material": "brick",
-    "colour": "#a8452f",
+    "colour": "#8a4a3a",
     "windows": "none",
     "bands": "#d9d3c3"
    },
    "roof": {
     "form": "flat",
     "colour": "#b9b2a2",
-    "parapet": 0.5,
+    "parapet": 0.2,
     "overhang": 0.3
    }
   },
@@ -164,107 +165,169 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18.5,
+   "height": 15.4,
    "wall": {
     "material": "brick",
-    "colour": "#a8452f",
+    "colour": "#8a4a3a",
     "windows": "none",
     "bands": "#d9d3c3"
    },
    "roof": {
     "form": "flat",
     "colour": "#b9b2a2",
-    "parapet": 0.5,
+    "parapet": 0.2,
     "overhang": 0.3
    }
   },
   {
    "type": "mass",
-   "id": "clocktower",
+   "id": "plant",
    "footprint": {
     "rect": [
-     6,
-     6
+     9,
+     5
     ]
    },
    "at": [
-    0,
-    -11.5
+    8,
+    -3
    ],
    "rotDeg": 0,
-   "z0": 0,
-   "height": 22,
+   "z0": 14,
+   "height": 2.4,
    "wall": {
-    "material": "brick",
-    "colour": "#a8452f",
-    "windows": "none",
-    "bands": "#d9d3c3",
-    "cornice": true
+    "material": "metal-cladding",
+    "colour": "#8d9296",
+    "windows": "none"
    },
    "roof": {
-    "form": "hip",
-    "colour": "#7d3524",
-    "rise": 4,
-    "overhang": 0.5
+    "form": "flat",
+    "colour": "#7c8084"
    }
   },
   {
-   "type": "steps",
+   "type": "mass",
+   "id": "plant2",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
    "at": [
-    0,
-    -17,
-    0
+    -10,
+    4
    ],
-   "params": {
-    "width": 10,
-    "depth": 3,
-    "height": 1.2
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 1.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8084"
    }
   },
   {
-   "type": "awning",
+   "type": "fence-wall",
    "at": [
-    -18,
-    -16.5,
+    -26,
+    -19,
     0
    ],
    "params": {
-    "width": 10,
-    "depth": 2.4,
+    "length": 52,
+    "height": 1.8,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#9a5340"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -22,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.8,
+    "height": 2.8,
     "colours": [
-     "#2f7a5a",
+     "#2f5fa8",
      "#f2f2ee"
     ]
    }
   },
   {
-   "type": "awning",
+   "type": "market-open/awning",
    "at": [
-    -6,
-    -16.5,
+    -10,
+    -21.5,
     0
    ],
    "params": {
-    "width": 10,
-    "depth": 2.4,
+    "width": 8,
+    "depth": 2.8,
+    "height": 2.8,
     "colours": [
-     "#2f7a5a",
+     "#c33a34",
      "#f2f2ee"
     ]
    }
   },
   {
-   "type": "awning",
+   "type": "market-open/awning",
    "at": [
-    6,
-    -16.5,
+    2,
+    -21.5,
     0
    ],
    "params": {
-    "width": 10,
-    "depth": 2.4,
+    "width": 8,
+    "depth": 2.8,
+    "height": 2.8,
     "colours": [
-     "#2f7a5a",
+     "#2f5fa8",
+     "#c33a34"
+    ]
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    14,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.8,
+    "height": 2.8,
+    "colours": [
+     "#2f5fa8",
+     "#f2f2ee"
+    ]
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    24,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.8,
+    "height": 2.8,
+    "colours": [
+     "#c33a34",
      "#f2f2ee"
     ]
    }
@@ -272,14 +335,23 @@
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "road",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     40,
-     -28
-    ]
+     34,
+     -26
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -26
+    ],
+    "height": 8
    }
   ],
   "extent": [

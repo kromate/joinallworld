@@ -38,22 +38,22 @@
     0.05
    ],
    "params": {
-    "width": 42,
+    "width": 26,
     "depth": 80,
-    "colour": "#2f4a46",
+    "colour": "#26403c",
     "bank": false
    }
   },
   {
    "type": "prism",
    "at": [
-    -22.5,
+    -14.3,
     40,
     0
    ],
    "params": {
     "rect": [
-     2.6,
+     3.4,
      80
     ],
     "height": 0.8,
@@ -64,13 +64,13 @@
   {
    "type": "prism",
    "at": [
-    22.5,
+    14.3,
     40,
     0
    ],
    "params": {
     "rect": [
-     2.6,
+     3.4,
      80
     ],
     "height": 0.8,
@@ -81,14 +81,14 @@
   {
    "type": "prism",
    "at": [
-    -38,
-    40,
+    -45,
+    45,
     0
    ],
    "params": {
     "rect": [
-     22,
-     80
+     56,
+     110
     ],
     "height": 0.15,
     "colour": "#7f9a5a"
@@ -97,7 +97,7 @@
   {
    "type": "prism",
    "at": [
-    -31,
+    -24,
     40,
     0.15
    ],
@@ -113,14 +113,14 @@
   {
    "type": "prism",
    "at": [
-    40,
-    40,
+    45,
+    45,
     0
    ],
    "params": {
     "rect": [
-     24,
-     80
+     56,
+     110
     ],
     "height": 0.15,
     "colour": "#6f8f52"
@@ -129,7 +129,7 @@
   {
    "type": "prism",
    "at": [
-    30,
+    24,
     40,
     0.15
    ],
@@ -282,16 +282,16 @@
    "type": "rock-hill",
    "at": [
     -10,
-    130,
+    105,
     0
    ],
    "params": {
-    "width": 150,
+    "width": 135,
     "depth": 50,
-    "height": 30,
+    "height": 16,
     "seed": 3,
     "stairs": false,
-    "rock_colour": "#3f5a45",
+    "rock_colour": "#6f8aa0",
     "boulders": 0
    }
   },
@@ -299,18 +299,22 @@
    "type": "rock-hill",
    "at": [
     35,
-    118,
+    115,
     0
    ],
    "params": {
-    "width": 110,
+    "width": 120,
     "depth": 40,
-    "height": 24,
+    "height": 12,
     "seed": 7,
     "stairs": false,
-    "rock_colour": "#4d6b58",
+    "rock_colour": "#7f98ab",
     "boulders": 0
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/tree",
@@ -354,44 +358,50 @@
   {
    "type": "core/tree",
    "at": [
-    -34,
+    -22,
     14,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 13,
+    "height": 17,
     "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 10,
     "spread": 10
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
    "at": [
-    -34,
-    56,
+    22,
+    52,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 12,
-    "count": 6,
-    "spread": 14
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    38,
-    60,
+    "height": 17,
+    "count": 10,
+    "spread": 10
+   },
+   "lod": [
     0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 12,
-    "count": 6,
-    "spread": 14
-   }
+   ]
   },
   {
    "type": "core/tree",
@@ -402,9 +412,25 @@
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 11,
-    "count": 8,
+    "height": 16,
+    "count": 12,
     "spread": 40
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 40,
+    "count": 1
    }
   }
  ],
@@ -413,13 +439,13 @@
   "forecourt": "none",
   "trees": 0,
   "extent": [
-   110,
-   100
+   160,
+   160
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "stylised low-poly trees and flat water; only a portion of the park; hills are smooth mounds not crisp ridgelines; palms smaller than the photo's giant right-foreground palm"
+  "gaps": "critic fixes applied (blue-grey ridge, narrow channel, giant palm, lawn to site extent); ridge sits at z~105-115 not 220 because of the 170 m size cap, camera framing is wide so the park reads small, stylised trees and flat water"
  }
 }

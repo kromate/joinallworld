@@ -38,12 +38,11 @@
    ],
    "params": {
     "rect": [
-     116,
-     92
+     70,
+     50
     ],
     "height": 0.1,
-    "colour": "#5e9a45",
-    "top": true
+    "colour": "#5e9a45"
    }
   },
   {
@@ -62,24 +61,23 @@
     "radiusY": 43,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 20,
+    "rows": 10,
     "rise": 0.6,
     "run": 0.8,
     "firstHeight": 3,
-    "facetDeg": 10,
+    "facetDeg": 60,
     "under": "open",
     "slab": 0.7,
-    "bay": 6,
+    "bay": 12,
     "seatColour": "#6d7f93",
     "seatColours": [
-     "#6d7f93",
-     "#c9ccd0"
+     "#6d7f93"
     ],
     "concreteColour": "#bdbab0",
     "underColour": "#a9a69c",
     "canopy": {
      "height": 3.5,
-     "depth": 14,
+     "depth": 10,
      "thickness": 1.2,
      "slopeDeg": -6,
      "colour": "#c8ccd0",
@@ -106,7 +104,7 @@
     "radiusY": 47,
     "startDeg": 0,
     "endDeg": 360,
-    "count": 24,
+    "count": 8,
     "facing": "outward",
     "lod2Step": 3,
     "of": [
@@ -126,7 +124,8 @@
        "colour": "#bdbab0"
       }
      }
-    ]
+    ],
+    "lod1Step": 4
    }
   },
   {
@@ -134,28 +133,6 @@
    "at": [
     -58,
     -45,
-    0
-   ],
-   "params": {
-    "height": 34
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    58,
-    -45,
-    0
-   ],
-   "params": {
-    "height": 34
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    -58,
-    45,
     0
    ],
    "params": {
@@ -183,8 +160,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Composed from the interior stand photo and OSM roof tags; NOT render-checked: the render queue servers A and B exited at 20:19 and nothing was processed afterwards (253 jobs waiting); photo comparison still to do"
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stand rows, canopy and facets simplified to fit LOD1 budget; roof ribs and tunnel not modelled; photo not available locally for side-by-side"
  }
 }

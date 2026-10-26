@@ -12,7 +12,7 @@
    "author": "Staatssekretariat fuer Jugend und Sport (Timor-Leste)",
    "view": "front",
    "file": "/tmp/places-evidence/dili/stad.jpg",
-   "used": "Ermera municipal stadium (Gleno is the Ermera capital; assumed to be this ground): one stand with a roofed centre block under a red arched roof on two steel columns, blue and orange seats in the centre, yellow raked terraces either side, rail fences, green pitch, hills behind"
+   "used": "Ermera municipal stadium (Gleno is the Ermera capital; the OSM venue is 'Estadium Cafe Gleno' at 125.434E -8.723 which is Gleno, Ermera, so the photo is the same ground): one stand with a roofed centre block under a red arched roof on two steel columns, blue and orange seats in the centre, yellow raked terraces either side, rail fences, green pitch, hills behind"
   },
   {
    "kind": "osm",
@@ -23,11 +23,12 @@
  "camera": {
   "yawDeg": 0,
   "pitchDeg": 3,
-  "fovDeg": 40,
+  "fovDeg": 30,
   "aspect": 1.333,
   "fit": "building",
-  "margin": 0.55,
-  "shiftY": 0
+  "margin": 0.05,
+  "shiftY": 0,
+  "shiftX": 0
  },
  "parts": [
   {
@@ -35,15 +36,15 @@
    "id": "pitch",
    "params": {
     "rect": [
-     108,
-     70
+     80,
+     34
     ],
     "height": 0.12,
     "colour": "#6f9a45"
    },
    "at": [
     0,
-    -10,
+    12,
     0
    ]
   },
@@ -52,15 +53,15 @@
    "id": "apron",
    "params": {
     "rect": [
-     124,
-     86
+     100,
+     64
     ],
     "height": 0.05,
     "colour": "#b7b1a2"
    },
    "at": [
     0,
-    -10,
+    14,
     -0.02
    ]
   },
@@ -157,24 +158,24 @@
    "id": "backhouse",
    "footprint": {
     "rect": [
-     28,
-     6
+     26,
+     3
     ]
    },
    "at": [
     0,
-    52
+    51.5
    ],
-   "height": 7.5,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#3a3f46",
+    "colour": "#9a9890",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#3a3f46"
+    "colour": "#8a8f94"
    }
   },
   {
@@ -233,7 +234,7 @@
     0
    ],
    "params": {
-    "colour": "#6b6f76",
+    "colour": "#b43a32",
     "sections": [
      {
       "z": 9.0,
@@ -286,70 +287,96 @@
    }
   },
   {
-   "type": "fence-wall",
+   "type": "prism",
+   "id": "glass-back",
    "at": [
-    -62,
-    -45,
+    0,
+    53.2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.3
+    ],
+    "height": 6.4,
+    "colour": "#2f3c4c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
     0
    ],
    "params": {
-    "length": 124,
-    "height": 1.1,
-    "thickness": 0.15,
-    "kind": "rail",
-    "colour": "#c9c6bd"
+    "mode": "line",
+    "start": [
+     -12,
+     52.8
+    ],
+    "end": [
+     12,
+     52.8
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.3
+      ],
+      "height": 6.4,
+      "colour": "#4a4f56"
+     }
+    }
    }
   },
   {
    "type": "fence-wall",
    "at": [
     -62,
-    26,
-    0
+    50.5,
+    4.5
    ],
    "params": {
-    "length": 124,
+    "length": 48,
     "height": 1.1,
-    "thickness": 0.15,
+    "thickness": 0.12,
     "kind": "rail",
-    "colour": "#c9c6bd"
+    "colour": "#e8e6e0"
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "fence-wall",
    "at": [
-    -60,
-    -44,
-    0
+    14,
+    50.5,
+    4.5
    ],
    "params": {
-    "height": 26,
-    "head_width": 4
+    "length": 48,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#e8e6e0"
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "fence-wall",
    "at": [
-    60,
-    -44,
-    0
-   ],
-   "params": {
-    "height": 26,
-    "head_width": 4
-   }
-  },
-  {
-   "type": "car",
-   "at": [
+    -48,
     -6,
-    36,
     0
    ],
    "params": {
-    "colour": "#e8e8e8",
-    "count": 2,
-    "spacing": 4.5
+    "length": 96,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#c9c6bd"
    }
   }
  ],
@@ -358,13 +385,13 @@
   "forecourt": "none",
   "trees": 0,
   "extent": [
-   150,
-   110
+   70,
+   30
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "Right ingredients (red arched roof, blue/orange centre seats, yellow terraces) but the comparison camera frames the whole site so the stand is tiny; no sheds, hills or fence detail; stadium assumed to be the Ermera ground photographed."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roofed centre block, blue/orange seats and yellow terraces match; wings too long and flat, roof arch low and glazing is a plain panel, no hills, cars or terrace stair rails; photo is the Gleno (Ermera) ground which the OSM venue 'Estadium Cafe Gleno' is."
  }
 }

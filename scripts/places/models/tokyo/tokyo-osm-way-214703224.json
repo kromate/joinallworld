@@ -36,7 +36,7 @@
    "storeys": 5,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#c9cccc",
+    "colour": "#d6cfc0",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0.3,
@@ -46,7 +46,7 @@
       "type": "louvres",
       "colour": "#e8eaea",
       "backColour": "#a3a7ab",
-      "pitch": 0.55,
+      "pitch": 0.9,
       "depth": 0.3,
       "band": 0.95,
       "at": 0.02,
@@ -60,6 +60,83 @@
       "faces": [
        "front",
        "left"
+      ]
+     },
+     {
+      "type": "louvres",
+      "colour": "#4a5a52",
+      "backColour": "#26332e",
+      "pitch": 1.2,
+      "depth": 0.5,
+      "band": 0.8,
+      "at": 0.02,
+      "floors": [
+       1,
+       2,
+       3,
+       4
+      ],
+      "margin": 1,
+      "faces": [
+       "right",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "z0": 0,
+   "height": 45,
+   "storeys": 10,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9cccc",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#e8eaea",
+      "backColour": "#a3a7ab",
+      "pitch": 1.1,
+      "depth": 0.3,
+      "band": 0.95,
+      "at": 0.02,
+      "floors": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9
+      ],
+      "margin": 1,
+      "faces": [
+       "front",
+       "left",
+       "right"
       ]
      }
     ]
@@ -76,15 +153,15 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     22,
-     14
+     16,
+     12
     ]
    },
    "at": [
-    -4,
-    -24
+    -16,
+    -14
    ],
-   "height": 6.5,
+   "height": 7,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
@@ -115,8 +192,8 @@
    "height": 5,
    "storeys": 1,
    "wall": {
-    "material": "timber",
-    "colour": "#b99a78",
+    "material": "stone",
+    "colour": "#d8cdb6",
     "windows": "none"
    },
    "roof": {
@@ -159,17 +236,17 @@
   {
    "type": "core/tree",
    "at": [
-    -12,
-    -46,
+    0,
+    -32,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 8,
-    "count": 4,
-    "line": 18,
+    "height": 12,
+    "count": 5,
+    "line": 34,
     "spread": 2,
-    "colour": "#7b8a58"
+    "colour": "#8f8470"
    }
   }
  ],
@@ -189,6 +266,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Louvre screen only on two faces and ground floor plain; no tower block behind, no shop signage, no green wall bays on the right face; OSM footprint has narrow legs the photo does not show."
+  "gaps": "Louvre screen now wraps front, left and right and a taller louvred tower stands behind; right-face green glazed bays have only dark louvres, no shopfront signage on the beige ground floor, OSM footprint orientation puts the podium on the opposite side from the photo."
  }
 }

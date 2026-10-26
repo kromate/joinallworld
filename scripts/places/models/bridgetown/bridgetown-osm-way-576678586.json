@@ -164,13 +164,8 @@
     "radiusY": 40,
     "startDeg": 195,
     "endDeg": 345,
-    "rows": 12,
-    "rise": 0.7,
-    "run": 0.55,
-    "firstHeight": 5,
-    "facetDeg": 14,
-    "under": "solid",
-    "stepped": false,
+    "firstHeight": 2.5,
+    "facetDeg": 28,
     "slab": 0.7,
     "bay": 6,
     "seatColours": [
@@ -178,19 +173,35 @@
      "#f2c230",
      "#c7ccd0"
     ],
-    "blocks": 4,
+    "blocks": 3,
     "concreteColour": "#f2f4f4",
     "underColour": "#f4f5f5",
     "canopy": {
-     "height": 2.6,
+     "height": 2.4,
      "depth": 9,
      "thickness": 0.6,
      "slopeDeg": 4,
-     "colour": "#7fa56a",
+     "colour": "#8fb58a",
      "edgeColour": "#ffffff",
      "overhangBack": 1
     },
-    "backWall": 1.0
+    "tiers": [
+     {
+      "rows": 6,
+      "rise": 0.7,
+      "run": 0.6
+     },
+     {
+      "rows": 6,
+      "rise": 0.7,
+      "run": 0.6,
+      "gap": 1.2,
+      "lift": 1.0
+     }
+    ],
+    "under": "open",
+    "stepped": true,
+    "backWall": 0.8
    }
   },
   {
@@ -209,17 +220,17 @@
     "radiusY": 40,
     "startDeg": 345,
     "endDeg": 395,
-    "rows": 4,
-    "rise": 0.4,
-    "run": 0.7,
+    "rows": 3,
+    "rise": 0.5,
+    "run": 1.0,
     "firstHeight": 0.3,
-    "facetDeg": 18,
+    "facetDeg": 24,
     "seatColours": [
-     "#3c7a3a",
-     "#4f8a3f"
+     "#5f9246",
+     "#6fa152"
     ],
-    "concreteColour": "#6a9a4f",
-    "underColour": "#6a9a4f"
+    "concreteColour": "#78a65a",
+    "underColour": "#78a65a"
    }
   },
   {
@@ -238,17 +249,17 @@
     "radiusY": 40,
     "startDeg": 35,
     "endDeg": 135,
-    "rows": 4,
-    "rise": 0.4,
-    "run": 0.7,
+    "rows": 3,
+    "rise": 0.5,
+    "run": 1.0,
     "firstHeight": 0.3,
-    "facetDeg": 18,
+    "facetDeg": 24,
     "seatColours": [
-     "#3c7a3a",
-     "#4f8a3f"
+     "#5f9246",
+     "#6fa152"
     ],
-    "concreteColour": "#6a9a4f",
-    "underColour": "#6a9a4f"
+    "concreteColour": "#78a65a",
+    "underColour": "#78a65a"
    }
   },
   {
@@ -266,13 +277,13 @@
     ],
     "radius": 47,
     "radiusY": 40,
-    "startDeg": 135,
-    "endDeg": 190,
-    "rows": 9,
+    "startDeg": 125,
+    "endDeg": 195,
+    "rows": 10,
     "rise": 0.7,
     "run": 0.55,
     "firstHeight": 6,
-    "facetDeg": 14,
+    "facetDeg": 20,
     "under": "solid",
     "backWall": 1,
     "seatColours": [
@@ -284,10 +295,10 @@
     "concreteColour": "#f2f4f4",
     "underColour": "#f4f5f5",
     "canopy": {
-     "height": 3,
-     "depth": 13,
+     "height": 3.4,
+     "depth": 15,
      "thickness": 0.7,
-     "slopeDeg": 8,
+     "slopeDeg": 10,
      "colour": "#ffffff",
      "edgeColour": "#ffffff",
      "overhangBack": 1.5
@@ -299,17 +310,17 @@
    "id": "east-block",
    "footprint": {
     "rect": [
-     8,
-     22
+     10,
+     34
     ]
    },
    "at": [
-    50,
-    -14
+    52,
+    -6
    ],
-   "rotDeg": -25,
-   "height": 13,
-   "storeys": 3,
+   "rotDeg": -12,
+   "height": 18,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#f0f2f2",
@@ -320,7 +331,36 @@
    "roof": {
     "form": "flat",
     "colour": "#ffffff",
-    "overhang": 1.5
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "se-block",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    42,
+    -30
+   ],
+   "rotDeg": -35,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f2f2",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "bands": "#c9cccd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "overhang": 2
    }
   },
   {
@@ -342,7 +382,7 @@
    "wall": {
     "material": "painted-render",
     "colour": "#eef0f0",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.4,
     "bands": "#c9cccd"
    },
@@ -357,15 +397,15 @@
    "id": "screen",
    "footprint": {
     "rect": [
-     8,
-     1
+     11,
+     1.4
     ]
    },
    "at": [
     11,
-    44
+    46
    ],
-   "height": 9,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -407,12 +447,32 @@
       }
      }
     ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "screen-frame",
+   "at": [
+    11,
+    45.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.5,
+     0.4
+    ],
+    "height": 11.2,
+    "colour": "#e6e8e9"
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "road",
+  "ground": "grass",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "palm",
@@ -432,13 +492,13 @@
    }
   ],
   "extent": [
-   150,
-   130
+   130,
+   110
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof now only on southern arc with enclosed white base, open low banks N/E, white west cantilever stand and east block added; south stand lacks white horizontal banding, west roof not wave-shaped, east/pavilion blocks are plain boxes, jumbo screen is a plain slab."
+  "gaps": "south stand now two-tier with open raked soffit but columns read leggy and no continuous white fascia; west stand roof not wave-shaped; east/south-east blocks plain boxes; jumbo screen a frame and slab; surrounding streets and sheds omitted"
  }
 }

@@ -49,7 +49,7 @@
     0,
     4
    ],
-   "height": 9,
+   "height": 7.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -67,9 +67,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#b5532f",
-    "material": "metal-sheet",
-    "pitch": 14,
+    "colour": "#cfc8b8",
+    "material": "clay-tile",
+    "pitch": 10,
     "overhang": 2.0
    }
   },
@@ -101,9 +101,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#b5532f",
+    "colour": "#cfc8b8",
     "material": "clay-tile",
-    "pitch": 14,
+    "pitch": 10,
     "overhang": 1.6
    }
   },
@@ -135,9 +135,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#b5532f",
+    "colour": "#cfc8b8",
     "material": "clay-tile",
-    "pitch": 14,
+    "pitch": 10,
     "overhang": 1.6
    }
   },
@@ -146,15 +146,15 @@
    "id": "entrance-gable",
    "footprint": {
     "rect": [
-     26,
-     10
+     44,
+     12
     ]
    },
    "at": [
     0,
-    -16
+    -18
    ],
-   "height": 7,
+   "height": 11,
    "storeys": 1,
    "wall": {
     "material": "timber",
@@ -177,43 +177,28 @@
    "roof": {
     "form": "gable",
     "axis": "y",
-    "colour": "#b5532f",
+    "colour": "#d8d3c4",
     "material": "clay-tile",
-    "pitch": 32,
-    "overhang": 1.2
+    "pitch": 30,
+    "overhang": 1.4
    }
   },
   {
    "type": "canopy",
    "at": [
     0,
-    -26,
+    -27,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 56,
-    "depth": 9,
-    "height": 5.2,
-    "thickness": 0.9,
+    "width": 48,
+    "depth": 10,
+    "height": 4.6,
+    "thickness": 1.6,
     "columns": 6,
     "colour": "#f4f2ea",
     "edgeColour": "#f4f2ea"
-   }
-  },
-  {
-   "type": "control-tower",
-   "at": [
-    40,
-    24,
-    0
-   ],
-   "params": {
-    "height": 38,
-    "style": "round",
-    "colour": "#d9d6cc",
-    "cabColour": "#4d6a78",
-    "bandColour": "#f4f2ea"
    }
   },
   {
@@ -331,6 +316,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "only the arrivals gable detail is photographed so overall massing is from OSM size and brief; real 193 m zig-zag outline straightened to ~110 m; neon sign omitted; wing positions approximate"
+  "gaps": "only the arrivals gable is photographed; wings and overall massing from OSM size and brief; zig-zag outline straightened; neon sign omitted; tower removed (not in evidence)"
  }
 }

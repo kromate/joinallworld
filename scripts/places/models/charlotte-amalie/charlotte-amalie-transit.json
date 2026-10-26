@@ -34,20 +34,20 @@
    "footprint": {
     "polygon": [
      [
-      -9,
-      -57
+      -11,
+      -58
      ],
      [
-      9,
-      -57
+      11,
+      -58
      ],
      [
-      9,
-      55
+      11,
+      56
      ],
      [
-      -9,
-      55
+      -11,
+      56
      ]
     ]
    },
@@ -56,17 +56,23 @@
    "storeys": 3,
    "wall": {
     "material": "stucco",
-    "colour": "#9a7a66",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "bay": 15,
+    "colour": "#8a6a58",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "bay": 20,
     "faces": {
-     "left": "curtain",
-     "right": "curtain"
+     "front": "plain",
+     "back": "plain"
     },
-    "glassColour": "#3f8aa8",
+    "glassColour": "#9ec4d4",
     "plinth": 0.4,
-    "pattern": []
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.3,
+      "colour": "#cfc4b0"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
@@ -80,19 +86,19 @@
    "footprint": {
     "polygon": [
      [
-      -8.5,
+      -7.5,
       -55
      ],
      [
-      8.5,
+      7.5,
       -55
      ],
      [
-      8.5,
+      7.5,
       50
      ],
      [
-      -8.5,
+      -7.5,
       50
      ]
     ]
@@ -102,10 +108,10 @@
    "storeys": 4,
    "wall": {
     "material": "stucco",
-    "colour": "#ebc896",
+    "colour": "#efd9ae",
     "windows": "punched",
-    "windowRatio": 0.18,
-    "bay": 12,
+    "windowRatio": 0.4,
+    "bay": 18,
     "faces": {
      "front": "plain",
      "back": "plain"
@@ -113,15 +119,12 @@
     "trimColour": "#fbf8f0",
     "pattern": [
      {
-      "type": "balconies",
-      "faces": [
-       "left",
-       "right"
-      ],
+      "type": "bands",
+      "height": 0.5,
       "colour": "#fbf8f0"
      }
     ],
-    "glassColour": "#7b8f98"
+    "glassColour": "#e4ecee"
    },
    "roof": {
     "form": "flat",
@@ -139,10 +142,10 @@
      "footprint": {
       "rect": [
        3.2,
-       3.0
+       3.4
       ]
      },
-     "height": 2.2,
+     "height": 2.6,
      "storeys": 1,
      "wall": {
       "material": "stucco",
@@ -161,15 +164,15 @@
     "mode": "line",
     "start": [
      0,
-     -46,
+     -47,
      23.2
     ],
     "end": [
      0,
-     46,
+     47,
      23.2
     ],
-    "count": 7,
+    "count": 10,
     "lod1Step": 2,
     "lod2Step": 3
    }
@@ -179,28 +182,28 @@
    "id": "tower",
    "at": [
     0,
-    53
+    52
    ],
    "z0": 9,
    "footprint": {
     "rect": [
-     13,
-     11
+     14,
+     12
     ]
    },
-   "height": 19,
+   "height": 21,
    "storeys": 5,
    "wall": {
     "material": "stucco",
-    "colour": "#ecd2b0",
+    "colour": "#d9b896",
     "windows": "punched",
     "windowRatio": 0.2,
-    "bay": 6
+    "bay": 14
    },
    "roof": {
     "form": "hip",
-    "colour": "#d9a99b",
-    "pitch": 22
+    "colour": "#e6e9ea",
+    "pitch": 15
    }
   },
   {
@@ -216,19 +219,64 @@
      7
     ]
    },
-   "height": 4,
+   "height": 3.2,
    "storeys": 1,
    "rotDeg": 90,
    "wall": {
     "material": "stucco",
     "colour": "#d8c9a6",
-    "windows": "punched",
-    "windowRatio": 0.45
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#e8e4d4",
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.9,
+      "colour": "#f2efe6"
+     }
+    ]
    },
    "roof": {
-    "form": "gable",
+    "form": "flat",
     "colour": "#e6e9ea",
-    "pitch": 10
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       112
+      ],
+      "colour": "#6b8a45"
+     },
+     {
+      "z": 8,
+      "rect": [
+       14,
+       104
+      ],
+      "colour": "#5f8040"
+     },
+     {
+      "z": 12,
+      "rect": [
+       6,
+       90
+      ],
+      "colour": "#587a3c"
+     }
+    ],
+    "colour": "#6b8a45"
    }
   }
  ],
@@ -299,6 +347,38 @@
      -45
     ],
     "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     21,
+     -55
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     25
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     19,
+     0
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -30
+    ],
+    "height": 8
    }
   ],
   "extent": [
@@ -309,6 +389,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Upper block has balcony rail bands and cream piers but windows still read as a grid; base is a piered brown podium with teal glazing but not set back; hill slope and sea frontage are flat grass; pavilion is a simple gabled box, not an open veranda; OSM outline replaced by a straight slab."
+  "gaps": "Round 2: light-glazed punched bays replace dark curtain glass; base widened to form a terrace under the cream block; 10 larger dormers, capped end tower, flat-roofed open-ish pavilion with pale roof, loft hillside behind. Still no continuous balcony ribbon (curtain glass renders dark), no rocky shore/shrubs, OSM outline replaced by a slab."
  }
 }

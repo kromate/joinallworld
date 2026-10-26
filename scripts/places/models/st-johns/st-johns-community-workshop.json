@@ -33,26 +33,26 @@
    "id": "block-west",
    "footprint": {
     "rect": [
-     26,
+     28,
      11
     ]
    },
    "at": [
-    -26,
-    8
+    -32,
+    12
    ],
    "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#9aa4ac",
+    "colour": "#8fa0b0",
     "windows": "punched",
     "windowRatio": 0.12,
     "plinth": 0.3
    },
    "roof": {
     "form": "gable",
-    "colour": "#e4e7e9",
+    "colour": "#eef0f1",
     "material": "metal-sheet",
     "pitch": 14,
     "overhang": 0.8
@@ -63,26 +63,26 @@
    "id": "block-east",
    "footprint": {
     "rect": [
-     30,
-     12
+     28,
+     11
     ]
    },
    "at": [
-    26,
-    8
+    32,
+    12
    ],
    "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#8e9fb2",
+    "colour": "#8a9fb4",
     "windows": "punched",
     "windowRatio": 0.12,
     "plinth": 0.3
    },
    "roof": {
     "form": "gable",
-    "colour": "#e4e7e9",
+    "colour": "#eef0f1",
     "material": "metal-sheet",
     "pitch": 14,
     "overhang": 0.8
@@ -90,98 +90,426 @@
   },
   {
    "type": "mass",
-   "id": "block-rear",
+   "id": "gazebo-roof",
    "footprint": {
     "rect": [
-     44,
-     12
+     28.6,
+     28.6
     ]
    },
    "at": [
     0,
-    30
+    -2
    ],
-   "height": 6.8,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e5dfce",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "plinth": 0.3
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8a8d90",
-    "parapet": 0.4,
-    "overhang": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "gazebo",
-   "footprint": {
-    "rect": [
-     16,
-     16
-    ]
-   },
-   "at": [
-    0,
-    -4
-   ],
-   "height": 3.2,
+   "z0": 4.2,
+   "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "whitewash",
     "colour": "#f4f4f0",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "arcade"
-     }
-    ]
+    "windows": "none"
    },
    "roof": {
     "form": "hip",
-    "colour": "#6e6a68",
+    "colour": "#6b625c",
     "material": "slate",
     "pitch": 24,
-    "overhang": 1.0
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lat-front",
+   "footprint": {
+    "rect": [
+     27,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -16.4
+   ],
+   "z0": 2.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f6f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lat-back",
+   "footprint": {
+    "rect": [
+     27,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    12.4
+   ],
+   "z0": 2.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f6f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lat-left",
+   "footprint": {
+    "rect": [
+     0.5,
+     27
+    ]
+   },
+   "at": [
+    -13.5,
+    -2
+   ],
+   "z0": 2.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f6f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lat-right",
+   "footprint": {
+    "rect": [
+     0.5,
+     27
+    ]
+   },
+   "at": [
+    13.5,
+    -2
+   ],
+   "z0": 2.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f6f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cupola",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 9.2,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#6b625c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b625c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.5,
+     -16.2,
+     0
+    ],
+    "end": [
+     13.5,
+     -16.2,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.3,
+        -0.3
+       ],
+       [
+        0.3,
+        -0.3
+       ],
+       [
+        0.3,
+        0.3
+       ],
+       [
+        -0.3,
+        0.3
+       ]
+      ],
+      "z0": 0,
+      "height": 4.2,
+      "colour": "#f6f6f2",
+      "topColour": "#f6f6f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.5,
+     12.2,
+     0
+    ],
+    "end": [
+     13.5,
+     12.2,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.3,
+        -0.3
+       ],
+       [
+        0.3,
+        -0.3
+       ],
+       [
+        0.3,
+        0.3
+       ],
+       [
+        -0.3,
+        0.3
+       ]
+      ],
+      "z0": 0,
+      "height": 4.2,
+      "colour": "#f6f6f2",
+      "topColour": "#f6f6f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -30,
+      -30
+     ],
+     [
+      -24,
+      -30
+     ],
+     [
+      -14,
+      -20
+     ],
+     [
+      -6,
+      -14
+     ],
+     [
+      -8,
+      -12
+     ],
+     [
+      -17,
+      -17
+     ],
+     [
+      -30,
+      -24
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#c4c2ba",
+    "topColour": "#c9c7bf"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12.5,
+    -9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -17,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -5.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -9.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16.5,
+    -9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    17,
+    -5.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11,
+    -9.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "plaza",
+  "forecourt": "none",
   "forecourtDepth": 8,
   "trees": [
    {
     "kind": "palm",
     "at": [
-     -12,
-     -8
+     14,
+     -18
     ]
    },
    {
     "kind": "palm",
     "at": [
-     12,
-     -6
+     -34,
+     -10
     ]
    },
    {
     "kind": "palm",
     "at": [
-     -40,
+     44,
      -4
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     42,
-     -2
     ]
    }
   ],
@@ -191,8 +519,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "gazebo is a closed arched box not an open lattice pavilion; rear two-storey block and block layout are typed (the OSM outline is a campus polygon); no shrubs"
+  "gaps": "gazebo lacks arched lattice bays and shingle texture; no royal palm of photo scale; shrubs are simple blobs"
  }
 }

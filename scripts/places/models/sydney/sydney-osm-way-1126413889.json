@@ -50,7 +50,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#f6f2e8",
+    "colour": "#f3eee2",
     "windows": "pointed",
     "windowShape": "pointed",
     "windowRatio": 0.45,
@@ -60,6 +60,7 @@
      "left": "pointed",
      "right": "pointed"
     },
+    "plinth": 0.3,
     "pattern": [
      {
       "type": "arcade",
@@ -68,46 +69,61 @@
       ],
       "shape": "pointed",
       "bay": 6.0,
-      "opening": 0.85,
+      "opening": 0.88,
       "height": 0.9,
-      "depth": 2.4,
+      "depth": 2.6,
       "storeys": 1
      }
-    ],
-    "plinth": 0.3
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#d9d2c3",
-    "parapet": 0.9
+    "parapet": 0.0
    }
   },
   {
-   "type": "revolve",
+   "type": "array",
    "lod": [
-    2
-   ],
-   "at": [
-    5,
-    -3,
-    0
+    0,
+    1
    ],
    "params": {
-    "segments": 4,
-    "colour": "#efe9da",
-    "profile": [
-     [
-      1.6,
+    "of": {
+     "type": "mass",
+     "id": "lancet",
+     "footprint": {
+      "rect": [
+       1.0,
+       0.5
+      ]
+     },
+     "at": [
+      0,
       0
      ],
-     [
-      1.6,
-      30.400000000000002
-     ],
-     [
-      0,
-      42
-     ]
+     "z0": 1.4,
+     "height": 4.6,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#2a2420",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#2a2420",
+      "parapet": 0.0
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -21,
+     -14.3
+    ],
+    "end": [
+     21,
+     -14.3
     ]
    }
   },
@@ -118,62 +134,93 @@
     1
    ],
    "at": [
-    5,
-    -3,
-    0
+    6,
+    -1
    ],
    "params": {
-    "segments": 12,
+    "segments": 16,
     "colour": "#efe9da",
     "profile": [
      [
-      1.7,
-      0,
+      2.3,
+      0.0,
       "#efe9da"
      ],
      [
-      1.7,
-      26.599999999999998
-     ],
-     [
       2.3,
-      26.599999999999998,
-      "#c9a36b"
+      7.0200000000000005
      ],
      [
-      2.3,
-      27.799999999999997
+      1.9,
+      7.332000000000001
      ],
      [
-      1.5,
-      27.799999999999997,
+      1.9,
+      13.26
+     ],
+     [
+      2.9,
+      13.416,
+      "#d8cfb8"
+     ],
+     [
+      2.9,
+      14.196
+     ],
+     [
+      1.8,
+      14.351999999999999,
       "#efe9da"
      ],
      [
-      1.5,
-      38
+      1.8,
+      16.38
      ],
      [
-      2.1,
-      38,
+      2.2,
+      16.536,
       "#c9a36b"
-     ],
-     [
-      2.1,
-      38.8
      ],
      [
       1.2,
-      40.5,
+      18.330000000000002,
       "#e9e2cf"
      ],
      [
-      0.5,
-      43
+      0.4,
+      19.89
      ],
      [
       0.1,
-      45.5
+      21.060000000000002
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    6,
+    -1
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe9da",
+    "profile": [
+     [
+      2.2,
+      0.0
+     ],
+     [
+      2.2,
+      16.38
+     ],
+     [
+      0,
+      21.060000000000002
      ]
     ]
    }
@@ -188,26 +235,90 @@
      "type": "prism",
      "params": {
       "rect": [
-       1.6,
-       0.7
+       1.8,
+       0.8
       ],
       "z0": 13.0,
-      "height": 1.2,
-      "topScale": 0.05,
-      "colour": "#f6f2e8",
-      "topColour": "#f6f2e8"
+      "height": 1.5,
+      "topScale": 0.02,
+      "colour": "#f3eee2",
+      "topColour": "#f3eee2"
      }
     },
     "mode": "line",
     "start": [
      -24,
-     -18.4
+     -16.4
     ],
     "end": [
      24,
-     -18.4
+     -16.4
     ],
-    "count": 16
+    "count": 22
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.8
+      ],
+      "z0": 13.0,
+      "height": 1.5,
+      "topScale": 0.02,
+      "colour": "#f3eee2",
+      "topColour": "#f3eee2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24.4,
+     -14
+    ],
+    "end": [
+     -24.4,
+     18
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.8
+      ],
+      "z0": 13.0,
+      "height": 1.5,
+      "topScale": 0.02,
+      "colour": "#f3eee2",
+      "topColour": "#f3eee2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     24.4,
+     -14
+    ],
+    "end": [
+     24.4,
+     18
+    ],
+    "count": 14
    }
   },
   {
@@ -217,49 +328,49 @@
     1
    ],
    "at": [
-    0,
-    -6,
+    -8,
+    6,
     13.0
    ],
    "params": {
-    "segments": 28,
+    "segments": 16,
+    "smooth": false,
     "colour": "#f4efe2",
     "profile": [
      [
-      9.0,
+      6.0,
       0,
       "#f4efe2"
      ],
      [
-      9.0,
-      1.5
-     ],
-     [
-      8.7,
-      3.5
-     ],
-     [
-      7.6,
-      5.8
+      6.0,
+      1.6
      ],
      [
       5.8,
-      7.8
+      2.8
      ],
      [
-      3.4,
-      9.2
+      5.0,
+      4.4
      ],
      [
-      1.2,
-      9.9
+      3.6,
+      5.8
+     ],
+     [
+      1.8,
+      6.7
+     ],
+     [
+      0.6,
+      7.1
      ],
      [
       0,
-      10.1
+      7.2
      ]
-    ],
-    "topColour": "#f4efe2"
+    ]
    }
   },
   {
@@ -268,8 +379,8 @@
     2
    ],
    "at": [
-    0,
-    -6,
+    -8,
+    6,
     13.0
    ],
    "params": {
@@ -277,24 +388,50 @@
     "colour": "#f4efe2",
     "profile": [
      [
-      9,
+      6,
       0
      ],
      [
-      9,
-      1.5
+      6,
+      1.6
      ],
      [
       0,
-      10
+      7
      ]
     ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "forecourt",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -29
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ece8dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8dc",
+    "parapet": 0.0
    }
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "plaza",
+  "forecourt": "none",
   "forecourtDepth": 10,
   "trees": [
    {
@@ -320,7 +457,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is a 1970s construction stage with scaffolding; arcade loggia is a flat-backed cut, not a deep recessed colonnade; minaret finish and scallops approximate; OSM wedge outline unused."
+  "gaps": "Arcade still reads as glazed flat-backed cut, not a deep recessed loggia (part-based arcade attempt rendered invisible and was reverted); dome facets not ribs; photo is a construction stage with scaffolding; OSM wedge outline unused; forecourt tile grid grey."
  },
  "schema": "allworld-place-model",
  "version": 2,

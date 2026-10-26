@@ -33,7 +33,7 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     64,
+     70,
      40
     ]
    },
@@ -41,64 +41,30 @@
     0,
     0
    ],
-   "height": 26,
-   "storeys": 6,
+   "z0": 0,
+   "height": 24,
+   "storeys": 4,
    "wall": {
     "material": "granite",
-    "colour": "#d4d6dc",
+    "colour": "#d0d0cb",
     "windows": "punched",
-    "windowRatio": 0.4,
+    "windowRatio": 0.55,
+    "bay": 7,
     "faces": {
      "back": "plain",
      "left": "plain",
      "right": "plain"
-    },
-    "bay": 7
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#b9bdc8",
-    "parapet": 0.6
+    "parapet": 0.5
    }
   },
   {
    "type": "mass",
-   "id": "shaft-lower",
-   "footprint": {
-    "rect": [
-     44,
-     34
-    ]
-   },
-   "at": [
-    0,
-    0
-   ],
-   "z0": 26,
-   "height": 36,
-   "storeys": 10,
-   "wall": {
-    "material": "granite",
-    "colour": "#cccfdb",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#cccfdb",
-       "#a9aebd"
-      ]
-     }
-    ]
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#b9bdc8"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "shaft-mid",
+   "id": "shaft",
    "footprint": {
     "rect": [
      36,
@@ -109,26 +75,25 @@
     0,
     0
    ],
-   "z0": 62,
-   "height": 32,
+   "z0": 24,
+   "height": 48,
    "storeys": 9,
    "wall": {
     "material": "granite",
-    "colour": "#cccfdb",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#cccfdb",
-       "#a9aebd"
-      ]
-     }
-    ]
+    "colour": "#c9c9c4",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bdc8"
+    "colour": "#b9bdc8",
+    "parapet": 0.5
    }
   },
   {
@@ -137,34 +102,148 @@
    "footprint": {
     "rect": [
      15,
-     24
+     22
     ]
    },
    "at": [
-    -10.5,
+    -9.5,
     0
    ],
-   "z0": 94,
-   "height": 34,
-   "storeys": 9,
+   "z0": 72,
+   "height": 30,
+   "storeys": 6,
    "wall": {
     "material": "granite",
-    "colour": "#d8dae2",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#cccfdb",
-       "#a9aebd"
-      ]
-     }
-    ]
+    "colour": "#cbcbc6",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#b9bdc8",
-    "parapet": 0.8
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west-step1",
+   "footprint": {
+    "rect": [
+     12,
+     19
+    ]
+   },
+   "at": [
+    -9.5,
+    0
+   ],
+   "z0": 102,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#c9c9c4",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west-step2",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    -9.5,
+    0
+   ],
+   "z0": 112,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#c6c6c1",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -11.2,
+    88
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#7d8088"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -11.0,
+    93
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#5d6068"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    0,
+    120
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6,
+    "colour": "#c8c8c8"
    }
   },
   {
@@ -173,34 +252,148 @@
    "footprint": {
     "rect": [
      15,
-     24
+     22
     ]
    },
    "at": [
-    10.5,
+    9.5,
     0
    ],
-   "z0": 94,
-   "height": 34,
-   "storeys": 9,
+   "z0": 72,
+   "height": 30,
+   "storeys": 6,
    "wall": {
     "material": "granite",
-    "colour": "#d8dae2",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#cccfdb",
-       "#a9aebd"
-      ]
-     }
-    ]
+    "colour": "#cbcbc6",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#b9bdc8",
-    "parapet": 0.8
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-east-step1",
+   "footprint": {
+    "rect": [
+     12,
+     19
+    ]
+   },
+   "at": [
+    9.5,
+    0
+   ],
+   "z0": 102,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#c9c9c4",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-east-step2",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    9.5,
+    0
+   ],
+   "z0": 112,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#c6c6c1",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -11.2,
+    88
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#7d8088"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -11.0,
+    93
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#5d6068"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    0,
+    120
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6,
+    "colour": "#c8c8c8"
    }
   },
   {
@@ -237,38 +430,6 @@
     "kind": "broadleaf",
     "height": 11
    }
-  },
-  {
-   "type": "prism",
-   "at": [
-    -10.5,
-    0,
-    128
-   ],
-   "params": {
-    "rect": [
-     0.8,
-     0.8
-    ],
-    "height": 6,
-    "colour": "#c8c8c8"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    10.5,
-    0,
-    128
-   ],
-   "params": {
-    "rect": [
-     0.8,
-     0.8
-    ],
-    "height": 6,
-    "colour": "#c8c8c8"
-   }
   }
  ],
  "site": {
@@ -283,6 +444,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "twin-tower silhouette, setbacks and pale grid read correctly; no round-arched notches in tower tops, no fine window grid, height capped at 134 m of 243 m"
+  "gaps": "pale window grid and twin split read; arched notches approximated by dark panels; height capped at 138 m of 243 m"
  }
 }

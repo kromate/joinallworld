@@ -13,6 +13,7 @@ export const PLACE_CITY_LOADERS: Readonly<Record<string, () => Promise<{ default
   'ado-ekiti': () => import('./cities/ado-ekiti.ts'),
   'akure': () => import('./cities/akure.ts'),
   'algiers': () => import('./cities/algiers.ts'),
+  'almaty': () => import('./cities/almaty.ts'),
   'alofi': () => import('./cities/alofi.ts'),
   'amman': () => import('./cities/amman.ts'),
   'amsterdam': () => import('./cities/amsterdam.ts'),

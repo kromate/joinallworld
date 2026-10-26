@@ -21,92 +21,179 @@
   }
  ],
  "camera": {
-  "yawDeg": -6,
-  "pitchDeg": 8,
-  "fovDeg": 58,
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
   "aspect": 1.5,
   "fit": "building"
  },
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "canal is straight, not curving; trees and wires omitted; stalls sparse; only the main reach modelled"
+  "gaps": "canal water renders as flat grey-blue rather than brown reflective water; towpath is nearly straight; foliage is generic rounded trees without wires or undergrowth; stall shed is a simple shed roof"
  },
  "parts": [
   {
    "type": "water-surface",
    "at": [
-    -2,
-    10,
+    0,
+    12,
     0
    ],
    "params": {
-    "width": 16,
-    "depth": 80,
-    "colour": "#6b6a4a",
+    "width": 10,
+    "depth": 62,
+    "colour": "#54492f",
     "bank": false
    }
   },
   {
    "type": "prism",
    "at": [
-    9.5,
-    -14,
+    -13,
+    12,
     0
    ],
    "params": {
     "rect": [
-     5,
-     50
+     16,
+     62
     ],
-    "height": 0.6,
-    "colour": "#b9b6ac"
+    "height": 0.5,
+    "colour": "#4f7a3a"
    }
   },
   {
    "type": "prism",
    "at": [
-    -10.6,
-    10,
+    13.5,
+    12,
     0
    ],
    "params": {
     "rect": [
-     1.2,
-     80
+     16,
+     62
+    ],
+    "height": 0.5,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      8,
+      -15
+     ],
+     [
+      7,
+      -5
+     ],
+     [
+      6.2,
+      6
+     ],
+     [
+      6.0,
+      16
+     ],
+     [
+      6.8,
+      28
+     ],
+     [
+      8.5,
+      38
+     ],
+     [
+      10,
+      43
+     ]
+    ],
+    "width": 3,
+    "colour": "#b3b0a6"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      6.3,
+      -15
+     ],
+     [
+      5.3,
+      -5
+     ],
+     [
+      4.4,
+      6
+     ],
+     [
+      4.2,
+      16
+     ],
+     [
+      5.0,
+      28
+     ],
+     [
+      6.8,
+      38
+     ],
+     [
+      8.3,
+      43
+     ]
+    ],
+    "width": 0.4,
+    "colour": "#8e8b82"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.4,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     62
     ],
     "height": 0.9,
     "colour": "#a9a69c"
    }
   },
   {
-   "type": "mass",
-   "id": "tile-house",
-   "footprint": {
-    "rect": [
-     10,
-     9
-    ]
-   },
+   "type": "pier-boardwalk",
    "at": [
-    15,
-    14
+    1.5,
+    12,
+    0.2
    ],
-   "z0": 0.3,
-   "height": 3.6,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8e2d0",
-    "windows": "none",
-    "plinth": 0.2
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#b84a3a",
-    "material": "clay-tile",
-    "pitch": 38,
-    "overhang": 0.8
+   "rotDeg": 90,
+   "params": {
+    "length": 7,
+    "width": 4,
+    "height": 0.5,
+    "rails": true,
+    "piles": true,
+    "colour": "#7b5a3a"
    }
   },
   {
@@ -114,16 +201,16 @@
    "id": "stall-shed",
    "footprint": {
     "rect": [
-     16,
-     9
+     11,
+     8
     ]
    },
    "at": [
-    12,
-    -6
+    3.5,
+    17
    ],
-   "z0": 0.3,
-   "height": 3.0,
+   "z0": 0.4,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
     "material": "timber",
@@ -131,15 +218,66 @@
     "windows": "none",
     "faces": {
      "front": "none",
+     "left": "none",
      "right": "none"
     }
    },
    "roof": {
-    "form": "gable",
-    "colour": "#5b4733",
+    "form": "shed",
+    "colour": "#4a3b2e",
     "material": "corrugated",
-    "pitch": 16,
-    "overhang": 1.4
+    "pitch": 14,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    3,
+    15,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 3,
+    "pitch": 2.5,
+    "kind": "table",
+    "size": 0.9,
+    "colours": [
+     "#d9772b",
+     "#c8362f",
+     "#e2b93b"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-house",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    9,
+    26
+   ],
+   "z0": 0.4,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b84a3a",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.8
    }
   },
   {
@@ -147,13 +285,13 @@
    "id": "far-shed",
    "footprint": {
     "rect": [
-     26,
-     10
+     10,
+     16
     ]
    },
    "at": [
-    16,
-    36
+    -1,
+    30
    ],
    "z0": 0.3,
    "height": 3.4,
@@ -172,178 +310,57 @@
    }
   },
   {
-   "type": "mass",
-   "id": "far-shed2",
-   "footprint": {
-    "rect": [
-     18,
-     9
-    ]
-   },
-   "at": [
-    16,
-    54
-   ],
-   "z0": 0.3,
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "timber",
-    "colour": "#c9b99a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#8a8f94",
-    "material": "corrugated",
-    "pitch": 14,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "pier-boardwalk",
-   "at": [
-    4.4,
-    -8,
-    0.2
-   ],
-   "rotDeg": 90,
-   "params": {
-    "length": 6,
-    "width": 3.2,
-    "height": 0.5,
-    "rails": true,
-    "piles": true,
-    "colour": "#7b5a3a"
-   }
-  },
-  {
    "type": "launch-boat",
    "at": [
     -1,
-    0,
-    0
-   ],
-   "params": {
-    "length": 8,
-    "width": 1.8,
-    "colour": "#b24a3a",
-    "yaw": 90
-   }
-  },
-  {
-   "type": "launch-boat",
-   "at": [
-    0,
-    24,
+    -2,
     0
    ],
    "params": {
     "length": 7,
-    "width": 1.7,
+    "width": 1.6,
     "colour": "#2f5f8a",
     "yaw": 90
    }
   },
   {
-   "type": "stall-row",
+   "type": "tree-grove",
    "at": [
-    13,
-    -14,
-    0.3
-   ],
-   "rotDeg": 90,
-   "params": {
-    "count": 3,
-    "pitch": 4,
-    "kind": "umbrella",
-    "size": 0.9,
-    "colours": [
-     "#d9772b",
-     "#c8362f",
-     "#e2b93b"
-    ]
-   }
-  },
-  {
-   "type": "awning",
-   "at": [
-    7,
-    6,
-    0.3
-   ],
-   "params": {
-    "width": 4,
-    "depth": 1.4,
-    "colours": [
-     "#d9772b",
-     "#e8e2d0"
-    ]
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
+    -12,
     12,
-    -26,
     0
    ],
    "params": {
-    "width": 4,
-    "height": 1.6,
-    "bottom": 1.4,
-    "colour": "#2a8fc2",
-    "frameColour": "#d9d2c0",
-    "posts": true
+    "width": 7,
+    "depth": 60,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    13,
+    12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 60,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 13
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     19,
-     20
-    ],
-    "height": 12
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     20,
-     40
-    ],
-    "height": 11
-   },
-   {
-    "kind": "palm",
-    "at": [
-     -24,
-     0
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -24,
-     24
-    ],
-    "height": 10
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     20,
-     -6
-    ],
-    "height": 9
-   }
-  ],
   "extent": [
    56,
-   84
+   90
   ]
  }
 }

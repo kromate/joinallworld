@@ -57,100 +57,100 @@
    "params": {
     "points": [
      [
-      84.0,
+      62.16,
       0.0
      ],
      [
-      81.14,
-      13.46
+      60.04,
+      9.96
      ],
      [
-      72.75,
-      26.0
+      53.84,
+      19.24
      ],
      [
-      59.4,
-      36.77
+      43.96,
+      27.21
      ],
      [
-      42.0,
-      45.03
+      31.08,
+      33.32
      ],
      [
-      21.74,
-      50.23
+      16.09,
+      37.17
      ],
      [
       0.0,
-      52.0
+      38.48
      ],
      [
-      -21.74,
-      50.23
+      -16.09,
+      37.17
      ],
      [
-      -42.0,
-      45.03
+      -31.08,
+      33.32
      ],
      [
-      -59.4,
-      36.77
+      -43.96,
+      27.21
      ],
      [
-      -72.75,
-      26.0
+      -53.84,
+      19.24
      ],
      [
-      -81.14,
-      13.46
+      -60.04,
+      9.96
      ],
      [
-      -84.0,
+      -62.16,
       0.0
      ],
      [
-      -81.14,
-      -13.46
+      -60.04,
+      -9.96
      ],
      [
-      -72.75,
-      -26.0
+      -53.84,
+      -19.24
      ],
      [
-      -59.4,
-      -36.77
+      -43.96,
+      -27.21
      ],
      [
-      -42.0,
-      -45.03
+      -31.08,
+      -33.32
      ],
      [
-      -21.74,
-      -50.23
+      -16.09,
+      -37.17
      ],
      [
       -0.0,
-      -52.0
+      -38.48
      ],
      [
-      21.74,
-      -50.23
+      16.09,
+      -37.17
      ],
      [
-      42.0,
-      -45.03
+      31.08,
+      -33.32
      ],
      [
-      59.4,
-      -36.77
+      43.96,
+      -27.21
      ],
      [
-      72.75,
-      -26.0
+      53.84,
+      -19.24
      ],
      [
-      81.14,
-      -13.46
+      60.04,
+      -9.96
      ]
     ],
     "z0": 0,
@@ -166,8 +166,8 @@
     0.15
    ],
    "params": {
-    "length": 156,
-    "width": 80,
+    "length": 116,
+    "width": 60,
     "lane_width": 7,
     "colour": "#b4442f"
    }
@@ -181,12 +181,12 @@
    ],
    "params": {
     "start": [
-     -48,
-     -50
+     -65.12,
+     20.72
     ],
     "end": [
-     48,
-     -50
+     -65.12,
+     -20.72
     ],
     "rows": 16,
     "rise": 0.5,
@@ -200,8 +200,8 @@
     "underColour": "#c9b497",
     "backWall": 6,
     "canopy": {
-     "height": 10.5,
-     "depth": 17,
+     "height": 11,
+     "depth": 16,
      "thickness": 0.9,
      "slopeDeg": 0,
      "colour": "#eef0ee",
@@ -219,15 +219,43 @@
    ],
    "params": {
     "start": [
-     -50,
-     48
+     -37.0,
+     37.0
     ],
     "end": [
-     50,
-     48
+     37.0,
+     37.0
     ],
     "flip": true,
     "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "under": "open",
+    "slab": 0.4,
+    "bay": 8,
+    "seatColour": "#9a9a96",
+    "concreteColour": "#a9a8a2",
+    "underColour": "#8e8d88"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -37.0,
+     -37.0
+    ],
+    "end": [
+     37.0,
+     -37.0
+    ],
+    "rows": 6,
     "rise": 0.45,
     "run": 0.8,
     "firstHeight": 0.6,
@@ -244,13 +272,13 @@
    "id": "stand-back-wall",
    "footprint": {
     "rect": [
-     96,
-     2.5
+     2.5,
+     44
     ]
    },
    "at": [
-    0,
-    -61
+    -75.48,
+    0.0
    ],
    "z0": 0,
    "height": 8.5,
@@ -258,10 +286,8 @@
    "wall": {
     "material": "painted-render",
     "colour": "#efe0c8",
-    "glassColour": "#6f6a63",
     "windows": "none",
-    "plinth": 0.4,
-    "bands": "#b5654a"
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
@@ -272,19 +298,19 @@
   },
   {
    "type": "mass",
-   "id": "stand-end-west",
+   "id": "stand-end-n",
    "footprint": {
     "rect": [
-     3,
-     16
+     14,
+     2.5
     ]
    },
    "at": [
-    -48,
-    -54
+    -69.56,
+    21.46
    ],
    "z0": 0,
-   "height": 10.5,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -294,25 +320,24 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#e6e6e2",
-    "overhang": 0.2
+    "colour": "#e6e6e2"
    }
   },
   {
    "type": "mass",
-   "id": "stand-end-east",
+   "id": "stand-end-s",
    "footprint": {
     "rect": [
-     3,
-     16
+     14,
+     2.5
     ]
    },
    "at": [
-    48,
-    -54
+    -69.56,
+    -21.46
    ],
    "z0": 0,
-   "height": 10.5,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -322,15 +347,14 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#e6e6e2",
-    "overhang": 0.2
+    "colour": "#e6e6e2"
    }
   },
   {
    "type": "scoreboard",
    "at": [
-    80,
-    0,
+    59.2,
+    0.0,
     0.2
    ],
    "rotDeg": 90,
@@ -342,39 +366,10 @@
    }
   },
   {
-   "type": "mass",
-   "id": "gatehouse",
-   "footprint": {
-    "rect": [
-     10,
-     5
-    ]
-   },
-   "at": [
-    -30,
-    -72
-   ],
-   "z0": 0,
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e9d3b8",
-    "windows": "punched",
-    "windowRatio": 0.15
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfd3d4",
-    "material": "metal-sheet",
-    "overhang": 0.4
-   }
-  },
-  {
    "type": "floodlight-mast",
    "at": [
-    -76,
-    -54,
+    -56.24,
+    -39.96,
     0
    ],
    "params": {
@@ -386,8 +381,8 @@
   {
    "type": "floodlight-mast",
    "at": [
-    76,
-    -54,
+    56.24,
+    -39.96,
     0
    ],
    "params": {
@@ -399,8 +394,8 @@
   {
    "type": "floodlight-mast",
    "at": [
-    -76,
-    54,
+    -56.24,
+    39.96,
     0
    ],
    "params": {
@@ -412,8 +407,8 @@
   {
    "type": "floodlight-mast",
    "at": [
-    76,
-    54,
+    56.24,
+    39.96,
     0
    ],
    "params": {
@@ -426,14 +421,14 @@
    "type": "fence-wall",
    "at": [
     0,
-    -78,
+    -58,
     0
    ],
    "lod": [
     0
    ],
    "params": {
-    "length": 150,
+    "length": 110,
     "height": 2.4,
     "thickness": 0.2,
     "kind": "fence",
@@ -443,8 +438,8 @@
   {
    "type": "core/tree",
    "at": [
-    -45,
-    -80,
+    -34,
+    -60,
     0
    ],
    "params": {
@@ -452,7 +447,394 @@
     "height": 9,
     "count": 3,
     "spread": 8,
-    "line": 40
+    "line": 30
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-water",
+   "params": {
+    "points": [
+     [
+      -80,
+      -76
+     ],
+     [
+      80,
+      -76
+     ],
+     [
+      80,
+      -64
+     ],
+     [
+      -80,
+      -64
+     ]
+    ],
+    "z0": -0.05,
+    "height": 0.1,
+    "colour": "#2f5f93"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill0",
+   "at": [
+    -48,
+    68,
+    -0.1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       32.0,
+       22
+      ]
+     },
+     {
+      "z": 12.0,
+      "ellipse": [
+       27.2,
+       17.6
+      ]
+     },
+     {
+      "z": 24.0,
+      "ellipse": [
+       17.6,
+       11.0
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       9.6,
+       5.5
+      ]
+     }
+    ],
+    "colour": "#2f5a2c",
+    "smooth": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill1",
+   "at": [
+    -8,
+    72,
+    -0.1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       38,
+       22
+      ]
+     },
+     {
+      "z": 16.0,
+      "ellipse": [
+       32.3,
+       17.6
+      ]
+     },
+     {
+      "z": 32.0,
+      "ellipse": [
+       20.900000000000002,
+       11.0
+      ]
+     },
+     {
+      "z": 40,
+      "ellipse": [
+       11.4,
+       5.5
+      ]
+     }
+    ],
+    "colour": "#3a6a33",
+    "smooth": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill2",
+   "at": [
+    38,
+    70,
+    -0.1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       38,
+       22
+      ]
+     },
+     {
+      "z": 19.200000000000003,
+      "ellipse": [
+       32.3,
+       17.6
+      ]
+     },
+     {
+      "z": 38.400000000000006,
+      "ellipse": [
+       20.900000000000002,
+       11.0
+      ]
+     },
+     {
+      "z": 48,
+      "ellipse": [
+       11.4,
+       5.5
+      ]
+     }
+    ],
+    "colour": "#2f5a2c",
+    "smooth": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill3",
+   "at": [
+    62,
+    64,
+    -0.1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       22.0,
+       20
+      ]
+     },
+     {
+      "z": 12.0,
+      "ellipse": [
+       18.699999999999996,
+       16.0
+      ]
+     },
+     {
+      "z": 24.0,
+      "ellipse": [
+       12.100000000000001,
+       10.0
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       6.6,
+       5.0
+      ]
+     }
+    ],
+    "colour": "#3d6e35",
+    "smooth": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -70,
+     46,
+     1
+    ],
+    "end": [
+     70,
+     46,
+     1
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "points": [
+        [
+         -2.6,
+         -2
+        ],
+        [
+         2.6,
+         -2
+        ],
+        [
+         2.6,
+         2
+        ],
+        [
+         -2.6,
+         2
+        ]
+       ],
+       "z0": 0,
+       "height": 4,
+       "colour": "#e8dcc4"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     50.5,
+     8
+    ],
+    "end": [
+     66,
+     50.5,
+     8
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "points": [
+        [
+         -2.6,
+         -2
+        ],
+        [
+         2.6,
+         -2
+        ],
+        [
+         2.6,
+         2
+        ],
+        [
+         -2.6,
+         2
+        ]
+       ],
+       "z0": 0,
+       "height": 4,
+       "colour": "#d9a08a"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     55,
+     15
+    ],
+    "end": [
+     62,
+     55,
+     15
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "points": [
+        [
+         -2.6,
+         -2
+        ],
+        [
+         2.6,
+         -2
+        ],
+        [
+         2.6,
+         2
+        ],
+        [
+         -2.6,
+         2
+        ]
+       ],
+       "z0": 0,
+       "height": 4,
+       "colour": "#8fc4d6"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     59,
+     23
+    ],
+    "end": [
+     50,
+     59,
+     23
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "points": [
+        [
+         -2.6,
+         -2
+        ],
+        [
+         2.6,
+         -2
+        ],
+        [
+         2.6,
+         2
+        ],
+        [
+         -2.6,
+         2
+        ]
+       ],
+       "z0": 0,
+       "height": 4,
+       "colour": "#f1ead8"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 6
    }
   }
  ],
@@ -468,6 +850,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "main stand is shorter and sits at one end with a deeper cantilevered truss roof in the photo; hillside backdrop, white fuel tanks and the bay are not modelled"
+  "gaps": "stand now at one end with deep flat truss roof and red end walls, grey terraces opposite, hillside and bay added; hills are smooth lofts not rough forest, white fuel tanks and bridge absent"
  }
 }

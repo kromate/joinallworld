@@ -39,7 +39,7 @@
     "run": 0.85,
     "firstHeight": 6.5,
     "facetDeg": 12,
-    "under": "solid",
+    "under": "open",
     "stepped": true,
     "slab": 0.9,
     "bay": 6,
@@ -49,99 +49,64 @@
      "#e8e4dc"
     ],
     "concreteColour": "#d8d1bd",
-    "underColour": "#cdc4a8",
+    "underColour": "#2e2a24",
     "canopy": {
-     "height": 0.5,
-     "depth": 20,
-     "thickness": 0.9,
-     "slopeDeg": 16,
+     "height": 3.0,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 12,
      "colour": "#7e8a7d",
      "edgeColour": "#d3702a",
      "overhangBack": 1.5
-    }
-   }
+    },
+    "backWall": 0
+   },
+   "lod": [
+    0
+   ]
   },
   {
-   "type": "prism",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "lod": [
-    2
-   ],
+   "type": "stand",
    "params": {
-    "points": [
-     [
-      52.0,
-      0.0
-     ],
-     [
-      48.04,
-      16.84
-     ],
-     [
-      36.77,
-      31.11
-     ],
-     [
-      19.9,
-      40.65
-     ],
-     [
-      0.0,
-      44.0
-     ],
-     [
-      -19.9,
-      40.65
-     ],
-     [
-      -36.77,
-      31.11
-     ],
-     [
-      -48.04,
-      16.84
-     ],
-     [
-      -52.0,
-      0.0
-     ],
-     [
-      -48.04,
-      -16.84
-     ],
-     [
-      -36.77,
-      -31.11
-     ],
-     [
-      -19.9,
-      -40.65
-     ],
-     [
-      -0.0,
-      -44.0
-     ],
-     [
-      19.9,
-      -40.65
-     ],
-     [
-      36.77,
-      -31.11
-     ],
-     [
-      48.04,
-      -16.84
-     ]
+    "centre": [
+     0,
+     0
     ],
-    "height": 14,
-    "colour": "#d6cfb8",
-    "topColour": "#7f857b"
-   }
+    "radius": 46,
+    "radiusY": 38,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 4,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 6.5,
+    "facetDeg": 36,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.9,
+    "bay": 12,
+    "seatColour": "#b3262d",
+    "seatColours": [
+     "#b3262d",
+     "#e8e4dc"
+    ],
+    "concreteColour": "#d8d1bd",
+    "underColour": "#2e2a24",
+    "canopy": {
+     "height": 3.0,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 12,
+     "colour": "#7e8a7d",
+     "edgeColour": "#d3702a",
+     "overhangBack": 1.5
+    },
+    "backWall": 0
+   },
+   "lod": [
+    1,
+    2
+   ]
   },
   {
    "type": "array",
@@ -152,8 +117,8 @@
      0,
      0
     ],
-    "radius": 58,
-    "radiusY": 50,
+    "radius": 52,
+    "radiusY": 44,
     "startDeg": 35,
     "endDeg": 325,
     "count": 4,
@@ -168,8 +133,8 @@
         {
          "z": 36,
          "rect": [
-          1.54,
-          1.54
+          2.618,
+          2.618
          ],
          "cx": 0.5,
          "cy": -6
@@ -177,8 +142,8 @@
         {
          "z": 17,
          "rect": [
-          2.0999999999999996,
-          2.0999999999999996
+          3.5699999999999994,
+          3.5699999999999994
          ],
          "cx": 3.0,
          "cy": -3
@@ -186,8 +151,8 @@
         {
          "z": 0,
          "rect": [
-          2.8,
-          2.8
+          4.76,
+          4.76
          ],
          "cx": 5.6,
          "cy": 0
@@ -203,8 +168,8 @@
         {
          "z": 36,
          "rect": [
-          1.54,
-          1.54
+          2.618,
+          2.618
          ],
          "cx": -0.5,
          "cy": -6
@@ -212,8 +177,8 @@
         {
          "z": 17,
          "rect": [
-          2.0999999999999996,
-          2.0999999999999996
+          3.5699999999999994,
+          3.5699999999999994
          ],
          "cx": -3.0,
          "cy": -3
@@ -221,8 +186,8 @@
         {
          "z": 0,
          "rect": [
-          2.8,
-          2.8
+          4.76,
+          4.76
          ],
          "cx": -5.6,
          "cy": 0
@@ -383,56 +348,25 @@
    "params": {
     "mode": "line",
     "start": [
-     -38,
-     -64,
-     0
-    ],
-    "end": [
-     40,
-     -64,
-     0
-    ],
-    "count": 18,
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       1.9,
-       4.5
-      ],
-      "height": 1.5,
-      "colour": "#8a8f94"
-     }
-    }
-   }
-  },
-  {
-   "type": "array",
-   "lod": [
-    0
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
      -30,
-     -70,
+     -62,
      0
     ],
     "end": [
-     34,
-     -70,
+     30,
+     -62,
      0
     ],
-    "count": 14,
+    "count": 6,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       1.9,
-       4.5
+       1.8,
+       4.2
       ],
-      "height": 1.5,
-      "colour": "#b8352f"
+      "height": 1.4,
+      "colour": "#7d8186"
      }
     }
    }
@@ -452,8 +386,8 @@
  "city": "manama",
  "venueId": "manama-osm-way-28655847",
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Grey-green sloping canopy with orange edge on a cream raked bowl, taller A-frame masts with long booms and cars on the forecourt; lower ring is still a smooth cream wall (open bays went black so were reverted), pillars barely read, canopy is not wave-profiled, ground is pale not gravel, cars are plain boxes."
+  "gaps": "Open raked ring now on visible columns with dark voids, narrower sloping green-grey canopy with orange edge, thicker red A-frame masts nearer the bowl, cars reduced to a few boxes; canopy still reads as a flat ring not a wave-profiled roof, no glazed clerestory strip, masts show one leg more than two, ground paler than the photo."
  }
 }

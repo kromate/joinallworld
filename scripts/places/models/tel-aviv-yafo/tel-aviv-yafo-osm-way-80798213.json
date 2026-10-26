@@ -52,7 +52,7 @@
      74
     ],
     "height": 0.15,
-    "colour": "#3f7f3a",
+    "colour": "#6b9a50",
     "top": true
    }
   },
@@ -69,7 +69,7 @@
      64
     ],
     "height": 0.05,
-    "colour": "#4a8f42",
+    "colour": "#5a9a48",
     "top": true
    }
   },
@@ -77,14 +77,14 @@
    "type": "array",
    "params": {
     "mode": "line",
-    "count": 4,
+    "count": 3,
     "start": [
-     -37.5,
+     -33,
      0,
      0.2
     ],
     "end": [
-     37.5,
+     33,
      0,
      0.2
     ],
@@ -92,15 +92,19 @@
      "type": "prism",
      "params": {
       "rect": [
-       10,
+       16,
        66
       ],
       "height": 0.03,
-      "colour": "#468a40",
+      "colour": "#528f45",
       "top": true
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "stand",
@@ -124,7 +128,7 @@
     "firstHeight": 1.4,
     "under": "solid",
     "slab": 0.5,
-    "backWall": 1.2,
+    "backWall": 2.6,
     "seatColour": "#e6e6e0",
     "seatColours": [
      "#f4f2ec",
@@ -147,12 +151,12 @@
     "mode": "line",
     "count": 7,
     "start": [
-     -43,
+     -43.5,
      41,
      0
     ],
     "end": [
-     43,
+     43.5,
      41,
      0
     ],
@@ -160,70 +164,19 @@
      "type": "prism",
      "at": [
       0,
-      3.0,
-      4.2
+      2.2,
+      2.2
      ],
      "params": {
       "rect": [
-       2.4,
-       6.8
+       1.6,
+       10.5
       ],
-      "height": 0.25,
+      "height": 0.35,
       "colour": "#e8b92a",
       "top": true
      }
     }
-   }
-  },
-  {
-   "type": "stand",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "start": [
-     -62,
-     -22
-    ],
-    "end": [
-     -62,
-     22
-    ],
-    "flip": false,
-    "rows": 6,
-    "rise": 0.45,
-    "run": 0.8,
-    "firstHeight": 0.8,
-    "under": "solid",
-    "seatColour": "#d9d6cd",
-    "concreteColour": "#c8b891"
-   }
-  },
-  {
-   "type": "stand",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "start": [
-     62,
-     22
-    ],
-    "end": [
-     62,
-     -22
-    ],
-    "rows": 6,
-    "rise": 0.45,
-    "run": 0.8,
-    "firstHeight": 0.8,
-    "under": "solid",
-    "seatColour": "#d9d6cd",
-    "concreteColour": "#c8b891"
    }
   },
   {
@@ -268,7 +221,11 @@
    "params": {
     "height": 34,
     "head_width": 5.5
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -284,7 +241,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -300,7 +261,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -316,7 +281,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -332,7 +301,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -348,7 +321,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -364,7 +341,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -380,7 +361,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -396,7 +381,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -412,7 +401,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -428,7 +421,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -444,7 +441,11 @@
     ],
     "height": 0.03,
     "colour": "#f2f4ee"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -460,7 +461,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -476,7 +481,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -492,7 +501,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -508,7 +521,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -524,7 +541,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -540,7 +561,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -556,7 +581,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -572,7 +601,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -588,7 +621,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -604,7 +641,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -620,7 +661,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -636,7 +681,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -652,7 +701,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -668,7 +721,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -684,7 +741,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -700,7 +761,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -716,7 +781,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -732,7 +801,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -748,7 +821,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -764,7 +841,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -780,7 +861,11 @@
     ],
     "height": 0.5,
     "colour": "#d9a62a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -796,7 +881,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -812,7 +901,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -828,7 +921,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -844,7 +941,11 @@
     ],
     "height": 13,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -860,7 +961,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -876,7 +981,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -892,7 +1001,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -908,7 +1021,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -924,7 +1041,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -940,7 +1061,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -956,7 +1081,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -972,7 +1101,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -988,7 +1121,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1004,7 +1141,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1020,7 +1161,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1036,7 +1181,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1052,7 +1201,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1068,7 +1221,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1084,7 +1241,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1100,7 +1261,11 @@
     ],
     "height": 0.3,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1116,7 +1281,11 @@
     ],
     "height": 0.5,
     "colour": "#d9a62a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1132,7 +1301,11 @@
     ],
     "height": 0.12,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1148,7 +1321,11 @@
     ],
     "height": 0.12,
     "colour": "#e0b72a"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -1176,7 +1353,11 @@
       "colour": "#e0b72a"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1192,7 +1373,11 @@
     ],
     "height": 0.8,
     "colour": "#3f6fb3"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1208,7 +1393,11 @@
     ],
     "height": 1.8,
     "colour": "#3a3f44"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -1224,11 +1413,53 @@
     ],
     "height": 1.8,
     "colour": "#3a3f44"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    44,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 13,
+    "colour": "#e0b72a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    62,
+    44,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 13,
+    "colour": "#e0b72a"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "none",
   "trees": [
    {
@@ -1252,8 +1483,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Opposite stand now has 8 colour-blocked sections, yellow stair strips, control boxes, lattice towers, pitch markings and yellow rails, but the big painted ring and star motifs on the seats are not modelled and the camera is higher/wider than the photo."
+  "gaps": "Plaza apron removed, side stands deleted, pitch muted, back wall raised; yellow stair strips between blocks are small at this camera and seat ring/star motifs are not modelled."
  }
 }

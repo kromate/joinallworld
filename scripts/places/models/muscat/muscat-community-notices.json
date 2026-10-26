@@ -27,7 +27,7 @@
    "id": "block-tall",
    "footprint": {
     "rect": [
-     40,
+     56,
      20
     ]
    },
@@ -70,7 +70,7 @@
     ]
    },
    "at": [
-    6,
+    17,
     4
    ],
    "z0": 0,
@@ -102,12 +102,12 @@
    "id": "arcade-front",
    "footprint": {
     "rect": [
-     52,
+     70,
      7
     ]
    },
    "at": [
-    -14,
+    -10,
     -9
    ],
    "z0": 0,
@@ -145,14 +145,14 @@
    "at": [
     18,
     6,
-    34
+    36.5
    ],
    "params": {
-    "radius": 2.2,
+    "radius": 1.3,
     "profile": "hemi",
-    "drum": 0.8,
-    "lantern": 0.5,
-    "finial": 1.2,
+    "drum": 0.4,
+    "lantern": 0.3,
+    "finial": 0.8,
     "colour": "#e8d9a8",
     "drumColour": "#ece8dc"
    }
@@ -232,7 +232,7 @@
    "roof": {
     "form": "flat",
     "colour": "#e8dcc0",
-    "parapet": 1.4
+    "parapet": 0
    }
   },
   {
@@ -246,7 +246,7 @@
     "length": 90,
     "height": 0.9,
     "thickness": 0.4,
-    "pillarEvery": 6,
+    "pillarEvery": 12,
     "colour": "#cfcac0"
    }
   },
@@ -258,14 +258,14 @@
     0
    ],
    "params": {
-    "width": 6,
-    "height": 34,
+    "width": 4,
+    "height": 36,
     "cap": "flat",
-    "clockRadius": 2.4,
+    "clockRadius": 1.4,
     "clock": true,
     "belfry": false,
-    "colour": "#efe4cc",
-    "trimColour": "#d8cdb2",
+    "colour": "#f1ead8",
+    "trimColour": "#e0d6bc",
     "capColour": "#e8dcc0",
     "windows": "none"
    }
@@ -294,7 +294,7 @@
    "roof": {
     "form": "flat",
     "colour": "#e8dcc0",
-    "parapet": 0.5
+    "parapet": 0
    }
   },
   {
@@ -305,7 +305,7 @@
     12
    ],
    "params": {
-    "length": 40,
+    "length": 56,
     "height": 0.6,
     "thickness": 0.8,
     "merlon_height": 1.2,
@@ -321,7 +321,7 @@
   {
    "type": "mosque-domed/crenellated-wall",
    "at": [
-    6,
+    17,
     -3,
     8
    ],
@@ -342,12 +342,12 @@
   {
    "type": "mosque-domed/crenellated-wall",
    "at": [
-    -14,
+    -10,
     -12.5,
     5
    ],
    "params": {
-    "length": 52,
+    "length": 70,
     "height": 0.6,
     "thickness": 0.8,
     "merlon_height": 1.2,
@@ -365,87 +365,17 @@
    "id": "tier2",
    "footprint": {
     "rect": [
-     30,
-     12
-    ]
-   },
-   "at": [
-    -28,
-    19
-   ],
-   "z0": 0,
-   "rotDeg": 0,
-   "height": 18,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efe4cc",
-    "windows": "none",
-    "windowRatio": 0.3,
-    "windowShape": "pointed",
-    "bay": 10,
-    "plinth": 0.8,
-    "faces": {
-     "back": "plain"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e8dcc0",
-    "parapet": 1.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tier3",
-   "footprint": {
-    "rect": [
-     18,
-     8
+     44,
+     10
     ]
    },
    "at": [
     -26,
-    28
+    18
    ],
    "z0": 0,
    "rotDeg": 0,
-   "height": 24,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efe4cc",
-    "windows": "none",
-    "windowRatio": 0.3,
-    "windowShape": "pointed",
-    "bay": 10,
-    "plinth": 0.8,
-    "faces": {
-     "back": "plain"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e8dcc0",
-    "parapet": 1.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tier-mid",
-   "footprint": {
-    "rect": [
-     18,
-     8
-    ]
-   },
-   "at": [
-    6,
-    15
-   ],
-   "z0": 0,
-   "rotDeg": 0,
-   "height": 14,
+   "height": 15,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -462,39 +392,18 @@
    "roof": {
     "form": "flat",
     "colour": "#e8dcc0",
-    "parapet": 1.4
+    "parapet": 0
    }
   },
   {
    "type": "mosque-domed/crenellated-wall",
    "at": [
-    -28,
-    13,
-    18
-   ],
-   "params": {
-    "length": 30,
-    "height": 0.6,
-    "thickness": 0.8,
-    "merlon_height": 1.2,
-    "merlon_width": 0.9,
-    "pitch": 2.2,
-    "colour": "#efe4cc",
-    "trim": "#e8dcc0"
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "mosque-domed/crenellated-wall",
-   "at": [
     -26,
-    24,
-    24
+    13.5,
+    15
    ],
    "params": {
-    "length": 18,
+    "length": 44,
     "height": 0.6,
     "thickness": 0.8,
     "merlon_height": 1.2,
@@ -508,43 +417,156 @@
    ]
   },
   {
-   "type": "mosque-domed/crenellated-wall",
+   "type": "loft",
    "at": [
-    6,
-    11,
-    14
+    -22,
+    -12.9,
+    0.2
    ],
    "params": {
-    "length": 18,
-    "height": 0.6,
-    "thickness": 0.8,
-    "merlon_height": 1.2,
-    "merlon_width": 0.9,
-    "pitch": 2.2,
-    "colour": "#efe4cc",
-    "trim": "#e8dcc0"
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       6.3,
+       0.8
+      ]
+     },
+     {
+      "z": 0.83,
+      "rect": [
+       6.18,
+       0.8
+      ]
+     },
+     {
+      "z": 1.67,
+      "rect": [
+       5.76,
+       0.8
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       4.99,
+       0.8
+      ]
+     },
+     {
+      "z": 3.33,
+      "rect": [
+       3.84,
+       0.8
+      ]
+     },
+     {
+      "z": 4.17,
+      "rect": [
+       2.28,
+       0.8
+      ]
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       0.3,
+       0.8
+      ]
+     }
+    ],
+    "colour": "#6b5a46",
+    "capTop": true
    },
    "lod": [
-    0
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    -12.9,
+    0.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       6.3,
+       0.8
+      ]
+     },
+     {
+      "z": 0.83,
+      "rect": [
+       6.18,
+       0.8
+      ]
+     },
+     {
+      "z": 1.67,
+      "rect": [
+       5.76,
+       0.8
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       4.99,
+       0.8
+      ]
+     },
+     {
+      "z": 3.33,
+      "rect": [
+       3.84,
+       0.8
+      ]
+     },
+     {
+      "z": 4.17,
+      "rect": [
+       2.28,
+       0.8
+      ]
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       0.3,
+       0.8
+      ]
+     }
+    ],
+    "colour": "#6b5a46",
+    "capTop": true
+   },
+   "lod": [
+    0,
+    1
    ]
   },
   {
    "type": "prism",
    "at": [
-    -40,
-    36,
+    -50,
+    50,
     0
    ],
    "params": {
-    "n": 4,
-    "radius": 22,
-    "height": 22,
-    "topScale": 0.45,
+    "n": 6,
+    "radius": 16,
+    "height": 26,
+    "topScale": 0.5,
     "topOffset": [
-     -2,
+     -4,
      0
     ],
-    "colour": "#86644c",
+    "colour": "#5c534a",
     "windows": "none"
    },
    "lod": [
@@ -554,20 +576,158 @@
   {
    "type": "prism",
    "at": [
-    -20,
-    36,
+    -38,
+    53,
     0
    ],
    "params": {
-    "n": 4,
-    "radius": 22,
+    "n": 6,
+    "radius": 14,
+    "height": 20,
+    "topScale": 0.6,
+    "topOffset": [
+     3,
+     0
+    ],
+    "colour": "#4a423b",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    56,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 18,
     "height": 30,
+    "topScale": 0.4,
+    "topOffset": [
+     -3,
+     0
+    ],
+    "colour": "#675c51",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    50,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 16,
+    "height": 22,
+    "topScale": 0.55,
+    "topOffset": [
+     4,
+     0
+    ],
+    "colour": "#463f39",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    53,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 18,
+    "height": 26,
     "topScale": 0.45,
+    "topOffset": [
+     -5,
+     0
+    ],
+    "colour": "#5c534a",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    56,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 15,
+    "height": 18,
+    "topScale": 0.6,
     "topOffset": [
      2,
      0
     ],
-    "colour": "#6e5040",
+    "colour": "#4a423b",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    50,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 17,
+    "height": 24,
+    "topScale": 0.5,
+    "topOffset": [
+     -3,
+     0
+    ],
+    "colour": "#675c51",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    53,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 15,
+    "height": 19,
+    "topScale": 0.6,
+    "topOffset": [
+     3,
+     0
+    ],
+    "colour": "#463f39",
     "windows": "none"
    },
    "lod": [
@@ -578,76 +738,27 @@
    "type": "prism",
    "at": [
     0,
-    36,
+    52,
     0
    ],
    "params": {
     "n": 4,
-    "radius": 22,
-    "height": 26,
-    "topScale": 0.45,
-    "topOffset": [
-     -2,
-     0
-    ],
-    "colour": "#86644c",
+    "radius": 40,
+    "height": 22,
+    "topScale": 0.5,
+    "colour": "#5a5148",
     "windows": "none"
    },
    "lod": [
-    0
-   ]
-  },
-  {
-   "type": "prism",
-   "at": [
-    20,
-    36,
-    0
-   ],
-   "params": {
-    "n": 4,
-    "radius": 22,
-    "height": 34,
-    "topScale": 0.45,
-    "topOffset": [
-     2,
-     0
-    ],
-    "colour": "#6e5040",
-    "windows": "none"
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "prism",
-   "at": [
-    40,
-    36,
-    0
-   ],
-   "params": {
-    "n": 4,
-    "radius": 22,
-    "height": 24,
-    "topScale": 0.45,
-    "topOffset": [
-     -2,
-     0
-    ],
-    "colour": "#86644c",
-    "windows": "none"
-   },
-   "lod": [
-    0
+    1,
+    2
    ]
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "sand",
   "forecourt": "garden",
-  "forecourtDepth": 10,
+  "forecourtDepth": 16,
   "trees": [
    {
     "kind": "palm",
@@ -706,17 +817,24 @@
     ]
    },
    {
-    "kind": "conifer",
+    "kind": "palm",
     "at": [
-     28,
-     -16
+     -8,
+     -30
     ]
    },
    {
-    "kind": "conifer",
+    "kind": "palm",
     "at": [
-     34,
-     -16
+     14,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     -32
     ]
    }
   ],
@@ -726,8 +844,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 4,
   "match": "fair",
-  "gaps": "Mountain is wide flat-topped blocks, not a jagged ridge; tiers are plain setbacks with parapet merlons; cypress rows approximated; ground reads grey-green; LOD1 4358 tris slightly over 4000 and span 124 m over 120 m clamp"
+  "gaps": "Photo file re-cropped from earlier cmp (original download lost); ridge is dark grey-brown stacked frusta, still blocky not jagged; ground is flat sand/grey, no wide green terraced lawn or railing; portals are simple brown pointed lofts; span ~132 m over 120 m clamp (warn only)"
  }
 }

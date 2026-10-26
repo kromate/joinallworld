@@ -1,579 +1,882 @@
 {
- "schema": "allworld-place-model",
- "version": 2,
- "city": "cockburn-town",
- "venueId": "cockburn-town-osm-way-410381421",
- "verified": "photo",
- "evidence": [
-  {
-   "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:Historic_Lighthouse_Park_on_Grand_Turk.jpg",
-   "licence": "see Commons page",
-   "author": "see Commons page",
-   "view": "front",
-   "file": "/tmp/places-evidence/cockburn-town/lh3.jpg",
-   "used": "slender tapering cast-iron tower, cream-white with rust staining, wide rusty gallery with rail, glazed lantern, white domed cap and vane, white post-and-rail fence"
-  },
-  {
-   "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:Grand_Turk_Lighthouse_-_51342317219.jpg",
-   "licence": "see Commons page",
-   "author": "see Commons page",
-   "view": "side",
-   "file": "/tmp/places-evidence/cockburn-town/lh1.jpg",
-   "used": "white tower with small square windows, white gallery rail, green corrugated roof pavilion beside it"
-  },
-  {
-   "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:Grand_Turk_Lighthouse_-_Bermuda_Kitchen_-_51420398703.jpg",
-   "licence": "see Commons page",
-   "author": "see Commons page",
-   "view": "side",
-   "file": "/tmp/places-evidence/cockburn-town/lh2.jpg",
-   "used": "keeper house: whitewashed gable cottage with chimney, thatch-and-green roof, green shutter"
-  },
-  {
-   "kind": "osm",
-   "ref": "way/410381421",
-   "used": "tower footprint (about 8.6 m round) and 18 m height tag"
-  }
- ],
- "camera": {
-  "yawDeg": 0,
-  "pitchDeg": 4,
-  "fovDeg": 40,
-  "aspect": 0.75,
-  "margin": 0.1
- },
- "parts": [
-  {
-   "type": "revolve",
-   "id": "tower",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "segments": 28,
-    "colour": "#d9c58a",
-    "profile": [
-     [
-      1.9,
-      0,
-      "#e0d2a0"
-     ],
-     [
-      1.9,
-      0.8
-     ],
-     [
-      1.8,
-      1.0,
-      "#d9c58a"
-     ],
-     [
-      1.7,
-      4
-     ],
-     [
-      1.55,
-      9,
-      "#d4bf80"
-     ],
-     [
-      1.35,
-      12.5,
-      "#c9a95e"
-     ],
-     [
-      1.2,
-      15.4,
-      "#d9c58a"
-     ],
-     [
-      1.2,
-      15.8
-     ],
-     [
-      1.9,
-      16.0,
-      "#c9a95e"
-     ],
-     [
-      1.9,
-      16.25,
-      "#8a5a30"
-     ],
-     [
-      1.2,
-      16.3,
-      "#e6dcc0"
-     ],
-     [
-      1.2,
-      16.4
-     ]
-    ]
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    16.25
-   ],
-   "params": {
-    "mode": "arc",
-    "centre": [
-     0,
-     0,
-     0
-    ],
-    "radius": 1.85,
-    "startDeg": 0,
-    "endDeg": 360,
-    "count": 16,
-    "of": {
-     "type": "mass",
-     "footprint": {
-      "rect": [
-       0.08,
-       0.08
-      ]
-     },
-     "at": [
-      0,
-      0
-     ],
-     "z0": 0,
-     "height": 1.0,
-     "storeys": 1,
-     "wall": {
-      "material": "metal-cladding",
-      "colour": "#c8b890",
-      "windows": "none"
-     },
-     "roof": {
-      "form": "flat",
-      "colour": "#c8b890"
-     }
-    }
-   }
-  },
-  {
-   "type": "revolve",
-   "id": "gallery-rail",
-   "at": [
-    0,
-    0,
-    17.2
-   ],
-   "params": {
-    "segments": 24,
-    "colour": "#f2efe4",
-    "openTop": true,
-    "profile": [
-     [
-      1.9,
-      0
-     ],
-     [
-      1.9,
-      0.08
-     ],
-     [
-      1.82,
-      0.08
-     ],
-     [
-      1.82,
-      0
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "id": "lantern",
-   "at": [
-    0,
-    0,
-    16.3
-   ],
-   "params": {
-    "segments": 16,
-    "colour": "#a9bcb0",
-    "profile": [
-     [
-      1.1,
-      0,
-      "#a9bcb0"
-     ],
-     [
-      1.1,
-      2.2
-     ],
-     [
-      1.3,
-      2.3,
-      "#f4f1e6"
-     ],
-     [
-      1.0,
-      2.7
-     ],
-     [
-      0.5,
-      3.2
-     ],
-     [
-      0.1,
-      3.5
-     ],
-     [
-      0.06,
-      4.3,
-      "#2f3235"
-     ]
-    ]
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    16.4
-   ],
-   "params": {
-    "mode": "arc",
-    "centre": [
-     0,
-     0,
-     0
-    ],
-    "radius": 1.1,
-    "startDeg": 0,
-    "endDeg": 360,
-    "count": 8,
-    "of": {
-     "type": "mass",
-     "footprint": {
-      "rect": [
-       0.07,
-       0.07
-      ]
-     },
-     "at": [
-      0,
-      0
-     ],
-     "z0": 0,
-     "height": 2.2,
-     "storeys": 1,
-     "wall": {
-      "material": "metal-cladding",
-      "colour": "#f4f1e6",
-      "windows": "none"
-     },
-     "roof": {
-      "form": "flat",
-      "colour": "#f4f1e6"
-     }
-    }
-   }
-  },
-  {
-   "type": "mass",
-   "id": "slit0",
-   "footprint": {
-    "rect": [
-     0.5,
-     0.5
-    ]
-   },
-   "at": [
-    0,
-    -1.649
-   ],
-   "z0": 5,
-   "height": 0.7,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#3a4a4a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3a4a4a"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "slit1",
-   "footprint": {
-    "rect": [
-     0.5,
-     0.5
-    ]
-   },
-   "at": [
-    0,
-    -1.5519999999999998
-   ],
-   "z0": 8.5,
-   "height": 0.7,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#3a4a4a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3a4a4a"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "slit2",
-   "footprint": {
-    "rect": [
-     0.5,
-     0.5
-    ]
-   },
-   "at": [
-    0,
-    -1.455
-   ],
-   "z0": 12,
-   "height": 0.7,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#3a4a4a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3a4a4a"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "keeper-house",
-   "footprint": {
-    "rect": [
-     5.5,
-     3.6
-    ]
-   },
-   "at": [
-    6,
-    -2.5
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 2.7,
-   "storeys": 1,
-   "wall": {
-    "material": "whitewash",
-    "colour": "#f3f0e6",
-    "windows": "punched",
-    "windowRatio": 0.1,
-    "faces": {
-     "front": "punched",
-     "back": "plain",
-     "left": "plain",
-     "right": "plain"
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "cockburn-town",
+  "venueId": "cockburn-town-osm-way-410381421",
+  "verified": "photo",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Historic_Lighthouse_Park_on_Grand_Turk.jpg",
+      "licence": "see Commons page",
+      "author": "see Commons page",
+      "view": "front",
+      "file": "/tmp/places-evidence/cockburn-town/lh3.jpg",
+      "used": "slender tapering cast-iron tower, cream-white with rust staining, wide rusty gallery with rail, glazed lantern, white domed cap and vane, white post-and-rail fence"
     },
-    "plinth": 0.2
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#4f7a4a",
-    "rise": 1.3,
-    "overhang": 0.3
-   }
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Grand_Turk_Lighthouse_-_51342317219.jpg",
+      "licence": "see Commons page",
+      "author": "see Commons page",
+      "view": "side",
+      "file": "/tmp/places-evidence/cockburn-town/lh1.jpg",
+      "used": "white tower with small square windows, white gallery rail, green corrugated roof pavilion beside it"
+    },
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Grand_Turk_Lighthouse_-_Bermuda_Kitchen_-_51420398703.jpg",
+      "licence": "see Commons page",
+      "author": "see Commons page",
+      "view": "side",
+      "file": "/tmp/places-evidence/cockburn-town/lh2.jpg",
+      "used": "keeper house: whitewashed gable cottage with chimney, thatch-and-green roof, green shutter"
+    },
+    {
+      "kind": "osm",
+      "ref": "way/410381421",
+      "used": "tower footprint (about 8.6 m round) and 18 m height tag"
+    }
+  ],
+  "camera": {
+    "yawDeg": 0,
+    "pitchDeg": 4,
+    "fovDeg": 40,
+    "aspect": 0.75,
+    "margin": 0.1
   },
-  {
-   "type": "mass",
-   "id": "chimney",
-   "footprint": {
-    "rect": [
-     1.3,
-     1.3
+  "parts": [
+    {
+      "type": "revolve",
+      "id": "tower",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "params": {
+        "segments": 28,
+        "colour": "#efe8d6",
+        "profile": [
+          [
+            2.5,
+            0,
+            "#e8dfc8"
+          ],
+          [
+            2.5,
+            0.7
+          ],
+          [
+            2.4,
+            0.8,
+            "#efe8d6"
+          ],
+          [
+            2.334,
+            1.95
+          ],
+          [
+            2.284,
+            2,
+            "#e4dcc7"
+          ],
+          [
+            2.334,
+            2.05,
+            "#efe8d6"
+          ],
+          [
+            2.223,
+            3.95
+          ],
+          [
+            2.173,
+            4,
+            "#e4dcc7"
+          ],
+          [
+            2.223,
+            4.05,
+            "#efe8d6"
+          ],
+          [
+            2.113,
+            5.95
+          ],
+          [
+            2.063,
+            6,
+            "#e4dcc7"
+          ],
+          [
+            2.113,
+            6.05,
+            "#efe8d6"
+          ],
+          [
+            2.003,
+            7.95
+          ],
+          [
+            1.953,
+            8,
+            "#e4dcc7"
+          ],
+          [
+            2.003,
+            8.05,
+            "#efe8d6"
+          ],
+          [
+            1.892,
+            9.95
+          ],
+          [
+            1.842,
+            10,
+            "#e4dcc7"
+          ],
+          [
+            1.892,
+            10.05,
+            "#efe8d6"
+          ],
+          [
+            1.782,
+            11.95
+          ],
+          [
+            1.732,
+            12,
+            "#e4dcc7"
+          ],
+          [
+            1.782,
+            12.05,
+            "#efe8d6"
+          ],
+          [
+            1.671,
+            13.95
+          ],
+          [
+            1.621,
+            14,
+            "#e4dcc7"
+          ],
+          [
+            1.671,
+            14.05,
+            "#efe8d6"
+          ],
+          [
+            1.561,
+            15.95
+          ],
+          [
+            1.511,
+            16,
+            "#e4dcc7"
+          ],
+          [
+            1.561,
+            16.05,
+            "#efe8d6"
+          ],
+          [
+            1.55,
+            16.2
+          ],
+          [
+            2.6,
+            16.3,
+            "#9a5a30"
+          ],
+          [
+            2.6,
+            16.55
+          ],
+          [
+            1.35,
+            16.6,
+            "#e9e2d0"
+          ],
+          [
+            1.35,
+            16.7
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "tower-lo",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "params": {
+        "segments": 10,
+        "colour": "#efe8d6",
+        "profile": [
+          [
+            2.5,
+            0,
+            "#efe8d6"
+          ],
+          [
+            1.55,
+            16.2
+          ],
+          [
+            2.6,
+            16.3,
+            "#9a5a30"
+          ],
+          [
+            1.35,
+            16.6,
+            "#e9e2d0"
+          ],
+          [
+            1.35,
+            16.7
+          ]
+        ]
+      },
+      "lod": [
+        2
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "gallery-rail",
+      "at": [
+        0,
+        0,
+        17.65
+      ],
+      "params": {
+        "segments": 24,
+        "colour": "#f4f1e8",
+        "openTop": true,
+        "profile": [
+          [
+            2.6,
+            0
+          ],
+          [
+            2.6,
+            0.08
+          ],
+          [
+            2.52,
+            0.08
+          ],
+          [
+            2.52,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "type": "array",
+      "at": [
+        0,
+        0,
+        16.55
+      ],
+      "params": {
+        "mode": "arc",
+        "centre": [
+          0,
+          0,
+          0
+        ],
+        "radius": 2.55,
+        "startDeg": 0,
+        "endDeg": 360,
+        "count": 16,
+        "of": {
+          "type": "prism",
+          "at": [
+            0,
+            0
+          ],
+          "params": {
+            "rect": [
+              0.08,
+              0.08
+            ],
+            "z0": 0,
+            "height": 1.1,
+            "colour": "#f4f1e8",
+            "windows": "none"
+          }
+        }
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "lantern",
+      "at": [
+        0,
+        0,
+        16.7
+      ],
+      "params": {
+        "segments": 16,
+        "colour": "#7f9aa0",
+        "profile": [
+          [
+            1.25,
+            0,
+            "#7f9aa0"
+          ],
+          [
+            1.25,
+            2.6
+          ],
+          [
+            1.5,
+            2.7,
+            "#f4f1e6"
+          ],
+          [
+            1.1,
+            3.1
+          ],
+          [
+            0.6,
+            3.7
+          ],
+          [
+            0.12,
+            4.0
+          ],
+          [
+            0.06,
+            5.0,
+            "#2f3235"
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "lantern-lo",
+      "at": [
+        0,
+        0,
+        16.7
+      ],
+      "params": {
+        "segments": 8,
+        "colour": "#7f9aa0",
+        "profile": [
+          [
+            1.25,
+            0,
+            "#7f9aa0"
+          ],
+          [
+            1.25,
+            2.6
+          ],
+          [
+            1.5,
+            2.7,
+            "#f4f1e6"
+          ],
+          [
+            1.1,
+            3.1
+          ],
+          [
+            0.6,
+            3.7
+          ],
+          [
+            0.12,
+            4.0
+          ],
+          [
+            0.06,
+            5.0,
+            "#2f3235"
+          ]
+        ]
+      },
+      "lod": [
+        2
+      ]
+    },
+    {
+      "type": "array",
+      "at": [
+        0,
+        0,
+        16.7
+      ],
+      "params": {
+        "mode": "arc",
+        "centre": [
+          0,
+          0,
+          0
+        ],
+        "radius": 1.25,
+        "startDeg": 0,
+        "endDeg": 360,
+        "count": 8,
+        "of": {
+          "type": "prism",
+          "at": [
+            0,
+            0
+          ],
+          "params": {
+            "rect": [
+              0.09,
+              0.09
+            ],
+            "z0": 0,
+            "height": 2.6,
+            "colour": "#f4f1e6",
+            "windows": "none"
+          }
+        }
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "win0",
+      "at": [
+        0.0,
+        -1.6
+      ],
+      "params": {
+        "rect": [
+          0.45,
+          0.3
+        ],
+        "z0": 12.2,
+        "height": 0.6,
+        "colour": "#2f3a3d",
+        "windows": "none"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "win1",
+      "at": [
+        -0.676,
+        -1.45
+      ],
+      "params": {
+        "rect": [
+          0.45,
+          0.3
+        ],
+        "z0": 13.8,
+        "height": 0.6,
+        "colour": "#2f3a3d",
+        "windows": "none"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "win2",
+      "at": [
+        0.547,
+        -1.504
+      ],
+      "params": {
+        "rect": [
+          0.45,
+          0.3
+        ],
+        "z0": 15.0,
+        "height": 0.6,
+        "colour": "#2f3a3d",
+        "windows": "none"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "rust0",
+      "at": [
+        -1.732,
+        -1.0
+      ],
+      "params": {
+        "rect": [
+          0.12,
+          0.12
+        ],
+        "z0": 8.0,
+        "height": 3.0,
+        "colour": "#c9a070",
+        "windows": "none"
+      },
+      "lod": [
+        0
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "rust1",
+      "at": [
+        -0.684,
+        -1.879
+      ],
+      "params": {
+        "rect": [
+          0.12,
+          0.12
+        ],
+        "z0": 10.5,
+        "height": 4.5,
+        "colour": "#c9a070",
+        "windows": "none"
+      },
+      "lod": [
+        0
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "rust2",
+      "at": [
+        0.518,
+        -1.932
+      ],
+      "params": {
+        "rect": [
+          0.12,
+          0.12
+        ],
+        "z0": 13.0,
+        "height": 6.0,
+        "colour": "#c9a070",
+        "windows": "none"
+      },
+      "lod": [
+        0
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "rust3",
+      "at": [
+        1.532,
+        -1.286
+      ],
+      "params": {
+        "rect": [
+          0.12,
+          0.12
+        ],
+        "z0": 8.0,
+        "height": 3.0,
+        "colour": "#c9a070",
+        "windows": "none"
+      },
+      "lod": [
+        0
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "rust4",
+      "at": [
+        1.992,
+        0.174
+      ],
+      "params": {
+        "rect": [
+          0.12,
+          0.12
+        ],
+        "z0": 10.5,
+        "height": 4.5,
+        "colour": "#c9a070",
+        "windows": "none"
+      },
+      "lod": [
+        0
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "rust5",
+      "at": [
+        1.286,
+        1.532
+      ],
+      "params": {
+        "rect": [
+          0.12,
+          0.12
+        ],
+        "z0": 13.0,
+        "height": 6.0,
+        "colour": "#c9a070",
+        "windows": "none"
+      },
+      "lod": [
+        0
+      ]
+    },
+    {
+      "type": "mass",
+      "id": "keeper-house",
+      "footprint": {
+        "rect": [
+          5.5,
+          3.6
+        ]
+      },
+      "at": [
+        8,
+        -3
+      ],
+      "rotDeg": 0,
+      "z0": 0,
+      "height": 2.7,
+      "storeys": 1,
+      "wall": {
+        "material": "whitewash",
+        "colour": "#faf8f0",
+        "windows": "punched",
+        "windowRatio": 0.1,
+        "faces": {
+          "front": "punched",
+          "back": "plain",
+          "left": "plain",
+          "right": "plain"
+        },
+        "plinth": 0.2
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#5d8a4d",
+        "rise": 1.3,
+        "overhang": 0.3
+      }
+    },
+    {
+      "type": "prism",
+      "at": [
+        10.2,
+        -2.5
+      ],
+      "params": {
+        "rect": [
+          1.3,
+          1.3
+        ],
+        "z0": 2.2,
+        "height": 2.2,
+        "colour": "#f3f0e6",
+        "windows": "none"
+      },
+      "id": "chimney",
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "core/steps",
+      "at": [
+        0,
+        -3.4,
+        0
+      ],
+      "params": {
+        "width": 1.6,
+        "rise": 0.9,
+        "run": 0.6,
+        "count": 2,
+        "colour": "#e8e4d8"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "ground",
+      "at": [
+        0,
+        0
+      ],
+      "params": {
+        "rect": [
+          40,
+          32
+        ],
+        "z0": -0.05,
+        "height": 0.1,
+        "colour": "#e6dcc0",
+        "windows": "none"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "pavilion",
+      "id": "picnic-shelter",
+      "at": [
+        -8,
+        -4,
+        0
+      ],
+      "params": {
+        "width": 7,
+        "depth": 5,
+        "height": 3.0,
+        "roof": "gable",
+        "rise": 1.8,
+        "posts": 8,
+        "colour": "#8a8a6a",
+        "cap_colour": "#2f7a4f"
+      }
+    },
+    {
+      "type": "fence-wall",
+      "at": [
+        -18,
+        -10,
+        0.05
+      ],
+      "params": {
+        "length": 36,
+        "height": 1.1,
+        "thickness": 0.1,
+        "kind": "fence",
+        "colour": "#ffffff"
+      }
+    },
+    {
+      "type": "fence-wall",
+      "at": [
+        -18,
+        -9.4,
+        0.05
+      ],
+      "params": {
+        "length": 36,
+        "height": 0.6,
+        "thickness": 0.1,
+        "kind": "fence",
+        "colour": "#ffffff"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "grass-front",
+      "at": [
+        -4,
+        -12
+      ],
+      "params": {
+        "rect": [
+          22,
+          3
+        ],
+        "z0": 0,
+        "height": 0.05,
+        "colour": "#6f9a45",
+        "windows": "none"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        14,
+        5,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 6,
+        "colour": "#5f8a45"
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -12,
+        6,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 7,
+        "colour": "#5f8a45"
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -6,
+        9,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 5,
+        "colour": "#5f8a45"
+      }
+    }
+  ],
+  "site": {
+    "ground": "sand",
+    "forecourt": "none",
+    "extent": [
+      40,
+      32
     ]
-   },
-   "at": [
-    8.2,
-    -2.0
-   ],
-   "z0": 2.2,
-   "height": 2.2,
-   "storeys": 1,
-   "wall": {
-    "material": "whitewash",
-    "colour": "#f3f0e6",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e6e2d6"
-   }
   },
-  {
-   "type": "core/steps",
-   "at": [
-    0,
-    -3.2,
-    0
-   ],
-   "params": {
-    "width": 1.6,
-    "rise": 0.9,
-    "run": 0.6,
-    "count": 2,
-    "colour": "#e8e4d8"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -14,
-    -10,
-    0.05
-   ],
-   "params": {
-    "length": 28,
-    "height": 1.1,
-    "thickness": 0.1,
-    "kind": "fence",
-    "colour": "#ffffff"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -14,
-    -6,
-    0.05
-   ],
-   "params": {
-    "length": 28,
-    "height": 1.1,
-    "thickness": 0.1,
-    "kind": "fence",
-    "colour": "#ffffff"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "grass1",
-   "footprint": {
-    "rect": [
-     10,
-     6
-    ]
-   },
-   "at": [
-    -8,
-    -6
-   ],
-   "z0": -0.4,
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#6f8f45",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6f8f45"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "grass2",
-   "footprint": {
-    "rect": [
-     8,
-     5
-    ]
-   },
-   "at": [
-    10,
-    6
-   ],
-   "z0": -0.4,
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#6f8f45",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6f8f45"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "grass3",
-   "footprint": {
-    "rect": [
-     7,
-     5
-    ]
-   },
-   "at": [
-    -12,
-    6
-   ],
-   "z0": -0.4,
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#6f8f45",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6f8f45"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -9,
-    5,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 6,
-    "colour": "#5f8a45"
-   }
+  "review": {
+    "rounds": 2,
+    "match": "fair",
+    "gaps": "Critic fixes applied: cream cast-iron shaft with plate rings and rust streaks, rust gallery with open white rail, taller glazed lantern with white cap and vane, upper windows, whitewash gable keeper house with green roof, picnic pavilion, pale limestone ground, white fence, broadleaf trees. Taper kept slimmer than critic's 8.6 m base (OSM ring is the platform, photos show a slender tower). Trees still lollipop shaped, not wind-bent casuarinas; no thatch roof."
   }
- ],
- "site": {
-  "ground": "sand",
-  "forecourt": "none",
-  "extent": [
-   40,
-   32
-  ]
- },
- "review": {
-  "rounds": 2,
-  "match": "fair",
-  "gaps": "critic fixes applied (open balustrade, slimmer tower with rust-cream shaft, glazed lantern, window slits, green keeper roof, fence, grass) but NOT re-rendered: render servers were down; jobs queued, cmp unseen"
- }
 }

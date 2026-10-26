@@ -25,19 +25,128 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "gravel",
+   "params": {
+    "rect": [
+     100,
+     100
+    ],
+    "height": 0.06,
+    "colour": "#b9a39a"
+   },
+   "at": [
+    0,
+    6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-w",
+   "params": {
+    "rect": [
+     30,
+     26
+    ],
+    "z0": 0.06,
+    "height": 0.05,
+    "colour": "#5f8f3c"
+   },
+   "at": [
+    -30,
+    -28
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-e",
+   "params": {
+    "rect": [
+     30,
+     26
+    ],
+    "z0": 0.06,
+    "height": 0.05,
+    "colour": "#5f8f3c"
+   },
+   "at": [
+    30,
+    -28
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-hw",
+   "params": {
+    "rect": [
+     30,
+     6
+    ],
+    "z0": 0.06,
+    "height": 0.05,
+    "colour": "#5f8f3c"
+   },
+   "at": [
+    -30,
+    -48
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-he",
+   "params": {
+    "rect": [
+     30,
+     6
+    ],
+    "z0": 0.06,
+    "height": 0.05,
+    "colour": "#5f8f3c"
+   },
+   "at": [
+    30,
+    -48
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-ward",
+   "params": {
+    "rect": [
+     90,
+     6
+    ],
+    "z0": 0.06,
+    "height": 0.05,
+    "colour": "#5f8f3c"
+   },
+   "at": [
+    0,
+    -4
+   ]
+  },
+  {
    "type": "mass",
    "id": "gate-pier-w",
    "footprint": {
     "rect": [
-     4,
-     2.4
+     5,
+     3
     ]
    },
    "at": [
-    -9.2,
+    -12.5,
     -44
    ],
-   "height": 3.8,
+   "height": 5.2,
    "wall": {
     "material": "painted-render",
     "colour": "#e0a830",
@@ -54,15 +163,15 @@
    "id": "gate-pier-e",
    "footprint": {
     "rect": [
-     4,
-     2.4
+     5,
+     3
     ]
    },
    "at": [
-    9.2,
+    12.5,
     -44
    ],
-   "height": 3.8,
+   "height": 5.2,
    "wall": {
     "material": "painted-render",
     "colour": "#e0a830",
@@ -79,15 +188,15 @@
    "id": "gate-pier-c",
    "footprint": {
     "rect": [
-     2.2,
-     1.6
+     3,
+     2
     ]
    },
    "at": [
     0,
     -44
    ],
-   "height": 4.4,
+   "height": 6.0,
    "wall": {
     "material": "brick",
     "colour": "#7a5a3a",
@@ -103,11 +212,11 @@
    "id": "gate-lintel",
    "params": {
     "rect": [
-     19,
-     1.4
+     27,
+     1.6
     ],
-    "z0": 3.8,
-    "height": 1.2,
+    "z0": 5.2,
+    "height": 1.4,
     "colour": "#f4f2ea"
    },
    "at": [
@@ -118,34 +227,42 @@
   {
    "type": "core/gate",
    "at": [
-    -4,
+    -6,
     -44,
     0
    ],
    "params": {
-    "width": 4,
-    "height": 2.6,
+    "width": 8,
+    "height": 3.6,
     "pillar": 0.1,
     "leaf": "bars",
     "colour": "#222222",
     "leafColour": "#1e1e1e"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/gate",
    "at": [
-    4,
+    6,
     -44,
     0
    ],
    "params": {
-    "width": 4,
-    "height": 2.6,
+    "width": 8,
+    "height": 3.6,
     "pillar": 0.1,
     "leaf": "bars",
     "colour": "#222222",
     "leafColour": "#1e1e1e"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "fence-wall",
@@ -160,7 +277,10 @@
     "thickness": 0.5,
     "kind": "wall",
     "colour": "#f0f0f0"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
@@ -173,15 +293,15 @@
    },
    "at": [
     -34,
-    -6
+    8
    ],
    "height": 4.6,
    "wall": {
     "material": "painted-render",
     "colour": "#e8dcc0",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "bands": "#4f8f7a",
+    "windowRatio": 0.16,
+    "bands": "#3f9a58",
     "plinth": 0.3,
     "faces": {
      "back": "plain"
@@ -190,9 +310,9 @@
    "roof": {
     "form": "hip",
     "colour": "#7a3f2f",
-    "material": "corrugated",
     "pitch": 20,
-    "overhang": 0.8
+    "overhang": 0.8,
+    "material": "metal-sheet"
    },
    "rotDeg": 0
   },
@@ -207,26 +327,26 @@
    },
    "at": [
     30,
-    -8
+    6
    ],
    "height": 3.8,
    "wall": {
     "material": "painted-render",
     "colour": "#e8e0cb",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "bands": "#4f8f7a",
+    "windowRatio": 0.3,
+    "bands": "#3f9a58",
     "plinth": 0.3,
     "faces": {
      "back": "plain"
     }
    },
    "roof": {
-    "form": "hip",
+    "form": "gable",
     "colour": "#7a3f2f",
-    "material": "corrugated",
-    "pitch": 20,
-    "overhang": 0.8
+    "pitch": 22,
+    "overhang": 0.8,
+    "material": "metal-sheet"
    },
    "rotDeg": 90
   },
@@ -241,26 +361,24 @@
    },
    "at": [
     -30,
-    28
+    42
    ],
-   "height": 4.2,
+   "height": 3.8,
    "wall": {
     "material": "painted-render",
     "colour": "#e8e0cb",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "bands": "#4f8f7a",
+    "windowRatio": 0.16,
+    "bands": "#3f9a58",
     "plinth": 0.3,
     "faces": {
      "back": "plain"
     }
    },
    "roof": {
-    "form": "hip",
-    "colour": "#7a3f2f",
-    "material": "corrugated",
-    "pitch": 20,
-    "overhang": 0.8
+    "form": "flat",
+    "colour": "#b8b2a2",
+    "parapet": 0.3
    },
    "rotDeg": 0
   },
@@ -275,15 +393,15 @@
    },
    "at": [
     26,
-    30
+    44
    ],
    "height": 4.8,
    "wall": {
     "material": "painted-render",
     "colour": "#efe6d2",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "bands": "#4f8f7a",
+    "windowRatio": 0.3,
+    "bands": "#3f9a58",
     "plinth": 0.3,
     "faces": {
      "back": "plain"
@@ -292,9 +410,9 @@
    "roof": {
     "form": "hip",
     "colour": "#7a3f2f",
-    "material": "corrugated",
     "pitch": 20,
-    "overhang": 0.8
+    "overhang": 0.8,
+    "material": "metal-sheet"
    },
    "rotDeg": 90
   },
@@ -309,77 +427,30 @@
    },
    "at": [
     0,
-    10
+    24
    ],
    "height": 5.4,
    "wall": {
     "material": "painted-render",
     "colour": "#efe8d6",
     "windows": "punched",
-    "windowRatio": 0.25,
+    "windowRatio": 0.14,
     "bands": "#4f8f7a",
     "plinth": 0.3
    },
    "roof": {
     "form": "hip",
     "colour": "#7a3f2f",
-    "material": "corrugated",
     "pitch": 22,
-    "overhang": 0.9
-   }
-  },
-  {
-   "type": "covered-walkway",
-   "at": [
-    -12,
-    -6,
-    0
-   ],
-   "params": {
-    "length": 22,
-    "width": 2.6,
-    "height": 2.9,
-    "colour": "#bdb7a6",
-    "roofColour": "#7a3f2f"
-   },
-   "rotDeg": 90
-  },
-  {
-   "type": "covered-walkway",
-   "at": [
-    12,
-    -6,
-    0
-   ],
-   "params": {
-    "length": 22,
-    "width": 2.6,
-    "height": 2.9,
-    "colour": "#bdb7a6",
-    "roofColour": "#7a3f2f"
-   },
-   "rotDeg": 90
-  },
-  {
-   "type": "covered-walkway",
-   "at": [
-    -14,
-    19,
-    0
-   ],
-   "params": {
-    "length": 16,
-    "width": 2.6,
-    "height": 2.9,
-    "colour": "#bdb7a6",
-    "roofColour": "#7a3f2f"
+    "overhang": 0.9,
+    "material": "metal-sheet"
    }
   },
   {
    "type": "ambulance-bay",
    "at": [
     0,
-    -14,
+    1,
     0
    ],
    "params": {
@@ -390,13 +461,17 @@
     "colour": "#e8e0cb",
     "roofColour": "#7a3f2f",
     "vans": 1
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "courtyard-garden",
    "at": [
     -18,
-    10,
+    24,
     0
    ],
    "params": {
@@ -404,13 +479,16 @@
     "depth": 14,
     "trees": 2,
     "paths": true
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "courtyard-garden",
    "at": [
     18,
-    10,
+    24,
     0
    ],
    "params": {
@@ -418,7 +496,10 @@
     "depth": 14,
     "trees": 2,
     "paths": true
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
@@ -439,14 +520,17 @@
      "type": "prism",
      "params": {
       "rect": [
-       1,
-       0.6
+       1.8,
+       1.5
       ],
-      "height": 0.4,
+      "height": 0.55,
       "colour": "#1c1c1c"
      }
     }
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
@@ -467,21 +551,24 @@
      "type": "prism",
      "params": {
       "rect": [
-       1,
-       0.6
+       1.8,
+       1.5
       ],
-      "height": 0.4,
+      "height": 0.55,
       "colour": "#f2f2ee"
      }
     }
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "island-bed",
    "params": {
     "rect": [
-     1.6,
+     2.8,
      21
     ],
     "height": 0.45,
@@ -505,93 +592,284 @@
     "count": 3,
     "spread": 1.5,
     "line": 8
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "hedge",
    "at": [
-    -30,
+    -41,
     -45,
     0
    ],
    "params": {
-    "length": 20,
-    "height": 1.5,
-    "depth": 1.6,
+    "length": 26,
+    "height": 1.8,
+    "depth": 2.0,
     "colour": "#2f5f2f"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "hedge",
    "at": [
-    11,
+    14,
     -45,
     0
    ],
    "params": {
-    "length": 20,
-    "height": 1.5,
-    "depth": 1.6,
+    "length": 26,
+    "height": 1.8,
+    "depth": 2.0,
     "colour": "#2f5f2f"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "sign-pole",
    "at": [
-    6,
+    7,
     -36,
     0
    ],
    "params": {
-    "height": 4.4,
-    "width": 2.2,
+    "height": 6.2,
+    "width": 3.6,
     "colour": "#2a2a2a"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/sign-board",
    "at": [
-    6.2,
+    7.2,
+    -36,
+    5.4
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 0.7,
+    "bottom": 5.4,
+    "colour": "#2f8f6a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7.2,
+    -36,
+    4.5
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 0.7,
+    "bottom": 4.5,
+    "colour": "#e8b020",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7.2,
     -36,
     3.6
    ],
    "params": {
-    "width": 2.2,
-    "height": 0.45,
+    "width": 3.6,
+    "height": 0.7,
     "bottom": 3.6,
-    "colour": "#2f8f6a",
-    "posts": false
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    6.2,
-    -36,
-    3.0
-   ],
-   "params": {
-    "width": 2.2,
-    "height": 0.45,
-    "bottom": 3.0,
-    "colour": "#e8b020",
-    "posts": false
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    6.2,
-    -36,
-    2.4
-   ],
-   "params": {
-    "width": 2.2,
-    "height": 0.45,
-    "bottom": 2.4,
     "colour": "#2f6fb0",
     "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -12,
+    18,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "width": 2.8,
+    "height": 3.0,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   },
+   "rotDeg": 90,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    12,
+    18,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "width": 2.8,
+    "height": 3.0,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   },
+   "rotDeg": 90,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -20,
+    36,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "width": 2.8,
+    "height": 3.0,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    20,
+    36,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "width": 2.8,
+    "height": 3.0,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     11,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    15.5
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "none",
+    "bands": "#3f9a58"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3f2f",
+    "pitch": 24,
+    "overhang": 0.6,
+    "material": "metal-sheet"
    }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     12.8,
+     0
+    ],
+    "end": [
+     4.5,
+     12.8,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 4.0,
+      "colour": "#ffffff"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     1.2,
+     0
+    ],
+    "end": [
+     -16,
+     1.2,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 2.8,
+      "colour": "#ffffff"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -601,7 +879,7 @@
    {
     "kind": "broadleaf",
     "at": [
-     -50,
+     -55,
      -20
     ],
     "height": 9
@@ -609,7 +887,7 @@
    {
     "kind": "broadleaf",
     "at": [
-     50,
+     55,
      -18
     ],
     "height": 9
@@ -617,23 +895,23 @@
    {
     "kind": "broadleaf",
     "at": [
-     -52,
-     30
+     -55,
+     40
     ],
     "height": 10
    },
    {
     "kind": "broadleaf",
     "at": [
-     52,
-     36
+     55,
+     44
     ],
     "height": 10
    }
   ],
   "extent": [
    130,
-   100
+   125
   ]
  },
  "schema": "allworld-place-model",
@@ -641,8 +919,8 @@
  "city": "kaduna",
  "venueId": "neuro-psychiatric-hospital-barnawa",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Only the gate and drive are photographed; kerbed island, sign cluster and hedges are small in the render and the pink-grey gravel is laterite red; wards are composed from the brief."
+  "gaps": "Photo is a street view of the gate; gate piers, black grilles, white lintel, pink-grey gravel drive, kerbed island and sign post are modelled larger; ground outside the gravel is still laterite and the ward blocks are invented from the brief (varied hip/gable/flat roofs, walkways, portico)."
  }
 }

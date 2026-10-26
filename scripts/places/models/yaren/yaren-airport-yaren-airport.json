@@ -69,8 +69,8 @@
     "form": "hip",
     "colour": "#d4d9dc",
     "material": "metal-sheet",
-    "pitch": 12,
-    "overhang": 1.2
+    "pitch": 16,
+    "overhang": 1.8
    }
   },
   {
@@ -102,8 +102,8 @@
     "form": "hip",
     "colour": "#d4d9dc",
     "material": "metal-sheet",
-    "pitch": 12,
-    "overhang": 1.2
+    "pitch": 16,
+    "overhang": 1.8
    }
   },
   {
@@ -111,7 +111,7 @@
    "id": "clerestory",
    "footprint": {
     "rect": [
-     14,
+     16,
      6
     ]
    },
@@ -145,16 +145,90 @@
   },
   {
    "type": "mass",
+   "id": "dormer-a",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    -12,
+    -3.2
+   ],
+   "z0": 4.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dcdc",
+    "windows": "ribbon",
+    "windowRatio": 0.65,
+    "glassColour": "#1f262b",
+    "faces": {
+     "front": "ribbon",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d4d9dc",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-b",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    20,
+    -3.2
+   ],
+   "z0": 4.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dcdc",
+    "windows": "ribbon",
+    "windowRatio": 0.65,
+    "glassColour": "#1f262b",
+    "faces": {
+     "front": "ribbon",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d4d9dc",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
    "id": "entrance-piers",
    "footprint": {
     "rect": [
-     34,
-     1.6
+     36,
+     3.2
     ]
    },
    "at": [
     1,
-    -7.4
+    -6.4
    ],
    "height": 3.6,
    "storeys": 1,
@@ -180,6 +254,32 @@
     "form": "flat",
     "colour": "#c9c4b8",
     "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eave",
+   "footprint": {
+    "rect": [
+     38,
+     5
+    ]
+   },
+   "at": [
+    1,
+    -7.6
+   ],
+   "z0": 3.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a4f9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d9dc"
    }
   },
   {
@@ -210,33 +310,111 @@
    }
   },
   {
-   "type": "control-tower",
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
    "at": [
     2,
-    5,
-    0
+    5
    ],
-   "params": {
-    "height": 13,
-    "style": "square",
-    "colour": "#d6d9d9",
-    "cabColour": "#262c31",
-    "bandColour": "#b9bec1"
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e6e4",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c6"
    }
   },
   {
-   "type": "core/sign-board",
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
    "at": [
-    -17,
-    -10,
-    0
+    2,
+    5
    ],
-   "params": {
-    "width": 7,
-    "height": 1.4,
-    "bottom": 2.2,
-    "colour": "#e8c93a",
-    "frameColour": "#2a4f9a"
+   "z0": 10,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3238",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "glassColour": "#1c2328"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d9d9",
+    "parapet": 0.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    2,
+    5
+   ],
+   "z0": 12.9,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0d3d3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-mast",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2,
+    5
+   ],
+   "z0": 13.7,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92"
    }
   },
   {
@@ -317,6 +495,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo is taken from a rooftop so the foreground flat roof is not modelled; tower cab is round not square; no dormer boxes on the roof; no vehicles matching"
+  "gaps": "tower cab simplified boxes; piers are a glazed band not true brick piers; no vehicles/DHL/ac units; photo taken from roof so foreground flat roof not modelled"
  }
 }

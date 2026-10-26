@@ -64,7 +64,7 @@
    "wall": {
     "material": "timber",
     "colour": "#5b3a2c",
-    "windows": "punched",
+    "windows": "none",
     "plinth": 0,
     "windowRatio": 0.28,
     "windowShape": "rect",
@@ -86,28 +86,29 @@
    "footprint": {
     "rect": [
      25,
-     12
+     10
     ]
    },
    "at": [
     0,
-    0
+    0.8
    ],
    "z0": 4.7,
    "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#4a2f27",
+    "colour": "#3e2a24",
     "windows": "punched",
     "plinth": 0,
-    "windowRatio": 0.45,
-    "glassColour": "#2d3438",
+    "windowRatio": 0.55,
+    "glassColour": "#1f2a30",
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "windowShape": "rect"
    },
    "roof": {
     "form": "flat",
@@ -132,64 +133,15 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6e3a2a",
+    "colour": "#5a2a22",
     "windows": "none",
     "plinth": 0
    },
    "roof": {
     "form": "hip",
-    "colour": "#7a4030",
-    "rise": 1.4,
-    "overhang": 1.2
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0.7
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -12.5,
-     -6.8,
-     0
-    ],
-    "end": [
-     12.5,
-     -6.8,
-     0
-    ],
-    "count": 8,
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       0.45,
-       0.45
-      ],
-      "height": 7.6,
-      "colour": "#a2643b"
-     }
-    }
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -12.5,
-    -7.2,
-    4.7
-   ],
-   "params": {
-    "length": 25,
-    "height": 1.0,
-    "thickness": 0.15,
-    "kind": "rail",
-    "pillarEvery": 1.1,
-    "colour": "#c98a52"
+    "colour": "#5a2a22",
+    "rise": 0.5,
+    "overhang": 1.4
    }
   },
   {
@@ -253,6 +205,214 @@
     "min_height": 8,
     "max_height": 14
    }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -6.6,
+     0
+    ],
+    "end": [
+     12,
+     -6.6,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 7.6,
+      "colour": "#7a4a30"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12.5,
+    -6.6,
+    4.7
+   ],
+   "params": {
+    "length": 25,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "pillarEvery": 0.9,
+    "colour": "#c98a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1
+   ],
+   "params": {
+    "rect": [
+     27,
+     15
+    ],
+    "z0": 7.6,
+    "height": 0.7,
+    "colour": "#2f5a58"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.0,
+    -6.05
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.25
+    ],
+    "z0": 0.7,
+    "height": 3.0,
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -6.02
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     0.15
+    ],
+    "z0": 0.7,
+    "height": 3.2,
+    "colour": "#2f7a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    -6.05
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.25
+    ],
+    "z0": 0.7,
+    "height": 3.0,
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.02
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     0.15
+    ],
+    "z0": 0.7,
+    "height": 3.2,
+    "colour": "#2f7a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.0,
+    -6.05
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.25
+    ],
+    "z0": 0.7,
+    "height": 3.0,
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.0,
+    -6.02
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     0.15
+    ],
+    "z0": 0.7,
+    "height": 3.2,
+    "colour": "#2f7a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.8,
+    -6.03
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.15
+    ],
+    "z0": 1.7,
+    "height": 2.0,
+    "colour": "#2f7a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.8,
+    -6.0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.2
+    ],
+    "z0": 1.85,
+    "height": 1.7,
+    "colour": "#25363c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#a99c86"
+   }
   }
  ],
  "site": {
@@ -268,8 +428,8 @@
  "city": "ulaanbaatar",
  "venueId": "ulaanbaatar-osm-way-271049504",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "carved eaves brackets, lattice and painted panels absent; roof is a simple hip not the swept Tibetan form; side wings and rock slope missing"
+  "gaps": "lattice and carved brackets are plain colour blocks, roof is a low hip not the swept Tibetan form, rock slope and side wings missing, doors are flat panels"
  }
 }

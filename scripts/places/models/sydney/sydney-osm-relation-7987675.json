@@ -51,9 +51,9 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecdca0",
+    "colour": "#EFDF9C",
     "windows": "punched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.24,
     "faces": {
      "front": "punched",
      "left": "punched",
@@ -61,45 +61,69 @@
      "back": "punched"
     },
     "windowShape": "rect",
-    "bands": "#8c3c35",
-    "plinth": 0.5
+    "plinth": 0.5,
+    "trimColour": "#5a2326"
    },
    "roof": {
     "form": "hip",
-    "colour": "#6d5a54",
-    "pitch": 24,
+    "colour": "#7a6a60",
+    "pitch": 20,
     "material": "slate",
-    "overhang": 0.5
+    "overhang": 0.6
    }
   },
   {
    "type": "mass",
-   "id": "verandah-roof-low",
+   "id": "valance-up",
    "footprint": {
     "rect": [
      25,
-     3.4
+     0.5
     ]
    },
    "at": [
     0,
-    -6.2
+    -7.7
    ],
    "rotDeg": 0,
-   "z0": 6.5,
-   "height": 0.5,
-   "storeys": 1,
+   "z0": 6.0,
+   "height": 0.9,
    "wall": {
     "material": "render",
-    "colour": "#8c3c35",
+    "colour": "#2a1c1e",
     "windows": "none"
    },
    "roof": {
-    "form": "shed",
-    "colour": "#b4584b",
-    "rise": 0.7,
-    "overhang": 0.2,
-    "material": "corrugated"
+    "form": "flat",
+    "colour": "#2a1c1e",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "valance-low",
+   "footprint": {
+    "rect": [
+     25,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -7.7
+   ],
+   "rotDeg": 0,
+   "z0": 2.7,
+   "height": 0.8,
+   "wall": {
+    "material": "render",
+    "colour": "#2a1c1e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a1c1e",
+    "parapet": 0.0
    }
   },
   {
@@ -118,7 +142,6 @@
    "rotDeg": 0,
    "z0": 3.45,
    "height": 0.5,
-   "storeys": 1,
    "wall": {
     "material": "render",
     "colour": "#6e2f2c",
@@ -136,17 +159,16 @@
    "footprint": {
     "rect": [
      5.5,
-     3.4
+     2.2
     ]
    },
    "at": [
     0,
-    -6.2
+    -6.4
    ],
    "rotDeg": 0,
    "z0": 7.0,
-   "height": 1.2,
-   "storeys": 1,
+   "height": 1.8,
    "wall": {
     "material": "render",
     "colour": "#f1ede0",
@@ -156,7 +178,26 @@
     "form": "gable",
     "axis": "y",
     "colour": "#f1ede0",
-    "pitch": 28
+    "pitch": 38
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.4,
+    4.2
+   ],
+   "params": {
+    "width": 25,
+    "depth": 3.6,
+    "drop": 0.7,
+    "colours": [
+     "#b4584b",
+     "#f4f0e8"
+    ],
+    "stripe": 1.0,
+    "posts": false
    }
   },
   {
@@ -171,9 +212,9 @@
     "depth": 0.6,
     "height": 2.9,
     "balustrade": false,
-    "steps": true,
+    "steps": false,
     "roof": "flat",
-    "wall_colour": "#7a3433",
+    "wall_colour": "#5a2326",
     "posts": 10
    }
   },
@@ -191,36 +232,23 @@
     "balustrade": true,
     "steps": false,
     "roof": "flat",
-    "wall_colour": "#7a3433",
+    "wall_colour": "#5a2326",
     "posts": 10
    }
   },
   {
-   "type": "chimney-stack",
+   "type": "church-door",
    "at": [
-    -6.5,
-    2,
-    8.4
+    0,
+    -4.5,
+    0.5
    ],
    "params": {
-    "width": 1.4,
-    "height": 2.6,
-    "pots": 2,
-    "colour": "#efe9dd"
-   }
-  },
-  {
-   "type": "chimney-stack",
-   "at": [
-    6.8,
-    3,
-    8.4
-   ],
-   "params": {
-    "width": 1.4,
-    "height": 2.6,
-    "pots": 2,
-    "colour": "#efe9dd"
+    "width": 2.2,
+    "height": 3.0,
+    "arch": false,
+    "colour": "#2a1c1e",
+    "trim": "#e8e0c8"
    }
   },
   {
@@ -231,7 +259,7 @@
     0
    ],
    "params": {
-    "width": 3,
+    "width": 3.4,
     "rise": 0.5,
     "run": 0.4,
     "count": 3,
@@ -239,66 +267,98 @@
    }
   },
   {
-   "type": "hedge",
-   "at": [
-    -4,
-    -13,
-    0
-   ],
-   "params": {
-    "length": 8,
-    "height": 0.7,
-    "depth": 0.8,
-    "colour": "#3f6e3a"
-   }
-  },
-  {
-   "type": "hedge",
-   "at": [
-    4,
-    -13,
-    0
-   ],
-   "params": {
-    "length": 8,
-    "height": 0.7,
-    "depth": 0.8,
-    "colour": "#3f6e3a"
-   }
-  },
-  {
-   "type": "hedge",
+   "type": "chimney-stack",
    "at": [
     -8.5,
-    -16,
-    0
+    3,
+    7.5
    ],
-   "rotDeg": 90,
    "params": {
-    "length": 6,
-    "height": 0.7,
-    "depth": 0.8
+    "width": 1.4,
+    "height": 3.2,
+    "pots": 2,
+    "colour": "#efe9dd"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    8.5,
+    3,
+    7.5
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 3.2,
+    "pots": 2,
+    "colour": "#efe9dd"
    }
   },
   {
    "type": "hedge",
    "at": [
-    8.5,
-    -16,
+    -5,
+    -14.5,
     0
    ],
-   "rotDeg": 90,
+   "rotDeg": -12,
    "params": {
-    "length": 6,
+    "length": 7,
     "height": 0.7,
-    "depth": 0.8
+    "depth": 0.8,
+    "colour": "#3f6e3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    5,
+    -14.5,
+    0
+   ],
+   "rotDeg": 12,
+   "params": {
+    "length": 7,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6e3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "rotDeg": -35,
+   "params": {
+    "length": 5,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6e3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "length": 5,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6e3a"
    }
   },
   {
    "type": "tree",
    "at": [
-    -30,
-    6,
+    -32,
+    2,
     0
    ],
    "params": {
@@ -309,25 +369,25 @@
   {
    "type": "tree",
    "at": [
-    20,
-    -2,
+    -30,
+    -10,
     0
    ],
    "params": {
-    "kind": "palm",
+    "kind": "broadleaf",
     "height": 9
    }
   },
   {
    "type": "tree",
    "at": [
-    -15,
-    -12,
+    22,
+    0,
     0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 3
+    "kind": "palm",
+    "height": 9
    }
   }
  ],
@@ -346,6 +406,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "No cast-iron lace or shutters, verandah roof not striped, walls read grey, parterre hedges simplified, plan is a rectangle."
+  "gaps": "Cast-iron lace only as dark valance bands, shutters not modelled, plan is a rectangle, hedge parterre simplified."
  }
 }

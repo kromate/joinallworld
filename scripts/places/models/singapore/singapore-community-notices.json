@@ -45,16 +45,20 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#f4f2ec",
+    "colour": "#f6f4ee",
     "windows": "louvre",
     "windowShape": "rect",
-    "windowRatio": 0.6,
+    "windowRatio": 0.62,
     "bay": 4.4,
+    "glassColour": "#e6dcc0",
+    "trimColour": "#f6f4ee",
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
+    "cornice": true,
+    "plinth": 0.5,
     "pattern": [
      {
       "type": "arcade",
@@ -63,17 +67,15 @@
       ],
       "shape": "arch",
       "bay": 4.4,
-      "opening": 0.62
+      "opening": 0.66
      }
-    ],
-    "cornice": true,
-    "plinth": 0.5
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#e9e6de",
-    "parapet": 1.0,
-    "overhang": 0.5
+    "colour": "#efece4",
+    "parapet": 1.1,
+    "overhang": 0.6
    }
   },
   {
@@ -82,32 +84,35 @@
    "footprint": {
     "rect": [
      26,
-     20
+     18
     ]
    },
    "at": [
     4,
-    12
+    14
    ],
-   "height": 20,
+   "height": 22,
    "storeys": 3,
    "wall": {
     "material": "stucco",
-    "colour": "#f4f2ec",
-    "windows": "punched",
-    "windowRatio": 0.4,
-    "bay": 4.6,
+    "colour": "#f6f4ee",
+    "windows": "louvre",
+    "windowRatio": 0.5,
+    "bay": 4.4,
+    "glassColour": "#e6dcc0",
     "cornice": true,
     "plinth": 0.5,
     "faces": {
      "back": "plain",
-     "right": "plain"
+     "right": "plain",
+     "left": "plain"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#e9e6de",
-    "parapet": 1.0
+    "colour": "#efece4",
+    "parapet": 1.1,
+    "overhang": 0.5
    }
   },
   {
@@ -116,26 +121,26 @@
    "footprint": {
     "rect": [
      9,
-     8
+     7
     ]
    },
    "at": [
     4,
-    12
+    14
    ],
-   "z0": 20,
-   "height": 4.5,
+   "z0": 22,
+   "height": 5,
    "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#f4f2ec",
+    "colour": "#f6f4ee",
     "windows": "none",
-    "windowRatio": 0.35
+    "cornice": true
    },
    "roof": {
     "form": "hip",
-    "colour": "#7b4a3a",
-    "pitch": 12
+    "colour": "#e6e2d8",
+    "pitch": 10
    }
   },
   {
@@ -143,57 +148,91 @@
    "id": "west-wing",
    "footprint": {
     "rect": [
-     22,
-     16
+     24,
+     15
     ]
    },
    "at": [
     -40,
-    3
+    2
    ],
-   "height": 10,
+   "height": 10.5,
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#f1eee6",
-    "windows": "punched",
-    "windowRatio": 0.35,
-    "bay": 3.4,
-    "cornice": true,
+    "colour": "#f6f4ee",
+    "windows": "louvre",
+    "windowShape": "rect",
+    "windowRatio": 0.62,
+    "bay": 5.0,
+    "glassColour": "#e6dcc0",
+    "trimColour": "#f6f4ee",
     "faces": {
      "back": "plain",
      "left": "plain"
-    }
+    },
+    "cornice": true,
+    "plinth": 0.5
    },
    "roof": {
     "form": "flat",
-    "colour": "#e9e6de",
-    "parapet": 0.8
+    "colour": "#efece4",
+    "parapet": 0.9,
+    "overhang": 0.5
    }
   },
   {
    "type": "core/portico",
    "at": [
-    -18,
+    -21,
     -9,
     0
    ],
    "params": {
     "width": 14,
     "depth": 3,
-    "height": 12,
+    "height": 14.5,
     "columns": 4,
     "pediment": true,
     "steps": 3,
     "colour": "#fbfaf6",
-    "roofColour": "#e9e6de"
+    "roofColour": "#e6e2d8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.6
+      ],
+      "height": 7,
+      "z0": 7.8,
+      "colour": "#f6f4ee"
+     }
+    },
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -26,
+     -9.2,
+     0
+    ],
+    "end": [
+     26,
+     -9.2,
+     0
+    ]
    }
   },
   {
    "type": "balustrade",
    "at": [
     0,
-    -9.2,
+    -9.3,
     7.6
    ],
    "params": {
@@ -203,11 +242,37 @@
    }
   },
   {
+   "type": "balustrade",
+   "at": [
+    0,
+    -9.4,
+    15.1
+   ],
+   "params": {
+    "length": 54,
+    "height": 0.9,
+    "colour": "#fbfaf6"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    4,
+    5.2,
+    22
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "colour": "#fbfaf6"
+   }
+  },
+  {
    "type": "flagpole",
    "at": [
     4,
-    12,
-    24.5
+    14,
+    27
    ],
    "params": {
     "height": 9
@@ -243,6 +308,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "no pilaster/column articulation or balustrades on the upper floor, louvres read blue-grey not cream, pediment and tower simplified, wings and rear plan not matched to the real irregular outline"
+  "gaps": "continuous arcade, pilasters, balustrades, set-back tower with cupola and left pediment added; louvres still read grey-blue, no pediment relief or cupola detail, wings simplified"
  }
 }

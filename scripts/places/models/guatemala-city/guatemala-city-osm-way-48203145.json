@@ -56,7 +56,13 @@
     "windows": "ribbon",
     "windowRatio": 0.3,
     "bands": "#d9d3c4",
-    "plinth": 0.3
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    }
    },
    "roof": {
     "form": "flat",
@@ -87,7 +93,13 @@
     "windows": "ribbon",
     "windowRatio": 0.3,
     "bands": "#d9d3c4",
-    "plinth": 0.3
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "flat",
@@ -118,7 +130,13 @@
     "windows": "ribbon",
     "windowRatio": 0.3,
     "bands": "#d9d3c4",
-    "plinth": 0.3
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "flat",
@@ -222,7 +240,11 @@
       "colour": "#e8e4da"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "fence-wall",

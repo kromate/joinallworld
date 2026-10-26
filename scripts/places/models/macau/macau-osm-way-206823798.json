@@ -71,9 +71,9 @@
     "material": "tile-cladding",
     "colour": "#e1e3e2",
     "windows": "ribbon",
-    "windowRatio": 0.3,
-    "bay": 14,
-    "glassColour": "#34363a",
+    "windowRatio": 0.5,
+    "bay": 20,
+    "glassColour": "#7d8185",
     "faces": {
      "left": "none",
      "right": "none",
@@ -138,32 +138,6 @@
    }
   },
   {
-   "type": "mass",
-   "id": "portal",
-   "footprint": {
-    "rect": [
-     13,
-     2
-    ]
-   },
-   "at": [
-    2,
-    -39.5
-   ],
-   "height": 5,
-   "storeys": 1,
-   "wall": {
-    "material": "tile-cladding",
-    "colour": "#c2402f",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#b0705a",
-    "overhang": 0.5
-   }
-  },
-  {
    "type": "market-open/steps",
    "at": [
     2,
@@ -201,6 +175,154 @@
     ],
     "width": 4
    }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     13,
+     0.8
+    ]
+   },
+   "at": [
+    2,
+    -39.2
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c2402f",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0705a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-door",
+   "footprint": {
+    "rect": [
+     8,
+     0.6
+    ]
+   },
+   "at": [
+    2,
+    -39.6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#2a2e33",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2e33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     26,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -39.6
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d3a07a",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3a07a"
+   },
+   "z0": 4
+  },
+  {
+   "type": "mass",
+   "id": "lattice-tower",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    34,
+    -8
+   ],
+   "height": 38,
+   "storeys": 9,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#8a9094",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 8,
+    "glassColour": "#5d6468",
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#6f7478"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-stub-l",
+   "footprint": {
+    "rect": [
+     3,
+     12
+    ]
+   },
+   "at": [
+    -21,
+    -30
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#4a4d50",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50"
+   },
+   "z0": 4
   }
  ],
  "site": {
@@ -218,8 +340,8 @@
  "city": "macau",
  "venueId": "macau-osm-way-206823798",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "open market floors are black ribbons not recessed bays with railings; dark grey band stubs and lattice neighbour missing; no signage lettering"
+  "gaps": "open floors are dark ribbon bays not recessed railed bays; lattice neighbour is a simple finned box; no lettering"
  }
 }

@@ -53,7 +53,9 @@
    "params": {
     "length": 140,
     "width": 76,
-    "colour": "#b3563f"
+    "colour": "#b3563f",
+    "pitch": false,
+    "infield": false
    }
   },
   {
@@ -66,7 +68,8 @@
    "params": {
     "length": 92,
     "width": 60,
-    "stripes": 8
+    "stripes": 8,
+    "goals": false
    }
   },
   {
@@ -102,12 +105,12 @@
     "backWall": 0.5,
     "canopy": {
      "height": 10,
-     "depth": 11,
-     "thickness": 0.6,
+     "depth": 8,
+     "thickness": 0.4,
      "slopeDeg": 2,
      "colour": "#2d7a4e",
      "edgeColour": "#2d7a4e",
-     "supports": 9
+     "supports": 12
     }
    }
   },
@@ -123,19 +126,19 @@
      0,
      0
     ],
-    "radius": 80,
+    "radius": 74,
     "radiusY": 49,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 11,
+    "rows": 6,
     "rise": 0.5,
     "run": 0.85,
-    "firstHeight": 1.5,
+    "firstHeight": 0.8,
     "facetDeg": 30,
     "under": "open",
     "seatColour": "#bdbab0",
     "concreteColour": "#c9c5ba",
-    "underColour": "#aaa69c"
+    "underColour": "#a9a59b"
    }
   },
   {
@@ -148,55 +151,20 @@
    "params": {
     "mode": "line",
     "start": [
-     -74.80000000000001,
-     50.0
+     -72,
+     46
     ],
     "end": [
-     74.80000000000001,
-     50.0
+     72,
+     46
     ],
     "count": 2,
     "of": {
      "type": "lattice-mast",
      "params": {
-      "height": 35,
-      "baseWidth": 3,
-      "topWidth": 1,
-      "panels": 8,
-      "colour": "#9aa0a6",
-      "colour2": "#9aa0a6"
-     }
-    }
-   },
-   "lod": [
-    0,
-    2
-   ]
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -74.80000000000001,
-     -50.0
-    ],
-    "end": [
-     74.80000000000001,
-     -50.0
-    ],
-    "count": 2,
-    "of": {
-     "type": "lattice-mast",
-     "params": {
-      "height": 35,
-      "baseWidth": 3,
-      "topWidth": 1,
+      "height": 40,
+      "baseWidth": 2.2,
+      "topWidth": 0.8,
       "panels": 8,
       "colour": "#9aa0a6",
       "colour2": "#9aa0a6"
@@ -234,6 +202,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "critic's evidenceOk=false rejected: OSM way is Lefkosa Ataturk Stadyumu (Wikidata Q3495527), photos are of that same stadium. Terraces plain grey; pitch part adds its own trees/kit; no dugouts"
+  "gaps": "ring cut to 6 rows, thinner roof, masts at far corners; still shows site-generated trees and parked cars on the infield (not removable via spec in 2 rounds); terraces plain grey; no dugouts"
  }
 }

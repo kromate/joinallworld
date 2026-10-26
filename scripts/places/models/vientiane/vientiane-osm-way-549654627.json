@@ -23,8 +23,9 @@
  "camera": {
   "yawDeg": 20,
   "pitchDeg": 5,
-  "fovDeg": 40,
-  "aspect": 1.333
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "fit": "building"
  },
  "parts": [
   {
@@ -40,24 +41,24 @@
     0,
     0
    ],
-   "height": 10.5,
+   "height": 11.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece6d6",
+    "colour": "#f2e2bc",
     "windows": "punched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.3,
     "bay": 3.4,
     "plinth": 0.8,
     "cornice": true,
-    "trimColour": "#d8d0ba"
+    "trimColour": "#e2d6b8"
    },
    "roof": {
     "form": "hip",
-    "colour": "#55504a",
+    "colour": "#4a3d33",
     "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 1.4
+    "pitch": 14,
+    "overhang": 2.0
    }
   },
   {
@@ -73,24 +74,24 @@
     -22,
     19
    ],
-   "height": 10.5,
+   "height": 11.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece6d6",
+    "colour": "#f2e2bc",
     "windows": "punched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.3,
     "bay": 3.4,
     "plinth": 0.8,
     "cornice": true,
-    "trimColour": "#d8d0ba"
+    "trimColour": "#e2d6b8"
    },
    "roof": {
     "form": "hip",
-    "colour": "#55504a",
+    "colour": "#4a3d33",
     "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 1.4
+    "pitch": 14,
+    "overhang": 2.0
    }
   },
   {
@@ -106,41 +107,41 @@
     22,
     19
    ],
-   "height": 10.5,
+   "height": 11.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece6d6",
+    "colour": "#f2e2bc",
     "windows": "punched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.3,
     "bay": 3.4,
     "plinth": 0.8,
     "cornice": true,
-    "trimColour": "#d8d0ba"
+    "trimColour": "#e2d6b8"
    },
    "roof": {
     "form": "hip",
-    "colour": "#55504a",
+    "colour": "#4a3d33",
     "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 1.4
+    "pitch": 14,
+    "overhang": 2.0
    }
   },
   {
    "type": "core/colonnade",
    "at": [
     0,
-    -10.5,
+    -12.3,
     0
    ],
    "params": {
     "length": 30,
     "count": 7,
     "height": 5.2,
-    "radius": 0.5,
+    "radius": 0.45,
     "kind": "round",
     "beamHeight": 0.7,
-    "roofDepth": 4.5,
+    "roofDepth": 5.0,
     "colour": "#f2eee2",
     "roofColour": "#e4ddc8"
    }
@@ -149,7 +150,7 @@
    "type": "balustrade",
    "at": [
     0,
-    -14.4,
+    -16.4,
     5.8
    ],
    "params": {
@@ -163,7 +164,7 @@
    "type": "balustrade",
    "at": [
     0,
-    -8.6,
+    -12.4,
     0.4
    ],
    "params": {
@@ -177,7 +178,7 @@
    "type": "core/steps",
    "at": [
     0,
-    -12.5,
+    -14.5,
     0
    ],
    "params": {
@@ -199,6 +200,98 @@
     "height": 9,
     "count": 1
    }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     -12.3,
+     4.3
+    ],
+    "end": [
+     15,
+     -12.3,
+     4.3
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.3
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#c9a02e",
+      "topScale": 1.1
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet",
+   "at": [
+    0,
+    -16.4
+   ],
+   "params": {
+    "rect": [
+     31,
+     0.35
+    ],
+    "z0": 6.0,
+    "height": 0.7,
+    "colour": "#f0ece0",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -25,
+     -8.5,
+     9.4
+    ],
+    "end": [
+     25,
+     -8.5,
+     9.4
+    ],
+    "count": 15,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       1.2
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#3a2e26",
+      "topScale": 1.0
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -208,7 +301,7 @@
    {
     "kind": "palm",
     "at": [
-     -30,
+     -34,
      -25
     ],
     "height": 12
@@ -220,8 +313,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Gold column capitals and bracketed eaves missing, balustrades simplified, wings inferred from OSM area not outline"
+  "gaps": "Verandah deeper with gold capitals and parapet, but balusters are plain posts, no shuttered ground-floor doors or carved central door, brackets are small blocks, wings inferred from OSM area"
  }
 }

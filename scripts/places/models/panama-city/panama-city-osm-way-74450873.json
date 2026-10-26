@@ -44,49 +44,96 @@
     "osm": true,
     "simplify": 1.5
    },
-   "height": 7,
-   "storeys": 2,
+   "height": 3.5,
+   "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#cfcac0",
+    "colour": "#bdb9b0",
     "windows": "none",
     "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#c9c4bb",
+    "colour": "#6e9f47",
     "parapet": 0.3
    }
   },
   {
-   "type": "prism",
+   "type": "loft",
    "id": "orange-block",
    "at": [
-    22,
+    24,
     -22,
     0
    ],
-   "rotDeg": 0,
+   "params": {
+    "colour": "#e5491a",
+    "topColour": "#8f9490",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       36,
+       30
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       37.5,
+       31.5
+      ]
+     },
+     {
+      "z": 32,
+      "rect": [
+       39,
+       33
+      ]
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -5.800000000000001,
+    11
+   ],
    "params": {
     "rect": [
-     36,
-     26
+     38,
+     0.12
     ],
-    "z0": 0,
-    "height": 27,
-    "topScale": [
-     1.0,
-     0.95
+    "height": 0.12,
+    "colour": "#b83a14",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -5.800000000000001,
+    22
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.12
     ],
-    "topOffset": [
-     -1,
-     3
-    ],
-    "colour": "#e5521b",
-    "topColour": "#c9c9c4",
-    "windows": "none",
-    "material": "metal-sheet"
-   }
+    "height": 0.12,
+    "colour": "#b83a14",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "surface",
@@ -98,17 +145,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 30,
-    "depth": 18,
+    "width": 34,
+    "depth": 20,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": -22,
     "slopeY": 6,
     "z": 13,
     "colour": "#f2c230",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    }
   },
   {
@@ -121,17 +169,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 18,
-    "depth": 12,
+    "width": 20.7,
+    "depth": 13.799999999999999,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 8,
     "slopeY": -24,
     "z": 12,
     "colour": "#f5a623",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    },
    "lod": [
     0,
@@ -148,17 +197,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 22,
-    "depth": 18,
+    "width": 25.299999999999997,
+    "depth": 20.7,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 14,
     "slopeY": 24,
     "z": 13,
     "colour": "#d6303a",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    }
   },
   {
@@ -171,17 +221,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 18,
-    "depth": 14,
+    "width": 20.7,
+    "depth": 16.099999999999998,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 16,
     "slopeY": -14,
     "z": 14,
     "colour": "#c42a43",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    },
    "lod": [
     0,
@@ -198,17 +249,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 16,
-    "depth": 14,
+    "width": 18.4,
+    "depth": 16.099999999999998,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": -22,
     "slopeY": 14,
     "z": 16,
     "colour": "#2d6fd0",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    }
   },
   {
@@ -221,17 +273,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 16,
-    "depth": 12,
+    "width": 18.4,
+    "depth": 13.799999999999999,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 18,
     "slopeY": 8,
     "z": 11,
     "colour": "#2f86d0",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    },
    "lod": [
     0,
@@ -248,17 +301,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 14,
-    "depth": 12,
+    "width": 16.099999999999998,
+    "depth": 13.799999999999999,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 0,
     "slopeY": 22,
     "z": 15,
     "colour": "#39a845",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    },
    "lod": [
     0,
@@ -275,17 +329,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 14,
-    "depth": 12,
+    "width": 16.099999999999998,
+    "depth": 13.799999999999999,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": -14,
     "slopeY": -16,
     "z": 13,
     "colour": "#c2185b",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    }
   },
   {
@@ -298,17 +353,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 16,
-    "depth": 12,
+    "width": 18.4,
+    "depth": 13.799999999999999,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 14,
     "slopeY": 16,
     "z": 12,
     "colour": "#e03a3e",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    },
    "lod": [
     0,
@@ -325,17 +381,18 @@
    ],
    "params": {
     "kind": "folded",
-    "width": 12,
-    "depth": 10,
+    "width": 13.799999999999999,
+    "depth": 11.5,
     "rise": 0,
     "folds": 1,
-    "thickness": 0.5,
+    "thickness": 1.0,
     "slopeX": 10,
     "slopeY": 12,
     "z": 9,
     "colour": "#1fa8a0",
     "edgeColour": "#d9d9d4",
-    "underColour": "#c9c4bb"
+    "underColour": "#c9c4bb",
+    "material": "metal-sheet"
    },
    "lod": [
     0,
@@ -349,7 +406,7 @@
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.45,
+      "radius": 0.8,
       "n": 8,
       "z0": 0,
       "height": 13,
@@ -362,10 +419,10 @@
      -36
     ],
     "end": [
-     0,
+     -2,
      -36
     ],
-    "count": 3
+    "count": 2
    }
   },
   {
@@ -417,27 +474,7 @@
     "colour": "#cfcbc2"
    },
    "lod": [
-    0,
-    1
-   ]
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -30,
-    -42,
     0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 7,
-    "count": 2,
-    "spread": 8,
-    "line": 10
-   },
-   "lod": [
-    0,
-    1
    ]
   },
   {
@@ -531,8 +568,7 @@
     "underColour": "#bdb9b0"
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -549,12 +585,11 @@
     "depth": 14,
     "rise": 2.5,
     "thickness": 0.4,
-    "colour": "#5f9a3c",
+    "colour": "#6e9f47",
     "z": 0
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -571,12 +606,11 @@
     "depth": 14,
     "rise": 2.5,
     "thickness": 0.4,
-    "colour": "#5f9a3c",
+    "colour": "#6e9f47",
     "z": 0
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -593,12 +627,11 @@
     "depth": 14,
     "rise": 2.5,
     "thickness": 0.4,
-    "colour": "#5f9a3c",
+    "colour": "#6e9f47",
     "z": 0
    },
    "lod": [
-    0,
-    1
+    0
    ]
   }
  ],
@@ -613,6 +646,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "orange block leans a little and shows no panel joints (tilted prisms drop the panel pattern); roof planes cluster is plausible but struts and lawn mounds are simplified"
+  "gaps": "panel joints are only two horizontal lines; roof planes are placed by eye"
  }
 }

@@ -25,8 +25,7 @@
   "pitchDeg": 3,
   "fovDeg": 60,
   "aspect": 1.333,
-  "margin": 0.1,
-  "fit": "all"
+  "margin": 0.05
  },
  "parts": [
   {
@@ -39,15 +38,15 @@
     ]
    },
    "at": [
-    -26,
-    12
+    -24,
+    22
    ],
    "rotDeg": 0,
    "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#f1efe8",
+    "colour": "#e8e6dc",
     "windows": "curtain",
     "windowRatio": 0.6,
     "faces": {
@@ -61,93 +60,6 @@
     "material": "metal-sheet",
     "overhang": 1.2,
     "parapet": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "kiosk-2",
-   "footprint": {
-    "rect": [
-     6,
-     5
-    ]
-   },
-   "at": [
-    30,
-    40
-   ],
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8e4da",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "faces": {
-     "back": "plain"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3f7a52",
-    "material": "metal-sheet",
-    "overhang": 1.0
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -30,
-    25
-   ],
-   "params": {
-    "width": 8,
-    "depth": 70,
-    "count": 9,
-    "kind": "conifer",
-    "min_height": 6,
-    "max_height": 9
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    30,
-    25
-   ],
-   "params": {
-    "width": 8,
-    "depth": 70,
-    "count": 9,
-    "kind": "conifer",
-    "min_height": 6,
-    "max_height": 9
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    0,
-    62
-   ],
-   "params": {
-    "width": 60,
-    "depth": 10,
-    "count": 8,
-    "kind": "conifer",
-    "min_height": 7,
-    "max_height": 10
-   }
-  },
-  {
-   "type": "basin-fountain",
-   "at": [
-    0,
-    28,
-    0
-   ],
-   "params": {
-    "radius": 4.5
    }
   },
   {
@@ -165,28 +77,29 @@
   },
   {
    "type": "mass",
-   "id": "tower-a",
+   "id": "tower-0",
    "footprint": {
     "rect": [
-     44,
-     20
+     30,
+     18
     ]
    },
    "at": [
-    -22,
-    98
+    -50,
+    125
    ],
-   "height": 42,
-   "storeys": 13,
+   "height": 48,
+   "storeys": 16,
    "wall": {
     "material": "painted-render",
-    "colour": "#cdbfae",
+    "colour": "#d6cdbd",
     "windows": "punched",
-    "windowRatio": 0.3,
-    "bay": 6,
+    "windowRatio": 0.35,
+    "bay": 14,
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     }
    },
    "roof": {
@@ -197,34 +110,185 @@
   },
   {
    "type": "mass",
-   "id": "tower-b",
+   "id": "tower-1",
    "footprint": {
     "rect": [
-     34,
-     18
+     24,
+     20
     ]
    },
    "at": [
-    26,
-    104
+    -10,
+    135
    ],
-   "height": 54,
-   "storeys": 17,
+   "height": 58,
+   "storeys": 19,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#8fa09a",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "bay": 6,
+    "material": "painted-render",
+    "colour": "#c9b9a8",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 14,
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     }
    },
    "roof": {
     "form": "flat",
     "colour": "#7a7a7a",
     "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-2",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    24,
+    128
+   ],
+   "height": 44,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cf",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-3",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    56,
+    138
+   ],
+   "height": 56,
+   "storeys": 18,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9a99a",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    5,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    6,
+    5,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     14,
+     0
+    ],
+    "end": [
+     -15,
+     96,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     15,
+     14,
+     0
+    ],
+    "end": [
+     15,
+     96,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 14
+     }
+    }
    }
   }
  ],
@@ -233,13 +297,13 @@
   "forecourt": "none",
   "trees": [],
   "extent": [
-   140,
-   130
+   160,
+   160
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "single promenade vista out of a 250 x 200 m park; lawns, playground and aero-model area not modelled; planters and bins omitted"
+  "gaps": "paving slab joints and planters not modelled, trees are generic cones not full pines with white trunks, kiosk only a small box with green roof, no bins; towers are simple grids"
  }
 }

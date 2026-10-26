@@ -21,8 +21,8 @@
   }
  ],
  "camera": {
-  "yawDeg": -20,
-  "pitchDeg": 10,
+  "yawDeg": -35,
+  "pitchDeg": 6,
   "fovDeg": 55,
   "aspect": 1.333,
   "margin": 0.12
@@ -47,18 +47,19 @@
     "material": "painted-render",
     "colour": "#f4f3ee",
     "windows": "punched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.12,
     "plinth": 0.3,
     "faces": {
      "back": "plain",
      "left": "plain"
-    }
+    },
+    "glassColour": "#5a3d28"
    },
    "roof": {
     "form": "hip",
-    "colour": "#d8d6d0",
+    "colour": "#a9a49c",
     "material": "metal-sheet",
-    "pitch": 12,
+    "pitch": 14,
     "overhang": 1.1
    }
   },
@@ -81,113 +82,221 @@
     "material": "painted-render",
     "colour": "#f4f3ee",
     "windows": "punched",
-    "windowRatio": 0.1,
-    "plinth": 0.3
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "glassColour": "#5a3d28"
    },
    "roof": {
     "form": "hip",
-    "colour": "#d8d6d0",
+    "colour": "#a9a49c",
     "material": "metal-sheet",
-    "pitch": 12,
+    "pitch": 14,
     "overhang": 1.1
-   }
-  },
-  {
-   "type": "canopy",
-   "at": [
-    6,
-    -6.2,
-    3.4
-   ],
-   "params": {
-    "form": "flat",
-    "width": 5,
-    "depth": 2.6,
-    "height": 0.2,
-    "thickness": 0.3,
-    "columns": 2,
-    "colour": "#eeece6"
    }
   },
   {
    "type": "core/steps",
    "at": [
-    9,
-    -8,
+    7,
+    -4.0,
     0
    ],
    "params": {
-    "width": 6,
-    "rise": 0.55,
-    "run": 0.7,
-    "count": 6,
-    "colour": "#ece8e0"
+    "width": 8.5,
+    "rise": 0.33,
+    "run": 0.62,
+    "count": 12,
+    "colour": "#bdb8ae"
    }
   },
   {
-   "type": "railing",
+   "type": "prism",
    "at": [
-    6.5,
-    -8,
-    1.4
+    2.6,
+    -7.6
    ],
-   "rotDeg": 0,
    "params": {
-    "length": 6,
-    "height": 1.0,
-    "colour": "#202020"
+    "rect": [
+     0.5,
+     7.4
+    ],
+    "height": 3.4,
+    "colour": "#f6f5f0",
+    "z0": 0
    }
   },
   {
-   "type": "minaret",
+   "type": "prism",
    "at": [
-    12,
-    6,
+    11.4,
+    -7.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     7.4
+    ],
+    "height": 3.4,
+    "colour": "#f6f5f0",
+    "z0": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    7,
+    -5.2,
+    4.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3,
+    "height": 0.2,
+    "thickness": 0.35,
+    "columns": 0,
+    "colour": "#a9a49c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.2,
+    -6.4
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.2,
+    "colour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.8,
+    -6.4
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.2,
+    "colour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    11.5,
+    7.5,
     0
    ],
    "params": {
-    "height": 22,
-    "style": "pencil",
-    "colour": "#f2f0ea",
-    "trim": "#e0ddd5",
-    "cap_colour": "#d8d6d0",
-    "base_width": 2.4
+    "colour": "#f6f5f0",
+    "segments": 16,
+    "profile": [
+     [
+      1.4,
+      0
+     ],
+     [
+      1.4,
+      2
+     ],
+     [
+      1.2,
+      3
+     ],
+     [
+      1.15,
+      15.2
+     ],
+     [
+      1.9,
+      15.4
+     ],
+     [
+      1.9,
+      16.2
+     ],
+     [
+      1.2,
+      16.4
+     ],
+     [
+      1.0,
+      16.5
+     ],
+     [
+      1.0,
+      19
+     ],
+     [
+      0.9,
+      19.2
+     ],
+     [
+      0,
+      23
+     ]
+    ]
    }
   },
   {
-   "type": "fence-wall",
-   "at": [
-    0,
-    -12,
-    0
-   ],
+   "type": "sweep-path",
    "params": {
-    "length": 26,
-    "height": 1.8,
-    "colour": "#d8d3c8"
+    "radius": 0.05,
+    "colour": "#1a1a1a",
+    "points": [
+     [
+      3.0,
+      -4.3,
+      4.9
+     ],
+     [
+      3.0,
+      -11.7,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.05,
+    "colour": "#1a1a1a",
+    "points": [
+     [
+      11.0,
+      -4.3,
+      4.9
+     ],
+     [
+      11.0,
+      -11.7,
+      1.0
+     ]
+    ]
    }
   }
  ],
  "site": {
-  "ground": "sand",
+  "ground": "cobble",
   "forecourt": "garden",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     20,
-     -6
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
    60,
    50
   ]
  },
  "review": {
-  "rounds": 1,
-  "match": "fair",
-  "gaps": "stair is a plain flight without the iron railing curve, no side drainpipes, roofs lighter than photo, camera pitch higher"
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "the wide 12-step stair with scrolled iron railing does not read in the render (steps hidden or mis-oriented, rails are thin sloped bars), minaret is a plain lathe with a thin balcony, stucco textured walls, no drainpipes"
  }
 }

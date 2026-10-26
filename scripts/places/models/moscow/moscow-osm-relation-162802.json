@@ -164,8 +164,8 @@
       -8.78
      ]
     ],
-    "height": 15,
-    "colour": "#3b3a38",
+    "height": 11,
+    "colour": "#8a7f6c",
     "windows": "none"
    }
   },
@@ -309,7 +309,7 @@
      ]
     ],
     "height": 1.5,
-    "colour": "#d7ceb6",
+    "colour": "#d8cdb0",
     "windows": "none"
    }
   },
@@ -331,7 +331,7 @@
     "radiusY": 46.2,
     "startDeg": 0,
     "endDeg": 360,
-    "count": 44,
+    "count": 66,
     "facing": "outward",
     "of": {
      "type": "prism",
@@ -340,13 +340,13 @@
        0.6,
        1.0
       ],
-      "height": 13.5,
-      "colour": "#efe8d4",
+      "height": 10,
+      "colour": "#d8cdb0",
       "windows": "none"
      }
     },
-    "lod1Step": 4,
-    "lod2Step": 40
+    "lod1Step": 33,
+    "lod2Step": 66
    }
   },
   {
@@ -355,7 +355,7 @@
    "at": [
     0,
     0,
-    15
+    11
    ],
    "params": {
     "points": [
@@ -488,8 +488,8 @@
       -9.27
      ]
     ],
-    "height": 3,
-    "colour": "#bdb398",
+    "height": 2.2,
+    "colour": "#d8cdb0",
     "windows": "none"
    }
   },
@@ -499,7 +499,7 @@
    "at": [
     0,
     0,
-    18
+    13.2
    ],
    "params": {
     "points": [
@@ -632,8 +632,8 @@
       -9.46
      ]
     ],
-    "height": 4,
-    "colour": "#4a443c",
+    "height": 2.2,
+    "colour": "#5a5248",
     "windows": "none",
     "topScale": 1.05
    }
@@ -644,7 +644,7 @@
    "at": [
     0,
     0,
-    22
+    15.4
    ],
    "params": {
     "colour": "#ecece8",
@@ -659,54 +659,21 @@
       ]
      },
      {
-      "z": 4,
+      "z": 2.5,
       "ellipse": [
-       48,
-       40
+       44,
+       36
       ]
      },
      {
-      "z": 7,
+      "z": 5,
       "ellipse": [
-       40,
-       33
+       25,
+       21
       ]
      }
     ]
    }
-  },
-  {
-   "type": "loft",
-   "id": "roof-rim",
-   "at": [
-    0,
-    0,
-    29
-   ],
-   "params": {
-    "colour": "#3b3a38",
-    "capTop": false,
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       40,
-       33
-      ]
-     },
-     {
-      "z": 0.5,
-      "ellipse": [
-       39,
-       32
-      ]
-     }
-    ]
-   },
-   "lod": [
-    0,
-    1
-   ]
   },
   {
    "type": "steps",
@@ -733,22 +700,8 @@
    {
     "kind": "broadleaf",
     "at": [
-     -72,
-     0
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -70,
      30
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -60,
-     50
     ]
    },
    {
@@ -761,22 +714,8 @@
    {
     "kind": "broadleaf",
     "at": [
-     0,
-     64
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      30,
      62
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     60,
-     50
     ]
    },
    {
@@ -789,48 +728,20 @@
    {
     "kind": "broadleaf",
     "at": [
-     72,
-     -10
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      70,
      -40
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -62,
-     -55
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     60,
-     -55
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -45,
-     -62
     ]
    }
   ],
   "extent": [
-   160,
-   160
+   135,
+   135
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Cone roof, dark arcade recess, lighter columns, dark ring beam, paved plaza and tree belt added; radial ribs attempted but removed (floated off the cone), no bracket teeth, lawns/parking bays only as ground texture, bowl scaled to 120 m."
+  "gaps": "Roof is a smooth cone with a smaller open centre; radial ribs, bracket teeth and the arched ground arcade not modelled; lawns and parking bays omitted for triangle budget; bowl scaled to ~120 m."
  },
  "schema": "allworld-place-model",
  "version": 2,

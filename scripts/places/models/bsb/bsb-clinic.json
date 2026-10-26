@@ -49,8 +49,8 @@
    },
    "roof": {
     "form": "hip",
-    "pitch": 11,
-    "overhang": 2.4,
+    "pitch": 8,
+    "overhang": 3,
     "colour": "#7f9a74",
     "material": "clay-tile"
    }
@@ -60,12 +60,12 @@
    "id": "entrance-block",
    "footprint": {
     "rect": [
-     24,
+     30,
      12
     ]
    },
    "at": [
-    0,
+    -2,
     -50
    ],
    "height": 9.5,
@@ -75,61 +75,65 @@
     "colour": "#e8e2c8",
     "windows": "punched",
     "windowRatio": 0.22,
-    "bay": 5,
+    "bay": 7,
     "plinth": 0.5
    },
    "roof": {
     "form": "hip",
-    "pitch": 12,
-    "overhang": 2.6,
+    "pitch": 8,
+    "overhang": 3,
     "colour": "#7f9a74",
     "material": "clay-tile"
    }
   },
   {
    "type": "mass",
-   "id": "glass-wing",
+   "id": "left-wing",
    "footprint": {
     "rect": [
-     16,
+     18,
      10
     ]
    },
    "at": [
-    -18,
-    -48
+    -24,
+    -50
    ],
-   "height": 8,
+   "height": 6,
    "storeys": 2,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#9fb8b0",
-    "windows": "curtain",
-    "windowRatio": 0.7
+    "material": "render",
+    "colour": "#e8e2c8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "plinth": 0.5
    },
    "roof": {
-    "form": "flat",
-    "colour": "#c9b99a",
-    "overhang": 1
+    "form": "hip",
+    "pitch": 8,
+    "overhang": 2.4,
+    "colour": "#7f9a74",
+    "material": "clay-tile"
    }
   },
   {
    "type": "canopy",
    "at": [
-    12,
-    -60,
+    -2,
+    -61,
     0
    ],
    "params": {
     "form": "curved",
-    "width": 18,
-    "depth": 14,
-    "height": 5.8,
-    "thickness": 0.5,
-    "columns": 4,
-    "rise": 1.6,
-    "colour": "#bfb59a",
-    "edgeColour": "#e8e2c8"
+    "width": 14,
+    "depth": 10,
+    "height": 7,
+    "thickness": 0.6,
+    "columns": 0,
+    "rise": 2.2,
+    "colour": "#e8dfc4",
+    "edgeColour": "#e8dfc4"
    }
   },
   {
@@ -137,24 +141,52 @@
    "params": {
     "mode": "line",
     "start": [
-     4,
-     -66,
+     -8.5,
+     -65.5,
      0
     ],
     "end": [
-     19,
-     -66,
+     4.5,
+     -65.5,
      0
     ],
-    "count": 4,
+    "count": 5,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.6,
-       0.6
+       1,
+       1
       ],
-      "height": 5.2,
+      "height": 6.6,
+      "colour": "#d4a190"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.5,
+     -57,
+     0
+    ],
+    "end": [
+     4.5,
+     -57,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 6.6,
       "colour": "#d4a190"
      }
     }
@@ -163,29 +195,48 @@
   {
    "type": "flag",
    "at": [
-    26,
+    8,
     -62,
     0
    ],
    "params": {}
   },
   {
+   "type": "lamp",
+   "at": [
+    -22,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 4,
+    "count": 4,
+    "spacing": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
    "type": "car",
    "at": [
-    6,
-    -70,
+    -4,
+    -72,
     0
    ],
    "params": {
     "colour": "#2c3e6e",
     "count": 2,
     "spacing": 3
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "palm",
@@ -210,6 +261,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "real building is a ring of low wings around a courtyard reduced to a simplified OSM outline; hip roof pitch, lamp posts, curved porch vault and hedges approximate; windows on the OSM block omitted for the LOD1 budget"
+  "gaps": "real building is a ring of low wings around a courtyard reduced to a simplified OSM outline; porch is a simple barrel vault on plain columns; lamp posts are generic, curved drive and hedges omitted; glass-curtain left end not modelled"
  }
 }

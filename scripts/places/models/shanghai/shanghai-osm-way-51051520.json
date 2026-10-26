@@ -47,17 +47,17 @@
    "storeys": 4,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#e6e2d8",
-    "windows": "ribbon",
-    "windowRatio": 0.45,
-    "glassColour": "#7f95a8",
+    "colour": "#e9e3d3",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "glassColour": "#7d948d",
     "plinth": 0.3,
-    "bay": 4.6,
+    "bay": 7.0,
     "cornice": true,
     "groundKind": "glass-shopfront",
     "groundHeight": 4.2,
     "faces": {
-     "front": "ribbon",
+     "front": "punched",
      "back": "plain",
      "left": "plain",
      "right": "plain"
@@ -74,13 +74,13 @@
    "id": "slab",
    "footprint": {
     "rect": [
-     60,
-     17
+     58,
+     14
     ]
    },
    "at": [
-    -12,
-    14
+    -10,
+    16
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -88,12 +88,12 @@
    "storeys": 14,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#ece8df",
+    "colour": "#e8e0cc",
     "windows": "punched",
-    "windowRatio": 0.28,
-    "glassColour": "#7f95a8",
+    "windowRatio": 0.34,
+    "glassColour": "#7d948d",
     "plinth": 0.3,
-    "bay": 6.8,
+    "bay": 9.0,
     "cornice": false,
     "faces": {
      "front": "punched",
@@ -104,7 +104,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d9d5cb",
+    "colour": "#d8d0bc",
     "parapet": 1.0
    }
   },
@@ -113,17 +113,17 @@
    "id": "round-end",
    "at": [
     27,
-    15
+    16
    ],
    "params": {
-    "radius": 8.8,
+    "radius": 7.4,
     "n": 28,
     "z0": 0,
-    "height": 50,
-    "colour": "#ece8df",
-    "topColour": "#d9d5cb",
+    "height": 54,
+    "colour": "#e8e0cc",
+    "topColour": "#d8d0bc",
     "windows": "none",
-    "storeys": 13,
+    "storeys": 14,
     "pattern": [
      {
       "type": "floors"
@@ -136,7 +136,7 @@
    "id": "stair-core",
    "at": [
     -44,
-    10
+    16
    ],
    "params": {
     "rect": [
@@ -145,7 +145,7 @@
     ],
     "z0": 0,
     "height": 56,
-    "colour": "#d5d0c4",
+    "colour": "#e0d8c4",
     "topColour": "#c9c4b8",
     "windows": "none"
    }
@@ -280,17 +280,6 @@
    "params": {}
   },
   {
-   "type": "hospital/red-cross-plate",
-   "at": [
-    -22,
-    -17.5,
-    10
-   ],
-   "params": {
-    "size": 1.8
-   }
-  },
-  {
    "type": "core/tree",
    "at": [
     -30,
@@ -299,7 +288,7 @@
    "params": {
     "kind": "broadleaf",
     "height": 9,
-    "count": 3,
+    "count": 2,
     "spread": 18
    }
   },
@@ -312,7 +301,7 @@
    "params": {
     "kind": "broadleaf",
     "height": 8,
-    "count": 3,
+    "count": 2,
     "spread": 14
    }
   },
@@ -339,6 +328,74 @@
     "count": 2,
     "spacing": 6
    }
+  },
+  {
+   "type": "prism",
+   "id": "round-end-left",
+   "at": [
+    -37,
+    16
+   ],
+   "params": {
+    "radius": 7.0,
+    "n": 24,
+    "z0": 0,
+    "height": 54,
+    "colour": "#e8e0cc",
+    "topColour": "#d8d0bc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -22
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 40
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-hole--4",
+   "at": [
+    -4,
+    -8
+   ],
+   "params": {
+    "radius": 3.2,
+    "n": 20,
+    "z0": 16.5,
+    "height": 0.1,
+    "colour": "#5f6f77"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-hole-28",
+   "at": [
+    28,
+    -4
+   ],
+   "params": {
+    "radius": 3.2,
+    "n": 20,
+    "z0": 16.5,
+    "height": 0.1,
+    "colour": "#5f6f77"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -350,8 +407,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Tall slab is wider and less ribbed than the photo, rounded end bay simplified to a plain cylinder, podium roof pergola and round cut-outs approximated, no lettering, street furniture generic."
+  "gaps": "Tower slab is a plain box with a cylinder end and no true curved corners; podium canopy cut-outs are flat discs; no lettering; street trees and cars generic."
  }
 }

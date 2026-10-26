@@ -29,42 +29,65 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "params": {
+    "rect": [
+     112,
+     16
+    ],
+    "height": 4.5,
+    "topScale": 0.85,
+    "colour": "#5b8f3e"
+   },
+   "at": [
+    0,
+    -23
+   ]
+  },
+  {
    "type": "mass",
    "id": "tower",
    "footprint": {
     "rect": [
-     38,
-     26
+     32,
+     22
     ]
    },
    "at": [
-    -8,
+    -6,
     8
    ],
-   "height": 30,
-   "storeys": 6,
+   "height": 28,
+   "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7fb3a6",
+    "colour": "#6fae9f",
     "windows": "punched",
     "windowShape": "pointed",
-    "windowRatio": 0.6,
-    "bay": 9,
+    "windowRatio": 0.8,
+    "bay": 8,
     "plinth": 0.5,
     "faces": {
      "front": "punched",
-     "left": "punched",
+     "left": "plain",
      "right": "plain",
      "back": "plain"
     },
     "cornice": true,
-    "glassColour": "#4f7f77"
+    "glassColour": "#4f7f77",
+    "pattern": {
+     "type": "fins",
+     "colour": "#cfd8c4",
+     "faces": [
+      "front"
+     ]
+    }
    },
    "roof": {
-    "form": "flat",
+    "form": "hip",
+    "pitch": 14,
     "colour": "#2f5a4f",
-    "overhang": 1.4,
-    "parapet": 0.6
+    "overhang": 0.8
    }
   },
   {
@@ -77,20 +100,20 @@
     ]
    },
    "at": [
-    26,
-    -4
+    22,
+    -6
    ],
    "height": 7,
    "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#86aeae",
+    "colour": "#6fae9f",
     "windows": "punched",
     "windowShape": "rect",
     "windowRatio": 0.35,
     "bay": 7,
     "plinth": 0.4,
-    "bands": "#2f5a4f",
+    "bands": "#e0e6d2",
     "glassColour": "#4f7f77",
     "faces": {
      "back": "plain",
@@ -116,13 +139,13 @@
    },
    "at": [
     40,
-    18
+    14
    ],
    "height": 11,
    "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#e8ebdc",
+    "colour": "#dfe6d0",
     "windows": "punched",
     "windowShape": "rect",
     "windowRatio": 0.35,
@@ -133,7 +156,8 @@
      "back": "plain",
      "right": "plain",
      "left": "plain"
-    }
+    },
+    "bands": "#6fae9f"
    },
    "roof": {
     "form": "hip",
@@ -152,56 +176,88 @@
    ],
    "on": "pavilion",
    "params": {
-    "radius": 3.5,
+    "radius": 2.6,
     "profile": "onion",
-    "drum": 1.5,
+    "drum": 3,
     "colour": "#9fc7b8"
    }
   },
   {
    "type": "canopy",
    "at": [
-    -14,
-    -14,
+    -22,
+    -1,
     0
    ],
    "params": {
     "form": "curved",
-    "width": 14,
+    "width": 12,
     "depth": 8,
-    "height": 4.2,
-    "thickness": 0.4,
+    "height": 4.5,
+    "thickness": 0.5,
     "columns": 4,
-    "rise": 1.2,
-    "colour": "#2f5a4f",
-    "edgeColour": "#2f5a4f"
+    "rise": 1.8,
+    "colour": "#25564f",
+    "edgeColour": "#25564f"
    }
   },
   {
-   "type": "fence-wall",
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -17,
+     4.5
+    ],
+    "end": [
+     50,
+     -17,
+     4.5
+    ],
+    "count": 26,
+    "lod1Step": 3,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.9
+      ],
+      "height": 3,
+      "colour": "#b9b6a8"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
    "at": [
     0,
-    -30,
-    0
+    -17.6,
+    4.5
    ],
    "params": {
-    "length": 84,
-    "height": 2.4,
-    "thickness": 0.5,
-    "colour": "#b9b8b0"
+    "rect": [
+     100,
+     0.4
+    ],
+    "height": 3.2,
+    "colour": "#b4b1a3"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    -26,
-    -34,
-    0
+    -30,
+    -18.4,
+    4.5
    ],
    "params": {
-    "width": 10,
+    "width": 12,
     "height": 1.6,
-    "bottom": 1.2,
+    "bottom": 1.0,
     "colour": "#bfc3bd",
     "posts": false
    }
@@ -234,6 +290,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "tower's tall pointed-arch bays are plain windows with one pointed shape, no stepped corner pavilions; retaining wall is a plain fence; right pavilion simplified; OSM outline not used (photo massing preferred)"
+  "gaps": "tower bays are pointed windows in a fin grid, no stepped corner pavilions or crown; retaining wall is a plain fin row and the grass bank is a front ramp (masses cannot be raised); right pavilion simplified; OSM outline unused"
  }
 }

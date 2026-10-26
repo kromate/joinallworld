@@ -41,7 +41,7 @@
    "id": "hall",
    "footprint": {
     "rect": [
-     22,
+     28,
      14
     ]
    },
@@ -53,7 +53,7 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#7d2b2a",
+    "colour": "#4a2a28",
     "windows": "none",
     "plinth": 0.5
    },
@@ -71,11 +71,11 @@
     14
    ],
    "params": {
-    "width": 24,
-    "depth": 16,
-    "rise": 4,
+    "width": 30,
+    "depth": 17,
+    "rise": 4.5,
     "overhang": 1.2,
-    "upturn": 1.5,
+    "upturn": 3,
     "colour": "#c9772f",
     "trim": "#d8b04c"
    }
@@ -85,7 +85,7 @@
    "id": "upper",
    "footprint": {
     "rect": [
-     14,
+     20,
      9
     ]
    },
@@ -98,7 +98,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6dcc6",
+    "colour": "#2e8c80",
     "windows": "none"
    },
    "roof": {
@@ -115,11 +115,11 @@
     16
    ],
    "params": {
-    "width": 16,
+    "width": 22,
     "depth": 11,
-    "rise": 3.5,
+    "rise": 4,
     "overhang": 1.2,
-    "upturn": 2.2,
+    "upturn": 3.5,
     "colour": "#c9772f",
     "trim": "#d8b04c"
    }
@@ -206,7 +206,7 @@
      "params": {
       "radius": 0.55,
       "n": 12,
-      "height": 9.5,
+      "height": 9.4,
       "colour": "#a8302a",
       "topColour": "#a8302a"
      }
@@ -222,115 +222,224 @@
      -6,
      0
     ],
-    "count": 2,
+    "count": 4,
     "lod2Step": 3
-   }
-  },
-  {
-   "type": "canopy",
-   "id": "arch",
-   "at": [
-    0,
-    -1,
-    9.4
-   ],
-   "params": {
-    "form": "curved",
-    "width": 23,
-    "depth": 11,
-    "height": 0.2,
-    "rise": 3.6,
-    "thickness": 0.35,
-    "colour": "#4a4d52",
-    "edgeColour": "#4a4d52",
-    "axis": "x"
-   }
-  },
-  {
-   "type": "stair",
-   "at": [
-    -8.5,
-    -4.5,
-    0
-   ],
-   "params": {
-    "width": 2.6,
-    "height": 2.8,
-    "run": 4,
-    "colour": "#8e3f43"
-   }
-  },
-  {
-   "type": "stair",
-   "at": [
-    8.5,
-    -4.5,
-    0
-   ],
-   "params": {
-    "width": 2.6,
-    "height": 2.8,
-    "run": 4,
-    "colour": "#8e3f43"
    }
   },
   {
    "type": "array",
    "params": {
     "of": {
-     "type": "prism",
+     "type": "sweep-path",
      "params": {
-      "radius": 1.4,
-      "n": 20,
-      "height": 0.4,
-      "colour": "#7b2a22",
-      "topColour": "#7b2a22"
+      "radius": 0.14,
+      "n": 5,
+      "curve": true,
+      "points": [
+       [
+        -11.5,
+        0,
+        0
+       ],
+       [
+        -6,
+        0,
+        2.6
+       ],
+       [
+        0,
+        0,
+        3.6
+       ],
+       [
+        6,
+        0,
+        2.6
+       ],
+       [
+        11.5,
+        0,
+        0
+       ]
+      ],
+      "colour": "#b02a2a"
      }
     },
-    "mode": "arc",
-    "count": 5,
-    "centre": [
+    "mode": "line",
+    "start": [
      0,
-     0,
-     0
+     -6.4,
+     9.4
     ],
-    "radius": 11,
-    "startDeg": 55,
-    "endDeg": 125,
-    "facing": "outward",
+    "end": [
+     0,
+     4.2,
+     9.4
+    ],
+    "count": 6,
     "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.1,
+      "n": 4,
+      "points": [
+       [
+        0,
+        -6.4,
+        0
+       ],
+       [
+        0,
+        4.2,
+        0
+       ]
+      ],
+      "colour": "#8e2020"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11.2,
+     0,
+     9.6
+    ],
+    "end": [
+     11.2,
+     0,
+     9.6
+    ],
+    "count": 2
    },
-   "at": [
-    0,
-    -1.5,
-    10.2
+   "lod": [
+    0
    ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.1,
+      "n": 4,
+      "points": [
+       [
+        0,
+        -6.4,
+        0
+       ],
+       [
+        0,
+        4.2,
+        0
+       ]
+      ],
+      "colour": "#8e2020"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     0,
+     12.0
+    ],
+    "end": [
+     6,
+     0,
+     12.0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -6.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.8,
+    "run": 4,
+    "colour": "#8e3f43"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "stair",
+   "at": [
+    6.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.8,
+    "run": 4,
+    "colour": "#8e3f43"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 2.3,
+      "height": 2.3,
+      "bottom": 0,
+      "colour": "#7b2a22",
+      "frameColour": "#d8b04c",
+      "posts": false
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.5,
+     -6.8,
+     11.2
+    ],
+    "end": [
+     4.5,
+     -6.8,
+     11.2
+    ],
+    "count": 4
+   }
   },
   {
    "type": "mass",
    "id": "left-house",
    "footprint": {
     "rect": [
-     10,
+     9,
      12
     ]
    },
    "at": [
-    -20,
-    6
+    -18.5,
+    5
    ],
-   "height": 8,
-   "storeys": 2,
+   "height": 12,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#b9b8b2",
+    "colour": "#c9c2b0",
     "windows": "none",
     "windowRatio": 0.12
    },
    "roof": {
     "form": "gable",
     "colour": "#b0573a",
-    "pitch": 24
+    "pitch": 28
    }
   },
   {
@@ -343,11 +452,11 @@
     ]
    },
    "at": [
-    19,
-    6
+    18.5,
+    5
    ],
-   "height": 7,
-   "storeys": 2,
+   "height": 11,
+   "storeys": 3,
    "wall": {
     "material": "brick",
     "colour": "#8a5a48",
@@ -355,10 +464,28 @@
     "windowRatio": 0.12
    },
    "roof": {
-    "form": "flat",
-    "colour": "#8d8f8f",
-    "parapet": 0.4
+    "form": "gable",
+    "colour": "#b0573a",
+    "pitch": 28
    }
+  },
+  {
+   "type": "prism",
+   "id": "ridgeorn",
+   "params": {
+    "rect": [
+     16,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#2e8c80",
+    "topColour": "#d8b04c"
+   },
+   "at": [
+    0,
+    12,
+    20.4
+   ]
   }
  ],
  "site": {
@@ -379,8 +506,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "carved dragon and swallowtail ridge ornament, lanterns, hand-painted relief panels and the open truss lattice of the canopy are simplified to a solid curved shell; side houses are plain stand-ins"
+  "gaps": "carved dragon ridge ornament and relief panels are a plain teal bar; canopy is thin steel ribs without lanterns or red underside fabric; stairs are parallel rather than angled; side houses are simple tiled gables"
  }
 }

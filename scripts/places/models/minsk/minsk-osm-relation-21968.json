@@ -58,7 +58,7 @@
    "height": 46,
    "storeys": 6,
    "wall": {
-    "material": "brick",
+    "material": "painted-render",
     "colour": "#6d3b31",
     "windows": "none"
    },
@@ -83,7 +83,7 @@
    "height": 44,
    "storeys": 6,
    "wall": {
-    "material": "brick",
+    "material": "painted-render",
     "colour": "#6d3b31",
     "windows": "none"
    },
@@ -154,7 +154,7 @@
    "height": 42,
    "storeys": 1,
    "wall": {
-    "material": "brick",
+    "material": "painted-render",
     "colour": "#6d3b31",
     "windows": "none"
    },
@@ -196,7 +196,6 @@
    "roof": {
     "form": "flat",
     "colour": "#7a7c7e",
-    "parapet": 0.5,
     "overhang": 0.6
    }
   },
@@ -206,14 +205,14 @@
    "footprint": {
     "rect": [
      7,
-     7
+     9.5
     ]
    },
    "at": [
     -1,
-    -7
+    -8.25
    ],
-   "height": 7,
+   "height": 7.5,
    "storeys": 1,
    "wall": {
     "material": "sandstone",
@@ -232,14 +231,14 @@
    "footprint": {
     "rect": [
      7,
-     7
+     9.5
     ]
    },
    "at": [
     18,
-    -7
+    -8.25
    ],
-   "height": 7,
+   "height": 7.5,
    "storeys": 1,
    "wall": {
     "material": "sandstone",
@@ -258,14 +257,14 @@
    "footprint": {
     "rect": [
      7,
-     7
+     9.5
     ]
    },
    "at": [
     38,
-    -7
+    -8.25
    ],
-   "height": 7,
+   "height": 7.5,
    "storeys": 1,
    "wall": {
     "material": "sandstone",
@@ -303,7 +302,7 @@
     "form": "hip",
     "colour": "#6e737a",
     "material": "metal-sheet",
-    "rise": 5,
+    "rise": 7,
     "overhang": 0.5
    }
   },
@@ -366,31 +365,6 @@
    "lod": [
     0
    ]
-  },
-  {
-   "type": "mass",
-   "id": "white-fin",
-   "footprint": {
-    "rect": [
-     1.2,
-     3
-    ]
-   },
-   "at": [
-    -28.5,
-    6
-   ],
-   "height": 48,
-   "storeys": 12,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f4f4f0",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#f4f4f0"
-   }
   },
   {
    "type": "mass",
@@ -512,6 +486,476 @@
     "colour": "#c99a94"
    },
    "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "at": [
+    -41.5,
+    14,
+    46
+   ],
+   "params": {
+    "rect": [
+     10.6,
+     16.6
+    ],
+    "height": 1.0,
+    "colour": "#3a2a27"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -41.5,
+    14,
+    47.0
+   ],
+   "params": {
+    "rect": [
+     10.9,
+     16.9
+    ],
+    "height": 0.5,
+    "colour": "#bdb8ae"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44.9,
+     5.9,
+     3
+    ],
+    "end": [
+     -38.1,
+     5.9,
+     3
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.2
+       ],
+       "height": 38,
+       "colour": "#2c2220"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.5,
+    14,
+    44
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     16.6
+    ],
+    "height": 1.0,
+    "colour": "#3a2a27"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.5,
+    14,
+    45.0
+   ],
+   "params": {
+    "rect": [
+     9.9,
+     16.9
+    ],
+    "height": 0.5,
+    "colour": "#bdb8ae"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -18.4,
+     5.9,
+     3
+    ],
+    "end": [
+     -12.6,
+     5.9,
+     3
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.2
+       ],
+       "height": 36,
+       "colour": "#2c2220"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -13.1,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#27323a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -13.2,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     3.6
+    ],
+    "height": 0.4,
+    "colour": "#e2d2b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.6,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#b99a72"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.6,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#b99a72"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -13.1,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#27323a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -13.2,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     3.6
+    ],
+    "height": 0.4,
+    "colour": "#e2d2b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.4,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#b99a72"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.6,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#b99a72"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    38,
+    -13.1,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#27323a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    38,
+    -13.2,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     3.6
+    ],
+    "height": 0.4,
+    "colour": "#e2d2b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    35.4,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#b99a72"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40.6,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#b99a72"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-drum",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    26,
+    20
+   ],
+   "z0": 16,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdbdb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5c6166",
+    "rise": 1.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -9,
+     0.16
+    ],
+    "end": [
+     44,
+     -9,
+     0.16
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        6,
+        3.4
+       ],
+       "height": 0.03,
+       "colour": "#dfbcb4"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -15,
+     0.16
+    ],
+    "end": [
+     44,
+     -15,
+     0.16
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        6,
+        3.4
+       ],
+       "height": 0.03,
+       "colour": "#dfbcb4"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -524,6 +968,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "tower balconies generic, hall dormers are small boxes, no roof lettering, forecourt pattern flat tint, portals only modestly deeper"
+  "gaps": "tower balconies and glass ribbons simplified, white panel atop west pylon missing, hall dormers small, portals are tan blocks with dark openings and canopy slabs, forecourt panels flat tint, no roof lettering"
  }
 }

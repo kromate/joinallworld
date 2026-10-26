@@ -26,23 +26,23 @@
  ],
  "camera": {
   "yawDeg": -12,
-  "pitchDeg": 8,
-  "fovDeg": 55,
+  "pitchDeg": 18,
+  "fovDeg": 50,
   "aspect": 1.5,
-  "fit": "all",
-  "margin": 0.05
+  "fit": "building",
+  "margin": 0.0
  },
  "parts": [
   {
    "type": "water-surface",
    "at": [
     0,
-    -22,
+    -14,
     0
    ],
    "params": {
     "width": 190,
-    "depth": 22,
+    "depth": 24,
     "colour": "#3fbac0",
     "bank": false
    }
@@ -51,12 +51,12 @@
    "type": "beach-row",
    "at": [
     -60,
-    -6,
+    -2,
     0
    ],
    "params": {
-    "count": 24,
-    "spacing": 5,
+    "count": 30,
+    "spacing": 4,
     "umbrellas": true,
     "loungers": true,
     "colours": [
@@ -105,11 +105,11 @@
     0
    ],
    "params": {
-    "width": 4,
-    "depth": 3,
-    "height": 2.4,
+    "width": 7,
+    "depth": 5,
+    "height": 3,
     "roof": "hip",
-    "rise": 0.9,
+    "rise": 1.4,
     "posts": 4,
     "colour": "#3f8f58",
     "cap_colour": "#2f7a4a"
@@ -123,11 +123,11 @@
     0
    ],
    "params": {
-    "width": 4,
-    "depth": 3,
-    "height": 2.4,
+    "width": 7,
+    "depth": 5,
+    "height": 3,
     "roof": "hip",
-    "rise": 0.9,
+    "rise": 1.4,
     "posts": 4,
     "colour": "#3f8f58",
     "cap_colour": "#2f7a4a"
@@ -158,7 +158,7 @@
    "params": {
     "kind": "palm",
     "height": 9,
-    "count": 34,
+    "count": 20,
     "spread": 150,
     "line": 0
    }
@@ -173,7 +173,7 @@
    "params": {
     "kind": "broadleaf",
     "height": 6,
-    "count": 14,
+    "count": 8,
     "spread": 150
    }
   },
@@ -185,11 +185,11 @@
     0
    ],
    "params": {
-    "width": 4,
-    "depth": 3,
-    "height": 2.4,
+    "width": 7,
+    "depth": 5,
+    "height": 3,
     "roof": "hip",
-    "rise": 0.9,
+    "rise": 1.4,
     "posts": 4,
     "colour": "#3f8f58",
     "cap_colour": "#2f7a4a"
@@ -203,11 +203,11 @@
     0
    ],
    "params": {
-    "width": 4,
-    "depth": 3,
-    "height": 2.4,
+    "width": 7,
+    "depth": 5,
+    "height": 3,
     "roof": "hip",
-    "rise": 0.9,
+    "rise": 1.4,
     "posts": 4,
     "colour": "#3f8f58",
     "cap_colour": "#2f7a4a"
@@ -217,14 +217,14 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "critic fixes applied (beach strip site, shoreline water, dense tree line, more shelters) but NOT re-rendered: render server down; people, tents and sloping shoreline not modelled"
+  "gaps": "water strip and larger shelters/umbrellas now render, camera closer; sand slab still thin against grey surround, trees scattered not a dense back line, no people or tents"
  },
  "site": {
   "ground": "sand",
   "forecourt": "none",
   "extent": [
    160,
-   56
+   40
   ]
  },
  "schema": "allworld-place-model",

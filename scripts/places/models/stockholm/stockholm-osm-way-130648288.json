@@ -78,14 +78,13 @@
       "type": "arcade",
       "shape": "pointed",
       "bay": 6.6,
-      "opening": 0.72,
-      "height": 0.88,
-      "depth": 1.6,
+      "opening": 0.85,
+      "height": 0.95,
+      "depth": 2.0,
       "pierColour": "#d8ccb4",
       "faces": [
        "front"
-      ],
-      "count": 3
+      ]
      }
     ]
    },
@@ -105,12 +104,12 @@
     13
    ],
    "params": {
-    "radius": 6.2,
+    "radius": 6.4,
     "n": 8,
-    "height": 4.2,
+    "height": 6.0,
     "colour": "#cfd8d8",
     "windows": "rect",
-    "windowRatio": 0.6,
+    "windowRatio": 0.55,
     "topColour": "#cfd8d8"
    }
   },
@@ -119,11 +118,11 @@
    "at": [
     0,
     0.5,
-    17.2
+    19.0
    ],
    "params": {
     "segments": 24,
-    "colour": "#3d4147",
+    "colour": "#2e3238",
     "profile": [
      [
       6.6,
@@ -160,8 +159,8 @@
    "type": "array",
    "at": [
     0,
-    -9.5,
-    13.2
+    -12.6,
+    12.2
    ],
    "params": {
     "mode": "line",
@@ -211,70 +210,79 @@
       }
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
    "at": [
     -8.5,
     -12.5,
-    12.5
+    2.5
    ],
    "params": {
     "segments": 16,
     "colour": "#f2f2ee",
     "profile": [
      [
-      1.5,
+      1.9,
       0
      ],
      [
+      1.5,
+      0.6
+     ],
+     [
       1.3,
-      0.5
+      1.0
      ],
      [
-      1.0,
-      0.7
+      1.3,
+      18
      ],
      [
-      1.0,
-      8
-     ],
-     [
-      1.7,
-      8.2,
-      "#f2f2ee"
-     ],
-     [
-      1.7,
-      9.0
-     ],
-     [
-      1.1,
-      9.1
-     ],
-     [
-      1.0,
-      15.4
-     ],
-     [
-      1.4,
-      15.5,
+      2.4,
+      18.3,
       "#3d4147"
      ],
      [
-      0.9,
-      17
+      2.4,
+      19.2
+     ],
+     [
+      1.5,
+      19.4,
+      "#f2f2ee"
+     ],
+     [
+      1.3,
+      19.8
+     ],
+     [
+      1.3,
+      24
+     ],
+     [
+      1.7,
+      24.2,
+      "#3d4147"
+     ],
+     [
+      1.0,
+      26.5
      ],
      [
       0.1,
-      20
+      29
      ]
     ]
    }
   },
   {
-   "type": "steps",
+   "type": "core/steps",
    "at": [
     0,
     -21.5,
@@ -282,8 +290,9 @@
    ],
    "params": {
     "width": 12,
-    "depth": 4,
-    "height": 2.5,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 5,
     "colour": "#a24a3e"
    }
   },
@@ -300,18 +309,19 @@
     14,
     2
    ],
-   "height": 5.5,
-   "storeys": 2,
+   "height": 8,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
     "colour": "#d8ccb4",
     "windows": "punched",
-    "windowRatio": 0.12
+    "windowRatio": 0.2
    },
    "roof": {
-    "form": "flat",
+    "form": "gable",
     "colour": "#4b5057",
-    "parapet": 0.3
+    "pitch": 20,
+    "overhang": 0.5
    }
   },
   {
@@ -337,6 +347,56 @@
    "roof": {
     "form": "flat",
     "colour": "#b9a79a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "railL",
+   "footprint": {
+    "rect": [
+     0.5,
+     4
+    ]
+   },
+   "at": [
+    -6,
+    -21.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b02a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b02a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "railR",
+   "footprint": {
+    "rect": [
+     0.5,
+     4
+    ]
+   },
+   "at": [
+    6,
+    -21.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b02a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b02a2a"
    }
   }
  ],
@@ -379,8 +439,8 @@
  "city": "stockholm",
  "venueId": "stockholm-osm-way-130648288",
  "review": {
-  "rounds": 1,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Portals are pointed windows set in the cream wall, not full-height deep recesses; no surface patterning, red railed stairs or street furniture; minaret lacks the lattice balcony."
+  "gaps": "Portals taller but still shallow, not full-height dark recesses; minaret lacks a lattice balcony and is thin; dome ribs and facade patterning absent; stair rails simplified; the real site is hillside, not flat paving."
  }
 }

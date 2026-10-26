@@ -11,7 +11,7 @@
    "licence": "CC BY 2.0",
    "author": "CT Snow",
    "view": "street",
-   "file": "/tmp/places-evidence/amsterdam/game1.jpg",
+   "file": "/tmp/places-evidence/amsterdam/GrotemarktHaarlem.jpg",
    "used": "square frontages: Stadhuis at left (long grey slate roof, stepped brick walls, slender tower), Vleeshal stepped-gable facade in the middle, row of tall narrow brick gabled houses at right, pollarded limes, brick cobbles; venue is Haarlem Grote Markt (brief and Wikidata Q1083850), so photo is correct for it"
   },
   {
@@ -28,6 +28,19 @@
  },
  "parts": [
   {
+   "type": "lawn",
+   "at": [
+    0,
+    40,
+    0.03
+   ],
+   "params": {
+    "width": 116,
+    "depth": 90,
+    "colour": "#8e6a58"
+   }
+  },
+  {
    "type": "mass",
    "id": "stadhuis",
    "footprint": {
@@ -38,7 +51,7 @@
    },
    "at": [
     -30,
-    40
+    42
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -46,10 +59,66 @@
    "storeys": 2,
    "wall": {
     "material": "brick",
-    "colour": "#9a5a48",
+    "colour": "#a8654f",
     "windows": "punched",
-    "windowRatio": 0.28,
-    "bay": 9,
+    "windowRatio": 0.22,
+    "bay": 7,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a717b",
+    "pitch": 38,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    -30,
+    35.5,
+    8.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 5.5,
+    "steps": 5,
+    "colour": "#e0d8c6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "stadhuis-porch",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    34.2
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9a58c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
     "faces": {
      "left": "none",
      "right": "none",
@@ -59,29 +128,9 @@
     "cornice": false
    },
    "roof": {
-    "form": "gable",
-    "colour": "#5f6670",
-    "pitch": 42,
-    "overhang": 0.4
-   }
-  },
-  {
-   "type": "stepped-gable",
-   "at": [
-    -28,
-    33.5,
-    8.5
-   ],
-   "params": {
-    "width": 13,
-    "height": 5,
-    "steps": 4,
+    "form": "flat",
     "colour": "#d9d3c5"
-   },
-   "lod": [
-    0,
-    2
-   ]
+   }
   },
   {
    "type": "mass",
@@ -104,8 +153,8 @@
     "material": "brick",
     "colour": "#a35540",
     "windows": "punched",
-    "windowRatio": 0.28,
-    "bay": 9,
+    "windowRatio": 0.22,
+    "bay": 18,
     "faces": {
      "left": "none",
      "right": "none",
@@ -136,33 +185,110 @@
     "colour": "#d6cdbb"
    },
    "lod": [
-    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    54,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 30,
+    "colour": "#a8654f",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#d9d3c5"
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    54,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 30,
+    "colour": "#a8654f",
+    "windows": "none"
+   },
+   "lod": [
+    1,
     2
    ]
   },
   {
+   "type": "prism",
+   "at": [
+    -12,
+    54,
+    30
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "height": 5,
+    "colour": "#cfc7b4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -12,
+    54,
+    35
+   ],
+   "params": {
+    "baseWidth": 3.2,
+    "height": 9,
+    "shaftHeight": 2,
+    "sides": 8,
+    "colour": "#5f8f7c",
+    "finial": true
+   }
+  },
+  {
    "type": "mass",
-   "id": "row-east",
+   "id": "bay0",
    "footprint": {
     "rect": [
-     44,
-     10
+     4.7,
+     9
     ]
    },
    "at": [
-    56,
-    20
+    42,
+    8.0
    ],
-   "rotDeg": 90,
+   "rotDeg": 270,
    "z0": 0,
    "height": 13,
-   "storeys": 3,
+   "storeys": 4,
    "wall": {
     "material": "brick",
-    "colour": "#8f4c3a",
+    "colour": "#a35a45",
     "windows": "punched",
-    "windowRatio": 0.3,
-    "bay": 9,
+    "windowRatio": 0.27,
+    "bay": 3.8,
     "faces": {
      "left": "none",
      "right": "none",
@@ -174,11 +300,372 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#a5522f",
-    "pitch": 50,
-    "overhang": 0.3,
-    "axis": "x"
+    "colour": "#5f6670",
+    "pitch": 52,
+    "overhang": 0.2
    }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    37.4,
+    8.0,
+    13
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 4.7,
+    "height": 3.5,
+    "steps": 3,
+    "colour": "#d9d3c5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bay1",
+   "footprint": {
+    "rect": [
+     4.7,
+     9
+    ]
+   },
+   "at": [
+    42,
+    13.0
+   ],
+   "rotDeg": 270,
+   "z0": 0,
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0805f",
+    "windows": "punched",
+    "windowRatio": 0.27,
+    "bay": 3.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 52,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    37.4,
+    13.0,
+    15
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 4.7,
+    "height": 4.5,
+    "steps": 4,
+    "colour": "#cdbfa5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bay2",
+   "footprint": {
+    "rect": [
+     4.7,
+     9
+    ]
+   },
+   "at": [
+    42,
+    18.0
+   ],
+   "rotDeg": 270,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4c3a",
+    "windows": "punched",
+    "windowRatio": 0.27,
+    "bay": 3.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 52,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    37.4,
+    18.0,
+    14
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 4.7,
+    "height": 5.5,
+    "steps": 5,
+    "colour": "#e2dccb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bay3",
+   "footprint": {
+    "rect": [
+     4.7,
+     9
+    ]
+   },
+   "at": [
+    42,
+    23.0
+   ],
+   "rotDeg": 270,
+   "z0": 0,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4a07a",
+    "windows": "punched",
+    "windowRatio": 0.27,
+    "bay": 3.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 52,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    37.4,
+    23.0,
+    16
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 4.7,
+    "height": 4,
+    "steps": 4,
+    "colour": "#d9d3c5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bay4",
+   "footprint": {
+    "rect": [
+     4.7,
+     9
+    ]
+   },
+   "at": [
+    42,
+    28.0
+   ],
+   "rotDeg": 270,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5442",
+    "windows": "punched",
+    "windowRatio": 0.27,
+    "bay": 3.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 52,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    37.4,
+    28.0,
+    14
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 4.7,
+    "height": 5,
+    "steps": 5,
+    "colour": "#cdbfa5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bay5",
+   "footprint": {
+    "rect": [
+     4.7,
+     9
+    ]
+   },
+   "at": [
+    42,
+    33.0
+   ],
+   "rotDeg": 270,
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b86a50",
+    "windows": "punched",
+    "windowRatio": 0.27,
+    "bay": 3.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 52,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    37.4,
+    33.0,
+    13
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 4.7,
+    "height": 3.5,
+    "steps": 3,
+    "colour": "#e2dccb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     32,
+     6
+    ],
+    "end": [
+     32,
+     38
+    ],
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 6,
+       "profile": [
+        [
+         0.3,
+         0,
+         "#4a3f35"
+        ],
+        [
+         0.32,
+         3.6,
+         "#4a3f35"
+        ],
+        [
+         0.9,
+         4.0,
+         "#5a4a3c"
+        ],
+        [
+         1.1,
+         5.2,
+         "#6a5646"
+        ],
+        [
+         0.5,
+         6.6,
+         "#5a4a3c"
+        ],
+        [
+         0,
+         6.8,
+         "#5a4a3c"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "stall-row",
@@ -188,7 +675,7 @@
     0
    ],
    "params": {
-    "count": 6,
+    "count": 4,
     "pitch": 4.5,
     "kind": "umbrella",
     "colours": [
@@ -196,7 +683,11 @@
      "#c8362f",
      "#3a6aa8"
     ]
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "statue-on-stepped-plinth",
@@ -210,75 +701,6 @@
     "plinthHeight": 3,
     "colour": "#5e564a",
     "plinthColour": "#bdb6a6"
-   }
-  },
-  {
-   "type": "tree-avenue",
-   "at": [
-    42,
-    20,
-    0
-   ],
-   "rotDeg": 90,
-   "params": {
-    "length": 36,
-    "count": 3,
-    "kind": "broadleaf",
-    "gap": 12,
-    "height_min": 8,
-    "height_max": 9
-   }
-  },
-  {
-   "type": "mass",
-   "id": "terrace-east",
-   "footprint": {
-    "rect": [
-     36,
-     11
-    ]
-   },
-   "at": [
-    36,
-    40
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 14,
-   "storeys": 4,
-   "wall": {
-    "material": "brick",
-    "colour": "#9a5442",
-    "windows": "punched",
-    "windowRatio": 0.32,
-    "bay": 9,
-    "faces": {
-     "left": "none",
-     "right": "none",
-     "back": "none"
-    },
-    "plinth": 0.3,
-    "bands": "#d9d3c5"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#5f6670",
-    "pitch": 50,
-    "overhang": 0.3
-   }
-  },
-  {
-   "type": "stepped-gable",
-   "at": [
-    27,
-    34.4,
-    14
-   ],
-   "params": {
-    "width": 8,
-    "height": 4,
-    "steps": 4,
-    "colour": "#d6cdbb"
    },
    "lod": [
     0,
@@ -286,94 +708,24 @@
    ]
   },
   {
-   "type": "stepped-gable",
+   "type": "prism",
    "at": [
-    36,
-    34.4,
-    14
-   ],
-   "params": {
-    "width": 8,
-    "height": 4.5,
-    "steps": 4,
-    "colour": "#d9d3c5"
-   },
-   "lod": [
-    0,
-    2
-   ]
-  },
-  {
-   "type": "stepped-gable",
-   "at": [
-    45,
-    34.4,
-    14
-   ],
-   "params": {
-    "width": 8,
-    "height": 3.8,
-    "steps": 3,
-    "colour": "#d6cdbb"
-   },
-   "lod": [
-    0,
-    2
-   ]
-  },
-  {
-   "type": "mass",
-   "id": "bavo-nave",
-   "footprint": {
-    "rect": [
-     40,
-     16
-    ]
-   },
-   "at": [
-    4,
-    -34
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 14,
-   "storeys": 2,
-   "wall": {
-    "material": "brick",
-    "colour": "#8a6a58",
-    "windows": "none",
-    "windowRatio": 0.18,
-    "faces": {
-     "left": "none",
-     "right": "none",
-     "back": "none"
-    },
-    "plinth": 0.3
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#5f6670",
-    "pitch": 40,
-    "overhang": 0.3
-   }
-  },
-  {
-   "type": "tower",
-   "at": [
-    -14,
-    -34,
+    40,
+    28,
     0
    ],
    "params": {
-    "width": 7,
-    "height": 38,
-    "cap": "pyramid",
-    "capRise": 10,
-    "windows": "none",
-    "colour": "#8a6a58",
-    "capColour": "#4f6a72",
-    "windowRatio": 0.1
-   }
+    "rect": [
+     9,
+     30
+    ],
+    "height": 16,
+    "colour": "#a05a46",
+    "windows": "none"
+   },
+   "lod": [
+    2
+   ]
   }
  ],
  "site": {
@@ -387,7 +739,7 @@
  },
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "venue is Haarlem Grote Markt per brief and Wikidata so the photo is correct; frontages made a continuous terrace with stepped gables and St Bavo nave and tower added; stepped and scrolled facade ornament, pollarded limes and lamp mast missing, square still sparse"
+  "match": "fair",
+  "gaps": "Stadhuis now a long low hall with porch gable, thin tower with copper spire behind it, six stepped-gable bays and pollarded limes added; ornate scrolled gables, shopfront glazing, lamp mast and tower openwork lantern missing; terrace still small in frame."
  }
 }

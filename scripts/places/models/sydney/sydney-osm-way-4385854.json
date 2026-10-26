@@ -218,18 +218,25 @@
     "radiusY": 38,
     "startDeg": 20,
     "endDeg": 160,
-    "rows": 14,
-    "facetDeg": 16,
+    "facetDeg": 14,
     "seatColour": "#c8342c",
     "under": "solid",
-    "concreteColour": "#9ea1a3",
-    "backWall": 1,
-    "canopy": {
-     "height": 12,
-     "depth": 13,
-     "colour": "#8e9296",
-     "slopeDeg": 6
-    }
+    "concreteColour": "#c9cbc8",
+    "backWall": 3,
+    "tiers": [
+     {
+      "rows": 9,
+      "rise": 0.5,
+      "run": 0.85
+     },
+     {
+      "rows": 8,
+      "rise": 0.55,
+      "run": 0.85,
+      "gap": 3.5,
+      "lift": 3.2
+     }
+    ]
    }
   },
   {
@@ -249,17 +256,25 @@
     "radiusY": 38,
     "startDeg": 200,
     "endDeg": 340,
-    "rows": 11,
-    "facetDeg": 16,
+    "facetDeg": 14,
     "seatColour": "#c8342c",
     "under": "solid",
-    "concreteColour": "#9ea1a3",
-    "canopy": {
-     "height": 9.5,
-     "depth": 8,
-     "colour": "#8e9296",
-     "slopeDeg": 4
-    }
+    "concreteColour": "#c9cbc8",
+    "tiers": [
+     {
+      "rows": 8,
+      "rise": 0.5,
+      "run": 0.85
+     },
+     {
+      "rows": 6,
+      "rise": 0.55,
+      "run": 0.85,
+      "gap": 3,
+      "lift": 3
+     }
+    ],
+    "backWall": 2.5
    }
   },
   {
@@ -280,10 +295,11 @@
     "startDeg": -20,
     "endDeg": 20,
     "rows": 8,
-    "facetDeg": 16,
+    "facetDeg": 14,
     "seatColour": "#b8372f",
     "under": "solid",
-    "concreteColour": "#9ea1a3"
+    "concreteColour": "#c9cbc8",
+    "backWall": 1.5
    }
   },
   {
@@ -304,119 +320,18 @@
     "startDeg": 160,
     "endDeg": 200,
     "rows": 8,
-    "facetDeg": 16,
+    "facetDeg": 14,
     "seatColour": "#b8372f",
     "under": "solid",
-    "concreteColour": "#9ea1a3"
+    "concreteColour": "#c9cbc8",
+    "backWall": 1.5
    }
   },
   {
    "type": "loft",
    "at": [
-    -52,
-    40,
-    0
-   ],
-   "params": {
-    "colour": "#c0392b",
-    "capTop": true,
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       3.2,
-       3.2
-      ]
-     },
-     {
-      "z": 41.6,
-      "rect": [
-       1.6,
-       1.6
-      ]
-     },
-     {
-      "z": 52,
-      "rect": [
-       1.4,
-       1.4
-      ]
-     },
-     {
-      "z": 52.1,
-      "rect": [
-       6,
-       2.6
-      ],
-      "colour": "#b8bcc0"
-     },
-     {
-      "z": 54.6,
-      "rect": [
-       6,
-       2.6
-      ],
-      "colour": "#e8ecef"
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    0,
-    58,
-    0
-   ],
-   "params": {
-    "colour": "#c0392b",
-    "capTop": true,
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       3.2,
-       3.2
-      ]
-     },
-     {
-      "z": 41.6,
-      "rect": [
-       1.6,
-       1.6
-      ]
-     },
-     {
-      "z": 52,
-      "rect": [
-       1.4,
-       1.4
-      ]
-     },
-     {
-      "z": 52.1,
-      "rect": [
-       6,
-       2.6
-      ],
-      "colour": "#b8bcc0"
-     },
-     {
-      "z": 54.6,
-      "rect": [
-       6,
-       2.6
-      ],
-      "colour": "#e8ecef"
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
+    -68,
     52,
-    40,
     0
    ],
    "params": {
@@ -426,39 +341,39 @@
      {
       "z": 0,
       "rect": [
-       3.2,
-       3.2
+       4.2,
+       4.2
       ]
      },
      {
-      "z": 41.6,
+      "z": 30,
       "rect": [
-       1.6,
-       1.6
+       2.4,
+       2.4
       ]
      },
      {
       "z": 52,
       "rect": [
-       1.4,
-       1.4
+       2.0,
+       2.0
       ]
      },
      {
       "z": 52.1,
       "rect": [
-       6,
-       2.6
+       9,
+       3.2
       ],
       "colour": "#b8bcc0"
      },
      {
-      "z": 54.6,
+      "z": 55.6,
       "rect": [
-       6,
-       2.6
+       9,
+       3.2
       ],
-      "colour": "#e8ecef"
+      "colour": "#f0f2f3"
      }
     ]
    }
@@ -466,8 +381,8 @@
   {
    "type": "loft",
    "at": [
-    0,
-    -58,
+    68,
+    52,
     0
    ],
    "params": {
@@ -477,68 +392,251 @@
      {
       "z": 0,
       "rect": [
-       3.2,
-       3.2
+       4.2,
+       4.2
       ]
      },
      {
-      "z": 41.6,
+      "z": 30,
       "rect": [
-       1.6,
-       1.6
+       2.4,
+       2.4
       ]
      },
      {
       "z": 52,
       "rect": [
-       1.4,
-       1.4
+       2.0,
+       2.0
       ]
      },
      {
       "z": 52.1,
       "rect": [
-       6,
-       2.6
+       9,
+       3.2
       ],
       "colour": "#b8bcc0"
      },
      {
-      "z": 54.6,
+      "z": 55.6,
       "rect": [
-       6,
-       2.6
+       9,
+       3.2
       ],
-      "colour": "#e8ecef"
+      "colour": "#f0f2f3"
      }
     ]
    }
   },
   {
-   "type": "mass",
-   "id": "scoreboard",
-   "footprint": {
-    "rect": [
-     14,
-     2.5
-    ]
-   },
+   "type": "loft",
    "at": [
-    62,
+    -68,
+    -52,
     0
    ],
-   "rotDeg": 90,
-   "z0": 6,
-   "height": 9,
-   "storeys": 1,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#2b2e33",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2b2e33"
+   "params": {
+    "colour": "#c0392b",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 52.1,
+      "rect": [
+       9,
+       3.2
+      ],
+      "colour": "#b8bcc0"
+     },
+     {
+      "z": 55.6,
+      "rect": [
+       9,
+       3.2
+      ],
+      "colour": "#f0f2f3"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    68,
+    -52,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 52.1,
+      "rect": [
+       9,
+       3.2
+      ],
+      "colour": "#b8bcc0"
+     },
+     {
+      "z": 55.6,
+      "rect": [
+       9,
+       3.2
+      ],
+      "colour": "#f0f2f3"
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 38,
+    "startDeg": 20,
+    "endDeg": 160,
+    "count": 16,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        8.5,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        -1,
+        0,
+        17.0
+       ],
+       [
+        7.2,
+        0,
+        19.7
+       ],
+       [
+        19,
+        0,
+        17.3
+       ]
+      ],
+      "curve": true,
+      "steps": 6,
+      "colour": "#7d8084",
+      "up": [
+       0,
+       0,
+       1
+      ]
+     }
+    },
+    "lod2Step": 5,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 38,
+    "startDeg": 200,
+    "endDeg": 340,
+    "count": 14,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        8.5,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        -1,
+        0,
+        13.5
+       ],
+       [
+        5.4,
+        0,
+        16.2
+       ],
+       [
+        15,
+        0,
+        13.8
+       ]
+      ],
+      "curve": true,
+      "steps": 6,
+      "colour": "#7d8084",
+      "up": [
+       0,
+       0,
+       1
+      ]
+     }
+    },
+    "lod2Step": 5,
+    "lod1Step": 2
    }
   }
  ],
@@ -554,6 +652,6 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Roofs are straight canopies not curved shells; stands are uniform arcs without aisles or the glazed concourse; scoreboard and lights approximate."
+  "gaps": "Roofs are arrays of curved ribs so they read faceted and slightly rolled, not smooth shells; no glazed concourse band or stair aisles; masts are plain lofts without lattice."
  }
 }

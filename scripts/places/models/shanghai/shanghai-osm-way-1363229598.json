@@ -22,12 +22,12 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 4,
-  "fovDeg": 50,
+  "pitchDeg": 3,
+  "fovDeg": 34,
   "aspect": 1.333,
   "margin": 0.0,
   "fit": "building",
-  "shiftY": -0.12
+  "shiftY": -0.02
  },
  "parts": [
   {
@@ -50,11 +50,9 @@
     "plinth": 0.3
    },
    "roof": {
-    "form": "gable",
-    "pitch": 8,
+    "form": "flat",
     "colour": "#7f93a5",
-    "material": "metal-sheet",
-    "overhang": 0.6
+    "parapet": 0
    }
   },
   {
@@ -62,7 +60,7 @@
    "id": "gate-hall",
    "footprint": {
     "rect": [
-     70,
+     92,
      26
     ]
    },
@@ -70,25 +68,35 @@
     0,
     -30
    ],
-   "height": 14,
-   "storeys": 2,
+   "height": 17,
+   "storeys": 3,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#b9bec3",
+    "colour": "#b4babf",
     "windows": "none",
     "faces": {
      "front": "plain"
     },
     "plinth": 0.3,
-    "bands": "#cf3a3a"
+    "bands": "#c62f33",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#b8bec3",
+      "#a9b0b6"
+     ]
+    }
    },
    "roof": {
     "form": "curved",
     "curve": "arch",
-    "rise": 6,
+    "rise": 9,
     "colour": "#aeb4ba",
     "material": "metal-sheet",
-    "overhang": 0.6
+    "overhang": 0.2
    }
   },
   {
@@ -101,10 +109,10 @@
     ]
    },
    "at": [
-    -48,
+    -64,
     -31
    ],
-   "height": 7.5,
+   "height": 9,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -133,10 +141,10 @@
     ]
    },
    "at": [
-    46,
+    62,
     -31
    ],
-   "height": 7.5,
+   "height": 9,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -156,61 +164,290 @@
    }
   },
   {
-   "type": "canopy",
+   "type": "prism",
    "at": [
     0,
-    -45,
+    -43.4,
     0
    ],
    "params": {
-    "width": 22,
-    "depth": 6,
-    "height": 5.2,
-    "form": "flat",
-    "colour": "#9ea3a8"
+    "rect": [
+     18,
+     0.8
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#25272a",
+    "top": true
    }
   },
   {
-   "type": "sign-board",
+   "type": "prism",
    "at": [
     0,
-    -43.5,
-    9.5
+    -48,
+    7.4
    ],
    "params": {
-    "width": 26,
-    "height": 3.4,
-    "colour": "#b8bdc2",
-    "textColour": "#cf3a3a"
+    "rect": [
+     24,
+     8
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#9ea3a8",
+    "top": true
    }
   },
   {
    "type": "array",
    "at": [
     0,
-    0,
+    -50,
     0
    ],
    "params": {
     "mode": "line",
     "start": [
-     -30,
-     -66,
+     -10,
+     0,
      0
     ],
     "end": [
-     30,
-     -66,
+     10,
+     0,
      0
     ],
-    "count": 7,
-    "of": [
-     {
-      "type": "car",
-      "params": {}
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 0,
+      "height": 7.4,
+      "colour": "#b9b2a0"
      }
-    ]
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -43.2,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "height": 2.4,
+    "bottom": 8.4,
+    "colour": "#c62f33",
+    "frameColour": "#c62f33",
+    "posts": false
    }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -43.2,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "height": 2.6,
+    "bottom": 12.8,
+    "colour": "#9fa6ac",
+    "frameColour": "#c62f33",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -43.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 15.2,
+    "colour": "#2f8a4a",
+    "frameColour": "#2f8a4a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     2.4
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#2a2d30",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -78,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     5
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#2f3a4a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -54,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     4.5
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#2a3550",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -68,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     3.5
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#3f7a3a",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -77,
+    -43.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.8
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c62f33",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -51,
+    -43.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.8
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c62f33",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    51,
+    -43.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.8
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c62f33",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    73,
+    -43.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.8
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c62f33",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -220,16 +457,16 @@
    {
     "kind": "broadleaf",
     "at": [
-     -36,
-     -60
+     -60,
+     -62
     ],
     "height": 3
    },
    {
     "kind": "broadleaf",
     "at": [
-     34,
-     -60
+     60,
+     -62
     ],
     "height": 3
    }
@@ -240,8 +477,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Curved gate-hall roof, red-banded shutter wings and entrance canopy match; real gate is far more cluttered, no sign lettering or trucks, shed block behind is a scaled OSM outline, camera crop is wider than photo."
+  "gaps": "Cambered grey tiled gate wall, dark entrance under flat canopy with red banner band, red-framed shutter wings and trucks/hedge present; roof is a symmetric arch (real is asymmetric swept), emblem is a plain green board, no lettering, canopy columns simplified."
  }
 }

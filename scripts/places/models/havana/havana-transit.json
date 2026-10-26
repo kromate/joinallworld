@@ -41,27 +41,27 @@
     0,
     0
    ],
-   "height": 19,
-   "storeys": 4,
+   "height": 16,
+   "storeys": 3,
    "wall": {
     "material": "limestone",
     "colour": "#cfc3a2",
     "windows": "punched",
-    "windowShape": "rect",
-    "windowRatio": 0.3,
-    "bay": 3.4,
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "bay": 8.0,
     "plinth": 0.6,
     "cornice": true,
     "bands": "#e6dfc8",
     "groundKind": "arched",
-    "groundHeight": 5
+    "groundHeight": 4.5
    },
    "roof": {
     "form": "hip",
     "colour": "#5d5b57",
     "material": "slate",
-    "pitch": 18,
-    "overhang": 2.2
+    "pitch": 9,
+    "overhang": 0.8
    }
   },
   {
@@ -70,19 +70,19 @@
    "footprint": {
     "rect": [
      16,
-     8
+     3
     ]
    },
    "at": [
     -6,
-    -9
+    -11.5
    ],
-   "height": 24,
-   "storeys": 4,
+   "height": 19,
+   "storeys": 1,
    "wall": {
     "material": "limestone",
     "colour": "#d6cbab",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.2,
     "plinth": 0.4,
     "cornice": true
@@ -90,74 +90,76 @@
    "roof": {
     "form": "flat",
     "colour": "#d9d0b6",
-    "parapet": 1.4
+    "parapet": 2.2
    }
   },
   {
    "type": "mass",
-   "id": "porte-cochere",
+   "id": "awning",
    "footprint": {
     "rect": [
-     60,
-     5
+     58,
+     3
     ]
    },
    "at": [
     0,
-    -15.5
+    -14.8
    ],
-   "height": 5.2,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#bdb391",
+    "colour": "#a89f80",
     "windows": "none",
     "plinth": 0
    },
    "roof": {
-    "form": "shed",
-    "colour": "#4a4a47",
-    "material": "slate",
-    "pitch": 12,
-    "overhang": 0.8
+    "form": "flat",
+    "colour": "#5a5a55",
+    "parapet": 0.15
    }
   },
   {
    "type": "clock-tower-square",
    "at": [
     -22,
-    -9,
+    -10.5,
     0
    ],
    "params": {
-    "width": 7.5,
-    "height": 31,
+    "width": 5.5,
+    "height": 40,
     "cap": "hip",
-    "capRise": 4,
+    "capRise": 5,
     "clock": false,
     "belfry": true,
     "colour": "#cdc1a0",
     "trimColour": "#e6dfc8",
-    "capColour": "#4a4a47"
+    "capColour": "#4a4a47",
+    "windows": "none",
+    "finial": 3.0
    }
   },
   {
    "type": "clock-tower-square",
    "at": [
     11,
-    -9,
+    -10.5,
     0
    ],
    "params": {
-    "width": 7.5,
-    "height": 33,
+    "width": 5.5,
+    "height": 40,
     "cap": "hip",
-    "capRise": 4,
+    "capRise": 5,
     "clock": false,
     "belfry": true,
     "colour": "#cdc1a0",
     "trimColour": "#e6dfc8",
-    "capColour": "#4a4a47"
+    "capColour": "#4a4a47",
+    "windows": "none",
+    "finial": 3.0
    }
   },
   {
@@ -170,24 +172,28 @@
    "params": {
     "length": 70,
     "height": 1.8,
-    "thickness": 0.25,
+    "thickness": 0.2,
     "kind": "railing",
-    "pillarEvery": 5,
-    "colour": "#9a968a"
-   }
+    "pillarEvery": 4,
+    "colour": "#7d7a70"
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/sign-board",
    "at": [
     -6,
-    -13.4,
+    -13.2,
     0
    ],
    "params": {
-    "width": 10,
-    "height": 1.2,
-    "bottom": 5.4,
-    "colour": "#d9d0b6",
+    "width": 3,
+    "height": 3,
+    "bottom": 14.5,
+    "colour": "#cdc1a0",
     "frameColour": "#bdb391",
     "posts": false
    }
@@ -219,8 +225,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Never rendered (render queue workers dead since 20:17); proportions, canopy side and tower placement unchecked."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Towers slender and flush at front; no belfry arches/balconies detail, no cartouches/clock, fence is straight not curved, side wing roofs simplified. Fence omitted at LOD1 to meet the 4k budget."
  }
 }

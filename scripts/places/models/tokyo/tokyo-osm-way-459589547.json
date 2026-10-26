@@ -36,8 +36,8 @@
     0
    ],
    "params": {
-    "width": 140,
-    "depth": 90,
+    "width": 160,
+    "depth": 150,
     "colour": "#6fae3f"
    }
   },
@@ -70,94 +70,16 @@
    "type": "tree-grove",
    "at": [
     0,
-    42,
+    44,
     0
    ],
    "params": {
-    "width": 70,
-    "depth": 6,
-    "count": 50,
+    "width": 140,
+    "depth": 9,
+    "count": 80,
     "kind": "broadleaf",
-    "min_height": 12,
-    "max_height": 17
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    0,
-    12,
-    0
-   ],
-   "params": {
-    "width": 64,
-    "depth": 5,
-    "count": 34,
-    "kind": "conifer",
-    "min_height": 7,
-    "max_height": 9
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "tree",
-     "at": [
-      0,
-      0,
-      0
-     ],
-     "params": {
-      "kind": "conifer",
-      "height": 17
-     }
-    },
-    "mode": "line",
-    "start": [
-     58,
-     -8
-    ],
-    "end": [
-     62,
-     24
-    ],
-    "count": 4,
-    "vary": {}
-   }
-  },
-  {
-   "type": "pavilion",
-   "at": [
-    8,
-    26,
-    0
-   ],
-   "params": {
-    "width": 9,
-    "depth": 6,
-    "height": 3.4,
-    "roof": "hip",
-    "rise": 1.6,
-    "colour": "#8b7a60",
-    "cap_colour": "#6b4a3c"
-   }
-  },
-  {
-   "type": "pavilion",
-   "at": [
-    -8,
-    28,
-    0
-   ],
-   "params": {
-    "width": 6,
-    "depth": 4,
-    "height": 3,
-    "roof": "hip",
-    "rise": 1.3,
-    "colour": "#8b7a60",
-    "cap_colour": "#6b4a3c"
+    "min_height": 11,
+    "max_height": 14
    }
   },
   {
@@ -172,19 +94,121 @@
     "count": 5,
     "spacing": 30
    }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "broadleaf",
+      "height": 5.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     14
+    ],
+    "end": [
+     62,
+     16
+    ],
+    "count": 12,
+    "vary": {}
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "broadleaf",
+      "height": 5.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -56,
+     26
+    ],
+    "end": [
+     58,
+     28
+    ],
+    "count": 12,
+    "vary": {}
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    8,
+    40,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.5,
+    "colour": "#8b7a60",
+    "cap_colour": "#6b4a3c"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -8,
+    42,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 3,
+    "roof": "hip",
+    "rise": 1.5,
+    "colour": "#8b7a60",
+    "cap_colour": "#6b4a3c"
+   }
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "none",
   "extent": [
-   150,
-   100
+   160,
+   120
   ]
  },
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Lawn, pine rows, broadleaf belt, pavilions and path match the photo in kind; tree groves are narrower than the lawn and pines are low-poly cones, not round-crowned pines."
+  "gaps": "Continuous broadleaf belt, round-crowned pine rows and a tall cedar at the right now match in kind; pines are low-poly blobs lighter than the dark photo trees, and the cedar is not columnar enough."
  }
 }

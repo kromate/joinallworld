@@ -58,7 +58,7 @@
     "colour": "#e9e6dd",
     "windows": "ribbon",
     "windowRatio": 0.55,
-    "glassColour": "#6b5a3c",
+    "glassColour": "#8c7a55",
     "bay": 7,
     "plinth": 0.4,
     "faces": {
@@ -70,7 +70,7 @@
     "pattern": [
      {
       "type": "pilotis",
-      "spacing": 5.5,
+      "spacing": 5,
       "faces": [
        "front"
       ]
@@ -78,10 +78,10 @@
      {
       "type": "bands",
       "colours": [
-       "#6e6c66"
+       "#5a5852"
       ],
-      "height": 1.6,
-      "at": 0.97,
+      "height": 2.0,
+      "at": 0.95,
       "proud": 0.12,
       "floors": "all"
      }
@@ -94,60 +94,342 @@
    }
   },
   {
-   "type": "prism",
+   "type": "mass",
    "id": "gold-1",
-   "at": [
-    -10,
-    0,
-    8.9
-   ],
-   "params": {
+   "footprint": {
     "rect": [
      32,
-     15
-    ],
-    "height": 1.8,
+     16
+    ]
+   },
+   "at": [
+    -10,
+    0
+   ],
+   "z0": 8.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
     "colour": "#c9a227",
-    "topColour": "#c9a227",
-    "topScale": 0.92
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9a227",
+    "overhang": 1.6
    }
   },
   {
-   "type": "prism",
+   "type": "mass",
    "id": "gold-2",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
    "at": [
     -10,
+    0
+   ],
+   "z0": 11.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3ad2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d3ad2c",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gold-3",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -10,
+    0
+   ],
+   "z0": 14.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb83a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#dcb83a",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-0",
+   "lod": [
+    0
+   ],
+   "at": [
+    -26.5,
     0,
-    10.7
+    10.6
    ],
    "params": {
-    "rect": [
-     24,
-     10
-    ],
-    "height": 1.8,
-    "colour": "#c9a227",
-    "topColour": "#c9a227",
-    "topScale": 0.9
+    "colour": "#e0bb3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": -1.4
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    6.5,
+    0,
+    10.6
+   ],
+   "params": {
+    "colour": "#e0bb3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": 1.4
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-2",
+   "lod": [
+    0
+   ],
+   "at": [
+    -17.5,
+    0,
+    13.0
+   ],
+   "params": {
+    "colour": "#e0bb3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": -1.4
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-3",
+   "lod": [
+    0
+   ],
+   "at": [
+    -2.5,
+    0,
+    13.0
+   ],
+   "params": {
+    "colour": "#e0bb3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": 1.4
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-4",
+   "lod": [
+    0
+   ],
+   "at": [
+    -14.5,
+    0,
+    15.8
+   ],
+   "params": {
+    "colour": "#e0bb3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": -1.4
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-5",
+   "lod": [
+    0
+   ],
+   "at": [
+    -5.5,
+    0,
+    15.8
+   ],
+   "params": {
+    "colour": "#e0bb3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": 1.4
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 3.2
+     }
+    ]
    }
   },
   {
    "type": "prism",
-   "id": "gold-3",
+   "id": "spire",
    "at": [
     -10,
     0,
-    12.5
+    16.5
    ],
    "params": {
     "rect": [
-     14,
-     6
+     0.5,
+     0.5
     ],
-    "height": 3.0,
-    "colour": "#d6b23a",
-    "topColour": "#d6b23a",
-    "topScale": 0.6
+    "height": 4.5,
+    "colour": "#e0bb3a",
+    "topColour": "#e0bb3a"
    }
   },
   {
@@ -164,19 +446,19 @@
      {
       "z": 0,
       "rect": [
-       4.2,
+       4.8,
+       3.6
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       3.9,
        3.0
       ]
      },
      {
-      "z": 30,
-      "rect": [
-       3.4,
-       2.6
-      ]
-     },
-     {
-      "z": 34,
+      "z": 40,
       "rect": [
        3.4,
        2.6
@@ -191,7 +473,7 @@
    "at": [
     36,
     -26,
-    34
+    40
    ],
    "params": {
     "colour": "#d6b23a",
@@ -199,29 +481,29 @@
      {
       "z": 0,
       "rect": [
-       4.4,
-       3.2
+       3.4,
+       2.6
       ]
      },
      {
-      "z": 2.2,
+      "z": 3.2,
       "rect": [
-       6.6,
-       4.8
+       7.4,
+       5.4
       ]
      },
      {
-      "z": 4.2,
+      "z": 3.8,
       "rect": [
-       5.4,
-       3.8
+       7.6,
+       5.6
       ]
      },
      {
       "z": 4.4,
       "rect": [
-       4.2,
-       3
+       5.4,
+       4
       ]
      }
     ]
@@ -233,27 +515,27 @@
    "at": [
     36,
     -26,
-    38.4
+    44.4
    ],
    "params": {
-    "colour": "#6e6c66",
+    "colour": "#d6b23a",
     "sections": [
      {
       "z": 0,
       "rect": [
-       3,
-       2.2
+       4,
+       3
       ]
      },
      {
-      "z": 5,
+      "z": 2.2,
       "rect": [
-       2.6,
+       2.4,
        1.8
       ]
      },
      {
-      "z": 5.2,
+      "z": 3.6,
       "rect": [
        0.5,
        0.5
@@ -264,18 +546,261 @@
   },
   {
    "type": "prism",
+   "id": "finial",
+   "at": [
+    36,
+    -26,
+    48
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 4,
+    "colour": "#e0bb3a",
+    "topColour": "#e0bb3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crescent",
+   "lod": [
+    0
+   ],
+   "at": [
+    36,
+    -26,
+    51.5
+   ],
+   "params": {
+    "n": 8,
+    "radius": 0.7,
+    "height": 0.5,
+    "colour": "#e0bb3a",
+    "topColour": "#e0bb3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick",
+   "at": [
+    6,
+    -26,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      56.0,
+      18.0
+     ],
+     [
+      55.8,
+      19.24
+     ],
+     [
+      55.24,
+      20.35
+     ],
+     [
+      54.35,
+      21.24
+     ],
+     [
+      53.24,
+      21.8
+     ],
+     [
+      52.0,
+      22.0
+     ],
+     [
+      -52.0,
+      22.0
+     ],
+     [
+      -53.24,
+      21.8
+     ],
+     [
+      -54.35,
+      21.24
+     ],
+     [
+      -55.24,
+      20.35
+     ],
+     [
+      -55.8,
+      19.24
+     ],
+     [
+      -56.0,
+      18.0
+     ],
+     [
+      -56.0,
+      -18.0
+     ],
+     [
+      -55.8,
+      -19.24
+     ],
+     [
+      -55.24,
+      -20.35
+     ],
+     [
+      -54.35,
+      -21.24
+     ],
+     [
+      -53.24,
+      -21.8
+     ],
+     [
+      -52.0,
+      -22.0
+     ],
+     [
+      52.0,
+      -22.0
+     ],
+     [
+      53.24,
+      -21.8
+     ],
+     [
+      54.35,
+      -21.24
+     ],
+     [
+      55.24,
+      -20.35
+     ],
+     [
+      55.8,
+      -19.24
+     ],
+     [
+      56.0,
+      -18.0
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#c4806a",
+    "topColour": "#c88a72"
+   }
+  },
+  {
+   "type": "prism",
    "id": "pool",
    "at": [
     6,
     -28,
-    0
+    0.1
    ],
    "params": {
-    "rect": [
-     70,
-     26
+    "points": [
+     [
+      35.0,
+      5.0
+     ],
+     [
+      34.61,
+      7.47
+     ],
+     [
+      33.47,
+      9.7
+     ],
+     [
+      31.7,
+      11.47
+     ],
+     [
+      29.47,
+      12.61
+     ],
+     [
+      27.0,
+      13.0
+     ],
+     [
+      -27.0,
+      13.0
+     ],
+     [
+      -29.47,
+      12.61
+     ],
+     [
+      -31.7,
+      11.47
+     ],
+     [
+      -33.47,
+      9.7
+     ],
+     [
+      -34.61,
+      7.47
+     ],
+     [
+      -35.0,
+      5.0
+     ],
+     [
+      -35.0,
+      -5.0
+     ],
+     [
+      -34.61,
+      -7.47
+     ],
+     [
+      -33.47,
+      -9.7
+     ],
+     [
+      -31.7,
+      -11.47
+     ],
+     [
+      -29.47,
+      -12.61
+     ],
+     [
+      -27.0,
+      -13.0
+     ],
+     [
+      27.0,
+      -13.0
+     ],
+     [
+      29.47,
+      -12.61
+     ],
+     [
+      31.7,
+      -11.47
+     ],
+     [
+      33.47,
+      -9.7
+     ],
+     [
+      34.61,
+      -7.47
+     ],
+     [
+      35.0,
+      -5.0
+     ]
     ],
-    "height": 0.25,
+    "height": 0.2,
     "colour": "#5f8f8a",
     "topColour": "#6aa09a"
    }
@@ -408,6 +933,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Gold roof is stacked pyramid tiers without upturned horn ends or carved eaves; frieze is a plain dark band, not a lattice pattern; tower lacks vertical fluting and the hexagonal lantern detail; stair, fountain jets and planters omitted."
+  "gaps": "Gold roof is now gabled tiers with horn ends and spire but horns read as spikes; tower shaft is plain tapered (no fluting) with a squat flared lantern; colonnade is pilotis not slim white columns; no fountain jets or stair."
  }
 }

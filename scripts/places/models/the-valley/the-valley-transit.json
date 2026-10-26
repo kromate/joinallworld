@@ -41,22 +41,23 @@
    "id": "centre",
    "footprint": {
     "rect": [
-     15,
-     14
+     12,
+     12
     ]
    },
    "at": [
     0,
     0
    ],
-   "height": 9.5,
+   "height": 12,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#9ea4a9",
     "windows": "punched",
-    "windowRatio": 0.45,
-    "plinth": 0.4
+    "windowRatio": 0.7,
+    "plinth": 0.4,
+    "glassColour": "#1c2229"
    },
    "roof": {
     "form": "flat",
@@ -69,19 +70,19 @@
    "id": "sign-band",
    "footprint": {
     "rect": [
-     14,
-     0.5
+     12,
+     1.8
     ]
    },
    "at": [
     0,
-    -7.2
+    -6.0
    ],
-   "height": 2.2,
+   "height": 1.8,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#b9bec2",
+    "colour": "#aeb4b8",
     "windows": "none"
    },
    "roof": {
@@ -89,29 +90,30 @@
     "colour": "#8a9096",
     "parapet": 0.3
    },
-   "z0": 7.2
+   "z0": 10.2
   },
   {
    "type": "mass",
    "id": "wing-w",
    "footprint": {
     "rect": [
-     15,
-     11
+     13,
+     9
     ]
    },
    "at": [
-    -16,
-    1
+    -15,
+    1.5
    ],
-   "height": 6.6,
+   "height": 5.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#b4b9bd",
     "windows": "punched",
-    "windowRatio": 0.4,
-    "plinth": 0.4
+    "windowRatio": 0.65,
+    "plinth": 0.4,
+    "glassColour": "#1c2229"
    },
    "roof": {
     "form": "flat",
@@ -124,22 +126,23 @@
    "id": "wing-e",
    "footprint": {
     "rect": [
-     15,
-     11
+     13,
+     9
     ]
    },
    "at": [
-    16,
-    1
+    15,
+    1.5
    ],
-   "height": 6.6,
+   "height": 5.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#b4b9bd",
     "windows": "punched",
-    "windowRatio": 0.4,
-    "plinth": 0.4
+    "windowRatio": 0.65,
+    "plinth": 0.4,
+    "glassColour": "#1c2229"
    },
    "roof": {
     "form": "flat",
@@ -150,29 +153,31 @@
   {
    "type": "flat-canopy",
    "at": [
-    -16,
-    -5.5,
+    -15,
+    -3.4,
     0
    ],
    "params": {
-    "width": 10,
+    "width": 13,
     "depth": 2.5,
     "height": 3.4,
-    "colour": "#5f666c"
+    "colour": "#4a5058",
+    "thickness": 1.0
    }
   },
   {
    "type": "flat-canopy",
    "at": [
-    16,
-    -5.5,
+    15,
+    -3.4,
     0
    ],
    "params": {
-    "width": 10,
+    "width": 13,
     "depth": 2.5,
     "height": 3.4,
-    "colour": "#5f666c"
+    "colour": "#4a5058",
+    "thickness": 1.0
    }
   },
   {
@@ -180,52 +185,54 @@
    "id": "ramp-w",
    "footprint": {
     "rect": [
-     11,
+     9,
      0.5
     ]
    },
    "at": [
-    -12,
-    -9
+    -14,
+    -8
    ],
-   "height": 1.6,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#e9eaea",
+    "colour": "#f2f2f0",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#e9eaea",
+    "colour": "#f2f2f0",
     "parapet": 0.3
-   }
+   },
+   "rotDeg": 20
   },
   {
    "type": "mass",
    "id": "ramp-e",
    "footprint": {
     "rect": [
-     11,
+     9,
      0.5
     ]
    },
    "at": [
-    12,
-    -9
+    14,
+    -8
    ],
-   "height": 1.6,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#e9eaea",
+    "colour": "#f2f2f0",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#e9eaea",
+    "colour": "#f2f2f0",
     "parapet": 0.3
-   }
+   },
+   "rotDeg": -20
   },
   {
    "type": "core/steps",
@@ -298,20 +305,6 @@
    }
   },
   {
-   "type": "core/spire",
-   "at": [
-    4,
-    3,
-    9.5
-   ],
-   "params": {
-    "baseWidth": 0.4,
-    "height": 6,
-    "colour": "#c9cbcc",
-    "finial": false
-   }
-  },
-  {
    "type": "core/tree",
    "at": [
     -30,
@@ -337,6 +330,20 @@
     "depth": 10,
     "density": 0.5
    }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    3,
+    3,
+    12
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 8,
+    "colour": "#b9bec2",
+    "finial": false
+   }
   }
  ],
  "site": {
@@ -349,8 +356,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Massing and grey rendered palette match the 2023 terminal front; window grid, dark canopies, ramp walls and the big lettered sculpture are simplified or omitted; pier and apron layout are typed."
+  "gaps": "Tower-like centre, dark glazing grid, thick dark canopies, white ramps and mast now match; wings are lower and set further apart than the photo, glazing is punched not full-height, lettered sculpture omitted, pier/apron typed."
  }
 }

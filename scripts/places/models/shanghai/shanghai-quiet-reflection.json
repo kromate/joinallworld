@@ -33,7 +33,7 @@
    "id": "base",
    "footprint": {
     "rect": [
-     24,
+     22,
      16
     ]
    },
@@ -62,7 +62,7 @@
    "id": "hall",
    "footprint": {
     "rect": [
-     28,
+     26,
      20
     ]
    },
@@ -72,8 +72,8 @@
    ],
    "rotDeg": 0,
    "z0": 3.6,
-   "height": 11,
-   "storeys": 3,
+   "height": 13,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#f0ede4",
@@ -98,7 +98,7 @@
       "colour": "#d9d5c8",
       "height": 0.6,
       "proud": 0.12,
-      "at": 10.2
+      "at": 12
      }
     ]
    },
@@ -114,11 +114,11 @@
    "params": {
     "mode": "line",
     "start": [
-     -8.8,
+     -8.2,
      -10.1
     ],
     "end": [
-     8.8,
+     8.2,
      -10.1
     ],
     "count": 3,
@@ -127,11 +127,11 @@
      "params": {
       "rect": [
        5.2,
-       0.35
+       0.3
       ],
-      "z0": 6.4,
-      "height": 5.6,
-      "colour": "#2f5a45",
+      "z0": 5.4,
+      "height": 7.4,
+      "colour": "#6f9a86",
       "topColour": "#2f5a45",
       "windows": "none"
      }
@@ -144,11 +144,11 @@
    "params": {
     "mode": "line",
     "start": [
-     -8.8,
+     -8.2,
      -10.1
     ],
     "end": [
-     8.8,
+     8.2,
      -10.1
     ],
     "count": 3,
@@ -157,28 +157,28 @@
      "params": {
       "sections": [
        {
-        "z": 12.0,
-        "rect": [
-         5.2,
-         0.35
-        ]
-       },
-       {
         "z": 12.8,
         "rect": [
-         3.6,
-         0.35
+         5.2,
+         0.3
         ]
        },
        {
-        "z": 13.4,
+        "z": 13.8,
         "rect": [
-         1.2,
-         0.35
+         3.8,
+         0.3
+        ]
+       },
+       {
+        "z": 14.6,
+        "rect": [
+         1.4,
+         0.3
         ]
        }
       ],
-      "colour": "#2f5a45",
+      "colour": "#6f9a86",
       "capTop": true
      }
     }
@@ -198,12 +198,12 @@
     ]
    },
    "at": [
-    16.2,
+    15.5,
     0
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15.5,
+   "height": 14,
    "storeys": 4,
    "wall": {
     "material": "painted-render",
@@ -230,43 +230,43 @@
    "at": [
     -2,
     3,
-    14.6
+    16.6
    ],
    "params": {
     "segments": 28,
     "colour": "#d9a82c",
     "profile": [
      [
-      7.0,
-      0
+      5.95,
+      0.0
      ],
      [
-      7.0,
-      1.4
+      5.95,
+      1.19
      ],
      [
-      6.4,
-      1.6
+      5.44,
+      1.36
      ],
      [
-      7.2,
-      3.0
+      6.12,
+      2.55
      ],
      [
-      6.0,
-      5.6
+      5.1,
+      4.76
      ],
      [
-      3.4,
-      7.6
+      2.89,
+      6.46
      ],
      [
-      0.9,
-      8.6
+      0.77,
+      7.31
      ],
      [
-      0,
-      8.8
+      0.0,
+      7.48
      ]
     ]
    }
@@ -277,7 +277,7 @@
    "at": [
     -2,
     3,
-    23.4
+    23.880000000000003
    ],
    "params": {
     "segments": 8,
@@ -310,7 +310,7 @@
      0.12,
      0.12
     ],
-    "z0": 25.6,
+    "z0": 25.880000000000003,
     "height": 1.6,
     "colour": "#d9d5c0"
    },
@@ -325,11 +325,11 @@
    "params": {
     "mode": "line",
     "start": [
-     -13.5,
+     -12.5,
      -9.6
     ],
     "end": [
-     13.5,
+     12.5,
      -9.6
     ],
     "count": 28,
@@ -340,7 +340,7 @@
        0.07,
        0.07
       ],
-      "z0": 14.6,
+      "z0": 16.6,
       "height": 1.1,
       "colour": "#2a2d2e"
      }
@@ -354,16 +354,16 @@
    "type": "prism",
    "id": "minaret-shaft",
    "at": [
-    -12,
-    3
+    -11.2,
+    -7.5
    ],
    "params": {
     "rect": [
-     3.0,
-     3.0
+     1.8,
+     1.8
     ],
-    "z0": 14.6,
-    "height": 9.5,
+    "z0": 16.6,
+    "height": 7.5,
     "colour": "#efece2",
     "topColour": "#efece2",
     "windows": "none"
@@ -373,15 +373,15 @@
    "type": "prism",
    "id": "minaret-balcony",
    "at": [
-    -12,
-    3
+    -11.2,
+    -7.5
    ],
    "params": {
     "rect": [
-     4.0,
-     4.0
+     3.0,
+     3.0
     ],
-    "z0": 19.4,
+    "z0": 20.200000000000003,
     "height": 0.5,
     "colour": "#efece2",
     "topColour": "#efece2"
@@ -391,9 +391,9 @@
    "type": "revolve",
    "id": "minaret-dome-low",
    "at": [
-    -12,
-    3,
-    14.6
+    -11.2,
+    -7.5,
+    19.6
    ],
    "params": {
     "segments": 20,
@@ -424,15 +424,19 @@
       2.6
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
    "id": "minaret-dome-high",
    "at": [
-    -12,
-    3,
-    24.1
+    -11.2,
+    -7.5,
+    24.0
    ],
    "params": {
     "segments": 20,
@@ -471,7 +475,7 @@
    "at": [
     13,
     -7,
-    14.6
+    16.6
    ],
    "params": {
     "segments": 20,
@@ -510,7 +514,7 @@
    "at": [
     8,
     7,
-    14.6
+    16.6
    ],
    "params": {
     "segments": 20,
@@ -584,6 +588,66 @@
     "count": 2,
     "spread": 8
    }
+  },
+  {
+   "type": "array",
+   "id": "arch-frames",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.2,
+     -10.05
+    ],
+    "end": [
+     8.2,
+     -10.05
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6.6,
+       0.2
+      ],
+      "z0": 5.0,
+      "height": 10.2,
+      "colour": "#f7f5ee",
+      "topColour": "#f7f5ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "lattice-v",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -10.45
+    ],
+    "end": [
+     10,
+     -10.45
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.1
+      ],
+      "z0": 5.6,
+      "height": 8.4,
+      "colour": "#c9d6cc"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -595,8 +659,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Lattice window tracery is flat dark green, dome slightly large, recessed ground floor and minaret balconies simplified, right stair wing approximate."
+  "gaps": "Lattice tracery is a flat green slab with thin white bars; building is deeper than the photo, so the facade looks long; recessed ground floor and minaret balcony detail simplified; dome slightly pale/low."
  }
 }

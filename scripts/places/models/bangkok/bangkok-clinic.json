@@ -54,15 +54,15 @@
     "colour": "#f0f1f1",
     "glassColour": "#7e93a3",
     "windows": "ribbon",
-    "windowRatio": 0.5,
+    "windowRatio": 0.4,
     "plinth": 0.5,
     "pattern": {
-     "kind": "balconies",
+     "type": "balconies",
      "faces": [
       "front"
      ],
-     "depth": 1.2,
-     "every": 3.2,
+     "depth": 2.0,
+     "every": 9.6,
      "colour": "#f4f5f5",
      "railColour": "#dfe3e6",
      "floors": "upper"
@@ -72,7 +72,7 @@
      "right": "plain",
      "back": "plain"
     },
-    "bay": 5
+    "bay": 7
    },
    "roof": {
     "form": "flat",
@@ -116,15 +116,47 @@
   },
   {
    "type": "mass",
-   "id": "blue-panel",
+   "id": "blue-band-l",
    "footprint": {
     "rect": [
-     6,
+     2.4,
      1
     ]
    },
    "at": [
-    19,
+    20.2,
+    -4.4
+   ],
+   "rotDeg": 0,
+   "z0": 4,
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f3f9c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f3f9c",
+    "material": "concrete",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-band-r",
+   "footprint": {
+    "rect": [
+     2.4,
+     1
+    ]
+   },
+   "at": [
+    32.4,
     -4.4
    ],
    "rotDeg": 0,
@@ -151,31 +183,31 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     50,
-     24
+     54,
+     26
     ]
    },
    "at": [
     -2,
-    5
+    4
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8,
+   "height": 10,
    "storeys": 2,
    "wall": {
     "material": "concrete",
-    "colour": "#8f8c84",
+    "colour": "#8a8478",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0,
     "pattern": {
-     "kind": "bands",
+     "type": "bands",
      "colour": "#1f3f9c",
-     "height": 3,
-     "at": 0.2,
+     "height": 2.5,
+     "at": 0.1,
      "floors": [
-      1
+      0
      ]
     }
    },
@@ -236,7 +268,7 @@
     ]
    },
    "at": [
-    2,
+    -4,
     -14
    ],
    "rotDeg": 0,
@@ -273,8 +305,8 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 26,
-   "storeys": 7,
+   "height": 15,
+   "storeys": 4,
    "wall": {
     "material": "glass-curtain",
     "colour": "#dfe6e6",
@@ -302,17 +334,17 @@
    "id": "dome-hall",
    "footprint": {
     "rect": [
-     22,
-     14
+     28,
+     12
     ]
    },
    "at": [
-    -28,
+    -26,
     -16
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 5,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -325,7 +357,7 @@
     "form": "curved",
     "curve": "arch",
     "colour": "#f1f2f1",
-    "rise": 2.2,
+    "rise": 3.2,
     "overhang": 0.3
    }
   },
@@ -342,19 +374,25 @@
     "colour": "#f2f2f0",
     "roofColour": "#e4e6e6",
     "vans": 1
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "car-park",
    "at": [
-    16,
-    -42,
+    18,
+    -44,
     0
    ],
    "params": {
-    "width": 40,
-    "depth": 10
-   }
+    "width": 24,
+    "depth": 8
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "lamp",
@@ -367,11 +405,14 @@
     "height": 8,
     "count": 4,
     "spacing": 24
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "parking",
   "trees": [
    {
@@ -398,7 +439,7 @@
  },
  "review": {
   "rounds": 2,
-  "match": "close",
-  "gaps": "balcony rows, podium detail and the second blue wing simplified; neighbouring buildings omitted"
+  "match": "fair",
+  "gaps": "balcony rows coarse (budget), podium blue band hidden, neighbouring buildings and glazed wing detail omitted"
  }
 }

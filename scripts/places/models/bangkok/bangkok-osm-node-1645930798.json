@@ -28,9 +28,9 @@
   "fit": "building"
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "stair is a single flight instead of the stepped terraces with side ramps; sky-bridge has no A-frame; louvre cladding approximate"
+  "gaps": "stair terrace is small and lacks the broad side ramps and retaining walls; sky-bridge A-frame is a single thin sweep; wings are slightly too tall and the angling toward the viewer is subtle; tower crown is a plain low dome"
  },
  "parts": [
   {
@@ -54,7 +54,7 @@
     "colour": "#ece9e2",
     "windows": "punched",
     "windowRatio": 0.4,
-    "bay": 4.5,
+    "bay": 8.5,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -94,8 +94,8 @@
     -5.2
    ],
    "z0": 6,
-   "height": 52,
-   "storeys": 13,
+   "height": 62,
+   "storeys": 15,
    "wall": {
     "material": "glass-curtain",
     "colour": "#6f9a9d",
@@ -120,7 +120,7 @@
     6
    ],
    "z0": 58,
-   "height": 6,
+   "height": 4,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
@@ -129,9 +129,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#c9c6be",
-    "overhang": 1.5,
-    "parapet": 0.6
+    "colour": "#c9c6be"
    }
   },
   {
@@ -139,27 +137,27 @@
    "id": "wing-l",
    "footprint": {
     "rect": [
-     17,
-     22
+     19,
+     24
     ]
    },
    "at": [
-    -33,
-    4
+    -34,
+    -2
    ],
    "z0": 6,
-   "height": 42,
-   "storeys": 10,
+   "height": 52,
+   "storeys": 13,
    "wall": {
     "material": "concrete",
-    "colour": "#46464a",
+    "colour": "#3e3e42",
     "windows": "none",
     "pattern": [
      {
       "type": "louvres",
       "colour": "#2e2e31",
       "backColour": "#55555a",
-      "pitch": 0.5,
+      "pitch": 0.9,
       "band": 0.8,
       "at": 0.1,
       "floors": "all",
@@ -175,7 +173,21 @@
       "proud": 0.2,
       "at": 0.05,
       "floors": [
-       4
+       4,
+       12
+      ],
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.9,
+      "proud": 0.25,
+      "at": 0.92,
+      "floors": [
+       12
       ],
       "faces": [
        "front"
@@ -185,37 +197,36 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#3a3a3d",
-    "parapet": 1.2,
-    "overhang": 0.8
-   }
+    "colour": "#3a3a3d"
+   },
+   "rotDeg": 6
   },
   {
    "type": "mass",
    "id": "wing-r",
    "footprint": {
     "rect": [
-     17,
-     22
+     19,
+     24
     ]
    },
    "at": [
-    33,
-    4
+    34,
+    -2
    ],
    "z0": 6,
-   "height": 42,
-   "storeys": 10,
+   "height": 52,
+   "storeys": 13,
    "wall": {
     "material": "concrete",
-    "colour": "#46464a",
+    "colour": "#3e3e42",
     "windows": "none",
     "pattern": [
      {
       "type": "louvres",
       "colour": "#2e2e31",
       "backColour": "#55555a",
-      "pitch": 0.5,
+      "pitch": 0.9,
       "band": 0.8,
       "at": 0.1,
       "floors": "all",
@@ -231,7 +242,21 @@
       "proud": 0.2,
       "at": 0.05,
       "floors": [
-       4
+       4,
+       12
+      ],
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.9,
+      "proud": 0.25,
+      "at": 0.92,
+      "floors": [
+       12
       ],
       "faces": [
        "front"
@@ -241,10 +266,9 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#3a3a3d",
-    "parapet": 1.2,
-    "overhang": 0.8
-   }
+    "colour": "#3a3a3d"
+   },
+   "rotDeg": -6
   },
   {
    "type": "mass",
@@ -267,7 +291,7 @@
     "colour": "#e6e2d8",
     "windows": "ribbon",
     "windowRatio": 0.5,
-    "bay": 7,
+    "bay": 13,
     "faces": {
      "back": "plain",
      "left": "plain",
@@ -289,8 +313,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#bdb9b0",
-    "parapet": 0.8
+    "colour": "#bdb9b0"
    }
   },
   {
@@ -314,7 +337,7 @@
     "colour": "#e6e2d8",
     "windows": "ribbon",
     "windowRatio": 0.5,
-    "bay": 7,
+    "bay": 13,
     "faces": {
      "back": "plain",
      "left": "plain",
@@ -336,8 +359,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#bdb9b0",
-    "parapet": 0.8
+    "colour": "#bdb9b0"
    }
   },
   {
@@ -346,41 +368,39 @@
    "footprint": {
     "rect": [
      16,
-     14
+     16
     ]
    },
    "at": [
-    -46,
-    -14
+    -47,
+    -10
    ],
    "z0": 0,
-   "height": 12,
-   "storeys": 2,
+   "height": 17,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#a8364a",
+    "colour": "#e6e2d8",
     "windows": "none",
     "pattern": [
      {
-      "type": "louvres",
-      "colour": "#3d3d40",
-      "backColour": "#55555a",
-      "pitch": 0.45,
-      "band": 0.8,
-      "at": 0.1,
-      "floors": "all",
-      "faces": [
-       "front"
-      ],
-      "margin": 1.5
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.9,
+      "proud": 0.25,
+      "at": 0.9,
+      "floors": [
+       1,
+       3
+      ]
      }
-    ]
+    ],
+    "windowRatio": 0.5,
+    "bay": 6
    },
    "roof": {
     "form": "flat",
-    "colour": "#ece9e2",
-    "overhang": 2.2,
-    "parapet": 0.3
+    "colour": "#bdb9b0"
    }
   },
   {
@@ -389,41 +409,39 @@
    "footprint": {
     "rect": [
      16,
-     14
+     16
     ]
    },
    "at": [
-    46,
-    -14
+    47,
+    -10
    ],
    "z0": 0,
-   "height": 12,
-   "storeys": 2,
+   "height": 17,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#a8364a",
+    "colour": "#e6e2d8",
     "windows": "none",
     "pattern": [
      {
-      "type": "louvres",
-      "colour": "#3d3d40",
-      "backColour": "#55555a",
-      "pitch": 0.45,
-      "band": 0.8,
-      "at": 0.1,
-      "floors": "all",
-      "faces": [
-       "front"
-      ],
-      "margin": 1.5
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.9,
+      "proud": 0.25,
+      "at": 0.9,
+      "floors": [
+       1,
+       3
+      ]
      }
-    ]
+    ],
+    "windowRatio": 0.5,
+    "bay": 6
    },
    "roof": {
     "form": "flat",
-    "colour": "#ece9e2",
-    "overhang": 2.2,
-    "parapet": 0.3
+    "colour": "#bdb9b0"
    }
   },
   {
@@ -453,21 +471,6 @@
    }
   },
   {
-   "type": "core/steps",
-   "at": [
-    0,
-    -18,
-    0
-   ],
-   "params": {
-    "width": 42,
-    "rise": 0.8,
-    "run": 2.2,
-    "count": 7,
-    "colour": "#b4b0a6"
-   }
-  },
-  {
    "type": "mass",
    "id": "terrace",
    "footprint": {
@@ -491,6 +494,137 @@
    "roof": {
     "form": "flat",
     "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    6,
+    62
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d6d3cc",
+    "profile": [
+     [
+      8.5,
+      0,
+      "#d6d3cc"
+     ],
+     [
+      8.3,
+      1.2
+     ],
+     [
+      6.6,
+      2.8
+     ],
+     [
+      3.8,
+      3.9
+     ],
+     [
+      0,
+      4.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      0,
+      23
+     ],
+     [
+      0,
+      0,
+      29
+     ],
+     [
+      8,
+      0,
+      23
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "colour": "#a8364a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 52,
+    "rise": 0.5,
+    "run": 2.0,
+    "count": 6,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10,
+    3
+   ],
+   "params": {
+    "width": 46,
+    "rise": 0.5,
+    "run": 2.0,
+    "count": 4,
+    "colour": "#bab6ab"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -27,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 2.2,
+    "count": 10,
+    "colour": "#a9a59a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    27,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 2.2,
+    "count": 10,
+    "colour": "#a9a59a"
    }
   }
  ],

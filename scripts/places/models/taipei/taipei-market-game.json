@@ -41,24 +41,30 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     112,
-     56
+     118,
+     62
     ]
    },
-   "height": 21,
+   "height": 15,
    "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#5f7f78",
-    "windows": "curtain",
-    "windowRatio": 0.3,
+    "colour": "#c4cccc",
+    "windows": "none",
+    "windowRatio": 0.25,
     "plinth": 0.5,
     "pattern": [
      {
       "type": "bands",
-      "colour": "#e2e4e2",
-      "height": 1.4,
+      "colour": "#f0f2f0",
+      "height": 1.6,
       "at": 0.9
+     },
+     {
+      "type": "bands",
+      "colour": "#f0f2f0",
+      "height": 1.2,
+      "at": 0.5
      }
     ],
     "faces": {
@@ -69,12 +75,12 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d9291",
+    "colour": "#d4d8d8",
     "parapet": 0.6
    },
    "at": [
     0,
-    -6
+    0
    ]
   },
   {
@@ -82,39 +88,39 @@
    "id": "bowl",
    "at": [
     0,
-    -8,
-    21
+    -6,
+    15
    ],
    "params": {
     "curve": true,
-    "colour": "#4b6e67",
+    "colour": "#6fa3a0",
     "sections": [
      {
       "z": 0,
       "ellipse": [
-       6.720000000000001,
-       5.760000000000001
+       6,
+       5
       ]
      },
      {
-      "z": 4,
+      "z": 6,
       "ellipse": [
-       10.56,
-       8.64
+       11,
+       8.5
       ]
      },
      {
-      "z": 10,
+      "z": 14,
       "ellipse": [
-       17.28,
-       13.440000000000001
+       20,
+       13.5
       ]
      },
      {
-      "z": 16,
+      "z": 22,
       "ellipse": [
-       23.040000000000003,
-       17.28
+       30,
+       19
       ]
      }
     ]
@@ -125,8 +131,8 @@
    "id": "bowl-rim",
    "at": [
     0,
-    -8,
-    39
+    -6,
+    37
    ],
    "params": {
     "colour": "#eceeee",
@@ -134,22 +140,22 @@
      {
       "z": 0,
       "ellipse": [
-       23.52,
-       17.76
+       30,
+       19
       ]
      },
      {
-      "z": 2.2,
+      "z": 2,
       "ellipse": [
-       24.0,
-       18.240000000000002
+       31.5,
+       20.5
       ]
      },
      {
-      "z": 3.4,
+      "z": 3.6,
       "ellipse": [
-       19.2,
-       13.440000000000001
+       26,
+       15
       ]
      }
     ]
@@ -160,21 +166,21 @@
    "id": "back-block",
    "footprint": {
     "rect": [
-     40,
+     46,
      22
     ]
    },
    "at": [
     0,
-    24
+    22
    ],
-   "z0": 21,
-   "height": 28,
+   "z0": 15,
+   "height": 40,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
     "colour": "#7a9aa8",
-    "windows": "curtain",
+    "windows": "none",
     "windowRatio": 0.4
    },
    "roof": {
@@ -187,21 +193,21 @@
    "id": "tower-left",
    "footprint": {
     "rect": [
-     34,
+     30,
      28
     ]
    },
    "at": [
-    -42,
+    -40,
     26
    ],
-   "height": 84,
+   "height": 92,
    "storeys": 8,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#5e8a9b",
-    "windows": "curtain",
-    "windowRatio": 0.15,
+    "colour": "#6aa2b2",
+    "windows": "none",
+    "windowRatio": 0.12,
     "faces": {
      "left": "none",
      "right": "none",
@@ -209,11 +215,11 @@
     },
     "pattern": [
      {
-      "type": "floors",
-      "colours": [
-       "#5e8a9b",
-       "#35546a"
-      ]
+      "type": "fins",
+      "colour": "#a9cdd4",
+      "spacing": 6,
+      "width": 0.4,
+      "depth": 0.3
      }
     ]
    },
@@ -227,21 +233,21 @@
    "id": "tower-right",
    "footprint": {
     "rect": [
-     34,
+     26,
      28
     ]
    },
    "at": [
-    42,
+    40,
     26
    ],
-   "height": 112,
+   "height": 130,
    "storeys": 8,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4f86a3",
-    "windows": "curtain",
-    "windowRatio": 0.15,
+    "colour": "#6aa2b2",
+    "windows": "none",
+    "windowRatio": 0.12,
     "faces": {
      "left": "none",
      "right": "none",
@@ -249,11 +255,11 @@
     },
     "pattern": [
      {
-      "type": "floors",
-      "colours": [
-       "#4f86a3",
-       "#35546a"
-      ]
+      "type": "fins",
+      "colour": "#a9cdd4",
+      "spacing": 6,
+      "width": 0.4,
+      "depth": 0.3
      }
     ]
    },
@@ -268,16 +274,42 @@
    "at": [
     0,
     28,
-    66
+    76
    ],
    "params": {
     "rect": [
-     70,
+     66,
      7
     ],
-    "height": 9,
-    "colour": "#6f8e9a",
+    "height": 8,
+    "colour": "#7fa8b4",
     "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-step",
+   "footprint": {
+    "rect": [
+     16,
+     28
+    ]
+   },
+   "at": [
+    -46,
+    26
+   ],
+   "z0": 92,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fa3b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9496"
    }
   }
  ],
@@ -294,6 +326,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Podium is a plain banded box (photo has a wavy white-banded scaffold-wrapped facade); bowl has no vertical ribs; back block and tower facade details simplified; tower proportions approximate; podium is a rectangle, not the real angled outline (the OSM outline rendered oddly small and skewed)."
+  "gaps": "Podium is a plain pale box with white bands (no wavy scaffold-wrapped facade); bowl lacks vertical ribs and sits larger/lower than photo; tower tops not notched beyond one step; tower facade is fins only, no mullion detail; podium clamped to 118 m."
  }
 }

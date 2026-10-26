@@ -22,7 +22,7 @@
  ],
  "camera": {
   "yawDeg": 180,
-  "pitchDeg": 4,
+  "pitchDeg": 0,
   "fovDeg": 55
  },
  "parts": [
@@ -73,7 +73,7 @@
      ]
     ],
     "height": 0.2,
-    "colour": "#6f9a3a"
+    "colour": "#7d9a3a"
    },
    "at": [
     0,
@@ -88,54 +88,23 @@
     "points": [
      [
       0,
-      -36
+      -30
      ],
      [
-      22,
-      -14
+      14,
+      -16
      ],
      [
       0,
-      8
+      -2
      ],
      [
-      -22,
-      -14
+      -14,
+      -16
      ]
     ],
     "height": 0.35,
-    "colour": "#b98d62"
-   },
-   "at": [
-    0,
-    0,
-    0
-   ]
-  },
-  {
-   "type": "prism",
-   "id": "grass-cut",
-   "params": {
-    "points": [
-     [
-      0,
-      -24
-     ],
-     [
-      12,
-      -14
-     ],
-     [
-      0,
-      -4
-     ],
-     [
-      -12,
-      -14
-     ]
-    ],
-    "height": 0.4,
-    "colour": "#7aa642"
+    "colour": "#a08a58"
    },
    "at": [
     0,
@@ -148,13 +117,13 @@
    "id": "stand",
    "footprint": {
     "rect": [
-     34,
+     46,
      7
     ]
    },
    "at": [
     0,
-    -45.5
+    -46
    ],
    "z0": 0,
    "height": 4.2,
@@ -172,35 +141,6 @@
     "material": "metal-sheet",
     "pitch": 24,
     "overhang": 1.6
-   }
-  },
-  {
-   "type": "mass",
-   "id": "stand-wing-l",
-   "footprint": {
-    "rect": [
-     10,
-     6
-    ]
-   },
-   "at": [
-    -22,
-    -45
-   ],
-   "z0": 0,
-   "height": 3.3,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#d9d3c0",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "shed",
-    "colour": "#4f7f9e",
-    "material": "metal-sheet",
-    "pitch": 12,
-    "overhang": 0.8
    }
   },
   {
@@ -257,43 +197,16 @@
       -31
      ]
     ],
-    "height": 2.4,
-    "thickness": 0.15,
+    "height": 3.0,
+    "thickness": 0.06,
     "kind": "railing",
-    "colour": "#9aa0a4"
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "at": [
+    "colour": "#c4c8cc",
+    "pillarEvery": 3.0
+   },
+   "lod": [
     0,
-    0,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      -12,
-      -38
-     ],
-     [
-      -12,
-      -26
-     ],
-     [
-      12,
-      -26
-     ],
-     [
-      12,
-      -38
-     ]
-    ],
-    "height": 5.0,
-    "thickness": 0.15,
-    "kind": "railing",
-    "colour": "#9aa0a4"
-   }
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
@@ -303,8 +216,8 @@
     0
    ],
    "params": {
-    "height": 24,
-    "head_width": 4,
+    "height": 20,
+    "head_width": 2.4,
     "colour": "#b8bcc0"
    }
   },
@@ -316,8 +229,8 @@
     0
    ],
    "params": {
-    "height": 24,
-    "head_width": 4,
+    "height": 20,
+    "head_width": 2.4,
     "colour": "#b8bcc0"
    }
   },
@@ -329,8 +242,8 @@
     0
    ],
    "params": {
-    "height": 24,
-    "head_width": 4,
+    "height": 20,
+    "head_width": 2.4,
     "colour": "#b8bcc0"
    }
   },
@@ -342,8 +255,8 @@
     0
    ],
    "params": {
-    "height": 24,
-    "head_width": 4,
+    "height": 20,
+    "head_width": 2.4,
     "colour": "#b8bcc0"
    }
   },
@@ -361,7 +274,7 @@
    },
    "at": [
     0,
-    -36,
+    -29.88,
     0
    ]
   },
@@ -379,7 +292,7 @@
    },
    "at": [
     22,
-    -14,
+    -11.62,
     0
    ]
   },
@@ -397,7 +310,7 @@
    },
    "at": [
     0,
-    8,
+    6.64,
     0
    ]
   },
@@ -415,92 +328,329 @@
    },
    "at": [
     -22,
-    -14,
+    -11.62,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.7
+      ],
+      "height": 0.7,
+      "colour": "#3f8a5a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -41.5,
+     0
+    ],
+    "end": [
+     20,
+     -41.5,
+     0
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tarp",
+   "params": {
+    "rect": [
+     44,
+     2
+    ],
+    "height": 0.25,
+    "colour": "#e8e8e2"
+   },
+   "at": [
+    0,
+    52,
     0
    ]
   },
   {
    "type": "core/tree",
    "at": [
-    -62,
-    -40,
+    -61.1,
+    -58.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48.1,
+    -58.5,
     0
    ],
    "params": {
     "kind": "palm",
     "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36.4,
+    -63.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25.1,
+    -61.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10.9,
+    -63.0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -1.1,
+    -63.6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13.2,
+    -59.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    23.2,
+    -63.2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34.3,
+    -61.6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48.0,
+    -59.1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    59.1,
+    -63.7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -64,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    64,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
    }
   },
   {
    "type": "core/tree",
    "at": [
     62,
-    -30,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 11
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    60,
-    30,
+    25,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 11
+    "height": 12
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -60,
-    20,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 11
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    0,
-    66,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 11
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -30,
     -62,
+    22,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 11
+    "height": 12
    }
   },
   {
    "type": "core/tree",
    "at": [
-    30,
-    -60,
+    -36.1,
+    -55.5,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 11
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27.3,
+    -56.7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16.0,
+    -57.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.7,
+    -57.7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2.2,
+    -55.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15.8,
+    -57.8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22.6,
+    -55.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32.5,
+    -57.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
    }
   }
  ],
@@ -512,8 +662,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "composed from the photo but never rendered or compared (render queue server down); diamond, stand and floodlight placement vs camera unchecked"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "camera is not close behind the fence so the chain-link foreground and tarp strip do not dominate; fence is an open railing not mesh; masts are lattice towers with square heads; stand roof pitch and tree density only approximate"
  }
 }

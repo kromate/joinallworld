@@ -22,118 +22,26 @@
  ],
  "camera": {
   "yawDeg": -12,
-  "pitchDeg": 4,
-  "fovDeg": 40,
+  "pitchDeg": 5,
+  "fovDeg": 30,
   "aspect": 1.78,
   "margin": 0.0,
-  "shiftY": -0.05
+  "shiftY": -0.06
  },
  "parts": [
   {
    "type": "water-surface",
    "at": [
     0,
-    -8,
+    -30,
     0.02
    ],
    "params": {
-    "width": 110,
-    "depth": 44,
+    "width": 150,
+    "depth": 80,
     "shape": "rect",
-    "colour": "#3f6f4a",
+    "colour": "#2c5a3a",
     "bank": true
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hall-west",
-   "footprint": {
-    "rect": [
-     18,
-     8
-    ]
-   },
-   "at": [
-    -30,
-    16
-   ],
-   "height": 4.6,
-   "storeys": 1,
-   "wall": {
-    "material": "whitewash",
-    "colour": "#f2efe6",
-    "windows": "screen",
-    "windowRatio": 0.35,
-    "plinth": 0.7,
-    "faces": {
-     "back": "plain"
-    }
-   },
-   "roof": {
-    "form": "hip",
-    "pitch": 34,
-    "colour": "#3d4046",
-    "material": "clay-tile",
-    "overhang": 3.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pavilion-east",
-   "footprint": {
-    "rect": [
-     12,
-     9
-    ]
-   },
-   "at": [
-    22,
-    15
-   ],
-   "height": 4.6,
-   "storeys": 1,
-   "wall": {
-    "material": "whitewash",
-    "colour": "#f4f1e8",
-    "windows": "screen",
-    "windowRatio": 0.3,
-    "plinth": 0.8
-   },
-   "roof": {
-    "form": "hip",
-    "pitch": 36,
-    "colour": "#3d4046",
-    "material": "clay-tile",
-    "overhang": 3.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pavilion-small",
-   "footprint": {
-    "rect": [
-     7,
-     7
-    ]
-   },
-   "at": [
-    -4,
-    24
-   ],
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "whitewash",
-    "colour": "#ece8dc",
-    "windows": "none",
-    "plinth": 0.5
-   },
-   "roof": {
-    "form": "hip",
-    "pitch": 30,
-    "colour": "#454a50",
-    "material": "clay-tile",
-    "overhang": 1.8
    }
   },
   {
@@ -146,37 +54,401 @@
    "params": {
     "points": [
      [
-      -52,
-      6
+      -56,
+      3
      ],
      [
-      52,
-      6
+      -48,
+      6.4
      ],
      [
-      52,
-      12
-     ],
-     [
-      40,
-      13
-     ],
-     [
-      0,
-      9
+      -40,
+      4.6
      ],
      [
       -30,
-      10
+      7
      ],
      [
-      -52,
+      -18,
+      5
+     ],
+     [
+      -8,
+      7.6
+     ],
+     [
+      4,
+      5.2
+     ],
+     [
+      14,
+      7
+     ],
+     [
+      26,
+      4.6
+     ],
+     [
+      38,
+      6.8
+     ],
+     [
+      48,
+      4.2
+     ],
+     [
+      56,
+      5
+     ],
+     [
+      56,
+      12
+     ],
+     [
+      -56,
       12
      ]
     ],
-    "height": 0.5,
+    "height": 1.1,
+    "colour": "#8a7f6c",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      5.4
+     ],
+     [
+      -42,
+      6.9
+     ],
+     [
+      -33,
+      5.6
+     ],
+     [
+      -22,
+      7.4
+     ],
+     [
+      -10,
+      6.2
+     ],
+     [
+      0,
+      7.8
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      22,
+      7.4
+     ],
+     [
+      34,
+      5.8
+     ],
+     [
+      46,
+      6.6
+     ],
+     [
+      50,
+      8
+     ],
+     [
+      -50,
+      9
+     ]
+    ],
+    "height": 1.9,
     "colour": "#7c735f",
     "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-west",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -28,
+    15
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe6",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d4046",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-west-roof",
+   "footprint": {
+    "rect": [
+     19,
+     11
+    ]
+   },
+   "at": [
+    -28,
+    15
+   ],
+   "z0": 4.4,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#3d4046",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 36,
+    "colour": "#3d4046",
+    "material": "clay-tile",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -37.3,
+    15,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#2a2d30",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18.7,
+    15,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#2a2d30",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    26,
+    14
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1e8",
+    "windows": "screen",
+    "windowRatio": 0.35,
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d4046",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    26,
+    14,
+    4.2
+   ],
+   "params": {
+    "colour": "#3d4046",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       18.5,
+       15.5
+      ]
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       16.5,
+       13.5
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       14.2,
+       11.2
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       11.6,
+       8.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       4.4,
+       2.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    20,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.6,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-small",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    22
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d4046",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4,
+    22,
+    3.6
+   ],
+   "params": {
+    "colour": "#454a50",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13.5,
+       13.5
+      ]
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       11.5,
+       11.5
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       9.2,
+       9.2
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       6.6,
+       6.6
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       2.4000000000000004,
+       2.0999999999999996
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    36,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 3.2,
+    "colour": "#f0ece0"
    }
   },
   {
@@ -220,28 +492,15 @@
    }
   },
   {
-   "type": "fence-wall",
-   "at": [
-    -6,
-    36,
-    0
-   ],
-   "params": {
-    "length": 60,
-    "height": 3.2,
-    "colour": "#f0ece0"
-   }
-  },
-  {
    "type": "tree",
    "at": [
     0,
-    12,
+    13,
     0
    ],
    "params": {
     "kind": "pine",
-    "height": 11
+    "height": 12
    }
   },
   {
@@ -253,19 +512,79 @@
    ],
    "params": {
     "kind": "pine",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "pine",
     "height": 13
    }
   },
   {
    "type": "tree",
    "at": [
-    40,
-    18,
+    -12,
+    19,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    38,
+    16,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 9
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
    }
   },
   {
@@ -283,8 +602,20 @@
   {
    "type": "tree",
    "at": [
+    -46,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
     -14,
-    22,
+    24,
     0
    ],
    "params": {
@@ -295,8 +626,20 @@
   {
    "type": "tree",
    "at": [
-    48,
-    10,
+    42,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    24,
     0
    ],
    "params": {
@@ -315,8 +658,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Whitewashed pavilions on plinths with grey hip roofs by a green pond; upturned eaves, carved gable ends, rockwork and dense pines missing; pavilions too symmetrical."
+  "gaps": "Whitewashed plinth pavilions with flared grey roofs, rockwork edge, dense trees and dark green pond present; roofs read as flat dark slabs without true upturned eaves or carved ridge ends, pavilions barely differ, no reflections, foreground still bare."
  }
 }

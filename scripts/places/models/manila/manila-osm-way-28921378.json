@@ -42,14 +42,14 @@
    "storeys": 1,
    "wall": {
     "material": "limestone",
-    "colour": "#8b7d68",
+    "colour": "#6e6252",
     "windows": "arched",
     "windowRatio": 0.07,
     "plinth": 0.6
    },
    "roof": {
     "form": "gable",
-    "colour": "#a33a2e",
+    "colour": "#6a5f55",
     "material": "clay-tile",
     "rise": 5,
     "overhang": 0.6
@@ -74,13 +74,13 @@
    "storeys": 1,
    "wall": {
     "material": "limestone",
-    "colour": "#8b7d68",
+    "colour": "#6e6252",
     "windows": "arched",
     "windowRatio": 0.06
    },
    "roof": {
     "form": "gable",
-    "colour": "#a33a2e",
+    "colour": "#6a5f55",
     "material": "clay-tile",
     "rise": 4,
     "axis": "x"
@@ -101,11 +101,11 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 14,
+   "height": 15,
    "storeys": 1,
    "wall": {
     "material": "limestone",
-    "colour": "#857763",
+    "colour": "#6c6050",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0.8,
@@ -113,7 +113,7 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#857763",
+    "colour": "#6c6050",
     "rise": 4,
     "axis": "y"
    }
@@ -123,8 +123,8 @@
    "id": "tower-lower",
    "footprint": {
     "rect": [
-     7.5,
-     7.5
+     8,
+     8
     ]
    },
    "at": [
@@ -133,11 +133,11 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 17,
+   "height": 12,
    "storeys": 1,
    "wall": {
     "material": "limestone",
-    "colour": "#7e7059",
+    "colour": "#6e6252",
     "windows": "arched",
     "windowRatio": 0.12,
     "plinth": 0.8,
@@ -154,8 +154,8 @@
    "id": "tower-belfry",
    "footprint": {
     "rect": [
-     6,
-     6
+     5.5,
+     5.5
     ]
    },
    "at": [
@@ -163,12 +163,12 @@
     -1.6
    ],
    "rotDeg": 0,
-   "z0": 17,
+   "z0": 20,
    "height": 7,
    "storeys": 1,
    "wall": {
     "material": "limestone",
-    "colour": "#857763",
+    "colour": "#6e6252",
     "windows": "arched",
     "windowRatio": 0.2,
     "cornice": true
@@ -185,7 +185,7 @@
    "at": [
     12.5,
     -1.6,
-    24.5
+    27
    ],
    "params": {
     "profile": [
@@ -227,7 +227,7 @@
     12.5,
     -1.6
    ],
-   "z0": 27.4,
+   "z0": 30,
    "height": 2,
    "wall": {
     "material": "concrete",
@@ -238,7 +238,11 @@
    "roof": {
     "form": "flat",
     "colour": "#8a7e6c"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
@@ -294,7 +298,11 @@
    "roof": {
     "form": "flat",
     "colour": "#d8d2c4"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
@@ -322,7 +330,11 @@
    "roof": {
     "form": "flat",
     "colour": "#d8d2c4"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
@@ -436,6 +448,188 @@
     "depth": 2,
     "height": 0.6
    }
+  },
+  {
+   "type": "prism",
+   "id": "volute-l",
+   "at": [
+    -9.2,
+    -1.8,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     3.6
+    ],
+    "height": 2.4,
+    "colour": "#6c6050"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "volute-r",
+   "at": [
+    9.2,
+    -1.8,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     3.6
+    ],
+    "height": 2.4,
+    "colour": "#6c6050"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster0",
+   "at": [
+    -8,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.6
+    ],
+    "height": 12.5,
+    "colour": "#5f5446"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster1",
+   "at": [
+    -6.2,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.6
+    ],
+    "height": 12.5,
+    "colour": "#5f5446"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster2",
+   "at": [
+    6.2,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.6
+    ],
+    "height": 12.5,
+    "colour": "#5f5446"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster3",
+   "at": [
+    8,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     0.6
+    ],
+    "height": 12.5,
+    "colour": "#5f5446"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "gable-rose",
+   "at": [
+    0,
+    -3.8,
+    13.2
+   ],
+   "params": {
+    "profile": [
+     [
+      1.1,
+      0,
+      "#3a7a5a"
+     ],
+     [
+      1.1,
+      0.3
+     ]
+    ],
+    "colour": "#3a7a5a"
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-mid",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    12.5,
+    -1.6
+   ],
+   "z0": 12,
+   "height": 8,
+   "wall": {
+    "material": "limestone",
+    "colour": "#6e6252",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f5446",
+    "parapet": 0.5
+   }
   }
  ],
  "site": {
@@ -475,8 +669,8 @@
  "city": "manila",
  "venueId": "manila-osm-way-28921378",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Tower and nave proportions right but stone is too clean and uniform; no scrolled baroque gable, pilasters, balcony or niches arches; transept and buttresses simplified; real footprint is cruciform and bent."
+  "gaps": "baroque gable only partly shown (volutes, pilasters, round window as simple blocks); tiers present but belfry arches small; stone still too regular, no streaking; attached-tower angle differs"
  }
 }

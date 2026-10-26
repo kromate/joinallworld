@@ -28,36 +28,95 @@
    "id": "pool",
    "footprint": {
     "rect": [
-     60,
-     10
+     84,
+     16
     ]
    },
    "at": [
     0,
-    -14
+    -13
    ],
-   "height": 0.9,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#dfe6e3",
+    "colour": "#e9eeec",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#58b8b0"
+    "colour": "#e9eeec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "water",
+   "footprint": {
+    "rect": [
+     81,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "z0": 0.95,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7cd0c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6ccfc6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -6.5,
+     1.0
+    ],
+    "end": [
+     36,
+     -6.5,
+     1.0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 8,
+      "colour": "#dff3f6"
+     }
+    }
    }
   },
   {
    "type": "statue-plinth",
    "at": [
-    12,
-    6,
+    8,
+    10,
     0
    ],
    "params": {
-    "height": 13,
-    "width": 7,
+    "height": 4,
+    "width": 10,
     "steps": 3,
     "shape": "tapered",
     "figure": "none"
@@ -66,59 +125,216 @@
   {
    "type": "loft",
    "at": [
-    12,
-    6,
-    6
+    8,
+    10,
+    3.5
    ],
    "params": {
-    "colour": "#f1f0ec",
+    "colour": "#f4f3ef",
+    "curve": true,
     "sections": [
      {
       "z": 0,
       "ellipse": [
-       2.6,
-       1.8
+       4.2,
+       2.6
       ]
      },
      {
-      "z": 2,
+      "z": 1.6,
       "ellipse": [
-       2.8,
-       2.0
+       3.6,
+       2.2
       ],
-      "cx": -1.0
+      "cx": -0.8
      },
      {
-      "z": 4,
+      "z": 3,
       "ellipse": [
-       1.8,
-       1.4
+       2.2,
+       1.6
       ],
-      "cx": -0.2
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    10,
+    4
+   ],
+   "params": {
+    "colour": "#f4f3ef",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.8499999999999996,
+       2.09
+      ]
      },
      {
-      "z": 6.5,
+      "z": 4.55,
       "ellipse": [
-       1.5,
-       1.1
+       2.09,
+       1.71
       ],
-      "cx": 0.5
+      "cx": 0.24
      },
      {
-      "z": 8.5,
+      "z": 9.1,
       "ellipse": [
-       0.9,
-       0.7
+       1.3299999999999998,
+       1.14
       ],
-      "cx": 0.8
+      "cx": 0.48
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       0.12,
+       0.12
+      ],
+      "cx": 0.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.8,
+    10.4,
+    4
+   ],
+   "params": {
+    "colour": "#f4f3ef",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.0999999999999996,
+       1.54
+      ]
+     },
+     {
+      "z": 3.675,
+      "ellipse": [
+       1.54,
+       1.26
+      ],
+      "cx": 0.5599999999999999
+     },
+     {
+      "z": 7.35,
+      "ellipse": [
+       0.9799999999999999,
+       0.84
+      ],
+      "cx": 1.1199999999999999
      },
      {
       "z": 10.5,
       "ellipse": [
-       0.3,
-       0.3
+       0.12,
+       0.12
       ],
-      "cx": 0.8
+      "cx": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    6.2,
+    9.6,
+    4
+   ],
+   "params": {
+    "colour": "#f4f3ef",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.9500000000000002,
+       1.4300000000000002
+      ]
+     },
+     {
+      "z": 3.3249999999999997,
+      "ellipse": [
+       1.4300000000000002,
+       1.1700000000000002
+      ],
+      "cx": -0.48
+     },
+     {
+      "z": 6.6499999999999995,
+      "ellipse": [
+       0.9099999999999999,
+       0.78
+      ],
+      "cx": -0.96
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       0.12,
+       0.12
+      ],
+      "cx": -1.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8.8,
+    9.2,
+    4
+   ],
+   "params": {
+    "colour": "#f4f3ef",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.6500000000000001,
+       1.2100000000000002
+      ]
+     },
+     {
+      "z": 4.0249999999999995,
+      "ellipse": [
+       1.2100000000000002,
+       0.9900000000000001
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 8.049999999999999,
+      "ellipse": [
+       0.77,
+       0.66
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 11.5,
+      "ellipse": [
+       0.12,
+       0.12
+      ],
+      "cx": 0.5
      }
     ]
    }
@@ -133,7 +349,7 @@
    "params": {
     "rows": 1,
     "cols": 3,
-    "width": 6,
+    "width": 7,
     "depth": 3,
     "colours": [
      "#f2c230",
@@ -143,26 +359,80 @@
    }
   },
   {
+   "type": "flowerbeds",
+   "at": [
+    24,
+    4,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 7,
+    "depth": 3,
+    "colours": [
+     "#f2c230",
+     "#d8d030",
+     "#f6f0f8"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    8,
+    2,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 8,
+    "depth": 2.5,
+    "colours": [
+     "#f2c230",
+     "#e8e0f0",
+     "#f2c230"
+    ]
+   }
+  },
+  {
    "type": "tree-grove",
    "at": [
-    -5,
-    30,
+    0,
+    22,
     0
    ],
    "params": {
     "width": 90,
-    "depth": 18,
-    "count": 22,
+    "depth": 12,
+    "count": 40,
     "kind": "broadleaf",
-    "min_height": 16,
-    "max_height": 26
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -28,
+    14,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 8,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
    }
   },
   {
    "type": "lamp-post",
    "at": [
     -8,
-    -2,
+    0,
     0
    ],
    "params": {
@@ -181,25 +451,32 @@
    }
   },
   {
-   "type": "core/tree",
+   "type": "lamp-post",
    "at": [
-    -30,
-    12,
+    20,
+    0,
     0
    ],
    "params": {
-    "kind": "palm",
-    "height": 7,
-    "count": 3,
-    "spread": 4,
-    "line": 10
+    "height": 5.5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "params": {
+    "height": 5.5
    }
   },
   {
    "type": "core/tree",
    "at": [
-    38,
-    8,
+    -34,
+    4,
     0
    ],
    "params": {
@@ -211,31 +488,32 @@
    }
   },
   {
-   "type": "core/fence-wall",
+   "type": "core/tree",
    "at": [
-    -30,
-    60,
+    38,
+    6,
     0
    ],
    "params": {
-    "length": 70,
-    "height": 3.2,
-    "thickness": 0.4,
-    "colour": "#cfc7b8"
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 10
    }
   }
  ],
  "review": {
-  "rounds": 1,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "The sculpture is an abstract lofted white stack (the real figure group is a stylised wave/figure form); pool tiles and the lined fountain jets are omitted; the park is shown as a 90 m portion."
+  "gaps": "Multi-spire sculpture on stepped plinth, raised basin with jets, dense grove and flower beds added; sculpture is smooth lofts not the carved wave form, trees are low-poly lollipops, framing is wider than the close photo."
  },
  "site": {
-  "ground": "grass",
+  "ground": "paving",
   "forecourt": "none",
   "extent": [
-   130,
-   100
+   70,
+   50
   ]
  },
  "schema": "allworld-place-model",

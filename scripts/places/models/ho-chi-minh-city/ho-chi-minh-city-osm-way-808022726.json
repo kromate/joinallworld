@@ -43,8 +43,8 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 10.5,
-   "storeys": 2,
+   "height": 5.4,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#eaa98b",
@@ -72,39 +72,495 @@
       "depth": 0.8,
       "storeys": 1,
       "pierColour": "#eaa98b"
-     },
-     {
-      "type": "balconies",
-      "depth": 1.4,
-      "rail": 1.0,
-      "width": 2.4,
-      "every": 3.6,
-      "railKind": "solid",
-      "colour": "#f2e7d6",
-      "railColour": "#eaa98b",
-      "floors": "upper",
-      "continuous": true,
-      "faces": [
-       "front",
-       "left",
-       "right"
-      ]
      }
     ]
    },
    "roof": {
     "form": "flat",
     "colour": "#c9a58a",
-    "parapet": 0.9
+    "parapet": 0.0
    }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-back",
+   "footprint": {
+    "rect": [
+     31.5,
+     24.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.4,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a5a46",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 3.6,
+    "glassColour": "#4a3a30",
+    "plinth": 0.0,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a58a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "z0": 5.4,
+      "height": 4.8,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16.6,
+     -15.6,
+     0
+    ],
+    "end": [
+     16.6,
+     -15.6,
+     0
+    ],
+    "count": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "z0": 5.4,
+      "height": 4.8,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16.6,
+     15.6,
+     0
+    ],
+    "end": [
+     16.6,
+     15.6,
+     0
+    ],
+    "count": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "z0": 5.4,
+      "height": 4.8,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16.6,
+     -12.4,
+     0
+    ],
+    "end": [
+     -16.6,
+     12.4,
+     0
+    ],
+    "count": 11
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "z0": 5.4,
+      "height": 4.8,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     16.6,
+     -12.4,
+     0
+    ],
+    "end": [
+     16.6,
+     12.4,
+     0
+    ],
+    "count": 11
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     35.5,
+     0.3
+    ],
+    "z0": 5.4,
+    "height": 0.9,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    0,
+    -15.6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     35.5,
+     0.3
+    ],
+    "z0": 5.4,
+    "height": 0.9,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    0,
+    15.6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.3,
+     28
+    ],
+    "z0": 5.4,
+    "height": 0.9,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    -17.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.3,
+     28
+    ],
+    "z0": 5.4,
+    "height": 0.9,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    17.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     36.2,
+     29.2
+    ],
+    "z0": 10.2,
+    "height": 0.7,
+    "colour": "#eaa98b"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     35,
+     0.3
+    ],
+    "z0": 10.9,
+    "height": 0.8,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    0,
+    -14.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 10.9,
+      "height": 1.5,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17.2,
+     -14.2,
+     0
+    ],
+    "end": [
+     17.2,
+     -14.2,
+     0
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     35,
+     0.3
+    ],
+    "z0": 10.9,
+    "height": 0.8,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    0,
+    14.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 10.9,
+      "height": 1.5,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17.2,
+     14.2,
+     0
+    ],
+    "end": [
+     17.2,
+     14.2,
+     0
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.3,
+     27.6
+    ],
+    "z0": 10.9,
+    "height": 0.8,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    -17.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 10.9,
+      "height": 1.5,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17.4,
+     -14.2,
+     0
+    ],
+    "end": [
+     -17.4,
+     14.2,
+     0
+    ],
+    "count": 6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.3,
+     27.6
+    ],
+    "z0": 10.9,
+    "height": 0.8,
+    "colour": "#f2e7d6"
+   },
+   "at": [
+    17.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 10.9,
+      "height": 1.5,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     17.4,
+     -14.2,
+     0
+    ],
+    "end": [
+     17.4,
+     14.2,
+     0
+    ],
+    "count": 6
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
    "id": "upper-hall",
    "footprint": {
     "rect": [
-     17,
-     13
+     19,
+     14
     ]
    },
    "at": [
@@ -112,13 +568,13 @@
     0
    ],
    "rotDeg": 0,
-   "z0": 10.5,
-   "height": 3.2,
+   "z0": 10.9,
+   "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#eaa98b",
-    "windows": "punched",
+    "windows": "arched",
     "windowRatio": 0.22,
     "bands": "#f2e7d6",
     "cornice": true
@@ -127,8 +583,8 @@
     "form": "hip",
     "colour": "#e69151",
     "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 1.2
+    "pitch": 36,
+    "overhang": 1.6
    }
   },
   {
@@ -136,16 +592,16 @@
    "id": "pediment",
    "footprint": {
     "rect": [
-     9,
-     2.2
+     10,
+     2.4
     ]
    },
    "at": [
     0,
-    -8.4
+    -7.6
    ],
-   "z0": 10.5,
-   "height": 3.2,
+   "z0": 10.9,
+   "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -156,82 +612,16 @@
     "form": "gable",
     "colour": "#e69151",
     "material": "clay-tile",
-    "pitch": 28,
+    "pitch": 36,
     "overhang": 0.5
-   }
-  },
-  {
-   "type": "array",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       1.1,
-       1.1
-      ],
-      "z0": 10.5,
-      "height": 2.6,
-      "colour": "#eaa98b"
-     }
-    },
-    "mode": "line",
-    "start": [
-     -15.5,
-     -12.4,
-     0
-    ],
-    "end": [
-     15.5,
-     -12.4,
-     0
-    ],
-    "count": 8
-   }
-  },
-  {
-   "type": "array",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       1.1,
-       1.1
-      ],
-      "z0": 10.5,
-      "height": 2.6,
-      "colour": "#eaa98b"
-     }
-    },
-    "mode": "line",
-    "start": [
-     -15.5,
-     12.4,
-     0
-    ],
-    "end": [
-     15.5,
-     12.4,
-     0
-    ],
-    "count": 8
    }
   },
   {
    "type": "flag",
    "at": [
     -14,
-    -10,
-    10.5
+    -12,
+    10.9
    ],
    "params": {
     "height": 7,
@@ -242,155 +632,147 @@
    "type": "steps",
    "at": [
     0,
-    -16.5,
+    -16.8,
     0
    ],
    "params": {
-    "width": 8,
-    "rise": 0.5,
+    "width": 9,
+    "rise": 0.4,
     "run": 1.2,
     "count": 3,
     "colour": "#c9bfae"
    }
   },
   {
-   "type": "revolve",
-   "lod": [
-    0,
-    1
-   ],
+   "type": "prism",
+   "params": {
+    "rect": [
+     6,
+     14
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#cfc3b0"
+   },
    "at": [
     0,
-    0,
-    14.2
-   ],
-   "params": {
-    "colour": "#7a3b24",
-    "profile": [
-     [
-      0,
-      0
-     ],
-     [
-      0.5,
-      0
-     ],
-     [
-      0.3,
-      1.2
-     ],
-     [
-      0,
-      1.8
-     ]
-    ]
-   }
+    -24
+   ]
   },
   {
-   "type": "revolve",
+   "type": "array",
    "lod": [
-    0,
-    1
-   ],
-   "at": [
-    -5.5,
-    -8.4,
-    17.3
+    0
    ],
    "params": {
-    "colour": "#7a3b24",
-    "profile": [
-     [
-      0,
-      0
-     ],
-     [
-      0.6,
-      0
-     ],
-     [
-      0.5,
-      1.0
-     ],
-     [
-      0.2,
-      1.8
-     ],
-     [
-      0,
-      2.0
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    5.5,
-    -8.4,
-    17.3
-   ],
-   "params": {
-    "colour": "#7a3b24",
-    "profile": [
-     [
-      0,
-      0
-     ],
-     [
-      0.6,
-      0
-     ],
-     [
-      0.5,
-      1.0
-     ],
-     [
-      0.2,
-      1.8
-     ],
-     [
-      0,
-      2.0
-     ]
-    ]
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 6,
+      "height": 0.9,
+      "depth": 1.0,
+      "colour": "#3f6b34"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.2,
+     -20,
+     0
+    ],
+    "end": [
+     -4.2,
+     -30,
+     0
+    ],
+    "count": 2
    }
   },
   {
    "type": "array",
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "of": {
-     "type": "pavilion",
+     "type": "hedge",
      "params": {
-      "width": 1.4,
-      "depth": 1.4,
-      "height": 2.2,
-      "roof": "hip",
-      "rise": 0.6,
-      "colour": "#d8d0c4",
-      "cap_colour": "#e69151"
+      "length": 6,
+      "height": 0.9,
+      "depth": 1.0,
+      "colour": "#3f6b34"
      }
     },
     "mode": "line",
     "start": [
-     -26,
-     -24,
+     -12,
+     -20.5,
      0
     ],
     "end": [
-     26,
-     -24,
+     -30,
+     -20.5,
      0
     ],
-    "count": 7
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 6,
+      "height": 0.9,
+      "depth": 1.0,
+      "colour": "#3f6b34"
+     }
+    },
+    "mode": "line",
+    "start": [
+     4.2,
+     -20,
+     0
+    ],
+    "end": [
+     4.2,
+     -30,
+     0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 6,
+      "height": 0.9,
+      "depth": 1.0,
+      "colour": "#3f6b34"
+     }
+    },
+    "mode": "line",
+    "start": [
+     12,
+     -20.5,
+     0
+    ],
+    "end": [
+     30,
+     -20.5,
+     0
+    ],
+    "count": 4
    }
   }
  ],
@@ -401,16 +783,24 @@
    {
     "kind": "broadleaf",
     "at": [
-     -30,
+     -26,
+     -24
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
      -22
     ],
-    "height": 9
+    "height": 13
    },
    {
     "kind": "palm",
     "at": [
-     -14,
-     -22
+     -12,
+     -27
     ],
     "height": 7
    },
@@ -418,27 +808,19 @@
     "kind": "palm",
     "at": [
      12,
-     -22
+     -27
     ],
     "height": 7
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     30,
-     -18
-    ],
-    "height": 9
    }
   ],
   "extent": [
-   110,
-   90
+   100,
+   80
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Upper-floor columned loggia, roof-ridge dragons, and dense bonsai garden are simplified; roof terrace piers are plain blocks; colour slightly more muted than photo"
+  "gaps": "Loggia is a recessed arched wall behind a column ring, not fully paired columns with balustrade detail; roof lacks curved dragon ridge ends; garden hedges, bonsai and pavilions simplified; lawn slightly saturated"
  }
 }

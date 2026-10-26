@@ -28,6 +28,38 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     80
+    ],
+    "height": 0.03,
+    "colour": "#7f8a78"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     108,
+     72
+    ],
+    "height": 0.04,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
    "type": "football-pitch",
    "at": [
     0,
@@ -74,11 +106,11 @@
     "under": "open",
     "bay": 8,
     "canopy": {
-     "height": 0.4,
-     "depth": 10,
-     "thickness": 1.2,
+     "height": 3.2,
+     "depth": 9,
+     "thickness": 0.9,
      "slopeDeg": 0,
-     "colour": "#2b2e33",
+     "colour": "#e8e8e4",
      "edgeColour": "#e3b52f",
      "overhangBack": 0.5
     }
@@ -100,7 +132,7 @@
      42,
      40
     ],
-    "rows": 4,
+    "rows": 5,
     "rise": 0.45,
     "run": 0.8,
     "firstHeight": 0.5,
@@ -113,12 +145,12 @@
     "concreteColour": "#d4d4d0",
     "under": "open",
     "canopy": {
-     "height": 2.6,
-     "depth": 3.5,
-     "thickness": 0.3,
+     "height": 3.4,
+     "depth": 4.5,
+     "thickness": 0.4,
      "slopeDeg": 0,
-     "colour": "#c9ccd0",
-     "edgeColour": "#c9ccd0"
+     "colour": "#7d838a",
+     "edgeColour": "#7d838a"
     }
    }
   },
@@ -138,7 +170,7 @@
      -62,
      40
     ],
-    "rows": 4,
+    "rows": 5,
     "rise": 0.45,
     "run": 0.8,
     "firstHeight": 0.5,
@@ -151,12 +183,12 @@
     "concreteColour": "#d4d4d0",
     "under": "open",
     "canopy": {
-     "height": 2.6,
-     "depth": 3.5,
-     "thickness": 0.3,
+     "height": 3.4,
+     "depth": 4.5,
+     "thickness": 0.4,
      "slopeDeg": 0,
-     "colour": "#c9ccd0",
-     "edgeColour": "#c9ccd0"
+     "colour": "#7d838a",
+     "edgeColour": "#7d838a"
     }
    }
   },
@@ -189,7 +221,11 @@
       "colour": "#2f78b8"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -220,7 +256,11 @@
       "colour": "#2f78b8"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -251,7 +291,11 @@
       "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -282,7 +326,11 @@
       "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -310,10 +358,14 @@
        0.2
       ],
       "height": 0.9,
-      "colour": "#c8302e"
+      "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -341,10 +393,14 @@
        0.2
       ],
       "height": 0.9,
-      "colour": "#c8302e"
+      "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -372,10 +428,14 @@
        0.2
       ],
       "height": 0.9,
-      "colour": "#1f2a44"
+      "colour": "#2f78b8"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -403,10 +463,14 @@
        0.2
       ],
       "height": 0.9,
-      "colour": "#1f2a44"
+      "colour": "#2f78b8"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -434,10 +498,14 @@
        0.2
       ],
       "height": 0.9,
-      "colour": "#e3b52f"
+      "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -465,10 +533,14 @@
        0.2
       ],
       "height": 0.9,
-      "colour": "#e3b52f"
+      "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -496,10 +568,14 @@
        3.6
       ],
       "height": 0.9,
-      "colour": "#c8302e"
+      "colour": "#e8e8e4"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -530,6 +606,42 @@
       "colour": "#2f78b8"
      }
     }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    46,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     66,
+     0.5
+    ],
+    "height": 4.5,
+    "colour": "#262b31"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    44.5,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     64,
+     0.4
+    ],
+    "height": 0.5,
+    "colour": "#e3b52f"
    }
   }
  ],
@@ -539,12 +651,12 @@
   "trees": [],
   "extent": [
    160,
-   110
+   120
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is Akranesvollur itself (critic's evidenceOk=false was wrong: OSM venue is Akranes). Main stand still a bit tall/short vs photo; no flags or glazed back-wall detail."
+  "gaps": "Photo is Akranesvollur itself (OSM way/976381108 is that stadium, brief and Wikidata Q2135947 agree). Applied critic geometry: apron out to outline scale, deeper canopy, dark glazed rear wall, grey end-terrace roofs, ad boards cut to blue/white."
  }
 }

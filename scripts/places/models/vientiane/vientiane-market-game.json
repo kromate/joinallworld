@@ -47,15 +47,15 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#efece4",
-    "windows": "punched",
-    "windowRatio": 0.3,
+    "colour": "#e6e3da",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
     "bay": 6,
     "faces": {
-     "front": "punched",
+     "front": "plain",
      "back": "plain",
-     "left": "plain",
-     "right": "punched"
+     "left": "punched",
+     "right": "plain"
     },
     "plinth": 0.3,
     "bands": "#d8d2c2",
@@ -63,8 +63,8 @@
      {
       "type": "floors",
       "colours": [
-       "#efece4",
-       "#e3ddd0"
+       "#e6e3da",
+       "#dcd8cb"
       ]
      }
     ]
@@ -86,8 +86,8 @@
     ]
    },
    "at": [
-    20,
-    18
+    -5,
+    12
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -95,82 +95,30 @@
    "storeys": 5,
    "wall": {
     "material": "painted-render",
-    "colour": "#f1eee7",
-    "windows": "punched",
+    "colour": "#e6e3da",
+    "windows": "none",
     "windowRatio": 0.3,
     "bay": 6,
     "faces": {
-     "front": "punched",
+     "front": "plain",
      "back": "plain",
      "left": "plain",
      "right": "plain"
-    }
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#8f8f8a",
     "material": "membrane",
     "parapet": 0.6
-   }
-  },
-  {
-   "type": "mosque-domed/awning",
-   "at": [
-    -30,
-    -14.5,
-    0.2
-   ],
-   "params": {
-    "width": 14,
-    "depth": 2.2,
-    "height": 4.6,
-    "rise": 0.8,
-    "colour": "#c98a3e"
-   }
-  },
-  {
-   "type": "mosque-domed/awning",
-   "at": [
-    -8,
-    -14.5,
-    0.2
-   ],
-   "params": {
-    "width": 14,
-    "depth": 2.2,
-    "height": 4.6,
-    "rise": 0.8,
-    "colour": "#c98a3e"
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -45,
-    -17,
-    0
-   ],
-   "params": {
-    "width": 9,
-    "height": 6,
-    "bottom": 11,
-    "colour": "#b8332f",
-    "posts": true
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -10,
-    -18,
-    0
-   ],
-   "params": {
-    "width": 9,
-    "height": 6,
-    "bottom": 9,
-    "colour": "#2d5d8a",
-    "posts": true
    }
   },
   {
@@ -198,6 +146,168 @@
     "count": 4,
     "spacing": 3
    }
+  },
+  {
+   "type": "mass",
+   "id": "awn-40",
+   "footprint": {
+    "rect": [
+     34,
+     3.5
+    ]
+   },
+   "at": [
+    -40,
+    -16.5
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8793c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8793c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "awn0",
+   "footprint": {
+    "rect": [
+     30,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8793c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8793c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "awn34",
+   "footprint": {
+    "rect": [
+     16,
+     3.5
+    ]
+   },
+   "at": [
+    34,
+    -16.5
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8793c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8793c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lowwall",
+   "footprint": {
+    "rect": [
+     50,
+     0.6
+    ]
+   },
+   "at": [
+    48,
+    -20
+   ],
+   "height": 1.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9362f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -16.3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8,
+    "bottom": 10,
+    "colour": "#2d5d8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -16.3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8,
+    "bottom": 10,
+    "colour": "#b8332f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -16.3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8,
+    "bottom": 10,
+    "colour": "#ece9e0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -16.3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8,
+    "bottom": 10,
+    "colour": "#6a2a3a",
+    "posts": false
+   }
   }
  ],
  "site": {
@@ -211,7 +321,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Outline auto-scaled to 118 m (real 162 m); no louvre block, real billboards, crane or old-market roofs; awnings and rear block position approximate"
+  "gaps": "outline auto-scaled (real 162 m); curved corner approximated by flat billboards; crane omitted; awnings flat not sloped"
  },
  "schema": "allworld-place-model",
  "version": 2,

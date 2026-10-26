@@ -24,8 +24,7 @@
   "yawDeg": -18,
   "pitchDeg": 6,
   "fovDeg": 45,
-  "aspect": 1.333,
-  "fit": "all"
+  "aspect": 1.333
  },
  "parts": [
   {
@@ -39,26 +38,28 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#c4c8cc",
+    "colour": "#cdd1d3",
     "windows": "punched",
-    "windowRatio": 0.14,
+    "windowRatio": 0.12,
     "faces": {
      "back": "plain"
     },
     "plinth": 0.4,
-    "bands": "#9fa4a8"
+    "bands": "#9fa4a8",
+    "glassColour": "#2f5a4a",
+    "trimColour": "#2f8a6a"
    },
    "roof": {
     "form": "flat",
-    "colour": "#7d8e96",
-    "parapet": 0.6
+    "colour": "#4f8f8c",
+    "parapet": 0.5
    }
   },
   {
    "type": "prism",
    "id": "portal-l",
    "at": [
-    -32,
+    -33,
     -20
    ],
    "params": {
@@ -74,7 +75,7 @@
    "type": "prism",
    "id": "portal-r",
    "at": [
-    -10,
+    -9,
     -20
    ],
    "params": {
@@ -95,11 +96,11 @@
    ],
    "params": {
     "rect": [
-     24,
-     2.6
+     26,
+     2.8
     ],
     "z0": 4.2,
-    "height": 2.6,
+    "height": 3,
     "colour": "#8d9296"
    }
   },
@@ -108,73 +109,73 @@
    "at": [
     -21,
     -17,
-    6.8
+    7.5
    ],
    "params": {
     "form": "curved",
     "width": 30,
-    "depth": 13,
+    "depth": 16,
     "height": 0.4,
-    "rise": 2.4,
-    "thickness": 0.5,
-    "colour": "#e8dcc4",
-    "edgeColour": "#2f6fb0"
+    "rise": 3.2,
+    "thickness": 0.7,
+    "colour": "#e6d7b8",
+    "edgeColour": "#1f5fc0"
    }
   },
   {
    "type": "sweep-path",
    "at": [
     -21,
-    -23,
-    6.9
+    -24,
+    7.4
    ],
    "params": {
     "section": {
      "rect": [
-      0.25,
-      0.25
+      0.4,
+      0.4
      ]
     },
     "points": [
      [
-      -10.0,
+      -14.0,
+      0,
+      0
+     ],
+     [
+      -12.25,
+      0,
+      2.8
+     ],
+     [
+      -10.5,
       0,
       0
      ],
      [
       -8.75,
       0,
-      1.6
+      2.8
      ],
      [
-      -7.5,
+      -7.0,
       0,
       0
      ],
      [
-      -6.25,
+      -5.25,
       0,
-      1.6
+      2.8
      ],
      [
-      -5.0,
+      -3.5,
       0,
       0
      ],
      [
-      -3.75,
+      -1.75,
       0,
-      1.6
-     ],
-     [
-      -2.5,
-      0,
-      0
-     ],
-     [
-      -1.25,
-      0,
-      1.6
+      2.8
      ],
      [
       0.0,
@@ -182,42 +183,42 @@
       0
      ],
      [
-      1.25,
+      1.75,
       0,
-      1.6
+      2.8
      ],
      [
-      2.5,
-      0,
-      0
-     ],
-     [
-      3.75,
-      0,
-      1.6
-     ],
-     [
-      5.0,
+      3.5,
       0,
       0
      ],
      [
-      6.25,
+      5.25,
       0,
-      1.6
+      2.8
      ],
      [
-      7.5,
+      7.0,
       0,
       0
      ],
      [
       8.75,
       0,
-      1.6
+      2.8
      ],
      [
-      10,
+      10.5,
+      0,
+      0
+     ],
+     [
+      12.25,
+      0,
+      2.8
+     ],
+     [
+      14.0,
       0,
       0
      ]
@@ -244,8 +245,8 @@
   {
    "type": "ferry-jetty",
    "at": [
-    -20,
-    20,
+    40,
+    40,
     0
    ],
    "params": {
@@ -253,20 +254,26 @@
     "width": 7,
     "shelter": true,
     "colour": "#bfbab0"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "bus-park-row",
    "at": [
-    30,
+    45,
     -30,
     0
    ],
    "params": {
-    "length": 36,
+    "length": 24,
     "kind": "mixed",
     "density": 0.6
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -280,7 +287,10 @@
     "height": 6,
     "count": 3,
     "spread": 4
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -294,17 +304,128 @@
     "height": 6,
     "count": 3,
     "spread": 4
-   }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    -26
+   ],
+   "params": {
+    "rect": [
+     10,
+     2.5
+    ],
+    "height": 0.7,
+    "colour": "#7e8483"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -26
+   ],
+   "params": {
+    "rect": [
+     10,
+     2.5
+    ],
+    "height": 0.7,
+    "colour": "#7e8483"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -37,
+    -20.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.6
+    ],
+    "z0": 5.5,
+    "height": 1,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -20.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.6
+    ],
+    "z0": 5.5,
+    "height": 1,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -26,
+    0.7
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5,
+    "count": 3,
+    "spread": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -26,
+    0.7
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5,
+    "count": 3,
+    "spread": 3
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Entrance position on the long outline is a guess; the jetty and bus bays are typical, not surveyed; truss and canopy curvature simplified."
+  "gaps": "Canopy is lower and plainer than the real tall curved canopy and its truss reads weakly; entrance position on the long outline is a guess; jetty and bus bays are typical, not surveyed."
  },
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "none",
   "trees": [],
   "extent": [
    130,

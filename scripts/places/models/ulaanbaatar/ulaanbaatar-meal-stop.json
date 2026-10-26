@@ -33,6 +33,290 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "lake",
+   "params": {
+    "rect": [
+     60,
+     36
+    ],
+    "z0": -0.05,
+    "height": 0.13,
+    "colour": "#2f3a2c",
+    "topColour": "#3d4a3a"
+   },
+   "at": [
+    -2,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     18,
+     3.4
+    ]
+   },
+   "at": [
+    3,
+    -3.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#dcb67e",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a66",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#dcb67e",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a66"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-belfry",
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 14,
+    "height": 5,
+    "colour": "#3a2e30",
+    "topColour": "#3a2e30"
+   },
+   "at": [
+    -6,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-cap",
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "z0": 19,
+    "height": 9,
+    "topScale": 0.04,
+    "colour": "#2e2833",
+    "topColour": "#2e2833"
+   },
+   "at": [
+    -6,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-pink-tip",
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 28,
+    "height": 1.8,
+    "colour": "#c8605a",
+    "topColour": "#c8605a"
+   },
+   "at": [
+    -6,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "clock-face",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    -1.85,
+    16.4
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 8,
+    "closed": true,
+    "colour": "#efe9d8",
+    "arc": {
+     "plane": "xz",
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.0,
+     "startDeg": 0,
+     "endDeg": 360,
+     "steps": 14
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-glass",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -11,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9a56c",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2e2833",
+    "pitch": 50,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-glazing",
+   "params": {
+    "rect": [
+     2.8,
+     0.3
+    ],
+    "z0": 0.8,
+    "height": 7.5,
+    "topScale": [
+     0.05,
+     1
+    ],
+    "colour": "#202a33",
+    "topColour": "#202a33"
+   },
+   "at": [
+    -11,
+    -8.1
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "keep-front-merlons",
+   "lod": [
+    0
+   ],
+   "at": [
+    3,
+    -2.5,
+    12
+   ],
+   "params": {
+    "length": 20,
+    "height": 0.5,
+    "thickness": 1.0,
+    "merlon_height": 1.3,
+    "merlon_width": 0.9,
+    "pitch": 2.0,
+    "colour": "#dcb67e",
+    "trim": "#dcb67e"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "keep-stagger",
+   "lod": [
+    0
+   ],
+   "at": [
+    3,
+    -2.5,
+    12.9
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.1,
+    "thickness": 1.0,
+    "merlon_height": 1.0,
+    "merlon_width": 0.8,
+    "pitch": 3.0,
+    "colour": "#d3a977",
+    "trim": "#d3a977"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "range-merlons",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -5.4,
+    7.5
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.4,
+    "thickness": 1.0,
+    "merlon_height": 1.1,
+    "merlon_width": 0.8,
+    "pitch": 1.8,
+    "colour": "#dcb67e",
+    "trim": "#dcb67e"
+   }
+  },
+  {
    "type": "mass",
    "id": "keep",
    "footprint": {
@@ -61,13 +345,13 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8.5,
-   "storeys": 2,
+   "height": 12,
+   "storeys": 3,
    "wall": {
     "material": "sandstone",
     "colour": "#d9b27a",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.1,
     "plinth": 0.8,
     "bands": "#c49a62"
    },
@@ -83,19 +367,19 @@
    "footprint": {
     "polygon": [
      [
-      -6,
+      -8,
       -3
      ],
      [
-      8,
+      9,
       -3
      ],
      [
-      8,
+      9,
       5
      ],
      [
-      -6,
+      -8,
       5
      ]
     ]
@@ -105,8 +389,8 @@
     8
    ],
    "rotDeg": 0,
-   "z0": 8.5,
-   "height": 4,
+   "z0": 12,
+   "height": 3.5,
    "storeys": 1,
    "wall": {
     "material": "sandstone",
@@ -116,138 +400,10 @@
    "roof": {
     "form": "gable",
     "colour": "#2e2833",
-    "pitch": 32,
+    "pitch": 48,
     "overhang": 0.5,
     "axis": "x"
    }
-  },
-  {
-   "type": "mass",
-   "id": "clock-tower",
-   "footprint": {
-    "rect": [
-     6,
-     6
-    ]
-   },
-   "at": [
-    -8,
-    -3
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 16,
-   "storeys": 3,
-   "wall": {
-    "material": "sandstone",
-    "colour": "#dcb67e",
-    "windows": "punched",
-    "windowRatio": 0.1,
-    "plinth": 0.6
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8a7a66"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "clock-belfry",
-   "params": {
-    "rect": [
-     5.4,
-     5.4
-    ],
-    "z0": 16,
-    "height": 4.2,
-    "colour": "#4a3a36",
-    "topColour": "#4a3a36"
-   },
-   "at": [
-    -8,
-    -3
-   ]
-  },
-  {
-   "type": "prism",
-   "id": "clock-cap",
-   "params": {
-    "rect": [
-     7.4,
-     7.4
-    ],
-    "z0": 20.2,
-    "height": 7.4,
-    "topScale": 0.04,
-    "colour": "#2e2833",
-    "topColour": "#2e2833"
-   },
-   "at": [
-    -8,
-    -3
-   ]
-  },
-  {
-   "type": "prism",
-   "id": "clock-pink-tip",
-   "params": {
-    "rect": [
-     0.35,
-     0.35
-    ],
-    "z0": 26.4,
-    "height": 1.8,
-    "colour": "#c8605a",
-    "topColour": "#c8605a"
-   },
-   "at": [
-    -8,
-    -3
-   ]
-  },
-  {
-   "type": "prism",
-   "id": "clock-face",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "rect": [
-     2.4,
-     0.3
-    ],
-    "z0": 13.0,
-    "height": 2.4,
-    "colour": "#efe9d8",
-    "topColour": "#efe9d8"
-   },
-   "at": [
-    -8,
-    -6.2
-   ]
-  },
-  {
-   "type": "prism",
-   "id": "gable-glass",
-   "params": {
-    "rect": [
-     4.4,
-     0.5
-    ],
-    "z0": 0.6,
-    "height": 7.2,
-    "topScale": [
-     0.1,
-     1
-    ],
-    "colour": "#202a33",
-    "topColour": "#202a33"
-   },
-   "at": [
-    -4.2,
-    -4.3
-   ]
   },
   {
    "type": "prism",
@@ -261,7 +417,7 @@
      7,
      5
     ],
-    "z0": 6,
+    "z0": 7,
     "height": 2,
     "topScale": [
      0.6,
@@ -290,7 +446,7 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 6,
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "sandstone",
@@ -314,13 +470,13 @@
     ]
    },
    "at": [
-    19,
+    21,
     3
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 6.5,
-   "storeys": 1,
+   "height": 9,
+   "storeys": 2,
    "wall": {
     "material": "sandstone",
     "colour": "#d3a977",
@@ -330,7 +486,7 @@
    "roof": {
     "form": "hip",
     "colour": "#2e2833",
-    "pitch": 24,
+    "pitch": 32,
     "overhang": 0.5
    }
   },
@@ -362,7 +518,7 @@
     1
    ],
    "at": [
-    -26.5,
+    -21,
     -6.7,
     4.6
    ],
@@ -372,25 +528,6 @@
     "thickness": 1.4,
     "colour": "#5f5d6d",
     "trim": "#5f5d6d"
-   }
-  },
-  {
-   "type": "mosque-domed/crenellated-wall",
-   "id": "keep-front-merlons",
-   "lod": [
-    0
-   ],
-   "at": [
-    -7,
-    -4.8,
-    8.4
-   ],
-   "params": {
-    "length": 19.5,
-    "height": 1.0,
-    "thickness": 1.0,
-    "colour": "#dcb67e",
-    "trim": "#dcb67e"
    }
   },
   {
@@ -469,6 +606,7 @@
   },
   {
    "type": "revolve",
+   "id": "turret-a",
    "at": [
     2.6,
     -3.4,
@@ -479,60 +617,73 @@
     "colour": "#d9b27a",
     "profile": [
      [
-      3.2,
+      1.9,
       0,
       "#d9b27a"
      ],
      [
-      3.2,
-      12.5
+      1.9,
+      15.5
      ],
      [
-      3.7,
-      12.5,
+      2.35,
+      15.5,
       "#4a3d44"
      ],
      [
-      3.7,
-      13.0
+      2.35,
+      15.9
      ],
      [
-      3.0,
-      13.0,
+      2.0,
+      15.9,
       "#2e2833"
      ],
      [
       0.0,
-      19.5
+      24.9
      ]
-    ]
+    ],
+    "arcade": {
+     "from": 12.3,
+     "to": 14.7,
+     "count": 3,
+     "width": 0.6,
+     "height": 1.8,
+     "sill": 0.2,
+     "shape": "arch",
+     "depth": 0.3,
+     "innerColour": "#2a2a30"
+    }
    }
   },
   {
    "type": "revolve",
+   "id": "turret-a-tip",
    "at": [
     2.6,
     -3.4,
-    19.5
+    24.9
    ],
    "params": {
     "segments": 6,
-    "colour": "#cccccc",
+    "colour": "#c8605a",
     "profile": [
      [
-      0.15,
+      0.18,
       0,
       "#c8605a"
      ],
      [
-      0.15,
-      2.2
+      0.18,
+      2.0
      ]
     ]
    }
   },
   {
    "type": "revolve",
+   "id": "turret-b",
    "at": [
     11.5,
     -3.4,
@@ -543,72 +694,84 @@
     "colour": "#d9b27a",
     "profile": [
      [
-      2.9,
+      1.7,
       0,
       "#d9b27a"
      ],
      [
-      2.9,
-      11
+      1.7,
+      13.8
      ],
      [
-      3.4,
-      11,
+      2.15,
+      13.8,
       "#4a3d44"
      ],
      [
-      3.4,
-      11.5
+      2.15,
+      14.200000000000001
      ],
      [
-      2.6999999999999997,
-      11.5,
+      1.8,
+      14.200000000000001,
       "#2e2833"
      ],
      [
       0.0,
-      17.2
+      22.200000000000003
      ]
-    ]
+    ],
+    "arcade": {
+     "from": 10.600000000000001,
+     "to": 13.0,
+     "count": 3,
+     "width": 0.6,
+     "height": 1.8,
+     "sill": 0.2,
+     "shape": "arch",
+     "depth": 0.3,
+     "innerColour": "#2a2a30"
+    }
    }
   },
   {
    "type": "revolve",
+   "id": "turret-b-tip",
    "at": [
     11.5,
     -3.4,
-    17.2
+    22.200000000000003
    ],
    "params": {
     "segments": 6,
-    "colour": "#cccccc",
+    "colour": "#c8605a",
     "profile": [
      [
-      0.15,
+      0.18,
       0,
       "#c8605a"
      ],
      [
-      0.15,
-      2.2
+      0.18,
+      2.0
      ]
     ]
    }
   }
  ],
  "site": {
-  "ground": "cobble",
+  "ground": "paving",
   "forecourt": "none",
   "trees": 0,
   "extent": [
-   90,
-   70
+   60,
+   36
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Turret and tower proportions are close; the photo has stone-veneer texture, a glazed timber gable, dark pitched roofs and a clock face that are only approximated; lake is paving, not water."
+  "gaps": "Stone-veneer texture, glazed lattice gable detail, ferris wheel backdrop and reflections are approximated; lake is a flat dark plane."
  },
  "schema": "allworld-place-model",
  "version": 2,

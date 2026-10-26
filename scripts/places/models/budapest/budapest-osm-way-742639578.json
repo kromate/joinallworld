@@ -567,130 +567,6 @@
    }
   },
   {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     10.27634194831014,
-     -7.4433399602385695
-    ],
-    "end": [
-     -2.606361829025845,
-     -41.08151093439364
-    ],
-    "count": 8,
-    "of": {
-     "type": "core/tree",
-     "params": {
-      "kind": "broadleaf",
-      "height": 16
-     }
-    }
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -0.001988071570576899,
-     -3.5069582504970183
-    ],
-    "end": [
-     -12.884691848906561,
-     -37.14512922465209
-    ],
-    "count": 8,
-    "of": {
-     "type": "core/tree",
-     "params": {
-      "kind": "broadleaf",
-      "height": 16
-     }
-    }
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     14.94831013916501,
-     -9.232604373757455
-    ],
-    "end": [
-     2.065606361829026,
-     -42.87077534791253
-    ],
-    "count": 5,
-    "of": {
-     "type": "core/tree",
-     "params": {
-      "kind": "broadleaf",
-      "height": 16
-     }
-    }
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -4.673956262425448,
-     -1.7176938369781314
-    ],
-    "end": [
-     -17.556660039761432,
-     -35.3558648111332
-    ],
-    "count": 5,
-    "of": {
-     "type": "core/tree",
-     "params": {
-      "kind": "broadleaf",
-      "height": 16
-     }
-    }
-   }
-  },
-  {
    "type": "prism",
    "at": [
     5.2326043737574555,
@@ -820,7 +696,7 @@
    "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#e6cc66",
+    "colour": "#d9b45a",
     "windows": "punched",
     "windowRatio": 0.3,
     "plinth": 0.5,
@@ -828,17 +704,17 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#b5553a",
+    "colour": "#8b4a36",
     "material": "clay-tile",
     "pitch": 34,
     "overhang": 0.7
    }
   },
   {
-   "type": "core/tree",
+   "type": "array",
    "at": [
-    -35,
-    -5,
+    0,
+    0,
     0
    ],
    "lod": [
@@ -846,16 +722,30 @@
     1
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 7,
-    "spread": 18
+    "mode": "line",
+    "start": [
+     13.74828874401388,
+     -8.283300965549323
+    ],
+    "end": [
+     2.8306091302336096,
+     -41.39330096554933
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 19
+     }
+    },
+    "lod1Step": 2
    }
   },
   {
-   "type": "core/tree",
+   "type": "array",
    "at": [
-    40,
+    0,
     0,
     0
    ],
@@ -864,82 +754,24 @@
     1
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 7,
-    "spread": 20
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -25,
-    25,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 6,
-    "spread": 16
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    30,
-    -30,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 6,
-    "spread": 18
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -20,
-    -40,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 4,
-    "spread": 12
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    50,
-    18,
-    0
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 4,
-    "spread": 10
+    "mode": "line",
+    "start": [
+     -5.362929516453339,
+     -3.196699034450675
+    ],
+    "end": [
+     -16.280609130233607,
+     -36.30669903445067
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 19
+     }
+    },
+    "lod1Step": 2
    }
   }
  ],
@@ -950,50 +782,10 @@
    {
     "kind": "broadleaf",
     "at": [
-     -12.4,
-     -35.5
-    ],
-    "height": 16.9
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -41.6,
-     1.4
-    ],
-    "height": 15.2
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -43.3,
-     -1.3
-    ],
-    "height": 13.2
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -39.5,
-     -9.2
-    ],
-    "height": 18.0
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -35.6,
      -28.6
     ],
-    "height": 16.8
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     59.9,
-     5.4
-    ],
-    "height": 15.4
+    "height": 19
    },
    {
     "kind": "broadleaf",
@@ -1006,14 +798,6 @@
    {
     "kind": "broadleaf",
     "at": [
-     17.5,
-     11.3
-    ],
-    "height": 15.2
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -43.1,
      -30.2
     ],
@@ -1022,42 +806,10 @@
    {
     "kind": "broadleaf",
     "at": [
-     16.6,
-     0.4
-    ],
-    "height": 18.3
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     34.6,
-     -22.4
-    ],
-    "height": 18.9
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -36.3,
      -9.9
     ],
-    "height": 17.5
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -32.4,
-     -3.1
-    ],
-    "height": 13.2
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     27.5,
-     23.4
-    ],
-    "height": 16.4
+    "height": 19
    },
    {
     "kind": "broadleaf",
@@ -1070,30 +822,6 @@
    {
     "kind": "broadleaf",
     "at": [
-     2.9,
-     30.6
-    ],
-    "height": 18.7
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     5.0,
-     13.8
-    ],
-    "height": 13.4
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     31.4,
-     12.1
-    ],
-    "height": 19.0
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -5.2,
      14.2
     ],
@@ -1102,34 +830,10 @@
    {
     "kind": "broadleaf",
     "at": [
-     3.6,
-     -33.9
-    ],
-    "height": 13.7
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -35.0,
      -26.2
     ],
-    "height": 15.3
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -29.6,
-     -27.7
-    ],
-    "height": 14.4
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     9.8,
-     9.3
-    ],
-    "height": 17.1
+    "height": 19
    },
    {
     "kind": "broadleaf",
@@ -1142,14 +846,6 @@
    {
     "kind": "broadleaf",
     "at": [
-     -38.0,
-     10.9
-    ],
-    "height": 13.4
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      -42.2,
      -30.0
     ],
@@ -1158,34 +854,10 @@
    {
     "kind": "broadleaf",
     "at": [
-     -38.2,
-     -15.1
-    ],
-    "height": 13.2
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
      51.4,
      9.0
     ],
-    "height": 13.9
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -20.7,
-     -16.7
-    ],
-    "height": 15.2
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     65.2,
-     -5.3
-    ],
-    "height": 15.9
+    "height": 19
    }
   ],
   "extent": [
@@ -1194,9 +866,9 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "lawn now one polygon; brick path, bust, gazebo, larger yellow hall with tiled hip roof, benches and bins placed; street-level photo vs aerial compare; canopy blobby"
+  "gaps": "avenue thinned to two rows of tall trunked trees plus sparse lawn trees clear of paths, bust and gazebo; hall recoloured ochre/clay; photo compare image not produced by queue; canopy still stylised"
  },
  "schema": "allworld-place-model",
  "version": 2,

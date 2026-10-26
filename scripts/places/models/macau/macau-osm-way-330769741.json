@@ -23,8 +23,8 @@
  },
  "review": {
   "rounds": 1,
-  "match": "fair",
-  "gaps": "upper floors not seen in the photo (trees hide them), so the six-storey block behind is typed from OSM height; exact curvature, mullion grid and banyan trees not modelled"
+  "match": "close",
+  "gaps": "glazed drum with gold mullions, thick columns, ribbon-window base band and three banyans added; trunks not twisted, upper floors behind typed from OSM height"
  },
  "parts": [
   {
@@ -48,22 +48,22 @@
     "colour": "#e6dfcf",
     "windows": "none",
     "faces": {
-     "front": "ribbon",
+     "front": "none",
      "back": "none",
      "left": "none",
      "right": "none"
     },
     "windowRatio": 0.3,
-    "bay": 8,
+    "bay": 16,
     "plinth": 1.2,
-    "bands": "#cfc6b2"
+    "storeys": 1
    },
    "roof": {
     "form": "flat",
     "colour": "#9a9a94",
     "parapet": 0.6
    },
-   "storeys": 6
+   "storeys": 2
   },
   {
    "type": "mass",
@@ -88,11 +88,11 @@
     "faces": {
      "front": "none",
      "back": "none",
-     "left": "ribbon",
-     "right": "ribbon"
+     "left": "none",
+     "right": "none"
     },
     "windowRatio": 0.3,
-    "bay": 8
+    "bay": 16
    },
    "roof": {
     "form": "flat",
@@ -124,11 +124,11 @@
     "faces": {
      "front": "none",
      "back": "none",
-     "left": "ribbon",
-     "right": "ribbon"
+     "left": "none",
+     "right": "none"
     },
     "windowRatio": 0.3,
-    "bay": 8
+    "bay": 16
    },
    "roof": {
     "form": "flat",
@@ -153,18 +153,77 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 14,
+   "height": 16,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3a3d44",
-    "windows": "none",
-    "glassColour": "#2d3238",
+    "colour": "#8fa6b8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bay": 4.5,
+    "glassColour": "#7f98ad",
     "trimColour": "#d8b83a"
    },
    "roof": {
     "form": "flat",
     "colour": "#9a9a94",
-    "parapet": 0.4
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -13.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa6b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b83a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bayband-l",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     26.4,
+     18.4
+    ]
+   },
+   "at": [
+    -22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6e6470",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#2d3238",
+    "trimColour": "#d8b83a",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfcf"
    }
   },
   {
@@ -182,19 +241,48 @@
     -2
    ],
    "rotDeg": 0,
-   "z0": 0,
-   "height": 12,
+   "z0": 3.4,
+   "height": 12.6,
    "wall": {
     "material": "painted-render",
     "colour": "#e6dfcf",
-    "windows": "none",
-    "bands": "#bdb59f",
-    "plinth": 1.6
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#9a9a94",
-    "parapet": 0.4
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bayband-r",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     26.4,
+     18.4
+    ]
+   },
+   "at": [
+    22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6e6470",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#2d3238",
+    "trimColour": "#d8b83a",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfcf"
    }
   },
   {
@@ -212,19 +300,17 @@
     -2
    ],
    "rotDeg": 0,
-   "z0": 0,
-   "height": 12,
+   "z0": 3.4,
+   "height": 12.6,
    "wall": {
     "material": "painted-render",
     "colour": "#e6dfcf",
-    "windows": "none",
-    "bands": "#bdb59f",
-    "plinth": 1.6
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#9a9a94",
-    "parapet": 0.4
+    "parapet": 0.1
    }
   },
   {
@@ -242,25 +328,46 @@
     "lod1Step": 2,
     "mode": "line",
     "start": [
-     -33,
-     -13,
+     -30,
+     -14,
      0
     ],
     "end": [
-     33,
-     -13,
+     30,
+     -14,
      0
     ],
-    "count": 7,
+    "count": 6,
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.7,
+      "radius": 0.6,
       "n": 10,
-      "height": 12,
+      "height": 16.4,
       "colour": "#f3f1ea"
      }
     }
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -12,
+    16.3
+   ],
+   "params": {
+    "rect": [
+     66,
+     5
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#e6dfcf"
    }
   },
   {
@@ -276,46 +383,65 @@
    "params": {
     "length": 70,
     "height": 1.1,
-    "colour": "#2a2a2a"
+    "colour": "#1a1a1a"
    }
   },
   {
-   "type": "flag",
+   "type": "big-tree",
    "lod": [
     0
    ],
    "at": [
-    -10,
-    -18,
+    -16,
+    -24,
     0
    ],
-   "params": {}
+   "params": {
+    "height": 13,
+    "crown_radius": 6,
+    "trunk_radius": 0.7,
+    "colour": "#2f5a33"
+   }
   },
   {
-   "type": "flag",
+   "type": "big-tree",
    "lod": [
     0
    ],
    "at": [
-    10,
-    -18,
+    2,
+    -24,
     0
    ],
-   "params": {}
+   "params": {
+    "height": 13,
+    "crown_radius": 6,
+    "trunk_radius": 0.7,
+    "colour": "#2f5a33"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "crown_radius": 6,
+    "trunk_radius": 0.7,
+    "colour": "#2f5a33"
+   }
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "plaza",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     -14,
-     -26
-    ]
-   }
-  ],
+  "forecourt": "none",
+  "trees": 0,
   "extent": [
    130,
    100

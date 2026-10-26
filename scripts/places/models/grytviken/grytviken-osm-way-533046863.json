@@ -30,8 +30,8 @@
    "id": "villa",
    "footprint": {
     "rect": [
-     23,
-     14
+     14,
+     10
     ]
    },
    "at": [
@@ -46,23 +46,53 @@
     "material": "timber",
     "colour": "#ece9e1",
     "windows": "punched",
-    "windowRatio": 0.16,
+    "windowRatio": 0.18,
     "plinth": 0.4,
-    "bay": 3.4,
+    "bay": 2.8,
     "trimColour": "#2f6b4c",
-    "glassColour": "#3a4650",
-    "faces": {
-     "back": "punched",
-     "left": "punched",
-     "right": "punched"
-    }
+    "glassColour": "#5f7f8a"
    },
    "roof": {
     "form": "hip",
     "colour": "#8e2f2b",
     "material": "corrugated",
-    "pitch": 30,
+    "pitch": 34,
     "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -11,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bay": 2.8,
+    "trimColour": "#2f6b4c",
+    "glassColour": "#5f7f8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2f2b",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.4
    }
   },
   {
@@ -70,13 +100,13 @@
    "id": "front-gable",
    "footprint": {
     "rect": [
-     6.4,
-     3
+     5,
+     2.2
     ]
    },
    "at": [
     0,
-    -8.5
+    -5.6
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -88,40 +118,28 @@
     "windows": "punched",
     "windowRatio": 0.14,
     "plinth": 0.4,
+    "bay": 2.8,
     "trimColour": "#2f6b4c",
-    "glassColour": "#3a4650"
+    "glassColour": "#5f7f8a"
    },
    "roof": {
     "form": "gable",
     "colour": "#8e2f2b",
     "material": "corrugated",
-    "rise": 3.4,
-    "overhang": 0.4
+    "rise": 2.6,
+    "overhang": 0.3
    }
   },
   {
    "type": "chimney-stack",
    "at": [
-    5,
-    0,
+    3,
+    1,
     8
    ],
    "params": {
-    "width": 1.0,
-    "height": 2.2,
-    "colour": "#9b5a43"
-   }
-  },
-  {
-   "type": "chimney-stack",
-   "at": [
-    -7,
-    0,
-    8
-   ],
-   "params": {
-    "width": 1.0,
-    "height": 2.2,
+    "width": 0.7,
+    "height": 1.6,
     "colour": "#9b5a43"
    }
   },
@@ -129,144 +147,14 @@
    "type": "stair",
    "at": [
     0,
-    -12.4
+    -8.6
    ],
    "params": {
-    "width": 2.6,
-    "height": 0.5,
-    "run": 1.4,
+    "width": 2.2,
+    "height": 0.4,
+    "run": 1.2,
     "colour": "#8b8478",
     "rails": false
-   }
-  },
-  {
-   "type": "flag",
-   "at": [
-    -6,
-    -9,
-    0
-   ],
-   "params": {
-    "height": 6,
-    "colour": "#2f4f9f",
-    "count": 2,
-    "spacing": 1.2
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    0,
-    -12.1,
-    1.9
-   ],
-   "params": {
-    "width": 1.6,
-    "height": 0.35,
-    "bottom": 0,
-    "colour": "#d8c07a",
-    "posts": false
-   }
-  },
-  {
-   "type": "mass",
-   "id": "neighbour-shed",
-   "footprint": {
-    "rect": [
-     8,
-     6
-    ]
-   },
-   "at": [
-    19,
-    3
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4,
-   "storeys": 1,
-   "wall": {
-    "material": "timber",
-    "colour": "#ece9e1",
-    "windows": "punched",
-    "windowRatio": 0.12,
-    "glassColour": "#3a4650",
-    "trimColour": "#2f6b4c"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#4f7a5a",
-    "material": "corrugated",
-    "rise": 1.8,
-    "overhang": 0.3
-   }
-  },
-  {
-   "type": "prism",
-   "id": "post0",
-   "at": [
-    -2.2,
-    -12.0
-   ],
-   "params": {
-    "rect": [
-     0.14,
-     0.14
-    ],
-    "z0": 0,
-    "height": 2.6,
-    "colour": "#ffffff"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "post1",
-   "at": [
-    -0.75,
-    -12.0
-   ],
-   "params": {
-    "rect": [
-     0.14,
-     0.14
-    ],
-    "z0": 0,
-    "height": 2.6,
-    "colour": "#ffffff"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "post2",
-   "at": [
-    0.75,
-    -12.0
-   ],
-   "params": {
-    "rect": [
-     0.14,
-     0.14
-    ],
-    "z0": 0,
-    "height": 2.6,
-    "colour": "#ffffff"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "post3",
-   "at": [
-    2.2,
-    -12.0
-   ],
-   "params": {
-    "rect": [
-     0.14,
-     0.14
-    ],
-    "z0": 0,
-    "height": 2.6,
-    "colour": "#ffffff"
    }
   },
   {
@@ -274,13 +162,13 @@
    "id": "porch",
    "footprint": {
     "rect": [
-     5,
-     2
+     3.6,
+     1.6
     ]
    },
    "at": [
     0,
-    -11
+    -7.0
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -289,28 +177,84 @@
    "wall": {
     "material": "timber",
     "colour": "#ece9e1",
-    "windows": "none",
-    "plinth": 0.3
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bay": 2.8,
+    "trimColour": "#2f6b4c",
+    "glassColour": "#5f7f8a"
    },
    "roof": {
     "form": "gable",
-    "colour": "#8e2f2b",
+    "colour": "#a8423b",
     "material": "corrugated",
-    "rise": 1.0,
-    "overhang": 0.3
+    "rise": 0.8,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-shed",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    11.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bay": 2.8,
+    "trimColour": "#2f6b4c",
+    "glassColour": "#5f7f8a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5a",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "at": [
+    -4.5,
+    -7
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#cfcfcf"
    }
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "snow",
   "extent": [
    60,
    40
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "not rendered: render server was down; massing, colours and roof composed from the photo by eye; neighbour shed and flags approximate"
+  "gaps": "ground is snow (no gravel/mud ground type), massing and roof stepped but approximate; front gable and neighbour shed simplified; no flag cloth"
  }
 }

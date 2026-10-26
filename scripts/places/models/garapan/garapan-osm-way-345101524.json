@@ -17,11 +17,12 @@
   }
  ],
  "camera": {
-  "yawDeg": 0,
-  "pitchDeg": 3,
+  "yawDeg": 6,
+  "pitchDeg": 5,
   "fovDeg": 50,
   "aspect": 1.333,
-  "margin": 0.1
+  "margin": 0.05,
+  "fit": "building"
  },
  "parts": [
   {
@@ -37,14 +38,14 @@
     -17.5,
     -3
    ],
-   "height": 7.5,
+   "height": 6.8,
    "storeys": 1,
    "wall": {
     "material": "stucco",
     "colour": "#a9ab8f",
-    "windows": "round",
-    "windowRatio": 0.3,
-    "windowShape": "round",
+    "windows": "pointed-arch",
+    "windowRatio": 0.38,
+    "windowShape": "pointed",
     "bay": 4.2,
     "cornice": true,
     "faces": {
@@ -69,7 +70,7 @@
    "params": {
     "height": 1.6,
     "colour": "#ecebe3",
-    "z0": 7.5,
+    "z0": 6.8,
     "windows": "none",
     "rect": [
      13,
@@ -91,13 +92,17 @@
    "params": {
     "height": 2.4,
     "colour": "#f0efe8",
-    "z0": 2.6,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      1.5,
      0.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -109,13 +114,17 @@
    "params": {
     "height": 2.0,
     "colour": "#2e3030",
-    "z0": 2.8,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      0.9,
      0.12
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -127,13 +136,17 @@
    "params": {
     "height": 2.4,
     "colour": "#f0efe8",
-    "z0": 2.6,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      1.5,
      0.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -145,13 +158,17 @@
    "params": {
     "height": 2.0,
     "colour": "#2e3030",
-    "z0": 2.8,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      0.9,
      0.12
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -163,13 +180,17 @@
    "params": {
     "height": 2.4,
     "colour": "#f0efe8",
-    "z0": 2.6,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      1.5,
      0.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -181,13 +202,17 @@
    "params": {
     "height": 2.0,
     "colour": "#2e3030",
-    "z0": 2.8,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      0.9,
      0.12
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -195,7 +220,7 @@
    "at": [
     -23.3,
     -31,
-    8.0
+    7.4
    ],
    "params": {
     "mode": "line",
@@ -228,7 +253,11 @@
       ]
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
@@ -243,14 +272,14 @@
     17.5,
     -3
    ],
-   "height": 7.5,
+   "height": 6.8,
    "storeys": 1,
    "wall": {
     "material": "stucco",
     "colour": "#a9ab8f",
-    "windows": "round",
-    "windowRatio": 0.3,
-    "windowShape": "round",
+    "windows": "pointed-arch",
+    "windowRatio": 0.38,
+    "windowShape": "pointed",
     "bay": 4.2,
     "cornice": true,
     "faces": {
@@ -275,7 +304,7 @@
    "params": {
     "height": 1.6,
     "colour": "#ecebe3",
-    "z0": 7.5,
+    "z0": 6.8,
     "windows": "none",
     "rect": [
      13,
@@ -297,13 +326,17 @@
    "params": {
     "height": 2.4,
     "colour": "#f0efe8",
-    "z0": 2.6,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      1.5,
      0.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -315,13 +348,17 @@
    "params": {
     "height": 2.0,
     "colour": "#2e3030",
-    "z0": 2.8,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      0.9,
      0.12
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -333,13 +370,17 @@
    "params": {
     "height": 2.4,
     "colour": "#f0efe8",
-    "z0": 2.6,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      1.5,
      0.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -351,13 +392,17 @@
    "params": {
     "height": 2.0,
     "colour": "#2e3030",
-    "z0": 2.8,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      0.9,
      0.12
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -369,13 +414,17 @@
    "params": {
     "height": 2.4,
     "colour": "#f0efe8",
-    "z0": 2.6,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      1.5,
      0.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -387,13 +436,17 @@
    "params": {
     "height": 2.0,
     "colour": "#2e3030",
-    "z0": 2.8,
+    "z0": 2.2,
     "windows": "none",
     "rect": [
      0.9,
      0.12
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -401,7 +454,7 @@
    "at": [
     11.7,
     -31,
-    8.0
+    7.4
    ],
    "params": {
     "mode": "line",
@@ -434,14 +487,18 @@
       ]
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
    "id": "front-block",
    "footprint": {
     "rect": [
-     22,
+     15,
      7
     ]
    },
@@ -449,7 +506,7 @@
     0,
     -27.5
    ],
-   "height": 11,
+   "height": 15.5,
    "storeys": 2,
    "wall": {
     "material": "stucco",
@@ -508,7 +565,7 @@
    "id": "porch",
    "footprint": {
     "rect": [
-     17,
+     16.5,
      2.4
     ]
    },
@@ -516,7 +573,7 @@
     0,
     -31.9
    ],
-   "height": 4.8,
+   "height": 6.4,
    "storeys": 1,
    "wall": {
     "material": "stucco",
@@ -528,13 +585,13 @@
       "type": "arcade",
       "shape": "pointed",
       "bay": 5.4,
-      "opening": 0.8,
-      "height": 0.92,
+      "opening": 0.78,
+      "height": 0.97,
       "depth": 1.4,
       "faces": [
        "front"
       ],
-      "colour": "#2e2a24"
+      "colour": "#12100d"
      }
     ]
    },
@@ -555,13 +612,17 @@
    "params": {
     "height": 0.5,
     "colour": "#ecebe3",
-    "z0": 11.0,
+    "z0": 15.5,
     "windows": "none",
     "rect": [
-     19,
+     15.4,
      0.4
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -569,21 +630,21 @@
    "at": [
     0,
     -31.1,
-    6.2
+    10.6
    ],
    "params": {
     "mode": "line",
     "start": [
-     -6.4,
+     -5.6,
      0,
      0
     ],
     "end": [
-     6.4,
+     5.6,
      0,
      0
     ],
-    "count": 5,
+    "count": 7,
     "of": {
      "type": "prism",
      "id": "w",
@@ -592,17 +653,21 @@
       0
      ],
      "params": {
-      "height": 3.2,
+      "height": 3.8,
       "colour": "#2e3338",
       "z0": 0,
       "windows": "none",
       "rect": [
-       1.5,
+       0.9,
        0.25
       ]
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -610,21 +675,21 @@
    "at": [
     0,
     -31.0,
-    6.0
+    10.4
    ],
    "params": {
     "mode": "line",
     "start": [
-     -6.4,
+     -5.6,
      0,
      0
     ],
     "end": [
-     6.4,
+     5.6,
      0,
      0
     ],
-    "count": 5,
+    "count": 7,
     "of": {
      "type": "prism",
      "id": "w",
@@ -633,17 +698,21 @@
       0
      ],
      "params": {
-      "height": 3.7,
+      "height": 4.2,
       "colour": "#ecebe3",
       "z0": 0,
       "windows": "none",
       "rect": [
-       1.9,
+       1.3,
        0.2
       ]
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -658,10 +727,14 @@
     "z0": 5.4,
     "windows": "none",
     "rect": [
-     11,
+     13,
      0.25
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -676,10 +749,14 @@
     "z0": 5.0,
     "windows": "none",
     "rect": [
-     19,
+     15.4,
      0.6
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -689,16 +766,16 @@
     -27.5
    ],
    "params": {
-    "height": 2.6,
+    "height": 3.6,
     "colour": "#a9ab8f",
-    "z0": 11.0,
+    "z0": 15.5,
     "windows": "none",
     "rect": [
-     11,
+     13,
      6.5
     ],
     "topScale": [
-     0.2,
+     0.15,
      1
     ]
    }
@@ -713,13 +790,17 @@
    "params": {
     "height": 0.4,
     "colour": "#ecebe3",
-    "z0": 11.0,
+    "z0": 15.5,
     "windows": "none",
     "rect": [
-     11.2,
+     13.2,
      0.3
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -729,15 +810,19 @@
     -30.9
    ],
    "params": {
-    "height": 1.9,
+    "height": 2.2,
     "colour": "#cfe0e6",
-    "z0": 11.3,
+    "z0": 16.3,
     "windows": "none",
     "rect": [
-     1.9,
-     0.25
+     2.2,
+     0.3
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -749,23 +834,27 @@
    "params": {
     "height": 2,
     "colour": "#d9d4cb",
-    "z0": 13.6,
+    "z0": 19.1,
     "windows": "none",
     "rect": [
      0.8,
      0.8
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
    "id": "corner-fl",
    "at": [
-    -9.8,
+    -8.2,
     -30.6
    ],
    "params": {
-    "height": 12.8,
+    "height": 17.2,
     "colour": "#ecebe3",
     "z0": 0,
     "windows": "none",
@@ -779,11 +868,11 @@
    "type": "prism",
    "id": "corner-fr",
    "at": [
-    9.8,
+    8.2,
     -30.6
    ],
    "params": {
-    "height": 12.8,
+    "height": 17.2,
     "colour": "#ecebe3",
     "z0": 0,
     "windows": "none",
@@ -801,7 +890,7 @@
     -30.6
    ],
    "params": {
-    "height": 8.4,
+    "height": 7.6,
     "colour": "#ecebe3",
     "z0": 0,
     "windows": "none",
@@ -819,7 +908,7 @@
     -30.6
    ],
    "params": {
-    "height": 8.4,
+    "height": 7.6,
     "colour": "#ecebe3",
     "z0": 0,
     "windows": "none",
@@ -845,7 +934,11 @@
      10,
      1.2
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "fence-wall",
@@ -860,7 +953,11 @@
     "thickness": 0.1,
     "kind": "rail",
     "colour": "#f4f4f0"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "lamp",
@@ -871,7 +968,11 @@
    ],
    "params": {
     "height": 5
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "tree",
@@ -914,6 +1015,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Critic fixes applied (wide low massing, 3 pointed porch arches, upper window tier, pediment, rosettes, scallop trim, railing) but NOT render-checked: no render server. Side-aisle parapets are stepped flat, not truly sloped; clock is a square."
+  "gaps": "Central block now taller with pointed lancet row, pediment and statue; clock is still a square (prisms are plan-extruded), porch arches still read bluish not dark, side rosettes are flat plates and the cornice scallops are blocky; nave roof and parking not in photo."
  }
 }

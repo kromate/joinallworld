@@ -43,58 +43,90 @@
    "footprint": {
     "rect": [
      112,
-     42
+     16
     ]
    },
    "at": [
     0,
-    0
+    -8
    ],
-   "height": 10,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e4e4df",
+    "colour": "#e8e8e4",
+    "windows": "none",
+    "windowRatio": 0.4,
     "faces": {
-     "back": "plain",
-     "left": "plain"
+     "back": "plain"
     },
-    "windows": "ribbon",
-    "windowRatio": 0.45,
-    "plinth": 0.5
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#9a9a94",
-    "parapet": 0.6
+    "colour": "#a0a09a",
+    "parapet": 0.5
    }
   },
   {
    "type": "mass",
-   "id": "ward-west",
+   "id": "block-1",
    "footprint": {
     "rect": [
-     34,
-     22
+     23,
+     18
     ]
    },
    "at": [
-    -34,
-    8
+    -49,
+    6
    ],
-   "z0": 10,
-   "height": 26,
-   "storeys": 5,
+   "z0": 6,
+   "height": 36,
+   "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#b9bbb8",
+    "colour": "#5f6264",
     "faces": {
      "back": "plain",
-     "left": "plain"
+     "left": "plain",
+     "right": "plain"
     },
-    "windows": "ribbon",
-    "windowRatio": 0.5,
-    "bands": "#e8e8e4"
+    "windows": "punched",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55575a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-2",
+   "footprint": {
+    "rect": [
+     21,
+     18
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "z0": 6,
+   "height": 40,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cb",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windows": "punched",
+    "windowRatio": 0.5
    },
    "roof": {
     "form": "flat",
@@ -104,29 +136,30 @@
   },
   {
    "type": "mass",
-   "id": "ward-mid",
+   "id": "block-3",
    "footprint": {
     "rect": [
-     26,
-     22
+     23,
+     18
     ]
    },
    "at": [
-    -4,
+    1,
     6
    ],
-   "z0": 10,
+   "z0": 6,
    "height": 34,
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#eceae3",
+    "colour": "#c9c6bb",
     "faces": {
      "back": "plain",
-     "left": "plain"
+     "left": "plain",
+     "right": "plain"
     },
-    "windows": "ribbon",
-    "windowRatio": 0.55
+    "windows": "punched",
+    "windowRatio": 0.5
    },
    "roof": {
     "form": "flat",
@@ -136,67 +169,119 @@
   },
   {
    "type": "mass",
-   "id": "ward-east",
+   "id": "block-4",
    "footprint": {
     "rect": [
-     28,
-     22
+     21,
+     18
     ]
    },
    "at": [
-    32,
-    8
+    25,
+    6
    ],
-   "z0": 10,
-   "height": 46,
-   "storeys": 8,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#dcdad2",
-    "faces": {
-     "back": "plain",
-     "left": "plain"
-    },
-    "windows": "ribbon",
-    "windowRatio": 0.55,
-    "bands": "#f1efe8"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8f9190",
-    "parapet": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "ward-east-side",
-   "footprint": {
-    "rect": [
-     14,
-     20
-    ]
-   },
-   "at": [
-    50,
-    8
-   ],
-   "z0": 10,
-   "height": 38,
+   "z0": 6,
+   "height": 28,
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e4dc",
+    "colour": "#e0ded4",
     "faces": {
      "back": "plain",
-     "left": "plain"
+     "left": "plain",
+     "right": "plain"
     },
-    "windows": "ribbon",
-    "windowRatio": 0.35
+    "windows": "punched",
+    "windowRatio": 0.5
    },
    "roof": {
     "form": "flat",
     "colour": "#8f9190",
     "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "twin-a",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    45,
+    6
+   ],
+   "z0": 6,
+   "height": 42,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d5ca",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windows": "punched",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9190",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "twin-b",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    59,
+    6
+   ],
+   "z0": 6,
+   "height": 50,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2e0d8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windows": "punched",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9190",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "link",
+   "at": [
+    50,
+    -2
+   ],
+   "params": {
+    "rect": [
+     26,
+     4
+    ],
+    "z0": 6,
+    "height": 10,
+    "colour": "#c3c3be",
+    "topColour": "#d5d5d0"
    }
   },
   {
@@ -204,57 +289,23 @@
    "id": "canopy",
    "at": [
     -20,
-    -22
+    -18
    ],
    "params": {
     "rect": [
-     34,
-     8
+     30,
+     6
     ],
-    "z0": 6,
-    "height": 0.8,
+    "z0": 5,
+    "height": 0.7,
     "colour": "#7fa3b5",
     "topColour": "#9fb8c4"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "helipad",
-   "at": [
-    -34,
-    8
-   ],
-   "params": {
-    "radius": 8,
-    "n": 16,
-    "z0": 36,
-    "height": 0.4,
-    "colour": "#7a7e80",
-    "topColour": "#8a8e90"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "link-bridge",
-   "at": [
-    22,
-    -2
-   ],
-   "params": {
-    "rect": [
-     24,
-     3
-    ],
-    "z0": 16,
-    "height": 3,
-    "colour": "#bfc3c4",
-    "topColour": "#d0d3d4"
    }
   }
  ],
  "site": {
   "ground": "asphalt",
-  "forecourt": "parking",
+  "forecourt": "none",
   "trees": [],
   "extent": [
    150,
@@ -262,8 +313,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
-  "match": "rough",
-  "gaps": "Photo is a distant LRT view of many ward blocks; blocks are generic grey/white boxes with ribbon windows, no dark top block detail, link bridges or twin-tower shape; windows reduced for triangle budget."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Regular punched window grids with fewer storeys than reality (triangle budget); podium wings are plain white boxes; no surrounding hospital campus or terrain."
  }
 }

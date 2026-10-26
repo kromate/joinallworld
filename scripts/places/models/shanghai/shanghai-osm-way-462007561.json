@@ -12,7 +12,7 @@
    "author": "SSYoung",
    "view": "front",
    "file": "/tmp/places-evidence/shanghai/zoo1.jpg",
-   "used": "entrance boulder (grey-tan, rounded, tapering to the right, name carved but left blank here), paved plaza with a pink border strip, dense magnolia and red-maple planting behind"
+   "used": "entrance boulder (grey-tan, rounded, tapering to the right, name carved but left blank here), paved plaza with a pink border strip, dense magnolia and red-maple planting behind; round 2: boulder scaled to about 10.8 x 3.2 m by 4.5 m, gold name inscription left as blank gold bands"
   },
   {
    "kind": "osm",
@@ -25,236 +25,160 @@
   "pitchDeg": 6,
   "fovDeg": 38,
   "aspect": 1.333,
-  "fit": "all"
+  "margin": 0.03
  },
  "parts": [
   {
    "type": "loft",
    "id": "boulder",
    "at": [
-    -1,
-    -6,
+    0,
+    0,
     0
    ],
    "params": {
-    "colour": "#8f877a",
+    "colour": "#9c9484",
     "smooth": true,
     "capTop": true,
     "sections": [
      {
       "z": 0,
       "ellipse": [
-       4.6,
-       1.4
+       6.21,
+       1.92
       ],
-      "cx": 0
+      "cx": 0.2
      },
      {
-      "z": 0.9,
+      "z": 1.0,
       "ellipse": [
-       4.9,
-       1.6
+       6.095,
+       2.16
       ],
       "cx": 0.1
      },
      {
-      "z": 2.0,
+      "z": 2.2,
       "ellipse": [
-       4.5,
-       1.5
+       5.635,
+       2.04
       ],
-      "cx": 0.5
+      "cx": -0.2
      },
      {
-      "z": 3.0,
+      "z": 3.3,
       "ellipse": [
-       3.2,
-       1.3
+       4.6,
+       1.7999999999999998
       ],
-      "cx": 1.0
+      "cx": -0.8
      },
      {
-      "z": 3.7,
+      "z": 4.0,
       "ellipse": [
-       1.2,
-       0.8
+       3.4499999999999997,
+       1.56
       ],
-      "cx": 1.4
+      "cx": -1.5
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       2.07,
+       1.08
+      ],
+      "cx": -2.4
      }
     ]
    }
   },
   {
    "type": "prism",
+   "id": "inscription",
+   "at": [
+    -0.8,
+    -2.0,
+    2.3
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#d4af37",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inscription2",
+   "at": [
+    -0.4,
+    -2.0,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     0.12
+    ],
+    "height": 0.4,
+    "colour": "#d4af37",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pink-strip",
+   "at": [
+    2,
+    -4.5,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     22,
+     0.7
+    ],
+    "height": 0.06,
+    "colour": "#c9a9a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
    "at": [
     0,
-    -1,
+    -5,
     0
    ],
    "params": {
     "rect": [
      26,
-     2.2
+     8
     ],
-    "height": 0.12,
-    "colour": "#c9a9a0"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "booth-l",
-   "footprint": {
-    "rect": [
-     6,
-     4
-    ]
-   },
-   "at": [
-    -11,
-    6
-   ],
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#e8e4dc",
-    "windows": "ribbon",
-    "windowRatio": 0.4,
-    "faces": {
-     "front": "ribbon",
-     "back": "plain",
-     "left": "plain",
-     "right": "plain"
-    },
-    "plinth": 0.3,
-    "glassColour": "#4f6670"
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#a0452f",
-    "material": "clay-tile",
-    "pitch": 28,
-    "overhang": 0.6
-   }
-  },
-  {
-   "type": "mass",
-   "id": "booth-r",
-   "footprint": {
-    "rect": [
-     6,
-     4
-    ]
-   },
-   "at": [
-    11,
-    6
-   ],
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "render",
-    "colour": "#e8e4dc",
-    "windows": "ribbon",
-    "windowRatio": 0.4,
-    "faces": {
-     "front": "ribbon",
-     "back": "plain",
-     "left": "plain",
-     "right": "plain"
-    },
-    "plinth": 0.3,
-    "glassColour": "#4f6670"
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#a0452f",
-    "material": "clay-tile",
-    "pitch": 28,
-    "overhang": 0.6
-   }
-  },
-  {
-   "type": "canopy",
-   "at": [
-    0,
-    6,
-    0
-   ],
-   "params": {
-    "form": "flat",
-    "width": 14,
-    "depth": 6,
-    "height": 3.4,
-    "thickness": 0.4,
-    "columns": 4,
-    "colour": "#a0452f",
-    "edgeColour": "#e8e4dc"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    0,
-    10,
-    0
-   ],
-   "params": {
-    "length": 44,
-    "height": 1.6,
-    "thickness": 0.4,
-    "kind": "wall",
-    "pillarEvery": 4,
-    "colour": "#d6d0c4"
+    "height": 0.04,
+    "colour": "#bdbab2",
+    "windows": "none"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -14,
-    -2,
+    7,
+    5,
     0
    ],
    "params": {
     "kind": "broadleaf",
     "height": 9,
-    "count": 3,
-    "spread": 10,
-    "line": 10,
-    "colour": "#3f7a3c"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    10,
-    -1,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 8,
-    "count": 3,
-    "spread": 9,
-    "line": 8,
+    "count": 2,
+    "spread": 4,
+    "line": 4,
     "colour": "#7a3038"
-   }
-  },
-  {
-   "type": "pavilion",
-   "at": [
-    0,
-    20,
-    0
-   ],
-   "params": {
-    "width": 7,
-    "depth": 5,
-    "height": 3.6,
-    "roof": "hip",
-    "rise": 2.2,
-    "colour": "#8b6b4a",
-    "cap_colour": "#a0452f"
    }
   }
  ],
@@ -264,36 +188,60 @@
    {
     "kind": "broadleaf",
     "at": [
-     -18,
-     14
+     -8,
+     5
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     6
     ],
     "height": 10
    },
    {
     "kind": "broadleaf",
     "at": [
-     18,
-     16
+     -11,
+     3
     ],
-    "height": 10
+    "height": 8
    },
    {
     "kind": "broadleaf",
     "at": [
      0,
-     28
+     6
     ],
     "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     5
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -2,
+     8
+    ],
+    "height": 10
    }
   ],
   "extent": [
-   60,
-   50
+   30,
+   20
   ]
  },
  "review": {
-  "rounds": 1,
-  "match": "rough",
-  "gaps": "only the entrance boulder is seen in the photo; ticket booths, canopy, pavilion and planting are typical placeholders; the 69 ha park (Swan Lake, animal houses, lawns) is not modelled"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "boulder is a smooth ellipsoid loft without the lean and craggy surface; inscription is two plain gold bands; trees are low-poly lollipops rather than magnolia and red maple; pink plaza strip only approximate"
  }
 }

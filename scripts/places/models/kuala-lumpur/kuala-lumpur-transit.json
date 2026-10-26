@@ -32,40 +32,40 @@
    "footprint": {
     "polygon": [
      [
-      -58.2,
-      -4.1
+      -49.5,
+      -3.5
      ],
      [
-      -57.6,
-      13.5
+      -49.0,
+      11.5
      ],
      [
-      -15.4,
-      10.8
+      -13.1,
+      9.2
      ],
      [
-      4.2,
-      8.8
+      3.6,
+      7.5
      ],
      [
-      26.9,
-      6.0
+      22.9,
+      5.1
      ],
      [
-      59.7,
-      1.2
+      50.7,
+      1.0
      ],
      [
-      57.5,
-      -15.4
+      48.9,
+      -13.1
      ],
      [
-      22.2,
-      -10.5
+      18.9,
+      -8.9
      ],
      [
-      -13.2,
-      -6.4
+      -11.2,
+      -5.4
      ]
     ]
    },
@@ -74,11 +74,11 @@
     10
    ],
    "z0": 8,
-   "height": 0.7,
+   "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#2a5fa8",
+    "colour": "#8f9aa6",
     "windows": "none"
    },
    "roof": {
@@ -108,14 +108,15 @@
     },
     "mode": "line",
     "start": [
-     -50,
+     -42,
      0
     ],
     "end": [
-     52,
-     -12
+     44,
+     -10
     ],
-    "count": 9
+    "count": 9,
+    "lod2Step": 3
    }
   },
   {
@@ -123,15 +124,15 @@
    "id": "ticket-hall",
    "footprint": {
     "rect": [
-     26,
+     32,
      12
     ]
    },
    "at": [
-    -36,
+    -34,
     -14
    ],
-   "height": 5.5,
+   "height": 5.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -149,51 +150,226 @@
    }
   },
   {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     7,
+     0.6
+    ]
+   },
+   "at": [
+    -40,
+    -20.2
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1f24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1f24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gate-shutter",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    -48,
+    -20.2
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9b88a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b88a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
    "type": "canopy",
    "at": [
-    -18,
+    0,
     -18,
     3.4
    ],
    "params": {
     "form": "flat",
-    "width": 30,
-    "depth": 6,
+    "width": 40,
+    "depth": 7,
     "height": 0,
-    "columns": 6,
+    "columns": 10,
     "colour": "#2a5fa8"
    }
   },
   {
    "type": "prism",
    "at": [
-    8,
-    -18,
+    0,
+    -14,
     0
    ],
    "params": {
     "rect": [
-     22,
-     5
+     36,
+     3
     ],
-    "height": 3.6,
+    "height": 3.4,
     "colour": "#e0c98c"
    }
   },
   {
    "type": "prism",
    "at": [
-    28,
+    30,
     -14,
     0
    ],
    "params": {
     "rect": [
-     8,
-     10
+     11,
+     11
     ],
     "height": 13,
     "colour": "#2a5fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -19.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "height": 8,
+    "colour": "#e0c98c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "poly": [
+      [
+       -1.6,
+       0
+      ],
+      [
+       -1.6,
+       1.2
+      ],
+      [
+       -1.545,
+       1.614
+      ],
+      [
+       -1.386,
+       2.0
+      ],
+      [
+       -1.131,
+       2.331
+      ],
+      [
+       -0.8,
+       2.586
+      ],
+      [
+       -0.414,
+       2.745
+      ],
+      [
+       -0.0,
+       2.8
+      ],
+      [
+       0.414,
+       2.745
+      ],
+      [
+       0.8,
+       2.586
+      ],
+      [
+       1.131,
+       2.331
+      ],
+      [
+       1.386,
+       2.0
+      ],
+      [
+       1.545,
+       1.614
+      ],
+      [
+       1.6,
+       1.2
+      ],
+      [
+       1.6,
+       0
+      ]
+     ]
+    },
+    "points": [
+     [
+      -4,
+      -17,
+      3.6
+     ],
+     [
+      8,
+      -17,
+      6.2
+     ],
+     [
+      22,
+      -17.5,
+      10.6
+     ],
+     [
+      34,
+      -18,
+      13.2
+     ],
+     [
+      50,
+      -14,
+      13.4
+     ]
+    ],
+    "colour": "#2e63b0",
+    "steps": 2
    }
   },
   {
@@ -206,50 +382,166 @@
    "params": {
     "section": {
      "rect": [
-      3.2,
-      2.8
+      0.15,
+      1.0
      ]
     },
     "points": [
      [
-      -2,
-      -16,
-      3.0
+      -4,
+      -18.7,
+      3.6
      ],
      [
-      10,
-      -16,
-      6.0
+      8,
+      -18.7,
+      6.2
      ],
      [
-      24,
-      -15,
-      10.5
+      22,
+      -19.2,
+      10.6
      ],
      [
       34,
-      -14,
-      11.5
+      -19.6,
+      13.2
      ],
      [
       60,
-      -10,
-      11.5
+      -15.6,
+      13.4
      ]
     ],
-    "colour": "#2e63b0"
+    "colour": "#8f9aa6"
    }
   },
   {
    "type": "lamp",
    "at": [
-    0,
+    2,
     -30,
     0
    ],
    "params": {
-    "height": 9,
+    "height": 11,
     "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 2.4,
+    "colour": "#3a6fb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower0",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    46
+   ],
+   "height": 50,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c29a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower1",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    46
+   ],
+   "height": 54,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a27a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower2",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    14,
+    46
+   ],
+   "height": 46,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower3",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -60,
+    46
+   ],
+   "height": 64,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a85"
    }
   }
  ],
@@ -273,6 +565,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "link bridge is a flat-roofed box not a barrel vault; ticket hall and stair core positions approximate; no neighbouring towers"
+  "gaps": "stair is a straight diagonal tube without open railing sides; ticket hall details (shutter, signage) simplified; distant towers are plain boxes"
  }
 }

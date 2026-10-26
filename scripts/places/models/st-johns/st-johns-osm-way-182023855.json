@@ -13,7 +13,7 @@
   {
    "kind": "osm",
    "ref": "way/182023855",
-   "used": "footprint 22 x 20 m, 2 levels"
+   "used": "identity; footprint widened to 30x14 to match the long postcard house (OSM 22x20 is not the long form)"
   }
  ],
  "camera": {
@@ -28,7 +28,10 @@
    "type": "mass",
    "id": "stone-ground",
    "footprint": {
-    "osm": true
+    "rect": [
+     30,
+     14
+    ]
    },
    "height": 3.2,
    "storeys": 1,
@@ -43,7 +46,8 @@
       "front",
       "back"
      ]
-    }
+    },
+    "glassColour": "#1e1e20"
    },
    "roof": {
     "form": "flat",
@@ -55,8 +59,10 @@
    "type": "mass",
    "id": "timber-upper",
    "footprint": {
-    "osm": true,
-    "scale": 0.97
+    "rect": [
+     30,
+     14
+    ]
    },
    "z0": 3.2,
    "height": 3.8,
@@ -74,32 +80,47 @@
     "form": "hip",
     "colour": "#7a746a",
     "material": "slate",
-    "pitch": 13,
-    "overhang": 1.2
+    "pitch": 18,
+    "overhang": 0.5
    }
   },
   {
    "type": "veranda",
    "at": [
-    -2,
-    -12.6,
+    0,
+    -8.4,
     3.2
    ],
-   "rotDeg": 14,
+   "rotDeg": 0,
    "params": {
-    "length": 12,
-    "depth": 2.0,
+    "length": 28,
+    "depth": 1.8,
     "height": 3.0,
     "balustrade": true,
-    "steps": true,
+    "steps": false,
     "roof": "lean-to"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 3.2,
+    "run": 3.4,
+    "colour": "#bdb6a8",
+    "rails": true
    }
   },
   {
    "type": "fence-wall",
    "at": [
-    -14,
-    -20,
+    -18,
+    -13,
     0
    ],
    "params": {
@@ -135,6 +156,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Compact OSM footprint is shorter than the long postcard house; no entrance stair or arched stone doors, gallery rails simplified, current restored colours assumed from the brief."
+  "gaps": "Footprint stretched from OSM to match the photo; roof lacks the central ridge/gabled wing, stair is single not double, gallery balustrade simplified, iron fence sparse."
  }
 }

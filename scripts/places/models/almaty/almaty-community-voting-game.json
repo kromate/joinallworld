@@ -45,9 +45,9 @@
    "storeys": 5,
    "wall": {
     "material": "painted-render",
-    "colour": "#bdb7a8",
+    "colour": "#a39d8e",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.45,
     "plinth": 1.2,
     "faces": {
      "back": "plain",
@@ -57,10 +57,10 @@
     "pattern": [
      {
       "type": "fins",
-      "spacing": 3.9,
-      "depth": 1.1,
-      "width": 1.5,
-      "colour": "#cdc8ba",
+      "spacing": 7.8,
+      "depth": 1.5,
+      "width": 3.2,
+      "colour": "#b3ab98",
       "faces": [
        "front"
       ],
@@ -68,7 +68,7 @@
      }
     ],
     "bay": 3.9,
-    "glassColour": "#3a444c"
+    "glassColour": "#2a323a"
    },
    "roof": {
     "form": "flat",
@@ -95,12 +95,12 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#a39e90",
+    "colour": "#8a8372",
     "windows": "none",
     "pattern": [
      {
       "type": "bands",
-      "colour": "#8f8a7c"
+      "colour": "#756f60"
      }
     ]
    },
@@ -123,11 +123,11 @@
     -53,
     -2
    ],
-   "height": 31,
-   "storeys": 7,
+   "height": 36,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#c4bfb1",
+    "colour": "#b5ae9d",
     "windows": "none",
     "windowRatio": 0.15,
     "plinth": 1.2,
@@ -155,11 +155,11 @@
     53,
     -2
    ],
-   "height": 31,
-   "storeys": 7,
+   "height": 36,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#c4bfb1",
+    "colour": "#b5ae9d",
     "windows": "none",
     "windowRatio": 0.15,
     "plinth": 1.2,
@@ -179,19 +179,19 @@
    "id": "entrance",
    "footprint": {
     "rect": [
-     20,
-     6
+     24,
+     8
     ]
    },
    "at": [
     0,
-    -16
+    -18
    ],
-   "height": 6,
+   "height": 8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#6f6a60",
+    "colour": "#4f4a42",
     "windows": "curtain",
     "windowRatio": 0.5,
     "glassColour": "#262c30"
@@ -199,14 +199,14 @@
    "roof": {
     "form": "flat",
     "colour": "#9a9a96",
-    "overhang": 2.5
+    "overhang": 3.5
    }
   },
   {
    "type": "core/steps",
    "at": [
     0,
-    -22,
+    -24,
     0
    ],
    "params": {
@@ -249,8 +249,8 @@
     9
    ],
    "params": {
-    "width": 8,
-    "height": 15,
+    "width": 6,
+    "height": 24,
     "bottom": 0,
     "colour": "#2f78b8",
     "frameColour": "#d5b44a",
@@ -449,70 +449,131 @@
     "form": "flat",
     "colour": "#8a9a5a"
    }
+  },
+  {
+   "type": "mass",
+   "id": "cornice",
+   "footprint": {
+    "rect": [
+     99,
+     31
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 30.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b2ab99",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8f",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "colour": "#1f3d2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -54,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "colour": "#1f3d2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "colour": "#1f3d2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "colour": "#1f3d2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "colour": "#1f3d2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "colour": "#1f3d2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "colour": "#1f3d2a"
+   }
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
   "forecourtDepth": 30,
-  "trees": [
-   {
-    "kind": "conifer",
-    "at": [
-     -58,
-     -26
-    ],
-    "height": 22
-   },
-   {
-    "kind": "conifer",
-    "at": [
-     -54,
-     -30
-    ],
-    "height": 20
-   },
-   {
-    "kind": "conifer",
-    "at": [
-     -62,
-     -22
-    ],
-    "height": 21
-   },
-   {
-    "kind": "conifer",
-    "at": [
-     -50,
-     -27
-    ],
-    "height": 19
-   },
-   {
-    "kind": "conifer",
-    "at": [
-     -40,
-     -30
-    ],
-    "height": 18
-   },
-   {
-    "kind": "conifer",
-    "at": [
-     -46,
-     -24
-    ],
-    "height": 21
-   },
-   {
-    "kind": "conifer",
-    "at": [
-     58,
-     -26
-    ],
-    "height": 20
-   }
-  ],
+  "trees": [],
   "extent": [
    130,
    100
@@ -521,6 +582,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Dense pilaster piers, beige stone, banner, flag row, hedges and terraces added; windows between piers are dark punched, attic cornice not ornamented, trees still low-poly, banner is a plain blue board"
+  "gaps": "Deeper beige pilasters, heavier attic with cornice, taller ends, long banner; windows plain punched, trees low-poly, no terraced garden detail"
  }
 }

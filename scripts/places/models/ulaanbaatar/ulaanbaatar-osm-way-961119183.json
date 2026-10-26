@@ -31,9 +31,9 @@
     0.08
    ],
    "params": {
-    "width": 108,
-    "depth": 72,
-    "colour": "#5f9a3f"
+    "width": 120,
+    "depth": 84,
+    "colour": "#4f8a3a"
    }
   },
   {
@@ -52,26 +52,26 @@
      -56,
      38
     ],
-    "rows": 14,
+    "rows": 10,
     "rise": 0.55,
     "run": 0.8,
     "firstHeight": 0.9,
     "under": "open",
     "seatColours": [
-     "#4a5a9a",
-     "#7a4f8a",
-     "#4a5a9a"
+     "#3f5aa0",
+     "#7a4f9a",
+     "#3f5aa0"
     ],
     "blocks": 3,
     "concreteColour": "#cfd3d6",
     "underColour": "#aeb3b8",
     "canopy": {
-     "height": 6.5,
-     "depth": 10,
+     "height": 4.2,
+     "depth": 8,
      "thickness": 0.5,
      "slopeDeg": 3,
-     "colour": "#d5d9dc",
-     "edgeColour": "#d5d9dc"
+     "colour": "#8fc7de",
+     "edgeColour": "#8fc7de"
     }
    }
   },
@@ -85,8 +85,8 @@
     ]
    },
    "at": [
-    -30,
-    -44
+    -34,
+    -48
    ],
    "z0": 0,
    "height": 9,
@@ -96,7 +96,7 @@
     "colour": "#e9e8e2",
     "windows": "punched",
     "plinth": 0.6,
-    "windowRatio": 0.25,
+    "windowRatio": 0.3,
     "bands": "#3c5f93"
    },
    "roof": {
@@ -136,22 +136,9 @@
    }
   },
   {
-   "type": "lawn",
-   "at": [
-    78,
-    -10,
-    0.08
-   ],
-   "params": {
-    "width": 40,
-    "depth": 66,
-    "colour": "#5b9540"
-   }
-  },
-  {
    "type": "fence-wall",
    "at": [
-    0,
+    -55,
     -38,
     0
    ],
@@ -166,7 +153,7 @@
   {
    "type": "floodlight-mast",
    "at": [
-    58,
+    62,
     -40,
     0
    ],
@@ -215,6 +202,204 @@
     "count": 4,
     "spacing": 2.4
    }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    40,
+    -62,
+    0.12
+   ],
+   "params": {
+    "length": 48,
+    "width": 30,
+    "stripes": 1,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -52,
+    35,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "return-w",
+   "footprint": {
+    "rect": [
+     4,
+     12
+    ]
+   },
+   "at": [
+    -58,
+    32
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a6fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fc7de",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "return-e",
+   "footprint": {
+    "rect": [
+     4,
+     12
+    ]
+   },
+   "at": [
+    58,
+    32
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a6fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fc7de",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-0",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    -40,
+    70
+   ],
+   "height": 40,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5604a",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-1",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    10,
+    70
+   ],
+   "height": 42,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-2",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    52,
+    70
+   ],
+   "height": 38,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5604a",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
   }
  ],
  "site": {
@@ -222,7 +407,7 @@
   "forecourt": "parking",
   "extent": [
    160,
-   130
+   160
   ]
  },
  "schema": "allworld-place-model",
@@ -232,6 +417,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "pitch markings, curved end of stand and neighbouring tower blocks absent; second small pitch is a flat lawn"
+  "gaps": "stand lacks curved ends, second pitch placed on wrong side of the hall, apartment blocks simplified to three slabs with front windows only, no hoarding detail"
  }
 }

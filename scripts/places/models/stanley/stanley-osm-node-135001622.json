@@ -37,48 +37,13 @@
      12
     ],
     "height": 0.15,
-    "colour": "#b8ad98"
+    "colour": "#c0a98a"
    },
    "at": [
     0,
     -1,
     0
    ]
-  },
-  {
-   "type": "prism",
-   "id": "wall",
-   "at": [
-    0,
-    3.5,
-    0
-   ],
-   "params": {
-    "rect": [
-     22,
-     0.9
-    ],
-    "height": 2.6,
-    "colour": "#9a8f78",
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "coping",
-   "at": [
-    0,
-    3.5,
-    2.6
-   ],
-   "params": {
-    "rect": [
-     22.2,
-     1.1
-    ],
-    "height": 0.25,
-    "colour": "#8a826e"
-   }
   },
   {
    "type": "array",
@@ -210,48 +175,48 @@
     0.75
    ],
    "params": {
-    "colour": "#8f9094",
+    "colour": "#77736e",
     "sections": [
      {
       "z": 0,
       "rect": [
-       3.6,
+       3.4,
+       2.6
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       3.2,
        2.4
       ]
      },
      {
-      "z": 1.0,
-      "rect": [
-       3.4,
-       2.2
-      ]
-     },
-     {
-      "z": 1.1,
+      "z": 1.3,
       "rect": [
        2.8,
+       2.1
+      ]
+     },
+     {
+      "z": 8.6,
+      "rect": [
+       2.4,
+       1.9
+      ]
+     },
+     {
+      "z": 8.8,
+      "rect": [
+       2.7,
+       2.1
+      ]
+     },
+     {
+      "z": 9.1,
+      "rect": [
+       2.3,
        1.8
-      ]
-     },
-     {
-      "z": 8.2,
-      "rect": [
-       2.2,
-       1.4
-      ]
-     },
-     {
-      "z": 8.4,
-      "rect": [
-       2.5,
-       1.6
-      ]
-     },
-     {
-      "z": 9.0,
-      "rect": [
-       2.0,
-       1.2
       ]
      }
     ]
@@ -262,16 +227,16 @@
    "id": "emblem",
    "at": [
     4.2,
-    -0.82,
-    5.6
+    -1.05,
+    5.8
    ],
    "params": {
     "rect": [
-     0.8,
+     0.9,
      0.1
     ],
-    "height": 0.8,
-    "colour": "#6a5a3a"
+    "height": 0.9,
+    "colour": "#5a4a34"
    }
   },
   {
@@ -309,40 +274,216 @@
    "at": [
     4.2,
     0,
-    9.75
+    9.85
    ],
    "params": {
-    "colour": "#3f5a4c",
+    "colour": "#1f2d25",
     "sections": [
      {
       "z": 0,
       "rect": [
-       1.4,
+       1.3,
        1.0
       ]
      },
      {
-      "z": 1.2,
+      "z": 1.0,
       "rect": [
-       1.0,
+       0.9,
        0.7
       ]
      },
      {
-      "z": 2.4,
+      "z": 2.0,
       "rect": [
-       0.7,
+       0.8,
+       0.55
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       0.55,
        0.5
       ]
      },
      {
-      "z": 3.4,
+      "z": 3.0,
       "rect": [
-       0.4,
-       0.3
+       0.35,
+       0.35
       ]
      }
     ]
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "rubble-wall",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.5,
+    "thickness": 0.9,
+    "pitch": 1.1,
+    "colour": "#75654f"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "wall-return-l",
+   "at": [
+    -14,
+    0.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5.5,
+    "height": 2.5,
+    "thickness": 0.9,
+    "pitch": 1.1,
+    "colour": "#75654f"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "wall-return-r",
+   "at": [
+    14,
+    0.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5.5,
+    "height": 2.5,
+    "thickness": 0.9,
+    "pitch": 1.1,
+    "colour": "#75654f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench2",
+   "at": [
+    10,
+    0.9,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wreath0",
+   "at": [
+    -11,
+    2.9,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#b8262a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wreath1",
+   "at": [
+    -9,
+    2.9,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#b8262a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wreath2",
+   "at": [
+    -7,
+    2.9,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#b8262a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wreath3",
+   "at": [
+    -5,
+    2.9,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#b8262a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wreath4",
+   "at": [
+    -3,
+    2.9,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#b8262a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "trident",
+   "at": [
+    4.7,
+    0,
+    12.0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 2.2,
+    "colour": "#1f2d25"
    }
   }
  ],
@@ -356,8 +497,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "fair",
-  "gaps": "Britannia is an abstract tapered spike; wall is smooth render not rubble stone; obelisk granite pale, no inscription, wall not crenellated, no wreaths"
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Wall is flat tan not rubble stone or curved; Britannia a tapered stub; obelisk too pale and tapered; flag plain blue"
  }
 }

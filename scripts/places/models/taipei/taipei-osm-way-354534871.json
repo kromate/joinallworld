@@ -12,7 +12,7 @@
    "author": "Nicemanpower",
    "view": "front",
    "file": "/tmp/places-evidence/taipei/sh2.jpg",
-   "used": "tan tile-clad blocks with punched windows, long 5-storey podium, two tall towers, full-height glass stair core, dark rooftop helipad structure, blue entrance sign (blank here)"
+   "used": "tan tile-clad blocks with regular grids of small dark punched windows (no frames), long 5-storey podium, two tall towers (about 14 storeys), full-height glass stair core with diagonal stairs between them, dark rooftop helipad structure on the left tower, large blue entrance board with white lettering"
   },
   {
    "kind": "osm",
@@ -32,8 +32,8 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     90,
-     34
+     96,
+     32
     ]
    },
    "at": [
@@ -42,18 +42,19 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 21,
+   "height": 20,
    "storeys": 5,
    "wall": {
     "material": "tile-cladding",
     "colour": "#c4a982",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.15,
     "plinth": 0.5,
-    "bay": 10,
+    "bay": 7,
     "faces": {
      "back": "plain",
-     "right": "plain"
+     "right": "plain",
+     "left": "plain"
     }
    },
    "roof": {
@@ -67,8 +68,8 @@
    "id": "towerW",
    "footprint": {
     "rect": [
-     34,
-     36
+     36,
+     34
     ]
    },
    "at": [
@@ -77,18 +78,19 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 56,
+   "height": 54,
    "storeys": 14,
    "wall": {
     "material": "tile-cladding",
     "colour": "#c4a982",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.15,
     "plinth": 0.5,
-    "bay": 11,
+    "bay": 7,
     "faces": {
      "back": "plain",
-     "right": "plain"
+     "right": "plain",
+     "left": "plain"
     }
    },
    "roof": {
@@ -102,23 +104,23 @@
    "id": "towerE",
    "footprint": {
     "rect": [
-     36,
+     38,
      30
     ]
    },
    "at": [
-    14,
+    16,
     14
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 52,
+   "height": 50,
    "storeys": 13,
    "wall": {
     "material": "tile-cladding",
     "colour": "#c4a982",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.15,
     "plinth": 0.5,
     "bay": 7,
     "faces": {
@@ -139,24 +141,24 @@
    "footprint": {
     "rect": [
      16,
-     40
+     38
     ]
    },
    "at": [
-    40,
-    8
+    44,
+    10
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 44,
-   "storeys": 11,
+   "height": 40,
+   "storeys": 10,
    "wall": {
     "material": "tile-cladding",
     "colour": "#c9b090",
     "windows": "none",
-    "windowRatio": 0.12,
+    "windowRatio": 0.2,
     "plinth": 0.5,
-    "bay": 7,
+    "bay": 5,
     "faces": {
      "back": "plain",
      "right": "plain"
@@ -173,23 +175,23 @@
    "id": "stair",
    "footprint": {
     "rect": [
-     8,
-     6
+     7,
+     3
     ]
    },
    "at": [
-    32,
-    -4
+    30,
+    -1.8
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 52,
+   "height": 50,
    "storeys": 13,
    "wall": {
     "material": "glass-curtain",
     "colour": "#7d98a4",
     "windows": "none",
-    "bands": "#c9d4d8"
+    "bands": "#4a5a62"
    },
    "roof": {
     "form": "flat",
@@ -206,12 +208,13 @@
    ],
    "params": {
     "rect": [
-     14,
-     14
+     16,
+     16
     ],
-    "z0": 56,
-    "height": 3,
-    "colour": "#464a50"
+    "z0": 54,
+    "height": 4,
+    "colour": "#3a3d42",
+    "topScale": 0.9
    }
   },
   {
@@ -219,7 +222,7 @@
    "at": [
     -36,
     8,
-    59
+    58
    ],
    "params": {
     "radius": 5.5
@@ -229,28 +232,66 @@
    "type": "prism",
    "id": "signboard",
    "at": [
-    -52,
-    -34
+    -44,
+    -40
    ],
    "params": {
     "rect": [
-     10,
-     1
+     14,
+     1.2
     ],
     "z0": 3,
-    "height": 4,
+    "height": 5.5,
     "colour": "#1f3f8f"
    }
   },
   {
-   "type": "red-cross-plate",
+   "type": "prism",
+   "id": "signtext",
    "at": [
-    -30,
-    -30,
-    18
+    -44,
+    -41
    ],
    "params": {
-    "size": 3
+    "rect": [
+     11,
+     0.2
+    ],
+    "z0": 4.6,
+    "height": 2.4,
+    "colour": "#eef2f6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signpost1",
+   "at": [
+    -49,
+    -40
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 3,
+    "colour": "#7a7e82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signpost2",
+   "at": [
+    -39,
+    -40
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 3,
+    "colour": "#7a7e82"
    }
   }
  ],
@@ -265,8 +306,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Towers' stepped plan and the rooftop helipad structure are approximate; window grid is coarser than the photo; glass stair core is a plain tinted slab; entrance sign is a blank board."
+  "gaps": "window renderer draws pale frames and cross bars the photo lacks; glass stair core is a banded tinted slab without the diagonal stair pattern; sign board is blank with a white panel; stepped plan of the towers simplified"
  }
 }

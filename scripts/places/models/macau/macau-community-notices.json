@@ -41,15 +41,19 @@
     -22,
     2
    ],
-   "height": 48,
-   "storeys": 7,
+   "height": 30,
+   "storeys": 5,
    "wall": {
     "material": "granite",
-    "colour": "#bcb8ac",
-    "windows": "ribbon",
-    "windowRatio": 0.2,
-    "bands": "#a9a699",
-    "plinth": 1.0
+    "colour": "#c4c0b4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#9da0a2",
+    "plinth": 1.0,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
    },
    "roof": {
     "form": "flat",
@@ -136,65 +140,46 @@
     14,
     0
    ],
-   "height": 30,
-   "storeys": 5,
+   "height": 40,
+   "storeys": 6,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#8fb7b5",
+    "colour": "#86b0b0",
     "windows": "ribbon",
-    "windowRatio": 0.7,
-    "bands": "#c3c0b4"
+    "windowRatio": 0.75,
+    "bands": "#8d9396"
    },
    "roof": {
     "form": "flat",
     "colour": "#8a8f94",
     "parapet": 0.6
-   }
+   },
+   "z0": 8
   },
   {
    "type": "mass",
-   "id": "top-block",
+   "id": "recess-core",
    "footprint": {
     "rect": [
-     34,
-     22
+     26,
+     8
     ]
    },
    "at": [
-    -4,
-    8
+    14,
+    5
    ],
-   "z0": 30,
-   "height": 18,
-   "storeys": 3,
+   "height": 8,
+   "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#9db4c2",
+    "colour": "#4a5a5e",
     "windows": "curtain",
-    "windowRatio": 0.55
+    "windowRatio": 0.6
    },
    "roof": {
     "form": "flat",
-    "colour": "#8a8f94",
-    "parapet": 0.8
-   }
-  },
-  {
-   "type": "prism",
-   "id": "entrance-canopy",
-   "at": [
-    14,
-    -14
-   ],
-   "params": {
-    "rect": [
-     22,
-     4
-    ],
-    "z0": 6.5,
-    "height": 0.7,
-    "colour": "#c9c6ba",
-    "topColour": "#c9c6ba"
+    "colour": "#8a8f94"
    }
   },
   {
@@ -202,18 +187,18 @@
    "id": "columns",
    "at": [
     14,
-    -13,
+    -10,
     0
    ],
    "params": {
     "mode": "line",
     "start": [
-     -8,
+     -9,
      0,
      0
     ],
     "end": [
-     8,
+     9,
      0,
      0
     ],
@@ -221,11 +206,11 @@
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.5,
-      "n": 10,
-      "height": 6.5,
-      "colour": "#a8adb0",
-      "topColour": "#a8adb0"
+      "radius": 0.9,
+      "n": 12,
+      "height": 8,
+      "colour": "#a3a8ab",
+      "topColour": "#a3a8ab"
      }
     }
    }
@@ -249,8 +234,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is a low street view; granite wing lacks horizontal steel bands and the real stepped plan; columns/portico simplified; window count cut for budget."
+  "gaps": "Bay glazing is ribbon cuts without the horizontal steel fins; granite panel joints are simplified; low street view with scaffolded neighbour omitted."
  }
 }

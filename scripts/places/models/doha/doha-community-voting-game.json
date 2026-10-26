@@ -49,20 +49,20 @@
     -4,
     2
    ],
-   "height": 8,
+   "height": 10.5,
    "storeys": 2,
    "wall": {
     "material": "render",
     "colour": "#d9a77c",
-    "windows": "arched",
-    "windowRatio": 0.28,
+    "windows": "rect",
+    "windowRatio": 0.12,
     "glassColour": "#2c2420",
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bay": 2.6,
+    "bay": 3.6,
     "cornice": true
    },
    "roof": {
@@ -84,7 +84,7 @@
     -1,
     -4
    ],
-   "height": 15,
+   "height": 17.5,
    "storeys": 2,
    "wall": {
     "material": "render",
@@ -116,7 +116,7 @@
     13,
     -4
    ],
-   "height": 15,
+   "height": 17.5,
    "storeys": 2,
    "wall": {
     "material": "render",
@@ -140,14 +140,14 @@
    "at": [
     6,
     -4,
-    10.5
+    13.5
    ],
    "params": {
     "rect": [
      19,
      6
     ],
-    "height": 4.5,
+    "height": 5.5,
     "colour": "#e3a975"
    }
   },
@@ -164,7 +164,7 @@
     -8,
     -3
    ],
-   "height": 15,
+   "height": 17,
    "storeys": 2,
    "wall": {
     "material": "render",
@@ -195,7 +195,7 @@
     -34,
     -1
    ],
-   "height": 15,
+   "height": 13,
    "storeys": 2,
    "wall": {
     "material": "render",
@@ -226,24 +226,24 @@
     28,
     2
    ],
-   "height": 8,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "render",
     "colour": "#d9a77c",
-    "windows": "arched",
-    "windowRatio": 0.18,
+    "windows": "rect",
+    "windowRatio": 0.12,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bay": 2.6
+    "bay": 3.6
    },
    "roof": {
     "form": "flat",
     "colour": "#d29b70",
-    "parapet": 0.8
+    "parapet": 1.4
    }
   },
   {
@@ -256,7 +256,7 @@
    "params": {
     "width": 10,
     "depth": 5,
-    "height": 14,
+    "height": 16.5,
     "openings": 1,
     "kind": "pointed",
     "pier": "#e4ae83",
@@ -268,7 +268,7 @@
    "at": [
     6,
     -6.8,
-    15
+    19
    ],
    "params": {
     "length": 19,
@@ -283,7 +283,7 @@
    "at": [
     -8,
     -5.8,
-    12.5
+    17
    ],
    "params": {
     "length": 10,
@@ -291,14 +291,18 @@
     "thickness": 0.9,
     "colour": "#e1aa7f",
     "trim": "#d29b70"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mosque-domed/crenellated-wall",
    "at": [
     -34,
     -4.8,
-    11
+    13
    ],
    "params": {
     "length": 8,
@@ -306,7 +310,11 @@
     "thickness": 0.9,
     "colour": "#e2ab80",
     "trim": "#d29b70"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/steps",
@@ -337,7 +345,11 @@
     "openings": 1,
     "kind": "pointed",
     "pier": "#e0a470"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "arch-gateway",
@@ -353,7 +365,11 @@
     "openings": 1,
     "kind": "pointed",
     "pier": "#e3a975"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "arch-gateway",
@@ -369,7 +385,11 @@
     "openings": 1,
     "kind": "pointed",
     "pier": "#e3a975"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "sweep-path",
@@ -381,18 +401,18 @@
    "params": {
     "section": {
      "rect": [
-      5,
+      6,
       0.3
      ]
     },
     "arc": {
      "centre": [
-      22,
-      -14,
+      24,
+      -17,
       0.15
      ],
-     "radius": 14,
-     "radiusY": 8,
+     "radius": 19,
+     "radiusY": 11,
      "startDeg": 200,
      "endDeg": 340,
      "plane": "xy"
@@ -404,15 +424,15 @@
    "type": "array",
    "params": {
     "mode": "line",
-    "count": 3,
+    "count": 4,
     "start": [
-     28,
-     -20,
+     30,
+     -23,
      0.5
     ],
     "end": [
-     40,
-     -20,
+     48,
+     -23,
      0.5
     ],
     "of": {
@@ -423,12 +443,12 @@
        {
         "z": 0,
         "rect": [
-         3.2,
-         3.2
+         4,
+         4
         ]
        },
        {
-        "z": 1.6,
+        "z": 2.2,
         "rect": [
          0.2,
          0.2
@@ -438,21 +458,121 @@
      }
     }
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -1,
+    13
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 5,
+    "colour": "#dba579"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -34,
+    -3.8,
+    18
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.4,
+    "thickness": 0.9,
+    "colour": "#e2ab80",
+    "trim": "#d29b70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-block",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    47,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcae86",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.4,
+    -7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 18.5,
+    "colour": "#e8b68c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.6,
+    -7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 18.5,
+    "colour": "#e8b68c"
+   }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "sand",
   "forecourt": "plaza",
-  "forecourtDepth": 30,
+  "forecourtDepth": 50,
   "extent": [
-   100,
-   70
+   160,
+   110
   ],
-  "forecourtColour": "#8d7a6a"
+  "forecourtColour": "#a8806d"
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "taller deeper pointed gate, sand-pink #d9a77c, arched window bays, curved pool arc with pyramid lights; paving still pale grey not brick, mural and crenellation detail simplified"
+  "gaps": "plaza still renders pale blue-grey (forecourt colour not warm brick) and pool arc is a dark band; gate arch recess shallow, mural and fine crenellation simplified; venue confirmed as Katara entrance block, not an amphitheatre"
  }
 }

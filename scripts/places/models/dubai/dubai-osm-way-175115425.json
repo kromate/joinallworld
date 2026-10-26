@@ -49,19 +49,19 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#ead9b0",
+    "colour": "#d6a089",
     "windows": "none",
     "bay": 20,
     "plinth": 0.4,
     "cornice": true,
-    "bands": "#c9a56a",
+    "bands": "#bf8a58",
     "faces": {
      "back": "plain"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8cdb2",
+    "colour": "#c9a58f",
     "material": "membrane",
     "parapet": 0.5
    }
@@ -76,24 +76,27 @@
     ]
    },
    "at": [
-    -70,
+    -56,
     -8
    ],
-   "height": 22,
+   "height": 30,
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#e4cfa4",
-    "windows": "punched",
+    "colour": "#c98f7a",
+    "windows": "none",
     "windowShape": "arched",
-    "windowRatio": 0.12,
-    "bay": 16,
-    "bands": "#c9a56a",
-    "cornice": true
+    "windowRatio": 0.08,
+    "bay": 20,
+    "bands": "#b87a55",
+    "cornice": true,
+    "pattern": {
+     "type": "floors"
+    }
    },
    "roof": {
     "form": "flat",
-    "colour": "#c9a56a",
+    "colour": "#b87a55",
     "parapet": 0.8
    }
   },
@@ -101,141 +104,157 @@
    "type": "loft",
    "id": "turret0",
    "params": {
-    "colour": "#e4cfa4",
+    "colour": "#c98f7a",
     "topColour": "#c9d3d6",
     "capTop": true,
     "sections": [
      {
-      "z": 20,
-      "circle": 3,
-      "cx": -92,
-      "cy": -16
-     },
-     {
-      "z": 25,
-      "circle": 3,
-      "cx": -92,
-      "cy": -16
-     },
-     {
-      "z": 27,
-      "circle": 3.4,
-      "cx": -92,
-      "cy": -16
-     },
-     {
       "z": 30,
+      "circle": 3,
+      "cx": -70,
+      "cy": -16
+     },
+     {
+      "z": 35,
+      "circle": 3,
+      "cx": -70,
+      "cy": -16
+     },
+     {
+      "z": 37,
+      "circle": 3.4,
+      "cx": -70,
+      "cy": -16
+     },
+     {
+      "z": 40,
       "circle": 0.6,
-      "cx": -92,
+      "cx": -70,
       "cy": -16
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "loft",
    "id": "turret1",
    "params": {
-    "colour": "#e4cfa4",
+    "colour": "#c98f7a",
     "topColour": "#c9d3d6",
     "capTop": true,
     "sections": [
      {
-      "z": 20,
-      "circle": 3,
-      "cx": -92,
-      "cy": 0
-     },
-     {
-      "z": 25,
-      "circle": 3,
-      "cx": -92,
-      "cy": 0
-     },
-     {
-      "z": 27,
-      "circle": 3.4,
-      "cx": -92,
-      "cy": 0
-     },
-     {
       "z": 30,
+      "circle": 3,
+      "cx": -70,
+      "cy": 0
+     },
+     {
+      "z": 35,
+      "circle": 3,
+      "cx": -70,
+      "cy": 0
+     },
+     {
+      "z": 37,
+      "circle": 3.4,
+      "cx": -70,
+      "cy": 0
+     },
+     {
+      "z": 40,
       "circle": 0.6,
-      "cx": -92,
+      "cx": -70,
       "cy": 0
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "loft",
    "id": "turret2",
    "params": {
-    "colour": "#e4cfa4",
+    "colour": "#c98f7a",
     "topColour": "#c9d3d6",
     "capTop": true,
     "sections": [
      {
-      "z": 20,
+      "z": 16,
       "circle": 3,
-      "cx": -48,
+      "cx": -12,
       "cy": -16
      },
      {
-      "z": 25,
+      "z": 21,
       "circle": 3,
-      "cx": -48,
+      "cx": -12,
       "cy": -16
      },
      {
-      "z": 27,
+      "z": 23,
       "circle": 3.4,
-      "cx": -48,
+      "cx": -12,
       "cy": -16
      },
      {
-      "z": 30,
+      "z": 26,
       "circle": 0.6,
-      "cx": -48,
+      "cx": -12,
       "cy": -16
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "loft",
    "id": "turret3",
    "params": {
-    "colour": "#e4cfa4",
+    "colour": "#c98f7a",
     "topColour": "#c9d3d6",
     "capTop": true,
     "sections": [
      {
-      "z": 20,
+      "z": 16,
       "circle": 3,
-      "cx": -48,
+      "cx": -12,
       "cy": 0
      },
      {
-      "z": 25,
+      "z": 21,
       "circle": 3,
-      "cx": -48,
+      "cx": -12,
       "cy": 0
      },
      {
-      "z": 27,
+      "z": 23,
       "circle": 3.4,
-      "cx": -48,
+      "cx": -12,
       "cy": 0
      },
      {
-      "z": 30,
+      "z": 26,
       "circle": 0.6,
-      "cx": -48,
+      "cx": -12,
       "cy": 0
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "surface",
@@ -249,11 +268,15 @@
     "kind": "wave",
     "width": 90,
     "depth": 10,
-    "rise": 3,
+    "rise": 5,
     "thickness": 0.4,
     "colour": "#a9d3bd",
     "edgeColour": "#7fa090"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "canopy",
@@ -276,31 +299,115 @@
    ]
   },
   {
-   "type": "sweep-path",
+   "type": "mass",
+   "id": "hotel-tower",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    -8
+   ],
+   "height": 40,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c98f7a",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.08,
+    "bay": 20,
+    "bands": "#b87a55",
+    "cornice": true,
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b87a55",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav1",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    30,
+    -30
+   ],
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c98f7a",
+    "windows": "none",
+    "bay": 10,
+    "bands": "#bf8a58"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b87a55",
+    "parapet": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
    "id": "ski-slope",
    "params": {
-    "section": {
-     "circle": 6
-    },
-    "points": [
-     [
-      -30,
-      40,
-      12
-     ],
-     [
-      60,
-      40,
-      22
-     ],
-     [
-      120,
-      40,
-      32
-     ]
-    ],
-    "n": 24,
-    "colour": "#c4cace"
+    "colour": "#c9d3d6",
+    "topColour": "#dfe6e8",
+    "sections": [
+     {
+      "z": 6,
+      "rect": [
+       40,
+       28
+      ],
+      "cx": -25,
+      "cy": 40
+     },
+     {
+      "z": 16,
+      "rect": [
+       40,
+       28
+      ],
+      "cx": -5,
+      "cy": 40
+     },
+     {
+      "z": 26,
+      "rect": [
+       36,
+       28
+      ],
+      "cx": 15,
+      "cy": 40
+     },
+     {
+      "z": 34,
+      "rect": [
+       30,
+       28
+      ],
+      "cx": 33,
+      "cy": 40
+     }
+    ]
    }
   },
   {
@@ -308,22 +415,22 @@
    "id": "ski-head",
    "params": {
     "section": {
-     "circle": 8
+     "circle": 12
     },
     "points": [
      [
-      120,
+      44,
       40,
-      32
+      34
      ],
      [
-      130,
+      66,
       40,
       34
      ]
     ],
-    "n": 16,
-    "colour": "#dfe3e6"
+    "n": 20,
+    "colour": "#d5dde0"
    }
   }
  ],
@@ -363,8 +470,8 @@
  "city": "dubai",
  "venueId": "dubai-osm-way-175115425",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Long pale mall now dominates with hotel reduced to a corner block and a thin inclined silver Ski Dubai tube; mall walls still plain, vault only a short strip, slope shorter than real."
+  "gaps": "Ski Dubai now a chunky silver sloped loft with drum head but still smaller and less stepped than real; mall arcade bays and full-length glazed vault only suggested; hotel towers plain without arched window rhythm (triangle budget)."
  }
 }

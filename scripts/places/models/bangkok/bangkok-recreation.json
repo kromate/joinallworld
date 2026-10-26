@@ -17,59 +17,234 @@
   }
  ],
  "review": {
-  "rounds": 3,
-  "match": "fair",
-  "gaps": "lake and gold-based white-spire pavilion, beds and trees placed as in photo; flower beds are rectangular not sinuous, no sky-line tree mass detail, grass flat, flower beds do not show in the render (foreground bed parts too thin), lake is an oval not a winding channel"
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "lake is a banded strip that overshoots the lawn slab on both sides; beds are flat path strips, not banked sinuous mounds; spire is a thin needle without flared white ribs; grey void in foreground remains; no dense tree line or hedges"
  },
  "camera": {
   "yawDeg": -10,
-  "pitchDeg": 5,
+  "pitchDeg": 3,
   "fovDeg": 60,
   "aspect": 1.35,
   "fit": "all",
-  "margin": 0.02
+  "margin": 0.0
  },
  "parts": [
   {
-   "type": "water-surface",
+   "type": "path-strip",
    "at": [
-    -35,
-    -5,
+    0,
+    -10,
     0
    ],
    "params": {
-    "width": 70,
-    "depth": 50,
-    "shape": "ellipse",
-    "colour": "#8fa5a8",
-    "bank": true
+    "points": [
+     [
+      -110,
+      2
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -35,
+      8
+     ],
+     [
+      -5,
+      24
+     ],
+     [
+      30,
+      32
+     ],
+     [
+      70,
+      28
+     ],
+     [
+      110,
+      22
+     ]
+    ],
+    "width": 14,
+    "colour": "#8fa5a8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -110,
+      2
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -35,
+      8
+     ],
+     [
+      -5,
+      24
+     ],
+     [
+      30,
+      32
+     ],
+     [
+      70,
+      28
+     ],
+     [
+      110,
+      22
+     ]
+    ],
+    "width": 14,
+    "colour": "#8fa5a8"
    }
   },
   {
-   "type": "mass",
-   "id": "pavilion-base",
-   "footprint": {
-    "kind": "round",
-    "size": [
-     22,
-     22
-    ]
+   "type": "path-strip",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -110,
+      2
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -35,
+      8
+     ],
+     [
+      -5,
+      24
+     ],
+     [
+      30,
+      32
+     ],
+     [
+      70,
+      28
+     ],
+     [
+      110,
+      22
+     ]
+    ],
+    "width": 14,
+    "colour": "#8fa5a8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -110,
+      2
+     ],
+     [
+      -70,
+      0
+     ],
+     [
+      -35,
+      8
+     ],
+     [
+      -5,
+      24
+     ],
+     [
+      30,
+      32
+     ],
+     [
+      70,
+      28
+     ],
+     [
+      110,
+      22
+     ]
+    ],
+    "width": 14,
+    "colour": "#8fa5a8"
    },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "pavilion-base",
    "at": [
     25,
-    45
+    52,
+    0
    ],
-   "z0": 0,
-   "height": 3,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e0b43a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9a82a"
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e0b43a"
+     ],
+     [
+      15,
+      0,
+      "#e0b43a"
+     ],
+     [
+      14,
+      2.5,
+      "#e0b43a"
+     ],
+     [
+      9,
+      5,
+      "#d9a82a"
+     ],
+     [
+      3,
+      6,
+      "#d9a82a"
+     ],
+     [
+      0,
+      6,
+      "#d9a82a"
+     ]
+    ]
    }
   },
   {
@@ -77,30 +252,30 @@
    "id": "pavilion-spire",
    "at": [
     25,
-    45,
-    3
+    52,
+    6
    ],
    "params": {
     "sections": [
      {
       "z": 0,
-      "circle": 9
+      "circle": 5
      },
      {
-      "z": 3,
-      "circle": 6
+      "z": 6,
+      "circle": 2.6
      },
      {
-      "z": 9,
-      "circle": 3
+      "z": 16,
+      "circle": 1.5
      },
      {
-      "z": 18,
-      "circle": 1.0
+      "z": 30,
+      "circle": 0.9
      },
      {
-      "z": 24,
-      "circle": 0.3
+      "z": 40,
+      "circle": 0.4
      }
     ],
     "colour": "#f4f4f0",
@@ -112,8 +287,8 @@
    "type": "finial",
    "at": [
     25,
-    45,
-    27
+    52,
+    46
    ],
    "params": {
     "height": 4,
@@ -121,59 +296,197 @@
    }
   },
   {
-   "type": "garden-bed",
+   "type": "path-strip",
    "at": [
-    8,
-    -18,
-    0
+    0,
+    0,
+    0.04
    ],
    "params": {
-    "width": 30,
-    "depth": 9,
-    "colour": "#c8372a",
-    "hedge": false
+    "points": [
+     [
+      -45,
+      -40
+     ],
+     [
+      -15,
+      -34
+     ],
+     [
+      15,
+      -42
+     ],
+     [
+      45,
+      -34
+     ],
+     [
+      75,
+      -40
+     ]
+    ],
+    "width": 20,
+    "colour": "#c8442a"
    }
   },
   {
-   "type": "garden-bed",
+   "type": "path-strip",
    "at": [
-    -2,
-    -4,
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -22
+     ],
+     [
+      -45,
+      -18
+     ],
+     [
+      -25,
+      -24
+     ]
+    ],
+    "width": 17,
+    "colour": "#d9582a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "points": [
+     [
+      50,
+      -16
+     ],
+     [
+      65,
+      -12
+     ],
+     [
+      85,
+      -18
+     ]
+    ],
+    "width": 16,
+    "colour": "#d9582a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -14
+     ],
+     [
+      14,
+      -10
+     ],
+     [
+      26,
+      -14
+     ]
+    ],
+    "width": 14,
+    "colour": "#e8ece0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      -48
+     ],
+     [
+      -15,
+      -42
+     ],
+     [
+      15,
+      -50
+     ],
+     [
+      45,
+      -42
+     ],
+     [
+      75,
+      -48
+     ]
+    ],
+    "width": 3,
+    "colour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    62,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 14,
+    "count": 13,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -70,
+    40,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 16,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    85,
+    25,
     0
    ],
    "params": {
     "width": 14,
-    "depth": 6,
-    "colour": "#f2f2f0",
-    "hedge": false
-   }
-  },
-  {
-   "type": "garden-bed",
-   "at": [
-    22,
-    -10,
-    0
-   ],
-   "params": {
-    "width": 20,
-    "depth": 7,
-    "colour": "#c8372a",
-    "hedge": false
-   }
-  },
-  {
-   "type": "garden-bed",
-   "at": [
-    40,
-    -20,
-    0
-   ],
-   "params": {
-    "width": 10,
-    "depth": 4,
-    "colour": "#d9a82a",
-    "hedge": false
+    "depth": 50,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
    }
   },
   {
@@ -193,36 +506,6 @@
    }
   },
   {
-   "type": "tree-grove",
-   "at": [
-    -10,
-    45,
-    0
-   ],
-   "params": {
-    "width": 50,
-    "depth": 14,
-    "count": 14,
-    "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 13
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    75,
-    15,
-    0
-   ],
-   "params": {
-    "width": 14,
-    "depth": 40,
-    "count": 8,
-    "kind": "broadleaf"
-   }
-  },
-  {
    "type": "pier-boardwalk",
    "at": [
     -45,
@@ -234,32 +517,6 @@
     "width": 2.4,
     "height": 0.5,
     "colour": "#8a6a43"
-   }
-  },
-  {
-   "type": "path-strip",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      -15,
-      -5
-     ],
-     [
-      10,
-      10
-     ],
-     [
-      25,
-      30
-     ]
-    ],
-    "width": 3,
-    "colour": "#cbc6bb"
    }
   },
   {
@@ -278,10 +535,9 @@
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "water",
   "extent": [
-   160,
-   130
+   130,
+   110
   ]
  },
  "schema": "allworld-place-model",

@@ -44,8 +44,8 @@
    "height": 3.2,
    "storeys": 1,
    "wall": {
-    "material": "timber",
-    "colour": "#f3f2ec",
+    "material": "painted-render",
+    "colour": "#f4f4f0",
     "windows": "punched",
     "windowRatio": 0.14,
     "plinth": 0.3,
@@ -77,16 +77,16 @@
    "height": 3,
    "storeys": 1,
    "wall": {
-    "material": "timber",
-    "colour": "#f3f2ec",
+    "material": "painted-render",
+    "colour": "#f4f4f0",
     "windows": "punched",
     "windowRatio": 0.2
    },
    "roof": {
     "form": "shed",
-    "colour": "#3f8f66",
+    "colour": "#e8e8e2",
     "material": "corrugated",
-    "pitch": 15,
+    "pitch": 12,
     "overhang": 0.4
    }
   },
@@ -107,9 +107,9 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#f3f2ec",
-    "windows": "curtain",
-    "windowRatio": 0.55,
+    "colour": "#f4f4f0",
+    "windows": "punched",
+    "windowRatio": 0.4,
     "faces": {
      "left": "none",
      "right": "none"
@@ -117,7 +117,7 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#6fae8a",
+    "colour": "#3f8f66",
     "material": "corrugated",
     "pitch": 12,
     "overhang": 0.4
@@ -134,52 +134,87 @@
     "width": 1,
     "height": 2,
     "pots": 0,
-    "colour": "#f0efe9"
+    "colour": "#f4f4f0"
    }
   },
   {
    "type": "flag",
    "at": [
-    -9,
-    -6,
+    -11,
+    -5,
     0
    ],
    "params": {
     "height": 8,
-    "colour": "#2c4a8c"
+    "colour": "#1f3a86"
    }
   },
   {
    "type": "fence-wall",
    "at": [
-    0,
+    -2,
     -8,
     0
    ],
    "params": {
-    "length": 20,
-    "height": 1.1,
-    "thickness": 0.12,
-    "kind": "fence",
+    "length": 24,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "railing",
     "colour": "#f4f4f0"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -11,
-    -2,
+    -13,
+    -3,
     0
    ],
    "params": {
-    "kind": "conifer",
-    "height": 9
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#4e6a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-left",
+   "at": [
+    -14,
+    -1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gravel",
+   "at": [
+    0,
+    -12,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     30,
+     6
+    ],
+    "height": 0.04,
+    "colour": "#cfc9bc"
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "garden",
+  "forecourt": "none",
   "trees": 0,
   "extent": [
    50,
@@ -189,6 +224,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Fence is posts only, no white rails; no window sash detail, wall timber texture too grey; wing/porch positions approximate"
+  "gaps": "No sash-window detail, porch glazing simplified, single broadleaf stands in for wind-bent conifer, flag plain blue not ensign, fence rails less chunky"
  }
 }

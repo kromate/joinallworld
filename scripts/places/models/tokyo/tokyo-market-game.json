@@ -50,23 +50,29 @@
     0
    ],
    "z0": 0,
-   "height": 31,
-   "storeys": 5,
+   "height": 24,
+   "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#ece8df",
-    "windows": "ribbon",
+    "colour": "#efece6",
+    "windows": "none",
     "windowRatio": 0.3,
-    "bay": 14,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#d6cdbf",
     "plinth": 0.6,
-    "groundHeight": 6.5,
-    "cornice": true
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efece6",
+       "#2f4f86"
+      ]
+     }
+    ]
    },
    "roof": {
     "form": "flat",
@@ -76,111 +82,462 @@
    }
   },
   {
-   "type": "mass",
+   "type": "loft",
    "id": "vault-big",
-   "rotDeg": 90,
-   "footprint": {
-    "rect": [
-     12,
-     22
-    ]
-   },
    "at": [
     -30,
-    -49
+    -45,
+    0
    ],
-   "height": 28,
-   "storeys": 4,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#3f5f86",
-    "windows": "curtain",
-    "windowRatio": 0.9,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    },
-    "plinth": 0
-   },
-   "roof": {
-    "form": "barrel",
-    "colour": "#c9ccd0",
-    "material": "metal-sheet",
-    "rise": 8,
-    "overhang": 0.5
+   "params": {
+    "curve": true,
+    "colour": "#35557f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       22
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       22,
+       22
+      ]
+     },
+     {
+      "z": 19.5,
+      "rect": [
+       20.46,
+       22
+      ]
+     },
+     {
+      "z": 24.0,
+      "rect": [
+       16.72,
+       22
+      ]
+     },
+     {
+      "z": 27.6,
+      "rect": [
+       9.9,
+       22
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       1.76,
+       22
+      ]
+     }
+    ]
    }
   },
   {
-   "type": "mass",
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -39.9,
+      -56.15,
+      0.0
+     ],
+     [
+      -39.9,
+      -56.15,
+      12.15
+     ],
+     [
+      -39.21,
+      -56.15,
+      17.55
+     ],
+     [
+      -37.52,
+      -56.15,
+      21.6
+     ],
+     [
+      -34.45,
+      -56.15,
+      24.840000000000003
+     ],
+     [
+      -30.0,
+      -56.15,
+      27.0
+     ],
+     [
+      -30.0,
+      -56.15,
+      27.0
+     ],
+     [
+      -25.55,
+      -56.15,
+      24.840000000000003
+     ],
+     [
+      -22.48,
+      -56.15,
+      21.6
+     ],
+     [
+      -20.79,
+      -56.15,
+      17.55
+     ],
+     [
+      -20.1,
+      -56.15,
+      12.15
+     ],
+     [
+      -20.1,
+      -56.15,
+      0.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1b2230",
+    "n": 4,
+    "steps": 3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -35.5,
+      -56.15,
+      0.0
+     ],
+     [
+      -35.5,
+      -56.15,
+      6.75
+     ],
+     [
+      -35.12,
+      -56.15,
+      9.75
+     ],
+     [
+      -34.18,
+      -56.15,
+      12.0
+     ],
+     [
+      -32.48,
+      -56.15,
+      13.8
+     ],
+     [
+      -30.0,
+      -56.15,
+      15.0
+     ],
+     [
+      -30.0,
+      -56.15,
+      15.0
+     ],
+     [
+      -27.52,
+      -56.15,
+      13.8
+     ],
+     [
+      -25.82,
+      -56.15,
+      12.0
+     ],
+     [
+      -24.88,
+      -56.15,
+      9.75
+     ],
+     [
+      -24.5,
+      -56.15,
+      6.75
+     ],
+     [
+      -24.5,
+      -56.15,
+      0.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1b2230",
+    "n": 4,
+    "steps": 3
+   }
+  },
+  {
+   "type": "loft",
    "id": "vault-small",
-   "rotDeg": 90,
-   "footprint": {
-    "rect": [
-     10,
-     15
-    ]
-   },
    "at": [
-    -9,
-    -48
+    -8,
+    -44,
+    0
    ],
-   "height": 19,
-   "storeys": 3,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#3f5f86",
-    "windows": "curtain",
-    "windowRatio": 0.9,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    },
-    "plinth": 0
-   },
-   "roof": {
-    "form": "barrel",
-    "colour": "#c9ccd0",
-    "material": "metal-sheet",
-    "rise": 6,
-    "overhang": 0.5
+   "params": {
+    "curve": true,
+    "colour": "#3a5a85",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       15.0,
+       18
+      ]
+     },
+     {
+      "z": 9.9,
+      "rect": [
+       15.0,
+       18
+      ]
+     },
+     {
+      "z": 14.3,
+      "rect": [
+       13.950000000000001,
+       18
+      ]
+     },
+     {
+      "z": 17.6,
+      "rect": [
+       11.4,
+       18
+      ]
+     },
+     {
+      "z": 20.240000000000002,
+      "rect": [
+       6.75,
+       18
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.2,
+       18
+      ]
+     }
+    ]
    }
   },
   {
-   "type": "mass",
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -14.75,
+      -53.15,
+      0.0
+     ],
+     [
+      -14.75,
+      -53.15,
+      8.91
+     ],
+     [
+      -14.28,
+      -53.15,
+      12.870000000000001
+     ],
+     [
+      -13.13,
+      -53.15,
+      15.840000000000002
+     ],
+     [
+      -11.04,
+      -53.15,
+      18.216
+     ],
+     [
+      -8.0,
+      -53.15,
+      19.8
+     ],
+     [
+      -8.0,
+      -53.15,
+      19.8
+     ],
+     [
+      -4.96,
+      -53.15,
+      18.216
+     ],
+     [
+      -2.87,
+      -53.15,
+      15.840000000000002
+     ],
+     [
+      -1.72,
+      -53.15,
+      12.870000000000001
+     ],
+     [
+      -1.25,
+      -53.15,
+      8.91
+     ],
+     [
+      -1.25,
+      -53.15,
+      0.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1b2230",
+    "n": 4,
+    "steps": 3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -11.75,
+      -53.15,
+      0.0
+     ],
+     [
+      -11.75,
+      -53.15,
+      4.95
+     ],
+     [
+      -11.49,
+      -53.15,
+      7.15
+     ],
+     [
+      -10.85,
+      -53.15,
+      8.8
+     ],
+     [
+      -9.69,
+      -53.15,
+      10.120000000000001
+     ],
+     [
+      -8.0,
+      -53.15,
+      11.0
+     ],
+     [
+      -8.0,
+      -53.15,
+      11.0
+     ],
+     [
+      -6.31,
+      -53.15,
+      10.120000000000001
+     ],
+     [
+      -5.15,
+      -53.15,
+      8.8
+     ],
+     [
+      -4.51,
+      -53.15,
+      7.15
+     ],
+     [
+      -4.25,
+      -53.15,
+      4.95
+     ],
+     [
+      -4.25,
+      -53.15,
+      0.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1b2230",
+    "n": 4,
+    "steps": 3
+   }
+  },
+  {
+   "type": "loft",
    "id": "vault-end",
-   "rotDeg": 90,
-   "footprint": {
-    "rect": [
-     8,
-     12
-    ]
-   },
    "at": [
     -48,
-    -47
+    -44,
+    0
    ],
-   "height": 15,
-   "storeys": 3,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#3f5f86",
-    "windows": "curtain",
-    "windowRatio": 0.8,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    },
-    "plinth": 0
-   },
-   "roof": {
-    "form": "barrel",
-    "colour": "#c9ccd0",
-    "material": "metal-sheet",
-    "rise": 4,
-    "overhang": 0.4
+   "params": {
+    "curve": true,
+    "colour": "#3a5a85",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.0,
+       14
+      ]
+     },
+     {
+      "z": 6.75,
+      "rect": [
+       9.0,
+       14
+      ]
+     },
+     {
+      "z": 9.75,
+      "rect": [
+       8.370000000000001,
+       14
+      ]
+     },
+     {
+      "z": 12.0,
+      "rect": [
+       6.84,
+       14
+      ]
+     },
+     {
+      "z": 13.8,
+      "rect": [
+       4.05,
+       14
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       0.72,
+       14
+      ]
+     }
+    ]
    }
   },
   {
@@ -188,7 +545,7 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     88,
+     90,
      6
     ]
    },
@@ -196,7 +553,7 @@
     10,
     -46.5
    ],
-   "height": 7,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "render",
@@ -247,16 +604,51 @@
     "colour": "#e9e6df",
     "frameColour": "#aaaaaa"
    }
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    10,
+    -49.8,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.25
+    ],
+    "height": 1.1,
+    "colour": "#4aa3cc"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    12,
+    -52,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 88,
+    "depth": 4,
+    "height": 5.2,
+    "rise": 1.0,
+    "thickness": 0.4,
+    "colour": "#6a5646",
+    "edgeColour": "#55453a"
+   }
   }
  ],
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "vault fronts are plain blue glass without the steel arch grid; no rooftop car deck detail, no podium arcade columns or blue railings"
+  "gaps": "vault arches are lofted solids with 2 steel arch lines, not a full lattice; no raised deck stair tower or podium arcade piers; sign boards blank"
  },
  "site": {
   "ground": "paving",
-  "forecourt": "plaza",
+  "forecourt": "road",
   "trees": [
    {
     "kind": "broadleaf",

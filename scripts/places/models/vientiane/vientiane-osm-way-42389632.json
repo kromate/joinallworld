@@ -37,13 +37,13 @@
     0,
     0
    ],
-   "height": 4.6,
+   "height": 4.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#c79a2c",
+    "colour": "#c4952a",
     "windows": "arched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.2,
     "bay": 5.5,
     "plinth": 1.2,
     "bands": "#c9a24a",
@@ -68,10 +68,10 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#4c4045",
+    "colour": "#463b42",
     "material": "clay-tile",
-    "pitch": 20,
-    "overhang": 1.6,
+    "pitch": 24,
+    "overhang": 2.4,
     "axis": "y"
    }
   },
@@ -88,7 +88,7 @@
     0,
     0.5
    ],
-   "height": 3.0,
+   "height": 1.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -98,30 +98,30 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#4c4045",
+    "colour": "#463b42",
     "material": "clay-tile",
-    "pitch": 38,
-    "overhang": 1.8,
+    "pitch": 42,
+    "overhang": 1.4,
     "axis": "y"
    },
-   "z0": 5.6
+   "z0": 4.2
   },
   {
    "type": "prism",
    "id": "gablefront",
    "at": [
     0,
-    -13.2
+    -13.7
    ],
    "params": {
     "rect": [
-     11,
-     0.5
+     11.5,
+     0.4
     ],
-    "z0": 8.6,
-    "height": 4.6,
-    "colour": "#c9a24a",
-    "topScale": 0.12
+    "z0": 6.0,
+    "height": 6.5,
+    "colour": "#8c2b24",
+    "topScale": 0.05
    },
    "lod": [
     0,
@@ -331,6 +331,76 @@
     "pillarEvery": 4,
     "colour": "#e4d9bd"
    }
+  },
+  {
+   "type": "prism",
+   "id": "gold-edge",
+   "at": [
+    0,
+    -13.35
+   ],
+   "params": {
+    "rect": [
+     12.6,
+     0.3
+    ],
+    "z0": 5.8,
+    "height": 7.0,
+    "colour": "#d8b04a",
+    "topScale": 0.04
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     18.2,
+     34.2
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#d6a93a",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6.5,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -18.0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a3302a",
+    "windows": "none",
+    "trimColour": "#d8b04a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#463b42",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.9,
+    "axis": "y"
+   }
   }
  ],
  "site": {
@@ -362,6 +432,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Lower roof tier less sweeping than real, no gilded gable relief or carved door frames, lions are simple, red arched doorways not distinct"
+  "gaps": "Roof tiers simplified (no continuous skirt reaching plinth), no gilded relief or carved door frames, only one porch, lions simple, arched windows are small"
  }
 }

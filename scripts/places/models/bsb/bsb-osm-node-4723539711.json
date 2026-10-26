@@ -53,15 +53,14 @@
    "storeys": 4,
    "wall": {
     "material": "render",
-    "colour": "#f4f2ec",
+    "colour": "#e8e2c8",
     "windows": "ribbon",
     "windowRatio": 0.35,
-    "plinth": 0.5,
-    "bands": "#bfbab0"
+    "plinth": 0.5
    },
    "roof": {
     "form": "flat",
-    "colour": "#7d8084",
+    "colour": "#8a8f8c",
     "parapet": 0.8
    }
   },
@@ -82,16 +81,18 @@
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#e6e0c4",
-    "windows": "none",
+    "colour": "#e6dfc3",
+    "windows": "punched",
     "plinth": 0.5,
-    "bands": "#d8c9b0"
+    "bands": "#d8c9b0",
+    "windowRatio": 0.4,
+    "bay": 4
    },
    "roof": {
     "form": "hip",
-    "pitch": 16,
-    "overhang": 2.6,
-    "colour": "#7f9a74",
+    "pitch": 12,
+    "overhang": 3,
+    "colour": "#5f9a82",
     "material": "clay-tile"
    }
   },
@@ -112,16 +113,17 @@
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#e6e0c4",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "plinth": 0.5
+    "colour": "#e6dfc3",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "bay": 4
    },
    "roof": {
     "form": "hip",
-    "pitch": 16,
-    "overhang": 2.6,
-    "colour": "#7f9a74",
+    "pitch": 12,
+    "overhang": 3,
+    "colour": "#5f9a82",
     "material": "clay-tile"
    }
   },
@@ -142,94 +144,16 @@
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#d9d2bc",
+    "colour": "#cfc6b0",
     "windows": "none",
-    "plinth": 0.4,
-    "bands": "#cfc6ae"
+    "plinth": 0.4
    },
    "roof": {
     "form": "gable",
-    "pitch": 30,
+    "pitch": 22,
     "overhang": 1.4,
-    "colour": "#cdc6b0",
+    "colour": "#c9c1ad",
     "material": "concrete"
-   }
-  },
-  {
-   "type": "core/portico",
-   "at": [
-    0,
-    -16,
-    0
-   ],
-   "params": {
-    "width": 18,
-    "depth": 5,
-    "height": 6,
-    "columns": 4,
-    "pediment": false,
-    "steps": 0,
-    "colour": "#d4a190",
-    "roofColour": "#d9d2bc"
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "mode": "line",
-    "start": [
-     -33,
-     -9.4,
-     0
-    ],
-    "end": [
-     33,
-     -9.4,
-     0
-    ],
-    "count": 8,
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       0.7,
-       0.7
-      ],
-      "height": 3.6,
-      "colour": "#d4a190"
-     }
-    }
-   }
-  },
-  {
-   "type": "flag",
-   "at": [
-    0,
-    -8,
-    8
-   ],
-   "params": {}
-  },
-  {
-   "type": "lamp",
-   "at": [
-    -8,
-    -22,
-    0
-   ],
-   "params": {
-    "height": 4.2
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    8,
-    -22,
-    0
-   ],
-   "params": {
-    "height": 4.2
    }
   },
   {
@@ -267,19 +191,194 @@
     "kind": "palm",
     "height": 9
    }
+  },
+  {
+   "type": "hospital/arch-portal",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 9.5,
+    "depth": 0.6,
+    "archWidth": 10,
+    "springHeight": 5,
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 5,
+    "height": 6.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#d4a190",
+    "roofColour": "#d3cbb7"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -9.4,
+     0
+    ],
+    "end": [
+     -13,
+     -9.4,
+     0
+    ],
+    "count": 7,
+    "lod1Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 5,
+      "colour": "#d4a190"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     13,
+     -9.4,
+     0
+    ],
+    "end": [
+     38,
+     -9.4,
+     0
+    ],
+    "count": 7,
+    "lod1Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 5,
+      "colour": "#d4a190"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -16,
+     -26,
+     0
+    ],
+    "end": [
+     16,
+     -26,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 4,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 6,
+      "height": 0.9,
+      "depth": 1.2
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 4.2,
+    "count": 2,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "height": 4.2,
+    "count": 2,
+    "spacing": 60
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "none",
   "extent": [
    130,
    90
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "hedges, lawn mound, arched opening in the gable and real wing lengths are approximate; 4-storey rear block comes from the brief, not visible in the photo"
+  "gaps": "arched opening in the gable reads faintly (arch plate not a deep open vault); curved drive, lawn mound, clipped conifers and ornate lamps approximate; 4-storey rear block comes from the brief, not visible in the photo"
  }
 }

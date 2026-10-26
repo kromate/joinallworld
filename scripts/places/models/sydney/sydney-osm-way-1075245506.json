@@ -36,15 +36,15 @@
   {
    "type": "water-surface",
    "at": [
-    -35,
+    -65,
     10,
     0
    ],
    "params": {
     "width": 130,
-    "depth": 110,
-    "colour": "#6f7d88",
-    "bank": true
+    "depth": 160,
+    "colour": "#7d8a94",
+    "bank": false
    }
   },
   {
@@ -52,67 +52,260 @@
    "at": [
     0,
     0,
-    0.05
+    0.12
    ],
    "params": {
     "points": [
      [
       30,
-      -45
+      -55
      ],
      [
       22,
-      -25
+      -35
      ],
      [
-      10,
-      -5
+      15,
+      -15
      ],
      [
-      2,
+      12,
+      0
+     ],
+     [
+      13,
       15
      ],
      [
-      0,
-      40
+      14,
+      35
+     ],
+     [
+      14,
+      55
+     ],
+     [
+      16,
+      70
      ]
     ],
-    "width": 7,
-    "colour": "#b9ab96"
+    "width": 13,
+    "colour": "#a89472"
    }
   },
   {
-   "type": "jetty",
+   "type": "mass",
+   "id": "seawall",
+   "footprint": {
+    "rect": [
+     0.8,
+     70
+    ]
+   },
    "at": [
-    -30,
-    10,
-    0
+    7.2,
+    15
    ],
-   "rotDeg": 0,
-   "params": {
-    "length": 10,
-    "width": 3,
-    "height": 0.5
+   "z0": 0,
+   "height": 0.9,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#8a7e6a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8d76",
+    "parapet": 0.0
    }
   },
   {
-   "type": "jetty",
+   "type": "mass",
+   "id": "pontoon",
+   "footprint": {
+    "rect": [
+     3.2,
+     7
+    ]
+   },
    "at": [
-    -15,
-    35,
-    0
+    -14,
+    26
    ],
-   "params": {
-    "length": 14,
-    "width": 2.4,
-    "height": 0.5
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bollard-a",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -15.2,
+    23.5
+   ],
+   "z0": 0.5,
+   "height": 1.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#202226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bollard-b",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -12.8,
+    28.5
+   ],
+   "z0": 0.5,
+   "height": 1.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#202226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bollard-c",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    42
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#202226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-pontoon",
+   "footprint": {
+    "rect": [
+     3,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    45
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-bank-1",
+   "footprint": {
+    "rect": [
+     200,
+     20
+    ]
+   },
+   "at": [
+    -10,
+    76
+   ],
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a6544",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5a3c",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-bank-2",
+   "footprint": {
+    "rect": [
+     90,
+     16
+    ]
+   },
+   "at": [
+    -45,
+    66
+   ],
+   "z0": 0,
+   "height": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#56714d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#486444",
+    "parapet": 0.0
    }
   },
   {
    "type": "pavilion",
    "at": [
-    26,
-    22,
+    15,
+    62,
     0
    ],
    "params": {
@@ -123,83 +316,14 @@
     "rise": 1.2,
     "posts": 4,
     "colour": "#8a8f86",
-    "cap_colour": "#7a7f78"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "lookout-castle",
-   "footprint": {
-    "rect": [
-     7,
-     7
-    ]
-   },
-   "at": [
-    40,
-    48
-   ],
-   "height": 6.2,
-   "wall": {
-    "material": "sandstone",
-    "colour": "#b9a07a",
-    "windows": "punched",
-    "windowRatio": 0.08
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#a89066",
-    "parapet": 0.9
-   }
-  },
-  {
-   "type": "mass",
-   "id": "castle-turret",
-   "footprint": {
-    "rect": [
-     2.6,
-     2.6
-    ]
-   },
-   "at": [
-    43,
-    51
-   ],
-   "z0": 6.2,
-   "height": 2.2,
-   "wall": {
-    "material": "sandstone",
-    "colour": "#b9a07a",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#a89066",
-    "parapet": 0.5
+    "cap_colour": "#6f5a48"
    }
   },
   {
    "type": "rock-hill",
    "at": [
-    62,
-    38,
-    0
-   ],
-   "params": {
-    "width": 14,
-    "depth": 10,
-    "height": 2.5,
-    "seed": 3,
-    "stairs": false,
-    "rock_colour": "#7e7d74",
-    "boulders": 8
-   }
-  },
-  {
-   "type": "rock-hill",
-   "at": [
-    18,
-    -30,
+    22,
+    -22,
     0
    ],
    "params": {
@@ -215,65 +339,50 @@
   {
    "type": "tree-grove",
    "at": [
-    52,
-    5,
+    30,
+    10,
     0
    ],
    "params": {
-    "width": 50,
-    "depth": 70,
-    "count": 16,
+    "width": 16,
+    "depth": 80,
+    "count": 7,
     "kind": "eucalyptus",
-    "min_height": 10,
-    "max_height": 18
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    40,
-    -30,
-    0
-   ],
-   "params": {
-    "width": 40,
-    "depth": 20,
-    "count": 9,
-    "kind": "eucalyptus",
-    "min_height": 9,
-    "max_height": 15
+    "min_height": 14,
+    "max_height": 20
    }
   },
   {
    "type": "tree",
    "at": [
-    16,
-    6,
+    24,
+    -8,
     0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 16
+    "kind": "eucalyptus",
+    "height": 18
    }
   },
   {
-   "type": "lamp",
+   "type": "tree",
    "at": [
-    12,
-    -4,
+    22,
+    30,
     0
    ],
    "params": {
-    "height": 3.6
+    "kind": "eucalyptus",
+    "height": 17
    }
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "sand",
   "forecourt": "none",
   "extent": [
    160,
-   140
+   160
   ]
  },
  "schema": "allworld-place-model",
@@ -283,6 +392,6 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Vignette only: water, promenade and pontoon read poorly from the photo viewpoint, trees are generic, castle lookout unverified, ground is grass."
+  "gaps": "Vignette only: promenade is a faceted strip, water and far bank are boxes, trees are generic blobs, steel stair rail and ripples missing."
  }
 }

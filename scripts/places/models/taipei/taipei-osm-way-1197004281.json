@@ -33,7 +33,7 @@
   "yawDeg": 35,
   "pitchDeg": 8,
   "fovDeg": 60,
-  "aspect": 0.75
+  "aspect": 1.4
  },
  "parts": [
   {
@@ -52,8 +52,8 @@
    "height": 9,
    "storeys": 2,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#4a4e54",
+    "material": "stone",
+    "colour": "#3b3f45",
     "windows": "none",
     "plinth": 0.3
    },
@@ -64,76 +64,112 @@
   },
   {
    "type": "mass",
-   "id": "towerbody",
+   "id": "tower-a",
    "footprint": {
-    "osm": true,
-    "simplify": 5.0,
-    "scale": 0.97
+    "rect": [
+     26,
+     20
+    ]
    },
    "at": [
-    0,
-    0
+    -26,
+    -22
    ],
-   "rotDeg": 0,
+   "rotDeg": -33,
    "z0": 9,
-   "height": 29,
-   "storeys": 5,
+   "height": 30,
+   "storeys": 8,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7a9cc0",
+    "colour": "#7fa6d0",
+    "glassColour": "#6f9fd0",
     "windows": "curtain",
-    "windowRatio": 0.8,
-    "bay": 13,
-    "bands": "#c9ccd0",
-    "parapet": 1.2
+    "windowRatio": 0.75,
+    "bay": 2.5,
+    "bands": "#f2f4f7",
+    "parapet": 0.4
    },
    "roof": {
     "form": "flat",
     "colour": "#8d8f8f",
     "material": "membrane",
-    "parapet": 1.0
+    "parapet": 0.5
    }
   },
   {
    "type": "mass",
-   "id": "roof-plant",
+   "id": "mass-b",
    "footprint": {
     "rect": [
-     26,
-     14
+     28,
+     20
     ]
    },
    "at": [
-    -12,
-    6
+    14,
+    -36
    ],
    "rotDeg": -33,
-   "z0": 38,
-   "height": 3.5,
+   "z0": 9,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa6d0",
+    "glassColour": "#6f9fd0",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "bay": 2.5,
+    "bands": "#f2f4f7",
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-screen",
+   "footprint": {
+    "rect": [
+     26,
+     2
+    ]
+   },
+   "at": [
+    14,
+    -36
+   ],
+   "rotDeg": -33,
+   "z0": 26,
+   "height": 3,
    "storeys": 1,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#d9d6cf",
+    "material": "painted-render",
+    "colour": "#f2f2ee",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f8f"
+    "colour": "#f2f2ee"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    -30,
-    -34,
-    22
+    -18,
+    -62,
+    12
    ],
    "params": {
-    "width": 8,
-    "height": 4,
+    "width": 6,
+    "height": 2.2,
     "bottom": 0,
-    "colour": "#b3262c",
-    "frameColour": "#3b3f45",
+    "colour": "#f2f2ee",
+    "frameColour": "#2a2a2a",
     "posts": false
    },
    "rotDeg": -33
@@ -141,17 +177,68 @@
   {
    "type": "core/sign-board",
    "at": [
-    -8,
-    -38,
-    2.5
+    -45,
+    -30,
+    6
    ],
    "params": {
-    "width": 9,
-    "height": 2.4,
+    "width": 5,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#f2f2ee",
+    "frameColour": "#2a2a2a",
+    "posts": false
+   },
+   "rotDeg": -33
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -34,
+    36
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.5,
     "bottom": 0,
     "colour": "#e2b02c",
     "frameColour": "#2a2a2a",
-    "posts": true
+    "posts": false
+   },
+   "rotDeg": -33
+  },
+  {
+   "type": "prism",
+   "id": "fin",
+   "at": [
+    -40,
+    -12
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     1.2,
+     3
+    ],
+    "height": 30,
+    "colour": "#2a2d32"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 12,
+    "bottom": 0,
+    "colour": "#2a2d32",
+    "frameColour": "#2a2d32",
+    "posts": false
    },
    "rotDeg": -33
   },
@@ -159,7 +246,7 @@
    "type": "core/steps",
    "at": [
     -8,
-    -36,
+    -66,
     0
    ],
    "params": {
@@ -189,8 +276,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "podium and tower reduced to two plain volumes, no stepped corner masses, no signage mass or white roof screen; mullion grid coarser than the real glazing; footprint simplified to stay in budget"
+  "gaps": "Stepped 8-level and 5-level glass masses on a dark 2-storey podium with white roof screen, fin and sign boards, but glazing still renders darker than the real reflective blue, the podium has no recessed entrance or pylon detail, and the huge YES!LIFE sculpture in the photo is not modelled."
  }
 }

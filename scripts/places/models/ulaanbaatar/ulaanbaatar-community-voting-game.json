@@ -40,11 +40,11 @@
    "storeys": 4,
    "wall": {
     "material": "stone",
-    "colour": "#d9d2bf",
+    "colour": "#cfc9b8",
     "trimColour": "#efe9d9",
     "windows": "punched",
     "windowRatio": 0.2,
-    "bay": 6,
+    "bay": 8,
     "plinth": 1.2,
     "cornice": true,
     "faces": {
@@ -55,7 +55,7 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#6f7478",
+    "colour": "#6a6e72",
     "material": "metal-sheet",
     "rise": 3,
     "overhang": 1
@@ -64,20 +64,23 @@
   {
    "type": "core/colonnade",
    "at": [
-    0,
-    38,
+    -40,
+    -2,
     0
    ],
    "params": {
-    "length": 40,
+    "length": 28,
     "count": 8,
-    "height": 14,
-    "radius": 1.1,
+    "height": 11,
+    "radius": 0.9,
     "beamHeight": 1.4,
     "roofDepth": 6,
     "colour": "#ede8da",
     "roofColour": "#d5cfbd"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "steps",
@@ -116,24 +119,28 @@
   },
   {
    "type": "mass",
-   "id": "city-admin",
+   "id": "opera-house",
    "footprint": {
     "rect": [
-     22,
-     50
+     20,
+     34
     ]
    },
    "at": [
-    -52,
-    0
+    -54,
+    -2
    ],
-   "height": 26,
-   "storeys": 6,
+   "height": 15,
+   "storeys": 3,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#4a4f56",
-    "windows": "ribbon",
-    "windowRatio": 0.5,
+    "material": "brick",
+    "colour": "#c98a5a",
+    "trimColour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 7,
+    "plinth": 1.0,
+    "cornice": true,
     "faces": {
      "left": "plain",
      "back": "plain",
@@ -141,9 +148,11 @@
     }
    },
    "roof": {
-    "form": "flat",
-    "colour": "#44484e",
-    "material": "membrane"
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "axis": "x"
    }
   },
   {
@@ -163,11 +172,10 @@
    "storeys": 16,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#9ba3aa",
+    "colour": "#b4bbc2",
     "windows": "ribbon",
     "windowRatio": 0.55,
     "bay": 8,
-    "bands": "#c8ccd0",
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -189,82 +197,42 @@
     0
    ],
    "params": {
-    "colour": "#3c6fb0",
+    "colour": "#3a82a8",
     "sections": [
      {
       "z": 0,
       "ellipse": [
-       8,
+       9,
+       7
+      ],
+      "cx": 0
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       8.5,
        6
-      ]
+      ],
+      "cx": -1.5
      },
      {
-      "z": 30,
+      "z": 40,
       "ellipse": [
-       8,
-       5.5
-      ]
+       7,
+       4.5
+      ],
+      "cx": -3.5
      },
      {
-      "z": 52,
+      "z": 56,
       "ellipse": [
-       6,
-       4
-      ]
+       5,
+       3
+      ],
+      "cx": -6
      }
-    ]
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "of": {
-     "type": "lamp",
-     "params": {
-      "height": 9
-     }
-    },
-    "mode": "line",
-    "start": [
-     -56,
-     -38
     ],
-    "end": [
-     56,
-     -38
-    ],
-    "count": 9
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "of": {
-     "type": "lamp",
-     "params": {
-      "height": 9
-     }
-    },
-    "mode": "line",
-    "start": [
-     -56,
-     18
-    ],
-    "end": [
-     56,
-     18
-    ],
-    "count": 9
+    "curve": true
    }
   },
   {
@@ -339,6 +307,150 @@
     0,
     -52
    ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.25,
+        0,
+        "#2f2a20"
+       ],
+       [
+        0.25,
+        6.5,
+        "#2f2a20"
+       ],
+       [
+        0.9,
+        7.0,
+        "#f4f1e6"
+       ],
+       [
+        1.1,
+        7.8,
+        "#f4f1e6"
+       ],
+       [
+        0.9,
+        8.6,
+        "#f4f1e6"
+       ],
+       [
+        0.0,
+        8.8,
+        "#f4f1e6"
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -34
+    ],
+    "end": [
+     48,
+     -34
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.25,
+        0,
+        "#2f2a20"
+       ],
+       [
+        0.25,
+        6.5,
+        "#2f2a20"
+       ],
+       [
+        0.9,
+        7.0,
+        "#f4f1e6"
+       ],
+       [
+        1.1,
+        7.8,
+        "#f4f1e6"
+       ],
+       [
+        0.9,
+        8.6,
+        "#f4f1e6"
+       ],
+       [
+        0.0,
+        8.8,
+        "#f4f1e6"
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     16
+    ],
+    "end": [
+     48,
+     16
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -40,
+    -2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 28,
+    "count": 6,
+    "height": 11,
+    "radius": 0.9,
+    "beamHeight": 1.2,
+    "roofDepth": 4,
+    "colour": "#f0ebdd",
+    "roofColour": "#8a8f94"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -353,7 +465,7 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Photo is a street view of the square edge showing neighbouring buildings; the model is a whole-square vignette (150 m clamp) with palace, colonnade and statues from text; ornate globe lamps, the curved blue tower and the opera colonnade are simplified."
+  "gaps": "Photo is a street view of the square edge; model is a whole-square vignette with ochre-brick opera block and colonnade, curved blue glass tower and globe lamps now added, but colonnade is a small porch with no pediment, lamps are single-globe, palace portico/monument and mountain backdrop are simplified, border stripes only at the two ends."
  },
  "schema": "allworld-place-model",
  "version": 2,

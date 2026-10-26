@@ -46,8 +46,8 @@
    "wall": {
     "material": "red-brick",
     "colour": "#b5563f",
-    "windows": "none",
-    "windowRatio": 0,
+    "windows": "punched",
+    "windowRatio": 0.15,
     "bay": 4.6,
     "plinth": 0.5,
     "pattern": {
@@ -56,7 +56,6 @@
      "bay": 8,
      "opening": 0.85,
      "height": 1.0,
-     "recess": 1.5,
      "colour": "#2f9a8a",
      "pierColour": "#e8dcc0",
      "faces": [
@@ -68,29 +67,12 @@
      "back": "none",
      "left": "none",
      "right": "none"
-    }
+    },
+    "windowShape": "arched"
    },
    "roof": {
     "form": "flat",
     "colour": "#8f8b82"
-   }
-  },
-  {
-   "type": "core/canopy",
-   "at": [
-    0,
-    -47,
-    15
-   ],
-   "params": {
-    "form": "curved",
-    "width": 92,
-    "depth": 13,
-    "height": 0.6,
-    "rise": 2.0,
-    "thickness": 0.5,
-    "colour": "#2f9a8a",
-    "edgeColour": "#1f6f62"
    }
   },
   {
@@ -100,12 +82,12 @@
     "mode": "line",
     "start": [
      -44,
-     -46,
+     -49,
      15
     ],
     "end": [
      44,
-     -46,
+     -49,
      15
     ],
     "count": 23,
@@ -116,9 +98,9 @@
      "params": {
       "form": "curved",
       "width": 4.2,
-      "depth": 13,
+      "depth": 9,
       "height": 0.6,
-      "rise": 2.2,
+      "rise": 4.0,
       "thickness": 0.4,
       "colour": "#2f9a8a",
       "edgeColour": "#1f5f4a",
@@ -153,23 +135,23 @@
    "params": {
     "centre": [
      0,
-     -36
+     10
     ],
-    "radius": 34,
-    "radiusY": 50,
+    "radius": 40,
+    "radiusY": 48,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 18,
+    "rows": 12,
     "rise": 0.7,
     "run": 0.9,
     "firstHeight": 4,
-    "facetDeg": 16,
-    "under": "open",
+    "facetDeg": 24,
+    "under": "solid",
     "slab": 0.5,
     "bay": 6,
     "seatColour": "#2f9a8a",
     "concreteColour": "#cfc9bb",
-    "underColour": "#8f8b82"
+    "underColour": "#b5563f"
    }
   },
   {
@@ -255,6 +237,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Front block recoloured brick with teal pointed arcade and scalloped teal shell array added; arcade openings still read partly glazed; tiered stand rising behind the facade not achieved (an attempt hid the facade and was removed, final spec not re-rendered); upper-floor brick screens omitted."
+  "gaps": "No photo file available locally for comparison, rendered unphotoed. Facade now unobstructed: brick two-storey block with pointed teal arcade, small arched upper windows, teal scalloped crest set back. Stand moved behind block (front edge y=-38) with solid skirt; upper-floor cream end bays not distinct."
  }
 }

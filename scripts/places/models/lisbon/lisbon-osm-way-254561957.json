@@ -67,9 +67,9 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#9a4e2c",
+    "colour": "#a8643f",
     "rise": 16,
-    "overhang": 13,
+    "overhang": 6,
     "high": "front"
    }
   },
@@ -144,15 +144,15 @@
    ],
    "params": {
     "mode": "line",
-    "count": 9,
-    "lod1Step": 3,
-    "lod2Step": 9,
+    "count": 12,
+    "lod1Step": 6,
+    "lod2Step": 12,
     "start": [
-     -18,
+     -19,
      0
     ],
     "end": [
-     18,
+     19,
      0
     ],
     "of": {
@@ -162,7 +162,7 @@
        0.7,
        0.7
       ],
-      "height": 17,
+      "height": 38,
       "colour": "#d9772f"
      }
     }
@@ -282,19 +282,9 @@
      "right": "none",
      "back": "none"
     },
-    "pattern": [
-     {
-      "type": "fins",
-      "faces": [
-       "front"
-      ],
-      "colours": [
-       "#ece8e0"
-      ],
-      "depth": 1.6
-     }
-    ],
-    "plinth": 0.3
+    "plinth": 0.3,
+    "windowRatio": 0.3,
+    "bay": 3
    },
    "roof": {
     "form": "flat",
@@ -310,15 +300,15 @@
    ],
    "params": {
     "mode": "line",
-    "count": 4,
-    "lod1Step": 2,
-    "lod2Step": 4,
+    "count": 8,
+    "lod1Step": 8,
+    "lod2Step": 8,
     "start": [
-     -14,
+     -36,
      0
     ],
     "end": [
-     14,
+     36,
      0
     ],
     "of": [
@@ -404,23 +394,6 @@
       "colour": "#8c4a30"
      }
     }
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "pergola",
-   "at": [
-    -68,
-    -4,
-    0
-   ],
-   "params": {
-    "width": 30,
-    "depth": 8,
-    "height": 5,
-    "colour": "#8a6a45"
    },
    "lod": [
     0
@@ -527,19 +500,177 @@
     "height": 3,
     "colour": "#a85a38"
    }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wing",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -58,
+    -2
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0623f",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-edge",
+   "at": [
+    0,
+    -16.5,
+    38.4
+   ],
+   "params": {
+    "rect": [
+     50,
+     1.0
+    ],
+    "height": 2.0,
+    "colour": "#7a4528"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "lod1Step": 7,
+    "lod2Step": 7,
+    "start": [
+     32,
+     0
+    ],
+    "end": [
+     48,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.2
+      ],
+      "height": 42,
+      "colour": "#a85a38"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6.3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "lod1Step": 6,
+    "lod2Step": 6,
+    "start": [
+     33.3,
+     0
+    ],
+    "end": [
+     46.7,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.4
+      ],
+      "height": 34,
+      "z0": 4,
+      "colour": "#ece8e0"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6.3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     34.4,
+     0
+    ],
+    "end": [
+     45.6,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 30,
+      "z0": 6,
+      "colour": "#2e3a42"
+     }
+    },
+    "lod1Step": 6
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "copper roof is a plain wedge, tower bays are fins not deep recesses, water garden is simple slabs with few planters, far-left pergola is a stand-in"
+  "gaps": "photo re-fetched and confirmed; copper roof now lighter with a visible edge slab but still renders dark underneath; mullions are full height but sparse versus the real fine grid; tower bays are brick pilasters with white panels and dark slots, not deep recesses; arcaded wing is a plain arcade block; fewer planter trees and no mushroom-lamp canopies' detail than the photo"
  },
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
   "extent": [
-   116,
-   90
+   100,
+   80
   ],
   "cars": [],
   "trees": [
@@ -562,26 +693,18 @@
    {
     "kind": "broadleaf",
     "at": [
-     30,
-     -34
+     -14,
+     -36
     ],
-    "height": 7
+    "height": 6
    },
    {
     "kind": "broadleaf",
     "at": [
-     -12,
-     -28
+     14,
+     -36
     ],
-    "height": 5
-   },
-   {
-    "kind": "palm",
-    "at": [
-     60,
-     -30
-    ],
-    "height": 8
+    "height": 6
    }
   ]
  }

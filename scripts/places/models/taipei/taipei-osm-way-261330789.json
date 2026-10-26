@@ -12,7 +12,7 @@
    "author": "張聖佑",
    "view": "aerial",
    "file": "/tmp/places-evidence/taipei/tumt0.jpg",
-   "used": "campus on the river bank: one large cream flat-roofed block of about five storeys, a long white block with a red roof beside it, small lower buildings, a pontoon pier with blue pylons on the water side"
+   "used": "river-bank campus on a spit: pontoon pier with blue pylons, green mangrove bank and wide river beyond (not the cream blocks)"
   },
   {
    "kind": "photo",
@@ -21,7 +21,7 @@
    "author": "Taiwankengo",
    "view": "aerial",
    "file": "/tmp/places-evidence/taipei/tumt1.jpg",
-   "used": "layout of blocks along the quay, river on two sides"
+   "used": "campus on a spit between two river channels: cream and white low blocks (one 5-storey cream block, a long white block with a red roof), green mangrove banks, pontoon at the water edge"
   },
   {
    "kind": "osm",
@@ -37,64 +37,104 @@
  },
  "parts": [
   {
-   "type": "mass",
-   "id": "main-block",
-   "footprint": {
-    "rect": [
-     58,
-     13
-    ]
-   },
+   "type": "water-surface",
+   "id": "river-far",
    "at": [
-    -2,
-    -6
+    10,
+    100
    ],
-   "rotDeg": -30,
-   "z0": 0,
-   "height": 15,
-   "storeys": 4,
-   "wall": {
-    "material": "tile-cladding",
-    "colour": "#e4dcb4",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "bands": "#f2efe6"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8d8f8f",
-    "material": "concrete",
-    "parapet": 0.4
+   "params": {
+    "width": 300,
+    "depth": 70,
+    "colour": "#4f6f86",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "river-side",
+   "at": [
+    85,
+    20
+   ],
+   "params": {
+    "width": 60,
+    "depth": 150,
+    "colour": "#4f6f86",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "river-front",
+   "at": [
+    -20,
+    -62
+   ],
+   "params": {
+    "width": 220,
+    "depth": 30,
+    "colour": "#4f6f86",
+    "bank": true
    }
   },
   {
    "type": "mass",
-   "id": "main-wing",
+   "id": "main-block",
    "footprint": {
     "rect": [
-     14,
+     30,
      12
     ]
    },
    "at": [
-    -38,
-    -4
+    -6,
+    2
    ],
    "rotDeg": -30,
    "z0": 0,
-   "height": 9,
-   "storeys": 3,
+   "height": 15,
+   "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#dcd3b0",
+    "colour": "#e6dcb2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f4f0e2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cfbf",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e0d6ae",
     "windows": "ribbon",
     "windowRatio": 0.3
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f8f",
-    "material": "concrete",
-    "parapet": 0.4
+    "colour": "#dcd7c8",
+    "parapet": 0.3
    }
   },
   {
@@ -102,21 +142,21 @@
    "id": "red-roof-hall",
    "footprint": {
     "rect": [
-     46,
-     11
+     40,
+     9
     ]
    },
    "at": [
-    -18,
-    16
+    -16,
+    22
    ],
    "rotDeg": -30,
    "z0": 0,
-   "height": 10,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#f0ece4",
+    "colour": "#f2eee6",
     "windows": "ribbon",
     "windowRatio": 0.3
    },
@@ -130,32 +170,31 @@
   },
   {
    "type": "mass",
-   "id": "lab-block",
+   "id": "lab-low",
    "footprint": {
     "rect": [
-     20,
-     11
+     14,
+     9
     ]
    },
    "at": [
-    30,
-    10
+    24,
+    8
    ],
    "rotDeg": -30,
    "z0": 0,
-   "height": 14,
-   "storeys": 4,
+   "height": 8,
+   "storeys": 2,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d6d2c4",
+    "colour": "#d9d0b4",
     "windows": "ribbon",
     "windowRatio": 0.3
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f8f",
-    "material": "concrete",
-    "parapet": 0.4
+    "colour": "#dcd7c8",
+    "parapet": 0.3
    }
   },
   {
@@ -163,28 +202,28 @@
    "id": "gym",
    "footprint": {
     "rect": [
-     22,
-     16
+     16,
+     12
     ]
    },
    "at": [
     10,
-    34
+    38
    ],
    "rotDeg": -30,
    "z0": 0,
-   "height": 11,
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#c9ccd0",
+    "colour": "#cfd2d0",
     "windows": "none",
     "windowRatio": 0.3
    },
    "roof": {
     "form": "barrel",
-    "colour": "#9aa3ab",
-    "rise": 3
+    "colour": "#a9b1b6",
+    "rise": 2
    }
   },
   {
@@ -192,91 +231,172 @@
    "id": "dorm",
    "footprint": {
     "rect": [
-     24,
-     10
+     16,
+     8
     ]
    },
    "at": [
     -30,
-    34
+    36
    ],
    "rotDeg": -30,
    "z0": 0,
-   "height": 12,
-   "storeys": 4,
+   "height": 8,
+   "storeys": 3,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#e8d9c0",
+    "colour": "#e8dcc0",
     "windows": "ribbon",
     "windowRatio": 0.3
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f8f",
-    "material": "concrete",
-    "parapet": 0.4
+    "colour": "#dcd7c8",
+    "parapet": 0.3
    }
   },
   {
-   "type": "core/flag",
-   "at": [
-    -14,
-    -18,
-    0
-   ],
-   "params": {
-    "height": 9,
-    "count": 2,
-    "spacing": 3,
-    "colours": [
-     "#d22b2b",
-     "#2a5fb0"
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     8,
+     6
     ]
+   },
+   "at": [
+    34,
+    28
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#f1ede2",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b6",
+    "parapet": 0.3
    }
   },
   {
-   "type": "core/steps",
+   "type": "pier-boardwalk",
+   "id": "pontoon",
    "at": [
-    -4,
-    -9,
+    44,
+    52,
+    0.3
+   ],
+   "rotDeg": -10,
+   "params": {
+    "length": 34,
+    "width": 4,
+    "height": 0.5,
+    "rails": false,
+    "piles": false,
+    "colour": "#9b6b52"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 6,
+      "colour": "#2f6fb8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     30,
+     46.5
+    ],
+    "end": [
+     62,
+     58
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "mangrove-back",
+   "at": [
+    -10,
+    58,
     0
    ],
    "params": {
-    "width": 14,
-    "rise": 0.2,
-    "run": 0.8,
-    "count": 3,
-    "colour": "#b9b6ad"
+    "width": 150,
+    "depth": 10,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "mangrove-side",
+   "at": [
+    54,
+    18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 60,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 6
    }
   }
  ],
  "site": {
-  "ground": "paving",
-  "forecourt": "plaza",
+  "ground": "grass",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
      -20,
-     30
+     -20
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
-     10,
-     -5
+     20,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     20
     ]
    }
   ],
   "extent": [
-   120,
+   130,
    110
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "rough",
-  "gaps": "photo is a distant aerial so block sizes and positions are estimated; river, quay, pontoon pier with blue pylons, mangrove and surrounding town are not modelled; campus compressed into the 118 m clamp"
+  "gaps": "photo is a distant oblique aerial so block positions and the surrounding town are approximate; roofs read grey; water, mangrove bank and blue-pylon pontoon are present but the spit shape is a rectangle with water on three sides"
  }
 }

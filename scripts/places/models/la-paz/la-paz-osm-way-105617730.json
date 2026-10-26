@@ -170,16 +170,20 @@
    "wall": {
     "material": "brick",
     "colour": "#b4623f",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windows": "none",
+    "windowRatio": 0,
     "plinth": 0,
-    "bands": "#e7dcc5"
+    "bands": "#e7dcc5",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#7d8286",
-    "overhang": 0.3,
-    "parapet": 0.4
+    "overhang": 0.3
    }
   },
   {
@@ -201,15 +205,19 @@
    "wall": {
     "material": "painted-render",
     "colour": "#e7dcc5",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "plinth": 0
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#7d8286",
-    "overhang": 0.3,
-    "parapet": 0.4
+    "overhang": 0.3
    }
   },
   {
@@ -231,15 +239,19 @@
    "wall": {
     "material": "brick",
     "colour": "#b4623f",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "plinth": 0
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#7d8286",
-    "overhang": 0.3,
-    "parapet": 0.4
+    "overhang": 0.3
    }
   },
   {
@@ -286,21 +298,6 @@
     "bottom": 1.6,
     "colour": "#e7dcc5",
     "frameColour": "#7d8286"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    0,
-    12,
-    0.5
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 9,
-    "count": 6,
-    "spread": 30,
-    "colour": "#4f7d3b"
    }
   },
   {

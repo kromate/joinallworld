@@ -47,79 +47,96 @@
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#b5aca0",
+    "colour": "#2f5a2a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b5aca0"
+    "colour": "#2f5a2a"
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    36
+    38
    ],
    "params": {
     "rect": [
-     108,
+     112,
      10
     ],
     "z0": 0,
-    "height": 92,
+    "height": 96,
     "colour": "#2d5a2c",
     "topScale": 1.0
    }
   },
   {
-   "type": "rock-hill",
+   "type": "prism",
    "at": [
-    -32,
-    22,
-    0
+    -44.8,
+    31
    ],
    "params": {
-    "width": 60,
-    "depth": 44,
-    "height": 75,
-    "stairs": false,
-    "rock_colour": "#2c5a2a",
-    "boulders": 0,
-    "seed": 3
+    "rect": [
+     70,
+     9
+    ],
+    "z0": 0,
+    "height": 102,
+    "colour": "#2a5f2c",
+    "topScale": 1.0
    }
   },
   {
-   "type": "rock-hill",
+   "type": "prism",
    "at": [
-    32,
-    22,
-    0
+    44.8,
+    31
    ],
    "params": {
-    "width": 60,
-    "depth": 44,
-    "height": 75,
-    "stairs": false,
-    "rock_colour": "#2c5a2a",
-    "boulders": 0,
-    "seed": 7
+    "rect": [
+     70,
+     9
+    ],
+    "z0": 0,
+    "height": 102,
+    "colour": "#2a5f2c",
+    "topScale": 1.0
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    29
+    33
    ],
    "params": {
     "rect": [
-     34,
+     15,
      6
     ],
     "z0": 0,
-    "height": 95,
-    "colour": "#2f3a33",
+    "height": 97,
+    "colour": "#2a2f2b",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    36.5
+   ],
+   "params": {
+    "rect": [
+     15,
+     1
+    ],
+    "z0": 0,
+    "height": 97,
+    "colour": "#1f2622",
     "topScale": 1.0
    }
   },
@@ -127,17 +144,17 @@
    "type": "loft",
    "at": [
     0,
-    25.4,
+    29.8,
     0
    ],
    "params": {
-    "colour": "#e9f1f2",
+    "colour": "#eef5f6",
     "capTop": true,
     "sections": [
      {
-      "z": 3,
+      "z": 8,
       "rect": [
-       3.2,
+       3.6,
        0.5
       ]
      },
@@ -151,15 +168,43 @@
      {
       "z": 85,
       "rect": [
-       2.4,
+       2.8,
        0.5
       ]
      },
      {
-      "z": 95,
+      "z": 96,
+      "rect": [
+       2.4,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4.2,
+    29.8,
+    0
+   ],
+   "params": {
+    "colour": "#e4eeef",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 6,
       "rect": [
        1.0,
-       0.5
+       0.4
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       0.8,
+       0.4
       ]
      }
     ]
@@ -169,15 +214,15 @@
    "type": "prism",
    "at": [
     0,
-    22
+    27
    ],
    "params": {
     "rect": [
-     9,
-     7
+     10,
+     6
     ],
     "z0": 0,
-    "height": 0.4,
+    "height": 0.5,
     "colour": "#9fc4cc",
     "topScale": 1.0
    }
@@ -186,25 +231,93 @@
    "type": "prism",
    "at": [
     0,
-    23.5
+    28.5
    ],
    "params": {
     "rect": [
-     6,
-     3
+     7,
+     4
     ],
     "z0": 0,
-    "height": 5,
-    "colour": "#e4eeee",
-    "topScale": 0.4
+    "height": 6,
+    "colour": "#f2f8f8",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    19
+   ],
+   "params": {
+    "rect": [
+     56,
+     12
+    ],
+    "z0": 0,
+    "height": 34,
+    "colour": "#2a6a2d",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    19
+   ],
+   "params": {
+    "rect": [
+     56,
+     12
+    ],
+    "z0": 0,
+    "height": 34,
+    "colour": "#2a6a2d",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    25
+   ],
+   "params": {
+    "rect": [
+     44,
+     6
+    ],
+    "z0": 0,
+    "height": 70,
+    "colour": "#2c6430",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    25
+   ],
+   "params": {
+    "rect": [
+     44,
+     6
+    ],
+    "z0": 0,
+    "height": 70,
+    "colour": "#2c6430",
+    "topScale": 0.9
    }
   },
   {
    "type": "pavilion",
    "at": [
-    -18,
-    35,
-    93
+    -44,
+    31,
+    102
    ],
    "params": {
     "width": 6,
@@ -213,105 +326,180 @@
     "roof": "hip",
     "rise": 1.4,
     "posts": 4,
-    "colour": "#d8d4c8",
-    "cap_colour": "#7d8187"
+    "colour": "#f0ece0",
+    "cap_colour": "#d9d4c6"
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    -36,
-    20,
+    -32,
+    10,
     0
    ],
    "params": {
-    "width": 40,
-    "depth": 34,
+    "width": 50,
+    "depth": 20,
     "count": 10,
     "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 14
-   }
+    "min_height": 10,
+    "max_height": 18
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "tree-grove",
    "at": [
-    36,
-    20,
+    32,
+    10,
     0
    ],
    "params": {
-    "width": 40,
-    "depth": 34,
+    "width": 50,
+    "depth": 20,
     "count": 10,
     "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 14
-   }
+    "min_height": 10,
+    "max_height": 18
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "tree-grove",
    "at": [
     0,
-    12,
-    0
-   ],
-   "params": {
-    "width": 70,
-    "depth": 18,
-    "count": 9,
-    "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 14
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    0,
-    -38,
+    6,
     0
    ],
    "params": {
     "width": 60,
-    "depth": 10,
-    "count": 8,
+    "depth": 12,
+    "count": 5,
     "kind": "broadleaf",
-    "min_height": 10,
-    "max_height": 14
-   }
+    "min_height": 8,
+    "max_height": 13
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "tree-grove",
    "at": [
     -30,
-    22,
-    0
+    18,
+    34
    ],
    "params": {
-    "width": 30,
+    "width": 50,
     "depth": 10,
-    "count": 6,
+    "count": 7,
     "kind": "broadleaf",
     "min_height": 8,
     "max_height": 14
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "tree-grove",
    "at": [
     30,
-    22,
-    0
+    18,
+    34
    ],
    "params": {
-    "width": 30,
+    "width": 50,
     "depth": 10,
-    "count": 6,
+    "count": 7,
     "kind": "broadleaf",
     "min_height": 8,
     "max_height": 14
-   }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    24,
+    70
+   ],
+   "params": {
+    "width": 40,
+    "depth": 5,
+    "count": 4,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    24,
+    70
+   ],
+   "params": {
+    "width": 40,
+    "depth": 5,
+    "count": 4,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -44,
+    30,
+    102
+   ],
+   "params": {
+    "width": 24,
+    "depth": 6,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    44,
+    30,
+    102
+   ],
+   "params": {
+    "width": 24,
+    "depth": 6,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -323,8 +511,8 @@
  },
  "review": {
   "rounds": 2,
-  "match": "fair",
-  "gaps": "valley still blocky rock-hills with few trees (budget-limited), no layered canopy on slopes; gorge is a flat dark slab with straight ribbon fall; hut on rim is tiny; mist/pool minimal"
+  "match": "rough",
+  "gaps": "valley walls are boxy slabs with sparse tree clusters, not continuous canopy; fall is a thin ribbon in a dark notch but plunge pool/mist and side strand tiny; rim hut barely visible; ground is flat grey-green plain"
  },
  "schema": "allworld-place-model",
  "version": 2,

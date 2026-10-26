@@ -42,12 +42,12 @@
    "type": "lawn",
    "at": [
     0,
-    -30,
+    -28,
     0
    ],
    "params": {
-    "width": 120,
-    "depth": 10,
+    "width": 110,
+    "depth": 6,
     "colour": "#6f9a45"
    }
   },
@@ -59,9 +59,9 @@
     0
    ],
    "params": {
-    "width": 120,
+    "width": 110,
     "depth": 66,
-    "colour": "#55767f",
+    "colour": "#3c5650",
     "bank": true
    }
   },
@@ -73,55 +73,25 @@
     0
    ],
    "params": {
-    "width": 120,
+    "width": 110,
     "depth": 18,
     "colour": "#6f9a45"
    }
   },
   {
-   "type": "path-strip",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      -60,
-      46
-     ],
-     [
-      -20,
-      47
-     ],
-     [
-      20,
-      46
-     ],
-     [
-      60,
-      48
-     ]
-    ],
-    "width": 3,
-    "colour": "#d6cfc0"
-   }
-  },
-  {
    "type": "tree-grove",
    "at": [
-    -5,
-    56,
+    0,
+    58,
     0
    ],
    "params": {
-    "width": 110,
-    "depth": 14,
-    "count": 44,
+    "width": 100,
+    "depth": 8,
+    "count": 15,
     "kind": "palm",
-    "min_height": 11,
-    "max_height": 17
+    "min_height": 26,
+    "max_height": 36
    }
   },
   {
@@ -144,7 +114,7 @@
    "type": "pavilion",
    "at": [
     -36,
-    52,
+    50,
     0
    ],
    "params": {
@@ -162,7 +132,7 @@
    "type": "pavilion",
    "at": [
     12,
-    52,
+    50,
     0
    ],
    "params": {
@@ -212,72 +182,6 @@
    }
   },
   {
-   "type": "loft",
-   "params": {
-    "colour": "#e6f0f4",
-    "sections": [
-     {
-      "z": 0,
-      "circle": 0.5
-     },
-     {
-      "z": 14,
-      "circle": 1.6
-     }
-    ],
-    "capTop": false
-   },
-   "at": [
-    -26,
-    26,
-    0
-   ]
-  },
-  {
-   "type": "loft",
-   "params": {
-    "colour": "#e6f0f4",
-    "sections": [
-     {
-      "z": 0,
-      "circle": 0.5
-     },
-     {
-      "z": 6,
-      "circle": 3.2
-     }
-    ],
-    "capTop": false
-   },
-   "at": [
-    8,
-    14,
-    0
-   ]
-  },
-  {
-   "type": "loft",
-   "params": {
-    "colour": "#e6f0f4",
-    "sections": [
-     {
-      "z": 0,
-      "circle": 0.5
-     },
-     {
-      "z": 10,
-      "circle": 1.6
-     }
-    ],
-    "capTop": false
-   },
-   "at": [
-    48,
-    30,
-    0
-   ]
-  },
-  {
    "type": "array",
    "at": [
     0,
@@ -285,8 +189,7 @@
     0
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "mode": "line",
@@ -351,19 +254,354 @@
      }
     ]
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     8
+    ],
+    "height": 24,
+    "colour": "#2a4a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     5
+    ],
+    "height": 14,
+    "colour": "#34602f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    48.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     1.2
+    ],
+    "height": 0.8,
+    "colour": "#b9b5a8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    68,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 6,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 24,
+    "max_height": 32
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -26,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#f2f6f8",
+    "profile": [
+     [
+      4,
+      0
+     ],
+     [
+      4,
+      0.3
+     ],
+     [
+      2.5,
+      1.6
+     ],
+     [
+      0.5,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -26,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#f2f6f8",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 22,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8,
+    14,
+    0
+   ],
+   "params": {
+    "colour": "#eef4f6",
+    "profile": [
+     [
+      7.5,
+      0
+     ],
+     [
+      7.5,
+      0.2
+     ],
+     [
+      6,
+      1.4
+     ],
+     [
+      3,
+      2.8
+     ],
+     [
+      0.4,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8,
+    14,
+    0
+   ],
+   "params": {
+    "colour": "#b9b5a8",
+    "profile": [
+     [
+      9,
+      0
+     ],
+     [
+      9,
+      0.5
+     ],
+     [
+      8.5,
+      0.5
+     ],
+     [
+      8.5,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "colour": "#f2f6f8",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 18,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#c4cdd6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 70,
+      "rect": [
+       12,
+       12
+      ]
+     },
+     {
+      "z": 100,
+      "rect": [
+       8,
+       8
+      ]
+     },
+     {
+      "z": 115,
+      "rect": [
+       2,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    32,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#c4cdd6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 70,
+      "rect": [
+       12,
+       12
+      ]
+     },
+     {
+      "z": 100,
+      "rect": [
+       8,
+       8
+      ]
+     },
+     {
+      "z": 115,
+      "rect": [
+       2,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -45,
+    94,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     14
+    ],
+    "height": 65,
+    "colour": "#d8d4cc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    90,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 40,
+    "colour": "#b88d8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    90,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     12
+    ],
+    "height": 50,
+    "colour": "#dcdcdc",
+    "windows": "none"
+   }
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "none",
   "extent": [
-   120,
-   110
+   110,
+   100
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "fountain spray shapes are simple cones; no skyline towers by design; shore is a straight lawn edge, no stone kerb; only a 120 m vignette of a 900 m park"
+  "gaps": "far-shore palms are sparse low-poly crowns in front of a flat green wall; towers are plain tapered lofts; shore edge straight; only a 110 m vignette of a 900 m park"
  }
 }

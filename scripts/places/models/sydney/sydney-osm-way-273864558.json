@@ -53,7 +53,7 @@
    ],
    "rotDeg": -12,
    "z0": 0,
-   "height": 14,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "brick",
@@ -163,8 +163,8 @@
    "id": "ward-tower",
    "footprint": {
     "rect": [
-     22,
-     15
+     30,
+     16
     ]
    },
    "at": [
@@ -177,16 +177,15 @@
    "storeys": 9,
    "wall": {
     "material": "brick",
-    "colour": "#8c5a46",
-    "windows": "punched",
-    "windowRatio": 0.1,
+    "colour": "#7d4a3a",
+    "windows": "none",
+    "windowRatio": 0,
     "bay": 12,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "cornice": true,
     "plinth": 0
    },
    "roof": {
@@ -197,64 +196,58 @@
   },
   {
    "type": "mass",
-   "id": "tower-cream",
-   "footprint": {
-    "rect": [
-     10,
-     1.2
-    ]
-   },
-   "at": [
-    14,
-    3.8
-   ],
-   "rotDeg": 0,
-   "z0": 6,
-   "height": 30,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e6d3b3",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e6d3b3"
-   }
-  },
-  {
-   "type": "mass",
    "id": "acute-services",
    "footprint": {
     "rect": [
-     40,
-     20
+     46,
+     18
     ]
    },
    "at": [
     -22,
-    -36
+    -30
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 36,
-   "storeys": 9,
+   "height": 26,
+   "storeys": 7,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#9fb3bd",
-    "windows": "ribbon",
-    "windowRatio": 0.55,
-    "bay": 16,
+    "material": "brick",
+    "colour": "#8a5642",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7.5,
+    "glassColour": "#1f2428",
+    "plinth": 0,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d3b3",
+      "height": 0.9,
+      "at": 0.9,
+      "floors": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#8c8f93",
-    "parapet": 0.7
+    "colour": "#8c8f93"
    }
   },
   {
@@ -275,14 +268,14 @@
    "height": 5,
    "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#e6d3a0",
+    "material": "brick",
+    "colour": "#8c5a46",
     "windows": "none",
     "plinth": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#d9c58c",
+    "colour": "#e6d3a0",
     "overhang": 1.2
    }
   },
@@ -295,7 +288,7 @@
    ],
    "params": {
     "width": 34,
-    "depth": 5,
+    "depth": 6,
     "height": 4.4,
     "form": "flat",
     "columns": 4,
@@ -307,8 +300,8 @@
    "id": "helipad",
    "at": [
     -22,
-    -36,
-    36.7
+    -30,
+    26.7
    ],
    "params": {
     "radius": 7,
@@ -316,7 +309,11 @@
     "height": 0.3,
     "colour": "#5d6166",
     "topColour": "#6f7479"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/sign-board",
@@ -332,6 +329,170 @@
     "colour": "#7a4c3b",
     "posts": false
    }
+  },
+  {
+   "type": "prism",
+   "id": "panel",
+   "at": [
+    14,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.5
+    ],
+    "z0": 11,
+    "height": 17,
+    "colour": "#e6d3b3",
+    "topColour": "#e6d3b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-top",
+   "at": [
+    14,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     30.6,
+     0.5
+    ],
+    "z0": 29,
+    "height": 1.2,
+    "colour": "#e6d3b3",
+    "topColour": "#e6d3b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-low",
+   "at": [
+    14,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     30.6,
+     0.5
+    ],
+    "z0": 9,
+    "height": 1.0,
+    "colour": "#e6d3b3",
+    "topColour": "#e6d3b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-a",
+   "at": [
+    10.5,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.3
+    ],
+    "z0": 22,
+    "height": 3.2,
+    "colour": "#1f2428",
+    "topColour": "#1f2428"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-b",
+   "at": [
+    17.5,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.3
+    ],
+    "z0": 22,
+    "height": 3.2,
+    "colour": "#1f2428",
+    "topColour": "#1f2428"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "podium-step",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c5a46",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#d8c38a",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.5,
+        4.4
+       ],
+       [
+        0,
+        4.4
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     10,
+     -60
+    ],
+    "end": [
+     42,
+     -60
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -359,8 +520,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "Photo is a worm-eye close view of the old brick tower; the real podium is many fingers (modelled as four straight wings), no cream window piers on the lower wing, name lettering omitted, acute services block placement approximate."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Podium still straight stepped boxes (real one is many fingers); lower wing is brick with cream bands, not the pink-cream of the photo; no name lettering; canopy columns approximate."
  }
 }

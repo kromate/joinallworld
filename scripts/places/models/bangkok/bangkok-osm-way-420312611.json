@@ -19,7 +19,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo is a close-up of the faculty sign with the block behind; render shows the whole U block from further back, glazing still darker than the pale photo, no external steel stair detail on magenta core, hex paving flat"
+  "gaps": "Camera shows the whole block from further back than the sign close-up; sign slab gold lettering is a plain blank board, hexagonal paving is two flat hex pads, external steel stair is a stock single flight, glazing still reads darker than the photo."
  },
  "camera": {
   "yawDeg": -8,
@@ -49,8 +49,8 @@
     "material": "exposed-concrete",
     "colour": "#e6e3dc",
     "windows": "ribbon",
-    "windowRatio": 0.45,
-    "glassColour": "#aebfc2",
+    "windowRatio": 0.35,
+    "glassColour": "#bccdcf",
     "plinth": 0.2,
     "faces": {
      "back": "none"
@@ -63,8 +63,8 @@
      {
       "type": "floors",
       "colours": [
-       "#e6e3dc",
-       "#a8cfcb"
+       "#e8e5de",
+       "#b4d6d1"
       ]
      }
     ]
@@ -95,8 +95,8 @@
     "material": "exposed-concrete",
     "colour": "#e6e3dc",
     "windows": "ribbon",
-    "windowRatio": 0.45,
-    "glassColour": "#aebfc2",
+    "windowRatio": 0.35,
+    "glassColour": "#bccdcf",
     "plinth": 0.2,
     "faces": {
      "back": "none"
@@ -109,8 +109,8 @@
      {
       "type": "floors",
       "colours": [
-       "#e6e3dc",
-       "#a8cfcb"
+       "#e8e5de",
+       "#b4d6d1"
       ]
      }
     ]
@@ -141,8 +141,8 @@
     "material": "exposed-concrete",
     "colour": "#e6e3dc",
     "windows": "ribbon",
-    "windowRatio": 0.45,
-    "glassColour": "#aebfc2",
+    "windowRatio": 0.35,
+    "glassColour": "#bccdcf",
     "plinth": 0.2,
     "faces": {
      "back": "none"
@@ -155,8 +155,8 @@
      {
       "type": "floors",
       "colours": [
-       "#e6e3dc",
-       "#a8cfcb"
+       "#e8e5de",
+       "#b4d6d1"
       ]
      }
     ]
@@ -178,10 +178,10 @@
    },
    "at": [
     -6,
-    -4
+    -3
    ],
    "z0": 0,
-   "height": 22,
+   "height": 20.8,
    "storeys": 5,
    "wall": {
     "material": "painted-render",
@@ -196,15 +196,15 @@
   {
    "type": "external-stair",
    "at": [
-    -4,
-    -6.5,
+    -6,
+    -6.2,
     0
    ],
    "params": {
-    "height": 16,
-    "length": 10,
-    "width": 1.4,
-    "colour": "#c9cdd0"
+    "height": 19,
+    "length": 6,
+    "width": 1.6,
+    "colour": "#8d9296"
    }
   },
   {
@@ -226,60 +226,34 @@
    "type": "prism",
    "id": "sign-plinth",
    "at": [
-    10,
-    -26,
+    8,
+    -27,
     0
    ],
    "params": {
     "rect": [
-     17,
-     1.4
+     9,
+     1.6
     ],
-    "height": 1.0,
-    "colour": "#7d8082"
+    "height": 0.6,
+    "colour": "#6e7072"
    }
   },
   {
    "type": "prism",
    "id": "sign-slab",
    "at": [
-    10,
-    -26,
-    1.0
+    8,
+    -27,
+    0.6
    ],
    "params": {
     "rect": [
-     16,
+     8,
      0.9
     ],
-    "height": 2.2,
-    "colour": "#8f9293"
-   }
-  },
-  {
-   "type": "hedge",
-   "at": [
-    3,
-    -28,
-    0
-   ],
-   "params": {
-    "length": 8,
-    "height": 0.7,
-    "colour": "#3f6a35"
-   }
-  },
-  {
-   "type": "hedge",
-   "at": [
-    14,
-    -28,
-    0
-   ],
-   "params": {
-    "length": 10,
-    "height": 0.7,
-    "colour": "#4a7a3a"
+    "height": 3.0,
+    "colour": "#7b7c7e"
    }
   },
   {
@@ -332,6 +306,73 @@
     "kind": "broadleaf",
     "height": 9,
     "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -28,
+    1.3
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#c9a82a",
+    "frameColour": "#7b7c7e",
+    "posts": false
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "depth": 1.2,
+    "colour": "#3f6a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    -25.2,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.6,
+    "depth": 0.9,
+    "colour": "#4a7a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "hex-paving",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 3,
+    "height": 0.05,
+    "colour": "#c4c0b6"
    }
   }
  ],

@@ -42,15 +42,15 @@
     -4,
     0
    ],
-   "z0": 5.5,
-   "height": 20,
+   "z0": 6.2,
+   "height": 19.8,
    "storeys": 5,
    "wall": {
     "material": "painted-render",
     "colour": "#dcdcd8",
     "windows": "punched",
-    "windowRatio": 0.14,
-    "bay": 6.5,
+    "windowRatio": 0.2,
+    "bay": 8,
     "faces": {
      "front": "punched",
      "back": "punched",
@@ -74,14 +74,14 @@
    "id": "pilotis",
    "params": {
     "mode": "line",
-    "count": 6,
+    "count": 7,
     "start": [
      -22,
      -6,
      0
     ],
     "end": [
-     14,
+     16,
      -6,
      0
     ],
@@ -90,12 +90,12 @@
       "type": "prism",
       "params": {
        "rect": [
-        1.8,
-        1.8
+        1.2,
+        1.2
        ],
        "z0": 0,
-       "height": 5.5,
-       "colour": "#b9b9b5"
+       "height": 6.2,
+       "colour": "#a9a9a5"
       }
      }
     ]
@@ -113,7 +113,7 @@
      46,
      15
     ],
-    "z0": 4.9,
+    "z0": 5.6,
     "height": 0.7,
     "colour": "#cfcfca"
    }
@@ -131,7 +131,7 @@
      8
     ],
     "z0": 0,
-    "height": 4.9,
+    "height": 5.6,
     "colour": "#9c9a94",
     "windows": "none"
    }
@@ -156,16 +156,7 @@
     "material": "painted-render",
     "colour": "#1f2a68",
     "windows": "none",
-    "pattern": [
-     {
-      "type": "balconies",
-      "faces": [
-       "front",
-       "left"
-      ],
-      "colour": "#b4b8bd"
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "flat",
@@ -225,25 +216,6 @@
    }
   },
   {
-   "type": "surface",
-   "id": "solar-pergola",
-   "at": [
-    -4,
-    0,
-    25.5
-   ],
-   "params": {
-    "kind": "folded",
-    "width": 44,
-    "depth": 12,
-    "rise": 1.6,
-    "folds": 14,
-    "thickness": 0.15,
-    "colour": "#34414d",
-    "edgeColour": "#c9ced2"
-   }
-  },
-  {
    "type": "core/sign-board",
    "id": "blank-motto",
    "at": [
@@ -259,6 +231,276 @@
     "frameColour": "#e9e8e4",
     "posts": false
    }
+  },
+  {
+   "type": "array",
+   "id": "pergola-louvres",
+   "params": {
+    "mode": "line",
+    "count": 22,
+    "start": [
+     -25,
+     0,
+     0
+    ],
+    "end": [
+     17,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.35,
+         0.12
+        ]
+       },
+       "points": [
+        [
+         0,
+         -9,
+         26.2
+        ],
+        [
+         0,
+         2,
+         28.3
+        ]
+       ],
+       "colour": "#3b4753"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pergola-posts",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -25,
+     -8.5,
+     0
+    ],
+    "end": [
+     17,
+     -8.5,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "z0": 26,
+       "height": 1.4,
+       "colour": "#c9ced2"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pergola-rail",
+   "at": [
+    -4,
+    -8.7
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.15
+    ],
+    "z0": 26,
+    "height": 1.0,
+    "colour": "#dfe3e6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "landing-slabs-left",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     21.8,
+     0,
+     5.2
+    ],
+    "end": [
+     21.8,
+     0,
+     29.2
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.8,
+        10
+       ],
+       "z0": 0,
+       "height": 0.5,
+       "colour": "#0f1640"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "landing-rails-left",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     21.5,
+     0,
+     5.7
+    ],
+    "end": [
+     21.5,
+     0,
+     29.7
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.2,
+        10
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#b4b8bd"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "landing-slabs-front",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     28,
+     -6.4,
+     5.2
+    ],
+    "end": [
+     28,
+     -6.4,
+     29.2
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        10,
+        0.8
+       ],
+       "z0": 0,
+       "height": 0.5,
+       "colour": "#0f1640"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "landing-rails-front",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     28,
+     -6.7,
+     5.7
+    ],
+    "end": [
+     28,
+     -6.7,
+     29.7
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        10,
+        0.2
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#b4b8bd"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre-base",
+   "at": [
+    28,
+    -6.1
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 4,
+    "colour": "#1a2250"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -287,8 +529,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Rooftop pergola is a thin folded sheet rather than a glazed louvred frame; stair tower balconies reduced to landing bands; no motto lettering (blank board only); other campus wings from OSM not modelled; punched windows are more regular than the photo."
+  "gaps": "Rooftop louvre frame and navy tower landings now present but thin/low-contrast; windows still more regular than the photo; no motto lettering; other campus wings not modelled."
  }
 }

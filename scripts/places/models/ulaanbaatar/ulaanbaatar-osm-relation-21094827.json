@@ -98,8 +98,8 @@
    "id": "attic",
    "footprint": {
     "rect": [
-     24,
-     10
+     18,
+     8
     ]
    },
    "at": [
@@ -107,7 +107,7 @@
     1
    ],
    "z0": 19,
-   "height": 6,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -131,68 +131,70 @@
    "id": "wing-left",
    "footprint": {
     "rect": [
-     40,
+     38,
      16
     ]
    },
    "at": [
-    -40,
-    1
+    -39.3,
+    -4.2
    ],
-   "height": 15,
-   "storeys": 4,
+   "height": 8.2,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#efece2",
+    "colour": "#ecd68e",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.35,
     "faces": {
      "back": "plain",
      "left": "plain"
     },
-    "plinth": 3.6,
-    "cornice": 0.8,
+    "plinth": 0,
     "bay": 4.5
    },
    "roof": {
     "form": "flat",
     "colour": "#8a8a88",
-    "parapet": 1.0
-   }
+    "parapet": 0.4
+   },
+   "rotDeg": 15,
+   "z0": 3.8
   },
   {
    "type": "mass",
    "id": "wing-right",
    "footprint": {
     "rect": [
-     40,
+     38,
      16
     ]
    },
    "at": [
-    40,
-    1
+    39.3,
+    -4.2
    ],
-   "height": 15,
-   "storeys": 4,
+   "height": 8.2,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#efece2",
+    "colour": "#ecd68e",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.35,
     "faces": {
      "back": "plain",
      "right": "plain"
     },
-    "plinth": 3.6,
-    "cornice": 0.8,
+    "plinth": 0,
     "bay": 4.5
    },
    "roof": {
     "form": "flat",
     "colour": "#8a8a88",
-    "parapet": 1.0
-   }
+    "parapet": 0.4
+   },
+   "rotDeg": -15,
+   "z0": 3.8
   },
   {
    "type": "core/colonnade",
@@ -202,10 +204,10 @@
     4.2
    ],
    "params": {
-    "length": 30,
-    "count": 7,
-    "height": 14.5,
-    "radius": 0.8,
+    "length": 25,
+    "count": 6,
+    "height": 15,
+    "radius": 0.7,
     "kind": "round",
     "beamHeight": 1.2,
     "colour": "#f4f1e8"
@@ -216,10 +218,10 @@
    "at": [
     0,
     1,
-    25
+    23.5
    ],
    "params": {
-    "radius": 4.5,
+    "radius": 3.2,
     "profile": "hemi",
     "drum": 0.8,
     "colour": "#3a4658",
@@ -229,12 +231,12 @@
   {
    "type": "core/sign-board",
    "at": [
-    -6.4,
+    -4.4799999999999995,
     -4.5,
     19
    ],
    "params": {
-    "width": 6,
+    "width": 4,
     "height": 4,
     "bottom": 1,
     "colour": "#f4f2ec",
@@ -245,12 +247,12 @@
   {
    "type": "core/sign-board",
    "at": [
-    6.4,
+    4.4799999999999995,
     -4.5,
     19
    ],
    "params": {
-    "width": 6,
+    "width": 4,
     "height": 4,
     "bottom": 1,
     "colour": "#f4f2ec",
@@ -282,7 +284,7 @@
    "params": {
     "kind": "conifer",
     "height": 14,
-    "colour": "#2f5a3a"
+    "colour": "#6b5b45"
    }
   },
   {
@@ -297,6 +299,188 @@
     "height": 9,
     "colour": "#6b5b45"
    }
+  },
+  {
+   "type": "mass",
+   "id": "wing-ground-left",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    -39.3,
+    -4.2
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4553f",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4553f"
+   },
+   "rotDeg": 15,
+   "z0": 0
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "merlons-left",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -37.2,
+    -11.9,
+    12
+   ],
+   "rotDeg": 15,
+   "params": {
+    "length": 36,
+    "height": 0.1,
+    "thickness": 0.7,
+    "merlon_height": 0.9,
+    "merlon_width": 0.8,
+    "pitch": 1.8,
+    "colour": "#f1ede0",
+    "trim": "#f1ede0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-ground-right",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    39.3,
+    -4.2
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4553f",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4553f"
+   },
+   "rotDeg": -15,
+   "z0": 0
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "merlons-right",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    37.2,
+    -11.9,
+    12
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 36,
+    "height": 0.1,
+    "thickness": 0.7,
+    "merlon_height": 0.9,
+    "merlon_width": 0.8,
+    "pitch": 1.8,
+    "colour": "#f1ede0",
+    "trim": "#f1ede0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    66,
+    6
+   ],
+   "height": 26,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8c8b0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#6a7a88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a88"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#6b5b45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -23,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "colour": "#6b5b45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#6b5b45"
+   }
   }
  ],
  "site": {
@@ -309,8 +493,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "wings straight not angled forward, no crenellated parapet, colonnade beam plain, banner text omitted, neighbours absent"
+  "gaps": "Wings angled 15 degrees but parapet merlons and facade detail are simplified; banner text omitted; neighbour block is a plain stand-in."
  }
 }

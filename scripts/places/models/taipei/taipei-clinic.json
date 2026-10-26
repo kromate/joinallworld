@@ -42,16 +42,16 @@
    "storeys": 3,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d2c9ae",
+    "colour": "#dccfae",
     "windows": "punched",
-    "windowRatio": 0.3,
-    "bay": 3.0,
+    "windowRatio": 0.32,
+    "bay": 2.2,
     "plinth": 0.6,
-    "bands": "#c8c0a8"
+    "bands": "#cfc29f"
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f8f",
+    "colour": "#a09c92",
     "parapet": 0.5
    }
   },
@@ -73,16 +73,16 @@
    "storeys": 3,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d2c9ae",
+    "colour": "#dccfae",
     "windows": "punched",
-    "windowRatio": 0.3,
-    "bay": 3.0,
+    "windowRatio": 0.32,
+    "bay": 2.2,
     "plinth": 0.6,
-    "bands": "#c8c0a8"
+    "bands": "#cfc29f"
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f8f",
+    "colour": "#a09c92",
     "parapet": 0.5
    }
   },
@@ -91,28 +91,27 @@
    "id": "centre",
    "footprint": {
     "rect": [
-     16,
-     18
+     14,
+     16
     ]
    },
    "at": [
     0,
-    0
+    1
    ],
    "z0": 0,
-   "height": 16.5,
+   "height": 15.5,
    "storeys": 4,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d8cfb2",
+    "colour": "#e0d3b2",
     "windows": "punched",
     "windowRatio": 0.2,
     "faces": {
      "left": "plain",
      "right": "plain"
     },
-    "plinth": 0.8,
-    "cornice": true
+    "plinth": 0.8
    },
    "roof": {
     "form": "flat",
@@ -121,116 +120,169 @@
    }
   },
   {
-   "type": "arch-portal",
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
    "at": [
     0,
-    -9.1,
-    0
+    -10.5
    ],
-   "params": {
-    "width": 9,
-    "height": 6.5,
-    "depth": 1.2,
-    "archWidth": 4.6,
-    "springHeight": 3.6,
-    "colour": "#c9bfa6"
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e0d3b2",
+    "windows": "none",
+    "plinth": 0.7,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.75,
+      "height": 0.85,
+      "depth": 0.8,
+      "pierColour": "#d4c6a2",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a09c92",
+    "parapet": 0.5
    }
   },
   {
-   "type": "steps",
-   "at": [
-    0,
-    -10.5,
-    0
-   ],
-   "params": {
-    "width": 7,
-    "rise": 0.5,
-    "run": 0.8,
-    "count": 3,
-    "colour": "#b8b2a2"
-   }
-  },
-  {
-   "type": "revolve",
+   "type": "loft",
    "id": "crown",
    "at": [
     0,
     -0.5,
-    16.5
+    15.5
    ],
    "params": {
-    "profile": [
-     [
-      0,
-      0,
-      "#c9c2ac"
-     ],
-     [
-      8.5,
-      0,
-      "#c9c2ac"
-     ],
-     [
-      8.5,
-      1.0,
-      "#c9c2ac"
-     ],
-     [
-      7.8,
-      2.2,
-      "#c9c2ac"
-     ],
-     [
-      0,
-      2.8,
-      "#c9c2ac"
-     ]
-    ],
-    "segments": 18
+    "colour": "#d7ccb0",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7,
+       0.6
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       6.2,
+       0.6
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       3.8,
+       0.6
+      ]
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       1.2,
+       0.6
+      ]
+     }
+    ]
    }
   },
   {
    "type": "sign-board",
    "at": [
     0,
-    -9.4,
-    12.6
+    -0.4,
+    15.6
    ],
    "params": {
-    "width": 9,
-    "height": 1.5,
-    "bottom": 0,
+    "width": 6,
+    "height": 1.0,
+    "bottom": 0.4,
     "colour": "#b8332c",
     "posts": false
    }
   },
   {
-   "type": "water-tank",
+   "type": "steps",
    "at": [
-    -26,
-    4,
-    13.5
+    0,
+    -14,
+    0
    ],
    "params": {
-    "radius": 1.6,
-    "height": 2.2,
-    "legs": 1.0,
-    "colour": "#cfd2d2"
+    "width": 7,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b8b2a2"
    }
   },
   {
-   "type": "water-tank",
+   "type": "mass",
+   "id": "wall-12",
+   "footprint": {
+    "rect": [
+     18,
+     1.2
+    ]
+   },
    "at": [
-    30,
-    5,
-    13.5
+    -12.0,
+    -14.5
    ],
-   "params": {
-    "radius": 1.6,
-    "height": 2.2,
-    "legs": 1.0,
-    "colour": "#cfd2d2"
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39d90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aa9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall12",
+   "footprint": {
+    "rect": [
+     18,
+     1.2
+    ]
+   },
+   "at": [
+    12.0,
+    -14.5
+   ],
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39d90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aa9c"
    }
   },
   {
@@ -253,25 +305,25 @@
   {
    "type": "tree",
    "at": [
-    -12,
-    -16,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 11
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    13,
-    -16,
+    -19,
+    -17,
     0
    ],
    "params": {
     "kind": "broadleaf",
     "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    21,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
    }
   }
  ],
@@ -300,6 +352,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "Arched porch and crown sign are simplified; real tile pattern, trees and street furniture not modelled; wing lengths estimated."
+  "gaps": "Porch arches and crown simplified (crown board sign colour not visible, no ornament); wings longer and plainer than photo; trees do not match real canopy; planter wall and street furniture minimal."
  }
 }

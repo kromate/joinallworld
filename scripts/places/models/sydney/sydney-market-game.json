@@ -37,17 +37,16 @@
     0,
     0
    ],
-   "rotDeg": 0,
    "z0": 0,
-   "height": 16,
-   "storeys": 4,
+   "height": 14,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3b95f",
+    "colour": "#e8c46a",
     "windows": "ribbon",
-    "windowRatio": 0.5,
-    "glassColour": "#26434d",
-    "bands": "#c9792f",
+    "windowRatio": 0.78,
+    "glassColour": "#1f3a44",
+    "bay": 7,
     "faces": {
      "front": "ribbon",
      "left": "ribbon",
@@ -57,92 +56,143 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d6a94f",
-    "parapet": 0.5
+    "colour": "#e0bb60",
+    "parapet": 0.1
    }
   },
   {
    "type": "mass",
-   "id": "plant",
+   "id": "slab-0",
    "footprint": {
     "rect": [
-     13,
-     10
+     66,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.4,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efd27a",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-1",
+   "footprint": {
+    "rect": [
+     66,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.9,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efd27a",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-2",
+   "footprint": {
+    "rect": [
+     66,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 13.4,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efd27a",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-band",
+   "footprint": {
+    "rect": [
+     62,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 14.1,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c46a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c46a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-base",
+   "footprint": {
+    "rect": [
+     17,
+     8
     ]
    },
    "at": [
     -6,
-    2
+    0
    ],
-   "rotDeg": 0,
-   "z0": 16,
-   "height": 4,
+   "z0": 16.3,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e0b559",
+    "colour": "#e8c46a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#cfa24e",
-    "parapet": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "stair-core-l",
-   "footprint": {
-    "rect": [
-     4,
-     4
-    ]
-   },
-   "at": [
-    16,
-    6
-   ],
-   "rotDeg": 0,
-   "z0": 16,
-   "height": 3,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efe9dc",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#efe9dc",
-    "parapet": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "stair-core-r",
-   "footprint": {
-    "rect": [
-     3,
-     3
-    ]
-   },
-   "at": [
-    -26,
-    8
-   ],
-   "rotDeg": 0,
-   "z0": 16,
-   "height": 2.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efe9dc",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#efe9dc",
-    "parapet": 0.2
+    "colour": "#e8c46a",
+    "parapet": 0.1
    }
   },
   {
@@ -150,17 +200,16 @@
    "id": "sign-box",
    "footprint": {
     "rect": [
-     17,
-     3
+     18,
+     5
     ]
    },
    "at": [
     -6,
     0
    ],
-   "rotDeg": 0,
-   "z0": 20,
-   "height": 7,
+   "z0": 20.8,
+   "height": 7.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -172,6 +221,60 @@
     "form": "flat",
     "colour": "#d8d2c0",
     "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "logo-panel",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    -3,
+    -2.8
+   ],
+   "z0": 22.2,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c42a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c42a2a",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parking-sign",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    -18,
+    -13.3
+   ],
+   "z0": 5.4,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a45fae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a45fae",
+    "parapet": 0
    }
   },
   {
@@ -193,50 +296,21 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6dcc6",
+    "colour": "#e0cf9a",
     "windows": "curtain",
     "windowRatio": 0.18,
     "faces": {
-     "front": "curtain",
+     "front": "plain",
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#b9b2a6"
+    "bands": "#c9792f"
    },
    "roof": {
     "form": "flat",
     "colour": "#8c8f93",
     "parapet": 0.9
-   }
-  },
-  {
-   "type": "mass",
-   "id": "entry",
-   "footprint": {
-    "rect": [
-     22,
-     6
-    ]
-   },
-   "at": [
-    -8,
-    -24
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 5.5,
-   "storeys": 1,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#b7c9cf",
-    "windows": "curtain",
-    "windowRatio": 0.85
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8c7a68",
-    "parapet": 0.3
    }
   },
   {
@@ -252,9 +326,8 @@
     -4,
     -19
    ],
-   "rotDeg": 0,
    "z0": 0,
-   "height": 3.4,
+   "height": 4.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -264,7 +337,7 @@
    "roof": {
     "form": "flat",
     "colour": "#a45fae",
-    "parapet": 0.0
+    "parapet": 0
    }
   },
   {
@@ -280,9 +353,8 @@
     35,
     -12
    ],
-   "rotDeg": 0,
    "z0": 0,
-   "height": 3.4,
+   "height": 4.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -292,7 +364,7 @@
    "roof": {
     "form": "flat",
     "colour": "#a45fae",
-    "parapet": 0.0
+    "parapet": 0
    }
   },
   {
@@ -388,6 +460,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Mall behind is generic pale render; glazing bands denser than the photo, sign box blank, no purple signage panel or carts."
+  "gaps": "Sign box logo is a blank panel with a red block; no real lettering or carts; glazing bays not separated by solid yellow piers; ground storey simplified; mall behind generic"
  }
 }

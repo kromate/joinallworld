@@ -12,7 +12,7 @@
    "author": "Gmsslala",
    "view": "aerial",
    "file": "/tmp/places-evidence/yaren/clinic1.jpg",
-   "used": "low white corrugated-roof ward blocks, gable and hip roofs, solar panel arrays on roofs, open covered ambulance bay, fenced forecourt with gate"
+   "used": "low white corrugated-roof ward blocks, gable and hip roofs, solar panel arrays on roofs, open covered ambulance bay, fenced forecourt with gate ; gate and gatehouse, wooded hill behind"
   },
   {
    "kind": "photo",
@@ -38,97 +38,94 @@
  "parts": [
   {
    "type": "mass",
-   "id": "front-ward",
+   "id": "near-wing",
    "footprint": {
     "rect": [
-     58,
-     9
+     42,
+     8
     ]
    },
    "at": [
-    0,
-    -14
+    -14,
+    -10
    ],
-   "rotDeg": 0,
-   "height": 3.8,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece9df",
+    "colour": "#efede6",
     "windows": "ribbon",
-    "windowRatio": 0.22,
+    "windowRatio": 0.2,
     "plinth": 0.3,
-    "glassColour": "#4a6e72"
+    "glassColour": "#3d4a4c"
    },
    "roof": {
     "form": "gable",
-    "colour": "#e4e7e8",
+    "colour": "#f3f4f3",
     "material": "corrugated",
-    "pitch": 10,
-    "overhang": 0.8
+    "pitch": 9,
+    "overhang": 1.6
    }
   },
   {
    "type": "mass",
-   "id": "rear-ward",
+   "id": "centre-block",
    "footprint": {
     "rect": [
-     50,
-     9
+     18,
+     14
     ]
    },
    "at": [
-    6,
-    18
+    14,
+    4
    ],
-   "rotDeg": 0,
-   "height": 3.8,
+   "height": 5.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece9df",
+    "colour": "#efede6",
     "windows": "ribbon",
-    "windowRatio": 0.22,
+    "windowRatio": 0.2,
     "plinth": 0.3,
-    "glassColour": "#4a6e72"
+    "glassColour": "#3d4a4c"
    },
    "roof": {
-    "form": "gable",
-    "colour": "#e4e7e8",
+    "form": "hip",
+    "colour": "#f3f4f3",
     "material": "corrugated",
-    "pitch": 10,
-    "overhang": 0.8
+    "pitch": 20,
+    "overhang": 1.6
    }
   },
   {
    "type": "mass",
-   "id": "west-wing",
+   "id": "entrance-dormer",
    "footprint": {
     "rect": [
-     9,
-     34
+     6,
+     5
     ]
    },
    "at": [
-    -27,
-    2
+    14,
+    -4
    ],
-   "rotDeg": 0,
-   "height": 3.8,
+   "height": 5.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece9df",
+    "colour": "#efede6",
     "windows": "ribbon",
-    "windowRatio": 0.22,
+    "windowRatio": 0.2,
     "plinth": 0.3,
-    "glassColour": "#4a6e72"
+    "glassColour": "#3d4a4c"
    },
    "roof": {
     "form": "gable",
-    "colour": "#e0e4e5",
+    "colour": "#f3f4f3",
     "material": "corrugated",
-    "pitch": 10,
+    "pitch": 30,
     "overhang": 0.8
    }
   },
@@ -137,70 +134,297 @@
    "id": "east-wing",
    "footprint": {
     "rect": [
-     9,
-     30
+     30,
+     9
     ]
    },
    "at": [
-    28,
-    2
+    40,
+    -2
    ],
-   "rotDeg": 0,
-   "height": 3.8,
+   "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8e4d8",
+    "colour": "#e9e5d8",
     "windows": "ribbon",
-    "windowRatio": 0.22,
+    "windowRatio": 0.2,
     "plinth": 0.3,
-    "glassColour": "#4a6e72"
+    "glassColour": "#3d4a4c"
    },
    "roof": {
     "form": "gable",
-    "colour": "#e4e7e8",
+    "colour": "#f3f4f3",
     "material": "corrugated",
     "pitch": 10,
-    "overhang": 0.8
+    "overhang": 1.6
    }
   },
   {
    "type": "mass",
-   "id": "admin-block",
+   "id": "west-annex",
    "footprint": {
     "rect": [
      14,
-     10
+     18
     ]
    },
    "at": [
-    2,
-    2
+    -34,
+    8
    ],
-   "rotDeg": 0,
-   "height": 4.4,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e9e2cd",
+    "colour": "#efede6",
     "windows": "ribbon",
-    "windowRatio": 0.18,
+    "windowRatio": 0.2,
     "plinth": 0.3,
-    "glassColour": "#4a6e72"
+    "glassColour": "#3d4a4c"
    },
    "roof": {
     "form": "hip",
-    "colour": "#dfe3e4",
+    "colour": "#f3f4f3",
     "material": "corrugated",
     "pitch": 14,
-    "overhang": 1.0
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing-a",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    22
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efede6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "glassColour": "#3d4a4c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f3f4f3",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing-b",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    32,
+    24
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5d8",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "glassColour": "#3d4a4c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f3f4f3",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-block",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    8
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efede6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "glassColour": "#3d4a4c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f4f3"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -30,
+    -10,
+    3.6
+   ],
+   "params": {
+    "rows": 4,
+    "cols": 14,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -16,
+    -9,
+    3.6
+   ],
+   "params": {
+    "rows": 4,
+    "cols": 12,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -8,
+    22,
+    4.0
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 10,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    30,
+    -27
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f4f3",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 0.8,
+    "bottom": 3.2,
+    "colour": "#f4f4f4",
+    "frameColour": "#3b4a5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    34,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    50,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 22,
+    "count": 34,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
    }
   },
   {
    "type": "ambulance-bay",
    "at": [
-    14,
-    -23,
+    2,
+    -20,
     0
    ],
    "params": {
@@ -211,61 +435,6 @@
     "colour": "#ece9df",
     "roofColour": "#dfe3e4",
     "vans": 1
-   }
-  },
-  {
-   "type": "solar-panels",
-   "at": [
-    -8,
-    -14,
-    4.6
-   ],
-   "params": {
-    "rows": 3,
-    "cols": 9,
-    "tilt": 10
-   }
-  },
-  {
-   "type": "solar-panels",
-   "at": [
-    8,
-    18,
-    4.6
-   ],
-   "params": {
-    "rows": 2,
-    "cols": 8,
-    "tilt": 10
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -14,
-    -30,
-    0
-   ],
-   "params": {
-    "width": 8,
-    "height": 0.9,
-    "bottom": 3.0,
-    "colour": "#f4f4f4",
-    "frameColour": "#3b4a5a"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -34,
-    -34,
-    0
-   ],
-   "params": {
-    "length": 68,
-    "height": 1.8,
-    "kind": "fence",
-    "colour": "#8a8f92"
    }
   },
   {
@@ -285,8 +454,8 @@
   {
    "type": "car",
    "at": [
-    -20,
-    -38,
+    -30,
+    -36,
     0
    ],
    "params": {
@@ -303,33 +472,26 @@
    {
     "kind": "palm",
     "at": [
-     -45,
-     -30
+     -50,
+     -20
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
-     35,
+     50,
      40
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -30,
-     45
     ]
    }
   ],
   "extent": [
-   110,
-   90
+   116,
+   100
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "plan is simplified into 4 wards plus admin block rather than the real many-wing outline; no tent canopy, hillside backdrop or blank arch sign over gate"
+  "gaps": "cluster layout approximated; roofs simpler than photo; no wooded hill slope or road; gate drawn as fence gap with no sliding gate; sign blank"
  }
 }

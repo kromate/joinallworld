@@ -3,7 +3,7 @@
  "evidence": [
   {
    "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:20260627_Campo_de_Futebol_e_de_Atletismo_da_Universidade_de_Ciência_e_Tecnologia_de_Macau.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:20260627_Campo_de_Futebol_e_de_Atletismo_da_Universidade_de_Ci\u00eancia_e_Tecnologia_de_Macau.jpg",
    "licence": "CC BY-SA 4.0",
    "author": "Wikimedia Commons contributor",
    "view": "front",
@@ -84,7 +84,7 @@
      "#3b72b8",
      "#e2c13a"
     ],
-    "blocks": 5,
+    "blocks": 3,
     "concreteColour": "#d7d5cf",
     "underColour": "#bdbab2",
     "backWall": 1.5,
@@ -92,57 +92,345 @@
    }
   },
   {
-   "type": "surface",
+   "type": "lamp",
+   "at": [
+    -90,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    90,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -90,
+    30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    90,
+    30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -38,
+    56,
+    8
+   ],
+   "params": {
+    "form": "curved",
+    "width": 40,
+    "depth": 16,
+    "height": 0.5,
+    "rise": 2.5,
+    "colour": "#7b7770",
+    "edgeColour": "#e8e8e4",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.35
+       ]
+      },
+      "arc": {
+       "plane": "yz",
+       "bulge": 2.5
+      },
+      "points": [
+       [
+        0,
+        -8,
+        0
+       ],
+       [
+        0,
+        8,
+        0
+       ]
+      ],
+      "colour": "#f2f2ee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -57.0,
+     56,
+     8
+    ],
+    "end": [
+     -19.0,
+     56,
+     8
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "canopy",
    "at": [
     0,
-    58,
-    9
+    56,
+    10
    ],
    "params": {
-    "kind": "folded",
-    "width": 42,
-    "depth": 14,
-    "rise": 2.2,
-    "folds": 6,
-    "thickness": 0.5,
-    "colour": "#6b6660",
-    "underColour": "#4f4b46"
+    "form": "curved",
+    "width": 44,
+    "depth": 16,
+    "height": 0.5,
+    "rise": 3.5,
+    "colour": "#7b7770",
+    "edgeColour": "#e8e8e4",
+    "axis": "x"
    }
   },
   {
-   "type": "surface",
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.35
+       ]
+      },
+      "arc": {
+       "plane": "yz",
+       "bulge": 3.5
+      },
+      "points": [
+       [
+        0,
+        -8,
+        0
+       ],
+       [
+        0,
+        8,
+        0
+       ]
+      ],
+      "colour": "#f2f2ee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -21.0,
+     56,
+     10
+    ],
+    "end": [
+     21.0,
+     56,
+     10
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "canopy",
    "at": [
-    -36,
-    58,
-    6.5
+    38,
+    56,
+    8
    ],
    "params": {
-    "kind": "folded",
-    "width": 42,
-    "depth": 14,
-    "rise": 1.8,
-    "folds": 6,
-    "thickness": 0.5,
-    "colour": "#6b6660",
-    "underColour": "#4f4b46"
+    "form": "curved",
+    "width": 40,
+    "depth": 16,
+    "height": 0.5,
+    "rise": 2.5,
+    "colour": "#7b7770",
+    "edgeColour": "#e8e8e4",
+    "axis": "x"
    }
   },
   {
-   "type": "surface",
-   "at": [
-    36,
-    58,
-    6.5
-   ],
+   "type": "array",
    "params": {
-    "kind": "folded",
-    "width": 42,
-    "depth": 14,
-    "rise": 1.8,
-    "folds": 6,
-    "thickness": 0.5,
-    "colour": "#6b6660",
-    "underColour": "#4f4b46"
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.35
+       ]
+      },
+      "arc": {
+       "plane": "yz",
+       "bulge": 2.5
+      },
+      "points": [
+       [
+        0,
+        -8,
+        0
+       ],
+       [
+        0,
+        8,
+        0
+       ]
+      ],
+      "colour": "#f2f2ee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     19.0,
+     56,
+     8
+    ],
+    "end": [
+     57.0,
+     56,
+     8
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post-58",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -58,
+    50
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0f0ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post-18",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -18,
+    50
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0f0ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post18",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    18,
+    50
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0f0ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post58",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    58,
+    50
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0f0ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
    }
   },
   {
@@ -150,62 +438,65 @@
    "id": "pavilion",
    "footprint": {
     "rect": [
-     34,
+     36,
      8
     ]
    },
    "at": [
     0,
-    64
+    62
    ],
-   "height": 5,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#e9e7e1",
+    "colour": "#eceae4",
     "windows": "curtain",
     "windowRatio": 0.5,
+    "bay": 8,
     "glassColour": "#7fa3b4"
    },
    "roof": {
     "form": "flat",
     "colour": "#d6d6d2"
    },
-   "z0": 9.5
+   "z0": 11
   },
   {
    "type": "mass",
-   "id": "press-box",
+   "id": "glass-box",
    "footprint": {
     "rect": [
-     24,
+     28,
      6
     ]
    },
    "at": [
-    -4,
-    64
+    -3,
+    62
    ],
-   "height": 3.5,
+   "height": 4,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
     "colour": "#6c8fb0",
     "windows": "curtain",
-    "windowRatio": 0.9
+    "windowRatio": 0.9,
+    "bay": 8,
+    "glassColour": "#6c8fb0"
    },
    "roof": {
     "form": "flat",
     "colour": "#d6d6d2"
    },
-   "z0": 14.5
+   "z0": 17
   },
   {
    "type": "revolve",
    "at": [
-    8,
-    64,
-    18
+    10,
+    62,
+    21
    ],
    "params": {
     "profile": [
@@ -235,23 +526,26 @@
   },
   {
    "type": "mass",
-   "id": "end-block-w",
+   "id": "office-w",
    "footprint": {
     "rect": [
-     22,
-     10
+     26,
+     8
     ]
    },
    "at": [
-    -72,
+    -70,
     56
    ],
-   "height": 4,
+   "height": 5,
    "storeys": 1,
    "wall": {
     "material": "concrete",
     "colour": "#c5c3ba",
-    "windows": "none"
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "glassColour": "#5d6a72"
    },
    "roof": {
     "form": "flat",
@@ -260,74 +554,109 @@
   },
   {
    "type": "mass",
-   "id": "campus-block",
+   "id": "campus-tower",
    "footprint": {
     "rect": [
-     70,
-     18
+     24,
+     22
     ]
    },
    "at": [
-    -30,
-    110
+    68,
+    66
    ],
-   "height": 18,
-   "storeys": 5,
+   "height": 34,
+   "storeys": 10,
    "wall": {
     "material": "concrete",
-    "colour": "#bcd0b4",
+    "colour": "#7f9a8c",
     "windows": "ribbon",
     "windowRatio": 0.45,
     "bay": 8,
-    "glassColour": "#8fa6a2"
+    "glassColour": "#4f6058"
    },
    "roof": {
     "form": "flat",
-    "colour": "#9a9a94"
+    "colour": "#6f7a74"
    }
   },
   {
-   "type": "lamp",
+   "type": "mass",
+   "id": "seat-lettering",
+   "footprint": {
+    "rect": [
+     40,
+     0.6
+    ]
+   },
    "at": [
-    -90,
-    -30,
+    0,
+    47.5
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e2c13a",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2c13a"
+   },
+   "z0": 1.2
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    0,
     0
    ],
    "params": {
-    "height": 22
+    "length": 0.1,
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#f4f4f0"
    }
   },
   {
-   "type": "lamp",
+   "type": "sweep-path",
    "at": [
-    90,
-    -30,
+    -48,
+    -4,
     0
    ],
    "params": {
-    "height": 22
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    -90,
-    30,
-    0
-   ],
-   "params": {
-    "height": 22
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    90,
-    30,
-    0
-   ],
-   "params": {
-    "height": 22
+    "section": {
+     "circle": 0.06
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      2.4
+     ],
+     [
+      0,
+      7.3,
+      2.4
+     ],
+     [
+      0,
+      7.3,
+      0
+     ]
+    ],
+    "colour": "#f4f4f0"
    }
   }
  ],
@@ -360,8 +689,8 @@
  "city": "macau",
  "venueId": "macau-osm-way-244820723",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "stand roofs are folded surfaces not the three swept arched canopies; seat letters missing; background campus tower approximate"
+  "gaps": "three curved canopies read as thin arches over flat roofs, not swept shells; campus tower placed approximately; seat lettering is a plain band"
  }
 }

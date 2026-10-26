@@ -93,10 +93,10 @@
     "facetDeg": 18,
     "under": "solid",
     "slab": 0.8,
-    "seatColour": "#2f6f9a",
+    "seatColour": "#8d8c85",
     "seatColours": [
-     "#2f6f9a",
-     "#d9d6cc"
+     "#8d8c85",
+     "#a8a69e"
     ],
     "blocks": 6,
     "concreteColour": "#8d8c85",
@@ -112,8 +112,7 @@
     0
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "centre": [
@@ -130,7 +129,7 @@
     "firstHeight": 6,
     "facetDeg": 18,
     "under": "solid",
-    "seatColour": "#2f6f9a",
+    "seatColour": "#8d8c85",
     "concreteColour": "#8d8c85",
     "canopy": {
      "height": 5,
@@ -172,8 +171,7 @@
     "lod1Step": 2
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -199,8 +197,8 @@
        14,
        0.6
       ],
-      "z0": 14,
-      "height": 4.5,
+      "z0": 17.5,
+      "height": 4.0,
       "colour": "#b6a98a"
      }
     }
@@ -213,12 +211,12 @@
     "mode": "line",
     "count": 3,
     "start": [
-     -27,
+     -30,
      -72,
      0
     ],
     "end": [
-     27,
+     30,
      -72,
      0
     ],
@@ -226,15 +224,15 @@
      "type": "prism",
      "params": {
       "rect": [
-       17,
-       7
+       16,
+       9
       ],
-      "height": 13,
-      "colour": "#b9cc7e",
-      "topColour": "#9fb470",
+      "height": 14,
+      "colour": "#b9cf7a",
+      "topColour": "#d9dcd2",
       "windows": "curtain",
       "storeys": 3,
-      "windowRatio": 0.55,
+      "windowRatio": 0.7,
       "faces": {
        "front": "curtain"
       }
@@ -253,15 +251,15 @@
    "params": {
     "rect": [
      76,
-     4
+     6
     ],
-    "height": 8,
-    "colour": "#b9cc7e",
-    "topColour": "#9fb470",
-    "windows": "punched",
+    "height": 10,
+    "colour": "#a9c8c0",
+    "topColour": "#d9dcd2",
+    "windows": "curtain",
     "storeys": 2,
     "faces": {
-     "front": "punched"
+     "front": "curtain"
     }
    }
   },
@@ -269,8 +267,7 @@
    "type": "array",
    "id": "floodlights",
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "mode": "arc",
@@ -347,6 +344,104 @@
     "height": 5,
     "colour": "#2a2d30"
    }
+  },
+  {
+   "type": "loft",
+   "id": "outer-wall",
+   "params": {
+    "colour": "#8d8c85",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       73,
+       58
+      ]
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       73,
+       58
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "wall-bands",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     0,
+     0,
+     5
+    ],
+    "end": [
+     0,
+     0,
+     15
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#6f6e68",
+      "sections": [
+       {
+        "z": 0,
+        "ellipse": [
+         73.3,
+         58.3
+        ]
+       },
+       {
+        "z": 0.7,
+        "ellipse": [
+         73.3,
+         58.3
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "truss-ring",
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.4
+     ]
+    },
+    "closed": true,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 73,
+     "radiusY": 58,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "colour": "#cfd0cc"
+   },
+   "at": [
+    0,
+    0,
+    22
+   ]
   }
  ],
  "site": {
@@ -359,8 +454,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "rough",
-  "gaps": "photo shows only the entrance front; full bowl modelled at 78% scale, entrance pavilions blocky, no roof truss canopy detail"
+  "gaps": "tall banded grey outer wall and truss ring added, bigger entrance pavilions and glazed link; pavilions render blue-glass rather than lime-framed, no real lattice trusses, flat roofline"
  }
 }

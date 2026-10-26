@@ -33,13 +33,13 @@
    "id": "copper-lumber-store",
    "footprint": {
     "rect": [
-     34,
-     11
+     39,
+     13
     ]
    },
    "at": [
     -30,
-    14
+    20
    ],
    "rotDeg": 0,
    "height": 6.2,
@@ -53,7 +53,7 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#8a929c",
+    "colour": "#b9bec4",
     "material": "slate"
    }
   },
@@ -62,13 +62,13 @@
    "id": "engineers-workshop",
    "footprint": {
     "rect": [
-     26,
-     10
+     30,
+     12
     ]
    },
    "at": [
-    3,
-    22
+    0,
+    34
    ],
    "rotDeg": 0,
    "height": 6.2,
@@ -82,7 +82,7 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#8a929c",
+    "colour": "#b9bec4",
     "material": "slate"
    }
   },
@@ -91,13 +91,13 @@
    "id": "admirals-inn",
    "footprint": {
     "rect": [
-     18,
-     9
+     21,
+     11
     ]
    },
    "at": [
-    -8,
-    -2
+    -6,
+    -4
    ],
    "rotDeg": 0,
    "height": 6.2,
@@ -111,7 +111,7 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#8a929c",
+    "colour": "#b9bec4",
     "material": "slate"
    }
   },
@@ -120,13 +120,13 @@
    "id": "pitch-tar-store",
    "footprint": {
     "rect": [
-     16,
-     8
+     18,
+     10
     ]
    },
    "at": [
-    -34,
-    -4
+    -40,
+    2
    ],
    "rotDeg": 0,
    "height": 5,
@@ -140,7 +140,7 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#8a929c",
+    "colour": "#b9bec4",
     "material": "slate"
    }
   },
@@ -149,13 +149,13 @@
    "id": "mast-house",
    "footprint": {
     "rect": [
-     20,
-     9
+     23,
+     11
     ]
    },
    "at": [
-    28,
-    10
+    30,
+    22
    ],
    "rotDeg": 0,
    "height": 6.2,
@@ -169,7 +169,7 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#8a929c",
+    "colour": "#b9bec4",
     "material": "slate"
    }
   },
@@ -183,8 +183,8 @@
     ]
    },
    "at": [
-    -52,
-    10
+    -56,
+    16
    ],
    "rotDeg": 0,
    "height": 4.5,
@@ -198,106 +198,15 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#8a929c",
+    "colour": "#b9bec4",
     "material": "slate"
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "mode": "line",
-    "start": [
-     8,
-     -6,
-     0
-    ],
-    "end": [
-     26,
-     -6,
-     0
-    ],
-    "count": 4,
-    "of": {
-     "type": "mass",
-     "id": "pillar",
-     "footprint": {
-      "rect": [
-       1.2,
-       1.2
-      ]
-     },
-     "at": [
-      0,
-      0
-     ],
-     "height": 5.5,
-     "storeys": 1,
-     "wall": {
-      "material": "stone",
-      "colour": "#cbbf9f",
-      "windows": "none"
-     },
-     "roof": {
-      "form": "flat",
-      "colour": "#cbbf9f",
-      "material": "concrete"
-     }
-    }
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "at": [
-    0,
-    -14,
-    0
-   ],
-   "params": {
-    "length": 10,
-    "height": 1.2,
-    "thickness": 0.6,
-    "kind": "wall",
-    "colour": "#cbbf9f",
-    "points": [
-     [
-      -60,
-      -14
-     ],
-     [
-      -20,
-      -14
-     ],
-     [
-      20,
-      -14
-     ],
-     [
-      48,
-      -14
-     ]
-    ]
-   }
-  },
-  {
-   "type": "ferry-jetty",
-   "at": [
-    2,
-    -14,
-    0
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 30,
-    "width": 5,
-    "shelter": false,
-    "timber": true
    }
   },
   {
    "type": "banded-stack",
    "at": [
     34,
-    24,
+    30,
     0
    ],
    "params": {
@@ -306,6 +215,383 @@
     "bands": false,
     "colour": "#8a5a43"
    }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -45,
+    0.02
+   ],
+   "params": {
+    "width": 140,
+    "depth": 45,
+    "colour": "#4f9aa6",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quay-edge",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     5
+    ],
+    "height": 0.8,
+    "colour": "#bdb49a"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    6,
+    -22,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 38,
+    "width": 4,
+    "height": 0.9,
+    "rails": false,
+    "colour": "#b9ad92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull0",
+   "at": [
+    -24,
+    -34,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     7
+    ],
+    "height": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0",
+   "at": [
+    -24,
+    -34,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 9,
+    "colour": "#dcdcdc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull1",
+   "at": [
+    -12,
+    -40,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     7
+    ],
+    "height": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1",
+   "at": [
+    -12,
+    -40,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 9,
+    "colour": "#dcdcdc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull2",
+   "at": [
+    24,
+    -36,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     7
+    ],
+    "height": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2",
+   "at": [
+    24,
+    -36,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 9,
+    "colour": "#dcdcdc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull3",
+   "at": [
+    36,
+    -44,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     7
+    ],
+    "height": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3",
+   "at": [
+    36,
+    -44,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 9,
+    "colour": "#dcdcdc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull4",
+   "at": [
+    -44,
+    -30,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     7
+    ],
+    "height": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast4",
+   "at": [
+    -44,
+    -30,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 9,
+    "colour": "#dcdcdc"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hill0",
+   "at": [
+    -55,
+    66,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      28,
+      0,
+      "#2e5a30"
+     ],
+     [
+      21.0,
+      7.700000000000001
+     ],
+     [
+      11.200000000000001,
+      12.6
+     ],
+     [
+      0.1,
+      14
+     ]
+    ],
+    "segments": 14,
+    "colour": "#2e5a30"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hill1",
+   "at": [
+    0,
+    78,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      36,
+      0,
+      "#2e5a30"
+     ],
+     [
+      27.0,
+      9.9
+     ],
+     [
+      14.4,
+      16.2
+     ],
+     [
+      0.1,
+      18
+     ]
+    ],
+    "segments": 14,
+    "colour": "#2e5a30"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hill2",
+   "at": [
+    55,
+    66,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      28,
+      0,
+      "#2e5a30"
+     ],
+     [
+      21.0,
+      7.700000000000001
+     ],
+     [
+      11.200000000000001,
+      12.6
+     ],
+     [
+      0.1,
+      14
+     ]
+    ],
+    "segments": 14,
+    "colour": "#2e5a30"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hill3",
+   "at": [
+    -25,
+    72,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      24,
+      0,
+      "#2e5a30"
+     ],
+     [
+      18.0,
+      6.6000000000000005
+     ],
+     [
+      9.600000000000001,
+      10.8
+     ],
+     [
+      0.1,
+      12
+     ]
+    ],
+    "segments": 14,
+    "colour": "#2e5a30"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hill4",
+   "at": [
+    28,
+    74,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      24,
+      0,
+      "#2e5a30"
+     ],
+     [
+      18.0,
+      6.6000000000000005
+     ],
+     [
+      9.600000000000001,
+      10.8
+     ],
+     [
+      0.1,
+      12
+     ]
+    ],
+    "segments": 14,
+    "colour": "#2e5a30"
+   }
   }
  ],
  "site": {
@@ -313,49 +599,63 @@
   "forecourt": "none",
   "trees": [
    {
-    "kind": "palm",
-    "at": [
-     -16,
-     -8
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     14,
-     2
-    ]
-   },
-   {
     "kind": "broadleaf",
     "at": [
-     -60,
-     28
+     -62,
+     34
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
      50,
-     30
+     36
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
      -15,
-     36
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     0
     ]
    }
   ],
   "extent": [
-   150,
-   100
+   130,
+   120
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Aerial photo shows a harbour with moorings and forested hills; only the building group and a pier are modelled, no water, yachts or hillside; building positions approximate."
+  "gaps": "Harbour water, quay, yachts, wooded hill mounds and pale slate roofs added; hills are smooth domes rather than ragged forest, building layout approximate, pier is a short strip."
  }
 }

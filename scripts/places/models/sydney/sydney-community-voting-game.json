@@ -41,60 +41,32 @@
    "storeys": 3,
    "wall": {
     "material": "sandstone",
-    "colour": "#c8a06a",
+    "colour": "#cf9d5c",
     "windows": "arched",
-    "windowRatio": 0.3,
-    "bay": 6.5,
+    "windowRatio": 0.38,
+    "bay": 6.3,
     "plinth": 1.4,
     "cornice": true,
-    "bands": "#b38a55",
+    "bands": "#b98c52",
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#cf9d5c",
+      "#c4934f"
+     ]
+    },
+    "windowShape": "arched"
    },
    "roof": {
     "form": "hip",
-    "colour": "#4a4d52",
+    "colour": "#3c3f44",
     "material": "slate",
     "pitch": 38,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower",
-   "footprint": {
-    "rect": [
-     9,
-     9
-    ]
-   },
-   "at": [
-    8,
-    -6
-   ],
-   "height": 46,
-   "storeys": 7,
-   "wall": {
-    "material": "sandstone",
-    "colour": "#c39a62",
-    "windows": "arched",
-    "windowRatio": 0.14,
-    "bay": 9,
-    "cornice": true,
-    "bands": "#b38a55",
-    "faces": {
-     "back": "plain",
-     "left": "plain"
-    }
-   },
-   "roof": {
-    "form": "pyramidal",
-    "colour": "#7a5a3c",
-    "material": "slate",
-    "rise": 9,
     "overhang": 0.8
    }
   },
@@ -115,42 +87,7 @@
    "storeys": 4,
    "wall": {
     "material": "sandstone",
-    "colour": "#c8a06a",
-    "windows": "none",
-    "cornice": true,
-    "plinth": 1.4,
-    "faces": {
-     "back": "plain",
-     "right": "plain",
-     "left": "plain"
-    }
-   },
-   "roof": {
-    "form": "mansard",
-    "colour": "#4a4d52",
-    "material": "slate",
-    "rise": 4.5,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pavilion-r",
-   "footprint": {
-    "rect": [
-     10,
-     10
-    ]
-   },
-   "at": [
-    27,
-    -14.5
-   ],
-   "height": 23,
-   "storeys": 4,
-   "wall": {
-    "material": "sandstone",
-    "colour": "#c8a06a",
+    "colour": "#cf9d5c",
     "windows": "none",
     "cornice": true,
     "plinth": 1.4,
@@ -203,81 +140,9 @@
    "lod": [
     0
    ],
-   "type": "core/portico",
-   "at": [
-    8,
-    -19,
-    0
-   ],
-   "params": {
-    "width": 16,
-    "depth": 3.5,
-    "height": 11,
-    "columns": 4,
-    "pediment": false,
-    "steps": 5,
-    "colour": "#d0ac78",
-    "roofColour": "#b38a55"
-   }
-  },
-  {
-   "lod": [
-    0
-   ],
-   "type": "core/steps",
-   "at": [
-    -8,
-    -19.5,
-    0
-   ],
-   "params": {
-    "width": 12,
-    "rise": 1.4,
-    "run": 1.0,
-    "count": 5,
-    "colour": "#bd9660"
-   }
-  },
-  {
-   "lod": [
-    0
-   ],
-   "type": "core/spire",
-   "at": [
-    8,
-    -6,
-    55
-   ],
-   "params": {
-    "baseWidth": 1.6,
-    "height": 8,
-    "colour": "#6b5a46",
-    "finial": true
-   }
-  },
-  {
-   "lod": [
-    0
-   ],
    "type": "core/spire",
    "at": [
     -23,
-    -14.5,
-    27.5
-   ],
-   "params": {
-    "baseWidth": 1.4,
-    "height": 5,
-    "colour": "#6b5a46"
-   }
-  },
-  {
-   "lod": [
-    0
-   ],
-   "type": "core/spire",
-   "at": [
-    27,
     -14.5,
     27.5
    ],
@@ -304,6 +169,194 @@
     "spread": 9,
     "line": 8
    }
+  },
+  {
+   "type": "mass",
+   "id": "tower-shaft",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    26,
+    -14
+   ],
+   "height": 40,
+   "storeys": 5,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cf9d5c",
+    "windows": "arched",
+    "cornice": true,
+    "bands": "#b98c52",
+    "windowRatio": 0.12,
+    "bay": 20,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98c52",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-stage",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    26,
+    -14
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d6a869",
+    "windows": "none",
+    "cornice": true,
+    "bands": "#b98c52",
+    "windowRatio": 0.5,
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98c52",
+    "parapet": 0.5
+   },
+   "z0": 40
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     7.5,
+     7.5
+    ]
+   },
+   "at": [
+    26,
+    -14
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cf9d5c",
+    "windows": "arched",
+    "cornice": true,
+    "bands": "#b98c52",
+    "windowRatio": 0.55,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98c52",
+    "parapet": 0.5
+   },
+   "z0": 48
+  },
+  {
+   "type": "revolve",
+   "at": [
+    26,
+    -14,
+    57
+   ],
+   "params": {
+    "profile": [
+     [
+      3.2,
+      0,
+      "#8a6a45"
+     ],
+     [
+      3.4,
+      1.2,
+      "#8a6a45"
+     ],
+     [
+      2.6,
+      2.4,
+      "#7a5a3c"
+     ],
+     [
+      1.6,
+      4.2,
+      "#7a5a3c"
+     ],
+     [
+      0.1,
+      6.5,
+      "#7a5a3c"
+     ]
+    ],
+    "segments": 12
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/spire",
+   "at": [
+    26,
+    -14,
+    63.5
+   ],
+   "params": {
+    "baseWidth": 0.5,
+    "height": 6,
+    "colour": "#555555",
+    "finial": true
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/portico",
+   "at": [
+    -4,
+    -19.3,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 3.5,
+    "height": 14,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#d6a869",
+    "roofColour": "#b98c52"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/spire",
+   "at": [
+    0,
+    -17,
+    27
+   ],
+   "params": {
+    "baseWidth": 1.2,
+    "height": 4,
+    "colour": "#6b5a46"
+   }
   }
  ],
  "site": {
@@ -318,8 +371,8 @@
  "city": "sydney",
  "venueId": "sydney-community-voting-game",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Second Empire ornament, domed corner pavilions, balconies and the clock-tower belfry/cupola are simplified; roof is hip not mansard (LOD1 budget); tower is a plain pyramid-capped shaft"
+  "gaps": "Second Empire ornament, balconies, dormers and clock faces not modelled; main roof is hip (LOD1 budget) with mansard pavilion; tower cupola a simple cone"
  }
 }

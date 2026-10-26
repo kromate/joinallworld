@@ -34,13 +34,23 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9b878",
+    "colour": "#d4b070",
     "trimColour": "#e6d2a0",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "bay": 4.8,
+    "windowRatio": 0.15,
+    "bay": 3.6,
     "plinth": 0.7,
-    "cornice": true
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 7.2,
+      "depth": 0.35,
+      "width": 0.9,
+      "colour": "#eadcb4"
+     }
+    ],
+    "glassColour": "#4a5058"
    },
    "roof": {
     "form": "flat",
@@ -121,16 +131,68 @@
   {
    "type": "core/tree",
    "at": [
-    -18,
-    -14,
+    -30,
+    -12,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 11,
-    "count": 4,
-    "spread": 5,
-    "line": 36
+    "height": 14,
+    "count": 5,
+    "spread": 4,
+    "line": 60
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-tower",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    24,
+    32
+   ],
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c5c9c",
+    "windows": "none",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a4f80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-post-canopy",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -26,
+    -4
+   ],
+   "z0": 3.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3835",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3835"
    }
   }
  ],
@@ -146,7 +208,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "OSM outline is simplified so the facade is a plain grid; real pilaster piers, window grilles, concrete wall and rooftop billboard are approximated; no street trees as dense as the photo."
+  "gaps": "Pale pilaster fins, blue glass tower behind, denser trees and entrance canopy added; the OSM outline is an L so the view angle differs from the photo; rooftop billboard, window grilles, iron railing and dimpled concrete wall are approximated."
  },
  "schema": "allworld-place-model",
  "version": 2,

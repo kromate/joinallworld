@@ -48,15 +48,15 @@
     0,
     0
    ],
-   "height": 17,
-   "storeys": 4,
+   "height": 12,
+   "storeys": 3,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#566f86",
+    "material": "painted-render",
+    "colour": "#cdbf9e",
     "windows": "none",
-    "bands": "#d9d0b8",
     "plinth": 0.5,
-    "cornice": true
+    "cornice": true,
+    "windowRatio": 0.2
    },
    "roof": {
     "form": "flat",
@@ -67,38 +67,57 @@
   },
   {
    "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -32,
+    -2
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#566f86",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
    "id": "tower",
    "footprint": {
     "rect": [
-     34,
-     24
+     22,
+     16
     ]
    },
    "at": [
     -8,
     4
    ],
-   "z0": 17,
-   "height": 52,
-   "storeys": 14,
+   "z0": 12,
+   "height": 54,
+   "storeys": 16,
    "wall": {
     "material": "painted-render",
-    "colour": "#d6cbb0",
-    "windows": "ribbon",
-    "windowRatio": 0.38,
+    "colour": "#d8cdb0",
+    "windows": "none",
+    "windowRatio": 0.34,
     "faces": {
      "back": "none",
      "left": "none"
     },
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#d6cbb0",
-       "#3f5f86"
-      ]
-     }
-    ],
     "cornice": true
    },
    "roof": {
@@ -112,68 +131,68 @@
    "type": "prism",
    "id": "tower-pier-a",
    "at": [
-    -25.5,
-    -8.6,
+    -19,
+    -4,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.6
+     2.6,
+     3.3000000000000003
     ],
-    "height": 69,
-    "colour": "#cfc4a8"
+    "height": 66,
+    "colour": "#d8cdb0"
    }
   },
   {
    "type": "prism",
    "id": "tower-pier-b",
    "at": [
-    9.5,
-    -8.6,
+    3,
+    -4,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.6
+     2.6,
+     3.3000000000000003
     ],
-    "height": 69,
-    "colour": "#cfc4a8"
+    "height": 66,
+    "colour": "#d8cdb0"
    }
   },
   {
    "type": "prism",
    "id": "tower-pier-c",
    "at": [
-    -25.5,
-    16.6,
+    -19,
+    12,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.6
+     2.6,
+     3.3000000000000003
     ],
-    "height": 69,
-    "colour": "#cfc4a8"
+    "height": 66,
+    "colour": "#d8cdb0"
    }
   },
   {
    "type": "prism",
    "id": "tower-pier-d",
    "at": [
-    9.5,
-    16.6,
+    3,
+    12,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.6
+     2.6,
+     3.3000000000000003
     ],
-    "height": 69,
-    "colour": "#cfc4a8"
+    "height": 66,
+    "colour": "#d8cdb0"
    }
   },
   {
@@ -182,7 +201,7 @@
    "at": [
     -8,
     4,
-    69
+    66
    ],
    "params": {
     "section": {
@@ -194,23 +213,23 @@
     "closed": true,
     "points": [
      [
-      -17,
       -12,
+      -9,
       0
      ],
      [
-      17,
+      12,
+      -9,
+      0
+     ],
+     [
+      12,
+      9,
+      0
+     ],
+     [
       -12,
-      0
-     ],
-     [
-      17,
-      12,
-      0
-     ],
-     [
-      -17,
-      12,
+      9,
       0
      ]
     ],
@@ -222,10 +241,10 @@
    "at": [
     -8,
     -9,
-    70
+    66.5
    ],
    "params": {
-    "width": 16,
+    "width": 12,
     "height": 2.4,
     "bottom": 0,
     "colour": "#cfd6dc",
@@ -236,16 +255,93 @@
   {
    "type": "core/tree",
    "at": [
-    -20,
-    -62,
+    -35,
+    -55,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 9,
-    "count": 5,
-    "spread": 4,
-    "line": 40
+    "height": 10,
+    "count": 12,
+    "spread": 3,
+    "line": 60
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-pier-f0",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.08,
+     2.7
+    ],
+    "height": 66,
+    "colour": "#d8cdb0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-pier-f1",
+   "at": [
+    -5,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.08,
+     2.7
+    ],
+    "height": 66,
+    "colour": "#d8cdb0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bays-front",
+   "at": [
+    -8,
+    -4.15,
+    12
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.3
+    ],
+    "height": 52,
+    "colour": "#3f5f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bays-right",
+   "at": [
+    3.15,
+    4,
+    12
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     12
+    ],
+    "height": 52,
+    "colour": "#3f5f86"
    }
   }
  ],
@@ -260,6 +356,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "tower reads more blue and squatter than the beige, pier-framed photo; podium is a simplified OSM outline with no window detail; no roof trellis detail or street palms density"
+  "gaps": "tower now beige with blue bays but bays are flat panels not recessed; podium is still the OSM outline and too large/pale, trellis simplified, palms sparser than photo"
  }
 }

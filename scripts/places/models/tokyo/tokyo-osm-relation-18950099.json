@@ -51,10 +51,10 @@
    "storeys": 4,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#c49b78",
+    "colour": "#c8a37f",
     "trimColour": "#d9d4c8",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.26,
     "cornice": true,
     "faces": {
      "front": "punched",
@@ -63,7 +63,7 @@
      "right": "none"
     },
     "bands": "#d9d4c8",
-    "bay": 5
+    "bay": 8
    },
    "roof": {
     "form": "flat",
@@ -114,11 +114,11 @@
     -44,
     6
    ],
-   "height": 14,
-   "storeys": 4,
+   "height": 19,
+   "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#c9a280",
+    "colour": "#c8a37f",
     "windows": "none",
     "windowRatio": 0.25,
     "bands": "#d9d4c8"
@@ -183,15 +183,15 @@
    "storeys": 4,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d7c4a8",
+    "colour": "#e6dcc4",
     "windows": "none",
     "windowRatio": 0.35,
     "pattern": [
      {
       "type": "floors",
       "colours": [
-       "#d7c4a8",
-       "#b9a98e"
+       "#e6dcc4",
+       "#d4c9ae"
       ]
      }
     ]
@@ -207,16 +207,16 @@
    "id": "portico-slab",
    "footprint": {
     "rect": [
-     26,
-     6
+     28,
+     7
     ]
    },
    "at": [
     14,
     -12
    ],
-   "z0": 4.2,
-   "height": 0.9,
+   "z0": 6.0,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -236,22 +236,22 @@
      "type": "prism",
      "params": {
       "rect": [
-       1.1,
-       1.1
+       1.0,
+       1.0
       ],
-      "height": 4.2,
+      "height": 6,
       "colour": "#cfcbc0"
      }
     },
     "mode": "line",
-    "count": 5,
+    "count": 6,
     "start": [
-     3,
-     -14
+     2,
+     -14.5
     ],
     "end": [
-     25,
-     -14
+     26,
+     -14.5
     ]
    }
   },
@@ -268,6 +268,190 @@
     "run": 0.9,
     "count": 8,
     "colour": "#8f8f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "infill",
+   "at": [
+    14,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.6
+    ],
+    "height": 6,
+    "colour": "#7fa59b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "revolving",
+   "at": [
+    16,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     3.8
+    ],
+    "height": 3.2,
+    "colour": "#5d8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-step",
+   "at": [
+    2,
+    0,
+    17
+   ],
+   "params": {
+    "rect": [
+     30,
+     10
+    ],
+    "height": 4.5,
+    "colour": "#c8a37f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre",
+   "at": [
+    22,
+    -4,
+    10
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.4
+    ],
+    "height": 4,
+    "colour": "#a9c9bd"
+   }
+  },
+  {
+   "type": "array",
+   "id": "hoods0",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.7
+      ],
+      "height": 0.25,
+      "colour": "#d9d4c8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -22,
+     -8.5,
+     5.4
+    ],
+    "end": [
+     14,
+     -8.5,
+     5.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "hoods1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.7
+      ],
+      "height": 0.25,
+      "colour": "#d9d4c8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -22,
+     -8.5,
+     9.6
+    ],
+    "end": [
+     14,
+     -8.5,
+     9.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "hoods2",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.7
+      ],
+      "height": 0.25,
+      "colour": "#d9d4c8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -22,
+     -8.5,
+     13.8
+    ],
+    "end": [
+     14,
+     -8.5,
+     13.8
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     26
+    ],
+    "height": 0.08,
+    "colour": "#c9a898"
    }
   }
  ],
@@ -312,6 +496,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "tan tile main block, glass wing and columned portico present; no window hoods, concrete frame simplified, no hillside wall, layout invented"
+  "gaps": "six-column concrete portico with glass infill, window hoods, stepped upper block and pink plaza added; portico less deep than real, revolving door drum is a plain box, layout of wings invented"
  }
 }

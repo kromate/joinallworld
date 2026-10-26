@@ -1,17 +1,226 @@
 {
- "schema": "allworld-place-model", "version": 2, "city": "georgetown", "venueId": "georgetown-osm-way-479572609",
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-479572609",
  "verified": "footprint",
  "evidence": [
-  {"kind": "osm", "ref": "way/479572609", "used": "real outline of the reserve: an irregular six-sided plot about 77 x 66 m"}
+  {
+   "kind": "osm",
+   "ref": "way/479572609",
+   "used": "real outline of the reserve: an irregular six-sided plot about 77 x 66 m"
+  }
  ],
- "camera": {"yawDeg": 20, "pitchDeg": 25, "fovDeg": 45},
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45
+ },
  "parts": [
-  {"type": "prism", "id": "lawn", "params": {"points": [[-44.7,3.8],[-36.6,37.2],[38.1,18.6],[22.7,-44.6],[-13.6,-36.6],[-6.8,-7.4]], "z0": 0, "height": 0.25, "colour": "#6f9a45", "top": true}},
-  {"type": "prism", "id": "path", "params": {"points": [[-38,8],[-37,12],[30,-4],[29,-8]], "z0": 0.25, "height": 0.05, "colour": "#cfc6b0", "top": true}},
-  {"type": "fence-wall", "id": "fence", "at": [-44.7, 3.8, 0.25], "params": {"kind": "railing", "height": 1.2, "thickness": 0.08, "colour": "#d9d4c6", "points": [[0,0],[8.1,33.4],[82.8,14.8],[67.4,-48.4],[31.1,-40.4],[37.9,-11.2],[0,0]]}},
-  {"type": "canopy", "id": "pavilion", "at": [4, 6, 0.25], "params": {"form": "flat", "width": 8, "depth": 5, "height": 3, "thickness": 0.25, "columns": 4, "colour": "#9a8f78", "edgeColour": "#c9c3b6"}},
-  {"type": "array", "at": [0, 0, 0.25], "params": {"mode": "line", "start": [-30, 25], "end": [28, 12], "count": 5, "of": [{"type": "lamp", "params": {"height": 4.5}}]}}
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -44.7,
+      3.8
+     ],
+     [
+      -36.6,
+      37.2
+     ],
+     [
+      38.1,
+      18.6
+     ],
+     [
+      22.7,
+      -44.6
+     ],
+     [
+      -13.6,
+      -36.6
+     ],
+     [
+      -6.8,
+      -7.4
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#6f9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -38,
+      8
+     ],
+     [
+      -37,
+      12
+     ],
+     [
+      30,
+      -4
+     ],
+     [
+      29,
+      -8
+     ]
+    ],
+    "z0": 0.25,
+    "height": 0.05,
+    "colour": "#cfc6b0",
+    "top": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -44.7,
+    3.8,
+    0.25
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.2,
+    "thickness": 0.08,
+    "colour": "#d9d4c6",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      8.1,
+      33.4
+     ],
+     [
+      82.8,
+      14.8
+     ],
+     [
+      67.4,
+      -48.4
+     ],
+     [
+      31.1,
+      -40.4
+     ],
+     [
+      37.9,
+      -11.2
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "pavilion",
+   "at": [
+    4,
+    6,
+    0.25
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 5,
+    "height": 3,
+    "thickness": 0.25,
+    "columns": 4,
+    "colour": "#9a8f78",
+    "edgeColour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     25
+    ],
+    "end": [
+     28,
+     12
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {
+       "height": 4.5
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
  ],
- "site": {"ground": "grass", "forecourt": "road", "trees": [{"kind": "palm", "at": [-20, 20]}, {"kind": "palm", "at": [18, -20]}, {"kind": "broadleaf", "at": [20, 10]}, {"kind": "broadleaf", "at": [-25, -3]}], "extent": [130, 110]},
- "review": {"rounds": 1, "match": "rough", "gaps": "no photo exists; plot from OSM outline, fence, pavilion and trees are plausible for a small residential reserve"}
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -25,
+     -3
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; plot from OSM outline, fence, pavilion and trees are plausible for a small residential reserve"
+ }
 }

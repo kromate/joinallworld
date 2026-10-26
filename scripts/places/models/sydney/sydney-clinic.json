@@ -26,62 +26,129 @@
  "parts": [
   {
    "type": "mass",
-   "id": "ward-block",
+   "id": "ward-orange",
    "footprint": {
     "rect": [
-     56,
+     30,
      20
     ]
    },
    "at": [
-    -24,
+    -42,
     2
    ],
-   "height": 23,
-   "storeys": 6,
+   "height": 20,
+   "storeys": 5,
    "wall": {
     "material": "render",
     "colour": "#c8683c",
     "windows": "ribbon",
-    "windowRatio": 0.45,
+    "windowRatio": 0.5,
     "glassColour": "#1f2a32",
-    "bay": 9,
+    "bay": 6,
     "pattern": [
      {
       "type": "floors",
       "colours": [
        "#c8683c",
-       "#3a3d40"
+       "#33363a"
       ]
      }
     ],
     "faces": {
-     "left": "none",
+     "left": "plain",
      "right": "plain",
-     "back": "ribbon"
+     "back": "plain"
     }
    },
    "roof": {
     "form": "flat",
     "colour": "#8c8f93",
-    "material": "membrane",
-    "parapet": 0.6
+    "parapet": 0.5
    }
+  },
+  {
+   "type": "mass",
+   "id": "ward-dark",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    -13,
+    2
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3d40",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#1b242b",
+    "bay": 7,
+    "bands": "#d8d8d6",
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7074",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony-box",
+   "footprint": {
+    "rect": [
+     13,
+     7
+    ]
+   },
+   "at": [
+    -20,
+    -11
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f1f1ee",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#2a3238",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.5
+   },
+   "z0": 8
   },
   {
    "type": "mass",
    "id": "fin-core",
    "footprint": {
     "rect": [
-     14,
+     12,
      18
     ]
    },
    "at": [
-    10,
+    7,
     4
    ],
-   "height": 25,
+   "height": 24,
    "storeys": 6,
    "wall": {
     "material": "metal-cladding",
@@ -104,27 +171,35 @@
    "id": "mural-tower",
    "footprint": {
     "rect": [
-     18,
-     16
+     22,
+     18
     ]
    },
    "at": [
     24,
-    6
+    5
    ],
-   "height": 24,
+   "height": 27,
    "storeys": 6,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#222629",
-    "windows": "none",
+    "colour": "#1c2024",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#1c2024",
     "pattern": {
      "type": "panels",
      "colours": [
       "#c8683c",
-      "#222629",
+      "#1c2024",
       "#e8d5c0"
+     ],
+     "faces": [
+      "front"
      ]
+    },
+    "faces": {
+     "back": "plain"
     }
    },
    "roof": {
@@ -132,6 +207,169 @@
     "colour": "#44484c",
     "parapet": 0.5
    }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    26,
+    -6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#222629",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44484c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    28,
+    -16
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b88a5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9ccce",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.3,
+    "high": "right"
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "boundary-wall",
+   "footprint": {
+    "rect": [
+     78,
+     0.8
+    ]
+   },
+   "at": [
+    -4,
+    -24
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adb0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.35
+    },
+    "points": [
+     [
+      20,
+      -18,
+      0.5
+     ],
+     [
+      20.5,
+      -20,
+      6.6
+     ]
+    ],
+    "colour": "#55595c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.35
+    },
+    "points": [
+     [
+      32,
+      -18,
+      0.5
+     ],
+     [
+      32.5,
+      -20,
+      6.6
+     ]
+    ],
+    "colour": "#55595c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.35
+    },
+    "points": [
+     [
+      40,
+      -18,
+      0.5
+     ],
+     [
+      40.5,
+      -20,
+      6.6
+     ]
+    ],
+    "colour": "#55595c"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
@@ -157,86 +395,6 @@
     "form": "flat",
     "colour": "#6c7074",
     "parapet": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pod",
-   "footprint": {
-    "rect": [
-     12,
-     9
-    ]
-   },
-   "at": [
-    -9,
-    -8
-   ],
-   "height": 9,
-   "storeys": 3,
-   "wall": {
-    "material": "render",
-    "colour": "#f1f1ee",
-    "windows": "none",
-    "glassColour": "#2a3238"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6c7074",
-    "parapet": 0.3
-   }
-  },
-  {
-   "type": "mass",
-   "id": "lobby",
-   "footprint": {
-    "rect": [
-     34,
-     10
-    ]
-   },
-   "at": [
-    26,
-    -6
-   ],
-   "height": 5,
-   "storeys": 1,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#222629",
-    "windows": "curtain",
-    "windowRatio": 0.8,
-    "faces": {
-     "left": "none",
-     "right": "none",
-     "back": "none"
-    }
-   },
-   "roof": {
-    "form": "shed",
-    "colour": "#aeb4b8",
-    "material": "metal-sheet",
-    "rise": 2.5,
-    "overhang": 0,
-    "high": "back"
-   }
-  },
-  {
-   "type": "core/canopy",
-   "at": [
-    30,
-    -16,
-    5.5
-   ],
-   "params": {
-    "form": "flat",
-    "width": 38,
-    "depth": 14,
-    "height": 5.5,
-    "thickness": 0.8,
-    "columns": 0,
-    "colour": "#b88a5c",
-    "edgeColour": "#dfe3e5"
    }
   },
   {
@@ -303,8 +461,8 @@
  "city": "sydney",
  "venueId": "sydney-clinic",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Mural pattern is a generic panel grid, raked canopy struts and projecting white-framed balcony box missing; only the new frontage block of a 335 m campus"
+  "gaps": "Mural is a panel grid not the organic wave pattern; canopy struts thin/missing; only the new frontage of a 335 m campus"
  }
 }

@@ -33,28 +33,28 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     74,
-     44
+     52,
+     38
     ]
    },
    "at": [
-    2,
+    10,
     -2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 20,
+   "height": 25,
    "storeys": 2,
    "wall": {
     "material": "brick",
-    "colour": "#b4604a",
+    "colour": "#b5593f",
     "glassColour": "#4d7f8f",
     "windows": "punched",
     "windowShape": "arched",
-    "windowRatio": 0.25,
+    "windowRatio": 0.45,
     "plinth": 0.8,
     "cornice": true,
-    "bay": 12,
+    "bay": 22,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -65,7 +65,48 @@
     "form": "flat",
     "colour": "#c8a58f",
     "material": "concrete",
-    "overhang": 0.3,
+    "overhang": 0.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-step",
+   "footprint": {
+    "rect": [
+     40,
+     30
+    ]
+   },
+   "at": [
+    -12,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5593f",
+    "glassColour": "#4d7f8f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 26,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8a58f",
+    "material": "concrete",
+    "overhang": 0.5,
     "parapet": 0
    }
   },
@@ -74,7 +115,7 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     40,
+     38,
      28
     ]
    },
@@ -85,15 +126,15 @@
    "rotDeg": 0,
    "z0": 0,
    "height": 118,
-   "storeys": 34,
+   "storeys": 26,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#2c6fa0",
-    "glassColour": "#4fb0b8",
+    "colour": "#5f8590",
+    "glassColour": "#3f8d95",
     "windows": "ribbon",
-    "windowRatio": 0.7,
+    "windowRatio": 0.55,
     "plinth": 0.2,
-    "bay": 20,
+    "bay": 22,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -104,7 +145,7 @@
     "form": "flat",
     "colour": "#bfc6c9",
     "material": "concrete",
-    "overhang": 2.5,
+    "overhang": 3,
     "parapet": 0
    }
   },
@@ -113,24 +154,35 @@
    "id": "silver-spine",
    "footprint": {
     "rect": [
-     7,
+     5,
      28
     ]
    },
    "at": [
-    -21.5,
+    -21,
     6
    ],
    "rotDeg": 0,
    "z0": 0,
    "height": 118,
-   "storeys": 34,
+   "storeys": 17,
    "wall": {
     "material": "metal-cladding",
     "colour": "#aeb5b9",
     "windows": "none",
     "windowRatio": 0,
-    "plinth": 0
+    "plinth": 0,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ],
+     "depth": 1.2,
+     "every": 7,
+     "colour": "#b9c0c4",
+     "railColour": "#9aa3a8",
+     "floors": "all"
+    }
    },
    "roof": {
     "form": "flat",
@@ -145,13 +197,13 @@
    "id": "plant-stage",
    "footprint": {
     "rect": [
-     34,
+     30,
      6
     ]
    },
    "at": [
-    -2,
-    -6
+    4,
+    -8
    ],
    "rotDeg": 0,
    "z0": 30,
@@ -164,9 +216,11 @@
     "windowRatio": 0,
     "plinth": 0,
     "pattern": {
-     "kind": "louvres",
+     "type": "louvres",
      "colour": "#8a9095",
-     "floors": "all"
+     "floors": [
+      0
+     ]
     }
    },
    "roof": {
@@ -210,7 +264,6 @@
    "roof": {
     "form": "flat",
     "colour": "#c9d1d4",
-    "material": "concrete",
     "overhang": 1.5,
     "parapet": 0.5
    }
@@ -279,6 +332,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "tower tall-and-narrow ratio and teal reflections approximate; podium is a simplified rectangle with fewer arched bays and no big round window; plant stage has no louvres"
+  "gaps": "podium round-window and stepped brick massing simplified; tower not tapered, no fine silver mullions; crown cap flat; trees omitted"
  }
 }

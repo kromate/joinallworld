@@ -40,15 +40,15 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#b3bfcb",
+    "colour": "#bcc6cf",
     "windows": "punched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.16,
     "plinth": 0.4,
     "bands": "#ffffff"
    },
    "roof": {
     "form": "hip",
-    "colour": "#dcd9d0",
+    "colour": "#d8cdb2",
     "material": "metal-sheet",
     "pitch": 20,
     "overhang": 0.8
@@ -71,15 +71,15 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#b3bfcb",
+    "colour": "#bcc6cf",
     "windows": "punched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.16,
     "plinth": 0.4,
     "bands": "#ffffff"
    },
    "roof": {
     "form": "hip",
-    "colour": "#dcd9d0",
+    "colour": "#d8cdb2",
     "material": "metal-sheet",
     "pitch": 20,
     "overhang": 0.8
@@ -102,15 +102,15 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#c3ced8",
+    "colour": "#c6cfd7",
     "windows": "punched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.16,
     "plinth": 0.4,
     "bands": "#ffffff"
    },
    "roof": {
     "form": "hip",
-    "colour": "#dcd9d0",
+    "colour": "#d8cdb2",
     "material": "metal-sheet",
     "pitch": 20,
     "overhang": 0.8
@@ -121,7 +121,7 @@
    "id": "porch",
    "footprint": {
     "rect": [
-     5,
+     6,
      4
     ]
    },
@@ -129,7 +129,7 @@
     0,
     -5.5
    ],
-   "height": 3.6,
+   "height": 4.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -138,88 +138,104 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#d8d6cd",
+    "colour": "#d8cdb2",
     "material": "metal-sheet",
-    "pitch": 32,
+    "pitch": 34,
     "overhang": 0.5
    }
   },
   {
-   "type": "core/tree",
-   "at": [
-    -6,
-    -16,
-    0
-   ],
+   "type": "array",
    "params": {
-    "kind": "palm",
-    "height": 8
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -12
+    ],
+    "end": [
+     18,
+     -12
+    ],
+    "count": 9
    }
   },
   {
-   "type": "core/tree",
+   "type": "mass",
+   "id": "hedge",
+   "footprint": {
+    "rect": [
+     34,
+     1.2
+    ]
+   },
    "at": [
-    6,
-    -16,
-    0
+    0,
+    -8.5
    ],
-   "params": {
-    "kind": "palm",
-    "height": 9
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d76a8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8f3f"
    }
   },
   {
-   "type": "core/tree",
+   "type": "core/steps",
    "at": [
-    14,
-    -12,
+    0,
+    -8,
     0
    ],
    "params": {
-    "kind": "palm",
-    "height": 8
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d0ccc2"
    }
   },
   {
-   "type": "core/tree",
+   "type": "mass",
+   "id": "doors1",
+   "footprint": {
+    "rect": [
+     3,
+     0.5
+    ]
+   },
    "at": [
-    -14,
-    -14,
-    0
+    0,
+    -7.5
    ],
-   "params": {
-    "kind": "palm",
-    "height": 8
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -18,
-    -10,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 8
-   }
-  },
-  {
-   "type": "core/flag",
-   "at": [
-    8,
-    -15,
-    0
-   ],
-   "params": {
-    "height": 7,
-    "count": 2,
-    "spacing": 1.5
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#f4f4f2"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "road",
   "extent": [
    70,
@@ -231,8 +247,8 @@
  "city": "roseau",
  "venueId": "roseau-osm-way-396804252",
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "modelled as three straight wings, not the real zig-zag OSM outline (hip roof does not fit it); no hedges, barred windows or gabled-porch detail; wall blue slightly saturated"
+  "gaps": "palm row, hedge and entrance porch added; zig-zag outline still three straight wings; hedge reads pink band, barred windows and lawn strip simplified"
  }
 }

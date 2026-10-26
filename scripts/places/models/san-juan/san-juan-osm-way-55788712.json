@@ -41,10 +41,10 @@
    "storeys": 3,
    "wall": {
     "material": "exposed-concrete",
-    "colour": "#a79f8d",
+    "colour": "#b3a58d",
     "windows": "ribbon",
-    "windowRatio": 0.1,
-    "glassColour": "#4a4f52",
+    "windowRatio": 0.14,
+    "glassColour": "#4a4540",
     "plinth": 1.0,
     "faces": {
      "front": "ribbon",
@@ -55,83 +55,73 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#9b9a94",
+    "colour": "#a39b8c",
     "parapet": 0.8
    }
   },
   {
-   "type": "revolve",
+   "type": "loft",
    "at": [
     0,
     0,
     15.8
    ],
    "params": {
-    "segments": 32,
-    "colour": "#dcdcd6",
-    "profile": [
-     [
-      32,
-      0,
-      "#cfcfc8"
-     ],
-     [
-      32,
-      1.0
-     ],
-     [
-      29,
-      2.8
-     ],
-     [
-      21,
-      4.6
-     ],
-     [
-      10,
-      5.7
-     ],
-     [
-      0,
-      6.0
-     ]
-    ],
-    "topColour": "#e4e4de"
+    "colour": "#e2e2dc",
+    "topColour": "#ecece6",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       34,
+       18
+      ],
+      "colour": "#cfcfc8"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       33,
+       14
+      ]
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       28,
+       9
+      ]
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       18,
+       5
+      ]
+     },
+     {
+      "z": 13.5,
+      "ellipse": [
+       8,
+       2
+      ]
+     }
+    ]
    }
-  },
-  {
-   "type": "prism",
-   "id": "sign-wall",
-   "at": [
-    -37,
-    -52,
-    0
-   ],
-   "rotDeg": 0,
-   "params": {
-    "rect": [
-     1.2,
-     10
-    ],
-    "height": 1,
-    "colour": "#a79f8d"
-   },
-   "lod": [
-    2
-   ]
   },
   {
    "type": "array",
    "params": {
     "mode": "line",
     "start": [
-     -26,
-     -50,
+     -24,
+     -43,
      0
     ],
     "end": [
-     26,
-     -50,
+     24,
+     -43,
      0
     ],
     "count": 4,
@@ -139,14 +129,14 @@
      "type": "mass",
      "footprint": {
       "rect": [
-       9,
-       5
+       10,
+       4
       ]
      },
-     "height": 4.2,
+     "height": 3.2,
      "wall": {
       "material": "exposed-concrete",
-      "colour": "#9e968a",
+      "colour": "#a89c88",
       "windows": "none"
      },
      "roof": {
@@ -168,7 +158,10 @@
     "height": 9,
     "count": 3,
     "spacing": 24
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "car",
@@ -181,11 +174,115 @@
     "count": 3,
     "spacing": 3.2,
     "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-low",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -44,
+    -40
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b0a28a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9385",
+    "parapet": 0.5
    }
+  },
+  {
+   "type": "mass",
+   "id": "wing-step",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -47,
+    -36
+   ],
+   "z0": 5.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b8aa92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9385",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-wall",
+   "at": [
+    -44,
+    -48.6
+   ],
+   "params": {
+    "rect": [
+     15,
+     1.2
+    ],
+    "z0": 5.5,
+    "height": 6,
+    "colour": "#b5a78f",
+    "topColour": "#a99d86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-booth",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    -60
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a89c88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.2
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "parking",
   "extent": [
    150,
@@ -235,8 +332,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Massing and dome shell agree with the photo; the OSM outline is scaled to 65 percent to fit the 120 m clamp. Missing the stepped entrance wing and sign wall at left, the upper ribbon windows are simpler, no planted shrubs; ribbon slits only on the front face."
+  "gaps": "entrance wing and sign wall added at left as plain boxes; shell is a loft ridge not exact curve; sheds sit on the facade; no shrubs; no real window slit detail between ribbons; OSM outline scaled to 65 percent"
  }
 }

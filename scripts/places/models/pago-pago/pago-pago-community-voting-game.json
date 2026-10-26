@@ -30,7 +30,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "no carved fretwork balustrade, no dark green sashes detail; pediment simplified; roof slightly low"
+  "gaps": "walls render with bluish sky tint; no carved balustrade fretwork; pediment barely readable; windows/sashes not matched"
  },
  "parts": [
   {
@@ -50,10 +50,11 @@
    "storeys": 2,
    "wall": {
     "material": "timber",
-    "colour": "#f3f1ea",
+    "colour": "#f6f5f0",
     "windows": "punched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.1,
     "faces": {
+     "front": "plain",
      "back": "punched",
      "left": "plain",
      "right": "plain"
@@ -62,10 +63,10 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#dfe2df",
+    "colour": "#e8e8e6",
     "material": "metal-sheet",
-    "pitch": 24,
-    "overhang": 3.0
+    "pitch": 20,
+    "overhang": 3.2
    }
   },
   {
@@ -73,31 +74,31 @@
    "id": "pediment",
    "footprint": {
     "rect": [
-     2.5,
-     7
+     9,
+     1.4
     ]
    },
    "rotDeg": 0,
    "at": [
     0,
-    -8.4
+    -6.6
    ],
-   "height": 6.4,
+   "height": 8.4,
    "storeys": 2,
    "wall": {
     "material": "timber",
     "colour": "#f3f1ea",
     "windows": "none",
     "faces": {
-     "front": "punched"
+     "front": "plain"
     }
    },
    "roof": {
     "form": "gable",
-    "colour": "#dfe2df",
+    "colour": "#e8e8e6",
     "material": "metal-sheet",
-    "pitch": 38,
-    "overhang": 0.4
+    "pitch": 42,
+    "overhang": 0.5
    }
   },
   {
@@ -405,6 +406,188 @@
     "height": 9,
     "colour": "#ffffff"
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.2
+    ],
+    "height": 2.9,
+    "colour": "#1f2a24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.3,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      1.3,
+      "#222222"
+     ],
+     [
+      0.232,
+      1.339,
+      "#222222"
+     ],
+     [
+      0.428,
+      1.452,
+      "#222222"
+     ],
+     [
+      0.573,
+      1.625,
+      "#222222"
+     ],
+     [
+      0.65,
+      1.837,
+      "#222222"
+     ],
+     [
+      0.65,
+      2.063,
+      "#222222"
+     ],
+     [
+      0.573,
+      2.275,
+      "#222222"
+     ],
+     [
+      0.428,
+      2.448,
+      "#222222"
+     ],
+     [
+      0.232,
+      2.561,
+      "#222222"
+     ],
+     [
+      0.067,
+      2.598,
+      "#222222"
+     ]
+    ],
+    "segments": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.3,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    9,
+    -17,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      1.3,
+      "#222222"
+     ],
+     [
+      0.232,
+      1.339,
+      "#222222"
+     ],
+     [
+      0.428,
+      1.452,
+      "#222222"
+     ],
+     [
+      0.573,
+      1.625,
+      "#222222"
+     ],
+     [
+      0.65,
+      1.837,
+      "#222222"
+     ],
+     [
+      0.65,
+      2.063,
+      "#222222"
+     ],
+     [
+      0.573,
+      2.275,
+      "#222222"
+     ],
+     [
+      0.428,
+      2.448,
+      "#222222"
+     ],
+     [
+      0.232,
+      2.561,
+      "#222222"
+     ],
+     [
+      0.067,
+      2.598,
+      "#222222"
+     ]
+    ],
+    "segments": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {

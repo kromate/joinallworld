@@ -38,16 +38,16 @@
     ]
    },
    "at": [
-    -40,
+    -42,
     -12
    ],
-   "rotDeg": 14,
+   "rotDeg": 22,
    "z0": 0,
    "height": 24,
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#b9b8b3",
+    "colour": "#a9a8a4",
     "windows": "punched",
     "windowRatio": 0.2,
     "bands": "#e4e3de",
@@ -81,7 +81,7 @@
     -50,
     -20
    ],
-   "rotDeg": 14,
+   "rotDeg": 22,
    "z0": 0,
    "height": 32,
    "storeys": 8,
@@ -134,10 +134,10 @@
     ]
    },
    "at": [
-    40,
+    42,
     -12
    ],
-   "rotDeg": -14,
+   "rotDeg": -22,
    "z0": 0,
    "height": 26,
    "storeys": 6,
@@ -166,22 +166,23 @@
   {
    "type": "core/colonnade",
    "at": [
-    28,
-    -30,
+    40,
+    -34,
     0
    ],
-   "rotDeg": -14,
+   "rotDeg": -22,
    "params": {
-    "length": 28,
-    "count": 5,
-    "height": 18,
-    "radius": 0.9,
+    "length": 34,
+    "count": 7,
+    "height": 26,
+    "radius": 1.1,
     "kind": "round",
     "beamHeight": 1.2,
-    "colour": "#f2f1ec"
+    "colour": "#f6f5f0"
    },
    "lod": [
-    0
+    0,
+    1
    ]
   },
   {
@@ -197,9 +198,9 @@
     50,
     -20
    ],
-   "rotDeg": -14,
+   "rotDeg": -22,
    "z0": 0,
-   "height": 34,
+   "height": 30,
    "storeys": 8,
    "wall": {
     "material": "painted-render",
@@ -213,9 +214,8 @@
     }
    },
    "roof": {
-    "form": "pyramidal",
-    "colour": "#4f8a6f",
-    "rise": 4
+    "form": "flat",
+    "colour": "#f0efea"
    }
   },
   {
@@ -233,13 +233,13 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 14,
-   "storeys": 3,
+   "height": 8,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#c9c9c5",
-    "windows": "punched",
-    "windowRatio": 0.3,
+    "colour": "#9a9c9e",
+    "windows": "curtain",
+    "windowRatio": 0.7,
     "windowShape": "arched",
     "cornice": false,
     "bay": 8,
@@ -268,18 +268,20 @@
        14
       ]
      },
-     "height": 50,
-     "storeys": 16,
+     "height": 46,
+     "storeys": 8,
      "wall": {
       "material": "painted-render",
-      "colour": "#e8e6df",
+      "colour": "#ecebe8",
       "windows": "none",
       "windowRatio": 0.2,
-      "cornice": false
+      "cornice": false,
+      "storeys": null
      },
      "roof": {
-      "form": "flat",
-      "colour": "#8fa7a0"
+      "form": "hip",
+      "colour": "#9fb3b0",
+      "pitch": 30
      }
     },
     "mode": "line",
@@ -371,32 +373,24 @@
    ]
   },
   {
-   "type": "mass",
-   "id": "hall",
-   "footprint": {
-    "rect": [
-     70,
-     22
-    ]
-   },
+   "type": "core/dome",
    "at": [
-    0,
-    32
+    56,
+    -26,
+    30
    ],
-   "height": 16,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#d4d3ce",
-    "windows": "none",
-    "cornice": false,
-    "bay": 8
+   "params": {
+    "radius": 3.2,
+    "height": 3.5,
+    "profile": "hemi",
+    "colour": "#3f8a5f",
+    "finial": 1.5,
+    "drum": 1
    },
-   "roof": {
-    "form": "flat",
-    "colour": "#9a9d9f",
-    "parapet": 0.8
-   }
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -410,6 +404,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "neoclassical ornament (cornices, clock roundels, arched pavilion detail, hedges lettering) simplified; wings not splayed as in the V plan; towers plain"
+  "gaps": "wings splayed, tall columns and green dome added; ornate cornices, clock roundels, arched pavilion and domed rear-tower detail simplified"
  }
 }

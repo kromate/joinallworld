@@ -30,154 +30,6 @@
  "parts": [
   {
    "type": "mass",
-   "id": "podium",
-   "footprint": {
-    "rect": [
-     112,
-     20
-    ]
-   },
-   "at": [
-    0,
-    -8
-   ],
-   "z0": 0,
-   "height": 11,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e6dfd0",
-    "windows": "none",
-    "windowRatio": 0,
-    "faces": {
-     "back": "none",
-     "left": "none",
-     "right": "none"
-    },
-    "bands": "#a2523d",
-    "plinth": 0.5
-   },
-   "roof": {
-    "form": "hip",
-    "pitch": 22,
-    "colour": "#a8452f",
-    "overhang": 0
-   }
-  },
-  {
-   "type": "mass",
-   "id": "podium-rear",
-   "footprint": {
-    "rect": [
-     28,
-     26
-    ]
-   },
-   "at": [
-    8,
-    14
-   ],
-   "z0": 0,
-   "height": 11,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e6dfd0",
-    "windows": "none",
-    "windowRatio": 0,
-    "faces": {
-     "back": "none",
-     "left": "none",
-     "right": "none"
-    },
-    "bands": "#a2523d",
-    "plinth": 0.5
-   },
-   "roof": {
-    "form": "hip",
-    "pitch": 22,
-    "colour": "#a8452f",
-    "overhang": 0
-   }
-  },
-  {
-   "type": "mass",
-   "id": "ward-tower",
-   "footprint": {
-    "rect": [
-     30,
-     18
-    ]
-   },
-   "at": [
-    -26,
-    18
-   ],
-   "z0": 0,
-   "height": 58,
-   "storeys": 16,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#d6cab6",
-    "windows": "punched",
-    "windowRatio": 0.3,
-    "bay": 8,
-    "faces": {
-     "back": "none",
-     "right": "none",
-     "left": "none"
-    },
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#d6cab6",
-       "#9a7260"
-      ]
-     },
-     {
-      "type": "bands",
-      "colour": "#d2c8b4",
-      "height": 0.5,
-      "floors": "all"
-     }
-    ]
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8a8f94",
-    "parapet": 1.0
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower-core",
-   "footprint": {
-    "rect": [
-     12,
-     8
-    ]
-   },
-   "at": [
-    -26,
-    18
-   ],
-   "z0": 58,
-   "height": 4.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#c9bfae",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8a8f94"
-   }
-  },
-  {
-   "type": "mass",
    "id": "gate-house",
    "footprint": {
     "rect": [
@@ -219,31 +71,393 @@
     "colour": "#2f3a44",
     "posts": true
    }
+  },
+  {
+   "type": "mass",
+   "id": "wing-a",
+   "footprint": {
+    "rect": [
+     46,
+     18
+    ]
+   },
+   "at": [
+    -34,
+    -8
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d9cfbc",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#8a3a2a",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-b",
+   "footprint": {
+    "rect": [
+     40,
+     20
+    ]
+   },
+   "at": [
+    14,
+    -6
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d9cfbc",
+    "plinth": 0.5,
+    "bay": 10
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#8a3a2a",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-c",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    46,
+    -10
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d9cfbc",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#8a3a2a",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-rear",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    8,
+    16
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d9cfbc",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#8a3a2a",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-tower",
+   "footprint": {
+    "rect": [
+     46,
+     20
+    ]
+   },
+   "at": [
+    -26,
+    20
+   ],
+   "z0": 0,
+   "height": 52,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 16,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efe9dc",
+       "#d8cdb6"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#bfb299",
+      "height": 0.8,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-step",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    20
+   ],
+   "z0": 52,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-plant",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    20
+   ],
+   "z0": 60,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-6",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -6,
+    -44
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65a43",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-18",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -18,
+    -44
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65a43",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -44,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     -36,
+     0,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 1.4,
+      "colour": "#2f3a44"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "none",
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     -50,
-     -30
-    ]
+     -55,
+     -28
+    ],
+    "height": 16
    },
    {
     "kind": "broadleaf",
     "at": [
-     40,
-     -40
-    ]
+     -40,
+     -34
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     -32
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -30
+    ],
+    "height": 16
    },
    {
     "kind": "palm",
     "at": [
-     0,
-     -30
+     8,
+     -36
     ]
    }
   ],
@@ -253,8 +467,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Podium is two simple blocks, not the real sprawling wing layout; ward tower lacks the stepped balconies and top plant crown; no mature trees or gate piers detail."
+  "gaps": "Ward tower balconies shown only as colour bands; wings simplified; gate has piers and low fence but no dense tree canopy or billboards; roads omitted."
  }
 }

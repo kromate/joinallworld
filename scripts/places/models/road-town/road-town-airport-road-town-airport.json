@@ -50,13 +50,13 @@
     8,
     0
    ],
-   "height": 9.5,
+   "height": 8.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e8e8",
+    "colour": "#2f3b44",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.7,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -84,21 +84,43 @@
    }
   },
   {
-   "type": "surface",
-   "at": [
-    8,
-    0,
-    9.5
-   ],
+   "type": "array",
    "params": {
-    "kind": "wave",
-    "width": 98,
-    "depth": 27,
-    "rise": 1.6,
-    "waves": 12,
-    "thickness": 0.6,
-    "colour": "#f4f4f2",
-    "material": "metal-roof"
+    "mode": "line",
+    "start": [
+     -35.6,
+     0,
+     8.5
+    ],
+    "end": [
+     51.6,
+     0,
+     8.5
+    ],
+    "count": 10,
+    "of": {
+     "type": "mass",
+     "id": "vault-bay",
+     "footprint": {
+      "rect": [
+       8.4,
+       27
+      ]
+     },
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "barrel",
+      "colour": "#f6f6f4",
+      "rise": 3.2,
+      "overhang": 0.4
+     }
+    }
    }
   },
   {
@@ -118,30 +140,97 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#c9cfd2",
-    "windows": "punched",
-    "windowRatio": 0.2,
+    "colour": "#2f3b44",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
     "faces": {
      "right": "plain",
      "back": "plain"
-    },
-    "pattern": [
-     {
-      "type": "arcade",
-      "shape": "arch",
-      "bay": 6,
-      "depth": 0.6,
-      "faces": [
-       "front"
-      ]
-     }
-    ]
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#f2f2f0",
     "overhang": 0.8,
     "parapet": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -11.5,
+     0
+    ],
+    "end": [
+     -44,
+     -11.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "mass",
+     "id": "wing-pier",
+     "footprint": {
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     "height": 5.5,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f4f4f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -57.5,
+     0,
+     5.5
+    ],
+    "end": [
+     -46.5,
+     0,
+     5.5
+    ],
+    "count": 3,
+    "of": {
+     "type": "mass",
+     "id": "wing-vault",
+     "footprint": {
+      "rect": [
+       7.4,
+       19
+      ]
+     },
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "barrel",
+      "colour": "#f6f6f4",
+      "rise": 2.2,
+      "overhang": 0.3
+     }
+    }
    }
   },
   {
@@ -209,21 +298,6 @@
    }
   },
   {
-   "type": "core/control-tower",
-   "at": [
-    66,
-    8,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "style": "round",
-    "colour": "#e4e6e6",
-    "cabColour": "#4d6370",
-    "bandColour": "#c9382f"
-   }
-  },
-  {
    "type": "core/sign-board",
    "at": [
     -8,
@@ -254,6 +328,124 @@
      "#1c3f94",
      "#d8d8d8"
     ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -30,
+    70,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#2f5a34",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       70,
+       26
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       62,
+       22
+      ]
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       40,
+       13
+      ]
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       16,
+       5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge",
+   "at": [
+    8,
+    -25
+   ],
+   "footprint": {
+    "rect": [
+     80,
+     1.6
+    ]
+   },
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3c6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c6a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mast",
+   "at": [
+    -14,
+    -30
+   ],
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "height": 24,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mast-head",
+   "at": [
+    -14,
+    -30
+   ],
+   "z0": 24,
+   "footprint": {
+    "rect": [
+     3.2,
+     1.2
+    ]
+   },
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a4f54",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f54"
    }
   }
  ],
@@ -319,8 +511,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "roof scallops are a wave surface, not true arched bays with lunette glazing; tower position and apron lamp mast not matched; west wing arcade simplified"
+  "gaps": "vault bays are masses with barrel roofs (clerestory lunettes not cut); hedges and entrance sign simplified; hill is a loft, not ridgelines"
  }
 }

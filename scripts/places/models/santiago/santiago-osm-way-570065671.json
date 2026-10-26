@@ -36,7 +36,7 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "pyramid glazing is flat colour without mullions and is not lit, brick wings are a schematic U plan with a flat-topped pitched roof and few windows (LOD1 budget), no night lighting or terrace railings, and the real campus has many more buildings."
+  "gaps": "pyramid is a warm glazed loft with 4 corner ribs and 3 ring beams, not a true diagonal mullion grid, not emissive and daylit rather than night; wings have hipped roofs, cream bands and lit windows but no arched windows; terrace is only a low glass rail with uplight blocks, no concrete terrace walls or fountain; real campus has more buildings."
  },
  "parts": [
   {
@@ -57,22 +57,33 @@
    "wall": {
     "material": "brick",
     "colour": "#a65a3e",
-    "windows": "ribbon",
+    "windows": "punched",
     "windowRatio": 0.3,
-    "bay": 30,
+    "bay": 20,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none",
-     "front": "ribbon"
+     "front": "punched"
     },
-    "glassColour": "#2f3a44",
-    "plinth": 0.3
+    "glassColour": "#f0c46a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d9b8",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
    },
    "roof": {
-    "form": "flat",
-    "colour": "#4a4540",
-    "overhang": 0.6
+    "form": "hip",
+    "colour": "#3e3a36",
+    "pitch": 16,
+    "overhang": 0.3
    }
   },
   {
@@ -93,22 +104,31 @@
    "wall": {
     "material": "brick",
     "colour": "#a65a3e",
-    "windows": "ribbon",
+    "windows": "punched",
     "windowRatio": 0.3,
-    "bay": 30,
+    "bay": 20,
     "faces": {
      "left": "none",
-     "right": "ribbon",
+     "right": "punched",
      "back": "none",
      "front": "none"
     },
-    "glassColour": "#2f3a44",
-    "plinth": 0.3
+    "glassColour": "#f0c46a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d9b8",
+      "faces": [
+       "right"
+      ]
+     }
+    ]
    },
    "roof": {
-    "form": "flat",
-    "colour": "#4a4540",
-    "overhang": 0.6
+    "form": "hip",
+    "colour": "#3e3a36",
+    "pitch": 16,
+    "overhang": 0.3
    }
   },
   {
@@ -129,22 +149,31 @@
    "wall": {
     "material": "brick",
     "colour": "#a65a3e",
-    "windows": "ribbon",
+    "windows": "punched",
     "windowRatio": 0.3,
-    "bay": 30,
+    "bay": 20,
     "faces": {
-     "left": "ribbon",
+     "left": "punched",
      "right": "none",
      "back": "none",
      "front": "none"
     },
-    "glassColour": "#2f3a44",
-    "plinth": 0.3
+    "glassColour": "#f0c46a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d9b8",
+      "faces": [
+       "left"
+      ]
+     }
+    ]
    },
    "roof": {
-    "form": "flat",
-    "colour": "#4a4540",
-    "overhang": 0.6
+    "form": "hip",
+    "colour": "#3e3a36",
+    "pitch": 16,
+    "overhang": 0.3
    }
   },
   {
@@ -155,7 +184,8 @@
     0
    ],
    "params": {
-    "colour": "#a9c7bd",
+    "slot": "glass-curtain",
+    "colour": "#ffe08a",
     "sections": [
      {
       "z": 0,
@@ -171,8 +201,266 @@
        1.0
       ]
      }
-    ]
+    ],
+    "smooth": false
    }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -17,
+      -17,
+      0
+     ],
+     [
+      0,
+      0,
+      20
+     ]
+    ],
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      17,
+      -17,
+      0
+     ],
+     [
+      0,
+      0,
+      20
+     ]
+    ],
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      17,
+      17,
+      0
+     ],
+     [
+      0,
+      0,
+      20
+     ]
+    ],
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -17,
+      17,
+      0
+     ],
+     [
+      0,
+      0,
+      20
+     ]
+    ],
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -11.9,
+      -11.9,
+      0
+     ],
+     [
+      11.9,
+      -11.9,
+      0
+     ],
+     [
+      11.9,
+      11.9,
+      0
+     ],
+     [
+      -11.9,
+      11.9,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    12
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -6.8,
+      -6.8,
+      0
+     ],
+     [
+      6.8,
+      -6.8,
+      0
+     ],
+     [
+      6.8,
+      6.8,
+      0
+     ],
+     [
+      -6.8,
+      6.8,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    16
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -3.5,
+      -3.5,
+      0
+     ],
+     [
+      3.5,
+      -3.5,
+      0
+     ],
+     [
+      3.5,
+      3.5,
+      0
+     ],
+     [
+      -3.5,
+      3.5,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#3a3a3c"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
@@ -190,7 +478,7 @@
      35.6
     ],
     "height": 0.9,
-    "colour": "#7e7a70"
+    "colour": "#6a655a"
    }
   },
   {
@@ -277,79 +565,124 @@
    }
   },
   {
-   "type": "prism",
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
    "at": [
     0,
-    29,
-    13
+    -38,
+    0.9
    ],
    "params": {
-    "rect": [
-     80.5,
-     20.5
-    ],
-    "height": 2.6,
-    "topScale": 0.62,
-    "colour": "#4a4540",
-    "top": true
+    "length": 36,
+    "height": 0.9,
+    "thickness": 0.05,
+    "kind": "fence",
+    "pillarEvery": 1.5,
+    "colour": "#9fb8b0"
    }
   },
   {
    "type": "prism",
+   "lod": [
+    0
+   ],
    "at": [
-    -29.5,
-    -10.5,
-    13
+    -16,
+    -37.6,
+    0
    ],
    "params": {
     "rect": [
-     21.5,
-     61.5
+     0.5,
+     0.3
     ],
-    "height": 2.6,
-    "topScale": 0.62,
-    "colour": "#4a4540",
-    "top": true
+    "height": 0.35,
+    "colour": "#ffd27a"
    }
   },
   {
    "type": "prism",
+   "lod": [
+    0
+   ],
    "at": [
-    29.5,
-    -10.5,
-    13
+    -8,
+    -37.6,
+    0
    ],
    "params": {
     "rect": [
-     21.5,
-     61.5
+     0.5,
+     0.3
     ],
-    "height": 2.6,
-    "topScale": 0.62,
-    "colour": "#4a4540",
-    "top": true
+    "height": 0.35,
+    "colour": "#ffd27a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -37.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 0.35,
+    "colour": "#ffd27a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    8,
+    -37.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 0.35,
+    "colour": "#ffd27a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    16,
+    -37.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 0.35,
+    "colour": "#ffd27a"
    }
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "none",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     -50,
-     -30
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     52,
-     -32
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
    110,
    100

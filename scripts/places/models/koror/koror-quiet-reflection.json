@@ -33,123 +33,160 @@
  "parts": [
   {
    "type": "prism",
-   "id": "platform",
+   "id": "course0",
    "params": {
     "rect": [
-     11,
-     6
+     2.5,
+     2.5
     ],
-    "height": 1.6,
-    "colour": "#4d4c49",
-    "topColour": "#8a877e"
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#3a3a38",
+    "topColour": "#4a4a47"
    },
    "at": [
     0,
-    2,
+    0,
     0
    ]
   },
   {
-   "type": "core/steps",
+   "type": "prism",
+   "id": "course1",
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "z0": 0.4,
+    "height": 0.4,
+    "colour": "#3a3a38",
+    "topColour": "#4a4a47"
+   },
    "at": [
     0,
-    -1.2,
+    0,
     0
-   ],
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course2",
    "params": {
-    "width": 3.2,
-    "rise": 0.4,
-    "run": 0.8,
-    "count": 4,
-    "colour": "#55534e"
-   }
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "z0": 0.8,
+    "height": 0.4,
+    "colour": "#3a3a38",
+    "topColour": "#4a4a47"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course3",
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 1.2000000000000002,
+    "height": 0.4,
+    "colour": "#3a3a38",
+    "topColour": "#4a4a47"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "column",
+   "params": {
+    "rect": [
+     0.85,
+     0.85
+    ],
+    "z0": 1.6,
+    "height": 1.5,
+    "colour": "#d9d4c8"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-stain",
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 2.3000000000000003,
+    "height": 0.5,
+    "colour": "#b8805f"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap-base",
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 3.1,
+    "height": 0.3,
+    "colour": "#b0654a"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
   },
   {
    "type": "mass",
-   "id": "shrine-replica",
+   "id": "lantern-roof",
    "footprint": {
     "rect": [
-     3.2,
-     2.6
+     1.1,
+     1.1
     ]
    },
    "at": [
     0,
-    3.2
+    0
    ],
-   "z0": 1.6,
-   "height": 2.2,
+   "z0": 3.4,
+   "height": 0.6,
    "storeys": 1,
    "wall": {
-    "material": "timber",
-    "colour": "#9a7650",
-    "windows": "none",
-    "plinth": 0.3
+    "material": "stone",
+    "colour": "#d9d4c8",
+    "windows": "none"
    },
    "roof": {
-    "form": "gable",
-    "colour": "#6b5f55",
-    "material": "timber-shingle",
-    "pitch": 32,
-    "overhang": 0.7
-   }
-  },
-  {
-   "type": "prism",
-   "id": "lantern-plinth",
-   "params": {
-    "rect": [
-     1.6,
-     1.6
-    ],
-    "height": 0.6,
-    "colour": "#4d4c49",
-    "topColour": "#6a685f"
-   },
-   "at": [
-    -6.5,
-    -2.5,
-    0
-   ]
-  },
-  {
-   "type": "stone-lantern",
-   "at": [
-    -6.5,
-    -2.5,
-    0.6
-   ],
-   "params": {
-    "scale": 1.0
-   }
-  },
-  {
-   "type": "prism",
-   "id": "lantern-plinth2",
-   "params": {
-    "rect": [
-     1.6,
-     1.6
-    ],
-    "height": 0.6,
-    "colour": "#4d4c49",
-    "topColour": "#6a685f"
-   },
-   "at": [
-    6.5,
-    -2.5,
-    0
-   ]
-  },
-  {
-   "type": "stone-lantern",
-   "at": [
-    6.5,
-    -2.5,
-    0.6
-   ],
-   "params": {
-    "scale": 1.0
+    "form": "hip",
+    "colour": "#7d7a72",
+    "pitch": 22,
+    "overhang": 0.5
    }
   },
   {
@@ -162,87 +199,358 @@
    "params": {
     "points": [
      [
-      -9,
-      -5
+      2.2,
+      -1.5
      ],
      [
-      -9,
-      6.5
+      4,
+      -1.0
      ],
      [
-      9,
-      6.5
+      6,
+      -1.2
      ],
      [
-      9,
-      -5
+      8,
+      -0.5
+     ],
+     [
+      10,
+      0.5
+     ],
+     [
+      11,
+      2
      ]
     ],
-    "height": 0.8,
-    "thickness": 0.8,
+    "height": 0.6,
+    "thickness": 0.7,
     "kind": "wall",
-    "colour": "#2f2f2e"
+    "colour": "#2a2a28"
    }
   },
   {
-   "type": "core/tree",
+   "type": "core/fence-wall",
    "at": [
-    -10,
-    8,
+    0,
+    0,
     0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 12
+    "points": [
+     [
+      -3,
+      2.5
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      3.2
+     ]
+    ],
+    "height": 0.5,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#2a2a28"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    10,
-    8,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 13
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -12,
-    -4,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 9
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    12,
     -5,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    0,
     0
    ],
    "params": {
     "kind": "palm",
     "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
    }
   },
   {
    "type": "core/tree",
    "at": [
     0,
-    10,
+    13,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 14
+    "height": 11
    }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    -2.5,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    3.5,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -1,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "bush",
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -3
+     ],
+     [
+      -8,
+      -4.5
+     ],
+     [
+      -3,
+      -6
+     ],
+     [
+      3,
+      -8
+     ]
+    ],
+    "height": 0.05,
+    "thickness": 4,
+    "kind": "wall",
+    "colour": "#7d7d7b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pole",
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 7,
+    "colour": "#7b6a50"
+   },
+   "at": [
+    -3.5,
+    -3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pole-band",
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 0.4,
+    "height": 1.6,
+    "colour": "#e5c01f"
+   },
+   "at": [
+    -3.5,
+    -3,
+    0
+   ]
   }
  ],
  "site": {
@@ -253,8 +561,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "composed from the photo but never rendered or compared (render queue server down); stone steps/lantern/replica proportions and replica roof unchecked"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "lantern cap is a plain hip roof not the stacked pagoda cap; wall is a few straight segments rather than loose rubble; road is a flat strip and not curved along the left; planting is lower-poly and sparser than the photo"
  }
 }

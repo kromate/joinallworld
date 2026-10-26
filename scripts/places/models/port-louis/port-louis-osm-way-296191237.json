@@ -31,97 +31,221 @@
  "parts": [
   {
    "type": "prism",
-   "id": "track",
+   "id": "road",
    "at": [
-    0.0,
-    0.0,
-    0
+    0,
+    0,
+    0.0
    ],
    "params": {
     "points": [
      [
-      52.08,
+      24.0,
+      -50.0
+     ],
+     [
+      48.0,
+      -43.3
+     ],
+     [
+      65.57,
+      -25.0
+     ],
+     [
+      72.0,
       0.0
      ],
      [
-      49.53,
-      9.58
+      65.57,
+      25.0
      ],
      [
-      42.14,
-      18.22
+      48.0,
+      43.3
      ],
      [
-      30.61,
-      25.08
+      24.0,
+      50.0
      ],
      [
-      16.1,
-      29.48
+      -24.0,
+      50.0
      ],
      [
-      0.0,
-      31.0
+      -48.0,
+      43.3
      ],
      [
-      -16.1,
-      29.48
+      -65.57,
+      25.0
      ],
      [
-      -30.61,
-      25.08
-     ],
-     [
-      -42.14,
-      18.22
-     ],
-     [
-      -49.53,
-      9.58
-     ],
-     [
-      -52.08,
+      -72.0,
       0.0
      ],
      [
-      -49.53,
-      -9.58
+      -65.57,
+      -25.0
      ],
      [
-      -42.14,
-      -18.22
+      -48.0,
+      -43.3
      ],
      [
-      -30.61,
-      -25.08
+      -24.0,
+      -50.0
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#2d2f33",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dry",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      24.0,
+      -43.0
      ],
      [
-      -16.1,
-      -29.48
+      44.5,
+      -37.24
      ],
      [
-      -0.0,
+      59.51,
+      -21.5
+     ],
+     [
+      65.0,
+      0.0
+     ],
+     [
+      59.51,
+      21.5
+     ],
+     [
+      44.5,
+      37.24
+     ],
+     [
+      24.0,
+      43.0
+     ],
+     [
+      -24.0,
+      43.0
+     ],
+     [
+      -44.5,
+      37.24
+     ],
+     [
+      -59.51,
+      21.5
+     ],
+     [
+      -65.0,
+      0.0
+     ],
+     [
+      -59.51,
+      -21.5
+     ],
+     [
+      -44.5,
+      -37.24
+     ],
+     [
+      -24.0,
+      -43.0
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#b09a62",
+    "material": "grass"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      24.0,
       -31.0
      ],
      [
-      16.1,
-      -29.48
+      38.0,
+      -26.85
      ],
      [
-      30.61,
-      -25.08
+      48.25,
+      -15.5
      ],
      [
-      42.14,
-      -18.22
+      52.0,
+      0.0
      ],
      [
-      49.53,
-      -9.58
+      48.25,
+      15.5
+     ],
+     [
+      38.0,
+      26.85
+     ],
+     [
+      24.0,
+      31.0
+     ],
+     [
+      -24.0,
+      31.0
+     ],
+     [
+      -38.0,
+      26.85
+     ],
+     [
+      -48.25,
+      15.5
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -48.25,
+      -15.5
+     ],
+     [
+      -38.0,
+      -26.85
+     ],
+     [
+      -24.0,
+      -31.0
      ]
     ],
     "height": 0.15,
-    "colour": "#b5533f",
+    "colour": "#a8553f",
     "material": "asphalt"
    }
   },
@@ -129,95 +253,71 @@
    "type": "prism",
    "id": "pitch",
    "at": [
-    0.0,
-    0.0,
-    0.15
+    0,
+    0,
+    0.27
    ],
    "params": {
     "points": [
      [
-      40.92,
+      24.0,
+      -19.8
+     ],
+     [
+      33.5,
+      -17.15
+     ],
+     [
+      40.45,
+      -9.9
+     ],
+     [
+      43.0,
       0.0
      ],
      [
-      38.92,
-      6.13
+      40.45,
+      9.9
      ],
      [
-      33.11,
-      11.66
+      33.5,
+      17.15
      ],
      [
-      24.05,
-      16.05
+      24.0,
+      19.8
      ],
      [
-      12.65,
-      18.87
+      -24.0,
+      19.8
      ],
      [
-      0.0,
-      19.84
+      -33.5,
+      17.15
      ],
      [
-      -12.65,
-      18.87
+      -40.45,
+      9.9
      ],
      [
-      -24.05,
-      16.05
-     ],
-     [
-      -33.11,
-      11.66
-     ],
-     [
-      -38.92,
-      6.13
-     ],
-     [
-      -40.92,
+      -43.0,
       0.0
      ],
      [
-      -38.92,
-      -6.13
+      -40.45,
+      -9.9
      ],
      [
-      -33.11,
-      -11.66
+      -33.5,
+      -17.15
      ],
      [
-      -24.05,
-      -16.05
-     ],
-     [
-      -12.65,
-      -18.87
-     ],
-     [
-      -0.0,
-      -19.84
-     ],
-     [
-      12.65,
-      -18.87
-     ],
-     [
-      24.05,
-      -16.05
-     ],
-     [
-      33.11,
-      -11.66
-     ],
-     [
-      38.92,
-      -6.13
+      -24.0,
+      -19.8
      ]
     ],
     "height": 0.1,
-    "colour": "#8c8a55",
+    "colour": "#cdb98a",
     "material": "grass"
    }
   },
@@ -249,9 +349,9 @@
     ],
     "blocks": 5,
     "canopy": {
-     "height": 13,
-     "depth": 14,
-     "colour": "#9fb2c4",
+     "height": 15,
+     "depth": 15,
+     "colour": "#a9bccb",
      "slopeDeg": 3,
      "supports": 8
     },
@@ -259,7 +359,7 @@
     "under": "solid",
     "underColour": "#ece9e2",
     "concreteColour": "#d9d4c7",
-    "facetDeg": 12
+    "facetDeg": 30
    }
   },
   {
@@ -277,14 +377,14 @@
     ],
     "radius": 26.04,
     "radiusY": 35.96,
-    "startDeg": 100,
-    "endDeg": 260,
-    "rows": 10,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 6,
     "seatColour": "#8e969c",
     "under": "solid",
     "underColour": "#ece9e2",
     "concreteColour": "#cfcbc0",
-    "facetDeg": 12
+    "facetDeg": 30
    }
   },
   {
@@ -302,13 +402,14 @@
     ],
     "radius": 26.04,
     "radiusY": 35.96,
-    "startDeg": -80,
-    "endDeg": 80,
-    "rows": 10,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 6,
     "seatColour": "#8e969c",
-    "under": "open",
+    "under": "solid",
     "concreteColour": "#cfcbc0",
-    "facetDeg": 12
+    "facetDeg": 30,
+    "underColour": "#ece9e2"
    }
   },
   {
@@ -328,13 +429,13 @@
      29.76,
      -34.1
     ],
-    "rows": 9,
+    "rows": 5,
     "seatColour": "#8e969c",
     "under": "solid",
     "underColour": "#f2efe8",
     "concreteColour": "#d9d4c7",
     "backWall": 1.0,
-    "facetDeg": 12
+    "facetDeg": 30
    }
   },
   {
@@ -406,7 +507,11 @@
    "params": {
     "height": 34,
     "head_width": 6
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
@@ -418,7 +523,11 @@
    "params": {
     "height": 34,
     "head_width": 6
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
@@ -430,7 +539,11 @@
    "params": {
     "height": 34,
     "head_width": 6
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
@@ -442,11 +555,15 @@
    "params": {
     "height": 34,
     "head_width": 6
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "sand",
   "trees": [
    {
     "kind": "palm",
@@ -465,13 +582,13 @@
   ],
   "forecourt": "none",
   "extent": [
-   160,
+   150,
    130
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Stands simplified to arcs plus a straight roofed main stand; scene scaled to 0.62; no ring road, concourse arcade detail or cantilever roof struts"
+  "gaps": "bowl stands approximate ring around straight-sided track; no concourse arch detail; fence and cane fields not modelled"
  }
 }

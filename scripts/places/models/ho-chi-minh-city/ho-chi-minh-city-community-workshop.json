@@ -38,30 +38,32 @@
    },
    "at": [
     0,
-    6
+    12
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 34,
+   "height": 36,
    "storeys": 9,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#6fb0a8",
-    "windows": "curtain",
-    "windowRatio": 0.7,
+    "material": "concrete",
+    "colour": "#a9adb0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#cfd3d6",
+    "bands": "#f1f2f2",
     "bay": 5
    },
    "roof": {
-    "form": "flat",
+    "form": "curved",
     "colour": "#3e6fb0",
     "parapet": 0.8,
-    "overhang": 1.2
+    "overhang": 0.8,
+    "curve": "arch",
+    "rise": 2.5
    }
   },
   {
@@ -136,11 +138,11 @@
      ]
     ],
     "z0": 0,
-    "height": 13,
-    "colour": "#8c9298",
+    "height": 14,
+    "colour": "#6fb0a8",
     "windows": "curtain",
     "windowRatio": 0.7,
-    "topColour": "#3e6fb0",
+    "topColour": "#8c9298",
     "glassColour": "#6fb0a8"
    }
   },
@@ -159,21 +161,21 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 17,
-   "storeys": 5,
+   "height": 20,
+   "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8ebed",
+    "colour": "#d6d8d9",
     "windows": "ribbon",
-    "windowRatio": 0.45,
+    "windowRatio": 0.3,
     "faces": {
      "left": "plain",
      "back": "plain",
      "right": "plain"
     },
-    "bands": "#cfd3d6",
+    "bands": "#6b7176",
     "plinth": 0.4,
-    "bay": 4
+    "bay": 5
    },
    "roof": {
     "form": "flat",
@@ -187,74 +189,37 @@
    "id": "wing-left",
    "footprint": {
     "rect": [
-     34,
+     30,
      16
     ]
    },
    "at": [
-    -34,
+    -32,
     6
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18,
-   "storeys": 5,
+   "height": 24,
+   "storeys": 7,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8ebed",
+    "colour": "#d6d8d9",
     "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windowRatio": 0.3,
     "faces": {
      "right": "plain",
      "back": "plain",
      "left": "plain"
     },
-    "bands": "#b99a6c",
+    "bands": "#6b7176",
     "plinth": 0.4,
-    "bay": 4
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfd3d6",
-    "parapet": 0.8,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "corner",
-   "footprint": {
-    "rect": [
-     12,
-     14
-    ]
-   },
-   "at": [
-    -48,
-    6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 25,
-   "storeys": 7,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#7fb7a8",
-    "windows": "curtain",
-    "windowRatio": 0.55,
-    "bands": "#e8ebed",
-    "faces": {
-     "left": "plain",
-     "back": "plain",
-     "right": "plain"
-    },
-    "bay": 4
+    "bay": 5
    },
    "roof": {
     "form": "flat",
     "colour": "#3e6fb0",
-    "parapet": 0.5,
-    "overhang": 0.6
+    "parapet": 0.8,
+    "overhang": 0.8
    }
   },
   {
@@ -273,55 +238,6 @@
    }
   },
   {
-   "type": "hedge",
-   "at": [
-    26,
-    -24,
-    0
-   ],
-   "params": {
-    "length": 30,
-    "height": 1.8,
-    "depth": 2
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    -6,
-    -16,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 8
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    6,
-    -16,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 8
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    -26,
-    -18,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 9
-   }
-  },
-  {
    "type": "flag",
    "at": [
     18,
@@ -337,17 +253,33 @@
    }
   },
   {
+   "type": "prism",
+   "at": [
+    0,
+    3.6,
+    3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "height": 32,
+    "colour": "#5fb09a"
+   }
+  },
+  {
    "type": "core/sign-board",
    "at": [
     0,
-    -12,
-    13
+    -8.6,
+    11.6
    ],
    "params": {
-    "width": 22,
+    "width": 24,
     "height": 1.6,
     "bottom": 0,
-    "colour": "#c9a84a",
+    "colour": "#2c3940",
     "posts": false
    }
   }
@@ -368,6 +300,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Left wing balconies and glass strips simplified; tower cap flat not curved; OSM polygon is the sports centre so photo massing used."
+  "gaps": "Atrium curve approximated by a polygonal prism; corridor balconies are tinted bands rather than open recesses; tower cap only gently curved."
  }
 }

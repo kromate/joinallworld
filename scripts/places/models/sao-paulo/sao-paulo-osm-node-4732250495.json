@@ -41,22 +41,22 @@
     0,
     0
    ],
-   "height": 11,
+   "height": 13,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#dbe5ee",
+    "colour": "#f1f4f7",
     "windows": "none",
     "plinth": 1.0,
     "bands": {
-     "colour": "#9bbbd8",
-     "height": 2.0
+     "colour": "#a9c9e4",
+     "height": 1.6
     },
     "cornice": false
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d9094",
+    "colour": "#80848a",
     "material": "membrane",
     "parapet": 1.2
    }
@@ -74,12 +74,12 @@
     0,
     0
    ],
-   "z0": 9.4,
-   "height": 1.6,
+   "z0": 11.2,
+   "height": 1.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#3d4f8a",
+    "colour": "#2f3f78",
     "windows": "none"
    },
    "roof": {
@@ -95,9 +95,9 @@
     0
    ],
    "params": {
-    "radius": 6.5,
+    "radius": 6,
     "n": 20,
-    "height": 17,
+    "height": 20,
     "colour": "#f4f4f2"
    }
   },
@@ -105,16 +105,16 @@
    "type": "core/canopy",
    "at": [
     -8,
-    -33,
+    -34,
     0
    ],
    "params": {
     "form": "curved",
-    "width": 24,
-    "depth": 7,
-    "height": 7,
+    "width": 30,
+    "depth": 9,
+    "height": 8,
     "thickness": 0.4,
-    "rise": 3,
+    "rise": 4,
     "colour": "#6f8a93",
     "edgeColour": "#8a8f93",
     "columns": 0
@@ -124,26 +124,26 @@
    "type": "core/array",
    "at": [
     -8,
-    -35.5,
+    -37,
     0
    ],
    "params": {
     "of": {
      "type": "core/prism",
      "params": {
-      "radius": 0.45,
+      "radius": 0.7,
       "n": 8,
-      "height": 7,
+      "height": 8,
       "colour": "#c4606c"
      }
     },
     "mode": "line",
     "start": [
-     -9,
+     -13,
      0
     ],
     "end": [
-     9,
+     13,
      0
     ],
     "count": 4
@@ -169,29 +169,40 @@
    "type": "core/fence-wall",
    "at": [
     0,
-    -38,
+    -42,
     0
    ],
    "params": {
     "length": 110,
-    "height": 2.2,
-    "thickness": 0.4,
+    "height": 1.2,
+    "thickness": 0.5,
     "kind": "wall",
-    "colour": "#8b8d8e"
+    "colour": "#55585b"
    }
   },
   {
-   "type": "core/tree",
+   "type": "mass",
+   "id": "hedge",
+   "footprint": {
+    "rect": [
+     110,
+     1.6
+    ]
+   },
    "at": [
     0,
-    -37,
-    0
+    -40.5
    ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 7,
-    "count": 8,
-    "line": 100
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4a32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4a32"
    }
   }
  ],
@@ -206,8 +217,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "wavy blue mural band, dotted frieze, tall silo and dark hedge/wall only approximated; mall size from brief (116 m clipped), not photo"
+  "gaps": "Wavy mural band and dotted frieze are flat stripes; entrance bubble is a simple curved canopy; silo reads small; mall size from brief."
  }
 }

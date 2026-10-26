@@ -48,15 +48,16 @@
     0,
     0
    ],
-   "height": 17,
-   "storeys": 3,
+   "height": 14,
+   "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "none",
     "plinth": 0.6,
     "cornice": true,
-    "bands": "#d3d4c8"
+    "bands": "#e6e2c4",
+    "trimColour": "#e6e2c4"
    },
    "roof": {
     "form": "flat",
@@ -79,18 +80,18 @@
     0,
     1
    ],
-   "z0": 17,
+   "z0": 14,
    "height": 5.5,
    "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#c4c6b8",
+    "colour": "#c4c6a4",
     "windows": "none",
     "cornice": false
    },
    "roof": {
     "form": "gable",
-    "colour": "#b9bbad",
+    "colour": "#b8b9a0",
     "pitch": 18,
     "overhang": 0,
     "material": "metal-sheet"
@@ -101,22 +102,22 @@
    "id": "tower-l",
    "footprint": {
     "rect": [
-     9,
-     9
+     7.5,
+     7.5
     ]
    },
    "at": [
     -13.5,
     0.5
    ],
-   "z0": 17,
-   "height": 11,
-   "storeys": 2,
+   "z0": 14,
+   "height": 9,
+   "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "arched",
-    "windowRatio": 0.14,
+    "windowRatio": 0.34,
     "faces": {
      "front": "arched",
      "left": "arched",
@@ -124,14 +125,34 @@
      "back": "none"
     },
     "cornice": true,
-    "bands": "#d3d4c8"
+    "bands": "#e6e2c4",
+    "trimColour": "#e6e2c4"
    },
    "roof": {
     "form": "flat",
-    "colour": "#c4c6b8",
-    "parapet": 0.8,
+    "colour": "#e6e2c4",
+    "parapet": 0.9,
     "overhang": 0,
     "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.5,
+    0.5,
+    23
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#e6e2c4",
+    "topColour": "#e6e2c4",
+    "windows": "rect",
+    "windowRatio": 0.3
    }
   },
   {
@@ -139,22 +160,22 @@
    "id": "tower-r",
    "footprint": {
     "rect": [
-     9,
-     9
+     7.5,
+     7.5
     ]
    },
    "at": [
     13.5,
     0.5
    ],
-   "z0": 17,
-   "height": 11,
-   "storeys": 2,
+   "z0": 14,
+   "height": 9,
+   "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "arched",
-    "windowRatio": 0.14,
+    "windowRatio": 0.34,
     "faces": {
      "front": "arched",
      "left": "arched",
@@ -162,14 +183,34 @@
      "back": "none"
     },
     "cornice": true,
-    "bands": "#d3d4c8"
+    "bands": "#e6e2c4",
+    "trimColour": "#e6e2c4"
    },
    "roof": {
     "form": "flat",
-    "colour": "#c4c6b8",
-    "parapet": 0.8,
+    "colour": "#e6e2c4",
+    "parapet": 0.9,
     "overhang": 0,
     "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.5,
+    0.5,
+    23
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#e6e2c4",
+    "topColour": "#e6e2c4",
+    "windows": "rect",
+    "windowRatio": 0.3
    }
   },
   {
@@ -177,13 +218,13 @@
    "at": [
     -13.5,
     0.5,
-    28.8
+    24.6
    ],
    "params": {
-    "radius": 3.4,
+    "radius": 3.0,
     "height": 3.2,
     "profile": "hemi",
-    "drum": 1.2,
+    "drum": 0.8,
     "finial": 3.0,
     "colour": "#7ea88b",
     "drumColour": "#c4c6b8"
@@ -194,13 +235,13 @@
    "at": [
     13.5,
     0.5,
-    28.8
+    24.6
    ],
    "params": {
-    "radius": 3.4,
+    "radius": 3.0,
     "height": 3.2,
     "profile": "hemi",
-    "drum": 1.2,
+    "drum": 0.8,
     "finial": 3.0,
     "colour": "#7ea88b",
     "drumColour": "#c4c6b8"
@@ -215,14 +256,14 @@
    ],
    "rotDeg": 0,
    "params": {
-    "width": 30,
-    "depth": 7,
-    "height": 10.5,
+    "width": 35,
+    "depth": 5.5,
+    "height": 9,
     "columns": 8,
     "pediment": true,
     "steps": 2,
-    "colour": "#c9cabb",
-    "roofColour": "#b9bbad"
+    "colour": "#cfd0b6",
+    "roofColour": "#b8b9a0"
    }
   },
   {
@@ -238,11 +279,11 @@
     0,
     31
    ],
-   "height": 13,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "none",
     "windowRatio": 0.14,
     "faces": {},
@@ -250,11 +291,10 @@
     "plinth": 0.5
    },
    "roof": {
-    "form": "gable",
-    "colour": "#8f9890",
+    "form": "hip",
+    "colour": "#b8b9a0",
     "pitch": 16,
     "overhang": 0,
-    "axis": "y",
     "material": "metal-sheet"
    }
   },
@@ -275,7 +315,7 @@
    "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "arched",
     "windowRatio": 0.2,
     "faces": {
@@ -289,7 +329,7 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#8f9890",
+    "colour": "#b8b9a0",
     "pitch": 8,
     "overhang": 0,
     "material": "metal-sheet"
@@ -312,7 +352,7 @@
    "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "arched",
     "windowRatio": 0.2,
     "faces": {
@@ -326,7 +366,7 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#8f9890",
+    "colour": "#b8b9a0",
     "pitch": 8,
     "overhang": 0,
     "material": "metal-sheet"
@@ -349,7 +389,7 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "arched",
     "windowRatio": 0.14,
     "faces": {
@@ -363,7 +403,7 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#8f9890",
+    "colour": "#b8b9a0",
     "pitch": 14,
     "overhang": 0,
     "axis": "x",
@@ -387,13 +427,13 @@
    "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#c3c5b2",
+    "colour": "#c4c6a4",
     "windows": "none",
     "cornice": false
    },
    "roof": {
     "form": "hip",
-    "colour": "#8f9890",
+    "colour": "#b8b9a0",
     "pitch": 18,
     "overhang": 0,
     "material": "metal-sheet"
@@ -467,6 +507,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Towers read slightly tall and plain (no pilasters, balustrades, clock face); portico shallower detail; green dome drum shape simplified; surrounding street trees/railing generic."
+  "gaps": "Portico interior reads blue under sky light; towers lack pilasters, pediment cornices and clock face; belfry arches simplified; street trees, lamps and railing generic."
  }
 }

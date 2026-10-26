@@ -241,16 +241,16 @@
    "id": "front-block",
    "footprint": {
     "rect": [
-     69.4,
+     56,
      8.1
     ]
    },
    "at": [
-    0.0,
+    8,
     -8.7
    ],
-   "height": 14,
-   "storeys": 3,
+   "height": 11,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#e6dcc0",
@@ -272,19 +272,19 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     5.6,
-     4.3
+     8,
+     6
     ]
    },
    "at": [
-    -7.4,
-    -8.7
+    -8,
+    -9.5
    ],
-   "height": 32,
-   "storeys": 6,
+   "height": 26,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3d9b9",
+    "colour": "#e6dcc0",
     "windows": "none",
     "windowRatio": 0.1,
     "plinth": 0.3,
@@ -295,7 +295,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8d0b8",
+    "colour": "#e6dcc0",
     "material": "metal-sheet",
     "overhang": 0.4,
     "parapet": 0.4
@@ -306,15 +306,15 @@
    "id": "vault-wing",
    "footprint": {
     "rect": [
-     18.6,
-     12.4
+     25,
+     11
     ]
    },
    "at": [
-    -29.8,
-    -5.0
+    -28,
+    -9
    ],
-   "height": 11,
+   "height": 10,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -325,10 +325,10 @@
    },
    "roof": {
     "form": "barrel",
-    "colour": "#8aa398",
+    "colour": "#7f9c90",
     "material": "metal-sheet",
     "overhang": 0.4,
-    "rise": 3.5
+    "rise": 4
    }
   },
   {
@@ -359,40 +359,6 @@
     "material": "metal-sheet",
     "overhang": 0.4,
     "parapet": 0.4
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    8.7,
-    -12.8,
-    3.5
-   ],
-   "params": {
-    "rect": [
-     40.9,
-     0.3
-    ],
-    "height": 8.5,
-    "colour": "#7a4a3a",
-    "top": true
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    -3.7,
-    -12.8,
-    3.5
-   ],
-   "params": {
-    "rect": [
-     5.0,
-     0.3
-    ],
-    "height": 8.5,
-    "colour": "#2f6aa8",
-    "top": true
    }
   },
   {
@@ -491,84 +457,353 @@
    }
   },
   {
+   "type": "prism",
+   "at": [
+    -7.0,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#8a4a3a",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#3f5f86",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.0,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#d9c8a8",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#6a4a3c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.0,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#4a4036",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    25.5,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#d9c8a8",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    32.0,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#8a4a3a",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    38.5,
+    -12.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.3
+    ],
+    "height": 7.5,
+    "colour": "#3f5f86",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "pilotis-row",
+   "at": [
+    8,
+    -13.2,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 3.2,
+    "radius": 0.3,
+    "pitch": 4,
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
    "lod": [
     0
    ],
-   "type": "floodlight-mast",
+   "type": "lattice-mast",
    "at": [
     -40.9,
     3.7,
     0
    ],
    "params": {
-    "height": 40,
-    "head_width": 6,
-    "colour": "#aeb4ba"
+    "height": 35,
+    "baseWidth": 4.5,
+    "topWidth": 1.4,
+    "panels": 8,
+    "colour": "#9aa0a6",
+    "colour2": "#c4c8cc"
    }
   },
   {
    "lod": [
     0
    ],
-   "type": "floodlight-mast",
+   "type": "prism",
+   "at": [
+    -40.9,
+    3.7,
+    35
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "height": 3.5,
+    "colour": "#dfe3e6"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "lattice-mast",
    "at": [
     40.9,
     3.7,
     0
    ],
    "params": {
-    "height": 40,
-    "head_width": 6,
-    "colour": "#aeb4ba"
+    "height": 35,
+    "baseWidth": 4.5,
+    "topWidth": 1.4,
+    "panels": 8,
+    "colour": "#9aa0a6",
+    "colour2": "#c4c8cc"
    }
   },
   {
    "lod": [
     0
    ],
-   "type": "floodlight-mast",
+   "type": "prism",
+   "at": [
+    40.9,
+    3.7,
+    35
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "height": 3.5,
+    "colour": "#dfe3e6"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "lattice-mast",
    "at": [
     -32.2,
-    62.0,
+    62,
     0
    ],
    "params": {
-    "height": 40,
-    "head_width": 6,
-    "colour": "#aeb4ba"
+    "height": 35,
+    "baseWidth": 4.5,
+    "topWidth": 1.4,
+    "panels": 8,
+    "colour": "#9aa0a6",
+    "colour2": "#c4c8cc"
    }
   },
   {
    "lod": [
     0
    ],
-   "type": "floodlight-mast",
+   "type": "prism",
+   "at": [
+    -32.2,
+    62,
+    35
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "height": 3.5,
+    "colour": "#dfe3e6"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "lattice-mast",
    "at": [
     32.2,
-    62.0,
+    62,
     0
    ],
    "params": {
-    "height": 40,
-    "head_width": 6,
-    "colour": "#aeb4ba"
+    "height": 35,
+    "baseWidth": 4.5,
+    "topWidth": 1.4,
+    "panels": 8,
+    "colour": "#9aa0a6",
+    "colour2": "#c4c8cc"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "prism",
+   "at": [
+    32.2,
+    62,
+    35
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "height": 3.5,
+    "colour": "#dfe3e6"
    }
   },
   {
    "type": "flag",
    "at": [
-    -18.6,
-    -14.3,
+    -20,
+    -15.5,
     0
    ],
    "params": {
     "height": 9,
-    "count": 4,
-    "spacing": 6,
+    "count": 6,
+    "spacing": 8,
     "colours": [
-     "#1f3d7a"
+     "#2f6aa8"
     ]
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -598,8 +833,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Cream stair tower, banner-wrapped concourse and horseshoe stands present; vaulted west roof hidden behind tower, no glazed ground arcade, lattice floodlights are simple heads, no pitcher emblem, bowl scaled to fit 120 m clamp."
+  "gaps": "Banner is a colour-block approximation, curved concourse is straight, vault roof only partly visible, floodlight banks simplified; bowl scaled to clamp."
  }
 }

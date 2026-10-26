@@ -27,115 +27,842 @@
  ],
  "camera": {
   "yawDeg": -25,
-  "pitchDeg": 28,
+  "pitchDeg": 40,
   "fovDeg": 45
  },
  "parts": [
   {
    "type": "mass",
-   "id": "ash-pit",
+   "id": "ash-floor",
    "footprint": {
-    "osm": true,
-    "scale": 0.9
+    "rect": [
+     32,
+     24
+    ]
    },
    "at": [
     0,
     0
    ],
+   "rotDeg": 0,
    "z0": 0,
    "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
-    "colour": "#c9bb9f",
+    "colour": "#cdb8aa",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#d3c6ad",
+    "colour": "#d6c3b6",
     "material": "concrete"
    }
   },
   {
    "type": "mass",
-   "id": "house-a",
+   "id": "bank-n",
    "footprint": {
     "rect": [
-     9,
+     44,
      6
     ]
    },
    "at": [
-    -6,
-    -2
+    0,
+    15.0
    ],
-   "rotDeg": -31,
-   "z0": 0.5,
-   "height": 3.4,
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
-    "colour": "#a98a63",
-    "windows": "punched",
-    "windowRatio": 0.04
+    "colour": "#7b6249",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b49a72",
-    "material": "concrete",
-    "parapet": 0.1
+    "colour": "#7b6249",
+    "material": "concrete"
    }
   },
   {
    "type": "mass",
-   "id": "house-b",
+   "id": "bank2-n",
    "footprint": {
     "rect": [
-     7,
-     5
+     44,
+     3
+    ]
+   },
+   "at": [
+    0,
+    16.5
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8d7e6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7e6c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bank-s",
+   "footprint": {
+    "rect": [
+     44,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -15.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#7b6249",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b6249",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bank2-s",
+   "footprint": {
+    "rect": [
+     44,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8d7e6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7e6c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bank-e",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    19.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#7b6249",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b6249",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bank2-e",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    20.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8d7e6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7e6c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bank-w",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    -19.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#7b6249",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b6249",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bank2-w",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    -20.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8d7e6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7e6c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-1-1",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -19.0,
+    -15.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#85705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85705a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-11",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -19.0,
+    15.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#85705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85705a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner1-1",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    19.0,
+    -15.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#85705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85705a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner11",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    19.0,
+    15.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#85705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85705a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a-n",
+   "footprint": {
+    "rect": [
+     11,
+     0.8
+    ]
+   },
+   "at": [
+    -7,
+    7.1
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a-w",
+   "footprint": {
+    "rect": [
+     0.8,
+     7.4
+    ]
+   },
+   "at": [
+    -12.1,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a-e",
+   "footprint": {
+    "rect": [
+     0.8,
+     7.4
+    ]
+   },
+   "at": [
+    -1.9,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 2.38,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a-s1",
+   "footprint": {
+    "rect": [
+     4.4,
+     0.8
+    ]
+   },
+   "at": [
+    -10.3,
+    -1.1
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.68,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a-s2",
+   "footprint": {
+    "rect": [
+     4.4,
+     0.8
+    ]
+   },
+   "at": [
+    -3.7,
+    -1.1
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.68,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b-n",
+   "footprint": {
+    "rect": [
+     8,
+     0.8
     ]
    },
    "at": [
     8,
-    6
+    7.1
    ],
-   "rotDeg": -31,
+   "rotDeg": 0,
    "z0": 0.5,
-   "height": 3.0,
+   "height": 2.4,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
     "colour": "#a98a63",
-    "windows": "punched",
-    "windowRatio": 0.04
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b49a72",
-    "material": "concrete",
-    "parapet": 0.1
+    "colour": "#a98a63",
+    "material": "concrete"
    }
   },
   {
    "type": "mass",
-   "id": "kitchen",
+   "id": "house-b-w",
    "footprint": {
     "rect": [
-     5,
-     4
+     0.8,
+     5.4
     ]
    },
    "at": [
-    -1,
-    -9
+    4.4,
+    4
    ],
-   "rotDeg": -31,
+   "rotDeg": 0,
    "z0": 0.5,
-   "height": 2.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b-e",
+   "footprint": {
+    "rect": [
+     0.8,
+     5.4
+    ]
+   },
+   "at": [
+    11.6,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 2.04,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b-s1",
+   "footprint": {
+    "rect": [
+     2.9,
+     0.8
+    ]
+   },
+   "at": [
+    5.45,
+    0.9
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.44,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b-s2",
+   "footprint": {
+    "rect": [
+     2.9,
+     0.8
+    ]
+   },
+   "at": [
+    10.55,
+    0.9
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.44,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a63",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-n",
+   "footprint": {
+    "rect": [
+     6,
+     0.8
+    ]
+   },
+   "at": [
+    5,
+    -4.4
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.8,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
     "colour": "#9a7650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-w",
+   "footprint": {
+    "rect": [
+     0.8,
+     3.4
+    ]
+   },
+   "at": [
+    2.4,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#9a7650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-e",
+   "footprint": {
+    "rect": [
+     0.8,
+     3.4
+    ]
+   },
+   "at": [
+    7.6,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.53,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#9a7650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-s1",
+   "footprint": {
+    "rect": [
+     1.9,
+     0.8
+    ]
+   },
+   "at": [
+    2.95,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.08,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#9a7650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-s2",
+   "footprint": {
+    "rect": [
+     1.9,
+     0.8
+    ]
+   },
+   "at": [
+    7.05,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.08,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#9a7650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "part-a",
+   "footprint": {
+    "rect": [
+     0.5,
+     6
+    ]
+   },
+   "at": [
+    -7,
+    2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b49a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "part-b",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -7,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b49a72",
     "windows": "none"
    },
    "roof": {
@@ -149,17 +876,17 @@
    "id": "platform",
    "footprint": {
     "rect": [
-     6,
-     5
+     5,
+     4
     ]
    },
    "at": [
-    10,
-    -8
+    -11,
+    -7
    ],
-   "rotDeg": -31,
+   "rotDeg": 0,
    "z0": 0.5,
-   "height": 1.2,
+   "height": 0.9,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
@@ -168,68 +895,80 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d3c6ad",
+    "colour": "#c8b08a",
     "material": "concrete"
    }
   },
   {
    "type": "conical-tower",
    "at": [
-    -1,
-    5,
-    0.5
-   ],
-   "params": {
-    "height": 2.6,
-    "radius": 1.1,
-    "toron": false
-   }
-  },
-  {
-   "type": "conical-tower",
-   "at": [
-    3,
-    3.5,
+    1,
+    -7,
     0.5
    ],
    "params": {
     "height": 2.0,
     "radius": 0.9,
     "toron": false
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "conical-tower",
+   "at": [
+    13,
+    -4,
+    0.5
+   ],
+   "params": {
+    "height": 1.6,
+    "radius": 0.8,
+    "toron": false
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/steps",
    "at": [
-    -14,
-    4,
-    0.5
+    -4,
+    13.0,
+    1.4
    ],
+   "rotDeg": 180,
    "params": {
     "width": 1.6,
     "rise": 0.35,
     "run": 0.5,
-    "count": 6,
+    "count": 4,
     "colour": "#a98a63"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/canopy",
    "at": [
     0,
     0,
-    5
+    6.0
    ],
-   "rotDeg": -31,
    "params": {
     "form": "flat",
-    "width": 43,
-    "depth": 29,
-    "height": 5,
-    "thickness": 0.35,
-    "columns": 10,
-    "colour": "#9a9fa2",
-    "edgeColour": "#6f7477"
+    "width": 30,
+    "depth": 22,
+    "height": 6.0,
+    "thickness": 0.2,
+    "columns": 6,
+    "colour": "#bfd9c8",
+    "edgeColour": "#6f9a80"
    }
   },
   {
@@ -237,41 +976,41 @@
    "at": [
     0,
     0,
-    0.5
+    2.8
    ],
    "params": {
     "length": 4,
     "height": 0.9,
-    "thickness": 0.1,
+    "thickness": 0.08,
     "kind": "rail",
     "colour": "#3f7a52",
     "points": [
      [
-      -18,
-      -12
-     ],
-     [
-      18,
+      -22,
       -18
      ],
      [
-      24,
-      -1
+      22,
+      -18
      ],
      [
-      -12,
+      22,
       18
      ],
      [
-      -24,
-      0
+      -22,
+      18
      ],
      [
-      -18,
-      -12
+      -22,
+      -18
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -281,22 +1020,15 @@
    {
     "kind": "broadleaf",
     "at": [
-     32,
+     36,
      10
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
-     -32,
-     -6
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     0,
-     32
+     -34,
+     -8
     ]
    }
   ],
@@ -312,6 +1044,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Excavation pit and stepped ash walls are not modelled (flat ash floor); roof is lighter and wider than the real translucent shelter."
+  "gaps": "Banks are two plain steps with no soil strata; adobe room walls are straight boxes without rough edges or niches; ash floor is flat; roof sheet is flat grey-green rather than translucent."
  }
 }

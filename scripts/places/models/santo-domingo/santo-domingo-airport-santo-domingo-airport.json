@@ -38,23 +38,59 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    10,
+    -25,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     70
+    ],
+    "z0": -0.04,
+    "height": 0.04,
+    "colour": "#b4ab99"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "at": [
+    50,
+    64,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     36
+    ],
+    "z0": -0.03,
+    "height": 0.03,
+    "colour": "#6e6c68"
+   }
+  },
+  {
    "type": "mass",
-   "id": "terminal",
+   "id": "bay-a",
    "footprint": {
     "rect": [
-     84,
-     26
+     28,
+     24
     ]
    },
    "at": [
-    28,
+    8,
     0
    ],
-   "height": 9,
+   "height": 7,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#d2cdbd",
+    "colour": "#d6d0bf",
     "windows": "ribbon",
     "windowRatio": 0.45,
     "faces": {
@@ -70,7 +106,81 @@
     "form": "flat",
     "colour": "#9b9d98",
     "material": "membrane",
-    "overhang": 1.5,
+    "overhang": 1.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-b",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    36,
+    -1
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd6c6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#efece4",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9d98",
+    "material": "membrane",
+    "overhang": 1.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-c",
+   "footprint": {
+    "rect": [
+     26,
+     25
+    ]
+   },
+   "at": [
+    63,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2ccba",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#efece4",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9d98",
+    "material": "membrane",
+    "overhang": 1.8,
     "parapet": 0.4
    }
   },
@@ -84,11 +194,11 @@
     ]
    },
    "at": [
-    30,
-    22
+    34,
+    24
    ],
-   "height": 13,
-   "storeys": 3,
+   "height": 10,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#cfcabb",
@@ -145,12 +255,12 @@
     -6
    ],
    "params": {
-    "radius": 24,
-    "n": 16,
+    "radius": 20,
+    "n": 12,
     "z0": 0,
     "height": 7.5,
-    "colour": "#d6d1c3",
-    "topColour": "#a5a6a2",
+    "colour": "#8d8a80",
+    "topColour": "#8d8a80",
     "windows": "none"
    }
   },
@@ -162,8 +272,8 @@
     -6
    ],
    "params": {
-    "radius": 9,
-    "n": 20,
+    "radius": 7,
+    "n": 12,
     "z0": 7.5,
     "height": 2.6,
     "colour": "#cfcabc",
@@ -178,12 +288,12 @@
     -6
    ],
    "params": {
-    "radius": 25,
-    "n": 24,
+    "radius": 20.8,
+    "n": 12,
     "z0": 6.6,
     "height": 0.9,
-    "colour": "#a9aaa6",
-    "topColour": "#a9aaa6"
+    "colour": "#7f7c73",
+    "topColour": "#8d8a80"
    }
   },
   {
@@ -278,8 +388,8 @@
   {
    "type": "jet-bridge",
    "at": [
-    -18,
-    -8,
+    -18.4,
+    -6.4,
     4.5
    ],
    "rotDeg": -30,
@@ -293,8 +403,8 @@
   {
    "type": "jet-bridge",
    "at": [
-    -24,
-    -24,
+    -23.200000000000003,
+    -19.200000000000003,
     4.0
    ],
    "rotDeg": -75,
@@ -308,8 +418,8 @@
   {
    "type": "jet-bridge",
    "at": [
-    8,
-    -13,
+    2.4000000000000004,
+    -10.4,
     4.5
    ],
    "rotDeg": 0,
@@ -329,7 +439,7 @@
    ],
    "rotDeg": 80,
    "params": {
-    "scale": 1.0,
+    "scale": 0.65,
     "colour": "#eceff1",
     "tailColour": "#1f3f7a"
    },
@@ -347,7 +457,7 @@
    ],
    "rotDeg": -100,
    "params": {
-    "scale": 1.0,
+    "scale": 0.65,
     "colour": "#e6e9ec",
     "tailColour": "#8a2a2a"
    },
@@ -422,6 +532,38 @@
    "lod": [
     0
    ]
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    58,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.6,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    66,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.6,
+    "colour": "#8f2a2a"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -450,8 +592,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Aerial view only: about 160 m of the 420 m finger plan is modelled; terminal roof/fascia detail, concourse fingers and parking lots simplified; apron is flat paving."
+  "gaps": "Aerial; only part of the 420 m finger plan modelled; terminal stepped in 3 bays but roof detail simplified; apron/car park are flat slabs; no surrounding greenery or road loops."
  }
 }

@@ -47,13 +47,12 @@
     0,
     0
    ],
-   "height": 6.2,
+   "height": 6.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece6d6",
-    "windows": "punched",
-    "windowRatio": 0.1,
+    "colour": "#e8e2d0",
+    "windows": "none",
     "plinth": 0,
     "pattern": [
      {
@@ -71,199 +70,9 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b0663a",
-    "material": "clay-tile",
-    "parapet": 0.5,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tile-band",
-   "footprint": {
-    "rect": [
-     44,
-     12
-    ]
-   },
-   "at": [
-    0,
-    -22
-   ],
-   "height": 2.0,
-   "storeys": 1,
-   "wall": {
-    "material": "terracotta",
-    "colour": "#c98b4c",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "shed",
-    "colour": "#c98b4c",
-    "material": "clay-tile",
-    "overhang": 0.5
-   },
-   "z0": 6.2
-  },
-  {
-   "type": "mass",
-   "id": "top-storey",
-   "footprint": {
-    "rect": [
-     34,
-     26
-    ]
-   },
-   "at": [
-    0,
-    -6
-   ],
-   "height": 3.6,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#b9c9a8",
-    "windows": "punched",
-    "windowRatio": 0.12,
-    "plinth": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#c9d2b8",
-    "overhang": 1.2,
-    "parapet": 0.3
-   },
-   "z0": 8.2
-  },
-  {
-   "type": "mass",
-   "id": "a-dormer-0",
-   "footprint": {
-    "rect": [
-     5,
-     6
-    ]
-   },
-   "at": [
-    -12,
-    -31
-   ],
-   "height": 1.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e9ddc8",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#b0663a",
-    "material": "clay-tile",
-    "pitch": 55,
-    "overhang": 0.3
-   },
-   "z0": 6.4
-  },
-  {
-   "type": "mass",
-   "id": "a-dormer-1",
-   "footprint": {
-    "rect": [
-     5,
-     6
-    ]
-   },
-   "at": [
-    -2,
-    -31
-   ],
-   "height": 1.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e9ddc8",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#b0663a",
-    "material": "clay-tile",
-    "pitch": 55,
-    "overhang": 0.3
-   },
-   "z0": 6.4
-  },
-  {
-   "type": "mass",
-   "id": "a-dormer-2",
-   "footprint": {
-    "rect": [
-     5,
-     6
-    ]
-   },
-   "at": [
-    8,
-    -31
-   ],
-   "height": 1.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e9ddc8",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#b0663a",
-    "material": "clay-tile",
-    "pitch": 55,
-    "overhang": 0.3
-   },
-   "z0": 6.4
-  },
-  {
-   "type": "mass",
-   "id": "a-dormer-3",
-   "footprint": {
-    "rect": [
-     5,
-     6
-    ]
-   },
-   "at": [
-    16,
-    -31
-   ],
-   "height": 1.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e9ddc8",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#b0663a",
-    "material": "clay-tile",
-    "pitch": 55,
-    "overhang": 0.3
-   },
-   "z0": 6.4
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -14,
-    -37,
-    3.2
-   ],
-   "params": {
-    "width": 14,
-    "height": 2.2,
-    "bottom": 3.2,
-    "colour": "#4f7f9e",
-    "frameColour": "#ece6d6"
+    "colour": "#e8e2d0",
+    "parapet": 0.4,
+    "overhang": 1.5
    }
   },
   {
@@ -278,6 +87,344 @@
     "count": 3,
     "spacing": 3.2,
     "yaw": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-roof",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -19
+   ],
+   "z0": 6.5,
+   "height": 1,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#c98b4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c98b4c",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-box",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 7.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9c9a8",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8e0cc",
+    "overhang": 1.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-0",
+   "at": [
+    -11,
+    -36.9,
+    0
+   ],
+   "params": {
+    "colour": "#e3cfa8",
+    "sections": [
+     {
+      "z": 5.5,
+      "rect": [
+       6,
+       1.5
+      ]
+     },
+     {
+      "z": 7.7,
+      "rect": [
+       3.4,
+       1.5
+      ]
+     },
+     {
+      "z": 9.9,
+      "rect": [
+       0.6,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-in-0",
+   "at": [
+    -11,
+    -37.7,
+    0
+   ],
+   "params": {
+    "colour": "#2a2420",
+    "sections": [
+     {
+      "z": 5.6,
+      "rect": [
+       3.4,
+       0.3
+      ]
+     },
+     {
+      "z": 7.3,
+      "rect": [
+       1.9,
+       0.3
+      ]
+     },
+     {
+      "z": 8.9,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-1",
+   "at": [
+    0,
+    -36.9,
+    0
+   ],
+   "params": {
+    "colour": "#e3cfa8",
+    "sections": [
+     {
+      "z": 3,
+      "rect": [
+       6,
+       1.5
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       3.4,
+       1.5
+      ]
+     },
+     {
+      "z": 7.4,
+      "rect": [
+       0.6,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-in-1",
+   "at": [
+    0,
+    -37.7,
+    0
+   ],
+   "params": {
+    "colour": "#2a2420",
+    "sections": [
+     {
+      "z": 3.1,
+      "rect": [
+       3.4,
+       0.3
+      ]
+     },
+     {
+      "z": 4.8,
+      "rect": [
+       1.9,
+       0.3
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-2",
+   "at": [
+    9,
+    -36.9,
+    0
+   ],
+   "params": {
+    "colour": "#e3cfa8",
+    "sections": [
+     {
+      "z": 3.6,
+      "rect": [
+       6,
+       1.5
+      ]
+     },
+     {
+      "z": 5.800000000000001,
+      "rect": [
+       3.4,
+       1.5
+      ]
+     },
+     {
+      "z": 8.0,
+      "rect": [
+       0.6,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-in-2",
+   "at": [
+    9,
+    -37.7,
+    0
+   ],
+   "params": {
+    "colour": "#2a2420",
+    "sections": [
+     {
+      "z": 3.7,
+      "rect": [
+       3.4,
+       0.3
+      ]
+     },
+     {
+      "z": 5.4,
+      "rect": [
+       1.9,
+       0.3
+      ]
+     },
+     {
+      "z": 7.0,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-3",
+   "at": [
+    16,
+    -36.9,
+    0
+   ],
+   "params": {
+    "colour": "#e3cfa8",
+    "sections": [
+     {
+      "z": 3,
+      "rect": [
+       6,
+       1.5
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       3.4,
+       1.5
+      ]
+     },
+     {
+      "z": 7.4,
+      "rect": [
+       0.6,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aframe-in-3",
+   "at": [
+    16,
+    -37.7,
+    0
+   ],
+   "params": {
+    "colour": "#2a2420",
+    "sections": [
+     {
+      "z": 3.1,
+      "rect": [
+       3.4,
+       0.3
+      ]
+     },
+     {
+      "z": 4.8,
+      "rect": [
+       1.9,
+       0.3
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
    }
   }
  ],
@@ -299,8 +446,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "pending"
+  "gaps": "slab flat roof is visible (photo's orange roof sits higher and steeper); stone piers are thin dark; no left-end projecting A-frame; no cantilever depth"
  }
 }

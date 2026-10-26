@@ -2,7 +2,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "podium massing and green roof follow the OSM outline; real facade is a curved bronze/cream band with planted terraces and 14 towers behind (not modelled), glazing too regular"
+  "gaps": "towers are plain striped slabs without balconies (triangle budget); podium curve only follows OSM outline"
  },
  "verified": "photo",
  "evidence": [
@@ -10,7 +10,7 @@
    "kind": "photo",
    "url": "https://commons.wikimedia.org/wiki/File:2025%E5%B9%B49%E6%9C%88-%E6%B8%AF%E5%B3%B6%E5%8D%97%E5%B2%B8.jpg",
    "licence": "CC BY-SA 4.0",
-   "author": "建園春秋",
+   "author": "\u5efa\u5712\u6625\u79cb",
    "view": "front",
    "file": "/tmp/places-evidence/hong-kong/osm-way-950281943-0.jpg",
    "used": "long curved 3-4 level podium with soft cream bands, bronze-toned curtain wall, planted green roof terraces, shop front at street level"
@@ -33,52 +33,25 @@
    "id": "podium",
    "footprint": {
     "osm": true,
-    "simplify": 1.0
+    "simplify": 4.0
    },
-   "height": 18,
-   "storeys": 4,
+   "height": 12,
+   "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#dcd2bd",
-    "windows": "ribbon",
-    "windowRatio": 0.22,
-    "glassColour": "#a8b4bb",
+    "colour": "#b69a74",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "glassColour": "#6f7f78",
     "plinth": 0.3,
     "groundKind": "shopfront",
     "groundHeight": 4.5,
-    "pattern": [
-     {
-      "type": "bands",
-      "height": 0.9,
-      "colour": "#c9b79a"
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "flat",
-    "colour": "#8fa07a",
+    "colour": "#6f9a58",
     "parapet": 0.9
-   }
-  },
-  {
-   "type": "prism",
-   "id": "roofgarden",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    0,
-    0
-   ],
-   "params": {
-    "rect": [
-     40,
-     12
-    ],
-    "z0": 18.9,
-    "height": 0.4,
-    "colour": "#6f9a58"
    }
   },
   {
@@ -96,6 +69,308 @@
    }
   },
   {
+   "type": "mass",
+   "id": "tower0",
+   "at": [
+    -5,
+    10
+   ],
+   "footprint": {
+    "rect": [
+     20,
+     28
+    ]
+   },
+   "height": 105,
+   "storeys": 20,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fc4c0",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#5fb0b8",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fc4c0",
+       "#5fb0b8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower1",
+   "at": [
+    22,
+    18
+   ],
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "height": 105,
+   "storeys": 20,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c4ccd0",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#8fb0c4",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c4ccd0",
+       "#8fb0c4"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower2",
+   "at": [
+    50,
+    32
+   ],
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "height": 120,
+   "storeys": 20,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eef0f0",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#a8c4d4",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#eef0f0",
+       "#a8c4d4"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower3",
+   "at": [
+    75,
+    48
+   ],
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "height": 105,
+   "storeys": 20,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d4dadc",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#9ab8c8",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d4dadc",
+       "#9ab8c8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower4",
+   "at": [
+    -30,
+    20
+   ],
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "height": 105,
+   "storeys": 20,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fc4c0",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#5fa8b0",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fc4c0",
+       "#5fa8b0"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "at": [
+    30,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "z0": 12.0,
+    "height": 0.3,
+    "colour": "#3fa0c8",
+    "topColour": "#4fb0d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "garden",
+   "at": [
+    0,
+    -5
+   ],
+   "params": {
+    "rect": [
+     26,
+     8
+    ],
+    "z0": 12.9,
+    "height": 0.5,
+    "colour": "#5f9a50",
+    "topColour": "#5f9a50"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -15,
+    12.9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4.199999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    -8,
+    12.9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4.199999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -3,
+    12.9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4.199999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    45,
+    12,
+    12.9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4.199999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    22,
+    12.9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4.199999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    5,
+    12.9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4.199999999999999
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
    "type": "core/tree",
    "at": [
     -70,
@@ -105,43 +380,40 @@
     "kind": "broadleaf",
     "height": 7,
     "spread": 4.8999999999999995
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
    "at": [
     -20,
-    -42
+    -45
    ],
    "params": {
     "kind": "broadleaf",
     "height": 7,
     "spread": 4.8999999999999995
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    30,
-    -5
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 7,
-    "spread": 4.8999999999999995
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
    "at": [
     80,
-    40
+    70
    ],
    "params": {
     "kind": "broadleaf",
     "height": 7,
     "spread": 4.8999999999999995
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {

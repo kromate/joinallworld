@@ -41,7 +41,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#c9cbc0",
+    "colour": "#bfc4b4",
     "windows": "none",
     "plinth": 0.3,
     "faces": {
@@ -55,7 +55,7 @@
     "curve": "arch",
     "colour": "#e9e6dc",
     "material": "concrete",
-    "rise": 2.6,
+    "rise": 2.0,
     "overhang": 0.5
    }
   },
@@ -69,50 +69,159 @@
     ]
    },
    "at": [
-    -6.3,
-    -4
+    -7.7,
+    -4.3
    ],
-   "height": 13,
-   "storeys": 3,
+   "height": 12.5,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#b9b9b0",
-    "windows": "louvre",
-    "windowRatio": 0.35,
-    "faces": {
-     "front": "louvre",
-     "left": "louvre",
-     "right": "plain",
-     "back": "plain"
-    },
-    "plinth": 0.3,
-    "cornice": true
+    "colour": "#bfc4b4",
+    "windows": "none",
+    "plinth": 0.3
    },
    "roof": {
     "form": "pyramidal",
     "colour": "#8e3c36",
     "material": "clay-tile",
     "rise": 3.2,
-    "overhang": 0.7
+    "overhang": 0.5
    }
   },
   {
    "type": "core/canopy",
    "at": [
-    2.5,
-    -7.2,
+    3.0,
+    -6.5,
     0
    ],
    "params": {
     "form": "curved",
-    "width": 7,
-    "depth": 3.6,
-    "height": 3.4,
+    "width": 6,
+    "depth": 3.0,
+    "height": 3.6,
     "thickness": 0.3,
     "columns": 2,
-    "rise": 0.7,
+    "rise": 0.5,
     "colour": "#e9e6dc",
-    "edgeColour": "#9a5a52"
+    "edgeColour": "#6b2f2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a7a79c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    -11,
+    1.0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.3,
+    "thickness": 0.06,
+    "kind": "fence",
+    "pillarEvery": 0.3,
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 5,
+    "colour": "#4c7d3b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -6.3,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -5.5,
+      0,
+      7.5
+     ],
+     [
+      -2,
+      0,
+      8.6
+     ],
+     [
+      2,
+      0,
+      9.4
+     ],
+     [
+      6,
+      0,
+      9.7
+     ],
+     [
+      9.5,
+      0,
+      9.3
+     ]
+    ],
+    "curve": true,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-louvre",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -7.7,
+    -6.5
+   ],
+   "z0": 8.6,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a766f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a766f"
    }
   },
   {
@@ -125,21 +234,21 @@
     ]
    },
    "at": [
-    2.5,
-    -6.55
+    -0.2,
+    -6.65
    ],
-   "height": 3.6,
+   "z0": 4.6,
+   "height": 3.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8e8e2",
+    "colour": "#4aa89a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#e8e8e2"
-   },
-   "z0": 5.4
+    "colour": "#4aa89a"
+   }
   },
   {
    "type": "mass",
@@ -151,72 +260,176 @@
     ]
    },
    "at": [
-    2.5,
-    -6.55
+    -0.2,
+    -6.65
    ],
+   "z0": 6.5,
    "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8e8e2",
+    "colour": "#4aa89a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#e8e8e2"
+    "colour": "#4aa89a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-0",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.5
+    ]
    },
-   "z0": 7.8
-  },
-  {
-   "type": "fence-wall",
    "at": [
-    2,
-    -11,
-    0
+    -4.25,
+    -6.25
    ],
-   "params": {
-    "length": 24,
-    "height": 0.8,
-    "thickness": 0.4,
-    "kind": "wall",
-    "colour": "#a7a79c"
+   "height": 7.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
    }
   },
   {
-   "type": "fence-wall",
+   "type": "mass",
+   "id": "front-1",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.5
+    ]
+   },
    "at": [
-    2,
-    -11,
-    0.8
+    -1.75,
+    -6.25
    ],
-   "params": {
-    "length": 24,
-    "height": 1.2,
-    "thickness": 0.06,
-    "kind": "fence",
-    "pillarEvery": 3,
-    "colour": "#26282a"
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
    }
   },
   {
-   "type": "core/tree",
+   "type": "mass",
+   "id": "front-2",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.5
+    ]
+   },
    "at": [
-    9,
-    -9,
-    0
+    0.75,
+    -6.25
    ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 9,
-    "count": 2,
-    "spread": 5,
-    "colour": "#4c7d3b"
+   "height": 8.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-3",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.5
+    ]
+   },
+   "at": [
+    3.25,
+    -6.25
+   ],
+   "height": 9.25,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-4",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.5
+    ]
+   },
+   "at": [
+    5.75,
+    -6.25
+   ],
+   "height": 9.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-5",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.25,
+    -6.25
+   ],
+   "height": 9.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc"
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "parking",
+  "forecourt": "road",
   "trees": 0,
   "extent": [
    60,
@@ -224,9 +437,9 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "not render-checked (render queue had no running workers); tower, curved gable and canopy placement unverified against the photo"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "white arch band floats slightly above the stepped front wall, tower louvre panel reads too dark and the pyramid roof is too saturated red, cross is thick, canopy a little small"
  },
  "schema": "allworld-place-model",
  "version": 2,

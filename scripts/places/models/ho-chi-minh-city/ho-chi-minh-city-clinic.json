@@ -53,7 +53,7 @@
     },
     "bands": "#e8d2c0",
     "plinth": 0.4,
-    "bay": 5
+    "bay": 7
    },
    "roof": {
     "form": "flat",
@@ -76,11 +76,11 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 32,
-   "storeys": 9,
+   "height": 34,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e6e2",
+    "colour": "#eceae6",
     "windows": "ribbon",
     "windowRatio": 0.5,
     "faces": {
@@ -88,8 +88,8 @@
      "back": "plain",
      "right": "plain"
     },
-    "bands": "#cfd2d4",
-    "bay": 5
+    "bands": "#ffffff",
+    "bay": 6
    },
    "roof": {
     "form": "flat",
@@ -112,25 +112,25 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 17,
-   "storeys": 5,
+   "height": 30,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8ebed",
+    "colour": "#eceae6",
     "windows": "ribbon",
-    "windowRatio": 0.45,
+    "windowRatio": 0.5,
     "faces": {
      "left": "plain",
      "back": "plain",
      "right": "plain"
     },
-    "bands": "#cfd3d6",
+    "bands": "#ffffff",
     "plinth": 0.4,
-    "bay": 4
+    "bay": 5
    },
    "roof": {
     "form": "flat",
-    "colour": "#3e6fb0",
+    "colour": "#b9bdbf",
     "parapet": 0.8,
     "overhang": 0.6
    }
@@ -154,7 +154,7 @@
    "storeys": 10,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#6f9c92",
+    "colour": "#dfe4e4",
     "windows": "curtain",
     "windowRatio": 0.8,
     "faces": {
@@ -162,12 +162,12 @@
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#e6e6e2",
-    "bay": 4
+    "bands": "#f2f2ee",
+    "bay": 6
    },
    "roof": {
     "form": "flat",
-    "colour": "#cfd2d4",
+    "colour": "#e8e8e4",
     "parapet": 0.8,
     "overhang": 0.8
    }
@@ -177,8 +177,8 @@
    "id": "tower-top",
    "footprint": {
     "rect": [
-     12,
-     12
+     8,
+     8
     ]
    },
    "at": [
@@ -187,11 +187,11 @@
    ],
    "rotDeg": 0,
    "z0": 36,
-   "height": 6,
+   "height": 4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8e8e4",
+    "colour": "#f0f0ec",
     "windows": "none"
    },
    "roof": {
@@ -288,30 +288,6 @@
   {
    "type": "tree",
    "at": [
-    -30,
-    -34,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 7
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    -12,
-    -34,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 9
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
     14,
     -34,
     0
@@ -341,8 +317,132 @@
     0
    ],
    "params": {
-    "count": 4,
+    "count": 2,
     "spacing": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-end",
+   "footprint": {
+    "rect": [
+     10,
+     20
+    ]
+   },
+   "at": [
+    46,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a5a48",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    -18.3,
+    8
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    40
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "height": 2,
+    "colour": "#2f78c0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db3bd",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f98a6",
+    "parapet": 0.3,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-left-bay",
+   "footprint": {
+    "rect": [
+     6,
+     18
+    ]
+   },
+   "at": [
+    -52,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 37,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8bcbf",
+    "windows": "none",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4",
+    "parapet": 0.4
    }
   }
  ],
@@ -360,8 +460,8 @@
  "city": "ho-chi-minh-city",
  "venueId": "ho-chi-minh-city-clinic",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Volumes simplified to boxes (real OSM outline is irregular); no brown podium end block, entrance canopy and roof details approximate."
+  "gaps": "Boxy volumes (real OSM outline irregular); window grain coarser than the photo; entrance canopy and brown end block simplified; logo sign blank."
  }
 }

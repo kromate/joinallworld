@@ -38,33 +38,6 @@
  "parts": [
   {
    "type": "mass",
-   "id": "rampart",
-   "footprint": {
-    "rect": [
-     32,
-     30
-    ]
-   },
-   "at": [
-    0,
-    0
-   ],
-   "height": 5.2,
-   "storeys": 1,
-   "wall": {
-    "material": "whitewash",
-    "colour": "#efeae0",
-    "windows": "none",
-    "plinth": 0.4
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e6e0d2",
-    "parapet": 0.9
-   }
-  },
-  {
-   "type": "mass",
    "id": "tower-base",
    "footprint": {
     "rect": [
@@ -76,13 +49,22 @@
     -19,
     0
    ],
-   "height": 4.3,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#a9d0ea",
-    "windows": "none",
-    "trimColour": "#f4f4f2"
+    "windows": "arched",
+    "trimColour": "#f4f4f2",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "flat",
@@ -94,25 +76,25 @@
    "id": "tower-mid",
    "footprint": {
     "rect": [
-     5.6,
-     5.6
+     5.4,
+     5.4
     ]
    },
    "at": [
     -19,
     0
    ],
-   "z0": 4.3,
-   "height": 6.7,
+   "z0": 4.5,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#7b2132",
     "windows": "arched",
     "windowShape": "arched",
-    "windowRatio": 0.2,
-    "trimColour": "#f4f4f2",
-    "bay": 5.6,
+    "windowRatio": 0.3,
+    "trimColour": "#f6f5f1",
+    "bay": 5.4,
     "cornice": true
    },
    "roof": {
@@ -133,8 +115,8 @@
     -19,
     0
    ],
-   "z0": 11,
-   "height": 6.5,
+   "z0": 13.5,
+   "height": 8.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -145,7 +127,180 @@
    "roof": {
     "form": "flat",
     "colour": "#eceae4",
-    "parapet": 0.5
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 32,
+    "height": 4.6,
+    "thickness": 1.2,
+    "merlons": true
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 32,
+    "height": 4.6,
+    "thickness": 1.2,
+    "merlons": true
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -16,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 4.6,
+    "thickness": 1.2,
+    "merlons": true
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    16,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 4.6,
+    "thickness": 1.2,
+    "merlons": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19,
+    -2.97,
+    15.2
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.4,
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice-band",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "z0": 13.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5f1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f5f1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-cornice",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "z0": 21.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5f1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f5f1"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -19,
+    -2.7,
+    4.6
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 0.9,
+    "railing_colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7b2132",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -19,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.5,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#f5f5f2"
    }
   },
   {
@@ -153,11 +308,11 @@
    "at": [
     -19,
     -2.95,
-    14.2
+    18.5
    ],
    "params": {
     "n": 16,
-    "radius": 1.1,
+    "radius": 1.2,
     "z0": 0,
     "height": 0.15,
     "colour": "#f9f9f6"
@@ -250,6 +405,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "clock faces, white arch surrounds, balcony and gate railings missing; rampart modelled as a plain whitewashed square"
+  "gaps": "Tower taller with arched windows, balcony, cornices and crenellated rampart now; clock faces, louvres, picket gate and third pier still missing; rampart walls render pale blue and part of the perimeter does not show"
  }
 }

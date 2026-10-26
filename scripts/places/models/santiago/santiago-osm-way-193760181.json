@@ -94,8 +94,76 @@
     ],
     "z0": 0,
     "height": 0.1,
-    "colour": "#8e9094",
+    "colour": "#79a24c",
     "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -46,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     96,
+     16
+    ],
+    "height": 0.08,
+    "colour": "#cfcbc1",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -58,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     130,
+     7
+    ],
+    "height": 0.08,
+    "colour": "#55585c",
+    "top": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -36.15,
+     0.4
+    ],
+    "end": [
+     14,
+     -36.15,
+     0.4
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.9,
+       0.2
+      ],
+      "height": 4.2,
+      "colour": "#98a1aa",
+      "top": true
+     }
+    }
    }
   },
   {
@@ -103,21 +171,21 @@
    "id": "ward-a",
    "footprint": {
     "rect": [
-     62,
-     16
+     50,
+     13
     ]
    },
    "at": [
-    8,
-    -8
+    10,
+    6
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 12.5,
+   "height": 9.6,
    "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7f93ab",
+    "colour": "#8499b0",
     "windows": "ribbon",
     "windowRatio": 0.55,
     "bay": 8,
@@ -139,25 +207,24 @@
    "id": "ward-b",
    "footprint": {
     "rect": [
-     62,
-     16
+     40,
+     12
     ]
    },
    "at": [
-    8,
-    22
+    2,
+    26
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 12.5,
-   "storeys": 3,
+   "height": 7.0,
+   "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7f93ab",
+    "colour": "#9aa9ba",
     "windows": "ribbon",
     "windowRatio": 0.55,
     "bay": 8,
-    "bands": "#d5dbe2",
     "plinth": 0.3,
     "faces": {
      "back": "none"
@@ -219,25 +286,13 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 5.4,
+   "height": 4.6,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#e6e8e8",
+    "colour": "#eceeee",
     "windows": "none",
-    "bands": "#8c95a0",
-    "plinth": 0.5,
-    "pattern": {
-     "type": "panels",
-     "faces": [
-      "front"
-     ],
-     "colours": [
-      "#e6e8e8",
-      "#9aa2ab",
-      "#e6e8e8"
-     ]
-    }
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
@@ -294,7 +349,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#c9b79a",
+    "colour": "#c4a77c",
     "windows": "curtain",
     "windowRatio": 0.6,
     "faces": {
@@ -318,12 +373,12 @@
    "params": {
     "form": "flat",
     "width": 24,
-    "depth": 8,
-    "height": 3.8,
-    "thickness": 0.35,
-    "columns": 4,
-    "colour": "#d9d3c2",
-    "edgeColour": "#b4aa94"
+    "depth": 6,
+    "height": 3.4,
+    "thickness": 0.2,
+    "columns": 6,
+    "colour": "#d9d9d4",
+    "edgeColour": "#c8c8c2"
    }
   },
   {
@@ -347,9 +402,9 @@
   {
    "type": "helipad",
    "at": [
-    8,
-    22,
-    13
+    2,
+    26,
+    7.1
    ],
    "params": {
     "radius": 6,
@@ -368,31 +423,27 @@
     "count": 4,
     "spacing": 28
    }
-  },
-  {
-   "type": "car",
-   "at": [
-    10,
-    -52,
-    0
-   ],
-   "params": {
-    "count": 3,
-    "spacing": 3.2
-   }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "plaza",
   "trees": [
    {
     "kind": "palm",
     "at": [
      14,
-     -48
+     -52
     ],
-    "height": 7
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -53
+    ],
+    "height": 8
    },
    {
     "kind": "broadleaf",
@@ -419,6 +470,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Ward blocks are heavier and more regular than the varied low pavilions in the photo; entrance canopy and white-grey panelling are approximated; campus outline is a shrunk ground plate."
+  "gaps": "Ward blocks are simple ribbon-glazed boxes, smaller than the real campus massing; front wing stripes are a prism array, canopy and ambulance bay approximated; campus outline is a shrunk lawn plate."
  }
 }

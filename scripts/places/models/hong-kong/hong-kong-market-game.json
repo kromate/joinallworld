@@ -8,7 +8,7 @@
    "author": "Wpcpey",
    "view": "aerial",
    "file": "/tmp/places-evidence/hong-kong/lohas2.jpg",
-   "used": "low terraced depot-top mall with long curved white fascia bands and green roof gardens, round glazed pavilion with grass roof, two square beige vent towers with dark bands, wide red-paved plaza and high-rise housing behind"
+   "used": "terraced depot-top mall with curved white fascia bands, round glazed pavilion, two beige vent towers with dark bands, red-paved road and roundabout, row of tall residential towers behind"
   },
   {
    "kind": "osm",
@@ -26,81 +26,180 @@
  "parts": [
   {
    "type": "mass",
-   "id": "mall",
+   "id": "deck1",
    "footprint": {
-    "osm": true,
-    "simplify": 12
+    "rect": [
+     100,
+     38
+    ]
    },
    "at": [
-    0,
-    0
+    10,
+    6
    ],
-   "height": 13,
-   "storeys": 3,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#dcdad2",
-    "windows": "none",
-    "plinth": 0.5,
-    "bands": "#b9ccd6",
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#dcdad2",
-       "#c4d3da"
-      ]
-     }
-    ]
+    "material": "concrete",
+    "colour": "#d9d8d1",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#9db58a",
-    "material": "membrane",
-    "parapet": 0.5
+    "colour": "#e6e4de",
+    "material": "concrete",
+    "parapet": 0.3
    }
   },
   {
    "type": "mass",
-   "id": "upper-wing",
+   "id": "deck2",
    "footprint": {
     "rect": [
-     50,
-     26
+     78,
+     22
     ]
    },
    "at": [
-    0,
-    0
+    18,
+    28
    ],
-   "z0": 13,
-   "height": 9,
-   "storeys": 2,
+   "z0": 5,
+   "height": 3.5,
+   "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#b9ccd6",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#b9ccd6",
-       "#e6e3da"
-      ]
-     }
-    ]
+    "material": "concrete",
+    "colour": "#dcdbd4",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#9db58a",
-    "parapet": 0.4
+    "colour": "#e9e7e1",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck3",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    26,
+    44
+   ],
+   "z0": 8.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0dfd8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e3dc",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    14,
+    22,
+    4.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      1.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 51.0,
+     "startDeg": 195,
+     "endDeg": 345,
+     "plane": "xy",
+     "radiusY": 40.800000000000004
+    },
+    "colour": "#f0efe9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    14,
+    22,
+    7.6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      1.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 40.5,
+     "startDeg": 200,
+     "endDeg": 340,
+     "plane": "xy",
+     "radiusY": 32.400000000000006
+    },
+    "colour": "#f0efe9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    14,
+    22,
+    10.6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      1.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 31.5,
+     "startDeg": 205,
+     "endDeg": 335,
+     "plane": "xy",
+     "radiusY": 25.200000000000003
+    },
+    "colour": "#f0efe9"
    }
   },
   {
    "type": "revolve",
    "at": [
     -18,
-    -22,
+    -2,
     0
    ],
    "params": {
@@ -143,31 +242,102 @@
    ]
   },
   {
+   "type": "revolve",
+   "at": [
+    -52,
+    -26,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b5524f",
+    "profile": [
+     [
+      0.1,
+      0.15,
+      "#6f9a5c"
+     ],
+     [
+      5,
+      0.15,
+      "#6f9a5c"
+     ],
+     [
+      5.4,
+      0.3,
+      "#5a3d3a"
+     ],
+     [
+      17,
+      0.3,
+      "#b5524f"
+     ],
+     [
+      17,
+      0,
+      "#b5524f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     8
+    ],
+    "height": 0.35,
+    "colour": "#b5524f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -48,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     40
+    ],
+    "height": 0.35,
+    "colour": "#b5524f"
+   }
+  },
+  {
    "type": "prism",
    "lod": [
     0,
     1
    ],
    "at": [
-    40,
-    -12,
+    50,
+    -14,
     0
    ],
    "params": {
     "rect": [
-     9,
-     9
+     8,
+     8
     ],
-    "height": 20,
-    "colour": "#c9b896",
+    "height": 18,
+    "colour": "#d6c7a4",
     "pattern": [
      {
       "type": "bands",
       "colours": [
-       "#2a2a2a"
+       "#3a2c20"
       ],
       "height": 2.5,
-      "at": 0.6,
+      "at": 0.62,
       "proud": 0.05
      }
     ]
@@ -180,44 +350,91 @@
     1
    ],
    "at": [
-    56,
-    -4,
+    64,
+    -8,
     0
    ],
    "params": {
     "rect": [
-     9,
-     9
+     8,
+     8
     ],
-    "height": 17,
-    "colour": "#c9b896",
+    "height": 15,
+    "colour": "#d6c7a4",
     "pattern": [
      {
       "type": "bands",
       "colours": [
-       "#2a2a2a"
+       "#3a2c20"
       ],
       "height": 2.5,
-      "at": 0.55,
+      "at": 0.62,
       "proud": 0.05
      }
     ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    68,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        11,
+        11
+       ],
+       "height": 70,
+       "colour": "#9fa6a8",
+       "windows": "none"
+      }
+     }
+    ],
+    "vary": {
+     "height": [
+      62,
+      88
+     ]
+    }
    }
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
-  "trees": 1,
+  "trees": 3,
   "extent": [
-   160,
-   140
+   110,
+   110
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "aerial of a curvy terraced depot-top mall; modelled as simplified OSM massing with pavilion and vent towers, no curving terraces or plaza paving colours"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "terraced decks are stepped slabs with curved white fascia arcs rather than sinuous ribbons; backdrop towers are plain boxes without window grid or varied crowns; pavilion simplified"
  },
  "schema": "allworld-place-model",
  "version": 2,

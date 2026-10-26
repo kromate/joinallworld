@@ -27,7 +27,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "hotel blocks too tall and glassy, saucer tower legs simplified, roof edge is a plain folded plate, terminal and control tower behind are not in the photo"
+  "gaps": "hotel blocks still glassier than the pale render of the photo; saucer tower is smaller than real and sits hidden behind a strut; soffit is a plain slab; control tower removed"
  },
  "camera": {
   "yawDeg": 0,
@@ -51,13 +51,13 @@
     12
    ],
    "z0": 0,
-   "height": 33,
-   "storeys": 9,
+   "height": 28,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#dfe1df",
+    "colour": "#e4e0d6",
     "windows": "ribbon",
-    "windowRatio": 0.42,
+    "windowRatio": 0.3,
     "plinth": 0.3,
     "cornice": true,
     "bay": 14,
@@ -72,7 +72,7 @@
     "form": "flat",
     "colour": "#b9bdbd",
     "parapet": 0.8,
-    "overhang": 0.6
+    "overhang": 1.5
    }
   },
   {
@@ -89,13 +89,13 @@
     12
    ],
    "z0": 0,
-   "height": 33,
-   "storeys": 9,
+   "height": 28,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#dfe1df",
+    "colour": "#e4e0d6",
     "windows": "ribbon",
-    "windowRatio": 0.42,
+    "windowRatio": 0.3,
     "plinth": 0.3,
     "cornice": true,
     "bay": 14,
@@ -110,7 +110,7 @@
     "form": "flat",
     "colour": "#b9bdbd",
     "parapet": 0.8,
-    "overhang": 0.6
+    "overhang": 1.5
    }
   },
   {
@@ -126,7 +126,7 @@
     0,
     10
    ],
-   "z0": 23,
+   "z0": 14,
    "height": 3,
    "storeys": 1,
    "wall": {
@@ -141,179 +141,11 @@
    }
   },
   {
-   "type": "revolve",
-   "at": [
-    0,
-    10,
-    0
-   ],
-   "params": {
-    "colour": "#e9ebea",
-    "segments": 20,
-    "profile": [
-     [
-      0,
-      27,
-      "#e9ebea"
-     ],
-     [
-      6.5,
-      27,
-      "#e9ebea"
-     ],
-     [
-      7.5,
-      28.5,
-      "#cfd5d8"
-     ],
-     [
-      7.5,
-      30.5,
-      "#9fb2be"
-     ],
-     [
-      5,
-      31.8,
-      "#dfe3e4"
-     ],
-     [
-      0,
-      32,
-      "#dfe3e4"
-     ]
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "colour": "#e9ebea",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": -9,
-      "cy": 2
-     },
-     {
-      "z": 27,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": -2,
-      "cy": 9
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "colour": "#e9ebea",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": 9,
-      "cy": 2
-     },
-     {
-      "z": 27,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": 2,
-      "cy": 9
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "colour": "#e9ebea",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": -9,
-      "cy": 18
-     },
-     {
-      "z": 27,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": -2,
-      "cy": 11
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "colour": "#e9ebea",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": 9,
-      "cy": 18
-     },
-     {
-      "z": 27,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "cx": 2,
-      "cy": 11
-     }
-    ]
-   }
-  },
-  {
    "type": "mass",
    "id": "terminal",
    "footprint": {
     "rect": [
-     116,
+     100,
      34
     ]
    },
@@ -337,43 +169,215 @@
     }
    },
    "roof": {
-    "form": "wave",
-    "waves": 3,
-    "rise": 4,
-    "thickness": 0.8,
-    "infill": "glass",
+    "form": "flat",
     "colour": "#e6e8e8",
-    "material": "metal-sheet",
-    "overhang": 3
+    "overhang": 2
    }
   },
   {
-   "type": "control-tower",
+   "type": "revolve",
    "at": [
-    -64,
-    88,
+    0,
+    10,
     0
    ],
    "params": {
-    "height": 58,
-    "style": "round",
-    "colour": "#d9dcdc"
+    "colour": "#e9ebea",
+    "segments": 24,
+    "profile": [
+     [
+      0.0,
+      14,
+      "#e9ebea"
+     ],
+     [
+      8.75,
+      14,
+      "#e9ebea"
+     ],
+     [
+      9.375,
+      15.5,
+      "#cfd5d8"
+     ],
+     [
+      8.75,
+      18,
+      "#9fb2be"
+     ],
+     [
+      8.75,
+      20,
+      "#9fb2be"
+     ],
+     [
+      9.375,
+      21.5,
+      "#dfe3e4"
+     ],
+     [
+      6.25,
+      22.5,
+      "#dfe3e4"
+     ],
+     [
+      0.0,
+      22.8,
+      "#dfe3e4"
+     ]
+    ]
    }
   },
   {
-   "type": "surface",
+   "type": "loft",
    "at": [
     0,
-    -30,
-    17
+    0,
+    0
    ],
    "params": {
-    "kind": "folded",
-    "width": 126,
-    "depth": 22,
-    "rise": 1.4,
-    "folds": 14,
-    "thickness": 0.7,
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": -16,
+      "cy": -4
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": -4,
+      "cy": 6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": -16,
+      "cy": 24
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": -4,
+      "cy": 14
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": 16,
+      "cy": -4
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": 4,
+      "cy": 6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": 16,
+      "cy": 24
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "cx": 4,
+      "cy": 14
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     112,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 38,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdfdd",
+    "windows": "none",
+    "pattern": {
+     "type": "bands"
+    }
+   },
+   "roof": {
+    "form": "flat",
     "colour": "#dcdfdd"
    }
   },
@@ -390,19 +394,19 @@
      {
       "z": 0,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": -37,
+      "cx": -36,
       "cy": -34
      },
      {
-      "z": 17,
+      "z": 40,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": -28,
+      "cx": -52,
       "cy": -30
      }
     ]
@@ -421,19 +425,19 @@
      {
       "z": 0,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": -19,
+      "cx": -36,
       "cy": -34
      },
      {
-      "z": 17,
+      "z": 40,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": -28,
+      "cx": -20,
       "cy": -30
      }
     ]
@@ -452,19 +456,19 @@
      {
       "z": 0,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": 19,
+      "cx": 36,
       "cy": -34
      },
      {
-      "z": 17,
+      "z": 40,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": 28,
+      "cx": 20,
       "cy": -30
      }
     ]
@@ -483,19 +487,19 @@
      {
       "z": 0,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": 37,
+      "cx": 36,
       "cy": -34
      },
      {
-      "z": 17,
+      "z": 40,
       "rect": [
-       1.4,
-       1.4
+       2.4,
+       2.4
       ],
-      "cx": 28,
+      "cx": 52,
       "cy": -30
      }
     ]

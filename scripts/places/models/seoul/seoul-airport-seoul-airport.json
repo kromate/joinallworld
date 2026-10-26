@@ -44,7 +44,7 @@
     0,
     0
    ],
-   "height": 9,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "concrete",
@@ -77,25 +77,25 @@
     0,
     0
    ],
-   "z0": 9,
-   "height": 11,
+   "z0": 11,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#2d3b42",
-    "windows": "curtain",
-    "windowRatio": 0.92,
+    "colour": "#9fb3ad",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "bands": "#c9cfcb",
     "faces": {
      "left": "plain",
      "right": "plain"
-    },
-    "bands": "#a9aeb0"
+    }
    },
    "roof": {
     "form": "flat",
-    "colour": "#c7cbce",
+    "colour": "#c9cdcc",
     "material": "metal-sheet",
-    "overhang": 2.5,
+    "overhang": 0.6,
     "parapet": 0.4
    }
   },
@@ -119,15 +119,33 @@
      "type": "prism",
      "params": {
       "rect": [
-       9,
-       7
+       8,
+       6
       ],
       "z0": 0,
-      "height": 11,
-      "colour": "#d3cbbb",
-      "topColour": "#bfc3c4"
+      "height": 7,
+      "colour": "#d9cfbd",
+      "topColour": "#cfc6b4"
      }
     }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-doors",
+   "at": [
+    0,
+    17.4
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.8
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#3a3f43",
+    "topColour": "#3a3f43"
    }
   },
   {
@@ -138,12 +156,12 @@
     "start": [
      -28,
      25,
-     4.2
+     5.2
     ],
     "end": [
      28,
      25,
-     4.2
+     5.2
     ],
     "count": 3,
     "of": {
@@ -163,12 +181,12 @@
     "start": [
      -40,
      -2,
-     20
+     17
     ],
     "end": [
      40,
      -2,
-     20
+     17
     ],
     "count": 4,
     "of": {
@@ -194,12 +212,12 @@
     "start": [
      -48,
      10,
-     20
+     17
     ],
     "end": [
      48,
      10,
-     20
+     17
     ],
     "count": 5,
     "of": {
@@ -209,19 +227,6 @@
       "count": 1
      }
     }
-   }
-  },
-  {
-   "type": "control-tower",
-   "at": [
-    -52,
-    -50,
-    0
-   ],
-   "params": {
-    "height": 60,
-    "style": "square",
-    "colour": "#d5d7d8"
    }
   },
   {
@@ -246,19 +251,19 @@
    "type": "airliner",
    "at": [
     10,
-    52,
+    50,
     0
    ],
    "rotDeg": -90,
    "params": {
-    "scale": 1.0,
-    "colour": "#e8f0f2",
-    "tailColour": "#4aa3c7"
+    "scale": 0.8,
+    "colour": "#cfeae6",
+    "tailColour": "#7fd0d0"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "laterite",
   "forecourt": "none",
   "extent": [
    150,
@@ -266,8 +271,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Only a 112 m section of the 1060 m terminal; roof masts and skylights simplified; the real glass band is a long continuous ribbon and the upper roof edge is more layered; no landside road deck."
+  "gaps": "Only a 112 m section of the 1060 m terminal; glass band renders darker than the pale green-grey photo; apron uses laterite so reads red-brown not tan; airliner is a generic stand-in; piers and jet bridges simplified."
  }
 }

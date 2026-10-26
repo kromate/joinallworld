@@ -91,120 +91,6 @@
    }
   },
   {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -52,
-     0,
-     20.5
-    ],
-    "end": [
-     52,
-     0,
-     20.5
-    ],
-    "count": 5,
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       27,
-       40
-      ],
-      "height": 8,
-      "topScale": [
-       0.95,
-       0.2
-      ],
-      "topOffset": [
-       0,
-       -12
-      ],
-      "colour": "#7a9686",
-      "topColour": "#8fa89a"
-     }
-    }
-   }
-  },
-  {
-   "type": "prism",
-   "id": "central-gable",
-   "at": [
-    0,
-    -2,
-    20.5
-   ],
-   "params": {
-    "rect": [
-     30,
-     30
-    ],
-    "height": 9,
-    "topScale": [
-     0.9,
-     0.05
-    ],
-    "topOffset": [
-     0,
-     2
-    ],
-    "colour": "#8fa89a",
-    "topColour": "#6f8878"
-   }
-  },
-  {
-   "type": "control-tower",
-   "at": [
-    2,
-    24,
-    0
-   ],
-   "params": {
-    "height": 56,
-    "style": "round",
-    "colour": "#e2e0d8",
-    "shaftRadius": 5.5,
-    "cabRadius": 8.5,
-    "cabColour": "#2fa59a",
-    "bandColour": "#c9ccd0"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "link-ramps",
-   "footprint": {
-    "rect": [
-     16,
-     9
-    ]
-   },
-   "at": [
-    0,
-    -24
-   ],
-   "z0": 0,
-   "height": 6,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#d7d6d0",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "shed",
-    "high": "back",
-    "rise": 3,
-    "colour": "#c9c8c2"
-   }
-  },
-  {
    "type": "lamp",
    "at": [
     -28,
@@ -215,6 +101,314 @@
     "height": 14,
     "count": 2,
     "spacing": 55
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    20.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0,
+     0
+    ],
+    "end": [
+     48,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#7a9686",
+      "topColour": "#9bb2a4",
+      "curve": false,
+      "steps": 4,
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         26,
+         38
+        ]
+       },
+       {
+        "z": 3,
+        "rect": [
+         20,
+         30
+        ],
+        "cy": -3
+       },
+       {
+        "z": 7,
+        "rect": [
+         11,
+         16
+        ],
+        "cy": -9
+       },
+       {
+        "z": 11,
+        "rect": [
+         2,
+         3
+        ],
+        "cy": -17
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -4,
+    20.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       26
+      ],
+      "height": 6,
+      "topScale": [
+       0.9,
+       0.05
+      ],
+      "colour": "#c9d4cf",
+      "topColour": "#aebfb6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -17.1,
+    4.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     0,
+     0
+    ],
+    "end": [
+     56,
+     0,
+     0
+    ],
+    "count": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 16,
+      "colour": "#e8ebea"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass-centre",
+   "footprint": {
+    "rect": [
+     40,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "z0": 4.5,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#41566c",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9c90"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5,
+      3
+     ]
+    },
+    "colour": "#cfd8d4",
+    "points": [
+     [
+      0,
+      0,
+      2
+     ],
+     [
+      0,
+      4,
+      4
+     ],
+     [
+      0,
+      9,
+      8
+     ]
+    ],
+    "curve": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5,
+      3
+     ]
+    },
+    "colour": "#cfd8d4",
+    "points": [
+     [
+      0,
+      0,
+      2
+     ],
+     [
+      0,
+      4,
+      4
+     ],
+     [
+      0,
+      9,
+      8
+     ]
+    ],
+    "curve": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 9
+     },
+     {
+      "z": 6,
+      "circle": 5.6
+     },
+     {
+      "z": 30,
+      "circle": 4.6
+     },
+     {
+      "z": 44,
+      "circle": 4.8,
+      "colour": "#c9ccd0"
+     },
+     {
+      "z": 62,
+      "circle": 4.6
+     },
+     {
+      "z": 64,
+      "circle": 6.4,
+      "colour": "#2f8f86"
+     },
+     {
+      "z": 71,
+      "circle": 6.9,
+      "colour": "#3a4a52"
+     },
+     {
+      "z": 74,
+      "circle": 7.2,
+      "colour": "#2fa59a"
+     },
+     {
+      "z": 76,
+      "circle": 2,
+      "colour": "#2fa59a"
+     }
+    ]
    }
   }
  ],
@@ -231,6 +425,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof leaves are flat tapered prisms, not the upswept winged shells; escalator canopies are a plain box; wall grid and truck dock details missing."
+  "gaps": "Wing leaves are tapered pointed lofts, still less upswept than the real curved shells; escalator sleeves are simple; tower cab simplified."
  }
 }

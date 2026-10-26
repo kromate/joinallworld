@@ -39,37 +39,31 @@
    "id": "podium",
    "footprint": {
     "osm": true,
-    "scale": 0.62,
+    "scale": 0.5,
     "simplify": 3
    },
    "at": [
-    0,
-    0
+    -14,
+    -4
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 20,
-   "storeys": 5,
+   "height": 16,
+   "storeys": 4,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#a9c4bd",
+    "colour": "#8fb3ab",
     "windows": "none",
-    "windowRatio": 0.7,
-    "glassColour": "#7fa9a4",
+    "windowRatio": 0.8,
+    "glassColour": "#6f9a96",
     "plinth": 0.5,
     "pattern": [
      {
-      "type": "panels",
-      "size": [
-       6,
-       4
-      ],
+      "type": "floors",
       "colours": [
-       "#9fbfb8",
-       "#7fa9a4",
-       "#b4cdc6"
-      ],
-      "mode": "stripes-h"
+       "#8fb3ab",
+       "#4f7378"
+      ]
      }
     ]
    },
@@ -85,36 +79,37 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     36,
-     15
+     30,
+     13
     ]
    },
    "at": [
-    3,
-    6
+    18,
+    0
    ],
    "rotDeg": 0,
-   "z0": 20,
-   "height": 52,
-   "storeys": 14,
+   "z0": 8,
+   "height": 62,
+   "storeys": 17,
    "wall": {
     "material": "painted-render",
-    "colour": "#dfe7e3",
+    "colour": "#e1e3df",
     "windows": "none",
     "pattern": [
      {
       "type": "panels",
       "size": [
-       1.5,
-       3.7
+       1.0,
+       3.6
       ],
       "colours": [
-       "#e3ebe7",
-       "#4d6f86",
-       "#e3ebe7"
+       "#4f7f8f",
+       "#e4e2dc",
+       "#e4e2dc",
+       "#a9c2c4"
       ],
-      "mode": "checker",
-      "gap": 0.1,
+      "mode": "random",
+      "gap": 0.08,
       "proud": 0.05
      }
     ],
@@ -131,14 +126,14 @@
    "type": "prism",
    "id": "teal-cap",
    "at": [
-    3,
-    6,
-    72
+    18,
+    0,
+    70
    ],
    "params": {
     "rect": [
-     37,
-     16
+     31,
+     14
     ],
     "height": 1.8,
     "colour": "#1a9a9c",
@@ -148,13 +143,13 @@
   {
    "type": "core/sign-board",
    "at": [
-    -9,
-    -2.2,
-    73.8
+    8,
+    -6.8,
+    71.6
    ],
    "params": {
-    "width": 9,
-    "height": 2.6,
+    "width": 8,
+    "height": 2.0,
     "bottom": 0,
     "colour": "#f4f4f2",
     "posts": false
@@ -163,14 +158,14 @@
   {
    "type": "canopy",
    "at": [
-    -4.199999999999999,
-    -20.25,
+    16,
+    -14,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 32,
-    "depth": 8,
+    "width": 26,
+    "depth": 7,
     "height": 4.5,
     "columns": 4,
     "colour": "#cfd6d4",
@@ -180,21 +175,58 @@
   {
    "type": "core/tree",
    "at": [
-    -21.0,
-    -25.5,
+    -6,
+    -28,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 12,
-    "count": 3,
-    "spread": 8,
+    "height": 11,
+    "count": 2,
+    "spread": 10,
     "line": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lobby",
+   "at": [
+    18,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     31,
+     14
+    ],
+    "height": 8,
+    "colour": "#3a4a55",
+    "windows": "none",
+    "topColour": "#3a4a55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame",
+   "at": [
+    18,
+    0,
+    8
+   ],
+   "params": {
+    "rect": [
+     31.6,
+     13.6
+    ],
+    "height": 0.5,
+    "colour": "#8d9296",
+    "windows": "none"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "road",
   "forecourtDepth": 10,
   "trees": 0,
@@ -230,8 +262,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "facade is a regular checker instead of the irregular pale/blue panel rhythm; podium is a simplified OSM block with striped glass, no stair terrace; adjacent hospital wings not modelled"
+  "gaps": "Random pale/teal strip rhythm is approximate; no stair terrace or adjacent hospital wings; teal cap and lobby are simple boxes."
  }
 }

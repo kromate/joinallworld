@@ -41,8 +41,15 @@
    "type": "mass",
    "id": "lawn",
    "footprint": {
-    "osm": true
+    "rect": [
+     96,
+     84
+    ]
    },
+   "at": [
+    0,
+    0
+   ],
    "height": 0.5,
    "storeys": 1,
    "wall": {
@@ -52,33 +59,124 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#6f9a4a"
+    "colour": "#79a04f"
    }
   },
   {
-   "type": "water-surface",
+   "type": "prism",
    "at": [
-    -24,
-    -24,
+    -26,
+    -6,
     0.5
    ],
    "params": {
-    "width": 44,
-    "depth": 28,
-    "shape": "oval",
-    "colour": "#7f9a88",
-    "bank": true
+    "points": [
+     [
+      -14,
+      0
+     ],
+     [
+      -11,
+      -6
+     ],
+     [
+      -3,
+      -8.5
+     ],
+     [
+      6,
+      -7
+     ],
+     [
+      12,
+      -2
+     ],
+     [
+      10,
+      5
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      -7,
+      7.5
+     ],
+     [
+      -12,
+      4.5
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#8a8678",
+    "topColour": "#8a8678"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -6,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      0
+     ],
+     [
+      -9.5,
+      -5
+     ],
+     [
+      -3,
+      -7
+     ],
+     [
+      5,
+      -5.8
+     ],
+     [
+      10,
+      -1.5
+     ],
+     [
+      8.5,
+      4
+     ],
+     [
+      2,
+      6.5
+     ],
+     [
+      -6,
+      6
+     ],
+     [
+      -10.5,
+      3.5
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#46604f",
+    "topColour": "#46604f"
    }
   },
   {
    "type": "mosque-domed/stone-lantern",
    "at": [
-    -8,
+    -12,
     -14,
     0.5
    ],
    "params": {
-    "scale": 2
+    "scale": 1.8
    }
   },
   {
@@ -87,14 +185,15 @@
    "footprint": {
     "kind": "oval",
     "size": [
-     36,
-     22
+     34,
+     18
     ]
    },
    "at": [
-    16,
-    6
+    14,
+    -6
    ],
+   "z0": 0.5,
    "height": 0.5,
    "storeys": 1,
    "wall": {
@@ -105,8 +204,7 @@
    "roof": {
     "form": "flat",
     "colour": "#d6948c"
-   },
-   "z0": 0.5
+   }
   },
   {
    "type": "mass",
@@ -114,13 +212,13 @@
    "footprint": {
     "kind": "oval",
     "size": [
-     26,
-     14
+     22,
+     12
     ]
    },
    "at": [
-    12,
-    3
+    10,
+    -8
    ],
    "z0": 1.0,
    "height": 0.5,
@@ -138,23 +236,23 @@
   {
    "type": "array",
    "params": {
-    "mode": "line",
-    "count": 5,
-    "start": [
-     20,
-     24,
+    "mode": "arc",
+    "centre": [
+     14,
+     2.5,
      0.5
     ],
-    "end": [
-     20,
-     40,
-     0.5
-    ],
+    "radius": 12,
+    "radiusY": 6.6000000000000005,
+    "startDeg": 25,
+    "endDeg": 155,
+    "count": 9,
+    "facing": "centre",
     "of": {
      "type": "mass",
      "footprint": {
       "rect": [
-       18,
+       4.2,
        0.9
       ]
      },
@@ -177,15 +275,97 @@
    }
   },
   {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     14,
+     2.5,
+     0.5
+    ],
+    "radius": 15,
+    "radiusY": 8.25,
+    "startDeg": 25,
+    "endDeg": 155,
+    "count": 10,
+    "facing": "centre",
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       4.2,
+       0.9
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 0.65,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#a9a59c",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b3afa6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     14,
+     2.5,
+     0.5
+    ],
+    "radius": 18,
+    "radiusY": 9.9,
+    "startDeg": 25,
+    "endDeg": 155,
+    "count": 11,
+    "facing": "centre",
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       4.2,
+       0.9
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#a9a59c",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b3afa6"
+     }
+    }
+   }
+  },
+  {
    "type": "park-pavilion",
    "at": [
-    38,
-    52,
+    24,
+    34,
     0.5
    ],
    "params": {
-    "width": 10,
-    "depth": 10,
+    "width": 9,
+    "depth": 9,
     "height": 4.5,
     "kind": "hip",
     "roof_colour": "#b2402f"
@@ -196,12 +376,58 @@
    "params": {
     "points": [
      [
+      -40,
+      -30
+     ],
+     [
       -30,
-      -44
+      -22
+     ],
+     [
+      -14,
+      -20
+     ],
+     [
+      -2,
+      -24
+     ],
+     [
+      8,
+      -26
+     ],
+     [
+      26,
+      -22
+     ],
+     [
+      38,
+      -10
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#9a9890"
+   },
+   "at": [
+    0,
+    0,
+    0.52
+   ]
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      -22
+     ],
+     [
+      -20,
+      -4
      ],
      [
       -18,
-      -4
+      8
      ],
      [
       -8,
@@ -212,17 +438,60 @@
       26
      ],
      [
-      24,
-      40
+      16,
+      36
      ],
      [
-      34,
-      44
+      24,
+      28
      ]
     ],
-    "width": 4.5,
-    "colour": "#a8a49a"
-   }
+    "width": 3.4,
+    "colour": "#9a9890"
+   },
+   "at": [
+    0,
+    0,
+    0.52
+   ]
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -4,
+      -24
+     ],
+     [
+      0,
+      -14
+     ],
+     [
+      -2,
+      0
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      14,
+      24
+     ],
+     [
+      22,
+      30
+     ]
+    ],
+    "width": 3,
+    "colour": "#9a9890"
+   },
+   "at": [
+    0,
+    0,
+    0.52
+   ]
   },
   {
    "type": "path-strip",
@@ -230,106 +499,164 @@
     "points": [
      [
       -40,
+      12
+     ],
+     [
+      -24,
       10
      ],
      [
-      -12,
-      4
-     ],
-     [
-      2,
-      -2
+      -18,
+      8
      ]
     ],
-    "width": 4.5,
-    "colour": "#a8a49a"
+    "width": 3,
+    "colour": "#9a9890"
+   },
+   "at": [
+    0,
+    0,
+    0.52
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -4,
+    -14,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 1
    }
   },
   {
    "type": "core/lamp",
    "at": [
-    22,
-    -4,
+    30,
+    -12,
     0.5
    ],
    "params": {
-    "height": 7,
-    "count": 3,
-    "spacing": 9
+    "height": 6,
+    "count": 1,
+    "spacing": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    10,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    30,
+    16,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    2,
+    -26,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    40,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22,
+    "count": 1,
+    "spread": 1
    }
   },
   {
    "type": "core/tree",
    "at": [
     -14,
-    -36,
+    -30,
     0.5
    ],
    "params": {
     "kind": "bamboo",
-    "height": 12,
-    "count": 5,
-    "spread": 5,
+    "height": 10,
+    "count": 4,
+    "spread": 4,
     "colour": "#4e7a38"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    10,
     -34,
-    0.5
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 16,
-    "count": 2,
-    "spread": 6
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -32,
-    -10,
+    2,
     0.5
    ],
    "params": {
     "kind": "conifer",
     "height": 5,
-    "count": 4,
-    "spread": 8,
+    "count": 3,
+    "spread": 6,
     "colour": "#7f9b3c"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    40,
-    10,
+    -18,
+    -2,
     0.5
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 2,
-    "spread": 8
+    "kind": "palm",
+    "height": 6,
+    "count": 3,
+    "spread": 4
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "road",
-  "trees": 6,
+  "forecourt": "none",
+  "trees": 0,
   "treeKind": "broadleaf",
   "extent": [
    118,
    118
-  ]
+  ],
+  "groundColour": "#79a04f"
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Layout is the photo's (oval pink stage, stepped benches, red-tile hip gazebo, pond with lantern, bamboo/conifers) but positions are approximate on the OSM plate; no cobble paving texture, rocks, or the surrounding street shops; lamps simplified."
+  "gaps": "Layout approximate on a rectangular lawn (not the OSM outline); stage is two oval discs rather than a leaf shape, benches are thin arcs, no cobble texture, rocks or street shops; lamps simplified and small."
  }
 }

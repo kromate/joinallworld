@@ -50,14 +50,14 @@
    "storeys": 3,
    "wall": {
     "material": "brick",
-    "colour": "#c99278",
+    "colour": "#d49c82",
     "windows": "none",
-    "bands": "#33373d",
+    "bands": "#2c3036",
     "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#8a8f94",
+    "colour": "#b9b1a6",
     "parapet": 0.4
    }
   },
@@ -66,23 +66,28 @@
    "params": {
     "of": {
      "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
      "params": {
       "rect": [
-       2.6,
-       1.6
+       3.6,
+       1.8
       ],
-      "height": 9.5,
+      "height": 10.8,
       "colour": "#8e9690"
      }
     },
     "mode": "line",
     "start": [
-     -25,
-     -6.3
+     -24,
+     -6.4
     ],
     "end": [
-     25,
-     -6.3
+     24,
+     -6.4
     ],
     "count": 5
    }
@@ -92,164 +97,1029 @@
    "params": {
     "of": {
      "type": "prism",
+     "at": [
+      0,
+      0,
+      3.2
+     ],
      "params": {
       "rect": [
-       10.5,
-       0.8
+       9,
+       0.6
       ],
-      "height": 2.2,
-      "z0": 3.2,
-      "colour": "#2e3338"
+      "height": 1.8,
+      "colour": "#262a30"
      }
     },
     "mode": "line",
     "start": [
-     -20,
-     -6.2
+     -18,
+     -6.15
     ],
     "end": [
-     20,
-     -6.2
+     18,
+     -6.15
     ],
     "count": 4
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
    "params": {
     "of": {
      "type": "prism",
+     "at": [
+      0,
+      0,
+      6.4
+     ],
      "params": {
       "rect": [
-       10.5,
-       0.8
+       9,
+       0.6
       ],
-      "height": 2.2,
-      "z0": 6.6,
-      "colour": "#2e3338"
+      "height": 1.8,
+      "colour": "#262a30"
      }
     },
     "mode": "line",
     "start": [
-     -20,
-     -6.2
+     -18,
+     -6.15
     ],
     "end": [
-     20,
-     -6.2
+     18,
+     -6.15
     ],
     "count": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#e2d3bd"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20.8,
+    2,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      18,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5.1,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.6,
+     "steps": 6
+    },
+    "colour": "#c0502e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20.8,
+    -5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20.8,
+    -1.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20.8,
+    2,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20.8,
+    5.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.8,
+    2,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.2
+    ],
+    "height": 0.2,
+    "colour": "#b8bcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10.4,
+    2,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      18,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5.1,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.6,
+     "steps": 6
+    },
+    "colour": "#c0502e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10.4,
+    -5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10.4,
+    -1.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10.4,
+    2,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10.4,
+    5.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.4,
+    2,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.2
+    ],
+    "height": 0.2,
+    "colour": "#b8bcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      18,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5.1,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.6,
+     "steps": 6
+    },
+    "colour": "#c0502e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    5.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    -6.4,
-    7.6
+    2,
+    10.8
    ],
    "params": {
     "rect": [
-     40,
-     0.3
+     10,
+     0.2
     ],
-    "height": 1.8,
-    "colour": "#c99278"
+    "height": 0.2,
+    "colour": "#b8bcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10.4,
+    2,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      18,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5.1,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.6,
+     "steps": 6
+    },
+    "colour": "#c0502e"
    }
   },
   {
-   "type": "array",
+   "type": "sweep-path",
+   "at": [
+    10.4,
+    -5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
    "params": {
-    "of": {
-     "type": "surface",
-     "params": {
-      "kind": "wave",
-      "width": 10.2,
-      "depth": 16,
-      "rise": 4.2,
-      "waves": 1,
-      "thickness": 0.3,
-      "colour": "#dfe3e5"
-     }
+    "section": {
+     "circle": 0.12
     },
-    "mode": "line",
-    "start": [
-     -20,
-     0,
-     10.5
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10.4,
+    -1.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10.4,
+    2,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10.4,
+    5.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.4,
+    2,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.2
     ],
-    "end": [
-     20,
-     0,
-     10.5
+    "height": 0.2,
+    "colour": "#b8bcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    20.8,
+    2,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      18,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5.1,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.6,
+     "steps": 6
+    },
+    "colour": "#c0502e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    20.8,
+    -5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    20.8,
+    -1.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    20.8,
+    2,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    20.8,
+    5.5,
+    10.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 4.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 2.4,
+     "steps": 8
+    },
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.8,
+    2,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.2
     ],
-    "count": 5
+    "height": 0.2,
+    "colour": "#b8bcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     52,
+     15
+    ],
+    "height": 0.3,
+    "colour": "#5d5f63"
    }
   },
   {
    "type": "athletics-track",
    "at": [
     0,
-    64,
+    70,
     0
    ],
    "params": {
     "length": 136,
     "width": 82,
     "lane_width": 7,
-    "colour": "#b4553d"
+    "colour": "#c4552f"
    }
   },
   {
    "type": "floodlight-mast",
    "at": [
-    -45,
-    40,
+    -48,
+    30,
     0
    ],
    "params": {
-    "height": 30,
+    "height": 32,
     "head_width": 4,
-    "colour": "#eef0f0"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    45,
-    100,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 4,
-    "colour": "#eef0f0"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    -45,
-    100,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 4,
-    "colour": "#eef0f0"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
+    "colour": "#f2f4f4"
+   },
+   "lod": [
     0,
-    -9,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    30,
     0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 5
-   }
+    "height": 32,
+    "head_width": 4,
+    "colour": "#f2f4f4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    110,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 4,
+    "colour": "#f2f4f4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    110,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 4,
+    "colour": "#f2f4f4"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -262,9 +1132,9 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "roof trusses are not modelled (only the arched vault shells); blank signage band and granite pier detail simplified; stand and track are typical, not surveyed"
+  "gaps": "vaults are plain arched shells with simple ribs, not the full steel truss web; signage band blank; tree and shopfront details omitted; track and pitch are typical not surveyed"
  },
  "schema": "allworld-place-model",
  "version": 2,

@@ -1,8 +1,8 @@
 {
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "OSM twin-pier outline with green/white storeys on piles; real pier has a short pier plus bridge, rooftop cabins and moored ferry not modelled"
+  "gaps": "OSM twin-pier outline, two-storey green/white with rooftop cabins; approach bridge, ferry and ad board placed approximately; forecourt is paving beside a water strip, not open water"
  },
  "verified": "photo",
  "evidence": [
@@ -35,38 +35,149 @@
     "osm": true,
     "simplify": 2.0
    },
-   "height": 11,
-   "storeys": 3,
+   "height": 8.5,
+   "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#ebe8dc",
+    "colour": "#f2f1ea",
     "windows": "ribbon",
-    "windowRatio": 0.25,
-    "glassColour": "#7f9a95",
-    "plinth": 0.2,
+    "windowRatio": 0.45,
+    "glassColour": "#6f8f88",
+    "plinth": 0,
     "pattern": [
      {
       "type": "floors",
       "colours": [
        "#3f6b5a",
-       "#ebe8dc"
+       "#f4f3ec"
       ]
      },
      {
       "type": "pilotis",
-      "inset": 0.7,
-      "spacing": 8,
-      "width": 0.5,
-      "colour": "#7a6246",
-      "backColour": "#3a4a46",
+      "inset": 0.5,
+      "spacing": 3,
+      "width": 0.45,
+      "colour": "#6a5a46",
+      "backColour": "#2f4a42",
       "storeys": 1
      }
     ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#5d6163",
+    "colour": "#d6d8d2",
     "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cabin1",
+   "at": [
+    -20,
+    20
+   ],
+   "params": {
+    "rect": [
+     8,
+     5
+    ],
+    "z0": 8.9,
+    "height": 2.8,
+    "colour": "#f4f3ec",
+    "topColour": "#d6d8d2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cabin2",
+   "at": [
+    20,
+    5
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 8.9,
+    "height": 2.8,
+    "colour": "#f4f3ec",
+    "topColour": "#d6d8d2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "approach",
+   "at": [
+    -55,
+    -25
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     7,
+     50
+    ],
+    "z0": 2.5,
+    "height": 0.8,
+    "colour": "#6f7a78",
+    "topColour": "#6f7a78"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "adboard",
+   "at": [
+    0,
+    -40
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "z0": 4.5,
+    "height": 3.5,
+    "colour": "#7fcf3f",
+    "topColour": "#7fcf3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ferry-hull",
+   "at": [
+    50,
+    -35
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     7,
+     30
+    ],
+    "z0": 0.3,
+    "height": 2.2,
+    "colour": "#2f6a4a",
+    "topColour": "#2f6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ferry-deck",
+   "at": [
+    50,
+    -35
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     6,
+     24
+    ],
+    "z0": 2.5,
+    "height": 2.6,
+    "colour": "#f4f3ec",
+    "topColour": "#c9c9c0"
    }
   }
  ],

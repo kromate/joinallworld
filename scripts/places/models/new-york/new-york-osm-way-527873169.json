@@ -21,7 +21,7 @@
   }
  ],
  "camera": {
-  "yawDeg": -38,
+  "yawDeg": -60,
   "pitchDeg": 4,
   "fovDeg": 50,
   "aspect": 1.78,
@@ -33,7 +33,7 @@
    "id": "block",
    "footprint": {
     "osm": true,
-    "simplify": 14
+    "simplify": 20
    },
    "at": [
     0,
@@ -43,21 +43,24 @@
    "storeys": 6,
    "wall": {
     "material": "brick",
-    "colour": "#c4613f",
+    "colour": "#c9603e",
     "windows": "punched",
-    "windowRatio": 0.2,
-    "bay": 12,
+    "windowRatio": 0.13,
+    "bay": 11,
     "plinth": 0.3,
-    "glassColour": "#4b5a63",
+    "glassColour": "#262d32",
     "faces": {
-     "back": "none",
-     "left": "none"
-    }
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "trimColour": "#d9d6d0"
    },
    "roof": {
     "form": "flat",
-    "colour": "#5e6266",
-    "parapet": 0.9
+    "colour": "#4a4d51",
+    "parapet": 0
    }
   },
   {
@@ -65,7 +68,7 @@
    "id": "stair-end",
    "footprint": {
     "rect": [
-     11,
+     12,
      10
     ]
    },
@@ -75,11 +78,11 @@
    ],
    "rotDeg": 12,
    "z0": 0,
-   "height": 27,
+   "height": 33,
    "storeys": 6,
    "wall": {
     "material": "brick",
-    "colour": "#d3a98a",
+    "colour": "#d3ad8c",
     "windows": "none"
    },
    "roof": {
@@ -117,13 +120,13 @@
   {
    "type": "canopy",
    "at": [
-    -8,
+    -30,
     -47,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 30,
+    "width": 14,
     "depth": 3,
     "height": 3.0,
     "colour": "#d0642f",
@@ -132,29 +135,15 @@
    }
   },
   {
-   "type": "sign-board",
-   "at": [
-    -26,
-    -24,
-    0
-   ],
-   "params": {
-    "width": 4,
-    "height": 2,
-    "bottom": 0.5,
-    "colour": "#1f4f8f"
-   }
-  },
-  {
    "type": "fence-wall",
    "at": [
-    0,
+    -5,
     -58,
     0
    ],
    "params": {
-    "length": 70,
-    "height": 3.6,
+    "length": 110,
+    "height": 3.8,
     "thickness": 0.15,
     "colour": "#2f5a45"
    }
@@ -236,6 +225,78 @@
     "form": "flat",
     "colour": "#6e7377"
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -0.4,
+    28.4
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.1,
+    "colour": "#3b3f44",
+    "topColour": "#3b3f44"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -61,
+     0
+    ],
+    "end": [
+     40,
+     -61,
+     0
+    ],
+    "count": 22,
+    "lod1Step": 2,
+    "lod2Step": 30,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#2f5a36",
+      "profile": [
+       [
+        0.1,
+        0
+       ],
+       [
+        1.0,
+        0
+       ],
+       [
+        1.2,
+        0.3
+       ],
+       [
+        0.1,
+        5
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -263,8 +324,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "windows still a regular grid (triangle budget), no dark parapet band, rear wing is an angled block not the true bend; canopy and fence approximate"
+  "gaps": "Windows are a regular wide grid on the front face only (budget; side face plain), not the scattered paired punches; no stepped roofline or dark parapet band, canopy and fence approximate, arborvitae are plain cones, no sidewalk or pole."
  }
 }

@@ -42,19 +42,23 @@
    "wall": {
     "material": "painted-render",
     "colour": "#e6d8a8",
-    "windows": "curtain",
-    "windowRatio": 0.7,
-    "glassColour": "#4a5a66",
+    "windows": "punched",
+    "windowRatio": 0.62,
+    "glassColour": "#a9bcc8",
     "plinth": 0.3,
     "cornice": true,
     "bands": "#f2efe6",
-    "pattern": {
-     "type": "pilotis"
-    },
     "faces": {
      "back": "punched",
      "left": "punched"
-    }
+    },
+    "windowShape": "rect",
+    "trimColour": "#ffffff",
+    "pattern": [
+     {
+      "type": "pilotis"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
@@ -65,46 +69,272 @@
   },
   {
    "type": "mass",
-   "id": "leanto-front",
+   "id": "dark-interior",
    "footprint": {
     "rect": [
-     19,
-     3.6
+     17,
+     14
     ]
    },
    "at": [
     0,
-    -11.3
+    -1.5
    ],
-   "height": 3.1,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#f2efe6",
+    "colour": "#26231f",
     "windows": "none"
    },
    "roof": {
-    "form": "shed",
+    "form": "flat",
+    "colour": "#26231f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leanto-0",
+   "footprint": {
+    "rect": [
+     8.6,
+     3.4
+    ]
+   },
+   "at": [
+    -4.8,
+    -11.4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26231f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 24,
     "colour": "#c4795a",
     "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 0.3,
+    "overhang": 0.4,
     "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.8,
+    -13.4,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     8.8,
+     0.15
+    ],
+    "height": 0.7,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leanto-1",
+   "footprint": {
+    "rect": [
+     8.6,
+     3.4
+    ]
+   },
+   "at": [
+    4.8,
+    -11.4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26231f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 24,
+    "colour": "#c4795a",
+    "material": "clay-tile",
+    "overhang": 0.4,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.8,
+    -13.4,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     8.8,
+     0.15
+    ],
+    "height": 0.7,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#2b3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.0,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#2b3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#2b3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     19,
+     5
+    ],
+    "height": 0.05,
+    "colour": "#1f3a78"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.5,
+    -14.5,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     0.2
+    ],
+    "height": 3.2,
+    "colour": "#a89d8e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -7,
+    -15.6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.0,
+    "count": 1,
+    "spread": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -15.6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.0,
+    "count": 1,
+    "spread": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3.5,
+    -15.6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.0,
+    "count": 1,
+    "spread": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    3,
+    -14.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.6,
+    "height": 3.0,
+    "form": "flat",
+    "colour": "#1f2a44"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    -1,
-    -15.4,
+    2,
+    -16.2,
     0
    ],
    "params": {
     "width": 4.2,
     "height": 1.1,
-    "bottom": 3.1,
+    "bottom": 3.3,
     "colour": "#1f3fbf",
-    "frameColour": "#f2efe6",
+    "frameColour": "#ffffff",
     "posts": false
    }
   },
@@ -133,21 +363,6 @@
     "colour": "#4b4f54",
     "yaw": 90
    }
-  },
-  {
-   "type": "core/canopy",
-   "at": [
-    2.5,
-    -14.2,
-    0
-   ],
-   "params": {
-    "width": 11,
-    "depth": 4,
-    "height": 3.0,
-    "form": "flat",
-    "colour": "#2b3f6b"
-   }
   }
  ],
  "site": {
@@ -159,9 +374,9 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "upper floors lack projecting lace-trimmed lean-to gables and the bamboo blind; glazing too dark; building is a corner block seen from street"
+  "gaps": "lace gable trim only a white fascia; bamboo blind is a plain slab; building seen as a block rather than the street corner"
  },
  "schema": "allworld-place-model",
  "version": 2,

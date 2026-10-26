@@ -46,7 +46,7 @@
     2.2,
     8.5
    ],
-   "height": 6.4,
+   "height": 8.2,
    "storeys": 1,
    "wall": {
     "material": "whitewash",
@@ -91,10 +91,10 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#c46a42",
+    "colour": "#b85a36",
     "material": "clay-tile",
-    "pitch": 20,
-    "overhang": 1.4
+    "pitch": 24,
+    "overhang": 2.2
    }
   },
   {
@@ -110,13 +110,13 @@
     10.8,
     5.5
    ],
-   "height": 3.3,
+   "height": 3.0,
    "storeys": 1,
    "wall": {
     "material": "whitewash",
     "colour": "#f5f2ea",
     "windows": "punched",
-    "windowRatio": 0.06,
+    "windowRatio": 0.12,
     "plinth": 0.3,
     "faces": {
      "left": "none",
@@ -124,11 +124,11 @@
     }
    },
    "roof": {
-    "form": "hip",
+    "form": "shed",
     "colour": "#bd5f3a",
     "material": "clay-tile",
     "pitch": 20,
-    "overhang": 0.6
+    "overhang": 1.2
    }
   },
   {
@@ -156,10 +156,10 @@
    ],
    "params": {
     "length": 14,
-    "height": 0.95,
+    "height": 0.9,
     "thickness": 0.12,
     "kind": "wall",
-    "colour": "#3f6b58"
+    "colour": "#3f7a5a"
    }
   },
   {
@@ -180,37 +180,37 @@
   {
    "type": "core/tree",
    "at": [
-    -4.2,
-    -13,
+    -16,
+    -6,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 14
+    "height": 15
    }
   },
   {
    "type": "core/tree",
    "at": [
-    3.3,
-    -12,
+    16,
+    -6,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 16
+    "height": 15
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -12,
-    -8,
+    -16,
+    -6,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 13
+    "height": 15
    }
   },
   {
@@ -226,11 +226,76 @@
     "count": 3,
     "spread": 6
    }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -0.5,
+    -4.4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.1,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#dedad2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench1",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a2f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench2",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a2f"
+   }
   }
  ],
  "site": {
-  "ground": "paving",
-  "groundColour": "#6e5d52",
+  "ground": "asphalt",
+  "groundColour": "#4f4a46",
   "forecourt": "plaza",
   "trees": [],
   "extent": [
@@ -241,6 +306,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "veranda roof low-poly and eaves thinner than photo, green rails read as a band, no ramp/benches, palms are generic, nave oculus and green shutters small"
+  "gaps": "Veranda roof is a simple shed; palms are low-poly; ramp rails and shutters/oculus omitted; benches are blocks."
  }
 }

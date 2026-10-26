@@ -22,9 +22,9 @@
   "fovDeg": 60
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "recessed entrance, soffit floodlights, blank granite upper block and sign wall added; no granite panel joints, logo is blank colour boards, hillside simplified"
+  "gaps": "recessed dark glazed entrance, thicker piers, panel-grid granite, taller sign wall, wooded hillside at right; soffit not chamfered, logo disc is a blank board, no floodlights row, stone retaining wall plain"
  },
  "parts": [
   {
@@ -46,12 +46,25 @@
    "wall": {
     "material": "granite",
     "colour": "#cdb6a4",
-    "windows": "punched",
+    "windows": "none",
     "plinth": 0.4,
-    "windowRatio": 0.03,
-    "bay": 12,
-    "faces": {
-     "front": "none"
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#d6bba9",
+      "#cfb3a1",
+      "#dac0ae"
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ]
     }
    },
    "roof": {
@@ -79,12 +92,25 @@
    "wall": {
     "material": "granite",
     "colour": "#d3b7a5",
-    "windows": "punched",
+    "windows": "none",
     "plinth": 0.4,
-    "windowRatio": 0.02,
-    "bay": 12,
-    "faces": {
-     "front": "none"
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#d6bba9",
+      "#cfb3a1",
+      "#dac0ae"
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ]
     }
    },
    "roof": {
@@ -108,13 +134,13 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.5,
+   "height": 11.5,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3f5a78",
+    "colour": "#141c28",
     "windows": "curtain",
     "windowRatio": 0.85,
-    "glassColour": "#3a5575"
+    "glassColour": "#141c28"
    },
    "roof": {
     "form": "flat",
@@ -155,13 +181,13 @@
    "id": "pier-l",
    "footprint": {
     "rect": [
-     5.5,
-     5.5
+     7,
+     7
     ]
    },
    "at": [
-    -17.5,
-    -8.5
+    -18.5,
+    -9
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -170,7 +196,18 @@
     "material": "granite",
     "colour": "#cdb6a4",
     "windows": "none",
-    "plinth": 0.4
+    "plinth": 0.4,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#d6bba9",
+      "#cfb3a1"
+     ],
+     "size": [
+      2.0,
+      2.0
+     ]
+    }
    },
    "roof": {
     "form": "flat",
@@ -183,13 +220,13 @@
    "id": "pier-r",
    "footprint": {
     "rect": [
-     5.5,
-     5.5
+     7,
+     7
     ]
    },
    "at": [
-    5.5,
-    -8.5
+    6.5,
+    -9
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -198,7 +235,18 @@
     "material": "granite",
     "colour": "#cdb6a4",
     "windows": "none",
-    "plinth": 0.4
+    "plinth": 0.4,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#d6bba9",
+      "#cfb3a1"
+     ],
+     "size": [
+      2.0,
+      2.0
+     ]
+    }
    },
    "roof": {
     "form": "flat",
@@ -225,10 +273,20 @@
    "wall": {
     "material": "granite",
     "colour": "#cdb6a4",
-    "windows": "punched",
+    "windows": "none",
     "plinth": 0.4,
-    "windowRatio": 0.02,
-    "bay": 10
+    "bay": 10,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#d6bba9",
+      "#cfb3a1"
+     ],
+     "size": [
+      2.0,
+      2.0
+     ]
+    }
    },
    "roof": {
     "form": "flat",
@@ -241,22 +299,33 @@
    "id": "signwall",
    "footprint": {
     "rect": [
-     22,
-     1.4
+     24,
+     1.6
     ]
    },
    "at": [
-    30,
+    31,
     -12
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 5,
+   "height": 7,
    "wall": {
     "material": "granite",
     "colour": "#cdb6a4",
     "windows": "none",
-    "plinth": 0.4
+    "plinth": 0.4,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#d6bba9",
+      "#cfb3a1"
+     ],
+     "size": [
+      2.0,
+      2.0
+     ]
+    }
    },
    "roof": {
     "form": "flat",
@@ -272,48 +341,35 @@
     0
    ],
    "params": {
-    "width": 38,
-    "depth": 5,
-    "height": 1.4
+    "width": 40,
+    "depth": 6,
+    "height": 1.6
    }
   },
   {
    "type": "sign-board",
-   "at": [
-    28,
-    -13,
-    2.6
-   ],
-   "params": {
-    "width": 7,
-    "height": 1.0,
-    "colour": "#1f4fa0"
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    26,
-    -13,
-    3.8
-   ],
-   "params": {
-    "width": 2,
-    "height": 0.9,
-    "colour": "#c0392b"
-   }
-  },
-  {
-   "type": "steps",
    "at": [
     30,
-    -16,
-    0
+    -13,
+    2.2
    ],
    "params": {
-    "width": 10,
-    "depth": 3,
-    "height": 1.0
+    "width": 9,
+    "height": 0.9,
+    "colour": "#2a4fa0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    25,
+    -13,
+    3.6
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 1.8,
+    "colour": "#c0392b"
    }
   },
   {
@@ -347,102 +403,50 @@
       "colour": "#1a1a1a"
      }
     }
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "at": [
-    0,
-    24,
+    38,
+    16,
     0
    ],
    "params": {
     "points": [
      [
-      -50,
+      -30,
       -6
      ],
      [
-      50,
+      40,
       -6
      ],
      [
-      45,
+      36,
       10
      ],
      [
-      -45,
+      -26,
       10
      ]
     ],
     "z0": 0,
-    "height": 24,
-    "topScale": 0.55,
-    "colour": "#6f8f4a"
+    "height": 26,
+    "topScale": 0.7,
+    "colour": "#3d5a35"
    }
   },
   {
    "type": "big-tree",
    "lod": [
-    0,
-    1
+    0
    ],
    "at": [
-    -28,
-    22,
-    10
-   ],
-   "params": {
-    "height": 9,
-    "crown_radius": 4,
-    "trunk_radius": 0.4,
-    "colour": "#3f6f3a"
-   }
-  },
-  {
-   "type": "big-tree",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    -8,
-    26,
-    10
-   ],
-   "params": {
-    "height": 10,
-    "crown_radius": 4,
-    "trunk_radius": 0.4,
-    "colour": "#3f6f3a"
-   }
-  },
-  {
-   "type": "big-tree",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    14,
-    24,
-    10
-   ],
-   "params": {
-    "height": 9,
-    "crown_radius": 4,
-    "trunk_radius": 0.4,
-    "colour": "#3f6f3a"
-   }
-  },
-  {
-   "type": "big-tree",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    34,
+    64,
     20,
     10
    ],
@@ -456,8 +460,7 @@
   {
    "type": "big-tree",
    "lod": [
-    0,
-    1
+    0
    ],
    "at": [
     44,
@@ -469,6 +472,58 @@
     "crown_radius": 4,
     "trunk_radius": 0.4,
     "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     19,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 11.8,
+   "height": 1.2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a89484",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retain",
+   "footprint": {
+    "rect": [
+     26,
+     1.2
+    ]
+   },
+   "at": [
+    30,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "wall": {
+    "material": "granite",
+    "colour": "#8d8a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
    }
   }
  ],

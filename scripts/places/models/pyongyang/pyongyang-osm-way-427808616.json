@@ -48,11 +48,10 @@
    "height": 7,
    "storeys": 1,
    "wall": {
-    "material": "whitewash",
-    "colour": "#ece5d3",
+    "material": "painted-render",
+    "colour": "#f0e8d4",
     "windows": "none",
-    "plinth": 1.2,
-    "bands": "#3d7a5a",
+    "bands": "#ece5d3",
     "pattern": [
      {
       "type": "fins",
@@ -66,7 +65,13 @@
        "back"
       ]
      }
-    ]
+    ],
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
    },
    "roof": {
     "form": "flat",
@@ -109,10 +114,16 @@
    "height": 3.6,
    "storeys": 1,
    "wall": {
-    "material": "whitewash",
+    "material": "painted-render",
     "colour": "#e9e2d0",
     "windows": "none",
-    "bands": "#9c3d2b"
+    "bands": "#ece5d3",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
    },
    "roof": {
     "form": "flat",
@@ -170,44 +181,11 @@
    }
   },
   {
-   "type": "gatehouse",
-   "id": "gate",
-   "at": [
-    0,
-    -48,
-    0
-   ],
-   "params": {
-    "width": 14,
-    "height": 6,
-    "depth": 6,
-    "colour": "#b8452f"
-   }
-  },
-  {
-   "type": "curved-roof",
-   "id": "gate-roof",
-   "at": [
-    0,
-    -48,
-    6
-   ],
-   "params": {
-    "width": 16,
-    "depth": 9,
-    "rise": 2.8,
-    "overhang": 1.8,
-    "upturn": 0.8,
-    "colour": "#7b4a3b",
-    "trim": "#b8452f"
-   }
-  },
-  {
    "type": "revolve",
    "id": "mound",
    "at": [
     0,
-    38,
+    30,
     0
    ],
    "lod": [
@@ -246,7 +224,7 @@
    "id": "mound-lo",
    "at": [
     0,
-    38,
+    30,
     0
    ],
    "lod": [
@@ -336,7 +314,7 @@
    "id": "stele",
    "at": [
     0,
-    23,
+    15,
     0
    ],
    "params": {
@@ -419,6 +397,58 @@
      }
     ]
    }
+  },
+  {
+   "type": "prism",
+   "id": "band-green",
+   "params": {
+    "rect": [
+     27,
+     15
+    ],
+    "z0": 5.6,
+    "height": 0.7,
+    "colour": "#3d7a5a"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "band-ochre",
+   "params": {
+    "rect": [
+     27,
+     15
+    ],
+    "z0": 6.3,
+    "height": 0.5,
+    "colour": "#c79a3a"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "approach",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.4,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#cfc9b8"
+   }
   }
  ],
  "site": {
@@ -500,8 +530,8 @@
  "city": "pyongyang",
  "venueId": "pyongyang-osm-way-427808616",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Compared with a close-up of the hall and a stone guardian: no dancheong painting, eave rafters or ridge-end ornament; guardian statues are generic figures without horses; mound and enclosure layout from text and a mound photo."
+  "gaps": "Hall walls still render cool in shade; no dancheong painting or eave rafters beyond green/ochre bands; guardians are generic figures without horses; mound layout partly from text."
  }
 }

@@ -25,138 +25,11 @@
  },
  "parts": [
   {
-   "type": "mass",
-   "id": "left",
-   "footprint": {
-    "rect": [
-     34,
-     28
-    ]
-   },
-   "at": [
-    -30,
-    4
-   ],
-   "height": 17,
-   "storeys": 4,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f1f1ee",
-    "windows": "ribbon",
-    "windowRatio": 0.45,
-    "glassColour": "#3d4b58",
-    "faces": {
-     "front": "ribbon",
-     "back": "ribbon",
-     "left": "ribbon",
-     "right": "plain"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#dcdcd8",
-    "parapet": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "right",
-   "footprint": {
-    "rect": [
-     46,
-     22
-    ]
-   },
-   "at": [
-    22,
-    10
-   ],
-   "height": 14,
-   "storeys": 4,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f1f1ee",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "glassColour": "#3d4b58",
-    "faces": {
-     "front": "ribbon",
-     "back": "plain",
-     "left": "plain",
-     "right": "ribbon"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#dcdcd8",
-    "parapet": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hall",
-   "footprint": {
-    "rect": [
-     28,
-     20
-    ]
-   },
-   "at": [
-    30,
-    30
-   ],
-   "height": 15,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f1f1ee",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#e9e9e6",
-    "parapet": 0.5,
-    "pitch": 8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower",
-   "footprint": {
-    "rect": [
-     7,
-     7
-    ]
-   },
-   "at": [
-    0,
-    -1
-   ],
-   "height": 18,
-   "storeys": 5,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f1f1ee",
-    "windows": "punched",
-    "windowRatio": 0.18,
-    "faces": {
-     "front": "punched"
-    },
-    "glassColour": "#3d4b58"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#b9b5aa",
-    "parapet": 0.6
-   }
-  },
-  {
    "type": "core/canopy",
    "id": "canopy-1",
    "at": [
-    -8,
-    -16,
+    2,
+    -18,
     0
    ],
    "params": {
@@ -186,22 +59,6 @@
    }
   },
   {
-   "type": "core/sign-board",
-   "id": "logo-board",
-   "at": [
-    -30,
-    -10.2,
-    3
-   ],
-   "params": {
-    "width": 10,
-    "height": 4,
-    "bottom": 3,
-    "colour": "#f4f4f1",
-    "posts": false
-   }
-  },
-  {
    "type": "car-park",
    "id": "lot",
    "at": [
@@ -214,62 +71,348 @@
     "depth": 12,
     "density": 0.6
    }
+  },
+  {
+   "type": "mass",
+   "id": "left-low",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "glassColour": "#3d4b58",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd8",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-mid",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "glassColour": "#3d4b58"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd8",
+    "parapet": 0.6
+   },
+   "z0": 9
+  },
+  {
+   "type": "mass",
+   "id": "left-top",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -27,
+    6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#3d4b58",
+    "faces": {
+     "front": "ribbon",
+     "left": "ribbon",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd8",
+    "parapet": 0.6
+   },
+   "z0": 13.5
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     46,
+     22
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#3d4b58",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    22,
+    -1.5
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "glassColour": "#3d4b58",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    26,
+    32
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f4f4f1",
+    "parapet": 0.3,
+    "pitch": 32
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "logo-board",
+   "at": [
+    -24,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6,
+    "bottom": 5.5,
+    "colour": "#f4f4f1",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -46,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "height": 1.3,
+    "thickness": 0.3,
+    "pillarEvery": 6,
+    "colour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "avenue0",
+   "at": [
+    2.0,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "avenue1",
+   "at": [
+    2.5,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "avenue2",
+   "at": [
+    2.0,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "avenue3",
+   "at": [
+    2.5,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "avenue4",
+   "at": [
+    2.0,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     8,
-     -22
-    ],
-    "height": 9
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     10,
-     -14
-    ],
-    "height": 10
-   },
-   {
-    "kind": "palm",
-    "at": [
-     -45,
-     -34
-    ],
-    "height": 8
-   },
-   {
-    "kind": "palm",
-    "at": [
-     -10,
-     -34
-    ],
-    "height": 8
-   },
-   {
-    "kind": "palm",
-    "at": [
-     30,
-     -34
-    ],
-    "height": 8
-   }
-  ],
+  "ground": "paving",
+  "forecourt": "none",
   "extent": [
-   130,
-   100
+   110,
+   86
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "no street or median; left block glazing bands approximate; hall roof, rooftop plant and branding simplified; trees schematic"
+  "gaps": "Gabled hall behind is not visible as a pitched white roof (renders near-flat); rooftop pavilion and glazed ground floor simplified; tree avenue is a clump; gate canopy and fence schematic; no street."
  },
  "schema": "allworld-place-model",
  "version": 2,

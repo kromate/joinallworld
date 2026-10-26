@@ -53,15 +53,15 @@
    "id": "wall-long",
    "footprint": {
     "rect": [
-     44,
+     40,
      1.8
     ]
    },
    "at": [
-    16,
+    18,
     14
    ],
-   "height": 3.8,
+   "height": 3.0,
    "storeys": 1,
    "wall": {
     "material": "stone",
@@ -84,31 +84,35 @@
    ],
    "params": {
     "length": 14,
-    "height": 2.8,
+    "height": 1.3,
     "thickness": 1.4,
     "colour": "#34373a",
-    "gaps": 0.15
+    "gaps": 0.35
    },
-   "rotDeg": 0
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "mass",
    "id": "pier-a",
    "footprint": {
     "rect": [
-     2.4,
-     2.4
+     2.8,
+     2.6
     ]
    },
    "at": [
-    -6,
+    -4,
     14
    ],
-   "height": 4.6,
+   "height": 5.0,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#555a58",
+    "colour": "#6a6a62",
     "windows": "none",
     "windowRatio": 0
    },
@@ -123,19 +127,19 @@
    "id": "pier-b",
    "footprint": {
     "rect": [
-     2.4,
-     2.4
+     2.0,
+     2.0
     ]
    },
    "at": [
     2,
     14
    ],
-   "height": 4.2,
+   "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#4b504e",
+    "colour": "#2f3234",
     "windows": "none",
     "windowRatio": 0
    },
@@ -144,34 +148,6 @@
     "colour": "#4a4d4f",
     "material": "concrete"
    }
-  },
-  {
-   "type": "mass",
-   "id": "lintel",
-   "footprint": {
-    "rect": [
-     10,
-     1.6
-    ]
-   },
-   "at": [
-    -2,
-    14
-   ],
-   "height": 0.7,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#6a6458",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6a6458",
-    "material": "concrete"
-   },
-   "z0": 4.4
   },
   {
    "type": "path-strip",
@@ -199,7 +175,7 @@
       40
      ]
     ],
-    "width": 2.6,
+    "width": 1.6,
     "colour": "#c9b99a"
    }
   },
@@ -290,11 +266,328 @@
     "kind": "broadleaf",
     "height": 8
    }
+  },
+  {
+   "type": "mosque-domed/ruin-wall",
+   "at": [
+    -2,
+    14,
+    3.0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "thickness": 1.8,
+    "colour": "#2f3234",
+    "gaps": 0.3
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -4,
+    14,
+    5.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.7
+     ]
+    },
+    "arc": {
+     "radius": 2.4,
+     "startDeg": 0,
+     "endDeg": 70,
+     "plane": "xz"
+    },
+    "colour": "#6a6458"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    8,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.4,
+    "height": 3.2,
+    "colour": "#2d4a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30.3,
+    7.0,
+    1.4400000000000002
+   ],
+   "params": {
+    "n": 7,
+    "radius": 2.04,
+    "height": 1.6,
+    "colour": "#d6366a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29.2,
+    6.8,
+    0.6400000000000001
+   ],
+   "params": {
+    "n": 6,
+    "radius": 1.2,
+    "height": 1.2800000000000002,
+    "colour": "#e5557a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    10,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.0,
+    "height": 2.8,
+    "colour": "#2d4a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27.3,
+    9.0,
+    1.26
+   ],
+   "params": {
+    "n": 7,
+    "radius": 1.7,
+    "height": 1.4,
+    "colour": "#d6366a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.2,
+    8.8,
+    0.5599999999999999
+   ],
+   "params": {
+    "n": 6,
+    "radius": 1.0,
+    "height": 1.1199999999999999,
+    "colour": "#e5557a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33,
+    11,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.2,
+    "height": 3.6,
+    "colour": "#2d4a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.3,
+    10.0,
+    1.62
+   ],
+   "params": {
+    "n": 7,
+    "radius": 1.87,
+    "height": 1.8,
+    "colour": "#d6366a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -32.2,
+    9.8,
+    0.7200000000000001
+   ],
+   "params": {
+    "n": 6,
+    "radius": 1.1,
+    "height": 1.4400000000000002,
+    "colour": "#e5557a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29,
+    12,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#2d4a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29.3,
+    11.0,
+    1.08
+   ],
+   "params": {
+    "n": 7,
+    "radius": 1.53,
+    "height": 1.2,
+    "colour": "#d6366a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28.2,
+    10.8,
+    0.48
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.9,
+    "height": 0.96,
+    "colour": "#e5557a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    9,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.7,
+    "height": 0.4,
+    "colour": "#5a5149"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    7,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.7,
+    "height": 0.4,
+    "colour": "#5a5149"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.7,
+    "height": 0.4,
+    "colour": "#5a5149"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "road",
+  "forecourt": "none",
   "trees": 0,
   "extent": [
    110,
@@ -304,6 +597,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Wall is a plain straight run, not rough ruined rubble with a broken arch lintel; no bougainvillea; park layout inferred from OSM extent."
+  "gaps": "Camera is a wide view not the close wall shot; bougainvillea is blocky and sits far left, wall is dark blocks without rubble texture, lintel stub is a thin arc; park layout inferred from OSM extent."
  }
 }

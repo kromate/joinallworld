@@ -46,7 +46,7 @@
     "material": "stucco",
     "colour": "#e3c779",
     "windows": "arched",
-    "windowRatio": 0.28,
+    "windowRatio": 0.3,
     "faces": {
      "back": "plain"
     },
@@ -68,7 +68,7 @@
    "id": "porch",
    "footprint": {
     "rect": [
-     21,
+     17,
      5
     ]
    },
@@ -76,8 +76,8 @@
     0,
     -13.5
    ],
-   "height": 11.5,
-   "storeys": 2,
+   "height": 6.2,
+   "storeys": 1,
    "wall": {
     "material": "stucco",
     "colour": "#e3c779",
@@ -101,27 +101,41 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#9a9b96",
-    "material": "concrete",
-    "parapet": 0.5
+    "colour": "#e3c779",
+    "parapet": 0.3
    }
   },
   {
-   "type": "core/colonnade",
+   "type": "hospital/loggia",
    "at": [
     0,
-    -16.2,
-    6.1
+    -14.2,
+    6.2
    ],
    "params": {
-    "length": 17,
-    "count": 8,
-    "height": 5,
-    "radius": 0.28,
+    "length": 14,
+    "depth": 3.4,
+    "height": 5.4,
+    "radius": 0.3,
     "kind": "round",
-    "beamHeight": 0.5,
     "colour": "#f4efe2",
-    "roofColour": "#f1ead6"
+    "roofColour": "#e3c779",
+    "pitch": 2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14.2,
+    6.2
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.9,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#f4efe2"
    }
   },
   {
@@ -133,10 +147,56 @@
    ],
    "params": {
     "width": 9,
-    "rise": 0.5,
+    "rise": 0.4,
     "run": 0.8,
     "count": 3,
     "colour": "#d5cfc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     9
+    ],
+    "height": 0.06,
+    "colour": "#bdb8ad"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#1b1d1f"
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.3,
+    "depth": 1.1,
+    "colour": "#3e6b32"
    }
   },
   {
@@ -151,7 +211,7 @@
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "garden",
+  "forecourt": "plaza",
   "trees": [
    {
     "kind": "palm",
@@ -181,8 +241,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "no black railings or hedge; upper loggia is modelled as a flat colonnade rather than open arches; no signage band"
+  "gaps": "upper loggia is a straight-column colonnade not round arches; railing is simple posts; no name band or louvred shutters; tall shade tree absent"
  }
 }

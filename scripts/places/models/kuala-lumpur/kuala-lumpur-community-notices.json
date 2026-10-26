@@ -58,219 +58,6 @@
    }
   },
   {
-   "type": "mass",
-   "id": "chamber",
-   "footprint": {
-    "rect": [
-     50,
-     34
-    ]
-   },
-   "at": [
-    -12,
-    -20
-   ],
-   "z0": 6,
-   "height": 10,
-   "storeys": 2,
-   "wall": {
-    "material": "concrete",
-    "colour": "#eceae2",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfcdc4",
-    "overhang": 2
-   }
-  },
-  {
-   "type": "prism",
-   "id": "dewan-roof",
-   "at": [
-    -12,
-    -20,
-    16
-   ],
-   "params": {
-    "rect": [
-     40,
-     28
-    ],
-    "height": 12,
-    "topScale": [
-     0.25,
-     0.25
-    ],
-    "colour": "#f2f0ea",
-    "topColour": "#e2e0d8"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower",
-   "footprint": {
-    "rect": [
-     26,
-     20
-    ]
-   },
-   "at": [
-    22,
-    10
-   ],
-   "z0": 0,
-   "height": 72,
-   "storeys": 17,
-   "wall": {
-    "material": "concrete",
-    "colour": "#efede6",
-    "windows": "none",
-    "windowRatio": 0,
-    "pattern": [
-     {
-      "type": "bands",
-      "colour": "#f4f2ec",
-      "height": 0.9,
-      "proud": 0.5,
-      "floors": "all"
-     },
-     {
-      "type": "fins",
-      "faces": [
-       "front"
-      ],
-      "width": 0.5,
-      "depth": 0.9,
-      "spacing": 3.2,
-      "colour": "#e2dfd5",
-      "margin": 0.5
-     }
-    ]
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d6d3c9",
-    "overhang": 1.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower-top",
-   "footprint": {
-    "rect": [
-     22,
-     16
-    ]
-   },
-   "at": [
-    22,
-    10
-   ],
-   "z0": 72,
-   "height": 10,
-   "storeys": 1,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#9a9a92",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#bdbab0"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "gate-lodge",
-   "footprint": {
-    "rect": [
-     10,
-     6
-    ]
-   },
-   "at": [
-    6,
-    -46
-   ],
-   "z0": 0,
-   "height": 4,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#ebe8df",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d0cdc4",
-    "overhang": 1
-   }
-  },
-  {
-   "type": "sweep-path",
-   "id": "arch-1",
-   "at": [
-    -14,
-    -50,
-    0
-   ],
-   "params": {
-    "section": {
-     "rect": [
-      1.8,
-      3.2
-     ]
-    },
-    "arc": {
-     "centre": [
-      0,
-      0,
-      0
-     ],
-     "radius": 22,
-     "startDeg": 180,
-     "endDeg": 0,
-     "plane": "xz",
-     "steps": 24
-    },
-    "colour": "#f1efe9"
-   }
-  },
-  {
-   "type": "sweep-path",
-   "id": "arch-2",
-   "at": [
-    16,
-    -50,
-    0
-   ],
-   "params": {
-    "section": {
-     "rect": [
-      1.8,
-      3.2
-     ]
-    },
-    "arc": {
-     "centre": [
-      0,
-      0,
-      0
-     ],
-     "radius": 28,
-     "startDeg": 180,
-     "endDeg": 0,
-     "plane": "xz",
-     "steps": 24
-    },
-    "colour": "#f1efe9"
-   }
-  },
-  {
    "type": "flag",
    "at": [
     -36,
@@ -286,6 +73,340 @@
     "count": 2,
     "spacing": 4
    }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     46,
+     30
+    ]
+   },
+   "at": [
+    -26,
+    -14
+   ],
+   "z0": 6,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#eceae2",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.8,
+      "depth": 1.2,
+      "spacing": 3,
+      "colour": "#f6f4ee",
+      "margin": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc4",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dewan-roof",
+   "at": [
+    -26,
+    -14,
+    13
+   ],
+   "params": {
+    "rect": [
+     38,
+     24
+    ],
+    "height": 14,
+    "topScale": [
+     0.1,
+     0.1
+    ],
+    "colour": "#f2f0ea",
+    "topColour": "#e6e3da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     32,
+     22
+    ]
+   },
+   "at": [
+    6,
+    16
+   ],
+   "z0": 0,
+   "height": 58,
+   "storeys": 14,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0eee8",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.55,
+    "bay": 4,
+    "glassColour": "#4c5a60",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#fbfaf6",
+      "height": 0.9,
+      "proud": 0.7,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 1.1,
+      "spacing": 2.4,
+      "colour": "#f6f4ee",
+      "margin": 0.4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d3c9",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     35,
+     25
+    ]
+   },
+   "at": [
+    6,
+    16
+   ],
+   "z0": 58,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d8b84",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeaba2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-lodge",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    4,
+    -44
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe8df",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cdc4",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-left",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      2.6
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -4,
+      0,
+      7
+     ],
+     [
+      -14,
+      0,
+      16
+     ],
+     [
+      -28,
+      0,
+      17
+     ],
+     [
+      -40,
+      0,
+      6
+     ],
+     [
+      -46,
+      0,
+      0
+     ]
+    ],
+    "colour": "#f6f4ef"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-right",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      2.6
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      5,
+      0,
+      8
+     ],
+     [
+      16,
+      0,
+      18
+     ],
+     [
+      32,
+      0,
+      19
+     ],
+     [
+      46,
+      0,
+      8
+     ],
+     [
+      54,
+      0,
+      0
+     ]
+    ],
+    "colour": "#f6f4ef"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f6f4ef",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f4ef"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    34,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 1
+   }
   }
  ],
  "site": {
@@ -293,25 +414,68 @@
   "forecourt": "road",
   "trees": [
    {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -44
+    ],
+    "height": 14
+   },
+   {
     "kind": "palm",
     "at": [
-     50,
-     -40
-    ]
+     -48,
+     -50
+    ],
+    "height": 12
    },
    {
     "kind": "broadleaf",
     "at": [
-     -50,
-     -35
-    ]
+     -40,
+     -36
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -52
+    ],
+    "height": 14
    },
    {
     "kind": "broadleaf",
     "at": [
-     50,
-     30
-    ]
+     55,
+     -45
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -36
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     0
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -10
+    ],
+    "height": 14
    }
   ],
   "extent": [
@@ -320,8 +484,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Tower grille is flat bands and not the double precast sunbreaker; arches are faceted sections and cross rather than sweep as winged gate; Dewan roof is a simple pyramid."
+  "gaps": "Tower grille is a round-opening grid with fins, not the double precast sunbreaker; Dewan roof is a simple pyramid; no hibiscus lamp heads, gate fence or dense understorey planting."
  }
 }

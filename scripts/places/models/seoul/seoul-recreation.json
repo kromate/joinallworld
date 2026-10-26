@@ -25,52 +25,26 @@
   "pitchDeg": 6,
   "fovDeg": 55,
   "aspect": 2.05,
-  "fit": "all",
-  "margin": 0.05
+  "fit": "building",
+  "margin": 0.05,
+  "pitch": 5
  },
  "parts": [
-  {
-   "type": "mass",
-   "id": "park-lawn",
-   "footprint": {
-    "osm": true
-   },
-   "at": [
-    0,
-    0
-   ],
-   "z0": 0,
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#7aa05a",
-    "windows": "none",
-    "windowRatio": 0,
-    "plinth": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#7aa05a",
-    "material": "membrane",
-    "overhang": 0
-   }
-  },
   {
    "type": "prism",
    "at": [
     0,
-    -12,
+    -26,
     0.5
    ],
    "params": {
     "rect": [
-     34,
-     16
+     70,
+     34
     ],
     "z0": 0,
     "height": 0.1,
-    "colour": "#b9b6ae"
+    "colour": "#bcaeaa"
    }
   },
   {
@@ -78,8 +52,8 @@
    "id": "park-hall",
    "footprint": {
     "rect": [
-     16,
-     9
+     30,
+     14
     ]
    },
    "at": [
@@ -87,27 +61,28 @@
     0
    ],
    "z0": 0.6,
-   "height": 3.8,
+   "height": 5.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#e6d9bd",
     "glassColour": "#4a5560",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.14,
     "plinth": 0.3,
     "faces": {
      "front": "punched",
      "back": "plain"
     },
-    "bands": "#b8322e"
+    "bands": "#b8322e",
+    "bay": 3.2
    },
    "roof": {
     "form": "hip",
-    "colour": "#7a3a30",
+    "colour": "#8a3a30",
     "material": "clay-tile",
-    "pitch": 20,
-    "overhang": 0.8
+    "pitch": 18,
+    "overhang": 1.2
    }
   },
   {
@@ -115,12 +90,12 @@
    "at": [
     0,
     0,
-    4.4
+    5.6
    ],
    "params": {
     "rect": [
-     4,
-     3
+     8,
+     6
     ],
     "z0": 0,
     "height": 1.4,
@@ -132,16 +107,16 @@
    "type": "prism",
    "at": [
     0,
-    -4.6,
+    -7.4,
     0.6
    ],
    "params": {
     "rect": [
-     4.4,
-     0.4
+     9,
+     0.5
     ],
     "z0": 0,
-    "height": 3.2,
+    "height": 4.4,
     "colour": "#b8322e"
    }
   },
@@ -149,13 +124,13 @@
    "type": "stair",
    "at": [
     0,
-    -5.2,
+    -8.2,
     0.5
    ],
    "params": {
-    "width": 10,
-    "height": 0.3,
-    "run": 1.2,
+    "width": 14,
+    "height": 0.5,
+    "run": 1.6,
     "colour": "#bdb6a8",
     "rails": false
    }
@@ -163,8 +138,8 @@
   {
    "type": "park-pavilion",
    "at": [
-    -14,
-    -9,
+    -30,
+    -20,
     0.6
    ],
    "params": {
@@ -177,8 +152,8 @@
   {
    "type": "fountain-basin",
    "at": [
-    14,
-    -10,
+    26,
+    -24,
     0.5
    ],
    "params": {
@@ -187,106 +162,10 @@
    }
   },
   {
-   "type": "path-strip",
-   "at": [
-    0,
-    0,
-    0.52
-   ],
-   "params": {
-    "points": [
-     [
-      -30,
-      -22
-     ],
-     [
-      -10,
-      -14
-     ],
-     [
-      10,
-      -14
-     ],
-     [
-      30,
-      -18
-     ]
-    ],
-    "width": 2.4,
-    "colour": "#cbc6bb"
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    -9,
-    -16,
-    0.5
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 7
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    -4,
-    -13,
-    0.5
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 6.5
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    9,
-    -17,
-    0.5
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 7
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -20,
-    8,
-    0.5
-   ],
-   "params": {
-    "width": 16,
-    "depth": 14,
-    "count": 8,
-    "min_height": 7,
-    "max_height": 11
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    22,
-    8,
-    0.5
-   ],
-   "params": {
-    "width": 16,
-    "depth": 14,
-    "count": 8,
-    "min_height": 7,
-    "max_height": 11
-   }
-  },
-  {
    "type": "park-bench",
    "at": [
     -6,
-    -20,
+    -40,
     0.5
    ],
    "params": {
@@ -298,13 +177,143 @@
    "type": "lamp",
    "at": [
     -16,
-    -20,
+    -40,
     0.5
    ],
    "params": {
     "height": 5,
     "count": 4,
     "spacing": 11
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-glass",
+   "at": [
+    0,
+    -7.55,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#2e3a44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-trim",
+   "at": [
+    0,
+    -7.2,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     30.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#b8322e"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -38,
+    -26,
+    0.5
+   ],
+   "params": {
+    "length": 34,
+    "count": 6,
+    "kind": "broadleaf",
+    "gap": 4,
+    "height_min": 8,
+    "height_max": 10
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "tower-block",
+   "id": "apt0",
+   "at": [
+    -32,
+    34,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 14,
+    "height": 56,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "coarse": 3.0,
+    "wall_colour": "#e6dfcc",
+    "roof_colour": "#c4bfb0"
+   }
+  },
+  {
+   "type": "tower-block",
+   "id": "apt1",
+   "at": [
+    0,
+    34,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 14,
+    "height": 62,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "coarse": 3.0,
+    "wall_colour": "#e6dfcc",
+    "roof_colour": "#c4bfb0"
+   }
+  },
+  {
+   "type": "tower-block",
+   "id": "apt2",
+   "at": [
+    30,
+    34,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 14,
+    "height": 54,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "coarse": 3.0,
+    "wall_colour": "#e6dfcc",
+    "roof_colour": "#c4bfb0"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    38,
+    -26,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "count": 6,
+    "kind": "broadleaf",
+    "gap": 4,
+    "height_min": 7,
+    "height_max": 9
    }
   }
  ],
@@ -317,8 +326,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Hall massing, cream walls, red band and portal, dark red hip roof with lantern read like the photo; park furniture, paths and tree positions are typed, apartment blocks omitted, hall scaled down to suit the 118 m clamp."
+  "gaps": "Hall enlarged to 30x14 with red portal, red trim band and glazed door; granite plaza band and apartment backdrop added; ground outside plaza is not the photo's paved park, tree species and sidewalk furniture are generic."
  }
 }

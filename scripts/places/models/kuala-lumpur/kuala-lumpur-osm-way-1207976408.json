@@ -34,7 +34,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof edges are not scalloped; diamond lattice is plain white panels; rear cream wing and ramp arches are only rough masses; real complex is far longer than the modelled entrance block."
+  "gaps": "Roof fascia not scalloped; lattice is a 3-colour panel grid rather than woven diamonds; pillars are square prisms; verandah rail is a plain rail; real complex is far longer than the modelled block."
  },
  "parts": [
   {
@@ -50,11 +50,11 @@
     2,
     2
    ],
-   "height": 1.2,
+   "height": 1.5,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#c9c5b8",
+    "colour": "#d8d4c6",
     "windows": "none"
    },
    "roof": {
@@ -75,12 +75,12 @@
     10,
     2
    ],
-   "z0": 1.0,
+   "z0": 1.5,
    "height": 6.0,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#5b3a25",
+    "colour": "#a9793a",
     "windows": "none",
     "faces": {
      "front": "none"
@@ -88,10 +88,10 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#4d7f58",
+    "colour": "#3f6e48",
     "material": "metal-sheet",
-    "pitch": 52,
-    "overhang": 2.2,
+    "pitch": 40,
+    "overhang": 3.2,
     "axis": "y"
    }
   },
@@ -113,12 +113,12 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6a4730",
+    "colour": "#7a5230",
     "windows": "none"
    },
    "roof": {
     "form": "hip",
-    "colour": "#4a7a55",
+    "colour": "#3f6e48",
     "material": "metal-sheet",
     "pitch": 28,
     "overhang": 1.6
@@ -181,52 +181,10 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#4d7f58",
+    "colour": "#3f6e48",
     "material": "metal-sheet",
     "pitch": 26,
     "overhang": 1.5
-   }
-  },
-  {
-   "type": "prism",
-   "id": "lattice-left",
-   "at": [
-    4.6,
-    -9.1,
-    1.2
-   ],
-   "params": {
-    "rect": [
-     6.6,
-     0.3
-    ],
-    "height": 5.6,
-    "colour": "#e9efe9",
-    "topColour": "#e9efe9",
-    "windows": "punched",
-    "windowRatio": 0.55,
-    "glassColour": "#7fa7a2"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "lattice-right",
-   "at": [
-    15.4,
-    -9.1,
-    1.2
-   ],
-   "params": {
-    "rect": [
-     6.6,
-     0.3
-    ],
-    "height": 5.6,
-    "colour": "#e9efe9",
-    "topColour": "#e9efe9",
-    "windows": "punched",
-    "windowRatio": 0.55,
-    "glassColour": "#7fa7a2"
    }
   },
   {
@@ -235,7 +193,7 @@
    "at": [
     10,
     -9.1,
-    8.4
+    9.4
    ],
    "params": {
     "rect": [
@@ -243,8 +201,8 @@
      0.3
     ],
     "height": 2.4,
-    "colour": "#7a5638",
-    "topColour": "#7a5638"
+    "colour": "#7c4f26",
+    "topColour": "#7c4f26"
    }
   },
   {
@@ -253,12 +211,12 @@
    "at": [
     10,
     -9.1,
-    6.9
+    7.2
    ],
    "params": {
     "rect": [
-     11,
-     0.4
+     15,
+     0.5
     ],
     "height": 1.1,
     "colour": "#6f7c4a",
@@ -269,36 +227,36 @@
    "type": "prism",
    "id": "pillar-0",
    "at": [
-    0.8,
-    -10.4,
-    0
+    2.2,
+    -10.0,
+    1.5
    ],
    "params": {
     "rect": [
-     0.7,
-     0.7
+     1.1,
+     1.1
     ],
-    "height": 9,
-    "colour": "#b5612a",
-    "topColour": "#b5612a"
+    "height": 8.4,
+    "colour": "#b0602a",
+    "topColour": "#b0602a"
    }
   },
   {
    "type": "prism",
    "id": "pillar-19",
    "at": [
-    19.2,
-    -10.4,
-    0
+    17.8,
+    -10.0,
+    1.5
    ],
    "params": {
     "rect": [
-     0.7,
-     0.7
+     1.1,
+     1.1
     ],
-    "height": 9,
-    "colour": "#b5612a",
-    "topColour": "#b5612a"
+    "height": 8.4,
+    "colour": "#b0602a",
+    "topColour": "#b0602a"
    }
   },
   {
@@ -310,10 +268,10 @@
    ],
    "params": {
     "length": 22,
-    "height": 1.0,
+    "height": 1.1,
     "thickness": 0.15,
     "kind": "rail",
-    "colour": "#d8cfa6"
+    "colour": "#a87a44"
    }
   },
   {
@@ -332,33 +290,35 @@
    }
   },
   {
-   "type": "core/tree",
+   "type": "prism",
+   "id": "lattice",
    "at": [
-    -34,
-    24,
-    0
+    10,
+    -9.2,
+    1.5
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 14,
-    "count": 3,
-    "spread": 10,
-    "line": 12
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    38,
-    18,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 12,
-    "count": 2,
-    "spread": 8,
-    "line": 10
+    "rect": [
+     17,
+     0.4
+    ],
+    "height": 5.6,
+    "colour": "#d7e4e1",
+    "topColour": "#d7e4e1",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#e9efe9",
+       "#6a5b4a",
+       "#9ccbc8"
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
    }
   }
  ],

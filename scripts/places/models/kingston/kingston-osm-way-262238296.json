@@ -41,24 +41,25 @@
    "storeys": 2,
    "wall": {
     "material": "timber",
-    "colour": "#efeadc",
-    "windows": "louvre",
-    "windowRatio": 0.2,
+    "colour": "#f4f0e4",
+    "windows": "rect",
+    "windowRatio": 0.11,
     "plinth": 0.5,
     "faces": {
-     "front": "louvre",
-     "left": "louvre",
+     "front": "rect",
+     "left": "rect",
      "right": "plain",
-     "back": "punched"
+     "back": "rect"
     },
-    "trimColour": "#b8352f"
+    "trimColour": "#3a2a26",
+    "bay": 3.2
    },
    "roof": {
     "form": "gable",
     "axis": "x",
     "colour": "#b23b46",
     "material": "corrugated",
-    "pitch": 28,
+    "pitch": 32,
     "overhang": 0.6
    }
   },
@@ -67,34 +68,35 @@
    "id": "gable-wing",
    "footprint": {
     "rect": [
-     8,
+     7.5,
      9
     ]
    },
    "at": [
     6,
-    -0.5
+    -1
    ],
    "height": 7.4,
    "storeys": 2,
    "wall": {
     "material": "timber",
-    "colour": "#efeadc",
-    "windows": "louvre",
-    "windowRatio": 0.18,
+    "colour": "#f4f0e4",
+    "windows": "rect",
+    "windowRatio": 0.07,
     "plinth": 0.5,
     "faces": {
-     "front": "louvre",
-     "right": "louvre",
+     "front": "rect",
+     "right": "rect",
      "left": "plain"
-    }
+    },
+    "trimColour": "#3a2a26"
    },
    "roof": {
     "form": "gable",
     "axis": "y",
     "colour": "#b23b46",
     "material": "corrugated",
-    "pitch": 38,
+    "pitch": 48,
     "overhang": 0.5
    }
   },
@@ -103,41 +105,42 @@
    "id": "brick-wing",
    "footprint": {
     "rect": [
-     8,
-     6
+     5,
+     4.5
     ]
    },
    "at": [
-    -10,
-    -3.5
+    -11.5,
+    -1.2
    ],
-   "height": 3.8,
+   "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "brick",
     "colour": "#a65a47",
-    "windows": "punched",
-    "windowRatio": 0.22,
+    "windows": "rect",
+    "windowRatio": 0.2,
     "plinth": 0.3,
-    "cornice": true
+    "cornice": false,
+    "trimColour": "#f4f0e4"
    },
    "roof": {
-    "form": "shed",
+    "form": "hip",
     "colour": "#a23a40",
     "material": "corrugated",
-    "pitch": 14,
+    "pitch": 22,
     "overhang": 0.5
    }
   },
   {
    "type": "veranda",
    "at": [
-    6,
-    -5.6,
+    2.5,
+    -6.2,
     0
    ],
    "params": {
-    "length": 8,
+    "length": 4,
     "depth": 2.2,
     "height": 3.2,
     "balustrade": false,
@@ -150,17 +153,17 @@
   {
    "type": "core/tree",
    "at": [
-    -1,
-    -7.5,
+    3,
+    -6.5,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 10,
-    "count": 2,
-    "spread": 4,
+    "height": 13,
+    "count": 1,
+    "spread": 0,
     "line": 3,
-    "colour": "#5a9a45"
+    "colour": "#5fa24a"
    }
   },
   {
@@ -179,13 +182,17 @@
    }
   },
   {
-   "type": "statue-on-plinth",
+   "type": "mosque-domed/statue-on-plinth",
    "at": [
     -4,
-    -11,
+    -11.5,
     0
    ],
-   "params": {}
+   "params": {
+    "height": 1.6,
+    "plinth_height": 0.15,
+    "figure_colour": "#f1eee6"
+   }
   },
   {
    "type": "fence-wall",
@@ -196,26 +203,11 @@
    ],
    "params": {
     "length": 26,
-    "height": 1.2,
-    "thickness": 0.15,
+    "height": 1.0,
+    "thickness": 0.05,
     "kind": "fence",
-    "pillarEvery": 2.5,
+    "pillarEvery": 0.4,
     "colour": "#1f2124"
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -14,
-    -12,
-    0
-   ],
-   "params": {
-    "width": 3,
-    "height": 1.2,
-    "bottom": 1.0,
-    "colour": "#2e7d32",
-    "frameColour": "#c62828"
    }
   }
  ],
@@ -229,9 +221,9 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "not render-checked (queue down); window rhythm and wing proportions approximate"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clapboard lines and red louvre shutters not drawn (plain white walls with sash windows), gable wing reads smaller than the photo, lion statue is a small stand-in, dense garden foliage omitted"
  },
  "schema": "allworld-place-model",
  "version": 2,

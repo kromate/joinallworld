@@ -32,7 +32,7 @@
    "id": "block-a",
    "footprint": {
     "rect": [
-     70,
+     56,
      16
     ]
    },
@@ -44,17 +44,12 @@
    "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#d8d3de",
-    "windows": "ribbon",
+    "colour": "#d9d2e0",
+    "windows": "punched",
     "windowRatio": 0.3,
     "plinth": 0.4,
-    "bands": "#b5503c",
-    "pattern": {
-     "type": "louvres",
-     "faces": [
-      "front"
-     ]
-    }
+    "trimColour": "#b5402c",
+    "bay": 3.5
    },
    "roof": {
     "form": "flat",
@@ -68,22 +63,28 @@
    "id": "block-b",
    "footprint": {
     "rect": [
-     40,
+     44,
      14
     ]
    },
    "at": [
-    -5,
-    34
+    -4,
+    48
    ],
    "height": 9,
    "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#e8e8e6",
+    "colour": "#e4e2e6",
     "windows": "ribbon",
     "windowRatio": 0.35,
-    "plinth": 0.3
+    "plinth": 0.3,
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ]
+    }
    },
    "roof": {
     "form": "flat",
@@ -102,7 +103,7 @@
     ]
    },
    "at": [
-    -20,
+    -32,
     -9
    ],
    "height": 14,
@@ -125,47 +126,156 @@
     0
    ],
    "params": {
-    "section": "rect",
-    "width": 2.8,
-    "height": 0.3,
+    "section": {
+     "poly": [
+      [
+       -1.8,
+       0
+      ],
+      [
+       -1.7,
+       1
+      ],
+      [
+       -1.1,
+       2
+      ],
+      [
+       0,
+       2.5
+      ],
+      [
+       1.1,
+       2
+      ],
+      [
+       1.7,
+       1
+      ],
+      [
+       1.8,
+       0
+      ]
+     ]
+    },
     "points": [
      [
-      -30,
-      -12,
-      3.4
-     ],
-     [
-      -10,
+      -28,
       -14,
       3.4
      ],
      [
-      10,
-      -20,
-      3.4
+      -6,
+      -17,
+      2.6
      ],
      [
-      28,
-      -30,
-      3.4
+      14,
+      -24,
+      1.4
+     ],
+     [
+      30,
+      -34,
+      0.2
      ]
     ],
     "curve": true,
-    "colour": "#8b9296"
+    "colour": "#9aa3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-0",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     70,
+     10
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#c4bdb0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-1",
+   "at": [
+    0,
+    -39
+   ],
+   "params": {
+    "rect": [
+     64,
+     10
+    ],
+    "z0": 0,
+    "height": 0.75,
+    "colour": "#bdb6aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-2",
+   "at": [
+    0,
+    -48
+   ],
+   "params": {
+    "rect": [
+     58,
+     10
+    ],
+    "z0": 0,
+    "height": 0.29999999999999993,
+    "colour": "#b6b0a4"
    }
   },
   {
    "type": "fence-wall",
    "at": [
     0,
-    -22,
+    -24,
     0
    ],
    "params": {
-    "length": 30,
-    "height": 0.6,
+    "length": 40,
+    "height": 0.8,
     "kind": "wall",
     "colour": "#a9a395"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4.5,
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -10,
+     -40,
+     0
+    ],
+    "end": [
+     26,
+     -40,
+     0
+    ]
    }
   }
  ],
@@ -196,6 +306,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "Photo is a detail from inside the campus; louvre hoods and red window frames are approximated by bands, walkway is a flat strip not a curved translucent tube, campus layout not modelled"
+  "gaps": "Lilac 3-storey block with red-framed punched windows, curved silvery barrel walkway, lower louvre block and paved terraces now present; sloped louvre hoods and recessed window bays are not modelled, camera is a block-scale oblique not the photo's close view."
  }
 }

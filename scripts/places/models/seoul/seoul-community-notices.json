@@ -44,7 +44,7 @@
     "material": "concrete",
     "colour": "#c9c8c1",
     "windows": "punched",
-    "windowRatio": 0.26,
+    "windowRatio": 0.14,
     "plinth": 0.8,
     "bay": 6.2,
     "cornice": true,
@@ -63,26 +63,58 @@
     "mode": "line",
     "start": [
      -38,
-     -43,
+     -44,
      0
     ],
     "end": [
      38,
-     -43,
+     -44,
      0
     ],
-    "count": 11,
+    "count": 9,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       2.6,
-       3.2
+       3.4,
+       5.0
       ],
       "z0": 0,
-      "height": 13.5,
-      "colour": "#c4c3bb",
-      "topColour": "#c4c3bb"
+      "height": 15.5,
+      "colour": "#bdbcb4",
+      "topColour": "#cfcec6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pier-brackets",
+   "rotDeg": -6.4,
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -44,
+     0
+    ],
+    "end": [
+     38,
+     -44,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.4,
+       6.4
+      ],
+      "z0": 13.2,
+      "height": 2.3,
+      "colour": "#cfcec6",
+      "topColour": "#cfcec6"
      }
     }
    }
@@ -97,11 +129,11 @@
    "rotDeg": -6.4,
    "params": {
     "rect": [
-     76,
-     76
+     72,
+     72
     ],
-    "z0": 13.3,
-    "height": 3.5,
+    "z0": 13.5,
+    "height": 3.8,
     "colour": "#3d4349",
     "topColour": "#3d4349",
     "windows": "ribbon",
@@ -119,14 +151,34 @@
    "rotDeg": -6.4,
    "params": {
     "rect": [
-     86,
-     86
+     88,
+     88
     ],
-    "z0": 16.6,
-    "height": 5,
-    "topScale": 0.8,
-    "colour": "#b7b6ad",
-    "topColour": "#b9b9b1"
+    "z0": 17.3,
+    "height": 3.2,
+    "topScale": 0.72,
+    "colour": "#8e9094",
+    "topColour": "#94969a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ridge-step",
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -6.4,
+   "params": {
+    "rect": [
+     40,
+     40
+    ],
+    "z0": 20.5,
+    "height": 1.4,
+    "topScale": 0.7,
+    "colour": "#85878b",
+    "topColour": "#8c8e92"
    }
   },
   {
@@ -154,43 +206,15 @@
    "params": {}
   },
   {
-   "type": "core/tree",
-   "at": [
-    -30,
-    -52,
-    0
-   ],
-   "params": {
-    "kind": "conifer",
-    "height": 5,
-    "count": 6,
-    "spread": 4,
-    "line": 60
-   }
-  },
-  {
-   "type": "car",
-   "at": [
-    -20,
-    -62,
-    0
-   ]
-  },
-  {
    "type": "car",
    "at": [
     -10,
     -62,
     0
-   ]
-  },
-  {
-   "type": "car",
-   "at": [
-    0,
-    -62,
-    0
-   ]
+   ],
+   "params": {
+    "colour": "#b8bcc0"
+   }
   },
   {
    "type": "car",
@@ -198,7 +222,24 @@
     10,
     -62,
     0
-   ]
+   ],
+   "params": {
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "topiary",
+   "at": [
+    -32,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "count": 9,
+    "spacing": 8,
+    "colour": "#2f5a2e"
+   }
   }
  ],
  "site": {
@@ -212,6 +253,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof slab is a plain tapered prism without the tile grid and ridge step; piers are simple boxes; banners and topiary pines are reduced to a few trees; photo is a three-quarter view with parked cars hiding the ground floor."
+  "gaps": "Piers deeper and blockier than the real flared brackets; roof is a stepped tapered prism not a true hip with tile texture; parking cars reduced to a few; topiary simplified."
  }
 }

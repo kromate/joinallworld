@@ -13,43 +13,45 @@
   {
    "kind": "osm",
    "ref": "way/801321423",
-   "used": "footprint (name match), pentagon rotated so the long street side faces the camera"
+   "used": "extent and orientation only (pentagon ward complex, long street side facing the camera); massing re-composed from the photo"
   }
  ],
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "hillside massing, stepped terraces with planters, glazed canopy and the deep projecting entry bay are only roughly suggested; OSM footprint is a regular pentagon so the photo corner geometry differs; second Commons photo (Chuk Lam care home sign) was a different building and ignored"
+  "gaps": "stepped terraced massing, planter edges, entry bay with glazed canopy and open piered drive-in are present but simplified; scene camera is a distant three-quarter view (not the street-level photo), window pairs lack frames/air-conditioner boxes, only coarse red-shrub planters, no tree at left"
  },
  "camera": {
   "yawDeg": 20,
-  "pitchDeg": 6,
+  "pitchDeg": 3,
   "fovDeg": 55,
   "aspect": 1.333,
-  "margin": 0.08
+  "margin": 0.04
  },
  "parts": [
   {
    "type": "mass",
    "id": "ward-block",
    "footprint": {
-    "osm": true,
-    "rotDeg": -27
+    "rect": [
+     72,
+     20
+    ]
    },
    "at": [
     0,
-    0
+    -22
    ],
    "rotDeg": 0,
-   "z0": 0,
-   "height": 24,
-   "storeys": 6,
+   "z0": 4.5,
+   "height": 19.5,
+   "storeys": 5,
    "wall": {
     "material": "painted-render",
-    "colour": "#bcd9d2",
-    "windows": "ribbon",
-    "windowRatio": 0.38,
-    "bay": 9,
+    "colour": "#b9dccf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.5,
     "faces": {
      "back": "none",
      "left": "plain",
@@ -59,19 +61,82 @@
      {
       "type": "floors",
       "colours": [
-       "#bcd9d2",
-       "#cfe6e0"
-      ]
-     },
-     {
-      "type": "pilotis",
-      "faces": [
-       "front"
+       "#b9dccf",
+       "#c6e3d8"
       ]
      }
     ],
-    "bands": "#d7ebe5",
-    "plinth": 0.2
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b3b0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-step1",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    4,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b2d6c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b3b0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-step2",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    10,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aad0c1",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "flat",
@@ -82,114 +147,275 @@
   {
    "type": "prism",
    "at": [
-    8,
-    -30,
+    0,
+    -22,
     0
    ],
    "params": {
-    "points": [
-     [
-      -9,
-      -4
-     ],
-     [
-      9,
-      -4
-     ],
-     [
-      9,
-      4
-     ],
-     [
-      -9,
-      4
-     ]
+    "rect": [
+     68,
+     17
     ],
-    "height": 18,
-    "z0": 6,
-    "colour": "#c4ddd6"
+    "height": 4.5,
+    "colour": "#2c3236"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -31.2
+    ],
+    "end": [
+     34,
+     -31.2
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.5,
+       1.5
+      ],
+      "height": 4.5,
+      "colour": "#dfe6e0"
+     }
+    }
    }
   },
   {
    "type": "prism",
    "at": [
-    8,
-    -35,
-    6
+    4,
+    -32.6,
+    9.0
    ],
    "params": {
     "rect": [
-     19,
-     2.6
+     40,
+     3.6
     ],
     "height": 0.9,
-    "colour": "#d9ebe6"
+    "colour": "#d3e8df"
    }
   },
   {
    "type": "prism",
    "at": [
-    8,
+    4,
+    -32.9,
+    9.9
+   ],
+   "params": {
+    "rect": [
+     38,
+     2.2
+    ],
+    "height": 0.6,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -32.6,
+    13.5
+   ],
+   "params": {
+    "rect": [
+     36,
+     3.6
+    ],
+    "height": 0.9,
+    "colour": "#d3e8df"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -32.9,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     34,
+     2.2
+    ],
+    "height": 0.6,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -32.6,
+    18.0
+   ],
+   "params": {
+    "rect": [
+     32,
+     3.6
+    ],
+    "height": 0.9,
+    "colour": "#d3e8df"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -32.9,
+    18.9
+   ],
+   "params": {
+    "rect": [
+     30,
+     2.2
+    ],
+    "height": 0.6,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
     -35,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     6
+    ],
+    "height": 10,
+    "colour": "#c8e0d6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -35.2,
     10
    ],
    "params": {
     "rect": [
      19,
-     2.6
+     6.6
     ],
-    "height": 0.9,
-    "colour": "#d9ebe6"
+    "height": 0.4,
+    "colour": "#9fd0d0"
    }
   },
   {
    "type": "prism",
    "at": [
-    8,
-    -35,
-    14
+    0,
+    -48,
+    0
    ],
    "params": {
     "rect": [
-     19,
-     2.6
+     150,
+     10
     ],
-    "height": 0.9,
-    "colour": "#d9ebe6"
+    "height": 0.1,
+    "colour": "#3b3f43"
    }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -40.5
+    ],
+    "end": [
+     40,
+     -40.5
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3.2,
+       1.6
+      ],
+      "height": 1.4,
+      "colour": "#5a8a3c"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
    "at": [
-    8,
-    -35,
-    18
+    5,
+    -40.8,
+    0
    ],
    "params": {
     "rect": [
-     19,
-     2.6
+     75,
+     2.2
     ],
-    "height": 0.9,
-    "colour": "#d9ebe6"
-   }
+    "height": 0.5,
+    "colour": "#d3e0da"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "parking",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     -45,
-     -50
-    ]
-   }
-  ],
+  "forecourt": "none",
   "extent": [
-   150,
-   120
+   100,
+   70
   ]
  },
  "schema": "allworld-place-model",

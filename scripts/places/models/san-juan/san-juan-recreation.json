@@ -34,37 +34,39 @@
  },
  "parts": [
   {
-   "type": "mass",
+   "type": "loft",
    "id": "curtain",
-   "footprint": {
-    "rect": [
-     106,
-     10
-    ]
-   },
    "at": [
+    0,
     0,
     0
    ],
-   "height": 9,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#57544b",
-    "windows": "none",
-    "windowRatio": 0,
-    "plinth": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6d6a5f"
+   "params": {
+    "colour": "#4c4840",
+    "topColour": "#6d6a5f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       112,
+       13
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       106,
+       9
+      ]
+     }
+    ]
    }
   },
   {
    "type": "battlement-wall",
    "at": [
     -31,
-    -4.6,
+    -4.2,
     9
    ],
    "params": {
@@ -79,7 +81,7 @@
    "type": "battlement-wall",
    "at": [
     31,
-    -4.6,
+    -4.2,
     9
    ],
    "params": {
@@ -100,123 +102,22 @@
     ]
    },
    "at": [
-    6,
-    20
+    2,
+    19
    ],
-   "height": 14,
+   "height": 10.5,
    "storeys": 2,
    "wall": {
     "material": "stone",
-    "colour": "#7b715c",
+    "colour": "#6a6352",
     "windows": "none",
     "windowRatio": 0,
-    "bands": "#8c826b"
+    "bands": "#746c59"
    },
    "roof": {
     "form": "flat",
-    "colour": "#74705f",
+    "colour": "#6a6352",
     "parapet": 1.0
-   }
-  },
-  {
-   "type": "mass",
-   "id": "lighthouse-base",
-   "footprint": {
-    "rect": [
-     5,
-     5
-    ]
-   },
-   "at": [
-    40,
-    14
-   ],
-   "z0": 14,
-   "height": 4.5,
-   "storeys": 1,
-   "wall": {
-    "material": "stucco",
-    "colour": "#e6d3cf",
-    "windows": "arched",
-    "windowRatio": 0.2,
-    "faces": {
-     "front": "arched",
-     "back": "none",
-     "left": "arched",
-     "right": "arched"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d8c3bd",
-    "parapet": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "lighthouse-top",
-   "footprint": {
-    "rect": [
-     3.4,
-     3.4
-    ]
-   },
-   "at": [
-    40,
-    14
-   ],
-   "z0": 18.5,
-   "height": 3.6,
-   "storeys": 1,
-   "wall": {
-    "material": "stucco",
-    "colour": "#efe0dc",
-    "windows": "arched",
-    "windowRatio": 0.3,
-    "faces": {
-     "front": "arched",
-     "back": "none",
-     "left": "arched",
-     "right": "arched"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d8c3bd"
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    40,
-    14,
-    22.1
-   ],
-   "params": {
-    "segments": 10,
-    "colour": "#1e1e20",
-    "profile": [
-     [
-      1.5,
-      0
-     ],
-     [
-      1.5,
-      1.2
-     ],
-     [
-      1.1,
-      2.0
-     ],
-     [
-      0.6,
-      2.8
-     ],
-     [
-      0.0,
-      3.0
-     ]
-    ]
    }
   },
   {
@@ -280,8 +181,8 @@
     ]
    },
    "at": [
-    52,
-    -28
+    48,
+    -20
    ],
    "height": 4.2,
    "storeys": 1,
@@ -313,19 +214,31 @@
    "params": {
     "points": [
      [
-      -60,
+      -70,
+      -34
+     ],
+     [
+      -48,
       -30
      ],
      [
-      -20,
-      -24
+      -26,
+      -27
+     ],
+     [
+      -12,
+      -20
+     ],
+     [
+      -4,
+      -12
      ],
      [
       0,
       -8
      ]
     ],
-    "width": 3,
+    "width": 3.5,
     "colour": "#d6d0be"
    }
   },
@@ -340,13 +253,322 @@
     "count": 1,
     "yaw": 270
    }
+  },
+  {
+   "type": "mass",
+   "id": "lh-base",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    36,
+    10
+   ],
+   "z0": 10,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ecd5d0",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0c8c3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lh-top",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.6
+    ]
+   },
+   "at": [
+    36,
+    10
+   ],
+   "z0": 15.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1e1dc",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0c8c3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lh-gallery",
+   "at": [
+    36,
+    10
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     7.2
+    ],
+    "z0": 20,
+    "height": 0.6,
+    "colour": "#efe3d3",
+    "topColour": "#efe3d3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    36,
+    10,
+    20.6
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#1e1e20",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      2.2
+     ],
+     [
+      2.0,
+      3.6
+     ],
+     [
+      1.0,
+      4.8
+     ],
+     [
+      0,
+      5.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-a",
+   "at": [
+    -6,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#7a7260",
+    "topColour": "#7a7260",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-b",
+   "at": [
+    6,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#7a7260",
+    "topColour": "#7a7260",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-ped",
+   "at": [
+    0,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.6
+    ],
+    "z0": 10.5,
+    "height": 1.4,
+    "colour": "#8a826c",
+    "topColour": "#8a826c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-ped2",
+   "at": [
+    0,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     8,
+     1.6
+    ],
+    "z0": 11.9,
+    "height": 1.2,
+    "colour": "#8a826c",
+    "topColour": "#8a826c",
+    "windows": "none",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bastion",
+   "at": [
+    56,
+    -3
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "z0": 0,
+    "height": 9.5,
+    "colour": "#4c4840",
+    "topColour": "#4c4840",
+    "windows": "none"
+   },
+   "rotDeg": 28
+  },
+  {
+   "type": "prism",
+   "id": "ochre0",
+   "at": [
+    -36,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "z0": 2.5,
+    "height": 3.5,
+    "colour": "#8d7a4e",
+    "topColour": "#8d7a4e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ochre1",
+   "at": [
+    -14,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "z0": 2.5,
+    "height": 3.5,
+    "colour": "#8d7a4e",
+    "topColour": "#8d7a4e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ochre2",
+   "at": [
+    22,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "z0": 2.5,
+    "height": 3.5,
+    "colour": "#8d7a4e",
+    "topColour": "#8d7a4e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ochre3",
+   "at": [
+    44,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 2.5,
+    "height": 3.5,
+    "colour": "#8d7a4e",
+    "topColour": "#8d7a4e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "none",
   "extent": [
-   130,
+   160,
    100
   ],
   "trees": []
@@ -354,6 +576,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Only the landward front of El Morro is modelled (curtain, gate, lighthouse, garita, upper works); the sea-side tiers, ramps and bastions are simplified into one upper block; stucco ochre patches missing."
+  "gaps": "curtain battered and lowered with ochre patches, bigger pink lighthouse and framed gate added; lawn is still a flat plane with no rolling relief; bastion is a simple angled block; sea-side tiers simplified"
  }
 }

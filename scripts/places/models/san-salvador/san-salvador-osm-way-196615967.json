@@ -47,13 +47,13 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#a8968a",
+    "colour": "#9c8a80",
     "glassColour": "#3a3d44",
     "windows": "punched",
     "windowShape": "pointed",
     "windowRatio": 0.12,
     "plinth": 0.6,
-    "bands": "#8a7565"
+    "bands": "#cdbfae"
    },
    "roof": {
     "form": "gable",
@@ -81,12 +81,13 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#a8968a",
+    "colour": "#9c8a80",
     "glassColour": "#3a3d44",
     "windows": "punched",
     "windowShape": "pointed",
     "windowRatio": 0.12,
-    "plinth": 0.6
+    "plinth": 0.6,
+    "bands": "#cdbfae"
    },
    "roof": {
     "form": "gable",
@@ -108,9 +109,9 @@
      2
     ],
     "z0": 0,
-    "height": 15,
-    "colour": "#d6c8b6",
-    "topColour": "#d6c8b6",
+    "height": 16,
+    "colour": "#9c8a80",
+    "topColour": "#9c8a80",
     "windows": "none"
    }
   },
@@ -123,14 +124,14 @@
    ],
    "params": {
     "rect": [
-     7,
-     7
+     7.2,
+     7.2
     ],
     "z0": 0,
-    "height": 30,
-    "colour": "#a8968a",
-    "topColour": "#a8968a",
-    "windows": "rect",
+    "height": 18,
+    "colour": "#9c8a80",
+    "topColour": "#9c8a80",
+    "windows": "none",
     "windowShape": "pointed",
     "windowRatio": 0.2,
     "faces": {
@@ -141,6 +142,35 @@
     },
     "storeys": 3,
     "plinth": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.2,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 18,
+    "height": 12,
+    "colour": "#a8968a",
+    "topColour": "#a8968a",
+    "windows": "rect",
+    "windowShape": "pointed",
+    "windowRatio": 0.4,
+    "bay": 3.0,
+    "faces": {
+     "front": "rect",
+     "left": "rect",
+     "right": "rect",
+     "back": "none"
+    },
+    "storeys": 1
    }
   },
   {
@@ -206,12 +236,12 @@
       ]
      },
      {
-      "z": 9,
-      "circle": 2.4
+      "z": 10,
+      "circle": 2.2
      },
      {
-      "z": 22,
-      "circle": 0.5
+      "z": 26,
+      "circle": 0.4
      }
     ]
    }
@@ -247,7 +277,7 @@
    "at": [
     -7.2,
     -27,
-    51
+    56
    ],
    "params": {
     "baseWidth": 0.5,
@@ -265,14 +295,14 @@
    ],
    "params": {
     "rect": [
-     7,
-     7
+     7.2,
+     7.2
     ],
     "z0": 0,
-    "height": 30,
-    "colour": "#a8968a",
-    "topColour": "#a8968a",
-    "windows": "rect",
+    "height": 18,
+    "colour": "#9c8a80",
+    "topColour": "#9c8a80",
+    "windows": "none",
     "windowShape": "pointed",
     "windowRatio": 0.2,
     "faces": {
@@ -283,6 +313,35 @@
     },
     "storeys": 3,
     "plinth": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.2,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 18,
+    "height": 12,
+    "colour": "#a8968a",
+    "topColour": "#a8968a",
+    "windows": "rect",
+    "windowShape": "pointed",
+    "windowRatio": 0.4,
+    "bay": 3.0,
+    "faces": {
+     "front": "rect",
+     "left": "rect",
+     "right": "rect",
+     "back": "none"
+    },
+    "storeys": 1
    }
   },
   {
@@ -348,12 +407,12 @@
       ]
      },
      {
-      "z": 9,
-      "circle": 2.4
+      "z": 10,
+      "circle": 2.2
      },
      {
-      "z": 22,
-      "circle": 0.5
+      "z": 26,
+      "circle": 0.4
      }
     ]
    }
@@ -389,7 +448,7 @@
    "at": [
     7.2,
     -27,
-    51
+    56
    ],
    "params": {
     "baseWidth": 0.5,
@@ -443,22 +502,6 @@
    "params": {}
   },
   {
-   "type": "fence-wall",
-   "at": [
-    -30,
-    -40,
-    0
-   ],
-   "params": {
-    "length": 60,
-    "height": 2.4,
-    "thickness": 0.6,
-    "colour": "#b99a4a",
-    "kind": "wall",
-    "pillarEvery": 6
-   }
-  },
-  {
    "type": "steps",
    "at": [
     24,
@@ -471,6 +514,362 @@
     "run": 1.2,
     "count": 3,
     "colour": "#bdb7aa"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -31.9,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.6,
+      0
+     ],
+     [
+      1.6,
+      0
+     ],
+     [
+      1.6,
+      5
+     ],
+     [
+      0,
+      8.2
+     ],
+     [
+      -1.6,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#7a6a60",
+    "topColour": "#8a7565"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -31.799999999999997,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.0,
+      0
+     ],
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      3.2
+     ],
+     [
+      0,
+      4.6
+     ],
+     [
+      -1.0,
+      3.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -31.9,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.6,
+      0
+     ],
+     [
+      1.6,
+      0
+     ],
+     [
+      1.6,
+      5
+     ],
+     [
+      0,
+      8.2
+     ],
+     [
+      -1.6,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#7a6a60",
+    "topColour": "#8a7565"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -31.799999999999997,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.0,
+      0
+     ],
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      3.2
+     ],
+     [
+      0,
+      4.6
+     ],
+     [
+      -1.0,
+      3.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -31.9,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.6,
+      0
+     ],
+     [
+      1.6,
+      0
+     ],
+     [
+      1.6,
+      5
+     ],
+     [
+      0,
+      8.2
+     ],
+     [
+      -1.6,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#7a6a60",
+    "topColour": "#8a7565"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -31.799999999999997,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.0,
+      0
+     ],
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      3.2
+     ],
+     [
+      0,
+      4.6
+     ],
+     [
+      -1.0,
+      3.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -31.8
+    ],
+    "end": [
+     10,
+     -31.8
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.8
+      ],
+      "height": 13,
+      "colour": "#cdbfae"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -38.75
+     ],
+     [
+      30,
+      -38.75
+     ],
+     [
+      30,
+      -37.25
+     ],
+     [
+      -30,
+      -37.25
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c4a050",
+    "topColour": "#d0b060"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -38.08
+     ],
+     [
+      30,
+      -38.08
+     ],
+     [
+      30,
+      -37.92
+     ],
+     [
+      -30,
+      -37.92
+     ]
+    ],
+    "z0": 1.6,
+    "height": 1.4,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -38
+    ],
+    "end": [
+     30,
+     -38
+    ],
+    "count": 16,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.9,
+        0.9
+       ],
+       "height": 3.3,
+       "colour": "#f2efe6"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.2,
+        1.2
+       ],
+       "z0": 3.3,
+       "height": 0.3,
+       "colour": "#f2efe6"
+      }
+     }
+    ]
    }
   }
  ],
@@ -501,8 +900,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Towers are plain shafts with simple spires; missing the filigree gothic tracery, pinnacle clusters, portal arches and the fenced ochre wall in full."
+  "gaps": "Facade tracery and rose window are simplified; pinnacle clusters are four spirelets per tower; stone is flat grey-pink; buttresses are plain strips."
  }
 }

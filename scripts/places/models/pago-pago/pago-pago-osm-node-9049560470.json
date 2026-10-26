@@ -46,15 +46,14 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#cfcdc4",
-    "windows": "punched",
+    "colour": "#d8d5ca",
+    "windows": "none",
     "faces": {
-     "front": "punched",
+     "front": "plain",
      "back": "plain",
      "left": "plain",
      "right": "plain"
-    },
-    "windowRatio": 0.04
+    }
    },
    "roof": {
     "form": "hip",
@@ -78,7 +77,24 @@
      12.5
     ],
     "height": 0.9,
-    "colour": "#b9b6aa"
+    "colour": "#dcd9ce"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "screen-band",
+   "at": [
+    0,
+    -5.65,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     26.6,
+     0.4
+    ],
+    "height": 2.1,
+    "colour": "#3a3a36"
    }
   },
   {
@@ -86,25 +102,64 @@
    "id": "veranda-skirt",
    "at": [
     0,
-    -8.2,
+    -7.9,
     0
    ],
    "params": {
     "rect": [
-     28.5,
-     3.6
+     29,
+     4.8
     ],
     "z0": 3.0,
-    "height": 0.25,
-    "colour": "#aeb3b3",
-    "topScale": 1.0
+    "height": 0.45,
+    "colour": "#b4b8b6",
+    "material": "corrugated",
+    "topScale": [
+     1.0,
+     0.55
+    ],
+    "topOffset": [
+     0,
+     0.7
+    ]
    }
   },
   {
    "type": "core/array",
    "at": [
     0,
-    -9.7,
+    -5.58,
+    5.0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.12
+      ],
+      "height": 0.3,
+      "colour": "#2e2e2b"
+     }
+    },
+    "count": 7,
+    "mode": "line",
+    "start": [
+     -11,
+     0
+    ],
+    "end": [
+     11,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -9.6,
     0.9
    ],
    "params": {
@@ -112,21 +167,21 @@
      "type": "core/prism",
      "params": {
       "rect": [
-       0.25,
-       0.25
+       0.35,
+       0.35
       ],
-      "height": 2.2,
-      "colour": "#7a6f5e"
+      "height": 2.1,
+      "colour": "#d8d4c8"
      }
     },
-    "count": 10,
+    "count": 6,
     "mode": "line",
     "start": [
-     -13.5,
+     -12.5,
      0
     ],
     "end": [
-     13.5,
+     12.5,
      0
     ]
    }
@@ -136,16 +191,62 @@
    "id": "rail",
    "at": [
     0,
-    -9.7,
-    1.7
+    -9.6,
+    0.9
    ],
    "params": {
     "rect": [
-     27.2,
+     26,
      0.1
     ],
     "height": 0.9,
-    "colour": "#bdb8a8"
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "radius": 0.8,
+      "n": 8,
+      "height": 1.0,
+      "colour": "#2f5a2e",
+      "topScale": 0.85
+     }
+    },
+    "count": 12,
+    "mode": "line",
+    "start": [
+     -12,
+     0
+    ],
+    "end": [
+     12,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "shrub-big",
+   "at": [
+    -4,
+    -12.5,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "n": 8,
+    "height": 2.0,
+    "colour": "#3c6a35",
+    "topScale": 0.8
    }
   }
  ],
@@ -193,7 +294,7 @@
  },
  "review": {
   "rounds": 2,
-  "match": "fair",
-  "gaps": "roof pitch/colour guessed from a B/W photo; window band too prominent; veranda screens and garden planting simplified"
+  "match": "close",
+  "gaps": "B/W photo so colours and pitch are inferred; veranda screen is a plain dark band; planting is blocky"
  }
 }

@@ -30,7 +30,7 @@
   }
  ],
  "camera": {
-  "yawDeg": -20,
+  "yawDeg": -35,
   "pitchDeg": 42,
   "fovDeg": 50,
   "aspect": 1.5,
@@ -40,106 +40,157 @@
  "parts": [
   {
    "type": "mass",
-   "id": "roof-ring-n",
+   "id": "wall-n",
    "footprint": {
     "rect": [
-     116,
-     24
+     110,
+     2
     ]
    },
    "at": [
     0,
-    37
+    48
    ],
    "z0": 0,
-   "height": 17,
+   "height": 16,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#f2f2ee",
+    "colour": "#f1f1ed",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#ecebe6",
-    "overhang": 3
+    "colour": "#ecebe6"
    }
   },
   {
    "type": "mass",
-   "id": "roof-ring-s",
+   "id": "wall-s",
    "footprint": {
     "rect": [
-     116,
-     24
+     110,
+     2
     ]
    },
    "at": [
     0,
-    -37
+    -48
    ],
    "z0": 0,
-   "height": 17,
+   "height": 16,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#f2f2ee",
+    "colour": "#f1f1ed",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#ecebe6",
-    "overhang": 3
+    "colour": "#ecebe6"
    }
   },
   {
    "type": "mass",
-   "id": "roof-ring-w",
+   "id": "wall-w",
    "footprint": {
     "rect": [
-     24,
-     50
+     2,
+     86
     ]
    },
    "at": [
-    -46,
+    -57,
     0
    ],
    "z0": 0,
-   "height": 17,
+   "height": 16,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#f2f2ee",
+    "colour": "#f1f1ed",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#ecebe6",
-    "overhang": 3
+    "colour": "#ecebe6"
    }
   },
   {
    "type": "mass",
-   "id": "roof-ring-e",
+   "id": "wall-e",
    "footprint": {
     "rect": [
-     24,
-     50
+     2,
+     86
     ]
    },
    "at": [
-    46,
+    57,
     0
    ],
    "z0": 0,
-   "height": 17,
+   "height": 16,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#f2f2ee",
+    "colour": "#f1f1ed",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#ecebe6",
-    "overhang": 3
+    "colour": "#ecebe6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      24,
+      3.0
+     ]
+    },
+    "points": [
+     [
+      -36,
+      37,
+      17.74
+     ],
+     [
+      36,
+      37,
+      15.26
+     ],
+     [
+      46,
+      27,
+      14.91
+     ],
+     [
+      46,
+      -27,
+      14.91
+     ],
+     [
+      36,
+      -37,
+      15.26
+     ],
+     [
+      -36,
+      -37,
+      17.74
+     ],
+     [
+      -46,
+      -27,
+      18.09
+     ],
+     [
+      -46,
+      27,
+      18.09
+     ]
+    ],
+    "closed": true,
+    "colour": "#f4f4f1"
    }
   },
   {
@@ -154,15 +205,15 @@
      0,
      0
     ],
-    "radius": 36,
-    "radiusY": 27,
+    "radius": 40,
+    "radiusY": 30,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 12,
+    "rows": 16,
     "rise": 0.5,
     "run": 0.9,
-    "seatColour": "#9aa0a4",
-    "concreteColour": "#c7c9c8",
+    "seatColour": "#c4c8cb",
+    "concreteColour": "#d3d5d6",
     "under": "open",
     "facetDeg": 14
    }
@@ -197,25 +248,51 @@
    "id": "glass-front",
    "footprint": {
     "rect": [
-     40,
-     3
+     6,
+     34
     ]
    },
    "at": [
-    -30,
-    -49.5
+    -60,
+    -20
    ],
+   "rotDeg": 0,
    "z0": 0,
-   "height": 13,
+   "height": 12,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#8fb0c4",
+    "colour": "#a9c4d4",
     "windows": "curtain",
     "windowRatio": 0.9
    },
    "roof": {
     "form": "flat",
-    "colour": "#e6e6e6"
+    "colour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     56,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b2f"
    }
   }
  ],
@@ -232,6 +309,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof is four flat slabs, not the single tilted curved membrane; no curved west glass front or cantilevered corner; surroundings (rail, station, car parks) reduced to generic asphalt."
+  "gaps": "roof is a closed ring beam sloping high west to low east, no true rounded-rectangle membrane or cantilevered corner wedge; stand tiers simplified; surroundings (rail, station, grass strips) generic; LED screen hidden"
  }
 }

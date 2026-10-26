@@ -46,9 +46,9 @@
     0
    ],
    "params": {
-    "height": 7,
-    "thickness": 3.2,
-    "batter": 0.25,
+    "height": 8,
+    "thickness": 4.2,
+    "batter": 0.45,
     "merlons": false,
     "points": [
      [
@@ -129,18 +129,17 @@
     -8,
     -27
    ],
-   "height": 8.5,
+   "height": 9,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#5f5348",
+    "colour": "#4d443b",
     "windows": "none",
     "faces": {
-     "front": "arched"
+     "front": "plain"
     },
     "groundKind": "arched",
     "groundHeight": 3.6,
-    "windowRatio": 0.28,
     "bay": 7
    },
    "roof": {
@@ -149,26 +148,6 @@
     "material": "concrete",
     "parapet": 0.4,
     "overhang": 0.2
-   }
-  },
-  {
-   "type": "core/tower",
-   "at": [
-    -8,
-    -27,
-    8.5
-   ],
-   "params": {
-    "width": 5.5,
-    "height": 4.5,
-    "sides": 6,
-    "round": true,
-    "cap": "hip",
-    "capRise": 1.4,
-    "colour": "#2fb3ea",
-    "capColour": "#2fb3ea",
-    "windows": "ribbon",
-    "windowRatio": 0.35
    }
   },
   {
@@ -260,6 +239,279 @@
     "height": 7,
     "spread": 7
    }
+  },
+  {
+   "type": "prism",
+   "id": "lookout-cabin",
+   "at": [
+    -8,
+    -27,
+    9
+   ],
+   "params": {
+    "points": [
+     [
+      2.94,
+      1.7
+     ],
+     [
+      0.0,
+      3.4
+     ],
+     [
+      -2.94,
+      1.7
+     ],
+     [
+      -2.94,
+      -1.7
+     ],
+     [
+      -0.0,
+      -3.4
+     ],
+     [
+      2.94,
+      -1.7
+     ]
+    ],
+    "height": 2.6,
+    "colour": "#2fb3ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lookout-hood0",
+   "at": [
+    -8,
+    -27,
+    11.4
+   ],
+   "params": {
+    "points": [
+     [
+      3.81,
+      2.2
+     ],
+     [
+      0.0,
+      4.4
+     ],
+     [
+      -3.81,
+      2.2
+     ],
+     [
+      -3.81,
+      -2.2
+     ],
+     [
+      -0.0,
+      -4.4
+     ],
+     [
+      3.81,
+      -2.2
+     ]
+    ],
+    "height": 0.55,
+    "topScale": 0.82,
+    "colour": "#3cc0f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lookout-hood1",
+   "at": [
+    -8,
+    -27,
+    12.1
+   ],
+   "params": {
+    "points": [
+     [
+      3.38,
+      1.95
+     ],
+     [
+      0.0,
+      3.9
+     ],
+     [
+      -3.38,
+      1.95
+     ],
+     [
+      -3.38,
+      -1.95
+     ],
+     [
+      -0.0,
+      -3.9
+     ],
+     [
+      3.38,
+      -1.95
+     ]
+    ],
+    "height": 0.55,
+    "topScale": 0.82,
+    "colour": "#3cc0f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lookout-hood2",
+   "at": [
+    -8,
+    -27,
+    12.8
+   ],
+   "params": {
+    "points": [
+     [
+      2.86,
+      1.65
+     ],
+     [
+      0.0,
+      3.3
+     ],
+     [
+      -2.86,
+      1.65
+     ],
+     [
+      -2.86,
+      -1.65
+     ],
+     [
+      -0.0,
+      -3.3
+     ],
+     [
+      2.86,
+      -1.65
+     ]
+    ],
+    "height": 0.55,
+    "topScale": 0.82,
+    "colour": "#3cc0f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lookout-lantern",
+   "at": [
+    -8,
+    -27,
+    13.4
+   ],
+   "params": {
+    "points": [
+     [
+      0.95,
+      0.55
+     ],
+     [
+      0.0,
+      1.1
+     ],
+     [
+      -0.95,
+      0.55
+     ],
+     [
+      -0.95,
+      -0.55
+     ],
+     [
+      -0.0,
+      -1.1
+     ],
+     [
+      0.95,
+      -0.55
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#b89a78"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast1",
+   "at": [
+    -9.5,
+    -26.5,
+    13
+   ],
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      9
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast2",
+   "at": [
+    -6.2,
+    -26.2,
+    13
+   ],
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      7
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast3",
+   "at": [
+    -7.7,
+    -28.5,
+    13
+   ],
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      6
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
   }
  ],
  "site": {
@@ -271,8 +523,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "outline of the ramparts is estimated from the 1763-1806 plan description; only the barracks outline is surveyed"
+  "gaps": "ramparts now 8 m and battered but rendered pale grey (wall part has no colour parameter) instead of dark brown rubble; gate arch tunnel and green iron gates not visible from the camera; lookout is hex with stepped hoods and masts but simplified; fort outline estimated"
  }
 }

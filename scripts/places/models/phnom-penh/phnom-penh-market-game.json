@@ -33,24 +33,28 @@
    "id": "mall",
    "footprint": {
     "osm": true,
-    "simplify": 0.8
+    "simplify": 1.2
    },
    "height": 36,
    "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#d6d0c2",
+    "colour": "#d8d6d0",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.24,
     "plinth": 0,
     "cornice": true,
-    "bands": "#ece8de",
+    "bands": {
+     "colour": "#f2f0ea",
+     "height": 0.8
+    },
     "groundKind": "plain",
-    "bay": 6
+    "bay": 8,
+    "glassColour": "#7b7f84"
    },
    "roof": {
     "form": "flat",
-    "colour": "#9a9a94",
+    "colour": "#a7a6a0",
     "parapet": 0.8
    }
   },
@@ -81,10 +85,100 @@
     "bottom": 3,
     "colour": "#c9332b"
    }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -44.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "bottom": 0.4,
+    "colour": "#c9332b",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -25,
+    -44.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "bottom": 0.4,
+    "colour": "#2f7d4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -44.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "bottom": 0.4,
+    "colour": "#2d6fb8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -44.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "bottom": 0.4,
+    "colour": "#e0b83a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -44.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "bottom": 0.4,
+    "colour": "#c9332b",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    11,
+    -44.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "bottom": 0.4,
+    "colour": "#2f7d4f",
+    "posts": false
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "road",
   "trees": 0,
   "extent": [
@@ -93,8 +187,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Render reads blue-tinged; sculpted curved storey bands, louvre vent bays, hoarded ground floor and green entrance canopy not modelled; photo is a street crop of one curved side only."
+  "gaps": "blue cast in the render is sky/shadow lighting, wall colours are grey-white as set; storey slabs are thin bands, louvre vent bays omitted (triangle budget); hoarding is separate coloured boards; photo is a 360 street crop"
  }
 }

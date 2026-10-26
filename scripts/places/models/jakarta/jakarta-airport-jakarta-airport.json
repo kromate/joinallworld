@@ -94,7 +94,7 @@
     "form": "hip",
     "colour": "#c4573b",
     "material": "clay-tile",
-    "pitch": 27,
+    "pitch": 25,
     "overhang": 4.5
    }
   },
@@ -103,28 +103,28 @@
    "id": "joglo-top",
    "footprint": {
     "rect": [
-     22,
-     17
+     15,
+     11
     ]
    },
    "at": [
     14,
     6
    ],
-   "z0": 13.2,
-   "height": 2.4,
+   "z0": 13.4,
+   "height": 2.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#7a4a34",
+    "colour": "#3a2e28",
     "windows": "none"
    },
    "roof": {
     "form": "hip",
     "colour": "#c0523a",
     "material": "clay-tile",
-    "pitch": 34,
-    "overhang": 1.6
+    "pitch": 40,
+    "overhang": 0.8
    }
   },
   {
@@ -162,16 +162,16 @@
    "id": "far-screen",
    "footprint": {
     "rect": [
-     60,
+     110,
      2
     ]
    },
    "at": [
-    -30,
-    40
+    -5,
+    36
    ],
    "z0": 0,
-   "height": 3.2,
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
@@ -206,7 +206,7 @@
    ],
    "params": {
     "kind": "palm",
-    "height": 9,
+    "height": 12,
     "count": 3,
     "spread": 12,
     "colour": "#4c8a3c"
@@ -220,7 +220,7 @@
    ],
    "params": {
     "kind": "palm",
-    "height": 11,
+    "height": 14,
     "count": 2,
     "spread": 8,
     "colour": "#4c8a3c"
@@ -239,6 +239,118 @@
     "spread": 14,
     "colour": "#3f7a35"
    }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -18
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.2,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    -20
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -17
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.4,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.5,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.3,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -24
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.1,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -24
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.4,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3a7a34"
+   }
   }
  ],
  "site": {
@@ -250,8 +362,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "organic garden mounds, dense planting, timber posts and canopy overhead not modelled; roof pitch approximate"
+  "gaps": "joglo roof now two-tier and shrubs added; timber posts, organic mounds and overhead canopy edge not modelled"
  }
 }

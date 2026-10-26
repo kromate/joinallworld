@@ -30,6 +30,69 @@
  "parts": [
   {
    "type": "mass",
+   "id": "plinth1",
+   "footprint": {
+    "rect": [
+     44,
+     36
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9686",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9686"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -34,
+    0,
+    0.9
+   ],
+   "params": {
+    "height": 2.1,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#3a3d3c",
+    "points": [
+     [
+      -22,
+      -18
+     ],
+     [
+      22,
+      -18
+     ],
+     [
+      22,
+      18
+     ],
+     [
+      -22,
+      18
+     ],
+     [
+      -22,
+      -18
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
    "id": "hall1",
    "footprint": {
     "rect": [
@@ -41,18 +104,18 @@
     -34,
     0
    ],
-   "height": 8,
+   "z0": 3,
+   "height": 6,
    "storeys": 1,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#a8322d",
+    "material": "painted-render",
+    "colour": "#d9d2b8",
     "windows": "arched",
-    "windowRatio": 0.6,
     "windowShape": "arched",
-    "bay": 7,
+    "windowRatio": 0.9,
+    "bay": 9,
+    "trimColour": "#c9c2a6",
     "cornice": true,
-    "trimColour": "#e8dcc0",
-    "plinth": 0.8,
     "faces": {
      "front": "arched",
      "back": "plain",
@@ -62,10 +125,10 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#7d3a30",
+    "colour": "#9aa597",
     "material": "metal-sheet",
-    "pitch": 12,
-    "overhang": 1.5
+    "pitch": 7,
+    "overhang": 2.5
    }
   },
   {
@@ -73,53 +136,164 @@
    "id": "clere1",
    "footprint": {
     "rect": [
-     34,
-     22
+     40,
+     14
     ]
    },
    "at": [
     -34,
     0
    ],
-   "z0": 8,
+   "z0": 9.8,
    "height": 3.5,
    "storeys": 1,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#3f7d4a",
-    "windows": "none",
-    "windowRatio": 0.6,
-    "trimColour": "#e8dcc0",
+    "material": "painted-render",
+    "colour": "#d9d2b8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.8,
+    "bay": 10,
+    "trimColour": "#c9c2a6",
     "cornice": true,
     "faces": {
-     "front": "plain"
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
     }
    },
    "roof": {
     "form": "gable",
-    "colour": "#9c3b2f",
+    "colour": "#9aa597",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.0,
+    "pitch": 8,
+    "overhang": 1,
     "axis": "x"
    }
   },
   {
    "type": "core/dome",
    "at": [
-    -42,
-    -4,
-    11.5
+    -46,
+    0,
+    13.9
    ],
    "params": {
-    "radius": 1.4,
-    "height": 2.2,
+    "radius": 0.7,
+    "height": 1.3,
     "profile": "onion",
-    "drum": 1.0,
-    "colour": "#3f7d4a",
-    "lantern": 0.6,
-    "finial": 0.8
+    "drum": 0.9,
+    "drumRadius": 0.6,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -34,
+    0,
+    13.9
+   ],
+   "params": {
+    "radius": 0.7,
+    "height": 1.3,
+    "profile": "onion",
+    "drum": 0.9,
+    "drumRadius": 0.6,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -22,
+    0,
+    13.9
+   ],
+   "params": {
+    "radius": 0.7,
+    "height": 1.3,
+    "profile": "onion",
+    "drum": 0.9,
+    "drumRadius": 0.6,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "plinth2",
+   "footprint": {
+    "rect": [
+     44,
+     36
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9686",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9686"
    }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    34,
+    0,
+    0.9
+   ],
+   "params": {
+    "height": 2.1,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#3a3d3c",
+    "points": [
+     [
+      -22,
+      -18
+     ],
+     [
+      22,
+      -18
+     ],
+     [
+      22,
+      18
+     ],
+     [
+      -22,
+      18
+     ],
+     [
+      -22,
+      -18
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
@@ -134,31 +308,31 @@
     34,
     0
    ],
-   "height": 8,
+   "z0": 3,
+   "height": 6,
    "storeys": 1,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#a8322d",
+    "material": "painted-render",
+    "colour": "#d9d2b8",
     "windows": "arched",
-    "windowRatio": 0.6,
     "windowShape": "arched",
-    "bay": 7,
+    "windowRatio": 0.9,
+    "bay": 9,
+    "trimColour": "#c9c2a6",
     "cornice": true,
-    "trimColour": "#e8dcc0",
-    "plinth": 0.8,
     "faces": {
      "front": "arched",
      "back": "plain",
      "left": "plain",
-     "right": "plain"
+     "right": "arched"
     }
    },
    "roof": {
     "form": "hip",
-    "colour": "#7d3a30",
+    "colour": "#9aa597",
     "material": "metal-sheet",
-    "pitch": 12,
-    "overhang": 1.5
+    "pitch": 7,
+    "overhang": 2.5
    }
   },
   {
@@ -166,197 +340,232 @@
    "id": "clere2",
    "footprint": {
     "rect": [
-     34,
-     22
+     40,
+     14
     ]
    },
    "at": [
     34,
     0
    ],
-   "z0": 8,
+   "z0": 9.8,
    "height": 3.5,
    "storeys": 1,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#3f7d4a",
-    "windows": "none",
-    "windowRatio": 0.6,
-    "trimColour": "#e8dcc0",
+    "material": "painted-render",
+    "colour": "#d9d2b8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.8,
+    "bay": 10,
+    "trimColour": "#c9c2a6",
     "cornice": true,
     "faces": {
-     "front": "plain"
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
     }
    },
    "roof": {
     "form": "gable",
-    "colour": "#9c3b2f",
+    "colour": "#9aa597",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.0,
+    "pitch": 8,
+    "overhang": 1,
     "axis": "x"
    }
   },
   {
    "type": "core/dome",
    "at": [
-    26,
-    -4,
-    11.5
+    22,
+    0,
+    13.9
    ],
    "params": {
-    "radius": 1.4,
-    "height": 2.2,
+    "radius": 0.7,
+    "height": 1.3,
     "profile": "onion",
-    "drum": 1.0,
-    "colour": "#3f7d4a",
-    "lantern": 0.6,
-    "finial": 0.8
-   }
+    "drum": 0.9,
+    "drumRadius": 0.6,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    34,
+    0,
+    13.9
+   ],
+   "params": {
+    "radius": 0.7,
+    "height": 1.3,
+    "profile": "onion",
+    "drum": 0.9,
+    "drumRadius": 0.6,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    46,
+    0,
+    13.9
+   ],
+   "params": {
+    "radius": 0.7,
+    "height": 1.3,
+    "profile": "onion",
+    "drum": 0.9,
+    "drumRadius": 0.6,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
    "id": "gate",
    "footprint": {
     "rect": [
-     22,
-     18
+     18,
+     14
     ]
    },
    "at": [
     0,
     -1
    ],
-   "height": 12,
+   "height": 9,
    "storeys": 2,
    "wall": {
-    "material": "metal-cladding",
-    "colour": "#a8322d",
+    "material": "painted-render",
+    "colour": "#d9d2b8",
     "windows": "arched",
-    "windowRatio": 0.25,
     "windowShape": "arched",
-    "trimColour": "#e8dcc0",
+    "windowRatio": 0.5,
+    "bay": 7,
+    "trimColour": "#c9c2a6",
     "cornice": true,
-    "bands": "#e8dcc0",
-    "plinth": 0.8,
+    "bands": "#c9c2a6",
     "faces": {
      "front": "arched",
      "back": "plain",
      "left": "plain",
      "right": "plain"
-    },
-    "bay": 6
+    }
    },
    "roof": {
     "form": "flat",
-    "colour": "#e8dcc0",
+    "colour": "#9aa597",
     "parapet": 0.6
    }
   },
   {
    "type": "core/dome",
    "at": [
-    -9,
-    -8.2,
-    12.6
+    -7,
+    -7.5,
+    9.2
    ],
    "params": {
-    "radius": 2.6,
-    "height": 4,
+    "radius": 1.4,
+    "height": 2.2,
     "profile": "onion",
-    "drum": 2.0,
-    "drumRadius": 2.0,
-    "colour": "#3f7d4a",
-    "drumColour": "#e8dcc0",
-    "lantern": 0.8,
-    "finial": 1.5
+    "drum": 0.8,
+    "drumRadius": 1.1,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
    "type": "core/dome",
    "at": [
-    -9,
-    6.2,
-    12.6
+    -7,
+    5.5,
+    9.2
    ],
    "params": {
-    "radius": 2.6,
-    "height": 4,
+    "radius": 1.4,
+    "height": 2.2,
     "profile": "onion",
-    "drum": 2.0,
-    "drumRadius": 2.0,
-    "colour": "#3f7d4a",
-    "drumColour": "#e8dcc0",
-    "lantern": 0.8,
-    "finial": 1.5
+    "drum": 0.8,
+    "drumRadius": 1.1,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
    "type": "core/dome",
    "at": [
-    9,
-    -8.2,
-    12.6
+    7,
+    -7.5,
+    9.2
    ],
    "params": {
-    "radius": 2.6,
-    "height": 4,
+    "radius": 1.4,
+    "height": 2.2,
     "profile": "onion",
-    "drum": 2.0,
-    "drumRadius": 2.0,
-    "colour": "#3f7d4a",
-    "drumColour": "#e8dcc0",
-    "lantern": 0.8,
-    "finial": 1.5
+    "drum": 0.8,
+    "drumRadius": 1.1,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
    "type": "core/dome",
    "at": [
-    9,
-    6.2,
-    12.6
+    7,
+    5.5,
+    9.2
    ],
    "params": {
-    "radius": 2.6,
-    "height": 4,
+    "radius": 1.4,
+    "height": 2.2,
     "profile": "onion",
-    "drum": 2.0,
-    "drumRadius": 2.0,
-    "colour": "#3f7d4a",
-    "drumColour": "#e8dcc0",
-    "lantern": 0.8,
-    "finial": 1.5
+    "drum": 0.8,
+    "drumRadius": 1.1,
+    "colour": "#8f9c90",
+    "drumColour": "#d9d2b8"
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
    "type": "clock-tower",
    "at": [
     0,
-    -9.4,
+    -8.2,
     0
    ],
    "params": {
-    "width": 3.4,
-    "height": 14,
+    "width": 3,
+    "height": 12,
     "cap": "hip",
-    "cap_rise": 2.5,
+    "cap_rise": 2,
     "clock": true
    },
    "lod": [
@@ -434,6 +643,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "The 1890s photo shows pale iron-and-louvre halls with an open fenced ground storey; the model uses the rebuilt red/green scheme with punched arched bays, one cupola per hall and a simplified gate with four onion towers."
+  "gaps": "hall now pale cream with arched louvre bays, open railed ground storey, small ridge cupolas and slim gate; cast-iron ornament, awning eave and true louvre texture are simplified, only the front and one end face carry arches, railing and plinth read dark, gate clock tower and corner domes are our reading of the rebuilt market"
  }
 }

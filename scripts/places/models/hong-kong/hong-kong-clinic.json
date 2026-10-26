@@ -65,8 +65,8 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     22,
-     16
+     18,
+     14
     ]
    },
    "at": [
@@ -74,18 +74,16 @@
     -8
    ],
    "z0": 9,
-   "height": 52,
-   "storeys": 13,
+   "height": 60,
+   "storeys": 10,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#d4d8d8",
+    "colour": "#d9dcdb",
     "windows": "none",
-    "faces": {
-     "front": "none",
-     "left": "none"
-    },
+    "faces": {},
     "bands": "#e8eaea",
-    "plinth": 0.0
+    "plinth": 0.0,
+    "pattern": null
    },
    "roof": {
     "form": "flat",
@@ -99,7 +97,7 @@
    "id": "ward-wing",
    "footprint": {
     "rect": [
-     50,
+     46,
      16
     ]
    },
@@ -112,15 +110,13 @@
    "storeys": 8,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#46606c",
+    "colour": "#2f434d",
     "windows": "ribbon",
-    "windowRatio": 0.7,
+    "windowRatio": 0.75,
     "faces": {
-     "left": "none",
-     "right": "none",
      "back": "none"
     },
-    "bands": "#eef0f0",
+    "bands": "#f2f4f4",
     "plinth": 0.0
    },
    "roof": {
@@ -144,19 +140,24 @@
     6
    ],
    "z0": 9,
-   "height": 24,
+   "height": 22,
    "storeys": 5,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4e6672",
+    "colour": "#2f434d",
     "windows": "none",
-    "bands": "#eef0f0"
+    "bands": "#f2f4f4",
+    "windowRatio": 0.75,
+    "faces": {
+     "back": "none"
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#8f9392",
     "parapet": 0.6
-   }
+   },
+   "rotDeg": 18
   },
   {
    "type": "revolve",
@@ -189,7 +190,12 @@
       "#9a9d9d"
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
   },
   {
    "type": "flat-canopy",
@@ -199,7 +205,7 @@
     0
    ],
    "params": {
-    "width": 22,
+    "width": 30,
     "depth": 5,
     "height": 4.5,
     "thickness": 0.5,
@@ -229,7 +235,75 @@
     "height": 2.2,
     "thickness": 0.4,
     "colour": "#b9b6ad"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-slot",
+   "footprint": {
+    "rect": [
+     3,
+     0.8
+    ]
+   },
+   "at": [
+    -30,
+    -15.6
+   ],
+   "z0": 9,
+   "height": 50,
+   "storeys": 16,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f2d35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#444444"
    }
+  },
+  {
+   "type": "array",
+   "at": [
+    -44,
+    -23.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "flat",
+      "width": 3.2,
+      "depth": 3,
+      "height": 4.2,
+      "thickness": 0.3,
+      "colour": "#f1f3f3",
+      "edgeColour": "#ffffff"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -277,8 +351,8 @@
  "city": "hong-kong",
  "venueId": "hong-kong-clinic",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Tower too boxy (real one has stepped balcony edges and glazed slots); ward wings are straight not angled; podium simplified to glass band with no entrance canopy triangles; ribbon windows only on front ward wing."
+  "gaps": "Tower is taller and slimmer with a dark slot but plain translucent cladding; ward wings still straight blocks with only one angled; triangle canopies are tiny; no long curved canopy sweep to the A&E drum."
  }
 }

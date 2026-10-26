@@ -21,7 +21,7 @@
   }
  ],
  "camera": {
-  "yawDeg": -35,
+  "yawDeg": 58,
   "pitchDeg": 8,
   "fovDeg": 45
  },
@@ -35,8 +35,8 @@
      7.5
     ],
     "z0": 0,
-    "height": 0.8,
-    "colour": "#6f6a60"
+    "height": 0.6,
+    "colour": "#6b6a62"
    },
    "at": [
     0,
@@ -68,7 +68,7 @@
    "footprint": {
     "rect": [
      19.5,
-     4.6
+     5
     ]
    },
    "at": [
@@ -76,7 +76,7 @@
     0
    ],
    "z0": 1.5,
-   "height": 1.6,
+   "height": 1.8,
    "storeys": 1,
    "wall": {
     "material": "timber",
@@ -98,127 +98,43 @@
     0
    ],
    "params": {
-    "colour": "#7a6a55",
+    "colour": "#6e6558",
     "topColour": "#5e5042",
     "capBottom": false,
     "sections": [
      {
-      "z": 2.0,
+      "z": 1.8,
       "rect": [
        23.2,
-       9.6
+       9.0
       ]
      },
      {
-      "z": 3.2,
+      "z": 4.5,
       "rect": [
-       22.4,
-       8.0
+       23.2,
+       6.63
       ]
      },
      {
-      "z": 6.5,
+      "z": 7.5,
       "rect": [
-       21.6,
-       4.6
+       23.2,
+       4.01
       ]
      },
      {
-      "z": 9.5,
+      "z": 10,
       "rect": [
-       21,
-       2.2
+       23.2,
+       1.82
       ]
      },
      {
-      "z": 12.2,
+      "z": 11.5,
       "rect": [
-       20.6,
+       23.2,
        0.5
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "gable-board-e",
-   "at": [
-    11.3,
-    0,
-    0
-   ],
-   "params": {
-    "colour": "#f0ebe0",
-    "sections": [
-     {
-      "z": 1.6,
-      "rect": [
-       0.3,
-       5.2
-      ]
-     },
-     {
-      "z": 4,
-      "rect": [
-       0.3,
-       4.2
-      ]
-     },
-     {
-      "z": 8,
-      "rect": [
-       0.3,
-       2.2
-      ]
-     },
-     {
-      "z": 11.5,
-      "rect": [
-       0.3,
-       0.4
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "gable-board-w",
-   "at": [
-    -11.3,
-    0,
-    0
-   ],
-   "params": {
-    "colour": "#f0ebe0",
-    "sections": [
-     {
-      "z": 1.6,
-      "rect": [
-       0.3,
-       5.2
-      ]
-     },
-     {
-      "z": 4,
-      "rect": [
-       0.3,
-       4.2
-      ]
-     },
-     {
-      "z": 8,
-      "rect": [
-       0.3,
-       2.2
-      ]
-     },
-     {
-      "z": 11.5,
-      "rect": [
-       0.3,
-       0.4
       ]
      }
     ]
@@ -247,6 +163,222 @@
     "kind": "palm",
     "height": 15
    }
+  },
+  {
+   "type": "loft",
+   "id": "gable-trim-e",
+   "at": [
+    11.75,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e8c020",
+    "sections": [
+     {
+      "z": 1.8,
+      "rect": [
+       0.25,
+       9.0
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       0.25,
+       6.63
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       0.25,
+       4.01
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.25,
+       1.82
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       0.25,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-board-e",
+   "at": [
+    11.9,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f0ebe0",
+    "sections": [
+     {
+      "z": 2.2,
+      "rect": [
+       0.3,
+       7.65
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       0.3,
+       5.63
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       0.3,
+       3.01
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.3,
+       0.8200000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-e",
+   "at": [
+    11.95,
+    0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     1.4
+    ],
+    "height": 1.5,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-trim-w",
+   "at": [
+    -11.75,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e8c020",
+    "sections": [
+     {
+      "z": 1.8,
+      "rect": [
+       0.25,
+       9.0
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       0.25,
+       6.63
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       0.25,
+       4.01
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.25,
+       1.82
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       0.25,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-board-w",
+   "at": [
+    -11.9,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f0ebe0",
+    "sections": [
+     {
+      "z": 2.2,
+      "rect": [
+       0.3,
+       7.65
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       0.3,
+       5.63
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       0.3,
+       3.01
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.3,
+       0.8200000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-w",
+   "at": [
+    -11.95,
+    0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     1.4
+    ],
+    "height": 1.5,
+    "colour": "#2a2420"
+   }
   }
  ],
  "site": {
@@ -274,8 +406,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Not rendered: render queue had no server heartbeat (203 jobs waiting). Roof lofted as a symmetric A-frame; camera yaw guessed; no painted gable detail or carved posts."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "thatch ridge does not sag or overhang the gables; gable board is plain (no fish/figure paint, no zigzag trim); wall panels hidden under the roof; kerb is a smooth slab not dry-laid stones"
  }
 }

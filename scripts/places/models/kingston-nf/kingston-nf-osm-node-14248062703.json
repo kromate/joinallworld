@@ -41,21 +41,54 @@
    "height": 8,
    "storeys": 2,
    "wall": {
-    "material": "stone",
-    "colour": "#efcf96",
+    "material": "render",
+    "colour": "#ecc990",
     "windows": "punched",
-    "windowRatio": 0.16,
-    "plinth": 0.5,
-    "bay": 2.7,
-    "bands": "#f4ead0",
+    "windowRatio": 0.11,
+    "plinth": 0.4,
+    "bay": 3.2,
     "cornice": true
    },
    "roof": {
     "form": "hip",
-    "colour": "#7d838c",
+    "colour": "#6b7078",
     "material": "slate",
-    "pitch": 26,
+    "pitch": 30,
     "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-bay",
+   "footprint": {
+    "rect": [
+     6,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -6.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f2dcae",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b7078",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.2
    }
   },
   {
@@ -63,37 +96,32 @@
    "id": "west-wing",
    "footprint": {
     "rect": [
-     10,
+     8,
      8
     ]
    },
    "at": [
-    -18,
-    -4
+    -16,
+    -16
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 5.2,
+   "height": 4.8,
    "storeys": 1,
    "wall": {
-    "material": "stone",
-    "colour": "#efcf96",
+    "material": "render",
+    "colour": "#ecc990",
     "windows": "punched",
-    "windowRatio": 0.16,
-    "plinth": 0.5,
-    "bay": 2.7,
-    "bands": "#f4ead0",
-    "cornice": true,
-    "faces": {
-     "left": "plain",
-     "back": "plain"
-    }
+    "windowRatio": 0.11,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "cornice": true
    },
    "roof": {
     "form": "hip",
-    "colour": "#7d838c",
+    "colour": "#6b7078",
     "material": "slate",
-    "pitch": 24,
+    "pitch": 30,
     "overhang": 0.4
    }
   },
@@ -102,80 +130,40 @@
    "id": "east-wing",
    "footprint": {
     "rect": [
-     14,
+     8,
      8
     ]
    },
    "at": [
-    19,
-    1
-   ],
-   "rotDeg": 3,
-   "z0": 0,
-   "height": 5.4,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#efcf96",
-    "windows": "punched",
-    "windowRatio": 0.16,
-    "plinth": 0.5,
-    "bay": 2.7,
-    "bands": "#f4ead0",
-    "cornice": true,
-    "faces": {
-     "right": "plain",
-     "back": "plain"
-    }
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#7d838c",
-    "material": "slate",
-    "pitch": 24,
-    "overhang": 0.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "annexe",
-   "footprint": {
-    "rect": [
-     8,
-     6
-    ]
-   },
-   "at": [
-    30,
-    10
+    16,
+    -16
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 4.6,
+   "height": 4.8,
    "storeys": 1,
    "wall": {
-    "material": "stone",
-    "colour": "#efcf96",
+    "material": "render",
+    "colour": "#ecc990",
     "windows": "punched",
-    "windowRatio": 0.1,
-    "plinth": 0.5,
-    "bay": 2.7,
-    "bands": "#f4ead0",
+    "windowRatio": 0.11,
+    "plinth": 0.4,
+    "bay": 3.2,
     "cornice": true
    },
    "roof": {
     "form": "hip",
-    "colour": "#7d838c",
+    "colour": "#6b7078",
     "material": "slate",
-    "pitch": 24,
+    "pitch": 30,
     "overhang": 0.4
    }
   },
   {
    "type": "core/fence-wall",
    "at": [
-    -30,
-    -14,
+    -22.5,
+    -24,
     0
    ],
    "params": {
@@ -185,127 +173,252 @@
       0
      ],
      [
-      62,
-      2
+      45,
+      0
      ],
      [
-      62,
-      40
+      45,
+      30
      ],
      [
       0,
-      40
+      30
      ],
      [
       0,
       0
      ]
     ],
-    "height": 2.0,
-    "thickness": 0.8,
+    "height": 3.0,
+    "thickness": 0.9,
     "kind": "wall",
-    "colour": "#9d9382"
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -22.5,
+    -24,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#b4b0a6"
+     ],
+     [
+      0.9,
+      3.4,
+      "#b4b0a6"
+     ],
+     [
+      0.6,
+      3.8,
+      "#a9a59b"
+     ],
+     [
+      0,
+      4.2,
+      "#a9a59b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    22.5,
+    -24,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#b4b0a6"
+     ],
+     [
+      0.9,
+      3.4,
+      "#b4b0a6"
+     ],
+     [
+      0.6,
+      3.8,
+      "#a9a59b"
+     ],
+     [
+      0,
+      4.2,
+      "#a9a59b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -22.5,
+    6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#b4b0a6"
+     ],
+     [
+      0.9,
+      3.4,
+      "#b4b0a6"
+     ],
+     [
+      0.6,
+      3.8,
+      "#a9a59b"
+     ],
+     [
+      0,
+      4.2,
+      "#a9a59b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    22.5,
+    6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#b4b0a6"
+     ],
+     [
+      0.9,
+      3.4,
+      "#b4b0a6"
+     ],
+     [
+      0.6,
+      3.8,
+      "#a9a59b"
+     ],
+     [
+      0,
+      4.2,
+      "#a9a59b"
+     ]
+    ]
    }
   },
   {
    "type": "chimney-stack",
    "at": [
-    -3,
+    -9.3,
     0,
     8
    ],
    "params": {
-    "width": 1.2,
-    "height": 2.4,
+    "width": 1.3,
+    "height": 2.8,
     "pots": 2,
-    "colour": "#d8b98a"
+    "colour": "#e0c08f"
    }
   },
   {
    "type": "chimney-stack",
    "at": [
-    4,
+    9.3,
     0,
     8
    ],
    "params": {
-    "width": 1.2,
-    "height": 2.4,
+    "width": 1.3,
+    "height": 2.8,
     "pots": 2,
-    "colour": "#d8b98a"
-   }
-  },
-  {
-   "type": "chimney-stack",
-   "at": [
-    24,
-    1,
-    5.4
-   ],
-   "params": {
-    "width": 1.1,
-    "height": 2.2,
-    "pots": 1,
-    "colour": "#d8b98a"
+    "colour": "#e0c08f"
    }
   },
   {
    "type": "core/steps",
    "at": [
-    -0.5,
-    -6.2,
+    0,
+    -7.4,
     0
    ],
    "params": {
     "width": 2.4,
-    "rise": 0.6,
+    "rise": 0.4,
     "run": 0.5,
-    "count": 3,
+    "count": 2,
     "colour": "#bdb5a2"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -34,
-    -4
+    -32,
+    -6
    ],
    "params": {
     "kind": "conifer",
-    "height": 20
+    "height": 28
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -40,
-    12
+    -36,
+    8
    ],
    "params": {
     "kind": "conifer",
-    "height": 22
+    "height": 30
    }
   },
   {
    "type": "core/tree",
    "at": [
-    40,
-    -12
+    32,
+    -10
    ],
    "params": {
     "kind": "conifer",
-    "height": 21
+    "height": 26
    }
   },
   {
    "type": "core/tree",
    "at": [
-    36,
-    30
+    34,
+    14
    ],
    "params": {
     "kind": "conifer",
-    "height": 18
+    "height": 29
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 25
    }
   }
  ],
@@ -319,8 +432,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "NOT rendered or compared: render queue servers were down (stale heartbeats, no Blender) so massing, roof fit on the OSM outline and colours are unchecked; job is queued"
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Render walls and slate roof now match; wall is smoother grey rubble in photo and the wings sit nearer the wall; trees are low-poly conifers, not tiered Norfolk pines; central bay is a simple gable; no lawn border."
  }
 }

@@ -61,7 +61,7 @@
    "params": {
     "width": 110,
     "depth": 66,
-    "colour": "#3c5650",
+    "colour": "#2f4a4c",
     "bank": true
    }
   },
@@ -86,11 +86,11 @@
     0
    ],
    "params": {
-    "width": 100,
-    "depth": 8,
-    "count": 15,
+    "width": 108,
+    "depth": 10,
+    "count": 14,
     "kind": "palm",
-    "min_height": 26,
+    "min_height": 22,
     "max_height": 36
    }
   },
@@ -253,40 +253,6 @@
       }
      }
     ]
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    0,
-    64,
-    0
-   ],
-   "params": {
-    "rect": [
-     110,
-     8
-    ],
-    "height": 24,
-    "colour": "#2a4a2a",
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    0,
-    58,
-    0
-   ],
-   "params": {
-    "rect": [
-     110,
-     5
-    ],
-    "height": 14,
-    "colour": "#34602f",
-    "windows": "none"
    }
   },
   {
@@ -458,88 +424,6 @@
    }
   },
   {
-   "type": "loft",
-   "at": [
-    10,
-    92,
-    0
-   ],
-   "params": {
-    "colour": "#c4cdd6",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       14,
-       14
-      ]
-     },
-     {
-      "z": 70,
-      "rect": [
-       12,
-       12
-      ]
-     },
-     {
-      "z": 100,
-      "rect": [
-       8,
-       8
-      ]
-     },
-     {
-      "z": 115,
-      "rect": [
-       2,
-       2
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    32,
-    92,
-    0
-   ],
-   "params": {
-    "colour": "#c4cdd6",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       14,
-       14
-      ]
-     },
-     {
-      "z": 70,
-      "rect": [
-       12,
-       12
-      ]
-     },
-     {
-      "z": 100,
-      "rect": [
-       8,
-       8
-      ]
-     },
-     {
-      "z": 115,
-      "rect": [
-       2,
-       2
-      ]
-     }
-    ]
-   }
-  },
-  {
    "type": "prism",
    "at": [
     -45,
@@ -589,6 +473,473 @@
     "colour": "#dcdcdc",
     "windows": "none"
    }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "width": 115,
+    "depth": 10,
+    "count": 12,
+    "kind": "palm",
+    "min_height": 24,
+    "max_height": 38
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    72,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 8,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 22,
+    "max_height": 30
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "closed": false,
+    "colour": "#c9c5b8",
+    "section": {
+     "rect": [
+      1.2,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -55,
+      36,
+      0
+     ],
+     [
+      -35,
+      34,
+      0
+     ],
+     [
+      -15,
+      38,
+      0
+     ],
+     [
+      5,
+      35,
+      0
+     ],
+     [
+      25,
+      39,
+      0
+     ],
+     [
+      45,
+      36,
+      0
+     ],
+     [
+      55,
+      40,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#c4cdd6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       13,
+       13
+      ]
+     },
+     {
+      "z": 55,
+      "rect": [
+       11,
+       11
+      ]
+     },
+     {
+      "z": 70,
+      "rect": [
+       9.5,
+       9.5
+      ]
+     },
+     {
+      "z": 85,
+      "rect": [
+       7.5,
+       7.5
+      ]
+     },
+     {
+      "z": 100,
+      "rect": [
+       5.5,
+       5.5
+      ]
+     },
+     {
+      "z": 112,
+      "rect": [
+       3,
+       3
+      ]
+     },
+     {
+      "z": 120,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#d8dde2",
+    "sections": [
+     {
+      "z": 120,
+      "circle": 0.5
+     },
+     {
+      "z": 128,
+      "circle": 0.12
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    32,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#c4cdd6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       13,
+       13
+      ]
+     },
+     {
+      "z": 55,
+      "rect": [
+       11,
+       11
+      ]
+     },
+     {
+      "z": 70,
+      "rect": [
+       9.5,
+       9.5
+      ]
+     },
+     {
+      "z": 85,
+      "rect": [
+       7.5,
+       7.5
+      ]
+     },
+     {
+      "z": 100,
+      "rect": [
+       5.5,
+       5.5
+      ]
+     },
+     {
+      "z": 112,
+      "rect": [
+       3,
+       3
+      ]
+     },
+     {
+      "z": 120,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    32,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#d8dde2",
+    "sections": [
+     {
+      "z": 120,
+      "circle": 0.5
+     },
+     {
+      "z": 128,
+      "circle": 0.12
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    21,
+    92,
+    58
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "height": 4,
+    "colour": "#b4bcc4",
+    "windows": "none"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "loft",
+   "at": [
+    -26,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.6
+     },
+     {
+      "z": 12,
+      "circle": 1.0
+     },
+     {
+      "z": 22,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    14,
+    2
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4
+     },
+     {
+      "z": 4,
+      "circle": 2.5
+     },
+     {
+      "z": 6.5,
+      "circle": 5.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -45,
+    94,
+    65
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "height": 6,
+    "colour": "#9aa0a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    90,
+    50
+   ],
+   "params": {
+    "rect": [
+     22,
+     3
+    ],
+    "height": 2,
+    "colour": "#f0f0f0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    2
+   ],
+   "at": [
+    10,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#c4cdd6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 70,
+      "rect": [
+       10,
+       10
+      ]
+     },
+     {
+      "z": 120,
+      "rect": [
+       1.5,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    2
+   ],
+   "at": [
+    32,
+    92,
+    0
+   ],
+   "params": {
+    "colour": "#c4cdd6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 70,
+      "rect": [
+       10,
+       10
+      ]
+     },
+     {
+      "z": 120,
+      "rect": [
+       1.5,
+       1.5
+      ]
+     }
+    ]
+   }
   }
  ],
  "site": {
@@ -602,6 +953,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "far-shore palms are sparse low-poly crowns in front of a flat green wall; towers are plain tapered lofts; shore edge straight; only a 110 m vignette of a 900 m park"
+  "gaps": "towers are smooth stepped lofts without detailed tiers; palm line is regular, lake outline still rectangular, fountain plumes are solid cones"
  }
 }

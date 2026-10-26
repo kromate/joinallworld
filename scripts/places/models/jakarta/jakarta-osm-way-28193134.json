@@ -38,262 +38,587 @@
  },
  "parts": [
   {
-   "type": "court-floor",
+   "type": "prism",
+   "id": "slab",
    "at": [
     0,
-    -6,
+    0,
     0
    ],
    "params": {
-    "width": 60,
-    "depth": 50,
-    "colour": "#d9bf9a",
-    "pool": false
+    "rect": [
+     100,
+     92
+    ],
+    "height": 0.1,
+    "colour": "#d9bf9a"
    }
   },
   {
-   "type": "fountain-basin",
+   "type": "prism",
+   "id": "band-outer",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     78,
+     78
+    ],
+    "height": 0.04,
+    "colour": "#b98a7a"
+   },
+   "rotDeg": 45
+  },
+  {
+   "type": "prism",
+   "id": "band-inner",
+   "at": [
+    0,
+    0,
+    0.14
+   ],
+   "params": {
+    "rect": [
+     68,
+     68
+    ],
+    "height": 0.04,
+    "colour": "#d9bf9a"
+   },
+   "rotDeg": 45
+  },
+  {
+   "type": "prism",
+   "id": "gravel",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     50,
+     50
+    ],
+    "height": 0.05,
+    "colour": "#b8a98c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
    "at": [
     0,
     0,
     0
    ],
    "params": {
-    "radius": 11,
-    "tiers": 2
+    "segments": 48,
+    "colour": "#3f6f6a",
+    "profile": [
+     [
+      0,
+      0.9
+     ],
+     [
+      17.2,
+      0.9
+     ]
+    ]
    }
+  },
+  {
+   "type": "revolve",
+   "id": "rim",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 48,
+    "colour": "#8d8f86",
+    "smooth": false,
+    "profile": [
+     [
+      19.8,
+      0
+     ],
+     [
+      18.8,
+      1.3
+     ],
+     [
+      17.0,
+      1.3
+     ],
+     [
+      17.0,
+      0.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hedge-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 48,
+    "colour": "#7da05a",
+    "profile": [
+     [
+      18.9,
+      1.3
+     ],
+     [
+      18.6,
+      2.1,
+      "#8fb06a"
+     ],
+     [
+      17.3,
+      2.1,
+      "#a8b878"
+     ],
+     [
+      17.1,
+      1.3,
+      "#7da05a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pedestal",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#4d6a64",
+    "profile": [
+     [
+      0,
+      0.9
+     ],
+     [
+      4.6,
+      0.9
+     ],
+     [
+      4.6,
+      1.8
+     ],
+     [
+      1.4,
+      2.2
+     ],
+     [
+      1.2,
+      4.0
+     ],
+     [
+      4.2,
+      4.8
+     ],
+     [
+      5.0,
+      5.6
+     ],
+     [
+      1.8,
+      5.2
+     ],
+     [
+      0.7,
+      5.4
+     ],
+     [
+      0.7,
+      6.6
+     ],
+     [
+      0.0,
+      7.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 34,
+    "radiusY": 30,
+    "count": 8,
+    "of": [
+     {
+      "type": "lamp",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "height": 6.5,
+       "count": 1,
+       "spacing": 1
+      }
+     }
+    ],
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -40,
+     0
+    ],
+    "end": [
+     40,
+     -40,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "lamp",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "height": 6.5,
+       "count": 1,
+       "spacing": 1
+      }
+     }
+    ],
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge0",
+   "at": [
+    -46,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "id": "hedge1",
+   "at": [
+    46,
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "id": "hedge2",
+   "at": [
+    -48,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "id": "hedge3",
+   "at": [
+    48,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "id": "hedge4",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "flowerbeds",
    "at": [
-    0,
-    -4,
+    -30,
+    40,
     0
    ],
    "params": {
-    "rows": 1,
-    "cols": 1,
-    "width": 22,
-    "depth": 22,
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 4,
     "colours": [
-     "#6f9a6a"
-    ]
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    -24,
-    -24,
-    0
-   ],
-   "params": {
-    "height": 6,
-    "count": 4,
-    "spacing": 16
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    24,
-    -24,
-    0
-   ],
-   "params": {
-    "height": 6,
-    "count": 4,
-    "spacing": 16
-   }
-  },
-  {
-   "type": "mass",
-   "id": "greenhouse",
-   "footprint": {
-    "rect": [
-     26,
-     12
+     "#d9453a",
+     "#e8c53a",
+     "#e07aa0"
     ]
    },
-   "at": [
-    -40,
-    44
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 7,
-   "storeys": 1,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#bcd4cf",
-    "windows": "curtain",
-    "windowRatio": 0.85,
-    "plinth": 0.5,
-    "bands": "#e9e5dc"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#9ea1a3",
-    "material": "metal-sheet",
-    "pitch": 24,
-    "overhang": 0.5
-   }
+   "lod": [
+    0
+   ]
   },
   {
-   "type": "athletics-track",
+   "type": "flowerbeds",
    "at": [
     30,
     40,
     0
    ],
    "params": {
-    "length": 40,
-    "width": 24,
-    "lane_width": 2,
-    "infield": true,
-    "pitch": false,
-    "colour": "#b4553d"
-   }
-  },
-  {
-   "type": "court-floor",
-   "at": [
-    60,
-    8,
-    0
-   ],
-   "params": {
-    "width": 26,
-    "depth": 15,
-    "colour": "#7a8fa0",
-    "pool": false
-   }
-  },
-  {
-   "type": "court-floor",
-   "at": [
-    60,
-    -20,
-    0
-   ],
-   "params": {
-    "width": 28,
-    "depth": 15,
-    "colour": "#5f8a6a",
-    "pool": false
-   }
-  },
-  {
-   "type": "flowerbeds",
-   "at": [
-    -52,
-    -8,
-    0
-   ],
-   "params": {
     "rows": 2,
-    "cols": 2,
-    "width": 7,
-    "depth": 5,
+    "cols": 3,
+    "width": 6,
+    "depth": 4,
     "colours": [
+     "#e8c53a",
      "#d9453a",
-     "#e8c53a"
+     "#e07aa0"
     ]
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
-   "type": "kiosk",
+   "type": "prism",
+   "id": "play",
    "at": [
-    -30,
-    -36,
+    8,
+    64,
     0
    ],
    "params": {
-    "kind": "container",
-    "width": 4,
-    "depth": 2.6,
-    "height": 2.8,
-    "colour": "#cfc7b8"
+    "rect": [
+     16,
+     10
+    ],
+    "height": 0.15,
+    "colour": "#3a6ea8"
    }
   },
   {
-   "type": "kiosk",
+   "type": "prism",
+   "id": "play2",
    "at": [
-    34,
-    -38,
-    0
+    2,
+    64,
+    0.15
    ],
    "params": {
-    "kind": "container",
-    "width": 4,
-    "depth": 2.6,
-    "height": 2.8,
-    "colour": "#cfc7b8"
-   }
+    "rect": [
+     6,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#e8c53a"
+   },
+   "lod": [
+    0
+   ]
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
+   "id": "play3",
    "at": [
-    60,
-    22,
-    0
+    14,
+    64,
+    0.15
    ],
    "params": {
-    "height": 12,
-    "head_width": 2.5
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    60,
-    -34,
+    "rect": [
+     4,
+     4
+    ],
+    "height": 2.4,
+    "colour": "#d9453a"
+   },
+   "lod": [
     0
-   ],
-   "params": {
-    "height": 12,
-    "head_width": 2.5
-   }
+   ]
   },
   {
    "type": "park-bench",
    "at": [
-    -22,
-    -34,
+    -26,
+    -30,
     0
    ],
    "params": {
     "count": 4,
     "spacing": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -36,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.6,
+    "height": 2.8,
+    "colour": "#cfc7b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -44,
+    26,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 44,
+    "count": 11,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 17
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    -40,
-    10,
+    44,
+    30,
     0
    ],
    "params": {
-    "width": 36,
-    "depth": 50,
-    "count": 16,
+    "width": 30,
+    "depth": 44,
+    "count": 11,
     "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
+    "min_height": 10,
+    "max_height": 17
    }
   },
   {
    "type": "tree-grove",
    "at": [
     0,
-    50,
+    56,
     0
    ],
    "params": {
-    "width": 40,
-    "depth": 20,
-    "count": 10,
+    "width": 80,
+    "depth": 18,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 11,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    44,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 16,
+    "count": 5,
     "kind": "palm",
     "min_height": 9,
     "max_height": 13
@@ -302,16 +627,64 @@
   {
    "type": "tree-grove",
    "at": [
-    30,
-    -44,
+    26,
+    44,
     0
    ],
    "params": {
-    "width": 50,
-    "depth": 14,
-    "count": 8,
+    "width": 26,
+    "depth": 16,
+    "count": 5,
+    "kind": "palm",
+    "min_height": 9,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -52,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 40,
+    "count": 6,
     "kind": "broadleaf",
-    "min_height": 8,
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "count": 5,
+    "kind": "palm",
+    "min_height": 9,
     "max_height": 13
    }
   }
@@ -320,13 +693,13 @@
   "ground": "grass",
   "forecourt": "garden",
   "extent": [
-   130,
-   115
+   110,
+   100
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "fountain plaza at wrong scale vs photo, tree canopy sparse, no playground; courts/greenhouse positions typed"
+  "gaps": "fountain now 2x with rim, hedge ring, two-tier bowl and diamond paving; tree canopy still lollipop-like, no real playground, camera shows more ground than the close photo"
  }
 }

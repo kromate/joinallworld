@@ -43,10 +43,10 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e4dc",
+    "colour": "#e8e6df",
     "windows": "punched",
-    "windowRatio": 0.14,
-    "plinth": 0.8,
+    "windowRatio": 0.07,
+    "plinth": 1.2,
     "cornice": true
    },
    "roof": {
@@ -74,10 +74,10 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e4dc",
+    "colour": "#e8e6df",
     "windows": "punched",
-    "windowRatio": 0.2,
-    "plinth": 0.8,
+    "windowRatio": 0.09,
+    "plinth": 1.2,
     "cornice": true
    },
    "roof": {
@@ -105,149 +105,16 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e4dc",
+    "colour": "#e8e6df",
     "windows": "punched",
-    "windowRatio": 0.14,
-    "plinth": 0.8,
+    "windowRatio": 0.07,
+    "plinth": 1.2,
     "cornice": true
    },
    "roof": {
     "form": "flat",
     "colour": "#8d8f92",
     "parapet": 0.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "fin",
-   "footprint": {
-    "rect": [
-     9,
-     2.6
-    ]
-   },
-   "at": [
-    -4,
-    -6
-   ],
-   "rotDeg": 0,
-   "z0": 10,
-   "height": 6,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#cfcbc0",
-    "windows": "punched",
-    "windowRatio": 0.2,
-    "faces": {
-     "back": "none"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfcbc0"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "fin-step",
-   "footprint": {
-    "rect": [
-     4.5,
-     2.6
-    ]
-   },
-   "at": [
-    -4,
-    -6
-   ],
-   "rotDeg": 0,
-   "z0": 16,
-   "height": 2.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#bdb9ac",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#bdb9ac"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "porch",
-   "footprint": {
-    "rect": [
-     10,
-     6
-    ]
-   },
-   "at": [
-    -12,
-    -2
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.4,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#dedbd1",
-    "windows": "none",
-    "faces": {
-     "back": "none"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfcbc0",
-    "parapet": 0.5
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       1.2,
-       1.2
-      ],
-      "height": 4.2,
-      "colour": "#b6b2a6"
-     }
-    },
-    "mode": "line",
-    "start": [
-     -16.5,
-     -4.6,
-     0
-    ],
-    "end": [
-     -7.5,
-     -4.6,
-     0
-    ],
-    "count": 3
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -12,
-    -5.2,
-    0
-   ],
-   "params": {
-    "width": 8,
-    "height": 1.5,
-    "bottom": 3.0,
-    "colour": "#f2efe6",
-    "frameColour": "#d9d6cc",
-    "posts": false
    }
   },
   {
@@ -287,6 +154,202 @@
     0
    ],
    "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "fin-panel",
+   "footprint": {
+    "rect": [
+     7.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -7.75
+   ],
+   "z0": 10,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-0",
+   "at": [
+    -7,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 4.5,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-1",
+   "at": [
+    -6,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 5.460000000000001,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-2",
+   "at": [
+    -5,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.260000000000001,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-3",
+   "at": [
+    -4,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.9,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-4",
+   "at": [
+    -3,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.260000000000001,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-5",
+   "at": [
+    -2,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 5.460000000000001,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-6",
+   "at": [
+    -1,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 4.5,
+    "colour": "#7a6a64"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 6,
+    "height": 4.4,
+    "thickness": 1.0,
+    "colour": "#f2efe6",
+    "columns": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-14.2",
+   "at": [
+    -14.2,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 4.4,
+    "colour": "#d6d2c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-5.8",
+   "at": [
+    -5.8,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 4.4,
+    "colour": "#d6d2c6"
+   }
   }
  ],
  "site": {
@@ -302,8 +365,8 @@
  "city": "koror",
  "venueId": "koror-community-voting-game",
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "photo-composed but never rendered or compared (queue down); art-deco fin detail, corner view yaw unchecked"
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "fin screen slightly tall and lacks diamond motif; porch has no sign text/stair; wing windows smaller than real; extra rear annex unverified"
  }
 }

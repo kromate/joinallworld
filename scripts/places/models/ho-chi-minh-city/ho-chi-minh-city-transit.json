@@ -46,12 +46,12 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecd9a0",
-    "windows": "arched",
+    "colour": "#f0dfa4",
+    "windows": "punched",
     "windowShape": "arched",
-    "windowRatio": 0.24,
+    "windowRatio": 0.16,
     "bay": 3.0,
-    "glassColour": "#6b5a48",
+    "glassColour": "#fbf6ea",
     "plinth": 0.5,
     "bands": "#f5ecd0",
     "faces": {
@@ -74,7 +74,7 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     6.2,
+     5.0,
      8.6
     ]
    },
@@ -83,29 +83,16 @@
     0
    ],
    "z0": 0,
-   "height": 11,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#efdc9c",
+    "colour": "#f2e0a2",
     "windows": "none",
     "bands": "#f5ecd0",
     "plinth": 0.5,
     "cornice": true,
-    "pattern": [
-     {
-      "type": "fins",
-      "faces": [
-       "front"
-      ],
-      "width": 0.12,
-      "depth": 0.1,
-      "spacing": 0.3,
-      "colour": "#b9a66c",
-      "from": 0.3,
-      "to": 1
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "flat",
@@ -118,7 +105,7 @@
    "id": "lowend",
    "footprint": {
     "rect": [
-     3.2,
+     5.6,
      5.6
     ]
    },
@@ -131,9 +118,10 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecd9a0",
+    "colour": "#f0dfa4",
     "windows": "punched",
-    "windowRatio": 0.18
+    "windowRatio": 0.18,
+    "glassColour": "#f6f1e4"
    },
    "roof": {
     "form": "flat",
@@ -208,8 +196,8 @@
     "width": 4.6,
     "height": 0.8,
     "bottom": 0,
-    "colour": "#f5f3ee",
-    "frameColour": "#b02a2a",
+    "colour": "#e8e2da",
+    "frameColour": "#c0262a",
     "posts": false
    }
   },
@@ -288,10 +276,136 @@
     "thickness": 0.25,
     "colour": "#d8cfb8"
    }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-slot",
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#6a5a48"
+   },
+   "at": [
+    -12.1,
+    -4.38,
+    3.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lattice-win",
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#d8cfa8"
+   },
+   "at": [
+    -12.1,
+    -4.36,
+    8.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief1",
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#8a8478"
+   },
+   "at": [
+    -14.2,
+    -4.5,
+    2.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief2",
+   "params": {
+    "rect": [
+     1.0,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#8a8478"
+   },
+   "at": [
+    -9.8,
+    -4.5,
+    0.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief3",
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#8a8478"
+   },
+   "at": [
+    -12.1,
+    -10.3,
+    0.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ballast",
+   "params": {
+    "rect": [
+     56,
+     6
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#8c8c8c"
+   },
+   "at": [
+    0,
+    -17,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#5a5048"
+   },
+   "at": [
+    -12.1,
+    -9.65,
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "sand",
+  "ground": "paving",
   "forecourt": "none",
   "trees": [
    {
@@ -319,6 +433,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Stone relief pieces, louvre slot on the tower, and fine arched door grilles missing; veranda columns plain; sign board is blank; ground and trackside are simplified"
+  "gaps": "Veranda still renders with dark teal glazing and the sign board blue despite colour changes; tower louvre, stone reliefs and ballast are simple blocks; scene is not seen at the photo scale"
  }
 }

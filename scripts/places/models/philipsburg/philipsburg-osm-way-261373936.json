@@ -53,7 +53,7 @@
    "storeys": 2,
    "wall": {
     "material": "timber",
-    "colour": "#6f5a4c",
+    "colour": "#6b5a4e",
     "windows": "punched",
     "windowShape": "pointed",
     "windowRatio": 0.2,
@@ -69,8 +69,8 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#8c9296",
-    "material": "metal-sheet",
+    "colour": "#4a4d52",
+    "material": "slate",
     "pitch": 38,
     "overhang": 0.5
    }
@@ -80,49 +80,654 @@
    "at": [
     0,
     -8.0,
-    8.2
+    8.0
    ],
    "params": {
-    "width": 2.8,
-    "height": 6.0,
+    "width": 2.2,
+    "height": 6.5,
     "cap": "pyramid",
-    "cap_height": 5.0,
+    "cap_height": 6.5,
     "belfry": true,
-    "colour": "#5e4b3f",
-    "cap_colour": "#4a4a4c"
+    "colour": "#6b5a4e",
+    "cap_colour": "#3e3e42"
    }
   },
   {
-   "type": "mosque-domed/portico",
+   "type": "mass",
+   "id": "fsh0",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -2.6,
+    -12.2
+   ],
+   "z0": 1.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fsh1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -1.6,
+    -12.2
+   ],
+   "z0": 1.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fsh2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    1.6,
+    -12.2
+   ],
+   "z0": 1.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fsh3",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    2.6,
+    -12.2
+   ],
+   "z0": 1.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lsh0",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -4.2,
+    -12.2
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lsh1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    4.2,
+    -12.2
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -2.0,
+    -14.0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "col1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -0.7,
+    -14.0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "col2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0.7,
+    -14.0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "col3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.0,
+    -14.0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "porchroof",
+   "footprint": {
+    "rect": [
+     5.2,
+     3.0
+    ]
+   },
    "at": [
     0,
-    -12,
-    0
+    -13.4
    ],
-   "params": {
-    "width": 4.4,
-    "depth": 2.4,
-    "height": 3.4,
-    "columns": 4,
-    "pediment": true,
-    "steps": 2,
-    "colour": "#f4f1ea",
-    "cap_colour": "#f4f1ea"
+   "z0": 3.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#efe6cf",
+    "pitch": 25
    }
   },
   {
    "type": "fence-wall",
    "at": [
     0,
-    -16,
+    -17,
     0
    ],
    "params": {
-    "length": 14,
-    "height": 1.1,
-    "thickness": 0.1,
-    "kind": "wall",
-    "colour": "#f4f2ec"
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.08,
+    "kind": "railing",
+    "pillarEvery": 0.3,
+    "colour": "#f4f2ec",
+    "points": [
+     [
+      -10,
+      0
+     ],
+     [
+      10,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.08,
+    "kind": "railing",
+    "pillarEvery": 0.3,
+    "colour": "#f4f2ec",
+    "points": [
+     [
+      -10,
+      0
+     ],
+     [
+      -10,
+      12
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.08,
+    "kind": "railing",
+    "pillarEvery": 0.3,
+    "colour": "#f4f2ec",
+    "points": [
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      12
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.2,
+     -10.2,
+     0.9
+    ],
+    "end": [
+     -6.2,
+     7.300000000000001,
+     0.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.2,
+     -7.8,
+     0.9
+    ],
+    "end": [
+     -6.2,
+     9.7,
+     0.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.2,
+     -10.2,
+     3.9
+    ],
+    "end": [
+     -6.2,
+     7.300000000000001,
+     3.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.2,
+     -7.8,
+     3.9
+    ],
+    "end": [
+     -6.2,
+     9.7,
+     3.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     6.2,
+     -10.2,
+     0.9
+    ],
+    "end": [
+     6.2,
+     7.300000000000001,
+     0.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     6.2,
+     -7.8,
+     0.9
+    ],
+    "end": [
+     6.2,
+     9.7,
+     0.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     6.2,
+     -10.2,
+     3.9
+    ],
+    "end": [
+     6.2,
+     7.300000000000001,
+     3.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     6.2,
+     -7.8,
+     3.9
+    ],
+    "end": [
+     6.2,
+     9.7,
+     3.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.7
+      ],
+      "height": 2.0,
+      "colour": "#f4f2ec"
+     }
+    }
    }
   }
  ],
@@ -154,6 +759,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "white shutters beside the windows and the picket fence are not modelled; belfry louvres simplified; church fence is a plain wall"
+  "gaps": "walls read as planks not shingles; front shutters are blocks not louvred; picket fence is dense railing without pointed tops; porch simplified; no Y-tracery window"
  }
 }

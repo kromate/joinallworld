@@ -21,9 +21,9 @@
   }
  ],
  "camera": {
-  "yawDeg": -8,
-  "pitchDeg": 2,
-  "fovDeg": 60,
+  "yawDeg": -14,
+  "pitchDeg": 4,
+  "fovDeg": 55,
   "aspect": 1.5,
   "fit": "all"
  },
@@ -54,9 +54,9 @@
      42
     ],
     "flip": false,
-    "rows": 16,
-    "rise": 0.5,
-    "run": 0.9,
+    "rows": 14,
+    "rise": 0.55,
+    "run": 1.1,
     "firstHeight": 1.5,
     "seatColours": [
      "#d9b63a",
@@ -67,9 +67,9 @@
     "under": "solid",
     "concreteColour": "#c9c5ba",
     "canopy": {
-     "height": 8.5,
-     "depth": 14,
-     "colour": "#6b5d4e",
+     "height": 7,
+     "depth": 12,
+     "colour": "#2e2b29",
      "thickness": 0.6,
      "supports": 8
     }
@@ -87,9 +87,9 @@
      -52,
      -40
     ],
-    "rows": 6,
-    "rise": 0.4,
-    "run": 0.8,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.9,
     "firstHeight": 0.6,
     "seatColour": "#b9b5aa",
     "under": "solid",
@@ -108,9 +108,9 @@
      58,
      36
     ],
-    "rows": 7,
-    "rise": 0.4,
-    "run": 0.8,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.9,
     "firstHeight": 0.6,
     "seatColour": "#b9b5aa",
     "under": "solid",
@@ -129,9 +129,9 @@
      -58,
      -34
     ],
-    "rows": 7,
-    "rise": 0.4,
-    "run": 0.8,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.9,
     "firstHeight": 0.6,
     "seatColour": "#b9b5aa",
     "under": "solid",
@@ -152,9 +152,9 @@
      14
     ],
     "z0": 0,
-    "height": 16,
-    "storeys": 4,
-    "colour": "#ece9e0",
+    "height": 20,
+    "storeys": 5,
+    "colour": "#efe6cc",
     "topColour": "#b5532f",
     "windows": "ribbon",
     "windowRatio": 0.4,
@@ -180,10 +180,10 @@
      110,
      9
     ],
-    "z0": 16,
+    "z0": 20,
     "height": 2.0,
     "topScale": 0.8,
-    "colour": "#b5532f"
+    "colour": "#2f5f9e"
    },
    "lod": [
     0,
@@ -199,34 +199,55 @@
     0
    ],
    "params": {
-    "colour": "#8a6f45",
+    "colour": "#a98b5c",
     "sections": [
      {
       "z": 0,
       "rect": [
-       4.2,
-       4.2
+       6,
+       6
       ]
      },
      {
-      "z": 27,
+      "z": 16.0,
       "rect": [
-       2.8,
-       2.8
+       3.8,
+       3.8
       ]
      },
      {
-      "z": 29.5,
+      "z": 16.3,
       "rect": [
-       3.4,
-       3.4
+       3.5,
+       3.5
       ]
      },
      {
-      "z": 31,
+      "z": 20,
       "rect": [
-       2.8,
-       2.8
+       3.5,
+       3.5
+      ]
+     },
+     {
+      "z": 20.4,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 21.2,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 24,
+      "rect": [
+       0.3,
+       0.3
       ]
      }
     ]
@@ -241,174 +262,55 @@
     0
    ],
    "params": {
-    "colour": "#8a6f45",
+    "colour": "#a98b5c",
     "sections": [
      {
       "z": 0,
       "rect": [
-       4.2,
-       4.2
+       6,
+       6
       ]
      },
      {
-      "z": 38,
+      "z": 36.0,
       "rect": [
-       2.8,
-       2.8
+       3.8,
+       3.8
       ]
      },
      {
-      "z": 41,
+      "z": 36.3,
       "rect": [
-       3.4,
-       3.4
+       3.5,
+       3.5
       ]
      },
      {
-      "z": 43,
+      "z": 45,
       "rect": [
-       2.8,
-       2.8
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "flood0",
-   "at": [
-    -66,
-    -48,
-    0
-   ],
-   "params": {
-    "colour": "#8a8f93",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       0.8,
-       0.8
+       3.5,
+       3.5
       ]
      },
      {
-      "z": 26,
+      "z": 45.4,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 46.2,
       "rect": [
        0.5,
        0.5
       ]
      },
      {
-      "z": 27.2,
+      "z": 49,
       "rect": [
-       4.5,
-       1.2
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "flood1",
-   "at": [
-    66,
-    -48,
-    0
-   ],
-   "params": {
-    "colour": "#8a8f93",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       0.8,
-       0.8
-      ]
-     },
-     {
-      "z": 26,
-      "rect": [
-       0.5,
-       0.5
-      ]
-     },
-     {
-      "z": 27.2,
-      "rect": [
-       4.5,
-       1.2
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "flood2",
-   "at": [
-    -66,
-    48,
-    0
-   ],
-   "params": {
-    "colour": "#8a8f93",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       0.8,
-       0.8
-      ]
-     },
-     {
-      "z": 26,
-      "rect": [
-       0.5,
-       0.5
-      ]
-     },
-     {
-      "z": 27.2,
-      "rect": [
-       4.5,
-       1.2
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "flood3",
-   "at": [
-    66,
-    48,
-    0
-   ],
-   "params": {
-    "colour": "#8a8f93",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       0.8,
-       0.8
-      ]
-     },
-     {
-      "z": 26,
-      "rect": [
-       0.5,
-       0.5
-      ]
-     },
-     {
-      "z": 27.2,
-      "rect": [
-       4.5,
-       1.2
+       0.3,
+       0.3
       ]
      }
     ]
@@ -422,33 +324,19 @@
    {
     "kind": "broadleaf",
     "at": [
-     -75,
-     70
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     75,
-     72
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -70,
-     -70
+     -72,
+     60
     ]
    }
   ],
   "extent": [
-   160,
-   150
+   135,
+   125
   ]
  },
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Main stand lower and smaller than photo, no crowd/colour detail, pylon tops lack ornament; pitch-level camera approximated; hostel block simplified."
+  "gaps": "Main stand seats and canopy read weakly from this angle; no crowd; pylon lanterns have no pierced screens; hostel roofline not stepped; camera is a raised approximation of the pitch-level photo."
  }
 }

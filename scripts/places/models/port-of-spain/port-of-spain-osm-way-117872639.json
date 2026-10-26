@@ -45,33 +45,43 @@
    "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#f0dfc2",
-    "windows": "none",
-    "windowRatio": 0,
+    "colour": "#efdfc0",
+    "windows": "punched",
+    "windowRatio": 0.3,
     "plinth": 0.9,
     "bands": "#b5573a",
     "cornice": true,
     "faces": {
      "front": "punched",
      "back": "plain",
-     "left": "plain",
+     "left": "punched",
      "right": "plain"
     },
     "pattern": [
      {
       "type": "arcade",
       "faces": [
-       "front"
-      ]
+       "front",
+       "left"
+      ],
+      "storeys": 1,
+      "bay": 3.4,
+      "opening": 0.66,
+      "height": 0.9,
+      "depth": 0.9,
+      "shape": "arch",
+      "pierColour": "#efdfc0"
      }
-    ]
+    ],
+    "windowShape": "arched",
+    "bay": 3.4
    },
    "roof": {
     "form": "hip",
-    "colour": "#d5dadb",
+    "colour": "#c4c9cb",
     "material": "metal-sheet",
-    "pitch": 18,
-    "overhang": 1.2
+    "pitch": 20,
+    "overhang": 0.8
    }
   },
   {
@@ -92,20 +102,20 @@
    "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#f0dfc2",
+    "colour": "#efdfc0",
     "windows": "punched",
     "windowShape": "arched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.25,
     "plinth": 0.9,
     "bands": "#b5573a",
     "cornice": true
    },
    "roof": {
     "form": "hip",
-    "colour": "#cfd4d4",
+    "colour": "#c4c9cb",
     "material": "metal-sheet",
     "pitch": 18,
-    "overhang": 1.0
+    "overhang": 0.8
    }
   },
   {
@@ -113,8 +123,8 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     6.5,
-     6.5
+     6,
+     6
     ]
    },
    "at": [
@@ -122,14 +132,14 @@
     -3
    ],
    "rotDeg": 0,
-   "height": 20,
-   "storeys": 4,
+   "height": 15.5,
+   "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#f0dfc2",
+    "colour": "#efdfc0",
     "windows": "punched",
     "windowShape": "arched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.2,
     "plinth": 0.9,
     "bands": "#b5573a",
     "cornice": true,
@@ -142,52 +152,23 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8ccb8",
-    "parapet": 0.6
+    "colour": "#d8c2a0",
+    "parapet": 0.9
    }
   },
   {
    "type": "parapet-merlons",
    "at": [
     16,
-    -6.5,
-    20
+    -6,
+    16.4
    ],
+   "rotDeg": 0,
    "params": {
-    "length": 7.4,
-    "height": 1.0,
+    "length": 6.2,
+    "height": 0.8,
     "merlon": 1.0,
-    "gap": 0.8,
-    "colour": "#b5573a"
-   }
-  },
-  {
-   "type": "parapet-merlons",
-   "at": [
-    12.5,
-    -3,
-    20
-   ],
-   "params": {
-    "length": 7.4,
-    "height": 1.0,
-    "merlon": 1.0,
-    "gap": 0.8,
-    "colour": "#b5573a"
-   }
-  },
-  {
-   "type": "parapet-merlons",
-   "at": [
-    19.5,
-    -3,
-    20
-   ],
-   "params": {
-    "length": 7.4,
-    "height": 1.0,
-    "merlon": 1.0,
-    "gap": 0.8,
+    "gap": 0.7,
     "colour": "#b5573a"
    }
   },
@@ -195,34 +176,162 @@
    "type": "parapet-merlons",
    "at": [
     16,
-    0.5,
-    20
+    0,
+    16.4
    ],
+   "rotDeg": 0,
    "params": {
-    "length": 7.4,
-    "height": 1.0,
+    "length": 6.2,
+    "height": 0.8,
     "merlon": 1.0,
-    "gap": 0.8,
+    "gap": 0.7,
     "colour": "#b5573a"
    }
   },
   {
-   "type": "prism",
-   "id": "porte-cochere",
+   "type": "parapet-merlons",
    "at": [
-    18,
+    13,
+    -3,
+    16.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6.2,
+    "height": 0.8,
+    "merlon": 1.0,
+    "gap": 0.7,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    19,
+    -3,
+    16.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6.2,
+    "height": 0.8,
+    "merlon": 1.0,
+    "gap": 0.7,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower2",
+   "footprint": {
+    "rect": [
+     5.5,
+     9
+    ]
+   },
+   "at": [
+    22,
+    -1.5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efdfc0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#b5573a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c2a0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    22,
+    -6,
+    12.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "merlon": 1.0,
+    "gap": 0.7,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    22,
     3,
+    12.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "merlon": 1.0,
+    "gap": 0.7,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    24.7,
+    -1.5,
+    12.8
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8.5,
+    "height": 0.8,
+    "merlon": 1.0,
+    "gap": 0.7,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -8,
+    -8.7,
+    5.0
+   ],
+   "lod": [
     0
    ],
    "params": {
-    "rect": [
-     10,
-     8
-    ],
-    "height": 4.4,
-    "z0": 0,
-    "colour": "#ece0cc",
-    "windows": "none"
+    "length": 22,
+    "height": 0.9,
+    "postEvery": 1.2,
+    "colour": "#b5573a"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -19.1,
+    -0.5,
+    5.0
+   ],
+   "rotDeg": 90,
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "postEvery": 1.2,
+    "colour": "#b5573a"
    }
   },
   {
@@ -248,9 +357,10 @@
     0
    ],
    "params": {
-    "length": 40,
+    "length": 46,
     "height": 1.1,
-    "depth": 1.0
+    "depth": 1.0,
+    "colour": "#2f5f2b"
    }
   }
  ],
@@ -281,6 +391,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "upper-floor arched loggia and terracotta arch mouldings simplified; crenellated tower is a single volume, the lower second tower is omitted"
+  "gaps": "Upper-floor loggia is arched windows with a balustrade rather than open paired arches; arch mouldings and cornice brackets simplified; no ornate ironwork"
  }
 }

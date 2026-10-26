@@ -25,7 +25,7 @@
   }
  ],
  "camera": {
-  "yawDeg": 0,
+  "yawDeg": 12,
   "pitchDeg": 6,
   "fovDeg": 50,
   "aspect": 1.333
@@ -41,117 +41,330 @@
     0,
     0
    ],
-   "height": 19,
+   "height": 17,
    "storeys": 4,
    "wall": {
     "material": "sandstone",
-    "colour": "#d6b98c",
-    "windows": "punched",
+    "colour": "#d3b68b",
+    "windows": "none",
     "windowRatio": 0.1,
-    "bay": 18,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "plinth": 0.6,
+    "plinth": 1.2,
     "cornice": true,
     "pattern": [
      {
       "type": "bands",
       "colours": [
-       "#c3a273"
+       "#bf9f72"
       ],
-      "height": 0.8,
-      "at": 0.9,
-      "proud": 0.15,
+      "height": 0.3,
+      "at": 0.5,
+      "proud": 0.05,
       "floors": "all"
      }
     ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#9a9a96",
+    "colour": "#a7a7a3",
     "material": "membrane",
     "parapet": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "entrance-glass",
-   "footprint": {
-    "rect": [
-     34,
-     3
-    ]
-   },
-   "at": [
-    0,
-    -59.5
-   ],
-   "height": 8,
-   "storeys": 1,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#46535c",
-    "windows": "curtain",
-    "windowRatio": 0.9
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3b3b3b"
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    -60.5,
-    6.5
+    -59.9,
+    0
    ],
    "params": {
     "rect": [
-     34,
-     5
+     96,
+     1.0
     ],
-    "height": 0.5,
-    "colour": "#8e979c"
+    "height": 1.0,
+    "colour": "#1f2a3d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -60.4,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#2b3944"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -63.0,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     17,
+     5.5
+    ],
+    "height": 0.45,
+    "colour": "#aeb4b7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -60.4,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.8
+    ],
+    "height": 6.5,
+    "colour": "#c9ab7b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -60.4,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#2b3944"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -63.0,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     17,
+     5.5
+    ],
+    "height": 0.45,
+    "colour": "#aeb4b7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -60.4,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.8
+    ],
+    "height": 6.5,
+    "colour": "#c9ab7b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -60.4,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#2b3944"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -63.0,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     17,
+     5.5
+    ],
+    "height": 0.45,
+    "colour": "#aeb4b7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -60.4,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.8
+    ],
+    "height": 6.5,
+    "colour": "#c9ab7b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -45,
+    -60.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     3.2
+    ],
+    "height": 17,
+    "colour": "#cfb084"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    -60.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     3.2
+    ],
+    "height": 17,
+    "colour": "#cfb084"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15,
+    -60.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     3.2
+    ],
+    "height": 17,
+    "colour": "#cfb084"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    45,
+    -60.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     3.2
+    ],
+    "height": 17,
+    "colour": "#cfb084"
    }
   },
   {
    "type": "array",
    "at": [
-    0,
-    -59,
-    0
+    -48,
+    -60.9,
+    14.5
    ],
    "params": {
     "mode": "line",
     "start": [
-     -50,
+     0,
      0,
      0
     ],
     "end": [
-     50,
+     96,
      0,
      0
     ],
-    "count": 6,
+    "count": 8,
     "of": [
      {
       "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
       "params": {
        "rect": [
-        2.4,
-        2.4
+        2,
+        0.3
        ],
-       "height": 15,
-       "colour": "#cbac7d"
+       "height": 2,
+       "colour": "#3e5160"
       }
      }
     ]
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
@@ -159,24 +372,34 @@
    "footprint": {
     "kind": "round",
     "size": [
-     30,
-     30
+     34,
+     34
     ]
    },
    "at": [
-    -45,
-    30
+    -48,
+    26
    ],
-   "height": 27,
-   "storeys": 6,
+   "height": 42,
+   "storeys": 8,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#e8eaea",
-    "windows": "none"
+    "colour": "#e4e7e8",
+    "windows": "none",
+    "faces": {},
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e4e7e8",
+       "#a9b4bb"
+      ]
+     }
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#a0a4a6",
+    "colour": "#d0d3d4",
     "parapet": 0.5
    }
   }
@@ -208,7 +431,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo is a close entrance view; no stepped pilaster fascia, canopies simplified, rotunda grid windows omitted, red arch interior not modelled"
+  "gaps": "entrance is three flat dark bays with canopies rather than deep recessed stone portals; rotunda windows are plain punched grid; pier joints and signage omitted; photo is a close view so mall extent is approximate"
  },
  "schema": "allworld-place-model",
  "version": 2,

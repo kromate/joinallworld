@@ -28,67 +28,82 @@
   {
    "type": "loft",
    "id": "hill",
-   "at": [
-    0,
-    6,
-    0
-   ],
    "params": {
     "sections": [
      {
       "z": 0,
       "ellipse": [
-       48,
-       40
-      ],
-      "colour": "#7a6a48"
-     },
-     {
-      "z": 12,
-      "ellipse": [
-       36,
+       52,
        30
       ],
-      "colour": "#a08c62"
+      "cx": -2,
+      "cy": 0,
+      "colour": "#6b5636"
      },
      {
-      "z": 26,
+      "z": 8,
       "ellipse": [
-       24,
+       48,
+       26
+      ],
+      "cx": 2,
+      "cy": 0,
+      "colour": "#7f6540"
+     },
+     {
+      "z": 18,
+      "ellipse": [
+       40,
        20
       ],
-      "colour": "#b09a6c"
+      "cx": 8,
+      "cy": 1,
+      "colour": "#9a7a4a"
      },
      {
-      "z": 38,
+      "z": 28,
       "ellipse": [
-       11,
-       9
+       28,
+       13
       ],
-      "colour": "#a89260"
+      "cx": 13,
+      "cy": 2,
+      "colour": "#8a6c42"
      },
      {
-      "z": 42,
+      "z": 35,
       "ellipse": [
-       5,
-       4
+       13,
+       6
       ],
-      "colour": "#b8a47c"
+      "cx": 16,
+      "cy": 2.5,
+      "colour": "#a2834f"
+     },
+     {
+      "z": 38.5,
+      "ellipse": [
+       4,
+       3
+      ],
+      "cx": 17,
+      "cy": 2.5,
+      "colour": "#8d7048"
      }
     ],
     "curve": true,
     "steps": 3,
     "capTop": true,
-    "round": 20,
-    "colour": "#a08c62"
+    "round": 22,
+    "colour": "#8a6c42"
    }
   },
   {
    "type": "loft",
-   "id": "shoulder",
+   "id": "saddle",
    "at": [
-    -34,
-    10,
+    -26,
+    2,
     0
    ],
    "params": {
@@ -96,219 +111,3357 @@
      {
       "z": 0,
       "ellipse": [
-       26,
-       22
-      ]
+       22,
+       16
+      ],
+      "colour": "#6b5636"
      },
      {
-      "z": 8,
+      "z": 7,
       "ellipse": [
-       16,
-       13
-      ]
+       15,
+       11
+      ],
+      "cx": 2,
+      "colour": "#7a6040"
      },
      {
-      "z": 14,
+      "z": 12,
       "ellipse": [
-       4,
+       5,
        4
-      ]
+      ],
+      "cx": 4,
+      "colour": "#6e5738"
      }
     ],
     "curve": true,
     "steps": 3,
-    "round": 14,
-    "colour": "#7c6a46"
+    "capTop": true,
+    "round": 16,
+    "colour": "#7a6040"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "spur",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16,
+       9
+      ],
+      "colour": "#6b5636"
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       10,
+       5
+      ],
+      "cx": 1,
+      "colour": "#5e4a30"
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       3,
+       2
+      ],
+      "colour": "#5e4a30"
+     }
+    ],
+    "curve": true,
+    "steps": 2,
+    "capTop": true,
+    "round": 12,
+    "colour": "#5e4a30"
    }
   },
   {
    "type": "sweep-path",
    "id": "track",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "section": {
      "rect": [
-      2.2,
-      0.15
+      3.0,
+      0.2
      ]
     },
     "points": [
      [
-      -6,
+      -14,
+      -26,
+      5.15
+     ],
+     [
+      8,
       -18,
-      1
+      19.35
      ],
      [
-      -2,
+      -6,
+      -14,
+      21.35
+     ],
+     [
+      16,
       -12,
-      9
+      26.35
      ],
      [
-      8,
-      -8,
-      16
-     ],
-     [
-      3,
-      -2,
-      26
-     ],
-     [
-      -1,
       4,
-      34
+      -8,
+      29.75
      ],
      [
-      0,
-      8,
-      40
+      18,
+      -5,
+      33.25
+     ],
+     [
+      10,
+      -2,
+      35.7
+     ],
+     [
+      15,
+      1.5,
+      38.85
      ]
     ],
-    "colour": "#c9c3b0"
+    "curve": false,
+    "colour": "#b9ad92"
    }
   },
   {
    "type": "prism",
    "id": "cabin",
    "at": [
-    0,
-    9,
-    42
+    17,
+    2.5,
+    38.3
    ],
    "params": {
     "rect": [
-     6,
-     4
+     4.5,
+     3.2
     ],
-    "height": 2.4,
-    "colour": "#d8d6d0"
+    "height": 2.2,
+    "colour": "#f0efe8"
    }
   },
   {
-   "type": "loft",
-   "id": "tower",
-   "at": [
+   "type": "sweep-path",
+   "id": "leg0",
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      15.5,
+      1.0,
+      40.5
+     ],
+     [
+      16.55,
+      2.05,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg1",
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      18.5,
+      1.0,
+      40.5
+     ],
+     [
+      17.45,
+      2.05,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg2",
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      18.5,
+      4.0,
+      40.5
+     ],
+     [
+      17.45,
+      2.95,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg3",
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      15.5,
+      4.0,
+      40.5
+     ],
+     [
+      16.55,
+      2.95,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring0",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      15.5,
+      1.0,
+      40.5
+     ],
+     [
+      18.5,
+      1.0,
+      40.5
+     ],
+     [
+      18.5,
+      4.0,
+      40.5
+     ],
+     [
+      15.5,
+      4.0,
+      40.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#e6e8ea"
+   },
+   "lod": [
     0,
-    9,
-    44.4
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring4",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      15.7625,
+      1.2625,
+      44.5
+     ],
+     [
+      18.2375,
+      1.2625,
+      44.5
+     ],
+     [
+      18.2375,
+      3.7375,
+      44.5
+     ],
+     [
+      15.7625,
+      3.7375,
+      44.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring8",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      16.025,
+      1.525,
+      48.5
+     ],
+     [
+      17.975,
+      1.525,
+      48.5
+     ],
+     [
+      17.975,
+      3.475,
+      48.5
+     ],
+     [
+      16.025,
+      3.475,
+      48.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring12",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      16.2875,
+      1.7875,
+      52.5
+     ],
+     [
+      17.7125,
+      1.7875,
+      52.5
+     ],
+     [
+      17.7125,
+      3.2125,
+      52.5
+     ],
+     [
+      16.2875,
+      3.2125,
+      52.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring16",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      16.55,
+      2.05,
+      56.5
+     ],
+     [
+      17.45,
+      2.05,
+      56.5
+     ],
+     [
+      17.45,
+      2.95,
+      56.5
+     ],
+     [
+      16.55,
+      2.95,
+      56.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      15.5,
+      1.0,
+      40.5
+     ],
+     [
+      18.2375,
+      1.2625,
+      44.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      18.5,
+      1.0,
+      40.5
+     ],
+     [
+      18.2375,
+      3.7375,
+      44.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      18.5,
+      4.0,
+      40.5
+     ],
+     [
+      15.7625,
+      3.7375,
+      44.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      15.5,
+      4.0,
+      40.5
+     ],
+     [
+      15.7625,
+      1.2625,
+      44.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      15.7625,
+      1.2625,
+      44.5
+     ],
+     [
+      17.975,
+      1.525,
+      48.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      18.2375,
+      1.2625,
+      44.5
+     ],
+     [
+      17.975,
+      3.475,
+      48.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      18.2375,
+      3.7375,
+      44.5
+     ],
+     [
+      16.025,
+      3.475,
+      48.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      15.7625,
+      3.7375,
+      44.5
+     ],
+     [
+      16.025,
+      1.525,
+      48.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      16.025,
+      1.525,
+      48.5
+     ],
+     [
+      17.7125,
+      1.7875,
+      52.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      17.975,
+      1.525,
+      48.5
+     ],
+     [
+      17.7125,
+      3.2125,
+      52.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      17.975,
+      3.475,
+      48.5
+     ],
+     [
+      16.2875,
+      3.2125,
+      52.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      16.025,
+      3.475,
+      48.5
+     ],
+     [
+      16.2875,
+      1.7875,
+      52.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      16.2875,
+      1.7875,
+      52.5
+     ],
+     [
+      17.45,
+      2.05,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      17.7125,
+      1.7875,
+      52.5
+     ],
+     [
+      17.45,
+      2.95,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      17.7125,
+      3.2125,
+      52.5
+     ],
+     [
+      16.55,
+      2.95,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      16.2875,
+      3.2125,
+      52.5
+     ],
+     [
+      16.55,
+      2.05,
+      56.5
+     ]
+    ],
+    "colour": "#e6e8ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-head",
+   "at": [
+    17,
+    2.5,
+    56.5
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.4,
+    "colour": "#f0efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "antenna",
+   "at": [
+    17,
+    2.5,
+    57.9
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 3,
+    "colour": "#cfd3d6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -15.84,
+    -35.17,
+    0
    ],
    "params": {
     "sections": [
      {
       "z": 0,
-      "rect": [
-       3.2,
-       3.2
-      ],
-      "colour": "#e8e8e8"
+      "circle": 0.48
      },
      {
-      "z": 14,
-      "rect": [
-       1.0,
-       1.0
-      ],
-      "colour": "#cfd3d6"
+      "z": 0.434,
+      "circle": 0.6
      },
      {
-      "z": 18,
-      "rect": [
-       1.5,
-       1.5
-      ],
-      "colour": "#d6d0c8"
+      "z": 3.906,
+      "circle": 0.54
      },
      {
-      "z": 20,
-      "rect": [
-       1.4,
-       1.4
-      ]
+      "z": 4.34,
+      "circle": 0.3
      }
     ],
-    "capTop": true
-   }
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
   },
   {
-   "type": "array",
+   "type": "loft",
    "at": [
-    0,
-    0,
+    -15.11,
+    -31.6,
     0
    ],
    "params": {
-    "mode": "line",
-    "start": [
-     -15.399999999999999,
-     -26
-    ],
-    "end": [
-     18.2,
-     -27
-    ],
-    "count": 7,
-    "vary": {},
-    "of": {
-     "type": "loft",
-     "params": {
-      "sections": [
-       {
-        "z": 0,
-        "circle": 0.45
-       },
-       {
-        "z": 8,
-        "circle": 0.4
-       }
-      ],
-      "colour": "#4e6b3a",
-      "capTop": true,
-      "round": 6
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.518,
+      "circle": 0.6
+     },
+     {
+      "z": 4.662,
+      "circle": 0.54
+     },
+     {
+      "z": 5.18,
+      "circle": 0.3
      }
-    }
-   }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
-   "type": "array",
+   "type": "loft",
    "at": [
-    0,
-    0,
+    -12.68,
+    -29.39,
     0
    ],
    "params": {
-    "mode": "line",
-    "start": [
-     -12.6,
-     -23
-    ],
-    "end": [
-     15.399999999999999,
-     -23
-    ],
-    "count": 5,
-    "of": {
-     "type": "loft",
-     "params": {
-      "sections": [
-       {
-        "z": 0,
-        "circle": 0.45
-       },
-       {
-        "z": 5,
-        "circle": 0.4
-       }
-      ],
-      "colour": "#4e6b3a",
-      "capTop": true,
-      "round": 6
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.577,
+      "circle": 0.6
+     },
+     {
+      "z": 5.193,
+      "circle": 0.54
+     },
+     {
+      "z": 5.77,
+      "circle": 0.3
      }
-    }
-   }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18.39,
+    -33.52,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.561,
+      "circle": 0.6
+     },
+     {
+      "z": 5.049,
+      "circle": 0.54
+     },
+     {
+      "z": 5.61,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -24.8,
+    -31.15,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.511,
+      "circle": 0.6
+     },
+     {
+      "z": 4.599,
+      "circle": 0.54
+     },
+     {
+      "z": 5.11,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -15.16,
+    -33.76,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.58,
+      "circle": 0.6
+     },
+     {
+      "z": 5.22,
+      "circle": 0.54
+     },
+     {
+      "z": 5.8,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14.39,
+    -35.94,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.512,
+      "circle": 0.6
+     },
+     {
+      "z": 4.6080000000000005,
+      "circle": 0.54
+     },
+     {
+      "z": 5.12,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4.58,
+    -33.69,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.451,
+      "circle": 0.6
+     },
+     {
+      "z": 4.059,
+      "circle": 0.54
+     },
+     {
+      "z": 4.51,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    13.08,
+    -35.65,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.543,
+      "circle": 0.6
+     },
+     {
+      "z": 4.887,
+      "circle": 0.54
+     },
+     {
+      "z": 5.43,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    16.65,
+    -28.02,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.54,
+      "circle": 0.6
+     },
+     {
+      "z": 4.86,
+      "circle": 0.54
+     },
+     {
+      "z": 5.4,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -13.42,
+    -33.15,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.47100000000000003,
+      "circle": 0.6
+     },
+     {
+      "z": 4.239,
+      "circle": 0.54
+     },
+     {
+      "z": 4.71,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18.08,
+    -33.41,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5559999999999999,
+      "circle": 0.6
+     },
+     {
+      "z": 5.004,
+      "circle": 0.54
+     },
+     {
+      "z": 5.56,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14.74,
+    -31.08,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.46399999999999997,
+      "circle": 0.6
+     },
+     {
+      "z": 4.176,
+      "circle": 0.54
+     },
+     {
+      "z": 4.64,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -27.43,
+    -30.42,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.61,
+      "circle": 0.6
+     },
+     {
+      "z": 5.49,
+      "circle": 0.54
+     },
+     {
+      "z": 6.1,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14.86,
+    -33.38,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5710000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.139,
+      "circle": 0.54
+     },
+     {
+      "z": 5.71,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    21.68,
+    -29.04,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.41700000000000004,
+      "circle": 0.6
+     },
+     {
+      "z": 3.753,
+      "circle": 0.54
+     },
+     {
+      "z": 4.17,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    15.4,
+    -32.45,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.435,
+      "circle": 0.6
+     },
+     {
+      "z": 3.9149999999999996,
+      "circle": 0.54
+     },
+     {
+      "z": 4.35,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14.99,
+    -35.64,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.526,
+      "circle": 0.6
+     },
+     {
+      "z": 4.734,
+      "circle": 0.54
+     },
+     {
+      "z": 5.26,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -15.75,
+    -32.61,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.562,
+      "circle": 0.6
+     },
+     {
+      "z": 5.058,
+      "circle": 0.54
+     },
+     {
+      "z": 5.62,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    15.33,
+    -34.8,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.47100000000000003,
+      "circle": 0.6
+     },
+     {
+      "z": 4.239,
+      "circle": 0.54
+     },
+     {
+      "z": 4.71,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22.66,
+    -31.77,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.49000000000000005,
+      "circle": 0.6
+     },
+     {
+      "z": 4.41,
+      "circle": 0.54
+     },
+     {
+      "z": 4.9,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -1.33,
+    -34.07,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.40800000000000003,
+      "circle": 0.6
+     },
+     {
+      "z": 3.672,
+      "circle": 0.54
+     },
+     {
+      "z": 4.08,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -3.39,
+    -30.82,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.447,
+      "circle": 0.6
+     },
+     {
+      "z": 4.023,
+      "circle": 0.54
+     },
+     {
+      "z": 4.47,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -10.91,
+    -33.96,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.492,
+      "circle": 0.6
+     },
+     {
+      "z": 4.428,
+      "circle": 0.54
+     },
+     {
+      "z": 4.92,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -21.5,
+    -35.59,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.524,
+      "circle": 0.6
+     },
+     {
+      "z": 4.716,
+      "circle": 0.54
+     },
+     {
+      "z": 5.24,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -5.82,
+    -28.79,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5740000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.166,
+      "circle": 0.54
+     },
+     {
+      "z": 5.74,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -27.57,
+    -32.9,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.605,
+      "circle": 0.6
+     },
+     {
+      "z": 5.445,
+      "circle": 0.54
+     },
+     {
+      "z": 6.05,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    16.2,
+    -28.6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.541,
+      "circle": 0.6
+     },
+     {
+      "z": 4.869000000000001,
+      "circle": 0.54
+     },
+     {
+      "z": 5.41,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.68,
+    -30.76,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.459,
+      "circle": 0.6
+     },
+     {
+      "z": 4.131,
+      "circle": 0.54
+     },
+     {
+      "z": 4.59,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    27.38,
+    -35.4,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.6120000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.508,
+      "circle": 0.54
+     },
+     {
+      "z": 6.12,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18.52,
+    -32.84,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5690000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.121,
+      "circle": 0.54
+     },
+     {
+      "z": 5.69,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    15.28,
+    -35.52,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.564,
+      "circle": 0.6
+     },
+     {
+      "z": 5.076,
+      "circle": 0.54
+     },
+     {
+      "z": 5.64,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -16.89,
+    -35.97,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.403,
+      "circle": 0.6
+     },
+     {
+      "z": 3.6270000000000002,
+      "circle": 0.54
+     },
+     {
+      "z": 4.03,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -23.05,
+    -29.52,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.593,
+      "circle": 0.6
+     },
+     {
+      "z": 5.337,
+      "circle": 0.54
+     },
+     {
+      "z": 5.93,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14.27,
+    -28.39,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.524,
+      "circle": 0.6
+     },
+     {
+      "z": 4.716,
+      "circle": 0.54
+     },
+     {
+      "z": 5.24,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14.04,
+    -32.48,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5900000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.3100000000000005,
+      "circle": 0.54
+     },
+     {
+      "z": 5.9,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14.81,
+    -35.67,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.476,
+      "circle": 0.6
+     },
+     {
+      "z": 4.284,
+      "circle": 0.54
+     },
+     {
+      "z": 4.76,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -24.89,
+    -31.65,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5730000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.157000000000001,
+      "circle": 0.54
+     },
+     {
+      "z": 5.73,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6.68,
+    -29.93,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.488,
+      "circle": 0.6
+     },
+     {
+      "z": 4.392,
+      "circle": 0.54
+     },
+     {
+      "z": 4.88,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -23.13,
+    -31.03,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.513,
+      "circle": 0.6
+     },
+     {
+      "z": 4.617,
+      "circle": 0.54
+     },
+     {
+      "z": 5.13,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -5.05,
+    -30.31,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.538,
+      "circle": 0.6
+     },
+     {
+      "z": 4.842,
+      "circle": 0.54
+     },
+     {
+      "z": 5.38,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    8.22,
+    -28.56,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.426,
+      "circle": 0.6
+     },
+     {
+      "z": 3.834,
+      "circle": 0.54
+     },
+     {
+      "z": 4.26,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12.69,
+    -29.01,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.589,
+      "circle": 0.6
+     },
+     {
+      "z": 5.301,
+      "circle": 0.54
+     },
+     {
+      "z": 5.89,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    2.51,
+    -28.77,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.401,
+      "circle": 0.6
+     },
+     {
+      "z": 3.609,
+      "circle": 0.54
+     },
+     {
+      "z": 4.01,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22.74,
+    -35.11,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.532,
+      "circle": 0.6
+     },
+     {
+      "z": 4.788,
+      "circle": 0.54
+     },
+     {
+      "z": 5.32,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -25.46,
+    -34.04,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.47800000000000004,
+      "circle": 0.6
+     },
+     {
+      "z": 4.3020000000000005,
+      "circle": 0.54
+     },
+     {
+      "z": 4.78,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    29.15,
+    -30.99,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.534,
+      "circle": 0.6
+     },
+     {
+      "z": 4.806,
+      "circle": 0.54
+     },
+     {
+      "z": 5.34,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    2.65,
+    -28.73,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.525,
+      "circle": 0.6
+     },
+     {
+      "z": 4.7250000000000005,
+      "circle": 0.54
+     },
+     {
+      "z": 5.25,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    17.21,
+    -31.1,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.431,
+      "circle": 0.6
+     },
+     {
+      "z": 3.8789999999999996,
+      "circle": 0.54
+     },
+     {
+      "z": 4.31,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -13.58,
+    -30.7,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.549,
+      "circle": 0.6
+     },
+     {
+      "z": 4.941000000000001,
+      "circle": 0.54
+     },
+     {
+      "z": 5.49,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -19.34,
+    -28.78,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.527,
+      "circle": 0.6
+     },
+     {
+      "z": 4.742999999999999,
+      "circle": 0.54
+     },
+     {
+      "z": 5.27,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12.68,
+    -28.93,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.48200000000000004,
+      "circle": 0.6
+     },
+     {
+      "z": 4.338,
+      "circle": 0.54
+     },
+     {
+      "z": 4.82,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12.8,
+    -35.81,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.5780000000000001,
+      "circle": 0.6
+     },
+     {
+      "z": 5.202,
+      "circle": 0.54
+     },
+     {
+      "z": 5.78,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20.49,
+    -31.33,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.526,
+      "circle": 0.6
+     },
+     {
+      "z": 4.734,
+      "circle": 0.54
+     },
+     {
+      "z": 5.26,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    15.7,
+    -28.25,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.564,
+      "circle": 0.6
+     },
+     {
+      "z": 5.076,
+      "circle": 0.54
+     },
+     {
+      "z": 5.64,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    17.2,
+    -30.72,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.551,
+      "circle": 0.6
+     },
+     {
+      "z": 4.959,
+      "circle": 0.54
+     },
+     {
+      "z": 5.51,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    11.92,
+    -32.08,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.472,
+      "circle": 0.6
+     },
+     {
+      "z": 4.248,
+      "circle": 0.54
+     },
+     {
+      "z": 4.72,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.79,
+    -32.38,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.511,
+      "circle": 0.6
+     },
+     {
+      "z": 4.599,
+      "circle": 0.54
+     },
+     {
+      "z": 5.11,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -10.41,
+    -32.71,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.501,
+      "circle": 0.6
+     },
+     {
+      "z": 4.509,
+      "circle": 0.54
+     },
+     {
+      "z": 5.01,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    6.89,
+    -33.09,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.537,
+      "circle": 0.6
+     },
+     {
+      "z": 4.833,
+      "circle": 0.54
+     },
+     {
+      "z": 5.37,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0.68,
+    -32.33,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.539,
+      "circle": 0.6
+     },
+     {
+      "z": 4.851,
+      "circle": 0.54
+     },
+     {
+      "z": 5.39,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    12.93,
+    -33.5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.541,
+      "circle": 0.6
+     },
+     {
+      "z": 4.869000000000001,
+      "circle": 0.54
+     },
+     {
+      "z": 5.41,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -13.72,
+    -29.78,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.42900000000000005,
+      "circle": 0.6
+     },
+     {
+      "z": 3.861,
+      "circle": 0.54
+     },
+     {
+      "z": 4.29,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20.2,
+    -29.68,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.52,
+      "circle": 0.6
+     },
+     {
+      "z": 4.680000000000001,
+      "circle": 0.54
+     },
+     {
+      "z": 5.2,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -15.18,
+    -31.81,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.609,
+      "circle": 0.6
+     },
+     {
+      "z": 5.481,
+      "circle": 0.54
+     },
+     {
+      "z": 6.09,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22.69,
+    -35.51,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.46399999999999997,
+      "circle": 0.6
+     },
+     {
+      "z": 4.176,
+      "circle": 0.54
+     },
+     {
+      "z": 4.64,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    12.12,
+    -30.15,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.61,
+      "circle": 0.6
+     },
+     {
+      "z": 5.49,
+      "circle": 0.54
+     },
+     {
+      "z": 6.1,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    13.17,
+    -31.52,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.559,
+      "circle": 0.6
+     },
+     {
+      "z": 5.031,
+      "circle": 0.54
+     },
+     {
+      "z": 5.59,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#385230"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    12.94,
+    -32.7,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.41500000000000004,
+      "circle": 0.6
+     },
+     {
+      "z": 3.7350000000000003,
+      "circle": 0.54
+     },
+     {
+      "z": 4.15,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#3f5a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20.2,
+    -28.88,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.48
+     },
+     {
+      "z": 0.518,
+      "circle": 0.6
+     },
+     {
+      "z": 4.662,
+      "circle": 0.54
+     },
+     {
+      "z": 5.18,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true,
+    "round": 6,
+    "colour": "#4a6b3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -316,7 +3469,7 @@
   "forecourt": "none",
   "trees": [],
   "extent": [
-   90,
+   110,
    80
   ]
  },
@@ -327,6 +3480,6 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Hill is a smooth cone at reduced scale (34 m not 188 m), not the ridged scrub slope; track hidden inside the surface; tower is a plain tapered loft, no lattice; cacti too small."
+  "gaps": "Hill is still a smooth smooth-shaded dome at reduced scale (38 m not 188 m), no scrub mottling or ridges; cacti are plain green columns, much fewer and smaller relative to hill than the photo; track zigzag is straight-legged."
  }
 }

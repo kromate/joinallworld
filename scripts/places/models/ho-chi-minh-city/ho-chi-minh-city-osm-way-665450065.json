@@ -44,21 +44,97 @@
    "params": {
     "width": 116,
     "depth": 90,
-    "height": 16,
+    "height": 9,
     "tiers": 2,
     "arc_start": 0,
     "arc_end": 359,
-    "roof": "canopy",
-    "roof_style": "shed",
+    "roof": "none",
     "wall": "ribs",
     "seat_colour": "#2f55a4",
-    "seat_colour2": "#2f6b4a",
-    "main_height": 16,
+    "seat_colour2": "#c0453a",
+    "main_height": 12,
     "far_height": 5,
-    "end_height": 7,
-    "track": true,
-    "floodlights": true,
-    "roof_material": "concrete"
+    "end_height": 5,
+    "track": false,
+    "floodlights": true
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "length": 92,
+    "width": 62,
+    "colour": "#6b7da0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     62,
+     16
+    ],
+    "height": 0.7,
+    "colour": "#c9ccc8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -42.2,
+    12.4
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -40,
+     0
+    ],
+    "end": [
+     28,
+     -40,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 12.5,
+      "colour": "#dcdcd8"
+     }
+    }
    }
   }
  ],
@@ -89,9 +165,9 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Photo is from the pitch looking at the covered main stand; render is a raised view of the whole bowl. Roof is a plain curved canopy without the ribbed cantilever beams, no pink concourse band or green lower seat blocks, generic masts."
+  "gaps": "Flat pale canopy over one long stand, low two-tier terraces with teal outer wall, blue track and mixed blue/red seat blocks now match; roof is a plain slab without raked columns detail, no red-brown straight, pink concourse or hoarding, masts are the generic four."
  },
  "schema": "allworld-place-model",
  "version": 2,

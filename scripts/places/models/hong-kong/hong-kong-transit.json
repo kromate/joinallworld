@@ -1,8 +1,8 @@
 {
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "OSM twin-pier outline, two-storey green/white with rooftop cabins; approach bridge, ferry and ad board placed approximately; forecourt is paving beside a water strip, not open water"
+  "gaps": "OSM twin-pier outline on water with piles, green lower/white upper livery, ferry, covered walkway and 12x5 ad board; ribbon windows dropped and piles spacing coarse to fit LOD1 budget; ferry is blocky and the arcade and rooftop cabins are approximate"
  },
  "verified": "photo",
  "evidence": [
@@ -29,45 +29,107 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "water",
+   "at": [
+    -16,
+    4
+   ],
+   "params": {
+    "rect": [
+     136,
+     136
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#2f6f78",
+    "topColour": "#3a7e88",
+    "windows": "none"
+   }
+  },
+  {
    "type": "mass",
-   "id": "pier",
+   "id": "piles",
    "footprint": {
     "osm": true,
     "simplify": 2.0
    },
-   "height": 8.5,
-   "storeys": 2,
+   "height": 3,
+   "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#f2f1ea",
-    "windows": "ribbon",
-    "windowRatio": 0.45,
-    "glassColour": "#6f8f88",
-    "plinth": 0,
+    "colour": "#2f4a42",
+    "windows": "none",
     "pattern": [
-     {
-      "type": "floors",
-      "colours": [
-       "#3f6b5a",
-       "#f4f3ec"
-      ]
-     },
      {
       "type": "pilotis",
       "inset": 0.5,
-      "spacing": 3,
+      "spacing": 6,
       "width": 0.45,
-      "colour": "#6a5a46",
-      "backColour": "#2f4a42",
+      "colour": "#4a3a2c",
+      "backColour": "#1f2e2a",
       "storeys": 1
      }
     ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#d6d8d2",
-    "parapet": 0.4
+    "colour": "#3d4244",
+    "parapet": 0
    }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f2f1ea",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#4f6a68",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#2f6a4a",
+       "#f4f3ec"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d4244",
+    "parapet": 0
+   },
+   "z0": 3
+  },
+  {
+   "type": "prism",
+   "id": "quay",
+   "at": [
+    -52,
+    -36
+   ],
+   "params": {
+    "rect": [
+     30,
+     12
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#b8b6ac",
+    "topColour": "#b8b6ac",
+    "windows": "none"
+   },
+   "rotDeg": 40
   },
   {
    "type": "prism",
@@ -81,10 +143,11 @@
      8,
      5
     ],
-    "z0": 8.9,
+    "z0": 9.5,
     "height": 2.8,
     "colour": "#f4f3ec",
-    "topColour": "#d6d8d2"
+    "topColour": "#d6d8d2",
+    "windows": "none"
    }
   },
   {
@@ -99,30 +162,32 @@
      7,
      5
     ],
-    "z0": 8.9,
+    "z0": 9.5,
     "height": 2.8,
     "colour": "#f4f3ec",
-    "topColour": "#d6d8d2"
+    "topColour": "#d6d8d2",
+    "windows": "none"
    }
   },
   {
    "type": "prism",
-   "id": "approach",
+   "id": "walkway",
    "at": [
-    -55,
-    -25
+    -52,
+    -30
    ],
-   "rotDeg": 40,
    "params": {
     "rect": [
-     7,
-     50
+     5,
+     36
     ],
-    "z0": 2.5,
-    "height": 0.8,
-    "colour": "#6f7a78",
-    "topColour": "#6f7a78"
-   }
+    "z0": 2.6,
+    "height": 3.2,
+    "colour": "#7f8a88",
+    "topColour": "#5a6462",
+    "windows": "none"
+   },
+   "rotDeg": 40
   },
   {
    "type": "prism",
@@ -133,60 +198,106 @@
    ],
    "params": {
     "rect": [
-     10,
+     12,
      0.5
     ],
-    "z0": 4.5,
-    "height": 3.5,
+    "z0": 5.0,
+    "height": 5,
     "colour": "#7fcf3f",
-    "topColour": "#7fcf3f"
+    "topColour": "#7fcf3f",
+    "windows": "none"
    }
   },
   {
    "type": "prism",
    "id": "ferry-hull",
    "at": [
-    50,
-    -35
+    52,
+    -34
    ],
-   "rotDeg": 40,
    "params": {
     "rect": [
-     7,
-     30
+     8,
+     32
     ],
     "z0": 0.3,
-    "height": 2.2,
+    "height": 2.4,
     "colour": "#2f6a4a",
-    "topColour": "#2f6a4a"
-   }
+    "topColour": "#2f6a4a",
+    "windows": "none"
+   },
+   "rotDeg": 40
   },
   {
    "type": "prism",
-   "id": "ferry-deck",
+   "id": "ferry-deck1",
    "at": [
-    50,
-    -35
+    52,
+    -34
    ],
-   "rotDeg": 40,
    "params": {
     "rect": [
-     6,
-     24
+     7,
+     28
     ],
-    "z0": 2.5,
-    "height": 2.6,
+    "z0": 2.7,
+    "height": 2.2,
     "colour": "#f4f3ec",
-    "topColour": "#c9c9c0"
-   }
+    "topColour": "#c9c9c0",
+    "windows": "ribbon",
+    "storeys": 1,
+    "windowRatio": 0.4,
+    "glassColour": "#4f6a68"
+   },
+   "rotDeg": 40
+  },
+  {
+   "type": "prism",
+   "id": "ferry-deck2",
+   "at": [
+    52,
+    -34
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     18
+    ],
+    "z0": 4.9,
+    "height": 2.0,
+    "colour": "#f4f3ec",
+    "topColour": "#c9c9c0",
+    "windows": "none"
+   },
+   "rotDeg": 40
+  },
+  {
+   "type": "prism",
+   "id": "wheelhouse",
+   "at": [
+    56,
+    -30
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     4
+    ],
+    "z0": 6.9,
+    "height": 1.8,
+    "colour": "#f4f3ec",
+    "topColour": "#9a9a92",
+    "windows": "none"
+   },
+   "rotDeg": 40
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "water",
   "extent": [
-   150,
-   150
+   30,
+   30
   ]
  },
  "schema": "allworld-place-model",

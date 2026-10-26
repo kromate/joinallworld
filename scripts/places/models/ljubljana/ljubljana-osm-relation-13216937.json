@@ -177,7 +177,11 @@
     "height": 1.25,
     "colour": "#b8b6ae",
     "z0": 0
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "prism",
@@ -248,7 +252,11 @@
     "height": 1.25,
     "colour": "#b8b6ae",
     "z0": 0
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "path-strip",
@@ -288,9 +296,57 @@
       -10.01
      ]
     ],
-    "width": 1.0,
-    "colour": "#b7ad9a"
-   }
+    "width": 1.5,
+    "colour": "#c9bfa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -134,
+      0
+     ],
+     [
+      -104,
+      -5
+     ],
+     [
+      -62,
+      -27
+     ],
+     [
+      -40,
+      -30
+     ],
+     [
+      -26,
+      -29
+     ],
+     [
+      10,
+      -15
+     ],
+     [
+      18,
+      -11.57
+     ]
+    ],
+    "width": 2.5,
+    "colour": "#a3a39c"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "path-strip",
@@ -330,16 +386,19 @@
       -13.13
      ]
     ],
-    "width": 1.0,
-    "colour": "#b7ad9a"
-   }
+    "width": 1.5,
+    "colour": "#c9bfa8"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "path-strip",
    "at": [
     0,
     0,
-    0.14
+    0.16
    ],
    "params": {
     "points": [
@@ -372,8 +431,8 @@
       -11.57
      ]
     ],
-    "width": 2.4,
-    "colour": "#2f3f47"
+    "width": 1.8,
+    "colour": "#58737c"
    }
   },
   {
@@ -435,7 +494,7 @@
      ]
     ],
     "height": 1.2,
-    "colour": "#7aa05a",
+    "colour": "#86a361",
     "z0": 0,
     "top": true
    }
@@ -578,7 +637,7 @@
      ]
     ],
     "height": 1.0,
-    "colour": "#86ad60",
+    "colour": "#7d9a58",
     "z0": 0,
     "top": true
    }
@@ -620,7 +679,10 @@
     "height": 0.3,
     "colour": "#a8a499",
     "z0": 1.0
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
@@ -659,7 +721,10 @@
     "height": 0.6,
     "colour": "#a8a499",
     "z0": 1.0
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
@@ -698,7 +763,10 @@
     "height": 0.9,
     "colour": "#a8a499",
     "z0": 1.0
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
@@ -719,7 +787,7 @@
    "storeys": 3,
    "wall": {
     "material": "stucco",
-    "colour": "#a9a69f",
+    "colour": "#b5b0a6",
     "windows": "none",
     "windowRatio": 0.09
    },
@@ -747,13 +815,13 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#d9a24a",
+    "colour": "#cdb98f",
     "windows": "punched",
     "windowRatio": 0.09
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8452a",
+    "colour": "#a65b3a",
     "material": "clay-tile",
     "rise": 3.4,
     "overhang": 0.4
@@ -778,13 +846,13 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#e08f46",
+    "colour": "#c9a77a",
     "windows": "punched",
     "windowRatio": 0.09
    },
    "roof": {
     "form": "hip",
-    "colour": "#8c3b22",
+    "colour": "#8f4a31",
     "material": "clay-tile",
     "rise": 3.2,
     "overhang": 0.4
@@ -809,13 +877,13 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#d8c9a6",
+    "colour": "#d4cbb4",
     "windows": "punched",
     "windowRatio": 0.09
    },
    "roof": {
     "form": "gable",
-    "colour": "#9a4a30",
+    "colour": "#9a5238",
     "material": "clay-tile",
     "rise": 3.0,
     "overhang": 0.4
@@ -840,13 +908,13 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#c99a52",
+    "colour": "#bfae90",
     "windows": "punched",
     "windowRatio": 0.09
    },
    "roof": {
     "form": "hip",
-    "colour": "#9b4128",
+    "colour": "#a05a3c",
     "material": "clay-tile",
     "rise": 3.0,
     "overhang": 0.4
@@ -861,12 +929,12 @@
    ],
    "rotDeg": 113.2,
    "params": {
-    "width": 15,
+    "width": 16,
     "height": 3.8,
     "depth": 7,
     "archWidth": 4.6,
     "springHeight": 1.8,
-    "colour": "#b9ad98"
+    "colour": "#a99d88"
    }
   },
   {
@@ -879,7 +947,7 @@
    "params": {
     "width": 16,
     "depth": 5,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 2.5,
     "max_height": 4.0
@@ -895,7 +963,7 @@
    "params": {
     "width": 16,
     "depth": 5,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 2.5,
     "max_height": 4.0
@@ -911,7 +979,7 @@
    "params": {
     "width": 16,
     "depth": 5,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 2.5,
     "max_height": 4.0
@@ -927,7 +995,7 @@
    "params": {
     "width": 16,
     "depth": 5,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 2.5,
     "max_height": 4.0
@@ -943,7 +1011,7 @@
    "params": {
     "width": 16,
     "depth": 5,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 2.5,
     "max_height": 4.0
@@ -959,7 +1027,7 @@
    "params": {
     "width": 30,
     "depth": 12,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 3,
     "max_height": 5
@@ -975,7 +1043,7 @@
    "params": {
     "width": 30,
     "depth": 12,
-    "count": 3,
+    "count": 2,
     "kind": "broadleaf",
     "min_height": 3,
     "max_height": 5
@@ -1007,10 +1075,10 @@
    "params": {
     "width": 60,
     "depth": 4,
-    "count": 4,
+    "count": 2,
     "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 13
+    "min_height": 6,
+    "max_height": 12
    }
   },
   {
@@ -1039,10 +1107,10 @@
    "params": {
     "width": 70,
     "depth": 10,
-    "count": 5,
+    "count": 3,
     "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
+    "min_height": 6,
+    "max_height": 12
    }
   },
   {
@@ -1055,26 +1123,10 @@
    "params": {
     "width": 80,
     "depth": 14,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -100,
-    -5,
-    1.2
-   ],
-   "params": {
-    "width": 20,
-    "depth": 10,
     "count": 4,
     "kind": "broadleaf",
-    "min_height": 7,
-    "max_height": 11
+    "min_height": 6,
+    "max_height": 12
    }
   },
   {
@@ -1101,6 +1153,297 @@
     "count": 9,
     "spacing": 18
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -134.4,
+      -2.42
+     ],
+     [
+      -104.79,
+      -7.35
+     ],
+     [
+      -62.76,
+      -29.37
+     ],
+     [
+      -40.08,
+      -32.46
+     ],
+     [
+      -25.46,
+      -31.42
+     ],
+     [
+      10.93,
+      -17.27
+     ],
+     [
+      18.97,
+      -13.82
+     ],
+     [
+      21,
+      -21.5
+     ],
+     [
+      11,
+      -26
+     ],
+     [
+      -23,
+      -39.5
+     ],
+     [
+      -40,
+      -40.5
+     ],
+     [
+      -66,
+      -37
+     ],
+     [
+      -107,
+      -15.5
+     ],
+     [
+      -136,
+      -11
+     ]
+    ],
+    "height": 3.0,
+    "colour": "#4d6a3b",
+    "z0": 0,
+    "top": true
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -134.4,
+      -2.42
+     ],
+     [
+      -104.79,
+      -7.35
+     ],
+     [
+      -62.76,
+      -29.37
+     ],
+     [
+      -40.08,
+      -32.46
+     ],
+     [
+      -25.46,
+      -31.42
+     ],
+     [
+      10.93,
+      -17.27
+     ],
+     [
+      18.97,
+      -13.82
+     ],
+     [
+      18.97,
+      -16.02
+     ],
+     [
+      10.93,
+      -19.47
+     ],
+     [
+      -25.46,
+      -33.620000000000005
+     ],
+     [
+      -40.08,
+      -34.660000000000004
+     ],
+     [
+      -62.76,
+      -31.57
+     ],
+     [
+      -104.79,
+      -9.55
+     ],
+     [
+      -134.4,
+      -4.62
+     ]
+    ],
+    "height": 1.9,
+    "colour": "#8a8880",
+    "z0": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.0
+   ],
+   "params": {
+    "points": [
+     [
+      -130,
+      14
+     ],
+     [
+      -95,
+      9
+     ],
+     [
+      -70,
+      10
+     ],
+     [
+      -72,
+      19
+     ],
+     [
+      -100,
+      22
+     ],
+     [
+      -128,
+      17
+     ]
+    ],
+    "height": 1.45,
+    "colour": "#a3a85a",
+    "z0": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.0
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      10
+     ],
+     [
+      12,
+      9
+     ],
+     [
+      16,
+      24
+     ],
+     [
+      -6,
+      26
+     ]
+    ],
+    "height": 1.45,
+    "colour": "#5f7a43",
+    "z0": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -110,
+    -13,
+    3.0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 4,
+    "count": 3,
+    "kind": "broadleaf",
+    "min_height": 1.4,
+    "max_height": 2.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -60,
+    -31,
+    3.0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 4,
+    "count": 3,
+    "kind": "broadleaf",
+    "min_height": 1.4,
+    "max_height": 2.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    -30,
+    3.0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 4,
+    "count": 3,
+    "kind": "broadleaf",
+    "min_height": 1.4,
+    "max_height": 2.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    8,
+    -22,
+    3.0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "count": 3,
+    "kind": "broadleaf",
+    "min_height": 1.4,
+    "max_height": 2.6
+   }
   }
  ],
  "site": {
@@ -1111,8 +1454,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Channel now sunk between concrete walls with cobbled strips and thin stream, but shrubby north bank is bare rip-rap with sparse small trees (budget), arch bridge is a small portal at the east edge, no stepped seating detail beyond three plain steps, only western 157 m of the park"
+  "gaps": "Right bank is now a raised dark-green slope with rip-rap foot but shrubs are sparse and smooth (budget); channel is a plain concrete trough with pale cobble strips, bridge is a small stone portal at the east edge, seating is three plain steps; only the western 157 m of the park"
  }
 }

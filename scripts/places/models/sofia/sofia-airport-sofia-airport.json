@@ -125,26 +125,54 @@
    "id": "back-block",
    "footprint": {
     "rect": [
-     36,
-     16
+     34,
+     14
     ]
    },
    "at": [
-    2,
-    24
+    6,
+    19
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 21,
+   "height": 12.5,
    "storeys": 2,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#3b4147",
+    "colour": "#3a4656",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#555b60",
+    "colour": "#4a5663",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-tier",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    14,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#46536a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5663",
     "parapet": 0.5
    }
   },
@@ -160,7 +188,7 @@
     1
    ],
    "params": {
-    "colour": "#8fb8cc",
+    "colour": "#9cc4d8",
     "material": "glass-curtain",
     "sections": [
      {
@@ -174,28 +202,35 @@
       "z": 2.5,
       "rect": [
        30,
-       17
+       17.5
       ]
      },
      {
-      "z": 4.5,
+      "z": 5,
       "rect": [
        30,
-       12.5
+       13.5
       ]
      },
      {
-      "z": 6,
+      "z": 7.2,
       "rect": [
        30,
-       7
+       8
       ]
      },
      {
-      "z": 7,
+      "z": 8.6,
       "rect": [
        30,
-       2
+       3
+      ]
+     },
+     {
+      "z": 9.2,
+      "rect": [
+       30,
+       1
       ]
      }
     ]
@@ -315,12 +350,12 @@
     1
    ],
    "at": [
-    62,
-    -18,
+    44,
+    -12,
     6.3
    ],
    "params": {
-    "colour": "#aebfcc",
+    "colour": "#b5c8d6",
     "material": "metal-sheet",
     "sections": [
      {
@@ -373,7 +408,8 @@
       ]
      }
     ]
-   }
+   },
+   "rotDeg": -5
   },
   {
    "type": "loft",
@@ -381,8 +417,8 @@
     2
    ],
    "at": [
-    62,
-    -18,
+    44,
+    -12,
     6.3
    ],
    "params": {
@@ -403,7 +439,8 @@
       ]
      }
     ]
-   }
+   },
+   "rotDeg": -5
   },
   {
    "type": "array",
@@ -412,8 +449,8 @@
     1
    ],
    "at": [
-    62,
-    -18,
+    44,
+    -12,
     6.3
    ],
    "params": {
@@ -494,34 +531,36 @@
       }
      }
     ]
-   }
+   },
+   "rotDeg": -5
   },
   {
    "type": "prism",
    "at": [
-    42,
-    -27,
-    5.6
+    44,
+    -12,
+    5.4
    ],
    "params": {
     "rect": [
      40,
-     18
+     19
     ],
     "height": 0.8,
     "colour": "#9a9996"
-   }
+   },
+   "rotDeg": -5
   },
   {
    "type": "prism",
    "at": [
-    -75,
+    7,
     -37,
     6.2
    ],
    "params": {
     "rect": [
-     150,
+     140,
      6
     ],
     "height": 1.8,
@@ -539,12 +578,12 @@
     "mode": "line",
     "count": 6,
     "start": [
-     -68,
+     -60,
      -34,
      0
     ],
     "end": [
-     68,
+     74,
      -34,
      0
     ],
@@ -579,13 +618,13 @@
     "mode": "line",
     "count": 3,
     "start": [
-     46,
-     -12,
+     30,
+     -3,
      0
     ],
     "end": [
-     78,
-     -12,
+     58,
+     -3,
      0
     ],
     "of": [
@@ -619,13 +658,13 @@
     "mode": "line",
     "count": 3,
     "start": [
-     46,
-     -24,
+     30,
+     -20,
      0
     ],
     "end": [
-     78,
-     -24,
+     58,
+     -20,
      0
     ],
     "of": [
@@ -651,14 +690,14 @@
   {
    "type": "lamp",
    "at": [
-    -68,
+    -60,
     -18,
     0
    ],
    "params": {
     "height": 16,
     "count": 5,
-    "spacing": 32
+    "spacing": 28
    }
   },
   {
@@ -678,6 +717,54 @@
      "#d62612"
     ]
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    17.1
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.4
+    ],
+    "height": 0.5,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -37,
+    8
+   ],
+   "params": {
+    "rect": [
+     26,
+     3
+    ],
+    "height": 3.2,
+    "colour": "#dde1e3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -38.55,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     25,
+     0.2
+    ],
+    "height": 1.0,
+    "colour": "#2b3744"
+   }
   }
  ],
  "site": {
@@ -691,34 +778,38 @@
    {
     "kind": "broadleaf",
     "at": [
-     -30,
-     -44
+     20,
+     -50
     ],
-    "height": 15
+    "height": 15,
+    "colour": "#b8832e"
    },
    {
     "kind": "broadleaf",
     "at": [
-     -23,
-     -41
+     27,
+     -47
     ],
-    "height": 12
+    "height": 12,
+    "colour": "#c99a3a"
    },
    {
     "kind": "broadleaf",
     "at": [
-     -37,
-     -42
+     13,
+     -48
     ],
-    "height": 10
+    "height": 10,
+    "colour": "#9c7a2e"
    },
    {
     "kind": "broadleaf",
     "at": [
-     -8,
-     -46
+     42,
+     -52
     ],
-    "height": 8
+    "height": 8,
+    "colour": "#d4a52c"
    },
    {
     "kind": "broadleaf",
@@ -726,7 +817,17 @@
      90,
      -30
     ],
-    "height": 10
+    "height": 10,
+    "colour": "#e0a22a"
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -30
+    ],
+    "height": 9,
+    "colour": "#d9962a"
    }
   ]
  },
@@ -737,6 +838,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Scene framing is small and wide (guideway and pad shrink the fit); connector vault less ribbed and sweeping than real; ground is green not dry gold and trees are not autumn coloured; no train on the guideway"
+  "gaps": "Framing small and wide; connector vault is a rotated ribbed loft, not truly sweeping or tapering; tree crown colours not honoured so trees stay green and ground is pale sand not gold-brown; train is a simple box"
  }
 }

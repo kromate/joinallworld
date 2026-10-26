@@ -43,7 +43,7 @@
    "id": "centre",
    "footprint": {
     "rect": [
-     16,
+     26,
      14
     ]
    },
@@ -53,7 +53,7 @@
     "material": "stucco",
     "colour": "#eaa9b3",
     "windows": "punched",
-    "windowRatio": 0.18,
+    "windowRatio": 0.24,
     "faces": {
      "front": "punched",
      "back": "punched",
@@ -108,7 +108,7 @@
     "parapet": 0.1
    },
    "at": [
-    -12.8,
+    -16.5,
     0.5
    ]
   },
@@ -136,7 +136,7 @@
     "overhang": 0.2
    },
    "at": [
-    -12.8,
+    -16.5,
     0.5
    ],
    "z0": 9.0
@@ -145,7 +145,7 @@
    "type": "prism",
    "id": "bal-10-5.3",
    "at": [
-    -12.8,
+    -16.5,
     -4.8
    ],
    "params": {
@@ -162,7 +162,7 @@
    "type": "prism",
    "id": "bal-105.3",
    "at": [
-    -12.8,
+    -16.5,
     5.8
    ],
    "params": {
@@ -179,7 +179,7 @@
    "type": "prism",
    "id": "bal-1-5.40",
    "at": [
-    -18.200000000000003,
+    -21.9,
     0.5
    ],
    "params": {
@@ -196,7 +196,7 @@
    "type": "prism",
    "id": "bal-15.40",
    "at": [
-    -7.4,
+    -11.1,
     0.5
    ],
    "params": {
@@ -241,7 +241,7 @@
     "parapet": 0.1
    },
    "at": [
-    12.8,
+    16.5,
     0.5
    ]
   },
@@ -269,7 +269,7 @@
     "overhang": 0.2
    },
    "at": [
-    12.8,
+    16.5,
     0.5
    ],
    "z0": 9.0
@@ -278,7 +278,7 @@
    "type": "prism",
    "id": "bal10-5.3",
    "at": [
-    12.8,
+    16.5,
     -4.8
    ],
    "params": {
@@ -295,7 +295,7 @@
    "type": "prism",
    "id": "bal105.3",
    "at": [
-    12.8,
+    16.5,
     5.8
    ],
    "params": {
@@ -312,7 +312,7 @@
    "type": "prism",
    "id": "bal1-5.40",
    "at": [
-    7.4,
+    11.1,
     0.5
    ],
    "params": {
@@ -329,7 +329,7 @@
    "type": "prism",
    "id": "bal15.40",
    "at": [
-    18.200000000000003,
+    21.9,
     0.5
    ],
    "params": {
@@ -343,79 +343,216 @@
    }
   },
   {
-   "type": "mass",
-   "id": "porch",
-   "footprint": {
+   "type": "prism",
+   "id": "porch-floor",
+   "params": {
     "rect": [
-     7,
+     8,
      3
-    ]
-   },
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stucco",
-    "colour": "#f4efe8",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#f4efe8",
-    "parapet": 0.9
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#f4efe8"
    },
    "at": [
     0,
     -8.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "params": {
+    "rect": [
+     8.6,
+     3.4
+    ],
+    "z0": 3.4,
+    "height": 0.5,
+    "colour": "#f4efe8"
+   },
+   "at": [
+    0,
+    -8.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "params": {
+    "radius": 0.25,
+    "n": 8,
+    "z0": 0.6,
+    "height": 2.8,
+    "colour": "#f4efe8"
+   },
+   "at": [
+    -3.6,
+    -9.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "params": {
+    "radius": 0.25,
+    "n": 8,
+    "z0": 0.6,
+    "height": 2.8,
+    "colour": "#f4efe8"
+   },
+   "at": [
+    -1.2,
+    -9.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "params": {
+    "radius": 0.25,
+    "n": 8,
+    "z0": 0.6,
+    "height": 2.8,
+    "colour": "#f4efe8"
+   },
+   "at": [
+    1.2,
+    -9.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "params": {
+    "radius": 0.25,
+    "n": 8,
+    "z0": 0.6,
+    "height": 2.8,
+    "colour": "#f4efe8"
+   },
+   "at": [
+    3.6,
+    -9.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-bal",
+   "params": {
+    "rect": [
+     8,
+     0.2
+    ],
+    "z0": 0.6,
+    "height": 0.9,
+    "colour": "#f4efe8"
+   },
+   "at": [
+    0,
+    -9.95
    ],
-   "z0": 0.3
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "pediment",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -4.3,
+      -10.0,
+      3.9
+     ],
+     [
+      -4.15,
+      -10.0,
+      4.47
+     ],
+     [
+      -3.72,
+      -10.0,
+      5.0
+     ],
+     [
+      -3.04,
+      -10.0,
+      5.46
+     ],
+     [
+      -2.15,
+      -10.0,
+      5.81
+     ],
+     [
+      -1.11,
+      -10.0,
+      6.03
+     ],
+     [
+      0.0,
+      -10.0,
+      6.1
+     ],
+     [
+      1.11,
+      -10.0,
+      6.03
+     ],
+     [
+      2.15,
+      -10.0,
+      5.81
+     ],
+     [
+      3.04,
+      -10.0,
+      5.46
+     ],
+     [
+      3.72,
+      -10.0,
+      5.0
+     ],
+     [
+      4.15,
+      -10.0,
+      4.47
+     ],
+     [
+      4.3,
+      -10.0,
+      3.9
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#f4efe8"
+   }
   },
   {
    "type": "core/steps",
    "id": "steps",
    "at": [
     0,
-    -10.8,
+    -10.5,
     0
    ],
    "params": {
-    "width": 5,
-    "rise": 0.3,
+    "width": 6,
+    "rise": 0.2,
     "run": 0.5,
-    "count": 4,
+    "count": 3,
     "colour": "#e6dfcf"
-   }
-  },
-  {
-   "type": "revolve",
-   "id": "pediment",
-   "at": [
-    0,
-    -7,
-    3.5
-   ],
-   "params": {
-    "profile": [
-     [
-      0.05,
-      0,
-      "#f4efe8"
-     ],
-     [
-      1.6,
-      0.0,
-      "#f4efe8"
-     ],
-     [
-      1.5,
-      1.0,
-      "#f4efe8"
-     ],
-     [
-      0.05,
-      1.1,
-      "#f4efe8"
-     ]
-    ]
    }
   }
  ],
@@ -427,7 +564,7 @@
    {
     "kind": "palm",
     "at": [
-     -8,
+     -7,
      -14
     ],
     "height": 9
@@ -435,7 +572,7 @@
    {
     "kind": "palm",
     "at": [
-     8,
+     7,
      -13
     ],
     "height": 10
@@ -443,8 +580,8 @@
    {
     "kind": "palm",
     "at": [
-     -28,
-     -8
+     -30,
+     -9
     ],
     "height": 12
    }
@@ -457,6 +594,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "towers a little wide-apart and plain, no cobble pattern, no balustrade on porch, interior-set window detail simplified"
+  "gaps": "porch recess and columns small and hidden under centre eave; pediment is a ring arch not a solid medallion; no shutters or cobble texture; centre block slightly too long-low vs photo; terrace balustrades plain rails not balusters"
  }
 }

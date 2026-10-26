@@ -47,25 +47,24 @@
     -4,
     -8
    ],
-   "height": 8.5,
-   "storeys": 2,
+   "height": 5.5,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e9e0c4",
+    "colour": "#e6dcc0",
     "windows": "punched",
-    "windowRatio": 0.13,
-    "plinth": 0.4,
+    "windowRatio": 0.08,
+    "plinth": 0.3,
     "cornice": true,
     "faces": {
      "left": "none",
      "right": "none",
-     "back": "none",
-     "front": "punched"
+     "back": "none"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9293",
+    "colour": "#6f7274",
     "parapet": 0.4
    }
   },
@@ -82,14 +81,15 @@
     -24,
     6
    ],
-   "height": 5,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#ead9a0",
-    "windows": "arched",
-    "windowRatio": 0.3,
-    "plinth": 0.5,
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "cornice": false,
     "faces": {
      "left": "none",
      "right": "none",
@@ -98,10 +98,10 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8452f",
+    "colour": "#b5502f",
     "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 1.0
+    "pitch": 22,
+    "overhang": 1.2
    }
   },
   {
@@ -117,28 +117,63 @@
     -6,
     6
    ],
-   "height": 7,
+   "height": 6,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e9e0c4",
+    "colour": "#e6dcc0",
     "windows": "punched",
-    "windowRatio": 0.12,
-    "plinth": 0.4,
-    "cornice": true,
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "cornice": false,
     "faces": {
      "left": "none",
      "right": "none",
-     "back": "none",
-     "front": "punched"
+     "back": "none"
     }
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8452f",
+    "colour": "#b5502f",
     "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 1.0
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-block2",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -34,
+    -2
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "cornice": false,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5502f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
    }
   },
   {
@@ -154,25 +189,94 @@
     30,
     -4
    ],
-   "height": 8.5,
+   "height": 7,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e9e0c4",
+    "colour": "#e6dcc0",
     "windows": "punched",
-    "windowRatio": 0.13,
-    "plinth": 0.4,
+    "windowRatio": 0.08,
+    "plinth": 0.3,
     "cornice": true,
     "faces": {
      "left": "none",
      "right": "none",
-     "back": "none",
-     "front": "punched"
+     "back": "none"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9293",
+    "colour": "#7a7d7f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-hip",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    44,
+    10
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "cornice": false,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5502f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-block",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    2,
+    16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2b8",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
     "parapet": 0.4
    }
   },
@@ -187,26 +291,279 @@
    },
    "at": [
     0,
-    26
+    32
    ],
-   "height": 11,
-   "storeys": 3,
+   "height": 14,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3dcc4",
+    "colour": "#dcd6c0",
     "windows": "ribbon",
-    "windowRatio": 0.2,
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "cornice": true,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    },
-    "cornice": true
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#a9aeb2",
-    "parapet": 0.5
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-w",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    -46,
+    10
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcbbd",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9293",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-e",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    52,
+    22
+   ],
+   "height": 30,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b9a0",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9293",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-n",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    24,
+    44
+   ],
+   "height": 34,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9293",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac-10",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.2
+    ]
+   },
+   "at": [
+    -10,
+    -8
+   ],
+   "height": 6.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac4",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.2
+    ]
+   },
+   "at": [
+    4,
+    -9
+   ],
+   "height": 6.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac14",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.2
+    ]
+   },
+   "at": [
+    14,
+    -7
+   ],
+   "height": 6.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac26",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.2
+    ]
+   },
+   "at": [
+    26,
+    -3
+   ],
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac34",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.2
+    ]
+   },
+   "at": [
+    34,
+    -2
+   ],
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac-18",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.2
+    ]
+   },
+   "at": [
+    -18,
+    -6
+   ],
+   "height": 6.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
    }
   },
   {
@@ -218,75 +575,30 @@
     0
    ],
    "params": {
-    "width": 6,
-    "height": 30,
+    "width": 5,
+    "height": 32,
     "cap": "hip",
-    "capRise": 3.5,
+    "capRise": 1.8,
     "clock": true,
     "belfry": true,
-    "colour": "#e9e0c4",
-    "trimColour": "#b6c3cc",
-    "capColour": "#a8452f",
-    "windows": "punched"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -30,
-    -17,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 11,
-    "count": 2,
-    "spread": 6
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    18,
-    -18,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 8,
-    "count": 2,
-    "spread": 8
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -4,
-    -17,
-    0
-   ],
-   "params": {
-    "width": 6,
-    "height": 1.6,
-    "bottom": 0.8,
-    "colour": "#264d7a",
-    "posts": true
+    "colour": "#e6dcc0",
+    "trimColour": "#a9b6c0",
+    "capColour": "#b5502f",
+    "windows": "none"
    }
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "plaza",
-  "forecourtDepth": 10,
   "extent": [
-   100,
-   70
+   110,
+   80
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "belfry shown with louvres not open posts, surrounding rooftops and background towers not modelled, campus layout inferred from one viewpoint"
+  "gaps": "Rooftop view approximated: tower belfry not truly open, neighbouring mid-rises are generic ribbon blocks, no rooftop vents or skylights beyond small AC boxes"
  },
  "schema": "allworld-place-model",
  "version": 2,

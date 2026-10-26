@@ -48,17 +48,121 @@
     "tiers": 2,
     "arc_start": 0,
     "arc_end": 359,
-    "roof": "canopy",
-    "roof_style": "shed",
+    "roof": "none",
     "wall": "ribs",
-    "seat_colour": "#2f55a4",
-    "seat_colour2": "#e0a526",
+    "seat_colour": "#e0a526",
+    "seat_colour2": "#2f55a4",
     "main_height": 13,
     "far_height": 9,
     "end_height": 8,
-    "track": true,
-    "floodlights": true,
-    "roof_material": "concrete"
+    "track": false,
+    "floodlights": true
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "length": 90,
+    "width": 58,
+    "colour": "#6a6a70"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    11.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7,
+      0.4
+     ]
+    },
+    "colour": "#1f9c86",
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 56,
+     "radiusY": 42,
+     "startDeg": 205,
+     "endDeg": 335,
+     "plane": "xy",
+     "steps": 14
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -30,
+     2.2
+    ],
+    "end": [
+     34,
+     -30,
+     2.2
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       9,
+       3.2
+      ],
+      "height": 0.5,
+      "colour": "#2b3a78"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "spread": 4,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "spread": 4,
+    "line": 30
    }
   }
  ],
@@ -91,7 +195,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Oval bowl with one covered stand; photo's green-edged curved canopy, grey concrete terraces and dark-blue bench awnings are not reproduced, wall and roof take the city tan instead of grey."
+  "gaps": "Partial teal canopy arc over the near-side stand, grey track and mixed yellow/blue seat blocks added; outer wall stays the city tan instead of grey concrete, terraces are a generic two-tier bowl, bench awnings are simple slabs, no red/pink seat blocks."
  },
  "schema": "allworld-place-model",
  "version": 2,

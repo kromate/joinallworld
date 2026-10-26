@@ -40,41 +40,28 @@
     0,
     0
    ],
-   "height": 14,
+   "height": 10,
    "storeys": 2,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#a9c4c2",
-    "windows": "curtain",
-    "windowRatio": 0.6,
+    "material": "painted-render",
+    "colour": "#e3d6a2",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
     "plinth": 0.5,
     "bands": "#e3d6a2",
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "glassColour": "#6fa3a6"
    },
    "roof": {
-    "form": "pyramidal",
-    "colour": "#7f9aa3",
+    "form": "hip",
+    "colour": "#9aa1a5",
     "material": "metal-sheet",
-    "rise": 6,
+    "pitch": 12,
     "overhang": 1.5
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    0,
-    2,
-    20
-   ],
-   "params": {
-    "radius": 4.2,
-    "n": 12,
-    "height": 4,
-    "colour": "#e3d6a2"
    }
   },
   {
@@ -108,20 +95,6 @@
    }
   },
   {
-   "type": "prism",
-   "at": [
-    0,
-    2,
-    14
-   ],
-   "params": {
-    "radius": 2.6,
-    "n": 12,
-    "height": 6,
-    "colour": "#9fb2b6"
-   }
-  },
-  {
    "type": "mass",
    "id": "west-wing",
    "footprint": {
@@ -134,13 +107,13 @@
     -42,
     2
    ],
-   "height": 9,
+   "height": 8,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#e3d6a2",
-    "windows": "curtain",
-    "windowRatio": 0.55,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
     "plinth": 0.4,
     "faces": {
      "back": "plain",
@@ -153,7 +126,7 @@
     "form": "hip",
     "colour": "#9aa1a5",
     "material": "metal-sheet",
-    "pitch": 10,
+    "pitch": 14,
     "overhang": 1.8
    }
   },
@@ -203,13 +176,13 @@
     -72,
     2
    ],
-   "height": 13,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#d9cc96",
-    "windows": "curtain",
-    "windowRatio": 0.5,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
     "faces": {
      "back": "plain",
      "left": "plain",
@@ -218,12 +191,11 @@
     "glassColour": "#6fa3a6"
    },
    "roof": {
-    "form": "gable",
-    "colour": "#7b8287",
+    "form": "hip",
+    "colour": "#9aa1a5",
     "material": "metal-sheet",
     "pitch": 14,
-    "overhang": 1.5,
-    "axis": "x"
+    "overhang": 1.5
    }
   },
   {
@@ -239,13 +211,13 @@
     42,
     2
    ],
-   "height": 9,
+   "height": 8,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#e3d6a2",
-    "windows": "curtain",
-    "windowRatio": 0.55,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
     "plinth": 0.4,
     "faces": {
      "back": "plain",
@@ -258,7 +230,7 @@
     "form": "hip",
     "colour": "#9aa1a5",
     "material": "metal-sheet",
-    "pitch": 10,
+    "pitch": 14,
     "overhang": 1.8
    }
   },
@@ -308,13 +280,13 @@
     72,
     2
    ],
-   "height": 13,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#d9cc96",
-    "windows": "curtain",
-    "windowRatio": 0.5,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
     "faces": {
      "back": "plain",
      "left": "plain",
@@ -323,60 +295,11 @@
     "glassColour": "#6fa3a6"
    },
    "roof": {
-    "form": "gable",
-    "colour": "#7b8287",
+    "form": "hip",
+    "colour": "#9aa1a5",
     "material": "metal-sheet",
     "pitch": 14,
-    "overhang": 1.5,
-    "axis": "x"
-   }
-  },
-  {
-   "type": "jet-bridge",
-   "at": [
-    -52,
-    -14,
-    2.6
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 16
-   }
-  },
-  {
-   "type": "jet-bridge",
-   "at": [
-    -34,
-    -14,
-    2.6
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 16
-   }
-  },
-  {
-   "type": "jet-bridge",
-   "at": [
-    34,
-    -14,
-    2.6
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 16
-   }
-  },
-  {
-   "type": "jet-bridge",
-   "at": [
-    52,
-    -14,
-    2.6
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 16
+    "overhang": 1.5
    }
   },
   {
@@ -455,16 +378,109 @@
    ]
   },
   {
-   "type": "airliner",
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    9.5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      16,
+      0,
+      "#6fa3a6"
+     ],
+     [
+      8,
+      3,
+      "#7fb0b0"
+     ],
+     [
+      3.5,
+      5,
+      "#7fb0b0"
+     ],
+     [
+      3.5,
+      5.2,
+      "#e3d6a2"
+     ],
+     [
+      3.5,
+      8.5,
+      "#e3d6a2"
+     ],
+     [
+      3.9,
+      8.8,
+      "#9aa3a7"
+     ],
+     [
+      3.9,
+      9.8,
+      "#6f8f98"
+     ],
+     [
+      4.3,
+      10.2,
+      "#e3d6a2"
+     ],
+     [
+      0,
+      10.2,
+      "#9aa3a7"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -52,
+    -12,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -34,
+    -12,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    34,
+    -12,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
    "at": [
     52,
-    -40,
-    0
+    -12,
+    3
    ],
-   "rotDeg": 180,
+   "rotDeg": 0,
    "params": {
-    "scale": 0.7,
-    "tailColour": "#2f5d8a"
+    "length": 14
    }
   }
  ],
@@ -493,9 +509,9 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Real terminal is more continuous with a lower hipped roof ring and a conical glass hall roof; tower drum, jet bridge shapes and wing glazing are simplified; no 300 m length (scaled to 160 m)."
+  "gaps": "Now cream 2-storey ribbon-glazed wings with low hips and a conical hall roof under the tower drum; jet bridges read as short stubs, no parked aircraft, length scaled to 160 m."
  },
  "schema": "allworld-place-model",
  "version": 2,

@@ -50,20 +50,20 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6cf8a",
-    "windows": "punched",
+    "colour": "#e8c968",
+    "windows": "none",
     "windowRatio": 0.22,
     "bay": 3.2,
     "plinth": 0.3,
-    "groundKind": "none",
+    "groundKind": "arcade-open",
     "groundHeight": 4.5,
     "pattern": [
      {
       "type": "fins",
-      "width": 0.4,
-      "depth": 0.2,
-      "spacing": 3.2,
-      "colour": "#efe6c8",
+      "width": 0.9,
+      "depth": 0.3,
+      "spacing": 6.4,
+      "colour": "#efd98f",
       "margin": 1.5
      }
     ]
@@ -71,39 +71,7 @@
    "roof": {
     "form": "flat",
     "colour": "#d8c37c",
-    "parapet": 1.0
-   }
-  },
-  {
-   "type": "array",
-   "id": "red-windows",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       1.1,
-       0.15
-      ],
-      "z0": 9.4,
-      "height": 2.6,
-      "colour": "#9a3a2c"
-     }
-    },
-    "mode": "line",
-    "count": 9,
-    "start": [
-     -16.5,
-     -9.1
-    ],
-    "end": [
-     7.7,
-     -9.1
-    ]
+    "parapet": 1.4
    }
   },
   {
@@ -119,32 +87,20 @@
     -20.8,
     -1
    ],
-   "height": 22,
+   "height": 24,
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2c77a",
+    "colour": "#e5c46c",
     "windows": "none",
     "plinth": 0.3,
-    "pattern": [
-     {
-      "type": "fins",
-      "width": 0.5,
-      "depth": 0.2,
-      "spacing": 1.0,
-      "colour": "#f4eddc",
-      "margin": 3.2,
-      "faces": [
-       "front"
-      ]
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "flat",
     "colour": "#d8c37c",
-    "parapet": 1.1,
-    "overhang": 0.6
+    "parapet": 1.6,
+    "overhang": 1.0
    }
   },
   {
@@ -160,32 +116,20 @@
     15.2,
     -1
    ],
-   "height": 23,
+   "height": 25,
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2c77a",
+    "colour": "#e5c46c",
     "windows": "none",
     "plinth": 0.3,
-    "pattern": [
-     {
-      "type": "fins",
-      "width": 0.5,
-      "depth": 0.2,
-      "spacing": 1.0,
-      "colour": "#f4eddc",
-      "margin": 3.4,
-      "faces": [
-       "front"
-      ]
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "flat",
     "colour": "#d8c37c",
-    "parapet": 1.1,
-    "overhang": 0.6
+    "parapet": 1.6,
+    "overhang": 1.0
    }
   },
   {
@@ -284,43 +228,6 @@
    }
   },
   {
-   "type": "prism",
-   "id": "clock-disc",
-   "lod": [
-    0
-   ],
-   "params": {
-    "rect": [
-     3.4,
-     0.5
-    ],
-    "z0": 10.2,
-    "height": 3.4,
-    "colour": "#dcdcd2"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "loggia-shadow",
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "rect": [
-     28,
-     0.4
-    ],
-    "z0": 0.2,
-    "height": 4.2,
-    "colour": "#3a3128"
-   },
-   "at": [
-    -4.4,
-    -9.05
-   ]
-  },
-  {
    "type": "platform-canopy",
    "at": [
     -4,
@@ -385,6 +292,209 @@
     "count": 2,
     "spread": 6
    }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back",
+   "params": {
+    "rect": [
+     27,
+     0.4
+    ],
+    "z0": 0.2,
+    "height": 4.2,
+    "colour": "#3a3128"
+   },
+   "at": [
+    -4.4,
+    -7.6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-panel-l",
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 4.5,
+    "height": 15,
+    "colour": "#f4efe0"
+   },
+   "at": [
+    -20.8,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-panel-r",
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "z0": 4.5,
+    "height": 16,
+    "colour": "#f4efe0"
+   },
+   "at": [
+    15.2,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap-l",
+   "params": {
+    "rect": [
+     10.4,
+     10.8
+    ],
+    "z0": 24,
+    "height": 0.8,
+    "colour": "#d8c37c"
+   },
+   "at": [
+    -20.8,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap-r",
+   "params": {
+    "rect": [
+     11.6,
+     10.8
+    ],
+    "z0": 25,
+    "height": 0.8,
+    "colour": "#d8c37c"
+   },
+   "at": [
+    15.2,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-l",
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 24.8,
+    "height": 6,
+    "colour": "#999999"
+   },
+   "at": [
+    -20.8,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-r",
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 25.8,
+    "height": 7,
+    "colour": "#999999"
+   },
+   "at": [
+    15.2,
+    -1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "slots",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.15
+      ],
+      "z0": 4.8,
+      "height": 6.6,
+      "colour": "#f2ecd8"
+     }
+    },
+    "mode": "line",
+    "count": 13,
+    "start": [
+     -15.8,
+     -9.1
+    ],
+    "end": [
+     7,
+     -9.1
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "red-windows",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.15
+      ],
+      "z0": 11.6,
+      "height": 2.2,
+      "colour": "#9a3a2c"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -16.5,
+     -9.1
+    ],
+    "end": [
+     7.7,
+     -9.1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-disc",
+   "params": {
+    "rect": [
+     3.4,
+     0.4
+    ],
+    "z0": 10.4,
+    "height": 3.4,
+    "colour": "#dcdcd2"
+   },
+   "at": [
+    -4.4,
+    -9.2
+   ],
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -399,7 +509,7 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Ground floor is a dark slab, not an open loggia with columns; no decorative parapet lattice, clock disc is faint; towers lack the stepped cornice and side balconies; wing windows are generic; plan is simplified (OSM outline is skewed)."
+  "gaps": "Ground loggia only partly open, no pierced parapet lattice, tower slatted panels are flat white slabs, window slots simplified, weathering not modelled."
  },
  "schema": "allworld-place-model",
  "version": 2,

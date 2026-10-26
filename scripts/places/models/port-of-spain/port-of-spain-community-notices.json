@@ -46,14 +46,14 @@
     0,
     0
    ],
-   "height": 19,
-   "storeys": 3,
+   "height": 12,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
     "windows": "punched",
     "windowRatio": 0.25,
-    "bay": 5,
+    "bay": 10,
     "windowShape": "arched",
     "plinth": 0.8,
     "cornice": true,
@@ -76,21 +76,21 @@
    "id": "upper-block",
    "footprint": {
     "rect": [
-     22,
-     22
+     24,
+     24
     ]
    },
    "at": [
     0,
     0
    ],
-   "height": 10,
+   "height": 13,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
     "windows": "arched",
-    "windowRatio": 0.4,
+    "windowRatio": 0.55,
     "bay": 3.6,
     "cornice": true,
     "trimColour": "#f0e4dc",
@@ -106,46 +106,46 @@
     "colour": "#7a7f84",
     "parapet": 0.9
    },
-   "z0": 19
+   "z0": 12
   },
   {
    "type": "revolve",
    "at": [
     0,
     0,
-    29
+    25
    ],
    "params": {
     "segments": 32,
     "profile": [
      [
-      11.5,
+      12.2,
       0,
       "#b0b8b0"
      ],
      [
-      11,
+      11.8,
       0.6,
       "#9fc2b0"
      ],
      [
-      9.8,
-      2.8,
+      10.5,
+      3.4,
       "#9fc2b0"
      ],
      [
-      7,
-      4.6,
+      7.5,
+      6.4,
       "#9fc2b0"
      ],
      [
-      3.5,
-      5.8,
+      3.8,
+      8.2,
       "#9fc2b0"
      ],
      [
       3.0,
-      6.0,
+      8.6,
       "#9fc2b0"
      ]
     ]
@@ -156,7 +156,7 @@
    "at": [
     0,
     0,
-    34.8
+    33.6
    ],
    "params": {
     "radius": 3.2,
@@ -172,7 +172,7 @@
    "at": [
     0,
     0,
-    38.4
+    37.2
    ],
    "params": {
     "segments": 16,
@@ -213,14 +213,14 @@
     -46,
     2
    ],
-   "height": 14,
-   "storeys": 3,
+   "height": 9,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
     "windows": "punched",
-    "windowRatio": 0.25,
-    "bay": 5,
+    "windowRatio": 0.4,
+    "bay": 10,
     "windowShape": "arched",
     "plinth": 0.8,
     "cornice": true,
@@ -229,7 +229,8 @@
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "bands": "#e8d8d0"
    },
    "roof": {
     "form": "hip",
@@ -252,14 +253,14 @@
     46,
     2
    ],
-   "height": 14,
-   "storeys": 3,
+   "height": 9,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
     "windows": "punched",
-    "windowRatio": 0.25,
-    "bay": 5,
+    "windowRatio": 0.4,
+    "bay": 10,
     "windowShape": "arched",
     "plinth": 0.8,
     "cornice": true,
@@ -268,7 +269,8 @@
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "bands": "#e8d8d0"
    },
    "roof": {
     "form": "hip",
@@ -291,24 +293,26 @@
     0,
     -22.5
    ],
-   "height": 15,
-   "storeys": 3,
+   "height": 12,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
-    "windows": "none",
+    "windows": "arched",
     "trimColour": "#f0e4dc",
     "plinth": 0.8,
     "cornice": true,
     "faces": {
      "left": "plain",
      "right": "plain"
-    }
+    },
+    "windowRatio": 0.5,
+    "bay": 8
    },
    "roof": {
     "form": "gable",
     "colour": "#e8d8d0",
-    "pitch": 18,
+    "pitch": 24,
     "overhang": 0.4,
     "axis": "x"
    }
@@ -331,9 +335,10 @@
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
-    "windows": "none",
+    "windows": "arched",
     "plinth": 0.5,
-    "cornice": true
+    "cornice": true,
+    "windowRatio": 0.45
    },
    "roof": {
     "form": "flat",
@@ -359,9 +364,10 @@
    "wall": {
     "material": "painted-render",
     "colour": "#a8334a",
-    "windows": "none",
+    "windows": "arched",
     "plinth": 0.5,
-    "cornice": true
+    "cornice": true,
+    "windowRatio": 0.45
    },
    "roof": {
     "form": "flat",
@@ -378,9 +384,9 @@
    ],
    "params": {
     "length": 100,
-    "height": 1.8,
+    "height": 2.6,
     "kind": "railing",
-    "pillarEvery": 3,
+    "pillarEvery": 6,
     "colour": "#a8334a"
    },
    "lod": [
@@ -434,7 +440,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Red House dome, lantern and arched stage are close; real facade has far more ornament, balconies and a louvred upper arcade; wings simplified; side iron-roofed market not modelled."
+  "gaps": "Upper block now arcaded with taller dome, 2-storey wings and pedimented bay; real facade has far more ornament, balconies, ribbed dome and finialled fence; side iron-roofed market not modelled."
  },
  "schema": "allworld-place-model",
  "version": 2,

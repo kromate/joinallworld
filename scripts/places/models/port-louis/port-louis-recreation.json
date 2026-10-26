@@ -34,62 +34,104 @@
   "fovDeg": 60,
   "aspect": 1.333,
   "fit": "building",
-  "margin": 1.0
+  "margin": 0.0
  },
  "parts": [
   {
    "type": "water-surface",
    "at": [
     0,
-    22,
+    8,
     0
    ],
    "params": {
     "width": 46,
-    "depth": 24,
+    "depth": 22,
     "shape": "oval",
-    "colour": "#7a6a4c",
+    "colour": "#4a4a2e",
     "bank": true
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -6,
-    15,
+    -4,
+    2,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 20.8,
-    "count": 4,
-    "spread": 5
+    "height": 17.0,
+    "count": 3,
+    "spread": 3
    }
   },
   {
    "type": "core/tree",
    "at": [
-    22,
-    24,
+    6,
+    4,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 16.0,
+    "height": 15.0,
+    "count": 2,
+    "spread": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13.0,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13.0,
     "count": 3,
-    "spread": 4
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15.0,
+    "count": 2,
+    "spread": 3
    }
   },
   {
    "type": "core/tree",
    "at": [
     -30,
-    28,
+    34,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 12,
+    "height": 14,
     "count": 5,
     "spread": 9
    }
@@ -97,13 +139,13 @@
   {
    "type": "core/tree",
    "at": [
-    28,
-    45,
+    0,
+    38,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 14,
+    "height": 15,
     "count": 6,
     "spread": 12
    }
@@ -111,31 +153,31 @@
   {
    "type": "core/tree",
    "at": [
-    -14,
-    48,
+    30,
+    34,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 13,
+    "height": 14,
     "count": 5,
-    "spread": 12
+    "spread": 10
    }
   },
   {
    "type": "pavilion",
    "id": "gazebo",
    "at": [
-    -30,
-    -12,
+    -22,
+    -4,
     0.4
    ],
    "params": {
-    "width": 7,
-    "depth": 7,
-    "height": 3.8,
+    "width": 8,
+    "depth": 8,
+    "height": 4.2,
     "roof": "hip",
-    "rise": 2.4,
+    "rise": 2.8,
     "posts": 8,
     "colour": "#f6f3ec",
     "cap_colour": "#4f7a5a",
@@ -145,8 +187,8 @@
   {
    "type": "core/steps",
    "at": [
-    -30,
-    -16.6,
+    -22,
+    -8.6,
     0
    ],
    "params": {
@@ -158,10 +200,19 @@
    }
   },
   {
+   "type": "statue-on-plinth",
+   "at": [
+    30,
+    24,
+    0
+   ],
+   "params": {}
+  },
+  {
    "type": "core/gate",
    "at": [
-    0,
-    -38,
+    8,
+    -18,
     0
    ],
    "params": {
@@ -171,58 +222,19 @@
     "leaf": "bars",
     "colour": "#f6f3ec"
    }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -26,
-    -38,
-    0
-   ],
-   "params": {
-    "length": 36,
-    "height": 1.8,
-    "kind": "railing",
-    "pillarEvery": 4,
-    "colour": "#2f4a3a"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    26,
-    -38,
-    0
-   ],
-   "params": {
-    "length": 36,
-    "height": 1.8,
-    "kind": "railing",
-    "pillarEvery": 4,
-    "colour": "#2f4a3a"
-   }
-  },
-  {
-   "type": "statue-on-plinth",
-   "at": [
-    34,
-    -4,
-    0
-   ],
-   "params": {}
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "garden",
   "extent": [
-   120,
-   100
+   90,
+   70
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "real park is 170,000 m2: only the front lawn, pond, gazebo and gate are modelled; palm species and dense understorey are generic; photo camera framing renders the whole garden small; pond reads as a flat brown patch"
+  "gaps": "pond is a dark flat patch with no reflections and sits behind palms; palms are generic low-poly not Latania fan crowns or travellers palms; lawn is flat, not rolling; statue tiny; framing still pulled wide by the gate"
  }
 }

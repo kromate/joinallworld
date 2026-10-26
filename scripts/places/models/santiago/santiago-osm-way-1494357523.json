@@ -62,7 +62,7 @@
     "faces": {
      "front": "none"
     },
-    "plinth": 0.8
+    "plinth": 0.2
    },
    "roof": {
     "form": "gable",
@@ -93,20 +93,20 @@
     "material": "stucco",
     "colour": "#d4caa8",
     "windows": "arched",
-    "windowRatio": 0.18,
+    "windowRatio": 0.3,
     "faces": {
      "left": "arched",
      "front": "none"
     },
-    "bay": 4.4,
-    "plinth": 1.0,
+    "bay": 4.0,
+    "plinth": 0.2,
     "groundKind": "none"
    },
    "roof": {
     "form": "shed",
     "colour": "#b0613f",
     "material": "clay-tile",
-    "pitch": 14,
+    "pitch": 8,
     "overhang": 0.6
    }
   },
@@ -128,21 +128,42 @@
       ]
      },
      {
-      "z": 12.4,
+      "z": 12.2,
       "rect": [
        15.6,
        2.4
       ]
      },
      {
-      "z": 16.5,
+      "z": 13.0,
+      "rect": [
+       14.6,
+       2.4
+      ]
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       12,
+       2.4
+      ]
+     },
+     {
+      "z": 15.5,
       "rect": [
        9,
        2.4
       ]
      },
      {
-      "z": 20,
+      "z": 16.5,
+      "rect": [
+       5,
+       2.4
+      ]
+     },
+     {
+      "z": 17.5,
       "rect": [
        1.4,
        2.4
@@ -220,12 +241,12 @@
     0
    ],
    "params": {
-    "width": 6.2,
-    "height": 8.6,
+    "width": 7.0,
+    "height": 9.4,
     "depth": 0.7,
     "archWidth": 3.2,
     "springHeight": 5.4,
-    "colour": "#7e7b76"
+    "colour": "#5f5f64"
    }
   },
   {
@@ -266,7 +287,7 @@
    "at": [
     2,
     -17.5,
-    20.2
+    17.3
    ],
    "params": {
     "height": 3.4,
@@ -313,6 +334,312 @@
     "height": 6.5,
     "count": 1
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     34.4
+    ],
+    "height": 1.0,
+    "colour": "#47443f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.4,
+     0.6
+    ],
+    "height": 1.0,
+    "colour": "#47443f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.45,
+    2,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     34.6
+    ],
+    "height": 0.4,
+    "colour": "#7a4a2a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.45,
+    3,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     40
+    ],
+    "height": 2.4,
+    "colour": "#8d9296",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -20.1,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "height": 2.0,
+    "colour": "#eeeae0",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -20.0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#5f5f64",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.9,
+    -19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 12.2,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.5,
+    -19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 12.2,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    -19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 12.2,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.9,
+    -19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 12.2,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    -5.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    -1.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.4,
+    14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.7
+    ],
+    "height": 5.4,
+    "colour": "#cfc6a8",
+    "top": true
+   }
   }
  ],
  "site": {
@@ -336,6 +663,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Front gable is a plain loft without the shaped baroque scrolls; niche portal and statue simplified; aisle windows are not arched cuts with pilasters; stone plinth is plain; hall at right is a generic block."
+  "gaps": "Gable scrolls are stepped plates not curved; statue is a block; wall tracery/cables not modelled; hall at right still a generic block."
  }
 }

@@ -38,38 +38,174 @@
  },
  "parts": [
   {
-   "type": "mass",
-   "id": "podium",
-   "footprint": {
-    "osm": true,
-    "simplify": 6
-   },
+   "type": "prism",
+   "id": "undercroft",
    "at": [
     0,
     0
    ],
-   "height": 20,
-   "storeys": 4,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#d8d1c0",
+   "params": {
+    "points": [
+     [
+      -48.0,
+      -18.8
+     ],
+     [
+      -41.4,
+      -22.7
+     ],
+     [
+      -34.9,
+      -26.400000000000002
+     ],
+     [
+      -28.3,
+      -29.599999999999998
+     ],
+     [
+      -21.7,
+      -32.199999999999996
+     ],
+     [
+      -15.1,
+      -33.9
+     ],
+     [
+      -8.6,
+      -34.699999999999996
+     ],
+     [
+      -2.0,
+      -34.599999999999994
+     ],
+     [
+      4.6,
+      -33.5
+     ],
+     [
+      11.1,
+      -31.500000000000004
+     ],
+     [
+      17.7,
+      -28.8
+     ],
+     [
+      24.3,
+      -25.400000000000002
+     ],
+     [
+      30.9,
+      -21.7
+     ],
+     [
+      37.4,
+      -18.8
+     ],
+     [
+      44.0,
+      -18.8
+     ],
+     [
+      44,
+      10
+     ],
+     [
+      -48,
+      10
+     ]
+    ],
+    "z0": 0,
+    "height": 5.4,
+    "colour": "#2b2d33",
+    "topColour": "#2b2d33",
+    "plinth": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48.0,
+      -22.0
+     ],
+     [
+      -41.4,
+      -25.9
+     ],
+     [
+      -34.9,
+      -29.6
+     ],
+     [
+      -28.3,
+      -32.8
+     ],
+     [
+      -21.7,
+      -35.4
+     ],
+     [
+      -15.1,
+      -37.1
+     ],
+     [
+      -8.6,
+      -37.9
+     ],
+     [
+      -2.0,
+      -37.8
+     ],
+     [
+      4.6,
+      -36.7
+     ],
+     [
+      11.1,
+      -34.7
+     ],
+     [
+      17.7,
+      -32.0
+     ],
+     [
+      24.3,
+      -28.6
+     ],
+     [
+      30.9,
+      -24.9
+     ],
+     [
+      37.4,
+      -22.0
+     ],
+     [
+      44.0,
+      -22.0
+     ],
+     [
+      44,
+      10
+     ],
+     [
+      -48,
+      10
+     ]
+    ],
+    "z0": 5.4,
+    "height": 11.6,
+    "colour": "#d6cfbf",
+    "topColour": "#9a9a94",
     "windows": "none",
-    "windowRatio": 0.12,
-    "faces": {
-     "front": "none"
-    },
-    "plinth": 0.4,
-    "cornice": true,
-    "pattern": [
-     {
-      "type": "bands"
-     }
-    ]
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#9a9a94",
-    "parapet": 0.8
+    "plinth": 0.4
    }
   },
   {
@@ -83,25 +219,26 @@
    },
    "at": [
     12,
-    6
+    -12
    ],
    "z0": 16.9,
    "height": 48,
-   "storeys": 13,
+   "storeys": 9,
    "wall": {
     "material": "painted-render",
     "colour": "#efece4",
-    "windows": "none",
-    "windowRatio": 0.2,
-    "faces": {
-     "front": "none"
-    },
+    "windows": "punched",
+    "windowRatio": 0.12,
     "plinth": 0,
     "pattern": [
      {
       "type": "floors"
      }
-    ]
+    ],
+    "faces": {
+     "left": "none",
+     "back": "none"
+    }
    },
    "roof": {
     "form": "flat",
@@ -120,25 +257,26 @@
    },
    "at": [
     -32,
-    2
+    -8
    ],
    "z0": 16.9,
    "height": 34,
-   "storeys": 9,
+   "storeys": 7,
    "wall": {
     "material": "painted-render",
     "colour": "#ece9e1",
-    "windows": "none",
-    "windowRatio": 0.22,
-    "faces": {
-     "front": "none"
-    },
+    "windows": "punched",
+    "windowRatio": 0.12,
     "plinth": 0,
     "pattern": [
      {
       "type": "floors"
      }
-    ]
+    ],
+    "faces": {
+     "right": "none",
+     "back": "none"
+    }
    },
    "roof": {
     "form": "flat",
@@ -147,34 +285,89 @@
    }
   },
   {
-   "type": "canopy",
+   "type": "prism",
+   "id": "blue-glaze",
+   "lod": [
+    0,
+    1
+   ],
    "at": [
-    -18,
-    -34,
-    5
+    8,
+    -23.2
    ],
    "params": {
-    "form": "flat",
-    "width": 42,
-    "depth": 8,
-    "height": 4.6,
-    "columns": 4,
-    "colour": "#2d57a3",
-    "edgeColour": "#2d57a3"
+    "rect": [
+     13,
+     0.5
+    ],
+    "z0": 28,
+    "height": 30,
+    "colour": "#2f6fb8",
+    "topColour": "#2f6fb8",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#9fc3e6",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e8eef5"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-edge-r",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    29.2,
+    -21
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     1.2
+    ],
+    "z0": 20,
+    "height": 42,
+    "colour": "#2f6fb8",
+    "topColour": "#2f6fb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-drum",
+   "at": [
+    -46,
+    -12
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 10,
+    "z0": 17,
+    "height": 30,
+    "colour": "#3d6fb0",
+    "topColour": "#c8cfd6",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "glassColour": "#3d6fb0"
    }
   },
   {
    "type": "sign-board",
    "at": [
-    -45,
+    -14,
     -30,
-    6
+    8.5
    ],
    "params": {
     "width": 34,
     "height": 6,
     "bottom": 6,
-    "colour": "#e4ddcd",
+    "colour": "#dcd6c8",
     "posts": false
    },
    "lod": [
@@ -185,8 +378,8 @@
   {
    "type": "ambulance-bay",
    "at": [
-    20,
-    -38,
+    30,
+    -44,
     0
    ],
    "params": {
@@ -202,7 +395,7 @@
    "type": "lamp",
    "at": [
     -50,
-    -44,
+    -50,
     0
    ],
    "params": {
@@ -213,49 +406,56 @@
    "lod": [
     0
    ]
-  },
-  {
-   "type": "prism",
-   "id": "blue-strip",
-   "at": [
-    12,
-    -4.7
-   ],
-   "lod": [
-    0,
-    1
-   ],
-   "params": {
-    "rect": [
-     14,
-     0.6
-    ],
-    "z0": 24,
-    "height": 24,
-    "colour": "#2f6fb8"
-   }
   }
  ],
  "site": {
-  "ground": "paving",
-  "forecourt": "road",
+  "ground": "asphalt",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
      -60,
-     -48
+     -46
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -46
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -46
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -46
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -46
     ]
    }
   ],
   "extent": [
    160,
-   160
+   120
   ]
  },
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "Podium is the OSM outline scaled 0.64 so its curved front and undercroft are lost; towers are plain boxes with no curved glazed stair drum or blue edge strips; no street trees/traffic."
+  "match": "fair",
+  "gaps": "Podium has a curved front with recessed dark undercroft, but no large seal/sign wall art, only blue band on the tall tower without the stepped window strips, stair drum is a plain blue cylinder, window grids simplified to save triangles, no traffic."
  }
 }

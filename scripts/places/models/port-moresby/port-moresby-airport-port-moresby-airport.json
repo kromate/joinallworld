@@ -12,7 +12,7 @@
    "author": "JialiangGao",
    "view": "front",
    "file": "/tmp/places-evidence/port-moresby/airport1.jpg",
-   "used": "airside elevation: long low terminal, white parapet fascia, dark glazed upper band over taupe piers with carved relief panels, small hipped boarding pods and an aerobridge at the right end, light masts, hill behind"
+   "used": "airside elevation: tall open dark ground bay under plain white fascia, taupe piers with carved relief panels, dark lettering band, hipped canopy pods and aerobridge at the ends, green hill behind"
   },
   {
    "kind": "osm",
@@ -41,28 +41,19 @@
     0,
     0
    ],
-   "height": 9,
-   "storeys": 2,
+   "height": 7.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#a9a498",
-    "windows": "ribbon",
-    "windowRatio": 0.5,
-    "faces": {
-     "front": "ribbon",
-     "back": "plain",
-     "left": "plain",
-     "right": "plain"
-    },
-    "plinth": 0.4,
-    "parapet": 0.8
+    "colour": "#3f3b36",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#e8eaea",
     "material": "metal-sheet",
-    "overhang": 0.6,
-    "parapet": 1.0
+    "overhang": 0.4,
+    "parapet": 0.5
    }
   },
   {
@@ -71,24 +62,560 @@
    "footprint": {
     "rect": [
      118,
-     1.2
+     5
     ]
    },
    "at": [
     0,
-    -15.4
+    -14
    ],
-   "z0": 7.2,
-   "height": 3.4,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#eef0ef",
+    "colour": "#f0f1ef",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#e8eaea"
+   },
+   "z0": 7.2
+  },
+  {
+   "type": "mass",
+   "id": "lettering",
+   "footprint": {
+    "rect": [
+     60,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -16.7
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a2a"
+   },
+   "z0": 8.2
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d6d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d6d4"
+   },
+   "z0": 10.4
+  },
+  {
+   "type": "mass",
+   "id": "pier-0",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -54,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-0",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    -48,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-1",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -42,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-1",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    -36,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-2",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -30,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-2",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    -24,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-3",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -18,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-3",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-4",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -6,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-4",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-5",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    6,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-5",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    12,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-6",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    18,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-6",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    24,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-7",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    30,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-7",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    36,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-8",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    42,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-8",
+   "footprint": {
+    "rect": [
+     8.2,
+     0.5
+    ]
+   },
+   "at": [
+    48,
+    -15.3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aea596",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea596"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "pier-9",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    54,
+    -14.4
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9486",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9486"
    }
   },
   {
@@ -101,10 +628,10 @@
     ]
    },
    "at": [
-    -50,
-    -19
+    -58,
+    -20
    ],
-   "height": 4.5,
+   "height": 1.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -114,35 +641,109 @@
    "roof": {
     "form": "hip",
     "colour": "#c9cdcd",
-    "pitch": 12,
+    "pitch": 14,
     "overhang": 0.6
+   },
+   "z0": 3.4
+  },
+  {
+   "type": "mass",
+   "id": "stilt-left-0",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -61,
+    -22.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
    }
   },
   {
    "type": "mass",
-   "id": "pod-mid",
+   "id": "stilt-left-1",
    "footprint": {
     "rect": [
-     8,
-     7
+     0.6,
+     0.6
     ]
    },
    "at": [
-    -36,
-    -19
+    -55,
+    -22.5
    ],
-   "height": 4.5,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#aeb3b3",
+    "colour": "#8f9390",
     "windows": "none"
    },
    "roof": {
-    "form": "hip",
-    "colour": "#c9cdcd",
-    "pitch": 12,
-    "overhang": 0.6
+    "form": "flat",
+    "colour": "#8f9390"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stilt-left-2",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -61,
+    -17.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stilt-left-3",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -55,
+    -17.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
    }
   },
   {
@@ -151,14 +752,14 @@
    "footprint": {
     "rect": [
      9,
-     8
+     7
     ]
    },
    "at": [
-    34,
-    -19
+    58,
+    -20
    ],
-   "height": 5,
+   "height": 1.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -168,41 +769,129 @@
    "roof": {
     "form": "hip",
     "colour": "#c9cdcd",
-    "pitch": 12,
+    "pitch": 14,
     "overhang": 0.6
+   },
+   "z0": 3.4
+  },
+  {
+   "type": "mass",
+   "id": "stilt-right-0",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    55,
+    -22.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stilt-right-1",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    61,
+    -22.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stilt-right-2",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    55,
+    -17.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stilt-right-3",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    61,
+    -17.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f9390",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
    }
   },
   {
    "type": "jet-bridge",
    "at": [
-    42,
-    -21,
+    66,
+    -24,
     4.2
    ],
    "rotDeg": 0,
    "params": {
-    "length": 16,
-    "colour": "#c9ced1"
-   }
-  },
-  {
-   "type": "jet-bridge",
-   "at": [
-    -28,
-    -17,
-    4.2
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 10,
+    "length": 18,
     "colour": "#c9ced1"
    }
   },
   {
    "type": "airliner",
    "at": [
-    10,
-    -34,
+    20,
+    -38,
     0
    ],
    "rotDeg": 90,
@@ -213,10 +902,65 @@
    }
   },
   {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     116,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#e2b92b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -38,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     16
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#e2b92b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     44
+    ],
+    "z0": 0,
+    "height": 20,
+    "colour": "#586a34",
+    "topScale": 0.25,
+    "windows": "none"
+   }
+  },
+  {
    "type": "lamp",
    "at": [
-    -58,
-    -40,
+    -62,
+    -45,
     0
    ],
    "params": {
@@ -226,8 +970,8 @@
   {
    "type": "lamp",
    "at": [
-    20,
-    -45,
+    30,
+    -50,
     0
    ],
    "params": {
@@ -247,6 +991,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "No carved relief panels or lettering band; pods and aerobridge simplified; hill backdrop and apron markings not modelled; only a 118 m run of the 153 m terminal."
+  "gaps": "Hill is a smooth prism not a wooded ridge; relief panels are plain blocks; taxiway curve lines are straight; only a 118 m run of the 153 m terminal."
  }
 }

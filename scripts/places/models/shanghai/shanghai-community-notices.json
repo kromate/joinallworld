@@ -19,7 +19,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "tower is a plain glass cylinder without the faceted top and vertical mullion stripes; flag, hedges and approach steps simplified; side wings approximate"
+  "gaps": "tower stripes are plain bands not the real mullion pattern and the crown is a simple chamfer; canopy disc is a flat slab on thin columns; wings are only roughly angled; hedges and lawn approach are simplified"
  },
  "camera": {
   "yawDeg": 0,
@@ -42,14 +42,14 @@
     0,
     0
    ],
-   "height": 21,
+   "height": 20,
    "storeys": 4,
    "wall": {
     "material": "stone",
     "colour": "#b6b3a8",
     "windows": "punched",
-    "windowRatio": 0.55,
-    "bay": 6,
+    "windowRatio": 0.7,
+    "bay": 4.5,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -59,7 +59,7 @@
     "pattern": [
      {
       "type": "fins",
-      "colour": "#a8a59a",
+      "colour": "#9c998e",
       "faces": [
        "front"
       ]
@@ -82,18 +82,17 @@
     ]
    },
    "at": [
-    -52,
-    -2
+    -54,
+    -5
    ],
-   "height": 15,
-   "storeys": 4,
+   "height": 11,
+   "storeys": 3,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#6f7c84",
-    "windows": "curtain",
-    "windowRatio": 0.6,
-    "bands": "#a9a79d",
-    "bay": 7,
+    "material": "stone",
+    "colour": "#aaa89d",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 5,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -104,7 +103,8 @@
     "form": "flat",
     "colour": "#8b9096",
     "parapet": 0.6
-   }
+   },
+   "rotDeg": 10
   },
   {
    "type": "mass",
@@ -116,18 +116,17 @@
     ]
    },
    "at": [
-    52,
-    -2
+    54,
+    -5
    ],
-   "height": 15,
-   "storeys": 4,
+   "height": 11,
+   "storeys": 3,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#6f7c84",
-    "windows": "curtain",
-    "windowRatio": 0.6,
-    "bands": "#a9a79d",
-    "bay": 7,
+    "material": "stone",
+    "colour": "#aaa89d",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 5,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -138,50 +137,250 @@
     "form": "flat",
     "colour": "#8b9096",
     "parapet": 0.6
-   }
+   },
+   "rotDeg": -10
   },
   {
-   "type": "loft",
+   "type": "prism",
    "at": [
     0,
     12,
-    21
+    20
    ],
    "params": {
-    "colour": "#7f93a8",
+    "n": 12,
+    "radius": 21,
+    "height": 72,
+    "topScale": 0.9,
+    "colour": "#6f8cab",
     "material": "glass-curtain",
-    "capTop": true,
-    "sections": [
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 3,
+    "pattern": [
      {
-      "z": 0,
-      "circle": 16
-     },
-     {
-      "z": 52,
-      "circle": 16
-     },
-     {
-      "z": 56,
-      "circle": 14.5
+      "type": "fins",
+      "colour": "#c4cfd8"
      }
     ]
    }
   },
   {
-   "type": "core/canopy",
+   "type": "prism",
+   "at": [
+    0,
+    12,
+    92
+   ],
+   "params": {
+    "n": 12,
+    "radius": 18,
+    "height": 4,
+    "topScale": 0.6,
+    "colour": "#b7c4cf"
+   }
+  },
+  {
+   "type": "revolve",
    "at": [
     0,
     -22,
-    6.8
+    7
    ],
    "params": {
-    "form": "flat",
-    "width": 26,
-    "depth": 9,
-    "height": 0,
-    "columns": 6,
-    "colour": "#c9c7bf"
+    "colour": "#c9c7bf",
+    "segments": 28,
+    "profile": [
+     [
+      0,
+      0,
+      "#c9c7bf"
+     ],
+     [
+      14,
+      0,
+      "#c9c7bf"
+     ],
+     [
+      14,
+      1.2,
+      "#d6d4cc"
+     ],
+     [
+      0,
+      1.2,
+      "#d6d4cc"
+     ]
+    ]
    }
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -12,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col0"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -8,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col1"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -4,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col2"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col3"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    4,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col4"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    8,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col5"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    12,
+    -27
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "colour": "#d0cec6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6"
+   },
+   "id": "col6"
   },
   {
    "type": "core/steps",
@@ -191,8 +390,8 @@
     0
    ],
    "params": {
-    "width": 30,
-    "count": 5,
+    "width": 36,
+    "count": 6,
     "rise": 0.2,
     "run": 1.1,
     "colour": "#b4b1a6"
@@ -201,12 +400,12 @@
   {
    "type": "core/flag",
    "at": [
-    -2,
-    -40,
+    0,
+    -30,
     0
    ],
    "params": {
-    "height": 20,
+    "height": 28,
     "colour": "#c8202a"
    }
   },
@@ -231,6 +430,20 @@
     "height": 6,
     "count": 3,
     "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3,
+    "count": 3,
+    "spread": 8
    }
   }
  ],

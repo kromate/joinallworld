@@ -43,7 +43,7 @@
     "width": 110,
     "depth": 60,
     "shape": "rect",
-    "colour": "#2f4a35",
+    "colour": "#3a5a35",
     "bank": false
    }
   },
@@ -52,15 +52,15 @@
    "id": "platform",
    "footprint": {
     "rect": [
-     22,
-     11
+     26,
+     26
     ]
    },
    "at": [
-    -32,
-    38
+    -30,
+    34
    ],
-   "height": 2.2,
+   "height": 1.6,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -77,15 +77,15 @@
    "id": "hall",
    "footprint": {
     "rect": [
-     17,
-     8
+     16,
+     16
     ]
    },
    "at": [
-    -32,
-    38
+    -30,
+    34
    ],
-   "z0": 2.2,
+   "z0": 1.6,
    "height": 4.2,
    "storeys": 1,
    "wall": {
@@ -103,16 +103,16 @@
   {
    "type": "pagoda-roof",
    "at": [
-    -32,
-    38,
-    6.4
+    -30,
+    34,
+    5.8
    ],
    "params": {
-    "width": 22,
-    "depth": 12,
+    "width": 26,
+    "depth": 26,
     "rise": 2.2,
-    "overhang": 1.6,
-    "upturn": 0.9,
+    "overhang": 3,
+    "upturn": 1.3,
     "colour": "#d9892a",
     "trim": "#c0442a"
    }
@@ -122,15 +122,15 @@
    "id": "upper",
    "footprint": {
     "rect": [
-     10,
-     6
+     9,
+     9
     ]
    },
    "at": [
     -30,
-    38
+    34
    ],
-   "z0": 8.2,
+   "z0": 7.6,
    "height": 3,
    "storeys": 1,
    "wall": {
@@ -149,15 +149,15 @@
    "type": "pagoda-roof",
    "at": [
     -30,
-    38,
-    11.2
+    34,
+    10.6
    ],
    "params": {
-    "width": 14,
-    "depth": 9,
+    "width": 17,
+    "depth": 17,
     "rise": 2.6,
-    "overhang": 1.4,
-    "upturn": 1.0,
+    "overhang": 2.2,
+    "upturn": 1.1,
     "colour": "#d9892a",
     "trim": "#c0442a"
    }
@@ -191,8 +191,8 @@
     "depth": 12,
     "count": 16,
     "kind": "broadleaf",
-    "min_height": 10,
-    "max_height": 16
+    "min_height": 12,
+    "max_height": 20
    }
   },
   {
@@ -223,12 +223,549 @@
     "shelter": false,
     "timber": false
    }
+  },
+  {
+   "type": "mass",
+   "id": "top",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    34
+   ],
+   "z0": 13.4,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a3f26",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c96a1e"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -30,
+    34,
+    15.6
+   ],
+   "params": {
+    "width": 8,
+    "depth": 8,
+    "rise": 2.4,
+    "overhang": 1,
+    "upturn": 0.7,
+    "colour": "#d9892a",
+    "trim": "#c0442a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spire",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -30,
+    34
+   ],
+   "z0": 18,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a52b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a52b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    20,
+    1.6
+   ],
+   "params": {
+    "length": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 6,
+    "spread": 6,
+    "line": 50
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf0",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -20,
+    -5
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf1",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -8,
+    -2
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf2",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    4,
+    1
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf3",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    16,
+    -5
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf4",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    28,
+    -2
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf5",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -16,
+    13
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf6",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -4,
+    7
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf7",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf8",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    20,
+    13
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf9",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    32,
+    7
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf10",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -12,
+    22
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf11",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    25
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf12",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    12,
+    19
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "leaf13",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    24,
+    22
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bloom0",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "z0": 0.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e86a9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e86a9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bloom1",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    14,
+    8
+   ],
+   "z0": 0.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e86a9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e86a9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bloom2",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "z0": 0.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e86a9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e86a9a"
+   }
   }
  ],
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "One lakeside corner of a 50 ha park; the pavilion is two stacked hip roofs without carved ridge ornaments and railings; monorail, water-screen and Roman square omitted."
+  "gaps": "three-tier pagoda with spire on a platform, scattered lotus leaf squares and blooms, kiosk and tree line; plan is rectangular not octagonal, water is a rect plane, no pilings or railing detail beyond a fence"
  },
  "site": {
   "ground": "grass",

@@ -15,15 +15,6 @@
    "used": "airside elevation of the original terminal: two-level glazed central hall with a thin overhanging roof slab, lower two-storey wings with window bands, octagonal-stack control tower at the right, cream render, blank rooftop sign boards"
   },
   {
-   "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:Sunan_airport_terminal.jpg",
-   "licence": "CC BY-SA 3.0",
-   "author": "Mimura",
-   "view": "front",
-   "file": "/tmp/places-evidence/pyongyang/airport2.jpg",
-   "used": "second view confirming hall height, side stair and wing roof lines"
-  },
-  {
    "kind": "osm",
    "ref": "way/356324168",
    "used": "terminal size 116 x 34 m, 3 levels (named as the first terminal, matching the photographed building)"
@@ -54,9 +45,9 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9d3c2",
-    "windows": "curtain",
-    "windowRatio": 0.62,
+    "colour": "#d8cfb8",
+    "windows": "punched",
+    "windowRatio": 0.6,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -64,14 +55,16 @@
     },
     "plinth": 0.5,
     "cornice": true,
-    "groundKind": "plain",
-    "bands": "#c9c3b2"
+    "bands": "#cbbfa4",
+    "bay": 6.7,
+    "windowShape": "rect",
+    "glassColour": "#8f9a98"
    },
    "roof": {
     "form": "flat",
-    "colour": "#cfcabf",
-    "overhang": 1.8,
-    "parapet": 0.5
+    "colour": "#e4dfd2",
+    "overhang": 2.2,
+    "parapet": 0.2
    }
   },
   {
@@ -79,31 +72,32 @@
    "id": "wing-left",
    "footprint": {
     "rect": [
-     28,
+     30,
      26
     ]
    },
    "at": [
-    -44,
+    -45,
     1
    ],
-   "height": 8,
+   "height": 7,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#d6cfbd",
+    "colour": "#d4c7a6",
     "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windowRatio": 0.5,
     "faces": {
      "left": "plain",
      "right": "none",
      "back": "plain"
     },
-    "plinth": 0.4
+    "plinth": 0.4,
+    "glassColour": "#d9dcd8"
    },
    "roof": {
     "form": "flat",
-    "colour": "#c4bfb3",
+    "colour": "#cfc6ae",
     "overhang": 0.8,
     "parapet": 0.4
    }
@@ -121,56 +115,26 @@
     45,
     1
    ],
-   "height": 8,
+   "height": 7,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#d6cfbd",
+    "colour": "#d4c7a6",
     "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windowRatio": 0.5,
     "faces": {
      "left": "none",
      "right": "plain",
      "back": "plain"
     },
-    "plinth": 0.4
+    "plinth": 0.4,
+    "glassColour": "#d9dcd8"
    },
    "roof": {
     "form": "flat",
-    "colour": "#c4bfb3",
+    "colour": "#cfc6ae",
     "overhang": 0.8,
     "parapet": 0.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "wing-far",
-   "footprint": {
-    "rect": [
-     14,
-     24
-    ]
-   },
-   "at": [
-    -58,
-    2
-   ],
-   "height": 6,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#d2cbb9",
-    "windows": "ribbon",
-    "windowRatio": 0.35,
-    "faces": {
-     "left": "plain",
-     "right": "none"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#c4bfb3",
-    "overhang": 0.5
    }
   },
   {
@@ -186,15 +150,26 @@
     51,
     10
    ],
-   "height": 18,
-   "storeys": 5,
+   "height": 26,
+   "storeys": 8,
    "wall": {
     "material": "painted-render",
-    "colour": "#d7d1c0",
+    "colour": "#d8cfb8",
     "windows": "ribbon",
-    "windowRatio": 0.3,
-    "bands": "#c4beae",
-    "plinth": 0
+    "windowRatio": 0.45,
+    "bands": "#bfb497",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ],
+    "glassColour": "#8f9a98"
    },
    "roof": {
     "form": "flat",
@@ -207,89 +182,28 @@
    "id": "tower-cab",
    "footprint": {
     "rect": [
-     10,
-     10
+     12,
+     12
     ]
    },
    "at": [
     51,
     10
    ],
-   "z0": 18,
-   "height": 5,
+   "z0": 26,
+   "height": 4,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#566670",
+    "colour": "#6e7a7c",
     "windows": "curtain",
     "windowRatio": 0.8,
     "plinth": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#d0cbbf",
+    "colour": "#d8cfb8",
     "overhang": 1.0
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    6,
-    -2,
-    12.6
-   ],
-   "params": {
-    "width": 16,
-    "height": 2.2,
-    "bottom": 0,
-    "colour": "#b3262c",
-    "posts": false
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    -24,
-    -2,
-    12.6
-   ],
-   "params": {
-    "width": 7,
-    "height": 2,
-    "bottom": 0,
-    "colour": "#b3262c",
-    "posts": false
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    -12,
-    0,
-    12.6
-   ],
-   "params": {
-    "width": 3.6,
-    "height": 4.5,
-    "bottom": 0,
-    "colour": "#e9e4d6",
-    "frameColour": "#b0aca0",
-    "posts": false
-   }
-  },
-  {
-   "type": "steps",
-   "at": [
-    30,
-    -14,
-    0
-   ],
-   "params": {
-    "width": 3,
-    "rise": 0.5,
-    "run": 0.8,
-    "count": 6,
-    "colour": "#a9a59a"
    }
   },
   {
@@ -303,6 +217,172 @@
     "height": 10,
     "count": 6,
     "spacing": 20
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -2,
+    12.6
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#b3262c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -2,
+    12.6
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#b3262c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2,
+    12.6
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#c9a98a",
+    "posts": false,
+    "frameColour": "#8a7a60"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -15.2,
+    2.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#6d9ab0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -15.2,
+    2.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#b98a5e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -32,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 14,
+    "colour": "#b5ac98"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30.5,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      -11.2,
+      8
+     ]
+    ],
+    "colour": "#c8c2b0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    32,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 14,
+    "colour": "#b5ac98"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    33.5,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      -11.2,
+      8
+     ]
+    ],
+    "colour": "#c8c2b0"
    }
   }
  ],
@@ -333,13 +413,13 @@
    }
   ],
   "extent": [
-   160,
+   150,
    100
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Photo shows the old terminal (OSM names it terminal 1), modelled from it; tower is a plain stack not the stepped octagon, rooftop signs render blue-ish, no murals/stairs, render glass tint is bluer than the cream/grey photo."
+  "gaps": "Tower is 26 m with balconies but lacks the stepped cab and mast; hall windows are punched grid not tall paned bays; stairs are plain steps; murals are flat coloured panels; render tint still slightly cool."
  }
 }

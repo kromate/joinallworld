@@ -57,8 +57,8 @@
     "material": "painted-render",
     "colour": "#f26b16",
     "glassColour": "#8fa6b4",
-    "windows": "ribbon",
-    "windowRatio": 0.45,
+    "windows": "punched",
+    "windowRatio": 0.3,
     "plinth": 0.4,
     "bands": "#f0e6d0"
    },
@@ -143,7 +143,7 @@
   {
    "type": "loft",
    "at": [
-    2,
+    0,
     -12.5,
     0
    ],
@@ -152,16 +152,16 @@
     "capBottom": true,
     "sections": [
      {
-      "z": 4.2,
+      "z": 3.8,
       "rect": [
-       20,
+       28,
        8.4
       ]
      },
      {
-      "z": 6.6,
+      "z": 5.4,
       "rect": [
-       20,
+       28,
        0.8
       ],
       "cy": 3.8
@@ -179,24 +179,24 @@
    "params": {
     "mode": "line",
     "start": [
-     -7,
+     -10,
      -16.2,
      0
     ],
     "end": [
-     11,
+     12,
      -16.2,
      0
     ],
-    "count": 5,
+    "count": 6,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.9,
-       0.9
+       1.2,
+       1.2
       ],
-      "height": 4.3,
+      "height": 3.8,
       "colour": "#f26b16",
       "windows": "none"
      }
@@ -213,25 +213,25 @@
    "params": {
     "mode": "line",
     "start": [
-     -6,
+     -12,
      -9,
-     4.1
+     3.9
     ],
     "end": [
-     10,
+     12,
      -9,
-     4.1
+     3.9
     ],
-    "count": 9,
+    "count": 19,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.12,
+       0.15,
        7.6
       ],
-      "height": 2.4,
-      "colour": "#3a86b0",
+      "height": 1.7,
+      "colour": "#2f7aa8",
       "windows": "none"
      }
     }
@@ -310,9 +310,9 @@
    ],
    "params": {
     "kind": "palm",
-    "height": 19,
-    "count": 2,
-    "spread": 3,
+    "height": 21,
+    "count": 3,
+    "spread": 4,
     "line": 0
    }
   },
@@ -345,6 +345,138 @@
     "spread": 3,
     "line": 0
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.4,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     29,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#1f3f78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -8.75,
+     4.2
+    ],
+    "end": [
+     8,
+     -8.75,
+     4.2
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.14,
+       0.14
+      ],
+      "height": 7.4,
+      "colour": "#f4f4f4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     2,
+     -8.75,
+     4.2
+    ],
+    "end": [
+     2,
+     -8.75,
+     11.6
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       12,
+       0.14
+      ],
+      "height": 0.14,
+      "colour": "#f4f4f4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -6.6,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#4a3a9c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -19,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20,
+    "count": 1,
+    "spread": 3,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    -19,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18,
+    "count": 1,
+    "spread": 3,
+    "line": 0
+   }
   }
  ],
  "site": {
@@ -356,8 +488,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "photo is a close crop of the porch and lettering wall; model shows the whole block, sloped porch roof is a smooth plane (no corrugation ribs), lettering is a blank blue band by design"
+  "gaps": "glazed bay now has white mullion grid and wider lower corrugated-rib porch on thick columns, but palms stay angular and lettering band is blank"
  }
 }

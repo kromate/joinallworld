@@ -48,17 +48,18 @@
    "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#cbc2b5",
+    "colour": "#cdbfae",
     "windows": "punched",
     "windowRatio": 0.28,
     "plinth": 2.4,
     "bay": 4.4,
-    "bands": "#c4bcae",
+    "bands": "#bfb3a3",
     "faces": {
      "back": "none",
      "left": "none",
      "right": "none"
-    }
+    },
+    "glassColour": "#2f6f7a"
    },
    "roof": {
     "form": "flat",
@@ -84,17 +85,18 @@
    "storeys": 4,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#cbc2b5",
+    "colour": "#cdbfae",
     "windows": "punched",
     "windowRatio": 0.28,
     "plinth": 2.4,
     "bay": 4.4,
-    "bands": "#c4bcae",
+    "bands": "#bfb3a3",
     "faces": {
      "back": "none",
      "left": "none",
      "right": "none"
-    }
+    },
+    "glassColour": "#2f6f7a"
    },
    "roof": {
     "form": "flat",
@@ -109,29 +111,30 @@
    "footprint": {
     "rect": [
      28,
-     5
+     6
     ]
    },
    "at": [
     4,
-    -10.5
+    -11
    ],
-   "height": 12.5,
-   "storeys": 3,
+   "height": 17.5,
+   "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#cbc2b5",
+    "colour": "#cdbfae",
     "windows": "punched",
     "windowRatio": 0.28,
     "plinth": 2.4,
     "bay": 4.4,
-    "bands": "#c4bcae",
+    "bands": "#bfb3a3",
     "faces": {
      "back": "none",
      "left": "none",
      "right": "none",
      "front": "ribbon"
-    }
+    },
+    "glassColour": "#2f6f7a"
    },
    "roof": {
     "form": "flat",
@@ -149,8 +152,8 @@
      9
     ],
     "z0": 17.5,
-    "height": 3.6,
-    "colour": "#cbc2b5"
+    "height": 5.2,
+    "colour": "#8e8a82"
    },
    "at": [
     30,
@@ -167,8 +170,8 @@
      8
     ],
     "z0": 13,
-    "height": 3.6,
-    "colour": "#cbc2b5"
+    "height": 5.0,
+    "colour": "#8e8a82"
    },
    "at": [
     -48,
@@ -181,16 +184,16 @@
    "id": "canopy-slab",
    "params": {
     "rect": [
-     14,
-     9
+     16,
+     10
     ],
-    "z0": 17.5,
+    "z0": 21,
     "height": 0.7,
-    "colour": "#9a9c9c"
+    "colour": "#a9a7a1"
    },
    "at": [
     36,
-    -7,
+    -8,
     0
    ]
   },
@@ -227,19 +230,55 @@
   },
   {
    "type": "prism",
+   "id": "top-box-mid",
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "z0": 17.5,
+    "height": 4.6,
+    "colour": "#8e8a82"
+   },
+   "at": [
+    -12,
+    4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "top-box-lw",
+   "params": {
+    "rect": [
+     6,
+     5
+    ],
+    "z0": 13,
+    "height": 4.2,
+    "colour": "#8e8a82"
+   },
+   "at": [
+    -30,
+    -1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
    "id": "post1",
    "params": {
     "rect": [
-     0.8,
-     0.8
+     0.9,
+     0.9
     ],
-    "z0": 9.5,
-    "height": 8.7,
+    "z0": 17.5,
+    "height": 3.5,
     "colour": "#eeeae0"
    },
    "at": [
-    31,
-    -10.5,
+    30,
+    -12,
     0
    ]
   },
@@ -248,23 +287,59 @@
    "id": "post2",
    "params": {
     "rect": [
-     0.8,
-     0.8
+     0.9,
+     0.9
     ],
-    "z0": 9.5,
-    "height": 8.7,
+    "z0": 17.5,
+    "height": 3.5,
     "colour": "#eeeae0"
    },
    "at": [
-    41,
-    -10.5,
+    42,
+    -12,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post3",
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 17.5,
+    "height": 3.5,
+    "colour": "#eeeae0"
+   },
+   "at": [
+    30,
+    -4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post4",
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 17.5,
+    "height": 3.5,
+    "colour": "#eeeae0"
+   },
+   "at": [
+    42,
+    -4,
     0
    ]
   }
  ],
  "site": {
   "ground": "sand",
-  "forecourt": "road",
+  "forecourt": "none",
   "extent": [
    150,
    100
@@ -275,8 +350,8 @@
  "city": "pyongyang",
  "venueId": "pyongyang-osm-way-427620999",
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Cladding is a generic tile texture; the dark stone base, large blue glazing bands and the columned roof canopy are only roughly placed; one hall of a 1.2 km campus, not the campus."
+  "gaps": "Cladding reads paler than the beige-grey photo and the dark stone base is only a thin plinth; ribbon glazing and columned canopy approximate, roof boxes simplified; one hall of a 1.2 km campus."
  }
 }

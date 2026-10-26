@@ -73,7 +73,7 @@
      ]
     ],
     "height": 0.1,
-    "colour": "#b5654a"
+    "colour": "#a99372"
    }
   },
   {
@@ -87,40 +87,40 @@
    "params": {
     "points": [
      [
-      -54,
-      -21
+      -57,
+      -24
      ],
      [
-      -38,
-      -31
+      -41,
+      -35
      ],
      [
-      38,
-      -31
+      41,
+      -35
      ],
      [
-      54,
-      -21
+      57,
+      -24
      ],
      [
-      54,
-      21
+      57,
+      24
      ],
      [
-      38,
-      31
+      41,
+      35
      ],
      [
-      -38,
-      31
+      -41,
+      35
      ],
      [
-      -54,
-      21
+      -57,
+      24
      ]
     ],
     "height": 0.05,
-    "colour": "#6f9a45"
+    "colour": "#7f9a58"
    }
   },
   {
@@ -128,7 +128,7 @@
    "id": "stand-front-wall",
    "footprint": {
     "rect": [
-     84,
+     90,
      1.0
     ]
    },
@@ -137,7 +137,7 @@
     42
    ],
    "z0": 0,
-   "height": 1.6,
+   "height": 1.8,
    "wall": {
     "material": "whitewash",
     "colour": "#ecebe6",
@@ -159,11 +159,11 @@
    ],
    "params": {
     "start": [
-     -42,
+     -45,
      44
     ],
     "end": [
-     42,
+     45,
      44
     ],
     "flip": true,
@@ -174,14 +174,7 @@
     "seatColour": "#a6a8a8",
     "concreteColour": "#d6d4cd",
     "under": "solid",
-    "backWall": 0.6,
-    "canopy": {
-     "height": 9,
-     "depth": 16,
-     "colour": "#c4473a",
-     "slopeDeg": -6,
-     "supports": 8
-    }
+    "backWall": 0.6
    }
   },
   {
@@ -199,20 +192,20 @@
        0.35,
        0.35
       ],
-      "height": 9,
+      "height": 9.2,
       "colour": "#b3352c"
      }
     },
     "mode": "line",
     "start": [
-     -42,
-     41.5
+     -45,
+     41.8
     ],
     "end": [
-     42,
-     41.5
+     45,
+     41.8
     ],
-    "count": 8
+    "count": 10
    }
   },
   {
@@ -244,38 +237,6 @@
      -46
     ],
     "count": 2
-   }
-  },
-  {
-   "type": "core/prism",
-   "id": "open-bank",
-   "at": [
-    0,
-    -48,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      -48,
-      0
-     ],
-     [
-      48,
-      0
-     ],
-     [
-      48,
-      -5
-     ],
-     [
-      -48,
-      -5
-     ]
-    ],
-    "height": 2.2,
-    "topScale": 1.0,
-    "colour": "#bdbab0"
    }
   },
   {
@@ -330,27 +291,162 @@
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "core/sweep-path",
+   "id": "vault-roof",
    "at": [
-    -64,
-    44,
-    0
+    0,
+    42,
+    9
    ],
    "params": {
-    "height": 24,
-    "head_width": 4
+    "section": {
+     "poly": [
+      [
+       -0.2,
+       -0.4
+      ],
+      [
+       -0.2,
+       0.2
+      ],
+      [
+       -0.13147912281321494,
+       0.4781152949374527
+      ],
+      [
+       0.06737620787507353,
+       0.7290067270632259
+      ],
+      [
+       0.3771006467905375,
+       0.9281152949374527
+      ],
+      [
+       0.7673762078750734,
+       1.0559508646656381
+      ],
+      [
+       1.1999999999999997,
+       1.1
+      ],
+      [
+       17,
+       5.84
+      ],
+      [
+       17,
+       5.4399999999999995
+      ],
+      [
+       1.2,
+       0.7
+      ]
+     ]
+    },
+    "points": [
+     [
+      -45,
+      0,
+      0
+     ],
+     [
+      45,
+      0,
+      0
+     ]
+    ],
+    "colour": "#c4473a",
+    "material": "corrugated",
+    "caps": true
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "core/array",
    "at": [
-    64,
-    44,
+    0,
+    0,
     0
    ],
    "params": {
-    "height": 24,
-    "head_width": 4
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.0
+      ],
+      "height": 0.5,
+      "colour": "#f2f1ec"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -47.5,
+     40.5
+    ],
+    "end": [
+     -47.5,
+     34
+    ],
+    "count": 6,
+    "vary": {
+     "height": [
+      0.5,
+      3.2
+     ]
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "rail-r",
+   "at": [
+    -46.5,
+    37.5,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     8
+    ],
+    "height": 1.0,
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "ridge",
+   "at": [
+    0,
+    95,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -10
+     ],
+     [
+      60,
+      -10
+     ],
+     [
+      50,
+      18
+     ],
+     [
+      -50,
+      18
+     ]
+    ],
+    "height": 30,
+    "topScale": [
+     0.6,
+     0.4
+    ],
+    "colour": "#35603a"
    }
   }
  ],
@@ -391,6 +487,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "stand roof is flat red rather than vaulted and the stand is shorter than photo; no stairs; oval track simplified to octagon"
+  "gaps": "vault roof is a swept shell and reads flatter than the photo's round eave; stair is a simple step run; ridge is a blocky hill; pitch is an octagon not an oval"
  }
 }

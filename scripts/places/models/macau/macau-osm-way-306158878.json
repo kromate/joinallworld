@@ -24,7 +24,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "round1 fixes applied (flat roof, dark industrial window grids, weathered brick, stall wall with striped awnings, rooftop plant); street furniture and neighbouring towers missing"
+  "gaps": "stepped corner piers, dark window bays, plain rear towers (no balcony/AC detail), green-white awnings; no corner street, minimal brick staining"
  },
  "parts": [
   {
@@ -33,7 +33,7 @@
    "footprint": {
     "osm": true,
     "rotDeg": -49,
-    "simplify": 1.5
+    "simplify": 3
    },
    "at": [
     0,
@@ -44,17 +44,17 @@
    "height": 14,
    "wall": {
     "material": "brick",
-    "colour": "#8a4a3a",
+    "colour": "#74392d",
     "windows": "punched",
-    "windowRatio": 0.78,
-    "bay": 6,
+    "windowRatio": 0.7,
+    "bay": 9,
     "bands": {
-     "colour": "#d4d0c4",
-     "height": 0.9
+     "colour": "#e2ded2",
+     "height": 1.0
     },
     "cornice": false,
     "plinth": 1.0,
-    "glassColour": "#2a3238"
+    "glassColour": "#1d2429"
    },
    "roof": {
     "form": "flat",
@@ -68,8 +68,8 @@
    "id": "corner0",
    "footprint": {
     "rect": [
-     4.2,
-     4.2
+     3.6,
+     3.6
     ]
    },
    "at": [
@@ -78,18 +78,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15.4,
+   "height": 19,
    "wall": {
     "material": "brick",
-    "colour": "#8a4a3a",
-    "windows": "none",
-    "bands": "#d9d3c3"
+    "colour": "#7a4234",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9b2a2",
+    "colour": "#d6d1c4",
     "parapet": 0.2,
-    "overhang": 0.3
+    "overhang": 0.5
    }
   },
   {
@@ -97,8 +96,8 @@
    "id": "corner1",
    "footprint": {
     "rect": [
-     4.2,
-     4.2
+     3.6,
+     3.6
     ]
    },
    "at": [
@@ -107,18 +106,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15.4,
+   "height": 16.5,
    "wall": {
     "material": "brick",
-    "colour": "#8a4a3a",
-    "windows": "none",
-    "bands": "#d9d3c3"
+    "colour": "#7a4234",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9b2a2",
+    "colour": "#d6d1c4",
     "parapet": 0.2,
-    "overhang": 0.3
+    "overhang": 0.5
    }
   },
   {
@@ -126,8 +124,8 @@
    "id": "corner2",
    "footprint": {
     "rect": [
-     4.2,
-     4.2
+     3.6,
+     3.6
     ]
    },
    "at": [
@@ -136,18 +134,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15.4,
+   "height": 21,
    "wall": {
     "material": "brick",
-    "colour": "#8a4a3a",
-    "windows": "none",
-    "bands": "#d9d3c3"
+    "colour": "#7a4234",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9b2a2",
+    "colour": "#d6d1c4",
     "parapet": 0.2,
-    "overhang": 0.3
+    "overhang": 0.5
    }
   },
   {
@@ -155,8 +152,8 @@
    "id": "corner3",
    "footprint": {
     "rect": [
-     4.2,
-     4.2
+     3.6,
+     3.6
     ]
    },
    "at": [
@@ -165,18 +162,17 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15.4,
+   "height": 17.5,
    "wall": {
     "material": "brick",
-    "colour": "#8a4a3a",
-    "windows": "none",
-    "bands": "#d9d3c3"
+    "colour": "#7a4234",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9b2a2",
+    "colour": "#d6d1c4",
     "parapet": 0.2,
-    "overhang": 0.3
+    "overhang": 0.5
    }
   },
   {
@@ -206,36 +202,10 @@
    }
   },
   {
-   "type": "mass",
-   "id": "plant2",
-   "footprint": {
-    "rect": [
-     5,
-     4
-    ]
-   },
-   "at": [
-    -10,
-    4
-   ],
-   "rotDeg": 0,
-   "z0": 14,
-   "height": 1.8,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#8d9296",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#7c8084"
-   }
-  },
-  {
    "type": "fence-wall",
    "at": [
     -26,
-    -19,
+    -21,
     0
    ],
    "params": {
@@ -251,7 +221,7 @@
    "type": "market-open/awning",
    "at": [
     -22,
-    -21.5,
+    -23.5,
     0
    ],
    "params": {
@@ -268,7 +238,7 @@
    "type": "market-open/awning",
    "at": [
     -10,
-    -21.5,
+    -23.5,
     0
    ],
    "params": {
@@ -276,7 +246,7 @@
     "depth": 2.8,
     "height": 2.8,
     "colours": [
-     "#c33a34",
+     "#2f8a4f",
      "#f2f2ee"
     ]
    }
@@ -285,7 +255,7 @@
    "type": "market-open/awning",
    "at": [
     2,
-    -21.5,
+    -23.5,
     0
    ],
    "params": {
@@ -302,7 +272,7 @@
    "type": "market-open/awning",
    "at": [
     14,
-    -21.5,
+    -23.5,
     0
    ],
    "params": {
@@ -310,50 +280,136 @@
     "depth": 2.8,
     "height": 2.8,
     "colours": [
-     "#2f5fa8",
+     "#2f8a4f",
      "#f2f2ee"
     ]
    }
   },
   {
-   "type": "market-open/awning",
-   "at": [
-    24,
-    -21.5,
-    0
-   ],
-   "params": {
-    "width": 8,
-    "depth": 2.8,
-    "height": 2.8,
-    "colours": [
-     "#c33a34",
-     "#f2f2ee"
+   "type": "mass",
+   "id": "tower0",
+   "footprint": {
+    "rect": [
+     18,
+     10
     ]
+   },
+   "at": [
+    -30,
+    56
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 46.400000000000006,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcdc6",
+    "windows": "none",
+    "bay": 4.5,
+    "glassColour": "#5d6b72",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower1",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    62
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 56.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcdc6",
+    "windows": "none",
+    "bay": 4.5,
+    "glassColour": "#5d6b72",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower2",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    20,
+    58
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 41.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcdc6",
+    "windows": "none",
+    "bay": 4.5,
+    "glassColour": "#5d6b72",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower3",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    44,
+    54
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 49.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcdc6",
+    "windows": "none",
+    "bay": 4.5,
+    "glassColour": "#5d6b72",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
    }
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "none",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     34,
-     -26
-    ],
-    "height": 11
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -34,
-     -26
-    ],
-    "height": 8
-   }
-  ],
+  "trees": [],
   "extent": [
    110,
    80

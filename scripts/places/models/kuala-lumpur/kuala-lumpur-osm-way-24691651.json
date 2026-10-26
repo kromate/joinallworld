@@ -209,7 +209,7 @@
      ]
     ],
     "height": 5,
-    "colour": "#d9d5c9"
+    "colour": "#e7e3d8"
    }
   },
   {
@@ -383,7 +383,7 @@
      ]
     ],
     "height": 12,
-    "colour": "#c99a58"
+    "colour": "#d2b27c"
    }
   },
   {
@@ -408,19 +408,19 @@
     "radiusY": 46.6,
     "startDeg": 0,
     "endDeg": 360,
-    "count": 72,
+    "count": 90,
     "facing": "outward",
-    "lod1Step": 4,
+    "lod1Step": 6,
     "of": [
      {
       "type": "prism",
       "params": {
        "rect": [
-        0.7,
-        0.5
+        0.5,
+        0.7
        ],
        "height": 11.6,
-       "colour": "#efede6"
+       "colour": "#f2f0ea"
       }
      }
     ]
@@ -434,17 +434,17 @@
     0
    ],
    "params": {
-    "colour": "#55706c",
+    "colour": "#4e5a5c",
     "sections": [
      {
-      "z": 17,
+      "z": 17.4,
       "ellipse": [
        61.5,
        48.5
       ]
      },
      {
-      "z": 19,
+      "z": 18.2,
       "ellipse": [
        61.5,
        48.5
@@ -465,24 +465,24 @@
     "colour": "#ecebe6",
     "sections": [
      {
-      "z": 19,
+      "z": 18.2,
       "ellipse": [
-       61.5,
-       48.5
+       61.8,
+       48.8
       ]
      },
      {
-      "z": 21.5,
+      "z": 20.5,
       "ellipse": [
-       54,
-       42
+       56,
+       43.5
       ]
      },
      {
-      "z": 23,
+      "z": 22,
       "ellipse": [
-       38,
-       29
+       40,
+       31
       ]
      }
     ],
@@ -494,19 +494,19 @@
    "id": "gate-pavilion",
    "footprint": {
     "rect": [
-     30,
-     7
+     34,
+     8
     ]
    },
    "at": [
     0,
-    -49.5
+    -50
    ],
-   "height": 17,
-   "storeys": 3,
+   "height": 22,
+   "storeys": 4,
    "wall": {
     "material": "stone",
-    "colour": "#e4dfd0",
+    "colour": "#e3dac2",
     "windows": "none",
     "windowRatio": 0,
     "cornice": true,
@@ -524,19 +524,19 @@
    "id": "gate-wing-w",
    "footprint": {
     "rect": [
-     11,
-     6
+     16,
+     7
     ]
    },
    "at": [
-    -17.5,
+    -27,
     -48.5
    ],
-   "height": 9,
+   "height": 12,
    "storeys": 2,
    "wall": {
     "material": "stone",
-    "colour": "#e4dfd0",
+    "colour": "#e3dac2",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0.5
@@ -553,19 +553,19 @@
    "id": "gate-wing-e",
    "footprint": {
     "rect": [
-     11,
-     6
+     16,
+     7
     ]
    },
    "at": [
-    17.5,
+    27,
     -48.5
    ],
-   "height": 9,
+   "height": 12,
    "storeys": 2,
    "wall": {
     "material": "stone",
-    "colour": "#e4dfd0",
+    "colour": "#e3dac2",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0.5
@@ -581,46 +581,46 @@
    "type": "arch-portal",
    "at": [
     0,
-    -53.1,
+    -54.2,
     0
    ],
    "params": {
-    "width": 16,
-    "height": 13,
+    "width": 20,
+    "height": 17,
     "depth": 0.6,
-    "archWidth": 8,
-    "springHeight": 7,
-    "pointed": false,
-    "colour": "#bfb8a4"
+    "archWidth": 9,
+    "springHeight": 9,
+    "pointed": true,
+    "colour": "#8a8068"
    }
   },
   {
    "type": "sign-board",
    "at": [
-    -17.5,
-    -52,
+    -12,
+    -54.2,
     0
    ],
    "params": {
-    "width": 4,
-    "height": 6,
-    "bottom": 1.5,
-    "colour": "#7a3a6a",
+    "width": 3.6,
+    "height": 9,
+    "bottom": 4,
+    "colour": "#6b4a78",
     "posts": false
    }
   },
   {
    "type": "sign-board",
    "at": [
-    17.5,
-    -52,
+    12,
+    -54.2,
     0
    ],
    "params": {
-    "width": 4,
-    "height": 6,
-    "bottom": 1.5,
-    "colour": "#3a7a4a",
+    "width": 3.6,
+    "height": 9,
+    "bottom": 4,
+    "colour": "#6b4a78",
     "posts": false
    }
   },
@@ -628,12 +628,12 @@
    "type": "water-surface",
    "at": [
     0,
-    -72,
+    -84,
     0
    ],
    "params": {
-    "width": 26,
-    "depth": 44,
+    "width": 20,
+    "depth": 56,
     "colour": "#7b98a8",
     "bank": true
    }
@@ -641,26 +641,26 @@
   {
    "type": "lawn",
    "at": [
-    -22,
-    -72,
+    -17,
+    -84,
     0
    ],
    "params": {
-    "width": 10,
-    "depth": 40,
+    "width": 6,
+    "depth": 56,
     "colour": "#7a9a4a"
    }
   },
   {
    "type": "lawn",
    "at": [
-    22,
-    -72,
+    17,
+    -84,
     0
    ],
    "params": {
-    "width": 10,
-    "depth": 40,
+    "width": 6,
+    "depth": 56,
     "colour": "#7a9a4a"
    }
   },
@@ -694,16 +694,17 @@
        "sections": [
         {
          "z": 0,
-         "circle": 0.3
+         "circle": 0.22
         },
         {
-         "z": 14,
-         "circle": 0.12
+         "z": 24,
+         "circle": 0.1
         }
        ]
       }
      }
-    ]
+    ],
+    "lod1Step": 3
    }
   },
   {
@@ -736,23 +737,23 @@
        "sections": [
         {
          "z": 0,
-         "circle": 0.3
+         "circle": 0.22
         },
         {
-         "z": 14,
-         "circle": 0.12
+         "z": 24,
+         "circle": 0.1
         }
        ]
       }
      }
-    ]
+    ],
+    "lod1Step": 3
    }
   },
   {
    "type": "tree-grove",
    "lod": [
-    0,
-    1
+    0
    ],
    "at": [
     -45,
@@ -771,8 +772,7 @@
   {
    "type": "tree-grove",
    "lod": [
-    0,
-    1
+    0
    ],
    "at": [
     45,
@@ -787,6 +787,91 @@
     "min_height": 6,
     "max_height": 9
    }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -54.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 7,
+    "bottom": 14,
+    "colour": "#f1ecde",
+    "frameColour": "#cfc6ac",
+    "posts": false
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -27,
+    -52.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 8,
+    "archWidth": 4,
+    "springHeight": 4,
+    "pointed": true,
+    "colour": "#8a8068"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    27,
+    -52.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 8,
+    "archWidth": 4,
+    "springHeight": 4,
+    "pointed": true,
+    "colour": "#8a8068"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -108,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0.5,
+      "#8a8f93"
+     ],
+     [
+      1.5,
+      1.5,
+      "#9aa0a4"
+     ],
+     [
+      2.6,
+      3,
+      "#aab0b4"
+     ],
+     [
+      1.5,
+      4.5,
+      "#9aa0a4"
+     ],
+     [
+      0,
+      5.5,
+      "#8a8f93"
+     ]
+    ]
+   }
   }
  ],
  "site": {
@@ -794,12 +879,12 @@
   "forecourt": "none",
   "extent": [
    130,
-   125
+   140
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "entrance pavilion too blocky and plain; louvre fins are plain white sticks, no twisted rhythm; roof ring is a flat cap; pool/lawn proportions approximate; stadium scaled to 120 m"
+  "gaps": "Fins are straight sticks not twisted louvres; roof ring is a flat white loft without masts; gate lattice and banner boards are blank boxes; pool/globe approximate; stadium scaled to 120 m."
  }
 }

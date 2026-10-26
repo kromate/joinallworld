@@ -51,41 +51,83 @@
     0,
     0
    ],
-   "height": 12,
-   "storeys": 2,
+   "height": 6,
+   "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#dcc69a",
+    "colour": "#dcc27a",
     "glassColour": "#4a5a58",
     "windows": "ribbon",
-    "windowRatio": 0.22,
+    "windowRatio": 0.3,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#cdb487",
+    "bands": "#c9ad66",
     "plinth": 0,
-    "pattern": [
-     {
-      "type": "pilotis",
-      "faces": [
-       "front"
-      ],
-      "inset": 3,
-      "spacing": 6,
-      "width": 1.0,
-      "colour": "#dcc69a",
-      "storeys": 1
-     }
-    ]
+    "cornice": true
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9a67c",
+    "colour": "#c4aa68",
     "material": "concrete",
     "parapet": 0.5,
-    "overhang": 1.0
+    "overhang": 2.5
+   },
+   "z0": 7
+  },
+  {
+   "type": "mass",
+   "id": "dark-ground",
+   "footprint": {
+    "rect": [
+     72,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3b3a36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3a36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     14,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -8.2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a6a6c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4aa68"
    }
   },
   {
@@ -145,55 +187,6 @@
    }
   },
   {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -36,
-     -10.5,
-     0
-    ],
-    "end": [
-     36,
-     -10.5,
-     0
-    ],
-    "count": 13,
-    "lod2Step": 3,
-    "of": [
-     {
-      "type": "loft",
-      "params": {
-       "colour": "#dcc69a",
-       "sections": [
-        {
-         "z": 0,
-         "rect": [
-          1.0,
-          1.2
-         ],
-         "cy": 0
-        },
-        {
-         "z": 8,
-         "rect": [
-          1.0,
-          1.2
-         ],
-         "cy": 2.5
-        }
-       ]
-      }
-     }
-    ]
-   }
-  },
-  {
    "type": "stand",
    "at": [
     0,
@@ -220,182 +213,6 @@
    }
   },
   {
-   "type": "prism",
-   "at": [
-    0,
-    50,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      46.0,
-      0.0
-     ],
-     [
-      45.43,
-      5.94
-     ],
-     [
-      43.75,
-      11.74
-     ],
-     [
-      40.99,
-      17.25
-     ],
-     [
-      37.21,
-      22.34
-     ],
-     [
-      32.53,
-      26.87
-     ],
-     [
-      27.04,
-      30.74
-     ],
-     [
-      20.88,
-      33.86
-     ],
-     [
-      14.21,
-      36.14
-     ],
-     [
-      7.2,
-      37.53
-     ],
-     [
-      0.0,
-      38.0
-     ],
-     [
-      -7.2,
-      37.53
-     ],
-     [
-      -14.21,
-      36.14
-     ],
-     [
-      -20.88,
-      33.86
-     ],
-     [
-      -27.04,
-      30.74
-     ],
-     [
-      -32.53,
-      26.87
-     ],
-     [
-      -37.21,
-      22.34
-     ],
-     [
-      -40.99,
-      17.25
-     ],
-     [
-      -43.75,
-      11.74
-     ],
-     [
-      -45.43,
-      5.94
-     ],
-     [
-      -46.0,
-      0.0
-     ],
-     [
-      -45.43,
-      -5.94
-     ],
-     [
-      -43.75,
-      -11.74
-     ],
-     [
-      -40.99,
-      -17.25
-     ],
-     [
-      -37.21,
-      -22.34
-     ],
-     [
-      -32.53,
-      -26.87
-     ],
-     [
-      -27.04,
-      -30.74
-     ],
-     [
-      -20.88,
-      -33.86
-     ],
-     [
-      -14.21,
-      -36.14
-     ],
-     [
-      -7.2,
-      -37.53
-     ],
-     [
-      -0.0,
-      -38.0
-     ],
-     [
-      7.2,
-      -37.53
-     ],
-     [
-      14.21,
-      -36.14
-     ],
-     [
-      20.88,
-      -33.86
-     ],
-     [
-      27.04,
-      -30.74
-     ],
-     [
-      32.53,
-      -26.87
-     ],
-     [
-      37.21,
-      -22.34
-     ],
-     [
-      40.99,
-      -17.25
-     ],
-     [
-      43.75,
-      -11.74
-     ],
-     [
-      45.43,
-      -5.94
-     ]
-    ],
-    "z0": 7.4,
-    "height": 0.6,
-    "colour": "#b4655a",
-    "top": true
-   }
-  },
-  {
    "type": "floodlight-mast",
    "at": [
     -50,
@@ -403,8 +220,8 @@
     0
    ],
    "params": {
-    "height": 42,
-    "head_width": 6,
+    "height": 45,
+    "head_width": 10,
     "colour": "#b8bcc0"
    }
   },
@@ -416,8 +233,8 @@
     0
    ],
    "params": {
-    "height": 42,
-    "head_width": 6,
+    "height": 45,
+    "head_width": 10,
     "colour": "#b8bcc0"
    }
   },
@@ -430,7 +247,7 @@
    ],
    "params": {
     "height": 28,
-    "head_width": 4,
+    "head_width": 5,
     "colour": "#b8bcc0"
    }
   },
@@ -443,7 +260,7 @@
    ],
    "params": {
     "height": 28,
-    "head_width": 4,
+    "head_width": 5,
     "colour": "#b8bcc0"
    }
   },
@@ -458,12 +275,136 @@
     "width": 90,
     "depth": 8,
     "count": 9,
-    "kind": "conifer"
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -9,
+     0
+    ],
+    "end": [
+     -34,
+     -9,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#dcc27a",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.1,
+          1.2
+         ],
+         "cy": -2.2
+        },
+        {
+         "z": 8,
+         "rect": [
+          1.3,
+          1.4
+         ],
+         "cy": 0.4
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     5,
+     -9,
+     0
+    ],
+    "end": [
+     34,
+     -9,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#dcc27a",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.1,
+          1.2
+         ],
+         "cy": -2.2
+        },
+        {
+         "z": 8,
+         "rect": [
+          1.3,
+          1.4
+         ],
+         "cy": 0.4
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    0,
+    13
+   ],
+   "params": {
+    "height": 4,
+    "head_width": 5,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    0,
+    13
+   ],
+   "params": {
+    "height": 4,
+    "head_width": 5,
+    "colour": "#b8bcc0"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "none",
   "extent": [
    160,
@@ -471,8 +412,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "V struts are vertical not splayed, no entrance glazing detail, far bowl roof only an oval cap, mast heads simplified"
+  "gaps": "Struts read nearly vertical rather than strongly splayed, floodlight masts are thin lattice not tapered grey poles, hedges missing from the lawn, bowl behind barely visible."
  }
 }

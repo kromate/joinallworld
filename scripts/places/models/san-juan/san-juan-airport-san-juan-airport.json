@@ -38,12 +38,12 @@
    "id": "arcade-wing",
    "footprint": {
     "rect": [
-     50,
+     60,
      16
     ]
    },
    "at": [
-    -35,
+    -30,
     -8
    ],
    "height": 7,
@@ -84,21 +84,21 @@
    "id": "terminal",
    "footprint": {
     "rect": [
-     60,
+     48,
      32
     ]
    },
    "at": [
-    30,
+    34,
     8
    ],
-   "height": 17,
-   "storeys": 3,
+   "height": 10,
+   "storeys": 2,
    "wall": {
     "material": "glass-curtain",
     "colour": "#4b6b82",
     "windows": "curtain",
-    "windowRatio": 0.7,
+    "windowRatio": 0.55,
     "bands": "#d8d9d4",
     "faces": {
      "left": "plain"
@@ -125,15 +125,15 @@
    "footprint": {
     "kind": "oval",
     "size": [
-     30,
-     22
+     36,
+     26
     ]
    },
    "at": [
-    3,
-    2
+    6,
+    0
    ],
-   "height": 10,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
@@ -162,7 +162,7 @@
     -8,
     22
    ],
-   "height": 12,
+   "height": 8,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -177,20 +177,48 @@
    }
   },
   {
-   "type": "control-tower",
+   "type": "loft",
    "at": [
     -14,
-    32,
+    34,
     0
    ],
    "params": {
-    "height": 52,
-    "style": "round",
     "colour": "#d9cdb6",
-    "shaftRadius": 3.4,
-    "cabRadius": 6.2,
-    "cabColour": "#4a4f55",
-    "bandColour": "#8b8f93"
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.2
+     },
+     {
+      "z": 38,
+      "circle": 2.8
+     },
+     {
+      "z": 42,
+      "circle": 4.6
+     },
+     {
+      "z": 43,
+      "circle": 5.0,
+      "colour": "#7b8088"
+     },
+     {
+      "z": 47,
+      "circle": 5.0,
+      "colour": "#7b8088"
+     },
+     {
+      "z": 48,
+      "circle": 5.3,
+      "colour": "#d9cdb6"
+     },
+     {
+      "z": 50,
+      "circle": 2.5,
+      "colour": "#d9cdb6"
+     }
+    ]
    }
   },
   {
@@ -212,13 +240,13 @@
   {
    "type": "sign-board",
    "at": [
-    36,
-    -8.2,
-    11
+    28,
+    -13.5,
+    6
    ],
    "params": {
-    "width": 26,
-    "height": 6,
+    "width": 12,
+    "height": 3,
     "bottom": 0,
     "colour": "#1f4a8c",
     "frameColour": "#1f4a8c",
@@ -228,13 +256,13 @@
   {
    "type": "canopy",
    "at": [
-    30,
+    34,
     -12,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 56,
+    "width": 50,
     "depth": 8,
     "height": 6.2,
     "colour": "#d9dad6",
@@ -246,13 +274,13 @@
    "type": "lamp",
    "at": [
     -56,
-    -26,
+    -22,
     0
    ],
    "params": {
     "height": 12,
-    "count": 6,
-    "spacing": 22
+    "count": 9,
+    "spacing": 13
    }
   },
   {
@@ -289,28 +317,21 @@
    {
     "kind": "palm",
     "at": [
-     -58,
-     -22
+     -50,
+     -24
     ]
    },
    {
     "kind": "palm",
     "at": [
-     -45,
-     -22
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     40,
-     -30
+     -38,
+     -24
     ]
    }
   ],
   "extent": [
-   160,
-   110
+   110,
+   90
   ]
  },
  "schema": "allworld-place-model",
@@ -318,8 +339,8 @@
  "city": "san-juan",
  "venueId": "san-juan-airport-san-juan-airport",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Only about 120 m of the 300 m terminal is modelled; curving glazed frontage approximated by an oval; arched parapet is a cut arcade; tower cab simpler; no hotel in the background"
+  "gaps": "arcade is a straight run, not the curving curb-side frontage; cut arches are taller than the shallow real bays; glazed right block is boxy with oval stand-in; no hotel or far skyline; sign band and signage are blank"
  }
 }

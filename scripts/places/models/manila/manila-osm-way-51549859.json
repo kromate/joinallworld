@@ -38,9 +38,9 @@
   "fit": "building"
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Only a 118 m portion of the 505 m mall; no jeepneys, footbridge or planting seen in the photo; tower logo plate left blank; glazed clerestory and panel joints simplified; canopy columns generic."
+  "gaps": "Only a 118 m portion of the 505 m mall; jeepneys approximated by yellow cars; footbridge a plain bar; canopy columns generic; clerestory band simplified."
  },
  "parts": [
   {
@@ -66,17 +66,19 @@
     "plinth": 0,
     "pattern": [
      {
-      "type": "bands",
-      "colour": "#c4c2bb"
+      "type": "panels",
+      "colours": [
+       "#d8d6d0",
+       "#cfcdc6",
+       "#dddbd5"
+      ]
      }
     ]
    },
    "roof": {
-    "form": "shed",
-    "high": "back",
-    "rise": 3.5,
+    "form": "flat",
+    "colour": "#3a4452",
     "overhang": 2.5,
-    "colour": "#4b5666",
     "material": "metal-sheet"
    }
   },
@@ -111,7 +113,7 @@
      0.7
     ],
     "z0": 7.4,
-    "height": 1.0,
+    "height": 1.6,
     "colour": "#2a63a8",
     "topColour": "#2a63a8"
    }
@@ -161,44 +163,46 @@
    "id": "tower-sign",
    "at": [
     -12,
-    -21.7
+    -22.8
    ],
    "params": {
     "rect": [
-     13,
-     6
+     12,
+     5
     ],
     "z0": 0,
     "height": 29,
     "colour": "#2b62a6",
     "topColour": "#2b62a6"
-   }
+   },
+   "height": 24
   },
   {
    "type": "prism",
    "id": "tower-sign-lower",
    "at": [
     -12,
-    -21.9
+    -23
    ],
    "params": {
     "rect": [
-     13.4,
-     6.4
+     12.4,
+     5.4
     ],
     "z0": 0,
     "height": 7.4,
     "colour": "#1f4f8c",
     "topColour": "#1f4f8c"
-   }
+   },
+   "height": 7.4
   },
   {
    "type": "revolve",
    "id": "logo-disc",
    "at": [
     -12,
-    -24.799999999999997,
-    21.5
+    -25.5,
+    17.5
    ],
    "rotDeg": 0,
    "lod": [
@@ -225,14 +229,14 @@
    "id": "logo-plate",
    "at": [
     -12,
-    -24.9
+    -25.6
    ],
    "params": {
     "rect": [
      5.6,
      0.4
     ],
-    "z0": 18.8,
+    "z0": 14.8,
     "height": 5.6,
     "colour": "#e8e6df",
     "topColour": "#e8e6df"
@@ -350,37 +354,77 @@
    }
   },
   {
-   "type": "car",
+   "type": "prism",
+   "id": "city-band",
    "at": [
-    -20,
-    -38.2,
-    0
+    -12,
+    -25.6
    ],
    "params": {
-    "colour": "#c8ccd0",
-    "count": 2,
-    "spacing": 3.2,
-    "yaw": 0
+    "rect": [
+     9,
+     0.5
+    ],
+    "z0": 12.2,
+    "height": 1.6,
+    "colour": "#e8e6df",
+    "topColour": "#e8e6df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "footbridge",
+   "at": [
+    -45,
+    -34
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     20
+    ],
+    "z0": 5.2,
+    "height": 0.9,
+    "colour": "#cfd2d4",
+    "topColour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "footbridge-roof",
+   "at": [
+    -45,
+    -34
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     20
+    ],
+    "z0": 7.8,
+    "height": 0.3,
+    "colour": "#4f7a63",
+    "topColour": "#4f7a63"
    }
   },
   {
    "type": "car",
    "at": [
     10,
-    -50.2,
+    -46,
     0
    ],
    "params": {
-    "colour": "#7b8c9c",
-    "count": 2,
-    "spacing": 3.4,
-    "yaw": 0
+    "colour": "#d9c24a",
+    "count": 3,
+    "spacing": 6,
+    "yaw": 90
    }
   }
  ],
  "site": {
   "ground": "asphalt",
-  "forecourt": "parking",
+  "forecourt": "road",
   "trees": [
    {
     "kind": "palm",
@@ -400,6 +444,7 @@
   "extent": [
    150,
    100
-  ]
+  ],
+  "forecourtDepth": 30
  }
 }

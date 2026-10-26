@@ -103,8 +103,8 @@
     "radiusY": 36,
     "startDeg": 206,
     "endDeg": 334,
-    "rows": 18,
-    "rise": 0.5,
+    "rows": 22,
+    "rise": 0.55,
     "run": 0.8,
     "firstHeight": 2.2,
     "facetDeg": 8,
@@ -115,20 +115,12 @@
     "seatColours": [
      "#e3b92a",
      "#3f6fb0",
-     "#e3b92a"
+     "#e3b92a",
+     "#3f6fb0"
     ],
-    "blocks": 3,
+    "blocks": 4,
     "concreteColour": "#bdbab3",
-    "underColour": "#9a9a94",
-    "canopy": {
-     "height": 5,
-     "depth": 13,
-     "thickness": 1.4,
-     "slopeDeg": 4,
-     "colour": "#8798a4",
-     "edgeColour": "#6f8896",
-     "overhangBack": 1.0
-    }
+    "underColour": "#9a9a94"
    }
   },
   {
@@ -158,64 +150,13 @@
     "bay": 6,
     "seatColours": [
      "#c9553a",
+     "#3f6fb0",
      "#c9553a",
-     "#3f6fb0"
+     "#c9553a"
     ],
-    "blocks": 4,
-    "concreteColour": "#ecebe6",
+    "blocks": 6,
+    "concreteColour": "#f2f1ec",
     "underColour": "#bdbab3"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    -55.099999999999994,
-    -40,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 5,
-    "colour": "#aeb4ba"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    55.099999999999994,
-    -40,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 5,
-    "colour": "#aeb4ba"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    -55.099999999999994,
-    40,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 5,
-    "colour": "#aeb4ba"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    55.099999999999994,
-    40,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 5,
-    "colour": "#aeb4ba"
    }
   },
   {
@@ -253,6 +194,174 @@
     "post_height": 3,
     "facing": "east"
    }
+  },
+  {
+   "type": "array",
+   "id": "canopy-plates",
+   "at": [
+    0,
+    0,
+    12.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 42,
+    "startDeg": 208,
+    "endDeg": 332,
+    "count": 13,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8,
+       13
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#8798a4",
+      "topColour": "#9fb0ba"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "canopy-ribs",
+   "at": [
+    0,
+    0,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 42,
+    "startDeg": 208,
+    "endDeg": 332,
+    "count": 13,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       13
+      ],
+      "z0": 0,
+      "height": 3,
+      "colour": "#3a4650"
+     }
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "tower-block",
+   "id": "apt0",
+   "at": [
+    -42,
+    60,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 42,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "wall_colour": "#e4dcc6",
+    "roof_colour": "#c9c3b2",
+    "coarse": 3.0
+   }
+  },
+  {
+   "type": "tower-block",
+   "id": "apt1",
+   "at": [
+    -14,
+    60,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 42,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "wall_colour": "#e4dcc6",
+    "roof_colour": "#c9c3b2",
+    "coarse": 3.0
+   }
+  },
+  {
+   "type": "tower-block",
+   "id": "apt2",
+   "at": [
+    14,
+    60,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 42,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "wall_colour": "#e4dcc6",
+    "roof_colour": "#c9c3b2",
+    "coarse": 3.0
+   }
+  },
+  {
+   "type": "tower-block",
+   "id": "apt3",
+   "at": [
+    42,
+    60,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 42,
+    "facade": "punched",
+    "window_ratio": 0.3,
+    "bay": 4,
+    "wall_colour": "#e4dcc6",
+    "roof_colour": "#c9c3b2",
+    "coarse": 3.0
+   }
   }
  ],
  "site": {
@@ -282,8 +391,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Interior-only photos: shown from outside in a high view; track/pitch/stands/yellow-blue seats and grey-blue folded canopy match, canopy is a smooth slab not folded steel, no gantry or apartment blocks."
+  "gaps": "Canopy is now separate grey-blue plates over the west stand only, with yellow/blue seats, open red/blue tiers, apartment backdrop and one mast; plates are flat slabs not folded steel, apartments are blocky, photo is an interior view so framing is from outside."
  }
 }

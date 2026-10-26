@@ -39,21 +39,20 @@
    "footprint": {
     "rect": [
      34,
-     32
+     28
     ]
    },
    "at": [
-    -22,
-    18
+    -24,
+    26
    ],
    "z0": 0,
-   "height": 26,
-   "storeys": 5,
+   "height": 30,
+   "storeys": 4,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d9a574",
+    "colour": "#dca77b",
     "windows": "none",
-    "bands": "#c99560",
     "plinth": 0.0
    },
    "roof": {
@@ -72,12 +71,12 @@
     ]
    },
    "at": [
-    14,
+    16,
     10
    ],
    "z0": 0,
-   "height": 17,
-   "storeys": 3,
+   "height": 12,
+   "storeys": 2,
    "wall": {
     "material": "tile-cladding",
     "colour": "#c4583f",
@@ -108,7 +107,7 @@
    },
    "at": [
     10,
-    -9
+    -6
    ],
    "z0": 0,
    "height": 6,
@@ -136,8 +135,8 @@
     ]
    },
    "at": [
-    48,
-    6
+    50,
+    8
    ],
    "z0": 0,
    "height": 18,
@@ -147,7 +146,7 @@
     "colour": "#e3a679",
     "windows": "none",
     "faces": {
-     "front": "punched"
+     "front": "none"
     },
     "windowRatio": 0.12
    },
@@ -217,7 +216,7 @@
    "type": "flat-canopy",
    "at": [
     10,
-    -16,
+    -13,
     0
    ],
    "params": {
@@ -233,23 +232,23 @@
    "id": "white-dome",
    "at": [
     2,
-    -34,
+    -20,
     0
    ],
    "params": {
     "kind": "dome-cap",
-    "width": 26,
+    "width": 34,
     "depth": 22,
-    "rise": 7,
-    "thickness": 0.4,
-    "colour": "#f2f2f0"
+    "rise": 8,
+    "thickness": 0.3,
+    "colour": "#ffffff"
    }
   },
   {
    "type": "core/steps",
    "at": [
     10,
-    -26,
+    -22,
     0
    ],
    "params": {
@@ -264,7 +263,7 @@
    "type": "flag",
    "at": [
     -8,
-    -20,
+    -24,
     0
    ],
    "params": {
@@ -272,6 +271,34 @@
     "count": 3,
     "spacing": 3,
     "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tent-cone",
+   "at": [
+    -58,
+    -8,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      9,
+      0,
+      "#8a8b87"
+     ],
+     [
+      9,
+      1,
+      "#8a8b87"
+     ],
+     [
+      0,
+      12,
+      "#6f706d"
+     ]
+    ]
    }
   }
  ],
@@ -317,6 +344,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Foyer/podium and plaza structure simplified; terracotta cylinders and fly-tower proportions approximate; white dome-roof reads glassy; no tent-roof cone on left."
+  "gaps": "White vault is a dome cap that still reads slightly faceted; hall and fly-tower are plain boxes without the real banner/signage band; stair drums are simple cylinders without slit windows; far-left grey tent roof is a simple cone; foreground court not modelled."
  }
 }

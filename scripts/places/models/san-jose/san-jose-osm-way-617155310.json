@@ -106,22 +106,6 @@
    }
   },
   {
-   "type": "prism",
-   "at": [
-    0,
-    0,
-    0.1
-   ],
-   "params": {
-    "rect": [
-     122,
-     80
-    ],
-    "height": 0.1,
-    "colour": "#8c8a80"
-   }
-  },
-  {
    "type": "football-pitch",
    "at": [
     0,
@@ -158,37 +142,40 @@
      "#b5232a",
      "#a01f26",
      "#b5232a",
+     "#b5232a",
+     "#a01f26",
      "#1a1a1a"
     ],
     "blocks": 6,
-    "concreteColour": "#c9c2b3",
+    "concreteColour": "#7a2a2a",
     "under": "solid",
     "backWall": 0.6,
-    "facetDeg": 8
+    "facetDeg": 8,
+    "underColour": "#5a2020"
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    50,
-    14.4
+    48,
+    15.0
    ],
    "params": {
     "rect": [
      122,
      22
     ],
-    "height": 0.7,
-    "colour": "#8e3a30"
+    "height": 0.5,
+    "colour": "#6e2626"
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    39,
-    15.1
+    37.8,
+    14.6
    ],
    "params": {
     "rect": [
@@ -197,22 +184,6 @@
     ],
     "height": 1.0,
     "colour": "#e8e4da"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    0,
-    62,
-    7.5
-   ],
-   "params": {
-    "rect": [
-     116,
-     2
-    ],
-    "height": 15,
-    "colour": "#3a2a28"
    }
   },
   {
@@ -231,21 +202,24 @@
      50,
      -39
     ],
-    "rows": 7,
-    "rise": 0.5,
+    "rows": 3,
+    "rise": 0.45,
     "run": 0.8,
     "firstHeight": 0.8,
     "seatColours": [
      "#b5232a",
      "#a01f26",
      "#b5232a",
+     "#b5232a",
+     "#a01f26",
      "#1a1a1a"
     ],
     "blocks": 6,
-    "concreteColour": "#c9c2b3",
-    "under": "solid",
-    "backWall": 0.6,
-    "facetDeg": 8
+    "concreteColour": "#7a2a2a",
+    "under": "open",
+    "backWall": 0,
+    "facetDeg": 8,
+    "underColour": "#5a2020"
    }
   },
   {
@@ -272,13 +246,16 @@
      "#b5232a",
      "#a01f26",
      "#b5232a",
+     "#b5232a",
+     "#a01f26",
      "#1a1a1a"
     ],
     "blocks": 6,
-    "concreteColour": "#c9c2b3",
+    "concreteColour": "#7a2a2a",
     "under": "solid",
     "backWall": 0.6,
-    "facetDeg": 8
+    "facetDeg": 8,
+    "underColour": "#5a2020"
    }
   },
   {
@@ -305,20 +282,23 @@
      "#b5232a",
      "#a01f26",
      "#b5232a",
+     "#b5232a",
+     "#a01f26",
      "#1a1a1a"
     ],
     "blocks": 6,
-    "concreteColour": "#c9c2b3",
+    "concreteColour": "#7a2a2a",
     "under": "solid",
     "backWall": 0.6,
-    "facetDeg": 8
+    "facetDeg": 8,
+    "underColour": "#5a2020"
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    -38.5,
+    -36,
     0.2
    ],
    "params": {
@@ -377,6 +357,118 @@
     "height": 34,
     "head_width": 5
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    37,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     106,
+     0.4
+    ],
+    "height": 1.0,
+    "colour": "#2f6b3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    40,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 13,
+    "colour": "#e3b520"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    40,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 13,
+    "colour": "#e3b520"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    40,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 13,
+    "colour": "#e3b520"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    40,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 13,
+    "colour": "#e3b520"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    40,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 13,
+    "colour": "#e3b520"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    40,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 13,
+    "colour": "#e3b520"
+   }
   }
  ],
  "site": {
@@ -389,8 +481,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Stand is a stepped bank without the yellow aisles, boxes and stand roof truss; end stands, floodlight positions and plot outline are approximate; crowd is not modelled."
+  "gaps": "Photo is taken from the pitch, so the opposite stand is matched; yellow aisles are vertical posts not sloped stairs, no crowd, no dugouts; pitch part adds small props that cannot be removed; end stands, masts and outline approximate."
  }
 }

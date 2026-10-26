@@ -29,7 +29,7 @@
   "pitchDeg": 2,
   "fovDeg": 45,
   "aspect": 1.333,
-  "margin": 0.1
+  "margin": 0.02
  },
  "parts": [
   {
@@ -49,7 +49,7 @@
    "storeys": 3,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#8b8e90",
+    "colour": "#a8a49c",
     "windows": "none",
     "faces": {
      "front": "none"
@@ -63,7 +63,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9396",
+    "colour": "#b0b3b4",
     "parapet": 0.6
    }
   },
@@ -84,14 +84,15 @@
    "storeys": 2,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#9a9c9d",
+    "colour": "#aaa79f",
     "windows": "ribbon",
     "windowRatio": 0.45,
     "faces": {
      "left": "none",
      "right": "none"
     },
-    "plinth": 0.4
+    "plinth": 0.4,
+    "glassColour": "#5f9a8e"
    },
    "roof": {
     "form": "flat",
@@ -116,16 +117,16 @@
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#8d9092",
+    "colour": "#a9a69f",
     "windows": "none",
     "plinth": 0
    },
    "roof": {
     "form": "shed",
     "high": "back",
-    "rise": 2.5,
-    "overhang": 4,
-    "colour": "#b8bcbe",
+    "rise": 3.5,
+    "overhang": 6,
+    "colour": "#c4c7c8",
     "material": "metal-sheet"
    }
   },
@@ -134,15 +135,42 @@
    "at": [
     -22,
     13.4,
-    11
+    10.5
    ],
    "params": {
-    "width": 28,
-    "height": 1.4,
+    "width": 40,
+    "height": 2.2,
     "bottom": 0,
-    "colour": "#c9b56a",
+    "colour": "#d9d3b8",
     "posts": false
    }
+  },
+  {
+   "type": "prism",
+   "id": "glaze-band",
+   "at": [
+    30,
+    13.2
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.4
+    ],
+    "z0": 3.6,
+    "height": 4,
+    "colour": "#4f8f84",
+    "topColour": "#4f8f84"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    63,
+    20.5,
+    0
+   ],
+   "params": {}
   },
   {
    "type": "jet-bridge",
@@ -152,33 +180,89 @@
     4
    ],
    "params": {
-    "length": 14,
-    "colour": "#b5bbc0"
+    "length": 30,
+    "colour": "#d5d9dc"
    }
   },
   {
    "type": "jet-bridge",
    "at": [
-    15,
+    10,
     14,
     4
    ],
    "params": {
-    "length": 14,
-    "colour": "#b5bbc0"
+    "length": 30,
+    "colour": "#d5d9dc"
    }
   },
   {
-   "type": "lamp",
+   "type": "prism",
+   "id": "grass1",
    "at": [
-    -30,
-    30,
+    20,
+    36
+   ],
+   "params": {
+    "rect": [
+     140,
+     8
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#5d8a3c",
+    "topColour": "#5d8a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass2",
+   "at": [
+    20,
+    56
+   ],
+   "params": {
+    "rect": [
+     140,
+     6
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#5d8a3c",
+    "topColour": "#5d8a3c"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    22,
     0
    ],
    "params": {
-    "height": 16,
-    "count": 4,
-    "spacing": 30
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    20,
+    24,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    75,
+    24,
+    0
+   ],
+   "params": {
+    "height": 26
    }
   }
  ],
@@ -187,13 +271,13 @@
   "forecourt": "none",
   "trees": [],
   "extent": [
-   130,
-   100
+   160,
+   110
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Only airside elevation modelled; no distant skyline, no apron markings; swept roof is a simple shed; jet bridges approximate."
+  "gaps": "Colours still read blue-ish in render lighting; swept pier roof is a simple shed over a flat end, jet bridges are straight not sloped gangways; no skyline or apron markings."
  }
 }

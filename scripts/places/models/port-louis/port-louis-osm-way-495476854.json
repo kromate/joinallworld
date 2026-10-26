@@ -49,18 +49,29 @@
    "wall": {
     "material": "painted-render",
     "colour": "#efebdf",
-    "windows": "arched",
-    "windowRatio": 0.34,
-    "plinth": 0.9,
-    "bands": "#3f9a8c",
+    "windows": "rect",
+    "windowRatio": 0.26,
+    "plinth": 1.6,
+    "bands": "#8a8d8c",
     "cornice": true,
     "parapet": 1.3,
-    "glassColour": "#6aa59a"
+    "glassColour": "#4f9a86",
+    "trimColour": "#efebdf",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front",
+       "left"
+      ],
+      "colour": "#3f5b52"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#e8e4d8",
-    "parapet": 1.3
+    "parapet": 1.5
    }
   },
   {
@@ -86,9 +97,9 @@
     10.5
    ],
    "params": {
-    "height": 8,
-    "radius": 0.9,
-    "balconies": 1,
+    "height": 11,
+    "radius": 0.7,
+    "balconies": 2,
     "style": "pencil",
     "colour": "#f6f4ee",
     "capColour": "#f6f4ee"
@@ -103,9 +114,9 @@
     10.5
    ],
    "params": {
-    "height": 8,
-    "radius": 0.9,
-    "balconies": 1,
+    "height": 11,
+    "radius": 0.7,
+    "balconies": 2,
     "style": "pencil",
     "colour": "#f6f4ee",
     "capColour": "#f6f4ee"
@@ -130,7 +141,7 @@
      -14,
      11.8
     ],
-    "count": 10,
+    "count": 14,
     "of": {
      "type": "revolve",
      "at": [
@@ -182,6 +193,39 @@
     "height": 7,
     "colour": "#2f7a4f"
    }
+  },
+  {
+   "type": "array",
+   "id": "lattice",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -16,
+     -8,
+     10.7
+    ],
+    "end": [
+     18,
+     -17,
+     10.7
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       0.4
+      ],
+      "height": 1.2,
+      "colour": "#39b7c4"
+     }
+    }
+   }
   }
  ],
  "site": {
@@ -203,8 +247,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "zigzag OSM outline loses the long first-floor veranda with lean-to roof and the central clock gable; pinnacles and minarets only approximately placed"
+  "gaps": "no continuous first-floor veranda roof or iron balustrade (only small balcony boxes), no central clock gable, flat windows instead of green louvred shutters, minarets plain"
  }
 }

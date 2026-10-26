@@ -42,13 +42,13 @@
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#8c9a7a",
+    "colour": "#c9cbc4",
     "windows": "none",
     "windowRatio": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#7f9a6a"
+    "colour": "#d4d6d0"
    }
   },
   {
@@ -60,9 +60,9 @@
    ],
    "params": {
     "length": 20,
-    "height": 1.4,
+    "height": 1.2,
     "thickness": 0.08,
-    "kind": "fence",
+    "kind": "railing",
     "colour": "#1f2326",
     "points": [
      [
@@ -108,13 +108,110 @@
     0
    ],
    "params": {
-    "width": 6,
-    "height": 4.6,
-    "pillar": 0.4,
+    "width": 6.4,
+    "height": 3.6,
+    "pillar": 0.35,
     "leaf": "bars",
     "arch": true,
     "colour": "#1f2326",
     "leafColour": "#1f2326"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -12,
+    -31.5,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      3.6
+     ],
+     "radius": 3.5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 1.4
+    },
+    "colour": "#1f2326"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -31.6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 4.3,
+    "colour": "#1f2326",
+    "frameColour": "#1f2326",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -12,
+    -31.5,
+    0
+   ],
+   "params": {
+    "height": 1.3,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#1f2326",
+    "points": [
+     [
+      -12,
+      0
+     ],
+     [
+      -3.5,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -12,
+    -31.5,
+    0
+   ],
+   "params": {
+    "height": 1.3,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#1f2326",
+    "points": [
+     [
+      3.5,
+      0
+     ],
+     [
+      12,
+      0
+     ]
+    ]
    }
   },
   {
@@ -133,15 +230,15 @@
   {
    "type": "pergola",
    "at": [
-    8,
-    22,
+    2,
+    24,
     0
    ],
    "params": {
-    "width": 12,
-    "depth": 3.5,
-    "height": 3.2,
-    "colour": "#2d2a28"
+    "width": 16,
+    "depth": 5,
+    "height": 3.4,
+    "colour": "#2a2623"
    }
   },
   {
@@ -170,25 +267,57 @@
    }
   },
   {
-   "type": "core/tree",
+   "type": "mass",
+   "id": "bed-a",
+   "footprint": {
+    "rect": [
+     10,
+     2.5
+    ]
+   },
    "at": [
-    -22,
-    5,
-    0
+    -14,
+    -4
    ],
-   "params": {
-    "kind": "conifer",
-    "height": 7,
-    "count": 3,
-    "spread": 4,
-    "line": 8
+   "height": 0.7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#47523a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#47523a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bed-b",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    16,
+    6
+   ],
+   "height": 0.7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#47523a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#47523a"
    }
   }
  ],
  "site": {
-  "ground": "grass",
-  "forecourt": "road",
-  "forecourtDepth": 8,
+  "ground": "paving",
+  "forecourt": "none",
   "extent": [
    100,
    80
@@ -196,7 +325,7 @@
  },
  "review": {
   "rounds": 1,
-  "match": "fair",
-  "gaps": "monument is a generic statue on stepped plinth (real shape not found); gate arch has no lettered board; layout of paths and pergola position estimated; photo is a dusk snow view and was not rendered side by side"
+  "match": "rough",
+  "gaps": "gate arch is a thin curved beam over a blocky pillared gate with blank board (no scroll panels, no lettering, leaf not open); railing runs the OSM outline only; snow/shrub detail and statue are generic; camera is a distant overview not the close gate view"
  }
 }

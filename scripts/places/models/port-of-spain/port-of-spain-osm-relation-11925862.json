@@ -37,116 +37,6 @@
    "at": [
     0,
     0,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      58.0,
-      0.0
-     ],
-     [
-      56.02,
-      12.94
-     ],
-     [
-      50.23,
-      25.0
-     ],
-     [
-      41.01,
-      35.36
-     ],
-     [
-      29.0,
-      43.3
-     ],
-     [
-      15.01,
-      48.3
-     ],
-     [
-      0.0,
-      50.0
-     ],
-     [
-      -15.01,
-      48.3
-     ],
-     [
-      -29.0,
-      43.3
-     ],
-     [
-      -41.01,
-      35.36
-     ],
-     [
-      -50.23,
-      25.0
-     ],
-     [
-      -56.02,
-      12.94
-     ],
-     [
-      -58.0,
-      0.0
-     ],
-     [
-      -56.02,
-      -12.94
-     ],
-     [
-      -50.23,
-      -25.0
-     ],
-     [
-      -41.01,
-      -35.36
-     ],
-     [
-      -29.0,
-      -43.3
-     ],
-     [
-      -15.01,
-      -48.3
-     ],
-     [
-      -0.0,
-      -50.0
-     ],
-     [
-      15.01,
-      -48.3
-     ],
-     [
-      29.0,
-      -43.3
-     ],
-     [
-      41.01,
-      -35.36
-     ],
-     [
-      50.23,
-      -25.0
-     ],
-     [
-      56.02,
-      -12.94
-     ]
-    ],
-    "height": 0.12,
-    "colour": "#b9b3a0"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    0,
-    0,
     0.12
    ],
    "params": {
@@ -269,215 +159,40 @@
    }
   },
   {
-   "type": "prism",
+   "type": "stand",
    "at": [
     0,
     0,
-    0.22
+    0
    ],
    "params": {
-    "points": [
-     [
-      15.0,
-      0.0
-     ],
-     [
-      14.49,
-      1.81
-     ],
-     [
-      12.99,
-      3.5
-     ],
-     [
-      10.61,
-      4.95
-     ],
-     [
-      7.5,
-      6.06
-     ],
-     [
-      3.88,
-      6.76
-     ],
-     [
-      0.0,
-      7.0
-     ],
-     [
-      -3.88,
-      6.76
-     ],
-     [
-      -7.5,
-      6.06
-     ],
-     [
-      -10.61,
-      4.95
-     ],
-     [
-      -12.99,
-      3.5
-     ],
-     [
-      -14.49,
-      1.81
-     ],
-     [
-      -15.0,
-      0.0
-     ],
-     [
-      -14.49,
-      -1.81
-     ],
-     [
-      -12.99,
-      -3.5
-     ],
-     [
-      -10.61,
-      -4.95
-     ],
-     [
-      -7.5,
-      -6.06
-     ],
-     [
-      -3.88,
-      -6.76
-     ],
-     [
-      -0.0,
-      -7.0
-     ],
-     [
-      3.88,
-      -6.76
-     ],
-     [
-      7.5,
-      -6.06
-     ],
-     [
-      10.61,
-      -4.95
-     ],
-     [
-      12.99,
-      -3.5
-     ],
-     [
-      14.49,
-      -1.81
-     ]
+    "start": [
+     -8,
+     44
     ],
-    "height": 0.05,
-    "colour": "#7b4a8c"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pavilion",
-   "footprint": {
-    "rect": [
-     46,
-     13
-    ]
-   },
-   "at": [
-    26,
-    40
-   ],
-   "height": 14,
-   "storeys": 3,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#2f5f8f",
-    "windows": "curtain",
-    "windowRatio": 0.55,
-    "glassColour": "#7fa7a0",
-    "faces": {
-     "front": "curtain"
-    },
-    "bands": "#e8e8e0",
-    "plinth": 0.5
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#ecece6",
-    "material": "metal-sheet",
-    "overhang": 2.5,
-    "parapet": 0.3
-   }
-  },
-  {
-   "type": "mass",
-   "id": "centre-stand",
-   "footprint": {
-    "rect": [
-     34,
-     12
-    ]
-   },
-   "at": [
-    -12,
-    40
-   ],
-   "height": 9,
-   "storeys": 2,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#2a4f7d",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "glassColour": "#8a6f55",
-    "faces": {
-     "front": "curtain"
-    },
-    "plinth": 0.4
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3b4650",
-    "overhang": 2,
-    "parapet": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "west-stand",
-   "footprint": {
-    "rect": [
-     30,
-     12
-    ]
-   },
-   "at": [
-    -44,
-    32
-   ],
-   "rotDeg": 25,
-   "height": 9,
-   "storeys": 2,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#2a6f8f",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "glassColour": "#2f8f86",
-    "faces": {
-     "front": "curtain"
-    },
-    "plinth": 0.4
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3b4650",
-    "overhang": 2,
-    "parapet": 0.2
+    "end": [
+     -62,
+     44
+    ],
+    "rows": 12,
+    "rise": 0.6,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.3,
+    "bay": 6,
+    "seatColours": [
+     "#2a8f86",
+     "#2f6fa0"
+    ],
+    "concreteColour": "#2f5f8f",
+    "canopy": {
+     "height": 6,
+     "depth": 4,
+     "thickness": 0.4,
+     "colour": "#2f5f8f",
+     "edgeColour": "#2f5f8f"
+    }
    }
   },
   {
@@ -489,32 +204,121 @@
    ],
    "params": {
     "start": [
-     -40,
-     -40
+     60,
+     44
     ],
     "end": [
-     40,
-     -40
+     10,
+     44
     ],
-    "rows": 9,
-    "rise": 0.45,
+    "rows": 12,
+    "rise": 0.6,
     "run": 0.8,
-    "firstHeight": 1.0,
-    "under": "solid",
-    "slab": 0.4,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.3,
     "bay": 6,
     "seatColours": [
-     "#2f6f8f",
-     "#c9b24a"
+     "#2a8f86",
+     "#2f6fa0"
     ],
-    "concreteColour": "#c9c4b4",
+    "concreteColour": "#2f5f8f",
     "canopy": {
-     "height": 6,
-     "depth": 6,
-     "thickness": 0.5,
-     "colour": "#ecece6",
-     "edgeColour": "#cfcfc8"
+     "height": 10,
+     "depth": 7,
+     "thickness": 0.6,
+     "colour": "#f2f2ec",
+     "edgeColour": "#d8d8d0"
     }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     8,
+     44
+    ],
+    "end": [
+     -8,
+     44
+    ],
+    "rows": 12,
+    "rise": 0.6,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.3,
+    "bay": 6,
+    "seatColours": [
+     "#2a8f86",
+     "#2f6fa0"
+    ],
+    "concreteColour": "#2f5f8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-upper",
+   "footprint": {
+    "rect": [
+     50,
+     5
+    ]
+   },
+   "at": [
+    35,
+    50
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5f8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ec",
+    "overhang": 2,
+    "parapet": 0.2
+   },
+   "z0": 13
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 42,
+    "startDeg": -80,
+    "endDeg": -20,
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 1.0,
+    "facetDeg": 25,
+    "under": "open",
+    "slab": 0.3,
+    "bay": 6,
+    "seatColours": [
+     "#2a8f86",
+     "#2f6fa0"
+    ],
+    "concreteColour": "#2f5f8f"
    }
   },
   {
@@ -529,23 +333,23 @@
      0,
      0
     ],
-    "radius": 54,
-    "radiusY": 46,
-    "startDeg": -35,
-    "endDeg": 25,
+    "radius": 52,
+    "radiusY": 42,
+    "startDeg": 200,
+    "endDeg": 260,
     "rows": 6,
-    "rise": 0.45,
-    "run": 0.8,
+    "rise": 0.5,
+    "run": 0.9,
     "firstHeight": 1.0,
-    "facetDeg": 22,
-    "under": "solid",
-    "slab": 0.4,
+    "facetDeg": 25,
+    "under": "open",
+    "slab": 0.3,
     "bay": 6,
     "seatColours": [
-     "#2f6f8f",
-     "#c9b24a"
+     "#2a8f86",
+     "#2f6fa0"
     ],
-    "concreteColour": "#c9c4b4"
+    "concreteColour": "#2f5f8f"
    }
   },
   {
@@ -569,13 +373,13 @@
    ],
    "type": "floodlight-mast",
    "at": [
-    49.1,
-    29.8,
+    -52,
+    -34,
     0
    ],
    "params": {
-    "height": 32,
-    "head_width": 4,
+    "height": 28,
+    "head_width": 3,
     "colour": "#c4c8cc"
    }
   },
@@ -585,78 +389,112 @@
    ],
    "type": "floodlight-mast",
    "at": [
-    0.0,
-    52.0,
+    54,
+    -30,
     0
    ],
    "params": {
-    "height": 32,
-    "head_width": 4,
+    "height": 28,
+    "head_width": 3,
     "colour": "#c4c8cc"
    }
   },
   {
-   "lod": [
-    0
-   ],
-   "type": "floodlight-mast",
+   "type": "prism",
    "at": [
-    -49.1,
-    29.8,
+    0,
+    0,
     0
    ],
    "params": {
-    "height": 32,
-    "head_width": 4,
-    "colour": "#c4c8cc"
+    "points": [
+     [
+      -70,
+      74
+     ],
+     [
+      -60,
+      72
+     ],
+     [
+      -40,
+      76
+     ],
+     [
+      -15,
+      74
+     ],
+     [
+      10,
+      77
+     ],
+     [
+      40,
+      74
+     ],
+     [
+      65,
+      76
+     ],
+     [
+      70,
+      84
+     ],
+     [
+      40,
+      90
+     ],
+     [
+      0,
+      92
+     ],
+     [
+      -40,
+      90
+     ],
+     [
+      -70,
+      86
+     ]
+    ],
+    "height": 22,
+    "colour": "#4f7a3a",
+    "topScale": 0.3
    }
   },
   {
-   "lod": [
-    0
-   ],
-   "type": "floodlight-mast",
+   "type": "prism",
    "at": [
-    -49.1,
-    -29.8,
+    -10,
+    8,
     0
    ],
    "params": {
-    "height": 32,
-    "head_width": 4,
-    "colour": "#c4c8cc"
-   }
-  },
-  {
-   "lod": [
-    0
-   ],
-   "type": "floodlight-mast",
-   "at": [
-    -0.0,
-    -52.0,
-    0
-   ],
-   "params": {
-    "height": 32,
-    "head_width": 4,
-    "colour": "#c4c8cc"
-   }
-  },
-  {
-   "lod": [
-    0
-   ],
-   "type": "floodlight-mast",
-   "at": [
-    49.1,
-    -29.8,
-    0
-   ],
-   "params": {
-    "height": 32,
-    "head_width": 4,
-    "colour": "#c4c8cc"
+    "points": [
+     [
+      -30,
+      74
+     ],
+     [
+      0,
+      72
+     ],
+     [
+      30,
+      74
+     ],
+     [
+      28,
+      88
+     ],
+     [
+      -28,
+      88
+     ]
+    ],
+    "height": 24,
+    "colour": "#5a8a40",
+    "topScale": 0.15
    }
   },
   {
@@ -689,6 +527,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo is from inside the ground; far stands approximated as three blocks, no mountain backdrop, scaled to the 118 m clamp"
+  "gaps": "Stands now open blue tiers with white-roofed pavilion and ridge backdrop, but stands are raked as solid ramps, ridge is a single boxy hill, ring of stands incomplete, scaled to clamp."
  }
 }

@@ -55,13 +55,13 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#b0645c",
-    "windows": "screen",
-    "windowRatio": 0.35,
+    "colour": "#9a5a52",
+    "windows": "punched",
+    "windowRatio": 0.22,
     "plinth": 0.4,
-    "bands": "#8f4a46",
+    "bands": "#c8a9a2",
     "faces": {
-     "front": "screen",
+     "front": "punched",
      "back": "plain",
      "left": "plain",
      "right": "plain"
@@ -69,9 +69,9 @@
    },
    "roof": {
     "form": "shed",
-    "colour": "#c9cda6",
+    "colour": "#b9bc98",
     "material": "metal-sheet",
-    "pitch": 4,
+    "pitch": 6,
     "overhang": 0.6
    }
   },
@@ -109,26 +109,26 @@
    "footprint": {
     "rect": [
      16,
-     9
+     8
     ]
    },
    "at": [
-    -8,
-    8
+    6,
+    9
    ],
    "z0": 9.4,
    "height": 2.8,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#a8bcc4",
+    "colour": "#8a6f5e",
     "windows": "curtain",
-    "windowRatio": 0.8,
+    "windowRatio": 0.7,
     "bands": "#a8302f"
    },
    "roof": {
     "form": "barrel",
-    "colour": "#9db3bb",
+    "colour": "#8d735f",
     "material": "glass",
     "rise": 4,
     "axis": "x"
@@ -152,7 +152,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#6e2d33",
+    "colour": "#6a3a38",
     "windows": "none"
    },
    "roof": {
@@ -161,24 +161,6 @@
     "material": "metal-sheet",
     "pitch": 8,
     "overhang": 0.5
-   }
-  },
-  {
-   "type": "market-open/stall-row",
-   "at": [
-    -20,
-    -15,
-    0
-   ],
-   "params": {
-    "count": 9,
-    "pitch": 5,
-    "kind": "umbrella",
-    "colours": [
-     "#2b3036",
-     "#1f6b4a",
-     "#2b3036"
-    ]
    }
   },
   {
@@ -196,6 +178,77 @@
     "frameColour": "#6e2d33",
     "posts": true
    }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -24,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#2a5aa8",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    2,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#2a5aa8",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 56,
+    "depth": 6,
+    "height": 2.9,
+    "thickness": 0.3,
+    "columns": 10,
+    "colour": "#1f2226",
+    "edgeColour": "#1f2226",
+    "axis": "x"
+   }
   }
  ],
  "site": {
@@ -206,10 +259,10 @@
    {
     "kind": "broadleaf",
     "at": [
-     -26,
-     -20
+     -34,
+     -18
     ],
-    "height": 16
+    "height": 11
    },
    {
     "kind": "palm",
@@ -227,6 +280,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "hall screens read as a continuous ribbon instead of separate breeze-block panels, stalls are generic umbrellas rather than black tarp canopies, no parked vans, hall length guessed from site area"
+  "gaps": "breeze-block panels are plain punched openings not perforated screens (band/pier rhythm approximate); tarp canopy is a flat slab not sagging with stalls beneath; vans are simple boxes; cupola frame colour simplified; hall length guessed from site area"
  }
 }

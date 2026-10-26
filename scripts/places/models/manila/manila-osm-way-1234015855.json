@@ -22,48 +22,12 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 14,
+  "pitchDeg": 5,
   "fovDeg": 50,
   "aspect": 1.5,
-  "margin": 0.12
+  "margin": 0.05
  },
  "parts": [
-  {
-   "type": "prism",
-   "id": "podium-low",
-   "at": [
-    0,
-    0
-   ],
-   "params": {
-    "rect": [
-     26,
-     24
-    ],
-    "z0": 0,
-    "height": 1.2,
-    "colour": "#e4e1d8",
-    "topColour": "#e4e1d8"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "podium-up",
-   "at": [
-    0,
-    0
-   ],
-   "params": {
-    "rect": [
-     22,
-     20
-    ],
-    "z0": 1.2,
-    "height": 1.4,
-    "colour": "#ece9e0",
-    "topColour": "#ece9e0"
-   }
-  },
   {
    "type": "mass",
    "id": "cube",
@@ -98,18 +62,54 @@
   },
   {
    "type": "prism",
-   "id": "door-frame-blue",
+   "id": "podium-low",
    "at": [
     0,
-    -6.6
+    -1
    ],
    "params": {
     "rect": [
-     3.4,
-     0.4
+     30,
+     28
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#e4e1d8",
+    "topColour": "#e4e1d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium-up",
+   "at": [
+    0,
+    -1
+   ],
+   "params": {
+    "rect": [
+     26,
+     22
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#ece9e0",
+    "topColour": "#ece9e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-frame-blue",
+   "at": [
+    0,
+    -6.7
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.5
     ],
     "z0": 2.6,
-    "height": 5.4,
+    "height": 5.8,
     "colour": "#2f5fa8",
     "topColour": "#2f5fa8"
    }
@@ -119,15 +119,15 @@
    "id": "door-frame-red",
    "at": [
     0,
-    -6.9
+    -6.95
    ],
    "params": {
     "rect": [
-     2.6,
-     0.4
+     3.0,
+     0.6
     ],
     "z0": 2.6,
-    "height": 4.9,
+    "height": 5.3,
     "colour": "#c9312c",
     "topColour": "#c9312c"
    }
@@ -137,17 +137,17 @@
    "id": "door-void",
    "at": [
     0,
-    -7.1
+    -7.0
    ],
    "params": {
     "rect": [
-     1.9,
-     0.3
+     2.0,
+     1.4
     ],
     "z0": 2.6,
-    "height": 4.5,
-    "colour": "#1c1a1a",
-    "topColour": "#1c1a1a"
+    "height": 4.7,
+    "colour": "#111010",
+    "topColour": "#111010"
    }
   },
   {
@@ -155,14 +155,50 @@
    "id": "panel-red-outer",
    "at": [
     0,
+    -6.6
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     0.3
+    ],
+    "z0": 7.4,
+    "height": 4.6,
+    "colour": "#c9312c",
+    "topColour": "#c9312c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-white-mid",
+   "at": [
+    0,
     -6.65
    ],
    "params": {
     "rect": [
-     9.2,
-     0.3
+     9.8,
+     0.35
     ],
     "z0": 7.6,
+    "height": 4.2,
+    "colour": "#f3f1ea",
+    "topColour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-red-inner",
+   "at": [
+    0,
+    -6.7
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     0.4
+    ],
+    "z0": 7.9,
     "height": 3.6,
     "colour": "#c9312c",
     "topColour": "#c9312c"
@@ -170,18 +206,18 @@
   },
   {
    "type": "prism",
-   "id": "panel-white",
+   "id": "panel-white-in",
    "at": [
     0,
-    -6.85
+    -6.72
    ],
    "params": {
     "rect": [
-     8.5,
-     0.3
+     8.2,
+     0.45
     ],
-    "z0": 7.9,
-    "height": 3.0,
+    "z0": 8.1,
+    "height": 3.2,
     "colour": "#f3f1ea",
     "topColour": "#f3f1ea"
    }
@@ -190,16 +226,16 @@
    "type": "prism",
    "id": "relief-left",
    "at": [
-    -3.6,
+    -4.2,
     -6.7
    ],
    "params": {
     "rect": [
-     3.0,
-     0.5
+     4.2,
+     0.6
     ],
-    "z0": 4.2,
-    "height": 1.6,
+    "z0": 4.0,
+    "height": 2.6,
     "colour": "#a4592f",
     "topColour": "#a4592f"
    }
@@ -208,105 +244,126 @@
    "type": "prism",
    "id": "relief-right",
    "at": [
-    3.6,
+    4.2,
     -6.7
    ],
    "params": {
     "rect": [
-     3.0,
-     0.5
+     4.2,
+     0.6
     ],
-    "z0": 4.2,
-    "height": 1.6,
+    "z0": 4.0,
+    "height": 2.6,
     "colour": "#a4592f",
     "topColour": "#a4592f"
    }
   },
   {
    "type": "prism",
-   "id": "fasces-left",
+   "id": "pillar-left",
    "at": [
-    -5.6,
-    -6.7
+    -6.0,
+    -6.8
    ],
    "params": {
     "rect": [
-     1.1,
-     0.5
+     0.8,
+     0.6
     ],
-    "z0": 5.6,
-    "height": 3.6,
-    "colour": "#e9e6dc",
-    "topColour": "#e9e6dc"
+    "z0": 5.2,
+    "height": 4.6,
+    "colour": "#d8b8a8",
+    "topColour": "#efece4"
    }
   },
   {
    "type": "prism",
-   "id": "fasces-right",
+   "id": "pillar-right",
    "at": [
-    5.6,
-    -6.7
+    6.0,
+    -6.8
    ],
    "params": {
     "rect": [
-     1.1,
-     0.5
+     0.8,
+     0.6
     ],
-    "z0": 5.6,
-    "height": 3.6,
-    "colour": "#e9e6dc",
-    "topColour": "#e9e6dc"
+    "z0": 5.2,
+    "height": 4.6,
+    "colour": "#d8b8a8",
+    "topColour": "#efece4"
    }
   },
   {
    "type": "prism",
-   "id": "cross-left",
+   "id": "medal-left-h",
    "at": [
-    -5.6,
-    -7.0
+    -6.0,
+    -7.2
    ],
    "params": {
     "rect": [
-     1.4,
+     2.4699999999999998,
      0.3
     ],
-    "z0": 8.4,
-    "height": 1.4,
+    "z0": 10.0,
+    "height": 0.6,
     "colour": "#c9312c",
     "topColour": "#c9312c"
    }
   },
   {
    "type": "prism",
-   "id": "cross-right",
+   "id": "medal-left-v",
    "at": [
-    5.6,
-    -7.0
+    -6.0,
+    -7.2
    ],
    "params": {
     "rect": [
-     1.4,
+     0.78,
      0.3
     ],
-    "z0": 8.4,
-    "height": 1.4,
+    "z0": 9.4,
+    "height": 1.8,
     "colour": "#c9312c",
     "topColour": "#c9312c"
    }
   },
   {
-   "type": "steps",
-   "id": "stairs",
+   "type": "prism",
+   "id": "medal-right-h",
    "at": [
-    0,
-    -12
+    6.0,
+    -7.2
    ],
    "params": {
-    "width": 20,
-    "rise": 0.4,
-    "run": 0.9,
-    "count": 7,
-    "colour": "#e6e3da"
+    "rect": [
+     2.4699999999999998,
+     0.3
+    ],
+    "z0": 10.0,
+    "height": 0.6,
+    "colour": "#b4562f",
+    "topColour": "#b4562f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "medal-right-v",
+   "at": [
+    6.0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.78,
+     0.3
+    ],
+    "z0": 9.4,
+    "height": 1.8,
+    "colour": "#b4562f",
+    "topColour": "#b4562f"
    }
   },
   {
@@ -318,11 +375,11 @@
    ],
    "params": {
     "rect": [
-     2.2,
+     2.4,
      2.2
     ],
     "z0": 2.6,
-    "height": 1.6,
+    "height": 1.8,
     "colour": "#efece4",
     "topColour": "#efece4"
    }
@@ -336,13 +393,28 @@
    ],
    "params": {
     "rect": [
-     2.2,
+     2.4,
      2.2
     ],
     "z0": 2.6,
-    "height": 1.6,
+    "height": 1.8,
     "colour": "#efece4",
     "topColour": "#efece4"
+   }
+  },
+  {
+   "type": "steps",
+   "id": "stairs",
+   "at": [
+    0,
+    -11.5
+   ],
+   "params": {
+    "width": 26,
+    "rise": 0.28,
+    "run": 0.95,
+    "count": 9,
+    "colour": "#e6e3da"
    }
   },
   {
@@ -361,53 +433,53 @@
     "colour": "#f3f1ea",
     "profile": [
      [
-      6.44,
+      6.1,
       0.0,
       "#c9312c"
      ],
      [
-      6.44,
-      0.65
+      6.1,
+      0.7
      ],
      [
-      6.67,
-      0.65,
-      "#2f5fa8"
+      6.3,
+      0.7,
+      "#4a4aa0"
      ],
      [
-      6.67,
-      1.69
+      6.3,
+      2.5
      ],
      [
-      6.44,
-      1.69,
+      6.1,
+      2.5,
       "#f3f1ea"
      ],
      [
-      6.21,
-      3.9
+      5.9,
+      4.3
      ],
      [
-      6.55,
-      3.9,
+      6.1,
+      4.3,
       "#c9312c"
      ],
      [
-      6.55,
-      4.42
+      6.1,
+      4.8
      ],
      [
-      5.29,
-      4.81,
+      5.0,
+      5.2,
       "#e8e5dc"
      ],
      [
-      2.88,
-      5.46
+      2.7,
+      5.9
      ],
      [
       0.0,
-      5.72
+      6.1
      ]
     ]
    }
@@ -427,16 +499,16 @@
     "colour": "#f3f1ea",
     "profile": [
      [
-      6.55,
+      6.1,
       0.0
      ],
      [
-      6.55,
-      4.42
+      6.1,
+      4.8
      ],
      [
       0.0,
-      5.72
+      6.1
      ]
     ]
    }
@@ -444,23 +516,8 @@
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "garden",
-  "trees": [
-   {
-    "kind": "acacia",
-    "at": [
-     22,
-     -6
-    ]
-   },
-   {
-    "kind": "acacia",
-    "at": [
-     -24,
-     -10
-    ]
-   }
-  ],
+  "forecourt": "none",
+  "trees": [],
   "extent": [
    70,
    60
@@ -469,6 +526,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "no bronze figure reliefs detail, fasces ornaments are flat blocks, no swags or key-pattern frieze, drum bands simplified, photo has a steeper low angle"
+  "gaps": "Medallions are flat crosses not round relief discs; fasces pillars are plain thin boxes without swags; reliefs are flat brown panels, no key-pattern frieze, no plaques, urns simple, drum band colours approximate."
  }
 }

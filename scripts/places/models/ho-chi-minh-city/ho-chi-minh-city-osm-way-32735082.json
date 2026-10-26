@@ -28,15 +28,15 @@
    "id": "pool",
    "footprint": {
     "rect": [
-     84,
-     16
+     92,
+     19
     ]
    },
    "at": [
     0,
-    -13
+    -4
    ],
-   "height": 1.4,
+   "height": 1.5,
    "storeys": 1,
    "wall": {
     "material": "render",
@@ -53,25 +53,58 @@
    "id": "water",
    "footprint": {
     "rect": [
-     81,
-     13
+     89,
+     16
     ]
    },
    "at": [
     0,
-    -13
+    -4
    ],
-   "z0": 0.95,
+   "z0": 1.0,
    "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#7cd0c8",
+    "colour": "#4fd0d0",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6ccfc6"
+    "colour": "#4fd0d0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -4,
+     1.4
+    ],
+    "end": [
+     38,
+     -4,
+     1.4
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 5,
+      "colour": "#cfeef6"
+     }
+    }
    }
   },
   {
@@ -85,24 +118,24 @@
     "mode": "line",
     "start": [
      -36,
-     -6.5,
-     1.0
+     2,
+     1.4
     ],
     "end": [
      36,
-     -6.5,
-     1.0
+     2,
+     1.4
     ],
     "count": 8,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.7,
-       0.7
+       0.25,
+       0.25
       ],
-      "height": 8,
-      "colour": "#dff3f6"
+      "height": 2.5,
+      "colour": "#cfeef6"
      }
     }
    }
@@ -111,13 +144,13 @@
    "type": "statue-plinth",
    "at": [
     8,
-    10,
+    13,
     0
    ],
    "params": {
-    "height": 4,
-    "width": 10,
-    "steps": 3,
+    "height": 5,
+    "width": 13,
+    "steps": 4,
     "shape": "tapered",
     "figure": "none"
    }
@@ -126,215 +159,149 @@
    "type": "loft",
    "at": [
     8,
-    10,
-    3.5
+    13,
+    4.5
    ],
    "params": {
-    "colour": "#f4f3ef",
+    "colour": "#f6f5f1",
     "curve": true,
     "sections": [
      {
       "z": 0,
       "ellipse": [
-       4.2,
-       2.6
+       5.5,
+       3.6
       ]
-     },
-     {
-      "z": 1.6,
-      "ellipse": [
-       3.6,
-       2.2
-      ],
-      "cx": -0.8
      },
      {
       "z": 3,
       "ellipse": [
-       2.2,
-       1.6
-      ],
-      "cx": 0
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    8,
-    10,
-    4
-   ],
-   "params": {
-    "colour": "#f4f3ef",
-    "curve": true,
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       2.8499999999999996,
-       2.09
-      ]
-     },
-     {
-      "z": 4.55,
-      "ellipse": [
-       2.09,
-       1.71
-      ],
-      "cx": 0.24
-     },
-     {
-      "z": 9.1,
-      "ellipse": [
-       1.3299999999999998,
-       1.14
-      ],
-      "cx": 0.48
-     },
-     {
-      "z": 13,
-      "ellipse": [
-       0.12,
-       0.12
-      ],
-      "cx": 0.6
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    9.8,
-    10.4,
-    4
-   ],
-   "params": {
-    "colour": "#f4f3ef",
-    "curve": true,
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       2.0999999999999996,
-       1.54
-      ]
-     },
-     {
-      "z": 3.675,
-      "ellipse": [
-       1.54,
-       1.26
-      ],
-      "cx": 0.5599999999999999
-     },
-     {
-      "z": 7.35,
-      "ellipse": [
-       0.9799999999999999,
-       0.84
-      ],
-      "cx": 1.1199999999999999
-     },
-     {
-      "z": 10.5,
-      "ellipse": [
-       0.12,
-       0.12
-      ],
-      "cx": 1.4
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    6.2,
-    9.6,
-    4
-   ],
-   "params": {
-    "colour": "#f4f3ef",
-    "curve": true,
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       1.9500000000000002,
-       1.4300000000000002
-      ]
-     },
-     {
-      "z": 3.3249999999999997,
-      "ellipse": [
-       1.4300000000000002,
-       1.1700000000000002
-      ],
-      "cx": -0.48
-     },
-     {
-      "z": 6.6499999999999995,
-      "ellipse": [
-       0.9099999999999999,
-       0.78
-      ],
-      "cx": -0.96
-     },
-     {
-      "z": 9.5,
-      "ellipse": [
-       0.12,
-       0.12
+       5,
+       3.2
       ],
       "cx": -1.2
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "at": [
-    8.8,
-    9.2,
-    4
-   ],
-   "params": {
-    "colour": "#f4f3ef",
-    "curve": true,
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       1.6500000000000001,
-       1.2100000000000002
-      ]
      },
      {
-      "z": 4.0249999999999995,
+      "z": 7,
       "ellipse": [
-       1.2100000000000002,
-       0.9900000000000001
+       3.6,
+       2.8
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       3,
+       2.2
       ],
       "cx": 0.2
      },
      {
-      "z": 8.049999999999999,
+      "z": 17,
       "ellipse": [
-       0.77,
-       0.66
+       2.2,
+       1.8
       ],
-      "cx": 0.4
+      "cx": -0.3
      },
      {
-      "z": 11.5,
+      "z": 22,
       "ellipse": [
-       0.12,
-       0.12
+       0.3,
+       0.3
       ],
-      "cx": 0.5
+      "cx": -0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10.5,
+    13.5,
+    4.5
+   ],
+   "params": {
+    "colour": "#f6f5f1",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3,
+       2.2
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       2.4,
+       1.8
+      ],
+      "cx": 1.5
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       1.5,
+       1.2
+      ],
+      "cx": 2.5
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       0.2,
+       0.2
+      ],
+      "cx": 3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    5,
+    12.5,
+    4.5
+   ],
+   "params": {
+    "colour": "#f6f5f1",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3,
+       2
+      ]
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       2.4,
+       1.6
+      ],
+      "cx": -1.5
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       1.4,
+       1
+      ],
+      "cx": -2.5
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       0.2,
+       0.2
+      ],
+      "cx": -3
      }
     ]
    }
@@ -342,38 +309,19 @@
   {
    "type": "flowerbeds",
    "at": [
-    -12,
-    6,
+    -6,
+    8,
     0
    ],
    "params": {
     "rows": 1,
     "cols": 3,
-    "width": 7,
+    "width": 9,
     "depth": 3,
     "colours": [
      "#f2c230",
-     "#e8e0f0",
-     "#d8d030"
-    ]
-   }
-  },
-  {
-   "type": "flowerbeds",
-   "at": [
-    24,
-    4,
-    0
-   ],
-   "params": {
-    "rows": 1,
-    "cols": 3,
-    "width": 7,
-    "depth": 3,
-    "colours": [
-     "#f2c230",
-     "#d8d030",
-     "#f6f0f8"
+     "#e86a9a",
+     "#f2c230"
     ]
    }
   },
@@ -381,15 +329,16 @@
    "type": "flowerbeds",
    "at": [
     8,
-    2,
+    7.5,
     0
    ],
    "params": {
     "rows": 1,
-    "cols": 3,
-    "width": 8,
-    "depth": 2.5,
+    "cols": 4,
+    "width": 9,
+    "depth": 3,
     "colours": [
+     "#f2c230",
      "#f2c230",
      "#e8e0f0",
      "#f2c230"
@@ -397,119 +346,184 @@
    }
   },
   {
-   "type": "tree-grove",
+   "type": "flowerbeds",
    "at": [
-    0,
-    22,
+    24,
+    9,
     0
    ],
    "params": {
-    "width": 90,
-    "depth": 12,
-    "count": 40,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 14
+    "rows": 1,
+    "cols": 3,
+    "width": 9,
+    "depth": 3,
+    "colours": [
+     "#f2c230",
+     "#e86a9a",
+     "#d8d030"
+    ]
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    -28,
-    14,
+    0,
+    34,
     0
    ],
    "params": {
-    "width": 24,
+    "width": 100,
+    "depth": 16,
+    "count": 45,
+    "kind": "broadleaf",
+    "min_height": 15,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    17,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 13,
+    "max_height": 19
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    18,
+    0
+   ],
+   "params": {
+    "width": 20,
     "depth": 8,
     "count": 10,
     "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 12
+    "min_height": 12,
+    "max_height": 17
    }
   },
   {
    "type": "lamp-post",
    "at": [
-    -8,
-    0,
+    -20,
+    8,
     0
    ],
    "params": {
-    "height": 5.5
+    "height": 4
    }
   },
   {
    "type": "lamp-post",
    "at": [
-    -26,
-    0,
+    -17,
+    8,
     0
    ],
    "params": {
-    "height": 5.5
+    "height": 4
    }
   },
   {
    "type": "lamp-post",
    "at": [
-    20,
-    0,
+    24,
+    8,
     0
    ],
    "params": {
-    "height": 5.5
+    "height": 4
    }
   },
   {
    "type": "lamp-post",
    "at": [
-    34,
-    0,
+    27,
+    8,
     0
    ],
    "params": {
-    "height": 5.5
+    "height": 4
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -34,
-    4,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 8,
-    "count": 3,
-    "spread": 4,
-    "line": 10
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    38,
-    6,
+    -30,
+    9,
     0
    ],
    "params": {
     "kind": "palm",
     "height": 9,
     "count": 3,
-    "spread": 4,
-    "line": 10
+    "spread": 3,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 3,
+    "line": 5
    }
   }
  ],
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Multi-spire sculpture on stepped plinth, raised basin with jets, dense grove and flower beds added; sculpture is smooth lofts not the carved wave form, trees are low-poly lollipops, framing is wider than the close photo."
+  "gaps": "Single tall white sculpture on stepped plinth, wide raised pool, denser taller grove added; sculpture is smooth lofts not carved wave form, trees low-poly, view wider than the close photo."
  },
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "none",
   "extent": [
    70,

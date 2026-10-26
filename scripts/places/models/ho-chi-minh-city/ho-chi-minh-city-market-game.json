@@ -50,7 +50,7 @@
    "wall": {
     "material": "stucco",
     "colour": "#e6d9ae",
-    "windows": "arched",
+    "windows": "none",
     "windowRatio": 0.3,
     "windowShape": "arched",
     "plinth": 0.4,
@@ -60,11 +60,21 @@
      "left": "none",
      "right": "none",
      "back": "none"
+    },
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 7,
+     "opening": 0.65,
+     "depth": 0.5,
+     "faces": [
+      "front"
+     ]
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8cfa8",
+    "colour": "#e6d9ae",
     "parapet": 0.5,
     "overhang": 0.4
    }
@@ -74,16 +84,16 @@
    "id": "hall",
    "footprint": {
     "rect": [
-     60,
-     38
+     54,
+     30
     ]
    },
    "at": [
     0,
     0
    ],
-   "z0": 5.6,
-   "height": 6.5,
+   "z0": 7.8,
+   "height": 5,
    "storeys": 1,
    "wall": {
     "material": "stucco",
@@ -93,9 +103,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#9a4a3a",
-    "material": "clay-tile",
-    "pitch": 18,
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "pitch": 24,
     "overhang": 1.2
    }
   },
@@ -104,20 +114,20 @@
    "id": "south-gate",
    "footprint": {
     "rect": [
-     20,
-     6
+     22,
+     8
     ]
    },
    "at": [
     0,
-    -35
+    -34.5
    ],
-   "height": 12,
+   "height": 16,
    "storeys": 2,
    "wall": {
     "material": "stucco",
     "colour": "#efe6c4",
-    "windows": "arched",
+    "windows": "none",
     "plinth": 0.3,
     "cornice": true,
     "windowShape": "arched",
@@ -127,6 +137,17 @@
      "left": "none",
      "right": "none",
      "back": "none"
+    },
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 12,
+     "opening": 0.7,
+     "height": 0.75,
+     "depth": 0.9,
+     "faces": [
+      "front"
+     ]
     }
    },
    "roof": {
@@ -144,13 +165,72 @@
     0
    ],
    "params": {
-    "width": 10,
-    "height": 14,
+    "width": 14,
+    "height": 10,
     "cap": "hip",
-    "cap_rise": 3,
-    "wall_colour": "#f0e8d0",
-    "roof_colour": "#7d6a5c"
+    "cap_rise": 4,
+    "wall_colour": "#efe6c8",
+    "roof_colour": "#8a5a45"
    }
+  },
+  {
+   "type": "mass",
+   "id": "hall-low",
+   "footprint": {
+    "rect": [
+     72,
+     46
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.6,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4.5
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -182,6 +262,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "clock faces and French ornament on the tower, decorative pilasters and topiary, real rhombus outline, stalls and the clerestory detail of the roofs"
+  "gaps": "Clock faces and French ornament on the tower, pilasters, real rhombus outline, stalls and clerestory detail of the roofs are simplified."
  }
 }

@@ -49,7 +49,7 @@
     "lane_width": 7.5,
     "infield": true,
     "pitch": true,
-    "colour": "#a8503c"
+    "colour": "#8f4636"
    }
   },
   {
@@ -61,55 +61,103 @@
    ],
    "params": {
     "start": [
-     -52,
+     -56,
      -22
     ],
     "end": [
-     -52,
+     -56,
      20
     ],
-    "rows": 7,
+    "rows": 5,
     "rise": 0.4,
     "run": 0.8,
     "firstHeight": 1.4,
     "seatColours": [
      "#2f6fa0",
      "#e0b030",
-     "#d9703a"
+     "#d9703a",
+     "#3f9a5a",
+     "#c8503c"
     ],
-    "blocks": 5,
+    "blocks": 7,
     "concreteColour": "#c9c5bb",
     "under": "open",
     "closeEnds": true
    }
   },
   {
-   "type": "stand",
+   "type": "prism",
+   "id": "bank-l",
    "at": [
-    0,
-    0,
+    -70,
     0
    ],
    "params": {
-    "start": [
-     40,
-     48
+    "rect": [
+     24,
+     100
     ],
-    "end": [
+    "z0": 0,
+    "height": 4.5,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "topOffset": [
+     -8,
+     0
+    ],
+    "colour": "#5c8f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-r",
+   "at": [
+    70,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     100
+    ],
+    "z0": 0,
+    "height": 9,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "topOffset": [
      8,
-     50
+     0
     ],
-    "rows": 5,
-    "rise": 0.4,
-    "run": 0.8,
-    "firstHeight": 1.2,
-    "seatColours": [
-     "#2f6fa0",
-     "#e0b030"
+    "colour": "#5c8f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-n",
+   "at": [
+    0,
+    52
+   ],
+   "params": {
+    "rect": [
+     130,
+     20
     ],
-    "blocks": 3,
-    "concreteColour": "#c9c5bb",
-    "under": "open"
+    "z0": 0,
+    "height": 9,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "topOffset": [
+     0,
+     6
+    ],
+    "colour": "#5c8f3a"
    }
   },
   {
@@ -121,25 +169,24 @@
    ],
    "params": {
     "of": {
-     "type": "canopy",
+     "type": "core/tree",
      "params": {
-      "form": "flat",
-      "width": 5,
-      "depth": 4,
-      "height": 2.4,
-      "colour": "#f4f4f0",
-      "columns": 0
+      "kind": "broadleaf",
+      "height": 12,
+      "spread": 5
      }
     },
     "mode": "line",
-    "count": 3,
+    "count": 8,
     "start": [
-     -22,
-     -40
+     -74,
+     -48,
+     4.5
     ],
     "end": [
-     -4,
-     -40
+     -74,
+     48,
+     4.5
     ]
    }
   },
@@ -159,42 +206,169 @@
       "spread": 5
      }
     },
-    "mode": "arc",
-    "count": 30,
-    "centre": [
-     0,
-     0
+    "mode": "line",
+    "count": 8,
+    "start": [
+     74,
+     -48,
+     9
     ],
-    "radius": 78,
-    "radiusY": 58,
-    "startDeg": 0,
-    "endDeg": 360
+    "end": [
+     74,
+     48,
+     9
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 12,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -60,
+     60,
+     9
+    ],
+    "end": [
+     60,
+     60,
+     9
+    ]
    }
   },
   {
    "type": "mass",
-   "id": "service-shed",
+   "id": "tent-0",
    "footprint": {
     "rect": [
-     10,
-     5
+     6,
+     4.5
     ]
    },
    "at": [
     -30,
-    -44
+    -41
    ],
-   "z0": 0,
-   "height": 3.2,
+   "height": 2.3,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f4f4f0",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tent-1",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    -22,
+    -41
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f7a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f7a4a",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tent-2",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    -14,
+    -41
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f8f8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f8f8f",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dugout",
+   "footprint": {
+    "rect": [
+     5,
+     2.2
+    ]
+   },
+   "at": [
+    8,
+    -38
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
     "colour": "#d6d3c9",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.5,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#7d8386"
    }
   }
  ],
@@ -210,6 +384,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Surrounding hillside embankment and dense tree backdrop are only a tree ring; stands are simplified blocks, no mural; tents are plain flat canopies; track scaled down to fit the scene."
+  "gaps": "Embankment ring with tree rows, multi-colour raked stand, three pitched tents (white, green, teal), dugout and mesh fence added; banks are plain tapered slabs, stand not set into slope with mural panels, far-end stand and distant trees simplified."
  }
 }

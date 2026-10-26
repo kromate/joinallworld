@@ -50,15 +50,15 @@
     0,
     4
    ],
-   "height": 9,
-   "storeys": 2,
+   "height": 7,
+   "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#4a4643",
-    "windows": "arched",
-    "windowShape": "arched",
-    "windowRatio": 0.14,
-    "bay": 4.2,
+    "colour": "#3d3937",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "bay": 4.6,
     "plinth": 0.4,
     "cornice": true,
     "bands": "#5a5551",
@@ -72,7 +72,7 @@
     "form": "flat",
     "colour": "#4a4643",
     "material": "concrete",
-    "parapet": 1.1
+    "parapet": 1.4
    }
   },
   {
@@ -88,13 +88,13 @@
     -22,
     2
    ],
-   "height": 8,
-   "storeys": 2,
+   "height": 6,
+   "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#4a4643",
-    "windows": "arched",
-    "windowShape": "arched",
+    "colour": "#3d3937",
+    "windows": "pointed",
+    "windowShape": "pointed",
     "windowRatio": 0.18,
     "bay": 4,
     "cornice": true,
@@ -107,7 +107,7 @@
     "form": "flat",
     "colour": "#4a4643",
     "material": "concrete",
-    "parapet": 1.0
+    "parapet": 1.2
    }
   },
   {
@@ -115,22 +115,22 @@
    "id": "tower-a",
    "footprint": {
     "rect": [
-     6,
-     6
+     5,
+     5
     ]
    },
    "at": [
     -6,
     -2
    ],
-   "height": 25,
-   "storeys": 5,
+   "height": 27,
+   "storeys": 6,
    "wall": {
     "material": "stone",
-    "colour": "#46423f",
+    "colour": "#3a3634",
     "windows": "arched",
     "windowShape": "arched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.1,
     "bay": 6,
     "cornice": true,
     "bands": "#5a5551",
@@ -144,7 +144,7 @@
     "form": "hip",
     "colour": "#9a3b2f",
     "material": "clay-tile",
-    "pitch": 38,
+    "pitch": 50,
     "overhang": 0.3
    }
   },
@@ -161,35 +161,35 @@
     11,
     5
    ],
-   "height": 22,
+   "height": 23,
    "storeys": 4,
    "wall": {
     "material": "stone",
-    "colour": "#46423f",
-    "windows": "arched",
+    "colour": "#3a3634",
+    "windows": "pointed",
     "windowShape": "pointed",
-    "windowRatio": 0.14,
+    "windowRatio": 0.18,
     "bay": 7,
     "cornice": true,
     "bands": "#5a5551"
    },
    "roof": {
-    "form": "flat",
-    "colour": "#46423f",
-    "material": "concrete",
-    "parapet": 1.2
+    "form": "hip",
+    "colour": "#3a3634",
+    "pitch": 55,
+    "material": "concrete"
    }
   },
   {
    "type": "core/spire",
    "at": [
-    8.6,
-    2.6,
-    22
+    7.9,
+    1.9,
+    23
    ],
    "params": {
     "baseWidth": 0.9,
-    "height": 4.5,
+    "height": 3.5,
     "sides": 4,
     "colour": "#3f3c3a",
     "finial": true
@@ -198,13 +198,13 @@
   {
    "type": "core/spire",
    "at": [
-    13.4,
-    2.6,
-    22
+    14.1,
+    1.9,
+    23
    ],
    "params": {
     "baseWidth": 0.9,
-    "height": 4.5,
+    "height": 3.5,
     "sides": 4,
     "colour": "#3f3c3a",
     "finial": true
@@ -213,13 +213,13 @@
   {
    "type": "core/spire",
    "at": [
-    8.6,
-    7.4,
-    22
+    7.9,
+    8.1,
+    23
    ],
    "params": {
     "baseWidth": 0.9,
-    "height": 4.5,
+    "height": 3.5,
     "sides": 4,
     "colour": "#3f3c3a",
     "finial": true
@@ -228,13 +228,13 @@
   {
    "type": "core/spire",
    "at": [
-    13.4,
-    7.4,
-    22
+    14.1,
+    8.1,
+    23
    ],
    "params": {
     "baseWidth": 0.9,
-    "height": 4.5,
+    "height": 3.5,
     "sides": 4,
     "colour": "#3f3c3a",
     "finial": true
@@ -249,10 +249,10 @@
    ],
    "params": {
     "length": 50,
-    "height": 1.4,
+    "height": 0.9,
     "kind": "rail",
     "colour": "#f3efe2",
-    "pillarEvery": 2.4
+    "pillarEvery": 20
    }
   },
   {
@@ -279,6 +279,96 @@
     "height": 9,
     "spread": 8
    }
+  },
+  {
+   "type": "church-gothic/cross",
+   "at": [
+    -6,
+    -2,
+    30.2
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "turret-14",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -14,
+    -2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3a3634",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3634",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret-2",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -2,
+    -2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3a3634",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3634",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret14",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    14,
+    -2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3a3634",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3634",
+    "parapet": 0.6
+   }
   }
  ],
  "site": {
@@ -290,8 +380,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "stair turrets, rose window and the stepped parapets are simplified; plan is regularised"
+  "gaps": "body now one storey with pointed windows and parapet; no stepped crenellated gables, rose window or open belfry arches; right tower has a pointed roof and four pinnacles but no stair turrets; towers wider apart than the photo"
  }
 }

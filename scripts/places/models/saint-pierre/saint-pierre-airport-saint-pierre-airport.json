@@ -48,25 +48,42 @@
     0,
     0
    ],
-   "height": 6.2,
+   "height": 5.4,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#f4f3ee",
-    "windows": "ribbon",
+    "colour": "#f2f1ec",
+    "windows": "none",
     "windowRatio": 0.12,
     "plinth": 0.3,
     "faces": {
      "left": "plain",
      "right": "plain",
-     "back": "plain"
+     "back": "plain",
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "panels",
+     "size": [
+      8,
+      0.5
+     ],
+     "colours": [
+      "#f4f3ee",
+      "#e6e5df"
+     ],
+     "mode": "stripes-h",
+     "proud": 0.02,
+     "faces": [
+      "front"
+     ]
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#6c7176",
+    "colour": "#5f666b",
     "material": "membrane",
-    "overhang": 1.6,
+    "overhang": 2.2,
     "parapet": 0.2
    }
   },
@@ -80,31 +97,33 @@
     ]
    },
    "at": [
-    27,
-    -1
+    28,
+    -2
    ],
-   "height": 6.8,
+   "height": 6.4,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#26343f",
+    "colour": "#1d2a33",
     "windows": "curtain",
-    "windowRatio": 0.85,
-    "glassColour": "#2a3b47",
+    "windowRatio": 0.92,
+    "glassColour": "#1b2a35",
     "faces": {
+     "front": "curtain",
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "cornice": false
+    "cornice": false,
+    "bay": 3.2
    },
    "roof": {
     "form": "curved",
     "curve": "sweep",
-    "colour": "#6a7075",
+    "colour": "#7a8085",
     "material": "metal-sheet",
-    "rise": 1.4,
-    "overhang": 2.4
+    "rise": 1.8,
+    "overhang": 3.0
    }
   },
   {
@@ -117,16 +136,32 @@
     ]
    },
    "at": [
-    -34,
-    -1
+    -36,
+    9
    ],
-   "height": 8.4,
+   "height": 9.5,
    "storeys": 2,
    "wall": {
     "material": "timber",
-    "colour": "#f6f5f0",
+    "colour": "#f4f3ee",
     "windows": "none",
-    "plinth": 0.2
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "size": [
+      8,
+      0.5
+     ],
+     "colours": [
+      "#f6f5f0",
+      "#e4e3dd"
+     ],
+     "mode": "stripes-h",
+     "proud": 0.02,
+     "faces": [
+      "front"
+     ]
+    }
    },
    "roof": {
     "form": "flat",
@@ -139,19 +174,19 @@
   {
    "type": "canopy",
    "at": [
-    33,
-    -17.5,
+    40,
+    -18,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 24,
-    "depth": 6,
-    "height": 3.6,
-    "thickness": 0.3,
-    "columns": 4,
-    "colour": "#9aa3a8",
-    "edgeColour": "#d9dde0"
+    "width": 22,
+    "depth": 4,
+    "height": 3.4,
+    "thickness": 0.18,
+    "columns": 3,
+    "colour": "#8d959a",
+    "edgeColour": "#cfd4d6"
    }
   },
   {
@@ -166,9 +201,9 @@
     "width": 30,
     "depth": 3,
     "height": 3.6,
-    "thickness": 0.3,
-    "columns": 6,
-    "colour": "#7b8085",
+    "thickness": 0.16,
+    "columns": 5,
+    "colour": "#6f757a",
     "edgeColour": "#f0f0ec"
    }
   },
@@ -182,9 +217,9 @@
    "params": {
     "height": 21,
     "style": "square",
-    "colour": "#d6ccb2",
-    "cabColour": "#2e6a62",
-    "bandColour": "#8a8f93"
+    "colour": "#efe3bd",
+    "cabColour": "#4f9a86",
+    "bandColour": "#d8cca4"
    }
   },
   {
@@ -214,21 +249,92 @@
     "count": 2,
     "spacing": 2.2
    }
+  },
+  {
+   "type": "core/prism",
+   "id": "verge-left",
+   "at": [
+    -30,
+    -25,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     44,
+     8
+    ],
+    "height": 0.12,
+    "colour": "#5f8a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "verge-right",
+   "at": [
+    52,
+    -28,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     26,
+     6
+    ],
+    "height": 0.12,
+    "colour": "#5f8a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "id": "planters",
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.9
+      ],
+      "height": 0.9,
+      "colour": "#c8793a"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     40,
+     -26
+    ],
+    "end": [
+     66,
+     -26
+    ]
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
   "ground": "asphalt",
-  "forecourt": "road",
+  "forecourt": "none",
   "trees": [],
   "cars": 0,
   "extent": [
    160,
    110
-  ]
+  ],
+  "groundColour": "#8a5d54"
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "clapboard texture reads grey-blue, curved roof tip and red tarmac forecourt not reproduced, glass hall simplified to a box with swept roof, no planters"
+  "gaps": "clapboard courses are coarse, tower shaft still reads grey, roof end not fully rounded, glazed hall mullions simplified, no road curves or lamp posts"
  }
 }

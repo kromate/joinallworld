@@ -63,9 +63,9 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#9b3a35",
-    "parapet": 0.3,
-    "overhang": 0.8
+    "colour": "#d9d3c1",
+    "parapet": 0.25,
+    "overhang": 0.6
    }
   },
   {
@@ -73,26 +73,26 @@
    "id": "upper",
    "footprint": {
     "rect": [
-     15,
-     22
+     16,
+     20
     ]
    },
    "at": [
-    4,
-    -2
+    3,
+    -12
    ],
    "z0": 4.6,
-   "height": 4.2,
+   "height": 5.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#f4efe0",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.1,
     "faces": {
      "front": "punched",
      "back": "plain",
-     "left": "punched",
+     "left": "plain",
      "right": "plain"
     }
    },
@@ -100,8 +100,8 @@
     "form": "shed",
     "colour": "#a23b36",
     "material": "corrugated",
-    "rise": 3.2,
-    "overhang": 1.2
+    "rise": 3.6,
+    "overhang": 1.0
    }
   },
   {
@@ -158,9 +158,9 @@
      16
     ],
     "z0": 0,
-    "height": 1.3,
-    "colour": "#5d5a50",
-    "topColour": "#6b6a5e"
+    "height": 2.0,
+    "colour": "#3c3b36",
+    "topColour": "#4a493f"
    },
    "at": [
     -30,
@@ -173,16 +173,16 @@
    "id": "bai-base",
    "footprint": {
     "rect": [
-     7,
-     12
+     5.5,
+     10
     ]
    },
    "at": [
     -30,
     -6
    ],
-   "z0": 1.3,
-   "height": 3.0,
+   "z0": 2.0,
+   "height": 2.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -201,30 +201,30 @@
    "id": "bai-body",
    "footprint": {
     "rect": [
-     7.6,
-     12.6
+     7.2,
+     12
     ]
    },
    "at": [
     -30,
     -6
    ],
-   "z0": 4.3,
+   "z0": 4.4,
    "height": 2.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece6d6",
+    "colour": "#f6f3ea",
     "windows": "none",
     "windowRatio": 0
    },
    "roof": {
     "form": "gable",
     "axis": "y",
-    "colour": "#6e5a3e",
-    "material": "thatch",
-    "rise": 5.5,
-    "overhang": 1.0
+    "colour": "#7a3a2c",
+    "material": "corrugated",
+    "rise": 6.5,
+    "overhang": 0.8
    }
   },
   {
@@ -282,8 +282,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "render queue was not running so the comparison could not be viewed; massing and colours set from photos, upper volume position and bai placement assumed"
+  "gaps": "entrance porch recess, seal and sign band not modelled (door block dropped, it read as a floating box); upper-volume windows are more numerous than the 3 tall ones in the photo; OSM footprint orientation differs from the photo view"
  }
 }

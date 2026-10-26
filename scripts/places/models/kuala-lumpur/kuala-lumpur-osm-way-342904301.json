@@ -55,15 +55,15 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3c43e",
+    "colour": "#ead98a",
     "glassColour": "#93a9b3",
-    "windows": "ribbon",
-    "windowRatio": 0.35,
+    "windows": "punched",
+    "windowRatio": 0.22,
     "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8d4c4",
+    "colour": "#f1eee4",
     "material": "concrete",
     "overhang": 0.5,
     "parapet": 0.5
@@ -86,7 +86,7 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#3b3e44",
+    "colour": "#4a4d54",
     "glassColour": "#93a9b3",
     "windows": "none",
     "windowRatio": 0,
@@ -117,7 +117,7 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#3b3e44",
+    "colour": "#4a4d54",
     "glassColour": "#93a9b3",
     "windows": "none",
     "windowRatio": 0,
@@ -156,7 +156,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8d4c4",
+    "colour": "#f1eee4",
     "material": "concrete",
     "overhang": 0.5,
     "parapet": 0.5
@@ -179,18 +179,20 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#b94a5c",
+    "colour": "#b8685a",
     "glassColour": "#93a9b3",
-    "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windows": "punched",
+    "windowRatio": 0.22,
     "plinth": 0.4
    },
    "roof": {
-    "form": "flat",
-    "colour": "#ece8dc",
-    "material": "concrete",
-    "overhang": 0.5,
-    "parapet": 0.5
+    "form": "gable",
+    "colour": "#8a4a40",
+    "material": "metal-sheet",
+    "overhang": 1.4,
+    "parapet": 0.5,
+    "pitch": 22,
+    "axis": "x"
    }
   },
   {
@@ -210,15 +212,15 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#d8a8a8",
+    "colour": "#c98a7c",
     "glassColour": "#93a9b3",
-    "windows": "ribbon",
-    "windowRatio": 0.35,
+    "windows": "punched",
+    "windowRatio": 0.2,
     "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#ece8dc",
+    "colour": "#f1eee4",
     "material": "concrete",
     "overhang": 0.5,
     "parapet": 0.5
@@ -241,15 +243,15 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#3f7f6a",
+    "colour": "#2f6a56",
     "glassColour": "#93a9b3",
-    "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windows": "punched",
+    "windowRatio": 0.22,
     "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#ece8dc",
+    "colour": "#f1eee4",
     "material": "concrete",
     "overhang": 0.5,
     "parapet": 0.5
@@ -268,23 +270,23 @@
     28,
     -20
    ],
-   "height": 4.2,
+   "height": 4.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e08a4a",
+    "colour": "#e8a05a",
     "glassColour": "#7a9aa0",
     "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windowRatio": 0.5,
     "plinth": 0.4
    },
    "roof": {
     "form": "hip",
-    "colour": "#4c3b32",
+    "colour": "#d9732f",
     "material": "concrete",
-    "overhang": 1.4,
+    "overhang": 1.2,
     "parapet": 0,
-    "pitch": 25
+    "pitch": 40
    }
   },
   {
@@ -378,15 +380,15 @@
  ],
  "site": {
   "ground": "asphalt",
-  "forecourt": "none",
+  "forecourt": "road",
   "extent": [
    130,
-   80
+   90
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "block layout approximate; no angled gable roofs on the red wing; tiny colour accents and window detail missing; only the entrance cluster of a 481 m campus"
+  "gaps": "Block layout approximate; red wing has a plain gable instead of winged roofs; windows are punched grids; gatehouse is a hip-roofed box, no round planter or kerbed island; only the entrance cluster of a 481 m campus."
  }
 }

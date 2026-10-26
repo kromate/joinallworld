@@ -27,9 +27,9 @@
   "aspect": 1.778
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "canopy over the stair is a folded flat roof, not the real tall barrel arch; blue tower stripes simplified; no roof railing or stair handrail detail; real footprint is irregular, so the station is composed as an overbridge concourse"
+  "gaps": "canopy is a swept arc not a ribbed barrel; concourse ends are square, not curved; stair is the stock external stair with simple rails; platform canopy lighter than the photo; forecourt colour set by plaza part only"
  },
  "parts": [
   {
@@ -160,138 +160,6 @@
    }
   },
   {
-   "type": "mass",
-   "id": "tower-r",
-   "footprint": {
-    "rect": [
-     5.5,
-     7
-    ]
-   },
-   "at": [
-    19.5,
-    9
-   ],
-   "height": 11.5,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#2f6fb5",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "bands",
-      "colour": "#e9eef2"
-     }
-    ],
-    "plinth": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfd3d6",
-    "overhang": 0.3,
-    "parapet": 0.3
-   }
-  },
-  {
-   "type": "prism",
-   "id": "tower-r-core",
-   "at": [
-    22.8,
-    9.5,
-    0
-   ],
-   "params": {
-    "rect": [
-     3.2,
-     5.5
-    ],
-    "z0": 0,
-    "height": 11.0,
-    "colour": "#c4c9cc"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower-l",
-   "footprint": {
-    "rect": [
-     5,
-     6
-    ]
-   },
-   "at": [
-    -19.5,
-    9
-   ],
-   "height": 9.5,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#2f6fb5",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfd3d6",
-    "overhang": 0.3
-   }
-  },
-  {
-   "type": "surface",
-   "at": [
-    10,
-    0,
-    7.0
-   ],
-   "params": {
-    "kind": "folded",
-    "width": 13,
-    "depth": 7,
-    "rise": 0.5,
-    "thickness": 0.35,
-    "folds": 8,
-    "colour": "#b9c3c9",
-    "edgeColour": "#d9dcde"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "canopy-post0",
-   "at": [
-    4.5,
-    -2.8,
-    0
-   ],
-   "params": {
-    "rect": [
-     0.7,
-     0.7
-    ],
-    "z0": 0,
-    "height": 7.0,
-    "colour": "#2f6fb5"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "canopy-post1",
-   "at": [
-    15.5,
-    -2.8,
-    0
-   ],
-   "params": {
-    "rect": [
-     0.7,
-     0.7
-    ],
-    "z0": 0,
-    "height": 7.0,
-    "colour": "#2f6fb5"
-   }
-  },
-  {
    "type": "external-stair",
    "at": [
     11,
@@ -300,24 +168,9 @@
    ],
    "params": {
     "height": 5.2,
-    "length": 9,
-    "width": 2.4,
+    "length": 10,
+    "width": 2.6,
     "colour": "#b7bcc0"
-   }
-  },
-  {
-   "type": "flat-canopy",
-   "at": [
-    -26,
-    -6,
-    0
-   ],
-   "params": {
-    "width": 36,
-    "depth": 9,
-    "height": 4.5,
-    "thickness": 0.45,
-    "colour": "#c9ced1"
    }
   },
   {
@@ -442,42 +295,6 @@
    }
   },
   {
-   "type": "prism",
-   "id": "train-body",
-   "at": [
-    -8,
-    -12,
-    0
-   ],
-   "params": {
-    "rect": [
-     20,
-     2.8
-    ],
-    "z0": 0.5,
-    "height": 3.6,
-    "colour": "#e8e8e6"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "train-stripe",
-   "at": [
-    -8,
-    -12,
-    0
-   ],
-   "params": {
-    "rect": [
-     20.05,
-     2.85
-    ],
-    "z0": 1.6,
-    "height": 0.6,
-    "colour": "#c8362f"
-   }
-  },
-  {
    "type": "core/sign-board",
    "at": [
     -4,
@@ -494,33 +311,367 @@
    }
   },
   {
-   "type": "prism",
-   "id": "kiosk",
+   "type": "plaza",
    "at": [
-    -32,
-    -16,
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 34,
+    "colour": "#a89a8c",
+    "border_colour": "#948779"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     4.5,
+     6
+    ]
+   },
+   "at": [
+    19.8,
+    9
+   ],
+   "height": 13,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6fb5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    19.8,
+    5.7,
+    1.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     10.6
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.9,
+       0.4
+      ],
+      "height": 0.35,
+      "colour": "#eef2f5"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    15.2,
+    8,
     0
    ],
    "params": {
     "rect": [
-     9,
-     5
+     3.2,
+     6
     ],
     "z0": 0,
-    "height": 3.4,
-    "colour": "#d9d5cb"
+    "height": 10.4,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post0",
+   "at": [
+    4.5,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post1",
+   "at": [
+    15.5,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7.5,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      15.5,
+      -0.5,
+      5.5
+     ],
+     "radius": 11,
+     "radiusY": 6,
+     "startDeg": 180,
+     "endDeg": 90,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#b9c3c9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.5,
+      -0.5,
+      1.6
+     ],
+     [
+      14,
+      -0.5,
+      6.8
+     ]
+    ],
+    "radius": 0.05,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.5,
+      -0.5,
+      1.6
+     ],
+     [
+      14,
+      -0.5,
+      6.8
+     ]
+    ],
+    "radius": 0.05,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -3.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.5,
+      0,
+      1.6
+     ],
+     [
+      14,
+      0,
+      6.8
+     ]
+    ],
+    "radius": 0.05,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    2.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.5,
+      0,
+      1.6
+     ],
+     [
+      14,
+      0,
+      6.8
+     ]
+    ],
+    "radius": 0.05,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    5.4,
+    10.9
+   ],
+   "params": {
+    "points": [
+     [
+      -17,
+      0,
+      0
+     ],
+     [
+      17,
+      0,
+      0
+     ]
+    ],
+    "radius": 0.05,
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    5.4,
+    10.4
+   ],
+   "params": {
+    "points": [
+     [
+      -17,
+      0,
+      0
+     ],
+     [
+      17,
+      0,
+      0
+     ]
+    ],
+    "radius": 0.04,
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -28,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 10,
+    "height": 4.0,
+    "thickness": 0.6,
+    "colour": "#5a5e61"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-body",
+   "at": [
+    -12,
+    1.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     2.8
+    ],
+    "z0": 0.5,
+    "height": 3.6,
+    "colour": "#e8e8e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-stripe",
+   "at": [
+    -12,
+    1.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     20.05,
+     2.85
+    ],
+    "z0": 1.6,
+    "height": 0.6,
+    "colour": "#c8362f"
    }
   },
   {
    "type": "car",
    "at": [
-    -12,
-    -20,
+    -6,
+    -22,
     0
    ],
    "params": {
     "colour": "#222222",
-    "count": 2,
+    "count": 1,
     "spacing": 3.2,
     "yaw": 0
    }
@@ -528,13 +679,13 @@
   {
    "type": "car",
    "at": [
-    10,
-    -18,
+    22,
+    -20,
     0
    ],
    "params": {
     "colour": "#2d2f33",
-    "count": 2,
+    "count": 1,
     "spacing": 3.2,
     "yaw": 0
    }

@@ -45,7 +45,7 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8b923",
+    "colour": "#f0c020",
     "windows": "punched",
     "windowRatio": 0.2,
     "windowShape": "arched",
@@ -59,140 +59,10 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#b5553a",
+    "colour": "#a8472f",
     "material": "clay-tile",
-    "pitch": 18,
+    "pitch": 14,
     "overhang": 0.9
-   }
-  },
-  {
-   "type": "mass",
-   "id": "centre-gable",
-   "footprint": {
-    "rect": [
-     12,
-     6
-    ]
-   },
-   "at": [
-    0,
-    1
-   ],
-   "height": 13,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8b923",
-    "windows": "none",
-    "cornice": true
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e9c42a",
-    "parapet": 0.9
-   }
-  },
-  {
-   "type": "arcade",
-   "at": [
-    0,
-    -7.2,
-    9.5
-   ],
-   "params": {
-    "length": 7,
-    "height": 3.2,
-    "thickness": 0.8,
-    "bays": 3,
-    "shape": "round",
-    "colour": "#ebc72c",
-    "trim": "#f6edb8"
-   }
-  },
-  {
-   "type": "colonnade",
-   "at": [
-    0,
-    -9,
-    0
-   ],
-   "params": {
-    "length": 16,
-    "height": 4.2,
-    "count": 6,
-    "colour": "#f4f1e8"
-   }
-  },
-  {
-   "type": "canopy",
-   "at": [
-    0,
-    -8.8,
-    4.2
-   ],
-   "params": {
-    "form": "flat",
-    "width": 17,
-    "depth": 3.4,
-    "height": 0.2,
-    "thickness": 0.4,
-    "colour": "#e9c42a"
-   }
-  },
-  {
-   "type": "steps",
-   "at": [
-    0,
-    -11.5,
-    0
-   ],
-   "params": {
-    "width": 8,
-    "count": 5
-   }
-  },
-  {
-   "type": "flag",
-   "at": [
-    -4,
-    -6,
-    13
-   ],
-   "params": {
-    "height": 4,
-    "count": 2,
-    "spacing": 8,
-    "colours": [
-     "#1d3f8f",
-     "#c8362f"
-    ]
-   }
-  },
-  {
-   "type": "flag",
-   "at": [
-    -22,
-    -16,
-    0
-   ],
-   "params": {
-    "height": 12,
-    "colour": "#1d3f8f"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    0,
-    -26,
-    0
-   ],
-   "params": {
-    "length": 70,
-    "height": 0.9,
-    "thickness": 0.4,
-    "kind": "wall",
-    "colour": "#f0d34a"
    }
   },
   {
@@ -207,25 +77,242 @@
     "spacing": 3,
     "colour": "#e6e6e6"
    }
+  },
+  {
+   "type": "mass",
+   "id": "porch-block",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0c020",
+    "windows": "none",
+    "bands": "#f6e6a0",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8472f",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable",
+   "footprint": {
+    "rect": [
+     13,
+     4
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0c020",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0c020",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-cap",
+   "footprint": {
+    "rect": [
+     7,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 17.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0c020",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8472f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -12.2,
+    4.4
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "postEvery": 1.6,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    0,
+    -12.4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 4.2,
+    "count": 6,
+    "colour": "#f4f1e8",
+    "radius": 0.35
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "count": 8,
+    "rise": 0.5,
+    "run": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drive",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     5
+    ],
+    "z0": -0.02,
+    "height": 0.04,
+    "colour": "#55565a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "depth": 1.0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "depth": 1.0
+   }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "garden",
   "forecourtDepth": 12,
   "trees": [
    {
     "kind": "palm",
     "at": [
-     -12,
-     -14
+     -13,
+     -15
     ]
    },
    {
     "kind": "palm",
     "at": [
-     14,
+     13,
      -15
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
     ]
    },
    {
@@ -238,8 +325,8 @@
    {
     "kind": "palm",
     "at": [
-     -26,
-     -10
+     -18,
+     -19
     ]
    }
   ],
@@ -249,8 +336,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Photo shows the entrance block only; central tower is a small gabled block, porch arcade simplified; real building is a 171 m L-plan."
+  "gaps": "Porch arcade is a pattern on a block, curving driveway is straight strip, gable simplified; photo shows entrance block only of a 171 m L-plan."
  }
 }

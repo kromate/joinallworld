@@ -38,100 +38,132 @@
    "params": {
     "points": [
      [
-      58.0,
+      64.0,
       0.0
      ],
      [
-      56.02,
-      10.35
+      62.77,
+      8.97
      ],
      [
-      50.23,
-      20.0
+      59.13,
+      17.6
      ],
      [
-      41.01,
-      28.28
+      53.21,
+      25.56
      ],
      [
-      29.0,
-      34.64
+      45.25,
+      32.53
      ],
      [
-      15.01,
-      38.64
+      35.56,
+      38.25
+     ],
+     [
+      24.49,
+      42.5
+     ],
+     [
+      12.49,
+      45.12
      ],
      [
       0.0,
-      40.0
+      46.0
      ],
      [
-      -15.01,
-      38.64
+      -12.49,
+      45.12
      ],
      [
-      -29.0,
-      34.64
+      -24.49,
+      42.5
      ],
      [
-      -41.01,
-      28.28
+      -35.56,
+      38.25
      ],
      [
-      -50.23,
-      20.0
+      -45.25,
+      32.53
      ],
      [
-      -56.02,
-      10.35
+      -53.21,
+      25.56
      ],
      [
-      -58.0,
+      -59.13,
+      17.6
+     ],
+     [
+      -62.77,
+      8.97
+     ],
+     [
+      -64.0,
       0.0
      ],
      [
-      -56.02,
-      -10.35
+      -62.77,
+      -8.97
      ],
      [
-      -50.23,
-      -20.0
+      -59.13,
+      -17.6
      ],
      [
-      -41.01,
-      -28.28
+      -53.21,
+      -25.56
      ],
      [
-      -29.0,
-      -34.64
+      -45.25,
+      -32.53
      ],
      [
-      -15.01,
-      -38.64
+      -35.56,
+      -38.25
+     ],
+     [
+      -24.49,
+      -42.5
+     ],
+     [
+      -12.49,
+      -45.12
      ],
      [
       -0.0,
-      -40.0
+      -46.0
      ],
      [
-      15.01,
-      -38.64
+      12.49,
+      -45.12
      ],
      [
-      29.0,
-      -34.64
+      24.49,
+      -42.5
      ],
      [
-      41.01,
-      -28.28
+      35.56,
+      -38.25
      ],
      [
-      50.23,
-      -20.0
+      45.25,
+      -32.53
      ],
      [
-      56.02,
-      -10.35
+      53.21,
+      -25.56
+     ],
+     [
+      59.13,
+      -17.6
+     ],
+     [
+      62.77,
+      -8.97
      ]
     ],
     "z0": 0.1,
@@ -262,18 +294,18 @@
      0,
      0
     ],
-    "radius": 52,
-    "radiusY": 37,
+    "radius": 56,
+    "radiusY": 41,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 5,
-    "rise": 0.7,
-    "run": 1.3,
-    "firstHeight": 0.8,
+    "rows": 3,
+    "rise": 0.5,
+    "run": 1.6,
+    "firstHeight": 0.6,
     "facetDeg": 24,
     "under": "fill",
-    "concreteColour": "#a39a88",
-    "seatColour": "#6e8a4c"
+    "concreteColour": "#8c9a6a",
+    "seatColour": "#5f8a3f"
    }
   },
   {
@@ -292,7 +324,7 @@
      -38,
      32
     ],
-    "rows": 12,
+    "rows": 10,
     "rise": 0.6,
     "run": 0.85,
     "firstHeight": 2.5,
@@ -307,16 +339,7 @@
     ],
     "blocks": 4,
     "concreteColour": "#c9c3b2",
-    "underColour": "#a49f92",
-    "canopy": {
-     "height": 5.5,
-     "depth": 13,
-     "thickness": 0.9,
-     "slopeDeg": 2,
-     "colour": "#3f8a8c",
-     "edgeColour": "#3f8a8c",
-     "overhangBack": 1.0
-    }
+    "underColour": "#a49f92"
    }
   },
   {
@@ -324,27 +347,27 @@
    "id": "press-block",
    "footprint": {
     "rect": [
-     34,
-     9
+     10,
+     16
     ]
    },
    "at": [
-    -6,
-    50
+    46,
+    40
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 11,
+   "height": 9,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#d6b45a",
+    "colour": "#cbb38a",
     "windows": "none",
     "plinth": 0.3
    },
    "roof": {
     "form": "flat",
-    "colour": "#a8a398",
+    "colour": "#8a8578",
     "parapet": 0.5
    }
   },
@@ -356,32 +379,32 @@
    ],
    "at": [
     0,
-    0,
-    0
+    38,
+    6.5
    ],
    "params": {
     "mode": "line",
     "start": [
-     -34,
-     40
+     -33,
+     0
     ],
     "end": [
-     34,
-     40
+     33,
+     0
     ],
-    "count": 7,
+    "count": 6,
     "of": {
      "type": "sweep-path",
      "params": {
       "section": {
        "rect": [
-        1.0,
-        0.7
+        0.8,
+        12
        ]
       },
       "arc": {
        "plane": "xz",
-       "radius": 6,
+       "radius": 5.6,
        "startDeg": 0,
        "endDeg": 180
       },
@@ -398,8 +421,8 @@
     1
    ],
    "at": [
-    -50,
-    28,
+    -60.0,
+    36.4,
     0
    ],
    "params": {
@@ -413,8 +436,8 @@
     1
    ],
    "at": [
-    50,
-    28,
+    60.0,
+    36.4,
     0
    ],
    "params": {
@@ -428,8 +451,8 @@
     1
    ],
    "at": [
-    -50,
-    -28,
+    -60.0,
+    -36.4,
     0
    ],
    "params": {
@@ -443,8 +466,8 @@
     1
    ],
    "at": [
-    50,
-    -28,
+    60.0,
+    -36.4,
     0
    ],
    "params": {
@@ -458,7 +481,7 @@
    ],
    "at": [
     0,
-    -52,
+    66,
     0
    ],
    "params": {
@@ -467,6 +490,104 @@
     "count": 7,
     "min_height": 7,
     "max_height": 12
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -90,
+      64
+     ],
+     [
+      90,
+      64
+     ],
+     [
+      80,
+      92
+     ],
+     [
+      -80,
+      92
+     ]
+    ],
+    "z0": 0,
+    "height": 9,
+    "topScale": 0.8,
+    "colour": "#5f7a3f"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    66,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 10,
+    "count": 12,
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e8742a"
+     ],
+     [
+      2,
+      0,
+      "#e8742a"
+     ],
+     [
+      2.1,
+      5,
+      "#e8742a"
+     ],
+     [
+      1.2,
+      8,
+      "#e8742a"
+     ],
+     [
+      0.8,
+      10,
+      "#e8742a"
+     ],
+     [
+      0.9,
+      11,
+      "#f1f1f1"
+     ],
+     [
+      0,
+      11,
+      "#f1f1f1"
+     ]
+    ],
+    "segments": 12
    }
   }
  ],
@@ -497,8 +618,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Photo is an interior view from an embankment; model shows the exterior bowl from outside; arched teal vaults simplified to a flat canopy; no inflatable bottle or hillside detail."
+  "gaps": "Stand vaults are hoops not true barrel vaults; ring of low banks is approximate; hill backdrop is a plain slab; photo viewpoint from the track is only roughly matched."
  }
 }

@@ -89,11 +89,11 @@
    ],
    "rotDeg": -11.7,
    "z0": 0,
-   "height": 27,
-   "storeys": 6,
+   "height": 31,
+   "storeys": 7,
    "wall": {
     "material": "concrete",
-    "colour": "#a7a9ab",
+    "colour": "#a9aaab",
     "windows": "none",
     "bands": "#8f9193",
     "faces": {
@@ -125,7 +125,7 @@
    "storeys": 4,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#1f3a5f",
+    "colour": "#16294a",
     "bay": 5,
     "windows": "curtain",
     "windowRatio": 0.85,
@@ -150,11 +150,11 @@
     19
    ],
    "params": {
-    "width": 28,
-    "height": 4,
+    "width": 34,
+    "height": 6,
     "bottom": 1.5,
-    "colour": "#1f3d7a",
-    "frameColour": "#e5e5e5",
+    "colour": "#12306a",
+    "frameColour": "#ffffff",
     "posts": true
    }
   },
@@ -163,12 +163,12 @@
    "at": [
     -52,
     -60,
-    17
+    28
    ],
    "params": {
-    "width": 8,
-    "height": 10,
-    "bottom": 2,
+    "width": 4,
+    "height": 3,
+    "bottom": 0.5,
     "colour": "#e8a83a",
     "frameColour": "#6a2b6a",
     "posts": false
@@ -229,6 +229,107 @@
     "count": 4,
     "spread": 5,
     "line": 38
+   }
+  },
+  {
+   "type": "mass",
+   "id": "truss",
+   "footprint": {
+    "rect": [
+     40,
+     0.8
+    ]
+   },
+   "at": [
+    -18,
+    -58
+   ],
+   "z0": 19,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "lat",
+     "footprint": {
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     "height": 19,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#f2f2f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f2f2f2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37,
+     -58
+    ],
+    "end": [
+     1,
+     -58
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -64,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -66,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1
    }
   }
  ],
@@ -297,8 +398,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "tree-hidden entrance, rooftop truss sign frame and steel lattice over glazing not modelled; glass colour approximate"
+  "gaps": "tower taller, sign board and truss added but sign/truss barely visible; foreground tree screen, checker kerb and brick paving not achieved"
  }
 }

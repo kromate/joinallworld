@@ -31,11 +31,11 @@
  ],
  "camera": {
   "yawDeg": 180,
-  "pitchDeg": 6,
-  "fovDeg": 55,
+  "pitchDeg": 8,
+  "fovDeg": 38,
   "aspect": 1.333,
   "fit": "all",
-  "margin": 0.1
+  "margin": 0.02
  },
  "parts": [
   {
@@ -54,26 +54,28 @@
      40,
      -30
     ],
-    "rows": 14,
+    "rows": 24,
     "rise": 0.5,
     "run": 0.8,
-    "seatColour": "#4a7fb5",
+    "seatColour": "#6d9ab8",
     "seatColours": [
-     "#4a7fb5",
-     "#3f6fa5",
-     "#d9a030"
+     "#6d9ab8",
+     "#6d9ab8",
+     "#d9a030",
+     "#6d9ab8"
     ],
     "blocks": 6,
-    "concreteColour": "#b9b6ae",
+    "concreteColour": "#8fb0c6",
     "backWall": 2.5,
     "under": "open",
     "canopy": {
-     "height": 9,
-     "depth": 9,
+     "height": 6,
+     "depth": 7,
      "colour": "#d9d6cf",
      "slopeDeg": 3,
      "supports": 8
-    }
+    },
+    "facetDeg": 14
    }
   },
   {
@@ -92,19 +94,20 @@
     "radiusY": 38,
     "startDeg": -62,
     "endDeg": 62,
-    "rows": 16,
+    "rows": 26,
     "rise": 0.5,
     "run": 0.8,
-    "seatColour": "#4a7fb5",
+    "seatColour": "#6d9ab8",
     "seatColours": [
-     "#4a7fb5",
-     "#3f6fa5",
-     "#d9a030"
+     "#6d9ab8",
+     "#6d9ab8",
+     "#d9a030",
+     "#6d9ab8"
     ],
-    "blocks": 5,
-    "concreteColour": "#b9b6ae",
+    "blocks": 6,
+    "concreteColour": "#8fb0c6",
     "under": "open",
-    "facetDeg": 10
+    "facetDeg": 14
    }
   },
   {
@@ -123,19 +126,20 @@
     "radiusY": 38,
     "startDeg": 118,
     "endDeg": 242,
-    "rows": 10,
+    "rows": 18,
     "rise": 0.45,
     "run": 0.8,
-    "seatColour": "#4a7fb5",
+    "seatColour": "#6d9ab8",
     "seatColours": [
-     "#4a7fb5",
-     "#3f6fa5",
-     "#d9a030"
+     "#6d9ab8",
+     "#6d9ab8",
+     "#d9a030",
+     "#6d9ab8"
     ],
-    "blocks": 4,
-    "concreteColour": "#b9b6ae",
+    "blocks": 6,
+    "concreteColour": "#8fb0c6",
     "under": "open",
-    "facetDeg": 12
+    "facetDeg": 14
    }
   },
   {
@@ -207,11 +211,35 @@
     ],
     "count": 2
    }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      -36,
+      -24,
+      0.5
+     ],
+     [
+      36,
+      -24,
+      0.5
+     ]
+    ],
+    "colour": "#dfe3e6"
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "plaza",
   "trees": 6,
   "treeKind": "broadleaf",
   "extent": [
@@ -222,6 +250,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is taken from the pitch so only the far open terrace is compared; real horseshoe plan is simplified to oval end stands, no stand-end stair detail, fence, or the demolished yellow stand history."
+  "gaps": "Photo is taken from the pitch so only the far open terrace is compared; horseshoe simplified to oval end stands; orange stair stripes approximated by seat blocks; fence is a single rail; surroundings generic"
  }
 }

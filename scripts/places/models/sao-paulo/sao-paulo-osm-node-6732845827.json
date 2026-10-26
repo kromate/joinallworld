@@ -53,7 +53,7 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecc95e",
+    "colour": "#e8b83c",
     "windows": "arched",
     "windowRatio": 0.12,
     "faces": {
@@ -67,10 +67,10 @@
     "trimColour": "#f4e6b4"
    },
    "roof": {
-    "form": "gable",
+    "form": "hip",
     "colour": "#a8532f",
     "material": "clay-tile",
-    "pitch": 28,
+    "pitch": 18,
     "overhang": 0.6
    }
   },
@@ -79,22 +79,22 @@
    "id": "tower-left",
    "footprint": {
     "rect": [
-     8,
-     8
+     7,
+     7
     ]
    },
    "at": [
-    -7,
-    4
+    -7.5,
+    3.5
    ],
    "z0": 0,
-   "height": 31,
+   "height": 30,
    "storeys": 5,
    "wall": {
     "material": "painted-render",
-    "colour": "#ebc55a",
+    "colour": "#e8b83c",
     "windows": "arched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.16,
     "faces": {
      "front": "arched",
      "left": "arched",
@@ -110,7 +110,7 @@
     "form": "pyramidal",
     "colour": "#a8532f",
     "material": "clay-tile",
-    "rise": 9
+    "rise": 6
    }
   },
   {
@@ -118,22 +118,22 @@
    "id": "tower-right",
    "footprint": {
     "rect": [
-     8,
-     8
+     7,
+     7
     ]
    },
    "at": [
-    7,
-    4
+    7.5,
+    3.5
    ],
    "z0": 0,
-   "height": 27,
+   "height": 30,
    "storeys": 5,
    "wall": {
     "material": "painted-render",
-    "colour": "#ebc55a",
+    "colour": "#e8b83c",
     "windows": "arched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.16,
     "faces": {
      "front": "arched",
      "left": "arched",
@@ -149,7 +149,7 @@
     "form": "pyramidal",
     "colour": "#a8532f",
     "material": "clay-tile",
-    "rise": 9
+    "rise": 6
    }
   },
   {
@@ -157,7 +157,7 @@
    "id": "front-bay",
    "footprint": {
     "rect": [
-     22,
+     8,
      3
     ]
    },
@@ -166,11 +166,11 @@
     1.5
    ],
    "z0": 0,
-   "height": 17,
+   "height": 16,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecc95e",
+    "colour": "#e8b83c",
     "windows": "none",
     "plinth": 0.9,
     "cornice": true,
@@ -180,22 +180,22 @@
    "roof": {
     "form": "flat",
     "colour": "#e8d49a",
-    "parapet": 0.8
+    "parapet": 1.0
    }
   },
   {
    "type": "arch-portal",
    "at": [
     0,
-    -0.1,
+    -0.2,
     0
    ],
    "params": {
-    "width": 11,
-    "height": 13,
-    "depth": 0.9,
-    "archWidth": 9,
-    "springHeight": 8,
+    "width": 8,
+    "height": 10,
+    "depth": 1.2,
+    "archWidth": 7.4,
+    "springHeight": 6.5,
     "colour": "#f4e6b4"
    }
   },
@@ -218,7 +218,7 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8c457",
+    "colour": "#e8b83c",
     "windows": "none",
     "windowRatio": 0.1,
     "plinth": 0.9,
@@ -237,7 +237,7 @@
    "at": [
     -7,
     4,
-    40.5
+    36
    ],
    "params": {
     "height": 3,
@@ -249,11 +249,46 @@
    "at": [
     7,
     4,
-    36.5
+    36
    ],
    "params": {
     "height": 3,
     "colour": "#7a6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rose",
+   "footprint": {
+    "rect": [
+     3,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.2
+   ],
+   "z0": 10.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4e6b4",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.7,
+    "glassColour": "#5a4a3a",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4e6b4"
    }
   }
  ],
@@ -287,6 +322,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "worm's-eye photo vs 3/4 render; rose window, balustrade and tower pilasters not modelled; photo is of the Penha parish church near the sanctuary point so identity is assumed; nave length from OSM"
+  "gaps": "worm's-eye photo vs frontal render; rose window is a small round-window block; big recessed arch is a flat portal not deep niche; balustrade not modelled; nave roof hipped to hide pediment"
  }
 }

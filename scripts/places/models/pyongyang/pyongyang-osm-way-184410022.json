@@ -15,15 +15,6 @@
    "used": "long pale-yellow entrance facade: grey colonnade storey under a cornice, tall central attic board, two stepped square towers carrying floodlight gantries, curved bowl wall to the right, paved plaza"
   },
   {
-   "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:North_Korea-Pyongyang-Kim_Il-Sung_Stadium-01.jpg",
-   "licence": "CC BY-SA 3.0",
-   "author": "Stephan (Flickr, nk.subnetwork.org)",
-   "view": "side",
-   "file": "/tmp/places-evidence/pyongyang/kis2.jpg",
-   "used": "decorative panels between pilasters, tower shaft with ribbon of windows, ring facade of the bowl, car park forecourt"
-  },
-  {
    "kind": "osm",
    "ref": "relation/2456022",
    "used": "size only (267 x 214 m); bowl scaled to the scene clamp"
@@ -51,25 +42,25 @@
     -4,
     0
    ],
-   "height": 11,
+   "height": 12,
    "storeys": 2,
    "wall": {
     "material": "concrete",
-    "colour": "#dcc99f",
+    "colour": "#ecd0b0",
     "glassColour": "#5d6560",
     "windows": "punched",
-    "windowRatio": 0.45,
-    "bay": 12,
+    "windowRatio": 0.25,
+    "bay": 14,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#c4b58e"
+    "bands": "#d3b48f"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b7a982",
+    "colour": "#c9ac88",
     "material": "concrete",
     "parapet": 0.8,
     "overhang": 0.8
@@ -80,19 +71,19 @@
    "id": "attic",
    "footprint": {
     "rect": [
-     24,
-     8
+     26,
+     6
     ]
    },
    "at": [
     -4,
     0
    ],
-   "height": 5,
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#d4c096",
+    "colour": "#ecd0b0",
     "windows": "none",
     "windowRatio": 0
    },
@@ -102,28 +93,28 @@
     "material": "concrete",
     "parapet": 0.4
    },
-   "z0": 11
+   "z0": 14
   },
   {
    "type": "mass",
    "id": "west-wing",
    "footprint": {
     "rect": [
-     22,
+     18,
      12
     ]
    },
    "at": [
-    -58,
+    -52,
     0
    ],
-   "height": 11,
+   "height": 14,
    "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#dcc99f",
+    "colour": "#ecd0b0",
     "glassColour": "#5d6560",
-    "windows": "punched",
+    "windows": "ribbon",
     "windowRatio": 0.2,
     "bay": 12
    },
@@ -144,19 +135,20 @@
     ]
    },
    "at": [
-    -40,
+    -36,
     0
    ],
-   "height": 24,
+   "height": 26,
    "storeys": 5,
    "wall": {
     "material": "concrete",
-    "colour": "#d8c294",
+    "colour": "#ecd0b0",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.2,
     "faces": {
      "back": "plain"
-    }
+    },
+    "windowShape": "rect"
    },
    "roof": {
     "form": "flat",
@@ -178,16 +170,17 @@
     34,
     0
    ],
-   "height": 24,
+   "height": 26,
    "storeys": 5,
    "wall": {
     "material": "concrete",
-    "colour": "#d8c294",
+    "colour": "#ecd0b0",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.2,
     "faces": {
      "back": "plain"
-    }
+    },
+    "windowShape": "rect"
    },
    "roof": {
     "form": "flat",
@@ -212,190 +205,14 @@
     "radiusY": 36,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 8,
+    "rows": 6,
     "rise": 0.5,
     "run": 0.8,
-    "firstHeight": 6,
-    "facetDeg": 22,
+    "firstHeight": 8,
+    "facetDeg": 45,
     "under": "open",
-    "concreteColour": "#cdb98f",
-    "seatColour": "#8d6f55"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    14,
-    56,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      50.0,
-      0.0
-     ],
-     [
-      49.38,
-      6.88
-     ],
-     [
-      47.55,
-      13.6
-     ],
-     [
-      44.55,
-      19.98
-     ],
-     [
-      40.45,
-      25.86
-     ],
-     [
-      35.36,
-      31.11
-     ],
-     [
-      29.39,
-      35.6
-     ],
-     [
-      22.7,
-      39.2
-     ],
-     [
-      15.45,
-      41.85
-     ],
-     [
-      7.82,
-      43.46
-     ],
-     [
-      0.0,
-      44.0
-     ],
-     [
-      -7.82,
-      43.46
-     ],
-     [
-      -15.45,
-      41.85
-     ],
-     [
-      -22.7,
-      39.2
-     ],
-     [
-      -29.39,
-      35.6
-     ],
-     [
-      -35.36,
-      31.11
-     ],
-     [
-      -40.45,
-      25.86
-     ],
-     [
-      -44.55,
-      19.98
-     ],
-     [
-      -47.55,
-      13.6
-     ],
-     [
-      -49.38,
-      6.88
-     ],
-     [
-      -50.0,
-      0.0
-     ],
-     [
-      -49.38,
-      -6.88
-     ],
-     [
-      -47.55,
-      -13.6
-     ],
-     [
-      -44.55,
-      -19.98
-     ],
-     [
-      -40.45,
-      -25.86
-     ],
-     [
-      -35.36,
-      -31.11
-     ],
-     [
-      -29.39,
-      -35.6
-     ],
-     [
-      -22.7,
-      -39.2
-     ],
-     [
-      -15.45,
-      -41.85
-     ],
-     [
-      -7.82,
-      -43.46
-     ],
-     [
-      -0.0,
-      -44.0
-     ],
-     [
-      7.82,
-      -43.46
-     ],
-     [
-      15.45,
-      -41.85
-     ],
-     [
-      22.7,
-      -39.2
-     ],
-     [
-      29.39,
-      -35.6
-     ],
-     [
-      35.36,
-      -31.11
-     ],
-     [
-      40.45,
-      -25.86
-     ],
-     [
-      44.55,
-      -19.98
-     ],
-     [
-      47.55,
-      -13.6
-     ],
-     [
-      49.38,
-      -6.88
-     ]
-    ],
-    "z0": 12.5,
-    "height": 2.5,
-    "colour": "#d4c096",
-    "top": true
+    "concreteColour": "#d9c4a0",
+    "seatColour": "#c9b490"
    }
   },
   {
@@ -403,7 +220,7 @@
    "at": [
     -40,
     6,
-    24
+    32
    ],
    "lod": [
     0,
@@ -420,7 +237,7 @@
    "at": [
     34,
     6,
-    24
+    32
    ],
    "lod": [
     0,
@@ -443,7 +260,10 @@
     "height": 6,
     "steps": 1,
     "figure_colour": "#e8e6df"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "statue-plinth",
@@ -456,7 +276,10 @@
     "height": 6,
     "steps": 1,
     "figure_colour": "#e8e6df"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "tree-grove",
@@ -468,22 +291,274 @@
    "params": {
     "width": 60,
     "depth": 6,
-    "count": 4,
-    "kind": "conifer"
+    "count": 3,
+    "kind": "broadleaf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ecd0b0",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ac88",
+    "parapet": 0.5
    }
+  },
+  {
+   "type": "mass",
+   "id": "centre-colonnade",
+   "footprint": {
+    "rect": [
+     44,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2dcc0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "spacing": 3.7,
+      "depth": 0.9,
+      "width": 1.2,
+      "colour": "#f6e4cb"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8bf9c",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -3.2,
+    17
+   ],
+   "params": {
+    "width": 5,
+    "height": 5.5,
+    "bottom": 0,
+    "colour": "#7f8a8a",
+    "frameColour": "#d8c8a8",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -3.2,
+    17
+   ],
+   "params": {
+    "width": 5,
+    "height": 5.5,
+    "bottom": 0,
+    "colour": "#7f8a8a",
+    "frameColour": "#d8c8a8",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-west-crown",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -40,
+    0
+   ],
+   "z0": 26,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ecd0b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ac88",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -36,
+    -5.8,
+    6
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 14,
+    "bottom": 0,
+    "colour": "#a8553f",
+    "frameColour": "#e8d8b8",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-east-crown",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "z0": 26,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ecd0b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ac88",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    34,
+    -5.8,
+    6
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 14,
+    "bottom": 0,
+    "colour": "#a8553f",
+    "frameColour": "#e8d8b8",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "steps": 1,
+    "figure_colour": "#f0eee8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    6,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "steps": 1,
+    "figure_colour": "#f0eee8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "steps": 1,
+    "figure_colour": "#f0eee8"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
   "extent": [
-   160,
-   160
+   120,
+   110
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "No portrait boards, panel reliefs or statues in front, bowl ring behind is a low stand and prism rather than the curved colonnade, towers lack stepped tops"
+  "gaps": "Colonnade is vertical fins not tall pilasters with reliefs; portrait boards are flat grey; bowl behind is a low stand not a curved arcade ring; towers lack stepped crowns detail and the banners are plain colour; trees are broadleaf not bare."
  }
 }

@@ -12,7 +12,7 @@
    "author": "Bohao Zhao",
    "view": "side",
    "file": "/tmp/places-evidence/seoul/dome2.jpg",
-   "used": "exterior in construction: low drum with columns, steel lattice dome rising in a smooth curve to a flat pale cap, oval plan"
+   "used": "exterior in construction: low drum with columns, steel lattice dome rising in a smooth curve to a flat pale cap, oval plan (revised: open pier ring, stepped pale cap)"
   },
   {
    "kind": "photo",
@@ -45,74 +45,124 @@
     0
    ],
    "params": {
-    "colour": "#a9aeb2",
+    "colour": "#c9cdd0",
     "smooth": true,
     "curve": true,
-    "steps": 4,
+    "steps": 6,
     "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       78,
-       56
-      ],
-      "colour": "#a9aeb2"
-     },
      {
       "z": 12,
       "ellipse": [
-       78,
-       56
+       77,
+       55
       ],
-      "colour": "#8f969b"
+      "colour": "#9aa2a8"
      },
      {
-      "z": 20,
+      "z": 22,
       "ellipse": [
-       78,
-       56
-      ],
-      "colour": "#7c8c97"
-     },
-     {
-      "z": 30,
-      "ellipse": [
-       73,
-       52
-      ],
-      "colour": "#b8bec2"
-     },
-     {
-      "z": 42,
-      "ellipse": [
-       63,
-       45
+       76,
+       54
       ],
       "colour": "#c9cdd0"
      },
      {
-      "z": 52,
+      "z": 32,
       "ellipse": [
-       50,
-       35
+       70,
+       50
       ],
-      "colour": "#d6d9db"
+      "colour": "#c9cdd0"
      },
      {
-      "z": 58,
+      "z": 41,
       "ellipse": [
-       40,
-       28
+       60,
+       43
       ],
-      "colour": "#e2e5e6"
+      "colour": "#c9cdd0"
      },
      {
-      "z": 62,
+      "z": 47,
       "ellipse": [
-       34,
-       23
+       48,
+       34
       ],
-      "colour": "#eceeef"
+      "colour": "#c9cdd0"
+     },
+     {
+      "z": 48,
+      "ellipse": [
+       47,
+       33
+      ],
+      "colour": "#c9cdd0"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#33383c",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       76,
+       54
+      ],
+      "colour": "#33383c"
+     },
+     {
+      "z": 12.5,
+      "ellipse": [
+       76,
+       54
+      ],
+      "colour": "#2b3034"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    47.8
+   ],
+   "params": {
+    "colour": "#eef0f1",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       38,
+       27
+      ],
+      "colour": "#eef0f1"
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       37,
+       26
+      ],
+      "colour": "#f4f5f6"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       30,
+       21
+      ],
+      "colour": "#f4f5f6"
      }
     ]
    }
@@ -131,11 +181,11 @@
      0,
      0
     ],
-    "radius": 79.5,
-    "radiusY": 57.2,
+    "radius": 79.2,
+    "radiusY": 56.6,
     "startDeg": 0,
     "endDeg": 360,
-    "count": 28,
+    "count": 40,
     "facing": "outward",
     "lod1Step": 2,
     "lod2Step": 10,
@@ -147,15 +197,15 @@
        {
         "z": 0,
         "rect": [
-         1.8,
-         1.6
+         2.4,
+         2.2
         ]
        },
        {
-        "z": 14,
+        "z": 13,
         "rect": [
-         1.6,
-         1.4
+         2.2,
+         2.0
         ]
        }
       ]
@@ -281,8 +331,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is the under-construction steel lattice; render is a solid clad skin without lattice, perimeter piers simplified, dome slightly too tall at the cap."
+  "gaps": "Steel lattice is a pale smooth ribbed skin (photo is open construction lattice); dome still slightly bulging with faint shading lobes; open pier ring and stepped cap added."
  }
 }

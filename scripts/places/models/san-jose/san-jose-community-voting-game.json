@@ -37,27 +37,13 @@
    "type": "mass",
    "id": "theatre",
    "footprint": {
-    "polygon": [
-     [
-      -36,
-      -14
-     ],
-     [
-      36,
-      -14
-     ],
-     [
-      36,
-      14
-     ],
-     [
-      -36,
-      14
-     ]
+    "rect": [
+     56,
+     28
     ]
    },
    "at": [
-    0,
+    -24,
     38
    ],
    "height": 17,
@@ -87,7 +73,7 @@
   {
    "type": "portico",
    "at": [
-    0,
+    -24,
     22,
     0
    ],
@@ -105,7 +91,7 @@
   {
    "type": "statue-on-plinth",
    "at": [
-    -14,
+    -38,
     14,
     0
    ],
@@ -116,7 +102,7 @@
   {
    "type": "statue-on-plinth",
    "at": [
-    14,
+    4,
     14,
     0
    ],
@@ -125,52 +111,10 @@
    }
   },
   {
-   "type": "core/steps",
-   "at": [
-    -32,
-    -6,
-    0
-   ],
-   "params": {
-    "width": 26,
-    "rise": 0.5,
-    "run": 1.8,
-    "count": 5,
-    "colour": "#bdbab0"
-   }
-  },
-  {
-   "type": "fountain-basin",
-   "at": [
-    8,
-    -8,
-    0
-   ],
-   "params": {
-    "radius": 6,
-    "tiers": 2
-   }
-  },
-  {
-   "type": "kiosk",
-   "at": [
-    30,
-    12,
-    0
-   ],
-   "params": {
-    "kind": "container",
-    "width": 4,
-    "depth": 3,
-    "height": 3,
-    "colour": "#d8cba8"
-   }
-  },
-  {
    "type": "umbrella-cluster",
    "at": [
-    28,
-    0,
+    34,
+    -4,
     0
    ],
    "params": {
@@ -184,31 +128,254 @@
    }
   },
   {
-   "type": "lamp",
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
    "at": [
-    -20,
-    -30,
-    0
+    34,
+    46
    ],
-   "params": {
-    "height": 6,
-    "count": 4,
-    "spacing": 14
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#ece0bd",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f7a",
+    "parapet": 0.6
    }
   },
   {
-   "type": "tree-grove",
+   "type": "prism",
+   "id": "tier-0",
    "at": [
-    10,
-    -34,
+    -30.0,
+    -4
+   ],
+   "params": {
+    "rect": [
+     30,
+     34
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#c4c0b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-1",
+   "at": [
+    -26.5,
+    -4
+   ],
+   "params": {
+    "rect": [
+     23,
+     28
+    ],
+    "z0": 0,
+    "height": 0.6499999999999999,
+    "colour": "#bab6ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-2",
+   "at": [
+    -23.0,
+    -4
+   ],
+   "params": {
+    "rect": [
+     16,
+     22
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b0aca2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-3",
+   "at": [
+    -19.5,
+    -4
+   ],
+   "params": {
+    "rect": [
+     9,
+     16
+    ],
+    "z0": 0,
+    "height": 1.3499999999999999,
+    "colour": "#a6a298"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-wall",
+   "at": [
+    12,
+    -6
+   ],
+   "params": {
+    "rect": [
+     18,
+     10
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-bed",
+   "at": [
+    12,
+    -6
+   ],
+   "params": {
+    "rect": [
+     16.4,
+     8.4
+    ],
+    "z0": 0.8,
+    "height": 0.3,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    12,
+    -6,
+    1.1
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "colours": [
+     "#d8b040",
+     "#e8e0e0",
+     "#c8503c"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
     0
    ],
    "params": {
-    "width": 60,
-    "depth": 6,
-    "count": 6,
-    "min_height": 7,
-    "max_height": 10
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 13,
+      "spread": 7
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -4,
+     -28,
+     0
+    ],
+    "end": [
+     52,
+     -28,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 7
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 6.5,
+      "count": 3,
+      "spacing": 0.8
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     26,
+     -14,
+     0
+    ],
+    "end": [
+     48,
+     -14,
+     0
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    56,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#1f3f8f",
+     "#ffffff",
+     "#c8102e",
+     "#ffffff",
+     "#1f3f8f"
+    ]
    }
   }
  ],
@@ -219,15 +386,15 @@
    {
     "kind": "broadleaf",
     "at": [
-     -40,
-     20
+     -50,
+     24
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
-     44,
-     -28
+     58,
+     28
     ]
    }
   ],
@@ -237,8 +404,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Plaza photo shows the sunken steps, fountain and trees (matched); the cream hotel behind is not modelled, theatre is from text facts, no people or pigeons; fountain is a round basin not the real planted bed."
+  "gaps": "Sunken terraces, walled planter, 5-storey cream arcaded hotel, shade trees and lamps added; theatre (from text) stands in for the photo's far side, camera framing from the photo's balcony not matched, flag small, no people/pigeons."
  }
 }

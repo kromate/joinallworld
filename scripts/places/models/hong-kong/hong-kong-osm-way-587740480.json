@@ -2,7 +2,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "dome, pavilions and netting read like the photo; missing hill backdrop, trees and the weathered grass foreground, instrument replicas are tiny stand-ins"
+  "gaps": "forested ridge is a smooth green mound not a dense mixed canopy and the rock cut is only a pale block; gravel clearing and tufted grass foreground are barely visible at the scene camera distance; trees are low-poly stand-ins and the left frame trees/netting mesh are simplified"
  },
  "verified": "photo",
  "evidence": [
@@ -99,7 +99,7 @@
      6
     ],
     "z0": 0,
-    "height": 3.0,
+    "height": 1.7,
     "colour": "#d9d6cc",
     "topColour": "#d9d6cc"
    }
@@ -117,7 +117,7 @@
      5
     ],
     "z0": 0,
-    "height": 2.6,
+    "height": 1.7,
     "colour": "#e4e1d8",
     "topColour": "#e4e1d8"
    }
@@ -190,7 +190,11 @@
    "params": {
     "count": 3,
     "spacing": 2.4
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "park-bench",
@@ -202,7 +206,11 @@
    "params": {
     "count": 3,
     "spacing": 2.4
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "obelisk",
@@ -216,7 +224,11 @@
     "base_width": 0.8,
     "style": "square",
     "steps": 2
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "obelisk",
@@ -230,7 +242,11 @@
     "base_width": 0.7,
     "style": "square",
     "steps": 1
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -262,7 +278,11 @@
       "colour": "#b8b4aa"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
@@ -289,7 +309,11 @@
       0.25
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
@@ -332,22 +356,26 @@
       2.8
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
    "id": "net",
    "at": [
-    -24,
-    26
+    -34,
+    18
    ],
    "params": {
     "rect": [
-     30,
+     16,
      0.3
     ],
     "z0": 0,
-    "height": 4.5,
+    "height": 6,
     "colour": "#2f9a6a",
     "topColour": "#2f9a6a"
    }
@@ -385,76 +413,245 @@
    }
   },
   {
-   "type": "core/tree",
+   "type": "stadium/rock-hill",
    "at": [
-    -40,
-    34
+    0,
+    62,
+    0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 12,
-    "spread": 8.399999999999999
+    "width": 130,
+    "depth": 44,
+    "height": 17,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#3f5f3a",
+    "boulders": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    45,
+    38
+   ],
+   "params": {
+    "rect": [
+     10,
+     3
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b9a88f",
+    "topColour": "#b9a88f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -8
+   ],
+   "params": {
+    "rect": [
+     40,
+     12
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#8c7566",
+    "topColour": "#8c7566"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -46,
+    6,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#8a8a86",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      5.5,
+      1.2
+     ],
+     [
+      2.5,
+      1.9
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -10,
-    36
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 12,
-    "spread": 8.399999999999999
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    20,
-    34
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 12,
-    "spread": 8.399999999999999
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    50,
-    32
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 12,
-    "spread": 8.399999999999999
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    60,
-    12
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 10,
-    "spread": 7.0
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -44,
+    -42,
     10
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 9,
-    "spread": 6.3
-   }
+    "height": 13,
+    "spread": 9,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    22
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 10,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 9,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    24
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 10,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 9,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    36
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 10,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 9,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 9,
+    "colour": "#2b4a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    62
+   ],
+   "params": {
+    "rect": [
+     120,
+     30
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#3f5f3a",
+    "topColour": "#3f5f3a"
+   },
+   "lod": [
+    2
+   ]
   }
  ],
  "site": {

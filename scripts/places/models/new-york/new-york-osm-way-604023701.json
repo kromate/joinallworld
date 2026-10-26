@@ -43,22 +43,23 @@
    "footprint": {
     "osm": true,
     "fit": 118,
-    "simplify": 16
+    "simplify": 20
    },
    "at": [
     0,
     0
    ],
-   "height": 11,
-   "storeys": 3,
+   "height": 13,
+   "storeys": 2,
    "wall": {
     "material": "brick",
-    "colour": "#a65240",
+    "colour": "#b0603f",
     "windows": "none",
-    "windowRatio": 0.12,
+    "windowRatio": 0.35,
     "bay": 4.5,
     "bands": "#d6c9a8",
-    "plinth": 0
+    "plinth": 0,
+    "windowShape": "arched"
    },
    "roof": {
     "form": "flat",
@@ -94,73 +95,6 @@
    ]
   },
   {
-   "type": "prism",
-   "at": [
-    8,
-    36,
-    0
-   ],
-   "params": {
-    "rect": [
-     1.6,
-     1.6
-    ],
-    "z0": 18,
-    "height": 30,
-    "colour": "#2c3338"
-   },
-   "note": "truss frame left leg"
-  },
-  {
-   "type": "prism",
-   "at": [
-    24,
-    36,
-    0
-   ],
-   "params": {
-    "rect": [
-     1.6,
-     1.6
-    ],
-    "z0": 18,
-    "height": 30,
-    "colour": "#2c3338"
-   },
-   "note": "placeholder"
-  },
-  {
-   "type": "prism",
-   "at": [
-    16,
-    36,
-    38
-   ],
-   "params": {
-    "rect": [
-     18,
-     1.6
-    ],
-    "height": 2.4,
-    "colour": "#2c3338"
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    16,
-    35,
-    26
-   ],
-   "params": {
-    "width": 13,
-    "height": 6,
-    "bottom": 0,
-    "colour": "#232a31",
-    "posts": false
-   }
-  },
-  {
    "type": "stand",
    "at": [
     0,
@@ -176,13 +110,13 @@
     "radiusY": 42,
     "startDeg": 0,
     "endDeg": 360,
-    "rows": 8,
+    "rows": 6,
     "rise": 0.7,
     "run": 0.9,
     "firstHeight": 0,
     "seatColour": "#3b4a50",
     "concreteColour": "#6c6f70",
-    "facetDeg": 15,
+    "facetDeg": 24,
     "closeEnds": false
    },
    "lod": [
@@ -210,18 +144,8 @@
       19.5
      ],
      [
-      52.65,
-      10.24,
-      19.5
-     ],
-     [
       48.65,
       19.96,
-      19.5
-     ],
-     [
-      42.22,
-      28.68,
       19.5
      ],
      [
@@ -230,18 +154,8 @@
       19.5
      ],
      [
-      23.43,
-      41.44,
-      19.5
-     ],
-     [
       12.02,
       44.85,
-      19.5
-     ],
-     [
-      0.0,
-      46.0,
       19.5
      ],
      [
@@ -250,28 +164,13 @@
       19.5
      ],
      [
-      -23.43,
-      41.44,
-      19.5
-     ],
-     [
       -33.67,
       35.96,
       19.5
      ],
      [
-      -42.22,
-      28.68,
-      19.5
-     ],
-     [
       -48.65,
       19.96,
-      19.5
-     ],
-     [
-      -52.65,
-      10.24,
       19.5
      ],
      [
@@ -280,18 +179,8 @@
       19.5
      ],
      [
-      -52.65,
-      -10.24,
-      19.5
-     ],
-     [
       -48.65,
       -19.96,
-      19.5
-     ],
-     [
-      -42.22,
-      -28.68,
       19.5
      ],
      [
@@ -300,18 +189,8 @@
       19.5
      ],
      [
-      -23.43,
-      -41.44,
-      19.5
-     ],
-     [
       -12.02,
       -44.85,
-      19.5
-     ],
-     [
-      -0.0,
-      -46.0,
       19.5
      ],
      [
@@ -320,28 +199,13 @@
       19.5
      ],
      [
-      23.43,
-      -41.44,
-      19.5
-     ],
-     [
       33.67,
       -35.96,
       19.5
      ],
      [
-      42.22,
-      -28.68,
-      19.5
-     ],
-     [
       48.65,
       -19.96,
-      19.5
-     ],
-     [
-      52.65,
-      -10.24,
       19.5
      ]
     ],
@@ -374,18 +238,8 @@
       23
      ],
      [
-      52.65,
-      10.24,
-      23
-     ],
-     [
       48.65,
       19.96,
-      23
-     ],
-     [
-      42.22,
-      28.68,
       23
      ],
      [
@@ -394,18 +248,8 @@
       23
      ],
      [
-      23.43,
-      41.44,
-      23
-     ],
-     [
       12.02,
       44.85,
-      23
-     ],
-     [
-      0.0,
-      46.0,
       23
      ],
      [
@@ -414,28 +258,13 @@
       23
      ],
      [
-      -23.43,
-      41.44,
-      23
-     ],
-     [
       -33.67,
       35.96,
       23
      ],
      [
-      -42.22,
-      28.68,
-      23
-     ],
-     [
       -48.65,
       19.96,
-      23
-     ],
-     [
-      -52.65,
-      10.24,
       23
      ],
      [
@@ -444,18 +273,8 @@
       23
      ],
      [
-      -52.65,
-      -10.24,
-      23
-     ],
-     [
       -48.65,
       -19.96,
-      23
-     ],
-     [
-      -42.22,
-      -28.68,
       23
      ],
      [
@@ -464,18 +283,8 @@
       23
      ],
      [
-      -23.43,
-      -41.44,
-      23
-     ],
-     [
       -12.02,
       -44.85,
-      23
-     ],
-     [
-      -0.0,
-      -46.0,
       23
      ],
      [
@@ -484,28 +293,13 @@
       23
      ],
      [
-      23.43,
-      -41.44,
-      23
-     ],
-     [
       33.67,
       -35.96,
       23
      ],
      [
-      42.22,
-      -28.68,
-      23
-     ],
-     [
       48.65,
       -19.96,
-      23
-     ],
-     [
-      52.65,
-      -10.24,
       23
      ]
     ],
@@ -513,8 +307,7 @@
     "colour": "#2c3338"
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -526,7 +319,7 @@
    ],
    "params": {
     "mode": "circle",
-    "count": 16,
+    "count": 4,
     "radius": 54,
     "radiusY": 46,
     "of": {
@@ -545,82 +338,6 @@
    "lod": [
     0
    ]
-  },
-  {
-   "type": "revolve",
-   "at": [
-    -16,
-    -56,
-    0
-   ],
-   "params": {
-    "segments": 28,
-    "profile": [
-     [
-      0,
-      0,
-      "#a65240"
-     ],
-     [
-      13,
-      0,
-      "#a65240"
-     ],
-     [
-      13,
-      6,
-      "#a65240"
-     ],
-     [
-      13.4,
-      6.5,
-      "#d6c9a8"
-     ],
-     [
-      13.4,
-      13,
-      "#a65240"
-     ],
-     [
-      13.8,
-      13.4,
-      "#d6c9a8"
-     ],
-     [
-      0,
-      13.4,
-      "#8a6a58"
-     ]
-    ],
-    "arcade": {
-     "count": 10,
-     "width": 2.4,
-     "height": 4.4,
-     "sill": 0.8,
-     "shape": "round",
-     "depth": 0.6,
-     "z0": 0
-    }
-   },
-   "lod": [
-    0,
-    1
-   ]
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    -16,
-    -69,
-    13.6
-   ],
-   "params": {
-    "width": 9,
-    "height": 2.2,
-    "bottom": 0,
-    "colour": "#d6502b",
-    "posts": false
-   }
   },
   {
    "type": "array",
@@ -652,10 +369,309 @@
    "lod": [
     0
    ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     2.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     2.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    23,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    23.0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     2.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30.0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     2.4
+    ],
+    "z0": 18,
+    "height": 32,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     1.0
+    ],
+    "z0": 46,
+    "height": 2.0,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     1.0
+    ],
+    "z0": 36,
+    "height": 1.2,
+    "colour": "#2c3338"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.5
+    ],
+    "z0": 40,
+    "height": 6,
+    "colour": "#232a31"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    16,
+    33,
+    38
+   ],
+   "params": {
+    "width": 14,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#c8d0d6",
+    "posts": false
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -52,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "profile": [
+     [
+      0,
+      0,
+      "#c8683a"
+     ],
+     [
+      17,
+      0,
+      "#c8683a"
+     ],
+     [
+      17,
+      10,
+      "#c8683a"
+     ],
+     [
+      17.5,
+      10.5,
+      "#d6c9a8"
+     ],
+     [
+      17.5,
+      13.5,
+      "#c8683a"
+     ],
+     [
+      17.9,
+      14,
+      "#d6c9a8"
+     ],
+     [
+      0,
+      14,
+      "#8a6a58"
+     ]
+    ],
+    "arcade": {
+     "count": 9,
+     "width": 2.6,
+     "height": 6.6,
+     "sill": 0.8,
+     "shape": "round",
+     "depth": 0.6,
+     "z0": 0
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -70,
+    14.2
+   ],
+   "params": {
+    "width": 16,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#d6502b",
+    "posts": false
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "plaza",
   "extent": [
    150,
@@ -665,6 +681,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "open ring of stands under thin steel truss with rotunda arcade, truss frame and 4 light masts now present; rotunda is one tier of arches and a plain cylinder, brick base only one band, truss is a simple ring not the lattice; footprint simplified/scaled; LOD0 near budget"
+  "gaps": "rotunda is now a taller round-arched orange drum with sign band, four-post truss frame with bridge beams and a blue board (not true lattice towers/arched bridges); upper ring is still a solid rail band; brick base lacks the long arched-window band and glass concourse (windows dropped for triangle budget); footprint simplified/scaled"
  }
 }

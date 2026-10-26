@@ -47,10 +47,10 @@
    "storeys": 2,
    "wall": {
     "material": "render",
-    "colour": "#cf5a35",
+    "colour": "#d2552e",
     "windows": "none",
     "plinth": 0.5,
-    "cornice": true
+    "cornice": false
    },
    "roof": {
     "form": "flat",
@@ -62,30 +62,30 @@
    "type": "prism",
    "id": "upper-block",
    "at": [
+    6,
     8,
-    -4,
     14
    ],
    "rotDeg": 20,
    "params": {
     "rect": [
-     40,
-     12
+     70,
+     14
     ],
     "height": 10,
     "colour": "#d9c7a3",
-    "pattern": [
-     {
-      "type": "panels",
-      "colours": [
-       "#d9c7a3",
-       "#e2b3aa",
-       "#cdb98f"
-      ],
-      "slits": 0.35
-     }
-    ],
-    "windows": "none"
+    "windows": "rect",
+    "windowShape": "rect",
+    "windowRatio": 0.55,
+    "bay": 3.2,
+    "storeys": 3,
+    "glassColour": "#e0728a",
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
    }
   },
   {
@@ -110,36 +110,82 @@
    "type": "prism",
    "id": "purple-a",
    "at": [
-    14,
-    -30,
+    10,
+    -36,
     0
    ],
    "rotDeg": 20,
    "params": {
     "rect": [
-     1.6,
-     1.6
+     2.4,
+     2.4
     ],
-    "height": 16,
-    "colour": "#5d3d9c"
+    "height": 20,
+    "colour": "#5d3d9c",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "bay": 4,
+    "storeys": 5,
+    "glassColour": "#2a1c4a"
    }
   },
   {
    "type": "prism",
    "id": "purple-b",
    "at": [
-    19,
-    -29,
+    18,
+    -35,
     0
    ],
    "rotDeg": 20,
    "params": {
     "rect": [
-     1.6,
+     2.4,
+     2.4
+    ],
+    "height": 20,
+    "colour": "#5d3d9c",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "bay": 4,
+    "storeys": 5,
+    "glassColour": "#2a1c4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lava-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     110,
      1.6
     ],
-    "height": 16,
-    "colour": "#5d3d9c"
+    "height": 2.5,
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    0,
+    -46.5,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     110,
+     1.6
+    ],
+    "height": 1.0,
+    "colour": "#3f7a38"
    }
   },
   {
@@ -147,28 +193,78 @@
    "id": "rotunda",
    "at": [
     10,
-    -18,
+    -16,
     14
    ],
    "params": {
-    "segments": 16,
-    "colour": "#c24b28",
+    "segments": 32,
+    "colour": "#c9502a",
     "profile": [
      [
-      6,
+      7,
       0
      ],
      [
-      6,
-      2.5
+      7,
+      5
      ],
      [
-      6.4,
-      2.7
+      7,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "rotunda-glass",
+   "at": [
+    10,
+    -16,
+    14
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#3d4d58",
+    "profile": [
+     [
+      7.15,
+      1.4
      ],
      [
-      6.4,
-      3
+      7.15,
+      3.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "rotunda-cornice",
+   "at": [
+    10,
+    -16,
+    14
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#c9502a",
+    "profile": [
+     [
+      7,
+      4.2
+     ],
+     [
+      8,
+      4.4
+     ],
+     [
+      8,
+      5.2
+     ],
+     [
+      7,
+      5.2
      ]
     ]
    }
@@ -208,6 +304,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Outline is the real OSM plan scaled to 118 m so the sign tower and pylons are placed by eye; the perforated upper block is a plain panel prism without deep square openings; no lava-stone wall, banners or umbrellas; sign tower lettering omitted."
+  "gaps": "Upper block is a recessed-window grid on the front face only (not deep square lattice, back/sides plain); lava wall and hedge are plain prisms; rotunda is a drum plus glazed ring and cornice; no banners or umbrellas, sign tower unlettered."
  }
 }

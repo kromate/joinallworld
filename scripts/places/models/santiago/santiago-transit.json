@@ -38,8 +38,8 @@
  },
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "The station is underground; only a schematic entrance pavilion is built from two street photos. Exact proportions of the concrete hood, the steel frame and the barrel vault are estimated, and the plaza layout is representative."
+  "match": "fair",
+  "gaps": "Station is underground; entrance pavilion is schematic. Hood, vertical-bar blue gate, brick vault, ad-case and TOESCA board added; mesh panel and exact proportions estimated, the vault is a small stand-in under the hood."
  },
  "parts": [
   {
@@ -82,161 +82,9 @@
     }
    },
    "roof": {
-    "form": "barrel",
-    "colour": "#6b4a3c",
-    "rise": 1.6,
-    "overhang": 0.3
-   }
-  },
-  {
-   "type": "mass",
-   "id": "lintel",
-   "footprint": {
-    "rect": [
-     16,
-     2.2
-    ]
-   },
-   "at": [
-    0,
-    -1.2
-   ],
-   "z0": 3.4,
-   "height": 1.5,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#c2c1b9",
-    "windows": "none",
-    "windowRatio": 0.3,
-    "glassColour": "#2f5fb0"
-   },
-   "roof": {
     "form": "flat",
-    "colour": "#b3b2aa",
+    "colour": "#aeada5",
     "overhang": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "gate-left",
-   "footprint": {
-    "rect": [
-     5.5,
-     0.6
-    ]
-   },
-   "at": [
-    -4.5,
-    -0.1
-   ],
-   "z0": 0,
-   "height": 3.4,
-   "storeys": 1,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#2f5fb0",
-    "windows": "louvre",
-    "windowRatio": 0.8,
-    "glassColour": "#2f5fb0",
-    "faces": {
-     "front": "louvre"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2f5fb0"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "gate-right",
-   "footprint": {
-    "rect": [
-     5.5,
-     0.6
-    ]
-   },
-   "at": [
-    4.5,
-    -0.1
-   ],
-   "z0": 0,
-   "height": 3.4,
-   "storeys": 1,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#2f5fb0",
-    "windows": "louvre",
-    "windowRatio": 0.8,
-    "glassColour": "#2f5fb0",
-    "faces": {
-     "front": "louvre"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2f5fb0"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hood-wall",
-   "footprint": {
-    "rect": [
-     5.5,
-     1.2
-    ]
-   },
-   "at": [
-    -7.5,
-    -1.6
-   ],
-   "z0": 0,
-   "height": 4.0,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#c6c5bc",
-    "windows": "none",
-    "windowRatio": 0.3,
-    "glassColour": "#2f5fb0"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#b3b2aa"
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -7.5,
-    -2.4,
-    2.2
-   ],
-   "params": {
-    "width": 3.2,
-    "height": 1.1,
-    "bottom": 0.0,
-    "colour": "#e3a62e",
-    "frameColour": "#b8bcc0",
-    "posts": false
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -6,
-    -6,
-    0
-   ],
-   "params": {
-    "length": 14,
-    "height": 1.1,
-    "thickness": 0.1,
-    "kind": "fence",
-    "pillarEvery": 2,
-    "colour": "#7b7f84"
    }
   },
   {
@@ -296,19 +144,6 @@
    }
   },
   {
-   "type": "lamp",
-   "at": [
-    -10,
-    -9,
-    0
-   ],
-   "params": {
-    "height": 6.5,
-    "count": 4,
-    "spacing": 6
-   }
-  },
-  {
    "type": "tree-grove",
    "at": [
     -30,
@@ -336,6 +171,242 @@
     "count": 8,
     "min_height": 8,
     "max_height": 13
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hood",
+   "footprint": {
+    "rect": [
+     5,
+     2.8
+    ]
+   },
+   "at": [
+    -3.5,
+    -1.4
+   ],
+   "z0": 3.4,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b8b0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeada5",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    3.5,
+    -1.5
+   ],
+   "z0": 3.5,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#5a3a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#5a3a30",
+    "rise": 0.9,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.575,
+    -0.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#2a5fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.175,
+    -0.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#2a5fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.875,
+    -0.9,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     6.95,
+     0.5
+    ],
+    "height": 0.35,
+    "colour": "#2a5fb0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    1.9,
+    -0.9,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     5.9,
+     0,
+     0
+    ],
+    "count": 24,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.1,
+        0.15
+       ],
+       "height": 3.4,
+       "colour": "#2a5fb0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.7,
+    -0.8,
+    3.75
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.2
+    ],
+    "height": 2.1,
+    "colour": "#2a3550"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.2,
+    -2.6,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.25
+    ],
+    "height": 1.8,
+    "colour": "#a8adb2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.2,
+    -2.76,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.08
+    ],
+    "height": 1.4,
+    "colour": "#2a3a5a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.2,
+    -2.7,
+    2.5
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 0.45,
+    "bottom": 0.0,
+    "colour": "#e3a62e",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -6,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.06
+    ],
+    "height": 0.06,
+    "colour": "#7b7f84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -6,
+    0.45
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.05
+    ],
+    "height": 0.05,
+    "colour": "#7b7f84"
    }
   }
  ],

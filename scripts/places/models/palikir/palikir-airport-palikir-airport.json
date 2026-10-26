@@ -31,7 +31,7 @@
    "id": "terminal",
    "footprint": {
     "osm": true,
-    "simplify": 4.0
+    "simplify": 20.0
    },
    "at": [
     0,
@@ -52,14 +52,11 @@
      "back": "plain",
      "left": "plain",
      "right": "plain"
-    },
-    "bands": "#d8b88a",
-    "cornice": true
+    }
    },
    "roof": {
     "form": "hip",
     "colour": "#b5523f",
-    "material": "corrugated",
     "pitch": 22,
     "overhang": 1.6
    }
@@ -69,7 +66,7 @@
    "id": "entrance-hall",
    "footprint": {
     "rect": [
-     20,
+     22,
      10
     ]
    },
@@ -79,7 +76,7 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 7,
+   "height": 5.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -91,9 +88,109 @@
    "roof": {
     "form": "hip",
     "colour": "#b5523f",
-    "material": "corrugated",
-    "pitch": 25,
+    "pitch": 22,
     "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-tier",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -21
+   ],
+   "rotDeg": 0,
+   "z0": 5.5,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8b5",
+    "windows": "none",
+    "bands": "#d8b88a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523f",
+    "pitch": 24,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "basalt-porch",
+   "footprint": {
+    "rect": [
+     15,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -33
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#232325",
+       "#3b3b3e"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b88a",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-band",
+   "footprint": {
+    "rect": [
+     24,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    -33.4
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9ddbc",
+    "windows": "none",
+    "pattern": {
+     "type": "bands"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b88a",
+    "overhang": 0.2
    }
   },
   {
@@ -101,22 +198,34 @@
    "id": "basalt-pier-l",
    "footprint": {
     "rect": [
-     3,
-     2.5
+     3.4,
+     3
     ]
    },
    "at": [
-    -8,
-    -33
+    -9,
+    -33.5
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 4.2,
+   "height": 4.6,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
+    "colour": "#232325",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#232325",
+       "#3b3b3e"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
@@ -129,22 +238,34 @@
    "id": "basalt-pier-r",
    "footprint": {
     "rect": [
-     3,
-     2.5
+     3.4,
+     3
     ]
    },
    "at": [
-    8,
-    -33
+    9,
+    -33.5
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 4.2,
+   "height": 4.6,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
+    "colour": "#232325",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#232325",
+       "#3b3b3e"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
@@ -153,39 +274,92 @@
    }
   },
   {
-   "type": "canopy",
+   "type": "core/sign-board",
    "at": [
-    0,
+    17,
     -34,
     0
    ],
    "params": {
-    "form": "flat",
-    "width": 24,
-    "depth": 6,
-    "height": 3.8,
-    "colour": "#d8b88a",
-    "columns": 0
+    "width": 7,
+    "height": 3.2,
+    "bottom": 1.4,
+    "colour": "#f4f2ea",
+    "frameColour": "#2b2b2d"
    }
   },
   {
-   "type": "core/sign-board",
+   "type": "mass",
+   "id": "sign-plinth",
+   "footprint": {
+    "rect": [
+     7.4,
+     1.6
+    ]
+   },
    "at": [
-    16,
-    -34,
+    17,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#232325",
+       "#3b3b3e"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
     0
    ],
    "params": {
-    "width": 6,
-    "height": 2.8,
-    "bottom": 1.0,
-    "colour": "#f2efe6",
-    "frameColour": "#8a8a86"
+    "points": [
+     [
+      -40,
+      -52
+     ],
+     [
+      40,
+      -52
+     ],
+     [
+      40,
+      -27
+     ],
+     [
+      -40,
+      -27
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#3a3a3d"
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "grass",
   "forecourt": "none",
   "trees": [
    {
@@ -209,8 +383,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Photo is an entrance close-up: model is the whole 156 m terminal (simplified outline), so only roof colour, cream fascia, basalt piers and blank sign are matched; no rubble-pattern texture, no stepped upper roof tiers."
+  "gaps": ""
  }
 }

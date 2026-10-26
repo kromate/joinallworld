@@ -34,7 +34,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Curved glass hotel tower is a plain ellipse loft; no planter band, vaulted entrance canopies are flat curved shells; 400 m wing reduced to about 75 m frontage; sign pylon has blank boards only."
+  "gaps": "Hotel tower is a plain bowed crescent prism with a separate round turret and one glass fin, no balcony rings; frontage bands are simplified; 400 m wing reduced to about 75 m; vaults are plain arches; sign pylon boards blank."
  },
  "parts": [
   {
@@ -54,28 +54,22 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#c58f48",
+    "colour": "#d99a45",
     "windows": "none",
     "plinth": 0.6,
     "pattern": [
      {
-      "type": "panels",
+      "type": "floors",
       "colours": [
-       "#b9803c",
-       "#d19a50",
-       "#a8733a"
-      ],
-      "faces": [
-       "front"
+       "#d99a45",
+       "#c07a34"
       ]
      },
      {
       "type": "bands",
-      "colour": "#e3b45e",
+      "colour": "#e8b866",
       "faces": [
-       "front",
-       "left",
-       "right"
+       "front"
       ]
      }
     ],
@@ -85,6 +79,24 @@
     "form": "flat",
     "colour": "#9a9a94",
     "parapet": 1.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "at": [
+    18,
+    -12.5,
+    21
+   ],
+   "params": {
+    "rect": [
+     70,
+     2
+    ],
+    "height": 1.4,
+    "colour": "#4f8a3f",
+    "topColour": "#4f8a3f"
    }
   },
   {
@@ -148,10 +160,10 @@
     "plinth": 0.4
    },
    "roof": {
-    "form": "hip",
-    "colour": "#4f6f86",
-    "pitch": 18,
-    "overhang": 1.5
+    "form": "gable",
+    "colour": "#5f7f8c",
+    "pitch": 28,
+    "overhang": 1.2
    }
   },
   {
@@ -190,46 +202,130 @@
    }
   },
   {
-   "type": "loft",
+   "type": "prism",
    "id": "hotel-tower",
    "at": [
     -47,
-    36,
+    32,
     0
    ],
    "params": {
-    "colour": "#8b8a80",
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       16,
-       13
-      ]
-     },
-     {
-      "z": 30,
-      "ellipse": [
-       17,
-       13
-      ]
-     },
-     {
-      "z": 52,
-      "ellipse": [
-       16,
-       12
-      ],
-      "colour": "#7f9a95"
-     },
-     {
-      "z": 56,
-      "ellipse": [
-       13,
-       9
-      ]
-     }
-    ]
+    "points": [
+     [
+      17.85,
+      6.5
+     ],
+     [
+      15.07,
+      11.57
+     ],
+     [
+      10.9,
+      15.56
+     ],
+     [
+      5.71,
+      18.12
+     ],
+     [
+      0.0,
+      19.0
+     ],
+     [
+      -5.71,
+      18.12
+     ],
+     [
+      -10.9,
+      15.56
+     ],
+     [
+      -15.07,
+      11.57
+     ],
+     [
+      -17.85,
+      6.5
+     ],
+     [
+      -10.34,
+      3.76
+     ],
+     [
+      -8.73,
+      6.7
+     ],
+     [
+      -6.31,
+      9.01
+     ],
+     [
+      -3.31,
+      10.49
+     ],
+     [
+      0.0,
+      11.0
+     ],
+     [
+      3.31,
+      10.49
+     ],
+     [
+      6.31,
+      9.01
+     ],
+     [
+      8.73,
+      6.7
+     ],
+     [
+      10.34,
+      3.76
+     ]
+    ],
+    "height": 58,
+    "colour": "#6f8f8a",
+    "topColour": "#5f7a76",
+    "windows": "none",
+    "storeys": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret",
+   "at": [
+    -34,
+    38,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5.5,
+      0,
+      "#8b8a80"
+     ],
+     [
+      5.5,
+      50,
+      "#8b8a80"
+     ],
+     [
+      6,
+      51
+     ],
+     [
+      0,
+      52,
+      "#6f7a76"
+     ]
+    ],
+    "segments": 10
    }
   },
   {
@@ -237,18 +333,18 @@
    "id": "glass-spine",
    "at": [
     -47,
-    25,
+    40,
     0
    ],
    "params": {
     "rect": [
-     6,
-     5
+     2.5,
+     9
     ],
-    "height": 46,
+    "height": 52,
     "z0": 0,
-    "colour": "#4f8a86",
-    "topColour": "#4f8a86"
+    "colour": "#3f8f8f",
+    "topColour": "#3f8f8f"
    }
   },
   {
@@ -264,9 +360,9 @@
      7,
      3
     ],
-    "height": 30,
-    "colour": "#b69a62",
-    "topColour": "#9d8550"
+    "height": 34,
+    "colour": "#d8c9a0",
+    "topColour": "#c9b98c"
    }
   },
   {
@@ -283,7 +379,7 @@
      0.3
     ],
     "height": 3.2,
-    "colour": "#b2476b",
+    "colour": "#9a7a8a",
     "topColour": "#b2476b"
    }
   },
@@ -306,37 +402,63 @@
    }
   },
   {
-   "type": "canopy",
+   "type": "sweep-path",
+   "id": "vault-40",
    "at": [
     40,
     -22,
     0
    ],
    "params": {
-    "form": "curved",
-    "width": 14,
-    "depth": 8,
-    "height": 5,
-    "colour": "#5f7f8c",
-    "columns": 0,
-    "rise": 1.6
+    "section": {
+     "rect": [
+      6,
+      0.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#4f7f78"
    }
   },
   {
-   "type": "canopy",
+   "type": "sweep-path",
+   "id": "vault--4",
    "at": [
     -4,
     -22,
     0
    ],
    "params": {
-    "form": "curved",
-    "width": 12,
-    "depth": 7,
-    "height": 4.6,
-    "colour": "#5f7f8c",
-    "columns": 0,
-    "rise": 1.4
+    "section": {
+     "rect": [
+      6,
+      0.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#4f7f78"
    }
   },
   {
@@ -349,7 +471,7 @@
    "params": {
     "kind": "palm",
     "height": 9,
-    "count": 3,
+    "count": 2,
     "spread": 6,
     "line": 10
    }
@@ -362,7 +484,7 @@
     0
    ],
    "params": {
-    "count": 6,
+    "count": 3,
     "spacing": 3.2,
     "yaw": 90
    }

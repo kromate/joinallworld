@@ -34,14 +34,14 @@
    "id": "tower",
    "footprint": {
     "osm": true,
-    "fit": 90
+    "fit": 50
    },
    "at": [
-    -25,
-    50
+    -15,
+    40
    ],
-   "height": 24,
-   "storeys": 6,
+   "height": 20,
+   "storeys": 5,
    "wall": {
     "material": "painted-render",
     "colour": "#ece9e0",
@@ -66,31 +66,32 @@
    "id": "pavilion",
    "footprint": {
     "rect": [
-     36,
-     9
+     50,
+     10
     ]
    },
    "at": [
-    -4,
-    -52
+    -2,
+    -46
    ],
-   "height": 4.2,
+   "height": 4.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#2f62b5",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.6,
     "faces": {
      "front": "ribbon",
      "back": "plain"
     },
-    "plinth": 0.3
+    "plinth": 0.3,
+    "trimColour": "#f2f2f0"
    },
    "roof": {
     "form": "flat",
     "colour": "#2a57a3",
-    "overhang": 1.2,
+    "overhang": 0.6,
     "parapet": 0.3
    }
   },
@@ -99,15 +100,15 @@
    "id": "sign-wall",
    "footprint": {
     "rect": [
-     22,
-     1.2
+     14,
+     1.6
     ]
    },
    "at": [
-    34,
-    -58
+    36,
+    -56
    ],
-   "height": 5,
+   "height": 6.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -125,16 +126,16 @@
    "id": "red-cross",
    "footprint": {
     "rect": [
-     3,
-     0.8
+     3.2,
+     0.6
     ]
    },
    "at": [
-    36,
-    -58.8
+    32,
+    -57.4
    ],
-   "z0": 5,
-   "height": 2.4,
+   "z0": 6.5,
+   "height": 3,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -152,13 +153,13 @@
    "id": "low-wall",
    "footprint": {
     "rect": [
-     14,
+     16,
      1
     ]
    },
    "at": [
-    -28,
-    -56
+    -34,
+    -54
    ],
    "height": 2.8,
    "storeys": 1,
@@ -172,28 +173,101 @@
     "form": "flat",
     "colour": "#2c63b8"
    }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    36,
+    -57.0
+   ],
+   "z0": 1.6,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.0,
+    "depth": 1.0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    32,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "depth": 1.0
+   }
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "road",
-  "forecourtDepth": 10,
+  "forecourtDepth": 14,
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     40,
-     -64
+     46,
+     -66
     ],
-    "height": 13
+    "height": 17,
+    "colour": "#b08a3a"
    },
    {
     "kind": "broadleaf",
     "at": [
-     -20,
-     -62
+     -8,
+     -60
     ],
-    "height": 9
+    "height": 13,
+    "colour": "#7a7a3a"
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -50
+    ],
+    "height": 11,
+    "colour": "#8a8040"
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -56
+    ],
+    "height": 12,
+    "colour": "#6f8a40"
    },
    {
     "kind": "palm",
@@ -224,13 +298,13 @@
    }
   ],
   "extent": [
-   130,
-   130
+   110,
+   100
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Entrance view only: the tall white block is the real pinwheel outline scaled down and is not seen in the photo as clearly; sign wall has no lettering; no cable lines or kerb details."
+  "gaps": "Entrance wall is a plain tall box, not slanted; tree foliage colours are not applied (round green trees); tall white block is a scaled outline; no overhead cables or street furniture."
  }
 }

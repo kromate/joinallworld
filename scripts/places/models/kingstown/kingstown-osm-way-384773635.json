@@ -53,10 +53,10 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#efe6c4",
+    "colour": "#f1ebd0",
     "windows": "arched",
-    "windowRatio": 0.16,
-    "bay": 4.2,
+    "windowRatio": 0.24,
+    "bay": 3.6,
     "plinth": 0.5,
     "cornice": true,
     "bands": "#ffffff",
@@ -67,11 +67,12 @@
     }
    },
    "roof": {
-    "form": "hip",
+    "form": "gable",
     "colour": "#3a3a3d",
     "material": "metal-sheet",
-    "pitch": 12,
-    "overhang": 0.6
+    "pitch": 14,
+    "overhang": 0.6,
+    "axis": "x"
    }
   },
   {
@@ -84,29 +85,28 @@
     ]
    },
    "at": [
-    -24.5,
+    -22.5,
     0
    ],
-   "height": 21,
-   "storeys": 4,
+   "height": 13,
+   "storeys": 3,
    "wall": {
     "material": "stucco",
-    "colour": "#f0ead2",
+    "colour": "#f2eedc",
     "windows": "none",
     "plinth": 0.5,
     "cornice": true,
     "bands": "#ffffff",
     "faces": {
-     "front": "arched"
+     "front": "plain"
     },
     "windowRatio": 0.1,
     "bay": 7
    },
    "roof": {
     "form": "flat",
-    "colour": "#e6dfc4",
-    "parapet": 1.2,
-    "overhang": 0.3
+    "colour": "#e2dcc4",
+    "parapet": 0.3
    }
   },
   {
@@ -122,21 +122,21 @@
     18,
     0
    ],
-   "height": 9,
+   "height": 10,
    "storeys": 2,
    "wall": {
     "material": "stone",
-    "colour": "#8d8a72",
+    "colour": "#7f8570",
     "windows": "none",
     "plinth": 0.4,
     "cornice": false,
-    "bands": "#d8d4c0",
+    "bands": "#cfcdb8",
     "faces": {
      "front": "arched",
      "back": "arched"
     },
-    "windowRatio": 0.25,
-    "bay": 6
+    "windowRatio": 0.32,
+    "bay": 9
    },
    "roof": {
     "form": "gable",
@@ -210,6 +210,51 @@
     "height": 12,
     "spread": 9
    }
+  },
+  {
+   "type": "battlement-wall",
+   "id": "tower-battlement",
+   "at": [
+    -22.5,
+    0,
+    13
+   ],
+   "params": {
+    "height": 1.1,
+    "thickness": 0.7,
+    "merlons": true,
+    "points": [
+     [
+      -3.4,
+      -3.4
+     ],
+     [
+      3.4,
+      -3.4
+     ],
+     [
+      3.4,
+      3.4
+     ],
+     [
+      -3.4,
+      3.4
+     ],
+     [
+      -3.4,
+      -3.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {}
   }
  ],
  "site": {
@@ -221,8 +266,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Not rendered: the shared render queue had no running worker (last heartbeat 1.8 h old). Composition from photo by eye only; east-block gable axis, window rhythm and colours unchecked."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower now stocky with merlons but no clock face; east block is grey-green gabled with arched windows but the big window and door are not distinct; graves fence is a plain wall segment, not iron; nave a little tall"
  }
 }

@@ -33,12 +33,12 @@
    "id": "west-block",
    "footprint": {
     "rect": [
-     24,
+     20,
      22
     ]
    },
    "at": [
-    -44,
+    -40,
     0
    ],
    "height": 11,
@@ -98,12 +98,12 @@
    "id": "main-terminal",
    "footprint": {
     "rect": [
-     64,
+     68,
      20
     ]
    },
    "at": [
-    8,
+    10,
     2
    ],
    "height": 8,
@@ -112,7 +112,7 @@
     "material": "painted-render",
     "colour": "#dcd3aa",
     "windows": "ribbon",
-    "windowRatio": 0.38,
+    "windowRatio": 0.5,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -125,7 +125,7 @@
    "roof": {
     "form": "flat",
     "colour": "#cfc9b4",
-    "overhang": 2.2,
+    "overhang": 3,
     "parapet": 0.5
    }
   },
@@ -134,22 +134,22 @@
    "id": "upper-block",
    "footprint": {
     "rect": [
-     22,
+     24,
      14
     ]
    },
    "at": [
-    -8,
-    8
+    2,
+    6
    ],
-   "height": 5,
+   "height": 9,
    "z0": 8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e0d8b4",
-    "windows": "punched",
-    "windowRatio": 0.1,
+    "colour": "#e4dcb6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
     "plinth": 0
    },
    "roof": {
@@ -164,12 +164,12 @@
    "id": "east-wing",
    "footprint": {
     "rect": [
-     30,
+     26,
      16
     ]
    },
    "at": [
-    51,
+    55,
     3
    ],
    "height": 6,
@@ -196,33 +196,34 @@
   {
    "type": "canopy",
    "at": [
-    8,
+    10,
     -10,
-    5.2
+    5.6
    ],
    "params": {
     "form": "flat",
-    "width": 70,
-    "depth": 5,
+    "width": 78,
+    "depth": 7,
     "height": 0.1,
-    "thickness": 0.5,
+    "thickness": 0.9,
     "columns": 0,
-    "colour": "#e6dfc0"
+    "colour": "#e9e2c4",
+    "edgeColour": "#cfc6a0"
    }
   },
   {
    "type": "control-tower",
    "at": [
-    16,
+    22,
     8,
-    8
+    17
    ],
    "params": {
-    "height": 30,
+    "height": 22,
     "style": "round",
-    "colour": "#e2dbbf",
-    "shaftRadius": 3.2,
-    "cabRadius": 5.2,
+    "colour": "#e8e2c8",
+    "shaftRadius": 4.2,
+    "cabRadius": 6.5,
     "cabColour": "#3d4a52",
     "bandColour": "#c9bd8f"
    }
@@ -230,9 +231,9 @@
   {
    "type": "jet-bridge",
    "at": [
-    -36,
-    -11,
-    4.2
+    -30,
+    -14,
+    4.6
    ],
    "params": {
     "length": 14,
@@ -243,8 +244,8 @@
    "type": "jet-bridge",
    "at": [
     -14,
-    -11,
-    4.2
+    -14,
+    4.6
    ],
    "params": {
     "length": 14,
@@ -255,8 +256,8 @@
    "type": "jet-bridge",
    "at": [
     34,
-    -11,
-    4.2
+    -14,
+    4.6
    ],
    "params": {
     "length": 14,
@@ -281,24 +282,149 @@
    "type": "lamp",
    "at": [
     -30,
-    -26,
+    -24,
     0
    ],
    "params": {
-    "height": 18,
+    "height": 26,
     "count": 1
    }
   },
   {
    "type": "lamp",
    "at": [
-    40,
-    -26,
+    -6,
+    -24,
     0
    ],
    "params": {
-    "height": 18,
+    "height": 26,
     "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    42,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    64,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    6
+   ],
+   "z0": 17,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb79f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    6,
+    20
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 8,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    6,
+    20
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    8,
+    39
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 7,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    8,
+    26.5
+   ],
+   "params": {
+    "radius": 7.4,
+    "n": 8,
+    "height": 0.4,
+    "colour": "#b9b39a"
    }
   }
  ],
@@ -334,8 +460,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Only ~120 m of the longer terminal; no rooftop plant clutter or light masts at photo scale; jet bridges hidden behind canopy; tower cab simpler than the real one."
+  "gaps": "Terminal shortened to fit the 120 m clamp so only the west end and mid block are shown; plant-box and mast clutter simplified; tower cab is generic; light masts are thin."
  }
 }

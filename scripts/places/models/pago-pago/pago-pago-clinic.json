@@ -28,9 +28,9 @@
   "margin": 0.1
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "rough",
-  "gaps": "photo is a close-up of the entrance sign, so only roof colour, porte-cochere and lava wall are checked; wing heights and window rhythm are estimated"
+  "gaps": "photo is a close-up of the entrance sign, so only roof colour, porte-cochere and lava wall are checked; wing heights, window rhythm and walls estimated; sign wall is not in front of the canopy as in the photo"
  },
  "parts": [
   {
@@ -47,22 +47,21 @@
     0
    ],
    "rotDeg": 17,
-   "height": 7.2,
-   "storeys": 2,
+   "height": 4.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ebe7dc",
-    "windows": "ribbon",
-    "windowRatio": 0.25,
-    "plinth": 0.4,
-    "bands": "#4f9fb5"
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
    },
    "roof": {
     "form": "hip",
-    "colour": "#d9d0b8",
+    "colour": "#d6c9a8",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.2
+    "pitch": 24,
+    "overhang": 1.6
    }
   },
   {
@@ -79,21 +78,21 @@
     22
    ],
    "rotDeg": 17,
-   "height": 7.2,
-   "storeys": 2,
+   "height": 4.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e1d3",
-    "windows": "ribbon",
-    "windowRatio": 0.25,
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
     "plinth": 0.4
    },
    "roof": {
     "form": "hip",
-    "colour": "#d9d0b8",
+    "colour": "#d6c9a8",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.2
+    "pitch": 24,
+    "overhang": 1.6
    }
   },
   {
@@ -110,22 +109,21 @@
     34
    ],
    "rotDeg": 17,
-   "height": 10.2,
-   "storeys": 3,
+   "height": 4.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#ebe7dc",
-    "windows": "ribbon",
-    "windowRatio": 0.28,
-    "plinth": 0.4,
-    "bands": "#4f9fb5"
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
    },
    "roof": {
     "form": "hip",
-    "colour": "#d9d0b8",
+    "colour": "#d6c9a8",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.2
+    "pitch": 24,
+    "overhang": 1.6
    }
   },
   {
@@ -142,21 +140,21 @@
     26
    ],
    "rotDeg": 17,
-   "height": 7.2,
-   "storeys": 2,
+   "height": 4.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e1d3",
-    "windows": "ribbon",
-    "windowRatio": 0.25,
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
     "plinth": 0.4
    },
    "roof": {
     "form": "hip",
-    "colour": "#d9d0b8",
+    "colour": "#d6c9a8",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.2
+    "pitch": 24,
+    "overhang": 1.6
    }
   },
   {
@@ -168,7 +166,7 @@
    ],
    "params": {
     "rect": [
-     16,
+     9,
      9
     ],
     "height": 0.3,
@@ -186,8 +184,8 @@
     "mode": "grid",
     "cols": 2,
     "rows": 2,
-    "dx": 12,
-    "dy": 6,
+    "dx": 7.6,
+    "dy": 7.6,
     "of": {
      "type": "prism",
      "params": {
@@ -210,8 +208,8 @@
    ],
    "params": {
     "rect": [
-     17,
-     10
+     8.6,
+     8.6
     ],
     "height": 0.5,
     "colour": "#e8e4d8"
@@ -225,20 +223,20 @@
     4.7
    ],
    "params": {
-    "colour": "#d9d0b8",
+    "colour": "#d6c9a8",
     "sections": [
      {
       "z": 0,
       "rect": [
-       17.5,
-       10.5
+       9.4,
+       9.4
       ]
      },
      {
-      "z": 2.0,
+      "z": 1.6,
       "rect": [
-       6,
-       1.5
+       2,
+       2
       ]
      }
     ]
@@ -249,18 +247,18 @@
    "id": "sign-wall",
    "footprint": {
     "rect": [
-     11,
-     1.6
+     6,
+     1.2
     ]
    },
    "at": [
-    22,
-    -24
+    10,
+    -22
    ],
-   "height": 2.1,
+   "height": 1.2,
    "wall": {
     "material": "stone",
-    "colour": "#3b3a38",
+    "colour": "#4a4540",
     "windows": "none"
    },
    "roof": {

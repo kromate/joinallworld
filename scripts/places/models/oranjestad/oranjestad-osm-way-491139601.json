@@ -37,10 +37,10 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2a948",
+    "colour": "#e0a040",
     "windows": "arched",
     "windowShape": "arched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.45,
     "plinth": 0.3,
     "cornice": true,
     "trimColour": "#f4f1ea",
@@ -50,14 +50,33 @@
      "left": "none",
      "right": "none"
     },
-    "bay": 5
+    "bay": 4.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.2,
+      "depth": 0.5,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f4f1ea"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
    },
    "roof": {
     "form": "hip",
     "colour": "#5f6366",
     "material": "slate",
-    "pitch": 12,
-    "overhang": 0.8
+    "pitch": 9,
+    "overhang": 0.25
    }
   },
   {
@@ -65,30 +84,48 @@
    "id": "front-gable",
    "footprint": {
     "rect": [
-     22,
-     3
+     12,
+     2.5
     ]
    },
    "at": [
     -8,
-    -31
+    -31.5
    ],
    "height": 9.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2a948",
-    "windows": "arched",
+    "colour": "#e0a040",
+    "windows": "none",
     "windowShape": "arched",
     "windowRatio": 0.3,
-    "cornice": true
+    "cornice": true,
+    "trimColour": "#f4f1ea"
    },
    "roof": {
     "form": "gable",
-    "colour": "#5f6366",
+    "colour": "#f4f1ea",
     "material": "slate",
-    "pitch": 40
+    "pitch": 55,
+    "overhang": 0.3
    }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -32.9,
+    13.2
+   ],
+   "params": {
+    "n": 16,
+    "radius": 1.2,
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f4f1ea"
+   },
+   "rotDeg": 0
   },
   {
    "type": "core/tree",
@@ -129,6 +166,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "OSM outline is the whole campus, so the hip roof and window rhythm are simplified; the arched loggia, white arch surrounds and central oculus gable are not modelled in detail"
+  "gaps": "Ground arcade, upper arched openings, banding and central oculus gable modelled; upper loggia is glazed not open with X balustrade, roof is a whole-campus hip rather than a tight two-storey block, ashlar texture missing"
  }
 }

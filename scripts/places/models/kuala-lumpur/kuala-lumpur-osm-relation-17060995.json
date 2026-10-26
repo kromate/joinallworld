@@ -26,7 +26,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "OSM block is a plain banded slab; louvre screens only on one added wing, green balcony inserts and signage are not modelled; photo is a tight street crop so only the entrance corner is compared."
+  "gaps": "Louvres are dark-striped bands on the front slab, balcony inserts and porte-cochere are simplified boxes, logo disc is a blank red square, no signage or heavy planting."
  },
  "parts": [
   {
@@ -40,15 +40,22 @@
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#ece9e0",
+    "colour": "#e6e2d6",
     "windows": "none",
     "plinth": 0.5,
     "pattern": [
      {
+      "type": "louvres",
+      "colour": "#b8b19f",
+      "faces": [
+       "front"
+      ]
+     },
+     {
       "type": "floors",
       "colours": [
-       "#ece9e0",
-       "#b9c9c3"
+       "#e6e2d6",
+       "#d4cebd"
       ]
      }
     ]
@@ -74,15 +81,22 @@
    ],
    "params": {
     "rect": [
-     7,
-     14
+     5,
+     12
     ],
     "height": 28,
-    "colour": "#59b58f",
-    "topColour": "#59b58f",
-    "windows": "curtain",
-    "glassColour": "#4fae8a",
-    "windowRatio": 0.8
+    "colour": "#9fdcc0",
+    "topColour": "#9fdcc0",
+    "windows": "none",
+    "glassColour": "#9bdcbc",
+    "windowRatio": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#7fc6a6",
+      "height": 0.15
+     }
+    ]
    }
   },
   {
@@ -95,16 +109,19 @@
    ],
    "params": {
     "rect": [
-     22,
+     30,
      10
     ],
-    "height": 18,
-    "colour": "#cfc9b8",
-    "topColour": "#cfc9b8",
+    "height": 26,
+    "colour": "#d8d2c0",
+    "topColour": "#d8d2c0",
     "pattern": [
      {
       "type": "louvres",
-      "colour": "#a9a392"
+      "colour": "#c9c2af",
+      "faces": [
+       "front"
+      ]
      }
     ]
    }
@@ -130,7 +147,14 @@
       "type": "floors",
       "colours": [
        "#f0eee6",
-       "#9fcfba"
+       "#f0eee6"
+      ]
+     },
+     {
+      "type": "balconies",
+      "colour": "#7fcfa8",
+      "faces": [
+       "front"
       ]
      }
     ]
@@ -159,16 +183,16 @@
    "type": "canopy",
    "at": [
     -2,
-    -40,
+    -44,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 20,
-    "depth": 10,
-    "height": 4.8,
-    "thickness": 0.8,
-    "columns": 4,
+    "width": 22,
+    "depth": 14,
+    "height": 4.6,
+    "thickness": 1.2,
+    "columns": 0,
     "colour": "#f1efe8"
    }
   },
@@ -194,6 +218,60 @@
     "count": 3,
     "spread": 5,
     "line": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo-disc",
+   "at": [
+    -14,
+    -36.2,
+    12
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.4
+    ],
+    "height": 2.6,
+    "colour": "#b5303a",
+    "topColour": "#b5303a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -11,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 4.6,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    7,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 4.6,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec"
    }
   }
  ],

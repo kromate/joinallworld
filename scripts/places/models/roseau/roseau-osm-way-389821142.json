@@ -64,15 +64,15 @@
      "back": "plain",
      "front": "plain"
     },
-    "windowRatio": 0.12,
+    "windowRatio": 0.3,
     "windowShape": "rect",
-    "glassColour": "#eeeeea"
+    "glassColour": "#f4f4f0"
    },
    "roof": {
     "form": "gable",
-    "colour": "#cfd2d6",
+    "colour": "#e4e7ea",
     "material": "metal-sheet",
-    "pitch": 14,
+    "pitch": 18,
     "overhang": 0.5,
     "axis": "y"
    }
@@ -91,7 +91,7 @@
     -21
    ],
    "z0": 0,
-   "height": 3.4,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -103,18 +103,19 @@
       "faces": [
        "front"
       ],
-      "width": 0.5,
+      "width": 0.35,
       "colour": "#e8a07c",
       "backColour": "#2b2b2b",
-      "spacing": 3.2
+      "spacing": 2.6
      }
     ]
    },
    "roof": {
-    "form": "flat",
-    "colour": "#d9dce0",
+    "form": "hip",
+    "colour": "#dfe2e5",
     "material": "metal-sheet",
-    "parapet": 0.5
+    "pitch": 10,
+    "overhang": 0.5
    }
   },
   {
@@ -122,11 +123,11 @@
    "at": [
     0,
     -23.6,
-    2.6
+    3.0
    ],
    "params": {
-    "width": 10.5,
-    "height": 1.2,
+    "width": 11,
+    "height": 0.5,
     "bottom": 0,
     "colour": "#f4f4f2",
     "frameColour": "#f4f4f2",
@@ -161,7 +162,7 @@
     "height": 3,
     "thickness": 0.3,
     "kind": "wall",
-    "colour": "#f4f1ea"
+    "colour": "#f4f4f0"
    }
   },
   {
@@ -174,20 +175,71 @@
    "params": {
     "height": 9
    }
+  },
+  {
+   "type": "mass",
+   "id": "gable-face",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -18.7
+   ],
+   "z0": 6.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "doors1",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -18.9
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2b2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#2b2b2b"
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "road",
-  "forecourtDepth": 10,
+  "ground": "paving",
+  "forecourt": "plaza",
   "extent": [
    70,
    90
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Porch columns and breeze-block panels simplified; boarded white window panels approximated by pale small windows; signage is a blank board."
+  "gaps": "hipped porch with white fascia and dark doors added; boarded window panels still approximated by taller pale windows; breeze-block panel and second gable not modelled; a blue accent line remains from sign board/site"
  }
 }

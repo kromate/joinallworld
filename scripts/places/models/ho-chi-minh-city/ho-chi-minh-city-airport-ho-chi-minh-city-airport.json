@@ -47,11 +47,11 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 17,
+   "height": 14,
    "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3f7287",
+    "colour": "#4f8d8c",
     "windows": "curtain",
     "windowRatio": 0.75,
     "faces": {
@@ -65,41 +65,10 @@
    "roof": {
     "form": "curved",
     "curve": "arch",
-    "colour": "#cbd1d5",
+    "colour": "#d7dcdf",
     "material": "metal-sheet",
-    "rise": 4,
+    "rise": 2.5,
     "overhang": 1.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hall-end",
-   "footprint": {
-    "rect": [
-     14,
-     38
-    ]
-   },
-   "at": [
-    -57,
-    10
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 21,
-   "storeys": 3,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#bfc6ca",
-    "windows": "ribbon",
-    "windowRatio": 0.2,
-    "plinth": 0.5
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#aeb4b8",
-    "parapet": 0.5,
-    "overhang": 0.6
    }
   },
   {
@@ -113,11 +82,11 @@
     "form": "flat",
     "width": 100,
     "depth": 12,
-    "height": 6.5,
-    "thickness": 0.9,
-    "columns": 11,
-    "colour": "#dcd9d1",
-    "edgeColour": "#c4c1b9"
+    "height": 6.8,
+    "thickness": 1.2,
+    "columns": 0,
+    "colour": "#d6d6d0",
+    "edgeColour": "#c9c9c2"
    }
   },
   {
@@ -125,13 +94,13 @@
    "id": "ramp",
    "footprint": {
     "rect": [
-     40,
-     9
+     44,
+     10
     ]
    },
    "at": [
-    62,
-    -34
+    55,
+    -36
    ],
    "rotDeg": 0,
    "z0": 6.0,
@@ -139,7 +108,7 @@
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#a8a69f",
+    "colour": "#aaa8a1",
     "windows": "none"
    },
    "roof": {
@@ -196,34 +165,91 @@
   {
    "type": "control-tower",
    "at": [
-    -52,
-    62,
+    -60,
+    70,
     0
    ],
    "params": {
     "height": 70,
     "style": "round",
     "colour": "#d6d3cc",
-    "cabColour": "#5a7684"
+    "cabColour": "#5a7684",
+    "shaftRadius": 2.8,
+    "cabRadius": 5.5
+   }
+  },
+  {
+   "type": "pilotis-row",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "height": 6.6,
+    "radius": 1.1,
+    "pitch": 9.6,
+    "colour": "#d4d4ce"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp2",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    24,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 6.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aaa8a1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9b94",
+    "parapet": 0.5
    }
   },
   {
    "type": "tree",
    "at": [
-    -22,
-    -34,
+    -30,
+    -36,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 7
+    "height": 5
    }
   },
   {
    "type": "tree",
    "at": [
-    -8,
-    -36,
+    -18,
+    -37,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -38,
     0
    ],
    "params": {
@@ -234,25 +260,25 @@
   {
    "type": "tree",
    "at": [
-    10,
+    6,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
     -37,
     0
    ],
    "params": {
     "kind": "broadleaf",
     "height": 4
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
-    28,
-    -34,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 6
    }
   }
  ],
@@ -272,6 +298,6 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Photo shows T2 only in the distance; modelled as a barrel-roofed glass hall with canopy, ramp, bridges and tower; no tree/sign detail, curved roof edge simplified."
+  "gaps": "T2 only distant in photo; shallow barrel hall, round-drum canopy columns, two-piece ramp (straight not curved) and clipped trees approximated; tower thickened."
  }
 }

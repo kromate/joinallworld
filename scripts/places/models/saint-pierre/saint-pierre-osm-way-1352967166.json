@@ -18,10 +18,10 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 8,
+  "pitchDeg": 6,
   "fovDeg": 50,
   "aspect": 1.333,
-  "margin": 0.05,
+  "margin": 0.02,
   "fit": "building",
   "shiftY": 0.0
  },
@@ -39,12 +39,12 @@
    "height": 0.5,
    "wall": {
     "material": "painted-render",
-    "colour": "#8e8a86",
+    "colour": "#9a958d",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#8e8a86",
+    "colour": "#9a958d",
     "material": "concrete"
    }
   },
@@ -69,7 +69,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#3f5a34",
+    "colour": "#5d6e45",
     "material": "concrete"
    }
   },
@@ -94,7 +94,82 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#3f5a34",
+    "colour": "#5d6e45",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inlay-a",
+   "footprint": {
+    "rect": [
+     40,
+     1.6
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "height": 0.6,
+   "wall": {
+    "material": "brick",
+    "colour": "#d9c98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c98f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inlay-b",
+   "footprint": {
+    "rect": [
+     1.6,
+     22
+    ]
+   },
+   "at": [
+    -14,
+    -16
+   ],
+   "height": 0.6,
+   "wall": {
+    "material": "brick",
+    "colour": "#d9c98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c98f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inlay-c",
+   "footprint": {
+    "rect": [
+     30,
+     1.2
+    ]
+   },
+   "at": [
+    20,
+    -2
+   ],
+   "height": 0.6,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9aa84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9aa84",
     "material": "concrete"
    }
   },
@@ -103,22 +178,22 @@
    "id": "office",
    "footprint": {
     "rect": [
-     18,
-     10
+     22,
+     11
     ]
    },
    "at": [
-    -6,
-    22
+    -12,
+    24
    ],
-   "height": 10,
+   "height": 10.5,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#d8cbb0",
+    "colour": "#d8cdb2",
     "windows": "punched",
-    "windowRatio": 0.35,
-    "bands": "#b8a98c"
+    "windowRatio": 0.45,
+    "bands": "#a89d84"
    },
    "roof": {
     "form": "hip",
@@ -129,31 +204,31 @@
   },
   {
    "type": "mass",
-   "id": "house-white",
+   "id": "house-a",
    "footprint": {
     "rect": [
      9,
-     8
+     10
     ]
    },
    "at": [
-    12,
-    24
+    4,
+    26
    ],
-   "height": 8,
-   "storeys": 2,
+   "height": 9,
+   "storeys": 3,
    "wall": {
-    "material": "timber",
-    "colour": "#eeeeea",
+    "material": "painted-render",
+    "colour": "#e8e6dc",
     "windows": "punched",
-    "windowRatio": 0.25
+    "windowRatio": 0.28
    },
    "roof": {
     "form": "gable",
-    "axis": "y",
-    "colour": "#4a4f57",
+    "colour": "#4a5a52",
     "material": "metal-sheet",
-    "pitch": 30
+    "pitch": 38,
+    "axis": "y"
    }
   },
   {
@@ -161,28 +236,57 @@
    "id": "house-teal",
    "footprint": {
     "rect": [
-     8,
-     8
+     7,
+     10
+    ]
+   },
+   "at": [
+    12.5,
+    26
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f7a7c",
+    "windows": "punched",
+    "windowRatio": 0.28
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d4a4e",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-white",
+   "footprint": {
+    "rect": [
+     9,
+     10
     ]
    },
    "at": [
     20.5,
-    24
+    26
    ],
-   "height": 7.5,
+   "height": 8.5,
    "storeys": 2,
    "wall": {
-    "material": "timber",
-    "colour": "#2f7a7c",
+    "material": "painted-render",
+    "colour": "#eeeeea",
     "windows": "punched",
-    "windowRatio": 0.25
+    "windowRatio": 0.28
    },
    "roof": {
     "form": "gable",
-    "axis": "y",
-    "colour": "#3d4a4e",
+    "colour": "#5a3a32",
     "material": "metal-sheet",
-    "pitch": 28
+    "pitch": 38,
+    "axis": "y"
    }
   },
   {
@@ -190,27 +294,27 @@
    "id": "house-blue",
    "footprint": {
     "rect": [
-     11,
-     9
+     10,
+     10
     ]
    },
    "at": [
-    31,
-    24
+    30,
+    26
    ],
-   "height": 7,
+   "height": 8,
    "storeys": 2,
    "wall": {
-    "material": "timber",
+    "material": "painted-render",
     "colour": "#4b6f9a",
     "windows": "punched",
-    "windowRatio": 0.25
+    "windowRatio": 0.28
    },
    "roof": {
     "form": "hip",
     "colour": "#5a3a32",
     "material": "metal-sheet",
-    "pitch": 24
+    "pitch": 32
    }
   },
   {
@@ -218,87 +322,417 @@
    "id": "house-green",
    "footprint": {
     "rect": [
-     14,
-     9
+     16,
+     10
     ]
    },
    "at": [
-    44,
-    24
+    43,
+    26
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9b8",
+    "windows": "punched",
+    "windowRatio": 0.28
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6a5a",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-end",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    56,
+    26
    ],
    "height": 8,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#cfc9b8",
+    "colour": "#d9a99a",
     "windows": "punched",
-    "windowRatio": 0.3
+    "windowRatio": 0.25
    },
    "roof": {
-    "form": "mansard",
-    "colour": "#3f6a5a",
-    "material": "metal-sheet"
+    "form": "hip",
+    "colour": "#b0393a",
+    "material": "metal-sheet",
+    "pitch": 28
    }
   },
   {
-   "type": "core/lamp",
+   "type": "lattice-mast",
    "at": [
-    -14,
-    -2,
+    8,
+    40,
     0
    ],
    "params": {
-    "height": 7,
-    "count": 3,
-    "spacing": 9
-   }
+    "height": 28,
+    "baseWidth": 1.8,
+    "topWidth": 0.4,
+    "panels": 8,
+    "colour": "#b8bcc0",
+    "colour2": "#d8dadc"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/flag",
    "at": [
-    -3,
-    3,
+    -2,
+    4,
     0
    ],
    "params": {
-    "height": 16,
+    "height": 25,
     "colour": "#d8d8d8"
    }
   },
   {
-   "type": "core/fence-wall",
-   "id": "fountain-base",
+   "type": "basin-fountain",
    "at": [
-    34,
-    8,
+    40,
+    10,
     0
    ],
    "params": {
-    "height": 0.6,
-    "thickness": 0.5,
-    "colour": "#555a5e",
+    "radius": 3,
+    "rimColour": "#5a5e62"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lamp-pole-0",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.1,
+      5.2
+     ],
+     [
+      0.05,
+      5.3
+     ]
+    ],
+    "colour": "#23272b",
+    "segments": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -24.9,
+    -4,
+    4.9
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      0.3,
+      0.12
+     ],
+     [
+      0.42,
+      0.45
+     ],
+     [
+      0.3,
+      0.8
+     ],
+     [
+      0.01,
+      0.92
+     ]
+    ],
+    "colour": "#f2f2ee",
+    "segments": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -23.1,
+    -4,
+    4.9
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      0.3,
+      0.12
+     ],
+     [
+      0.42,
+      0.45
+     ],
+     [
+      0.3,
+      0.8
+     ],
+     [
+      0.01,
+      0.92
+     ]
+    ],
+    "colour": "#f2f2ee",
+    "segments": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
     "points": [
      [
-      -2,
-      -2
+      -24.9,
+      -4,
+      5.0
      ],
      [
-      2,
-      -2
+      -24,
+      -4,
+      5.3
      ],
      [
-      2,
-      2
-     ],
-     [
-      -2,
-      2
-     ],
-     [
-      -2,
-      -2
+      -23.1,
+      -4,
+      5.0
      ]
+    ],
+    "curve": true,
+    "colour": "#23272b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lamp-pole-1",
+   "at": [
+    -6,
+    2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.1,
+      5.2
+     ],
+     [
+      0.05,
+      5.3
+     ]
+    ],
+    "colour": "#23272b",
+    "segments": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6.9,
+    2,
+    4.9
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      0.3,
+      0.12
+     ],
+     [
+      0.42,
+      0.45
+     ],
+     [
+      0.3,
+      0.8
+     ],
+     [
+      0.01,
+      0.92
+     ]
+    ],
+    "colour": "#f2f2ee",
+    "segments": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -5.1,
+    2,
+    4.9
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      0.3,
+      0.12
+     ],
+     [
+      0.42,
+      0.45
+     ],
+     [
+      0.3,
+      0.8
+     ],
+     [
+      0.01,
+      0.92
+     ]
+    ],
+    "colour": "#f2f2ee",
+    "segments": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -6.9,
+      2,
+      5.0
+     ],
+     [
+      -6,
+      2,
+      5.3
+     ],
+     [
+      -5.1,
+      2,
+      5.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#23272b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "planter-r",
+   "footprint": {
+    "rect": [
+     12,
+     1.8
     ]
+   },
+   "at": [
+    32,
+    4
+   ],
+   "height": 1.1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6e45",
+    "material": "concrete"
    }
   }
  ],
@@ -307,8 +741,8 @@
   "forecourt": "plaza",
   "trees": 0,
   "extent": [
-   90,
-   70
+   100,
+   80
   ]
  },
  "schema": "allworld-place-model",
@@ -318,6 +752,6 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "outline is a diagonal strip so plaza edges differ; no fountain statue, planter hedges, inlay bands or radio mast; house fronts simplified"
+  "gaps": "OSM plaza outline is a diagonal strip so paving edge differs from photo; houses simplified (no dormers, shop fronts); lamp globes and fountain are small stand-ins; mast is generic"
  }
 }

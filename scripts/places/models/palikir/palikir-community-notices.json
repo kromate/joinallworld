@@ -46,25 +46,24 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 4.2,
+   "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#2b2b2d",
+    "colour": "#1f2a30",
     "windows": "curtain",
-    "windowRatio": 0.5,
+    "windowRatio": 0.6,
     "faces": {
      "back": "plain",
      "left": "plain",
      "right": "plain"
     },
-    "plinth": 0.4,
-    "bands": "#d9b97a"
+    "plinth": 0.4
    },
    "roof": {
     "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 1.5
+    "colour": "#e6d8b5",
+    "overhang": 1.2
    }
   },
   {
@@ -72,21 +71,21 @@
    "id": "hall-gable",
    "footprint": {
     "rect": [
-     18,
-     16
+     20,
+     18
     ]
    },
    "at": [
-    -2,
-    2
+    -3,
+    -2
    ],
-   "rotDeg": 90,
-   "z0": 4.2,
-   "height": 11,
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 8,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6e3b2c",
+    "colour": "#7a4a32",
     "windows": "none",
     "plinth": 0.3
    },
@@ -94,7 +93,7 @@
     "form": "gable",
     "colour": "#5b5855",
     "material": "slate",
-    "pitch": 38,
+    "pitch": 34,
     "overhang": 1.8
    }
   },
@@ -103,227 +102,29 @@
    "id": "wing-gable",
    "footprint": {
     "rect": [
-     14,
-     12
+     13,
+     14
     ]
    },
    "at": [
-    9,
-    -1
+    11,
+    -4
    ],
    "rotDeg": 0,
-   "z0": 4.2,
-   "height": 9,
+   "z0": 4.6,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6e3b2c",
+    "colour": "#7a4a32",
     "windows": "none"
    },
    "roof": {
     "form": "gable",
     "colour": "#5b5855",
     "material": "slate",
-    "pitch": 38,
+    "pitch": 34,
     "overhang": 1.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "side-wing",
-   "footprint": {
-    "rect": [
-     10,
-     22
-    ]
-   },
-   "at": [
-    -9,
-    6
-   ],
-   "rotDeg": 0,
-   "z0": 4.2,
-   "height": 6.5,
-   "storeys": 1,
-   "wall": {
-    "material": "timber",
-    "colour": "#6e3b2c",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#5b5855",
-    "material": "slate",
-    "pitch": 38,
-    "overhang": 1.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pier0",
-   "footprint": {
-    "rect": [
-     1.6,
-     1.6
-    ]
-   },
-   "at": [
-    -12.0,
-    -17.6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pier1",
-   "footprint": {
-    "rect": [
-     1.6,
-     1.6
-    ]
-   },
-   "at": [
-    -7.4,
-    -17.6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pier2",
-   "footprint": {
-    "rect": [
-     1.6,
-     1.6
-    ]
-   },
-   "at": [
-    -2.8000000000000007,
-    -17.6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pier3",
-   "footprint": {
-    "rect": [
-     1.6,
-     1.6
-    ]
-   },
-   "at": [
-    1.799999999999999,
-    -17.6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pier4",
-   "footprint": {
-    "rect": [
-     1.6,
-     1.6
-    ]
-   },
-   "at": [
-    6.399999999999999,
-    -17.6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 0.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "pier5",
-   "footprint": {
-    "rect": [
-     1.6,
-     1.6
-    ]
-   },
-   "at": [
-    11.0,
-    -17.6
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#2b2b2d",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9b97a",
-    "overhang": 0.2
    }
   },
   {
@@ -339,6 +140,249 @@
     "run": 0.6,
     "count": 3,
     "colour": "#bdb9ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8b5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b97a",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -13,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -8,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -3,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    2,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier4",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    7,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier5",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    12,
+    -17.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#232325",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-wing",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    24,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#e0b64a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "slope",
+    "width": 8,
+    "depth": 10,
+    "height": 3.4,
+    "colour": "#5b5855",
+    "columns": 2
    }
   }
  ],
@@ -376,6 +420,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Gable ridges still run across the front instead of facing the viewer as in the photo; no cream fascia band texture, no aircons or side canopy; basalt piers oversized."
+  "gaps": "Gable ends now face front with stepped second gable, red hip wing and side canopy; massing simplified to rectangles (OSM 33x30 notch not followed), timber is flat colour with no cladding battens, basalt piers sparse, no aircons."
  }
 }

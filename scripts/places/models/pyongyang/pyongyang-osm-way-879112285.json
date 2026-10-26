@@ -42,7 +42,7 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3cfa0",
+    "colour": "#eadfbf",
     "windows": "none",
     "plinth": 0.5,
     "cornice": true,
@@ -52,7 +52,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9aa6",
+    "colour": "#6f86a8",
     "parapet": 0.5
    }
   },
@@ -74,7 +74,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3cfa0",
+    "colour": "#eadfbf",
     "windows": "none",
     "plinth": 0.5,
     "cornice": true
@@ -99,18 +99,18 @@
     1
    ],
    "z0": 0,
-   "height": 11,
-   "storeys": 1,
+   "height": 12.5,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3cfa0",
+    "colour": "#eadfbf",
     "windows": "none",
     "plinth": 0.5,
     "cornice": true
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9aa6",
+    "colour": "#6f86a8",
     "parapet": 0.4
    }
   },
@@ -132,7 +132,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3cfa0",
+    "colour": "#eadfbf",
     "windows": "arched",
     "plinth": 0.5,
     "cornice": true,
@@ -144,7 +144,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9aa6",
+    "colour": "#6f86a8",
     "parapet": 0.4
    }
   },
@@ -162,19 +162,19 @@
     -3
    ],
    "z0": 0,
-   "height": 12,
+   "height": 7.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3cfa0",
-    "windows": "arched",
+    "colour": "#eadfbf",
+    "windows": "none",
     "plinth": 0.5,
     "cornice": true,
     "windowRatio": 0.25
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f9aa6",
+    "colour": "#6f86a8",
     "parapet": 0.4
    }
   },
@@ -191,50 +191,50 @@
     "colour": "#d7a92e",
     "profile": [
      [
-      2.8,
+      3.2,
       0,
-      "#cfc5b2"
+      "#e6dcc0"
      ],
      [
-      2.8,
-      3.5
+      3.2,
+      4.0
      ],
      [
-      3.08,
-      3.5
-     ],
-     [
-      2.376,
-      3.6,
+      3.5,
+      4.0,
       "#d9ad34"
      ],
      [
-      3.135,
-      4.67
+      3.0,
+      4.15
      ],
      [
-      3.3,
-      5.58
+      3.7,
+      5.4
      ],
      [
-      2.9699999999999998,
-      6.75
+      3.9,
+      6.6
      ],
      [
-      2.046,
-      8.05
+      3.5,
+      8.0
      ],
      [
-      0.9899999999999999,
-      9.219999999999999
+      2.4,
+      9.5
      ],
      [
-      0.33,
-      9.805
+      1.1,
+      10.8
+     ],
+     [
+      0.35,
+      11.5
      ],
      [
       0,
-      10.0
+      11.8
      ]
     ]
    }
@@ -245,7 +245,7 @@
    "at": [
     0,
     2,
-    25
+    26.6
    ],
    "params": {
     "rect": [
@@ -262,7 +262,7 @@
    "at": [
     0,
     2,
-    26.6
+    28.2
    ],
    "params": {
     "rect": [
@@ -279,7 +279,7 @@
    "at": [
     -9.5,
     -3,
-    12
+    12.5
    ],
    "params": {
     "segments": 16,
@@ -340,7 +340,7 @@
    "at": [
     -9.5,
     -3,
-    16.4
+    16.9
    ],
    "params": {
     "rect": [
@@ -376,6 +376,121 @@
     0
    ],
    "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "bell-stage",
+   "params": {
+    "rect": [
+     5.5,
+     5.5
+    ],
+    "z0": 7.5,
+    "height": 4.5,
+    "colour": "#eadfbf",
+    "windows": "arched",
+    "windowShape": "arched"
+   },
+   "at": [
+    -9.5,
+    -3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell-cap",
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 12,
+    "height": 0.5,
+    "colour": "#6f86a8"
+   },
+   "at": [
+    -9.5,
+    -3,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "drum-win",
+   "at": [
+    0,
+    2,
+    15
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4a4f58",
+    "profile": [
+     [
+      3.22,
+      1.2
+     ],
+     [
+      3.22,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-recess",
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "z0": 0.5,
+    "height": 6.2,
+    "colour": "#b59b78"
+   },
+   "at": [
+    0,
+    -12.6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portal-door",
+   "params": {
+    "rect": [
+     2.0,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 3.2,
+    "colour": "#8a4a2a"
+   },
+   "at": [
+    0,
+    -12.85,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portal-arch-trim",
+   "params": {
+    "rect": [
+     5.0,
+     0.3
+    ],
+    "z0": 6.6,
+    "height": 0.5,
+    "colour": "#6f86a8"
+   },
+   "at": [
+    0,
+    -12.7,
+    0
+   ]
   }
  ],
  "site": {
@@ -419,6 +534,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "Dome drum too tall and plain, bell tower lower than photo, no arched entrance recess or blue trim, stepped parapets simplified; roofs not seen."
+  "gaps": "Bell tower stage uses arched window cuts rather than a truly open arcade, entrance recess is a flat niche not a deep arch, walls render whiter than the cream photo, parapet stepping simplified."
  }
 }

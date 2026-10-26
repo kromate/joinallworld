@@ -29,14 +29,14 @@
    "type": "stadium/water-surface",
    "at": [
     0,
-    18,
+    6,
     0
    ],
    "params": {
-    "width": 46,
-    "depth": 36,
+    "width": 70,
+    "depth": 74,
     "shape": "rect",
-    "colour": "#26352f",
+    "colour": "#16211d",
     "bank": true
    }
   },
@@ -44,32 +44,37 @@
    "type": "revolve",
    "at": [
     0,
-    22,
+    16,
     0
    ],
    "params": {
-    "segments": 40,
-    "colour": "#7b3e38",
+    "segments": 48,
+    "colour": "#6f6d62",
     "profile": [
      [
       0.1,
-      0.55,
+      1.0,
       "#8a4640"
      ],
      [
-      9,
-      0.55,
+      12,
+      1.0,
       "#8a4640"
      ],
      [
-      9,
-      0.5,
+      12,
+      0.9,
       "#6f6d62"
      ],
      [
-      8.6,
-      -0.2,
-      "#5e5d55"
+      11.7,
+      0.0,
+      "#4f4e46"
+     ],
+     [
+      11.7,
+      -0.1,
+      "#4f4e46"
      ]
     ]
    }
@@ -78,16 +83,30 @@
    "type": "prism",
    "at": [
     0,
-    4,
+    0,
     0
    ],
    "params": {
-    "rect": [
-     3.4,
-     17
+    "points": [
+     [
+      -3.4,
+      -17
+     ],
+     [
+      3.4,
+      -17
+     ],
+     [
+      1.9,
+      5
+     ],
+     [
+      -1.9,
+      5
+     ]
     ],
-    "z0": 0.35,
-    "height": 0.2,
+    "z0": 0.7,
+    "height": 0.3,
     "colour": "#80403a"
    }
   },
@@ -102,23 +121,59 @@
     "mode": "line",
     "start": [
      0,
-     -3.5,
-     0.55
+     -16,
+     1.0
     ],
     "end": [
      0,
-     12,
-     0.55
+     4,
+     1.0
     ],
-    "count": 16,
+    "count": 34,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       3.5,
+       3.6,
        0.12
       ],
-      "height": 0.08,
+      "height": 0.05,
+      "colour": "#4a1f1b"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     5.5,
+     1.01
+    ],
+    "end": [
+     0,
+     24,
+     1.01
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       22,
+       0.1
+      ],
+      "height": 0.03,
       "colour": "#5a2823"
      }
     }
@@ -128,142 +183,177 @@
    ]
   },
   {
+   "type": "prism",
+   "at": [
+    0,
+    31,
+    0
+   ],
+   "params": {
+    "rect": [
+     23,
+     2.5
+    ],
+    "height": 1.4,
+    "colour": "#2f6b36",
+    "windows": "none"
+   }
+  },
+  {
    "type": "stadium/tree-grove",
    "at": [
     0,
-    36,
+    38,
     0
    ],
    "params": {
-    "width": 60,
+    "width": 110,
     "depth": 22,
-    "count": 30,
+    "count": 40,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 30
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    -40,
+    10,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 60,
+    "count": 18,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    40,
+    10,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 60,
+    "count": 18,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 16,
+    "count": 6,
     "kind": "broadleaf",
     "min_height": 9,
-    "max_height": 22
+    "max_height": 20
    }
   },
   {
-   "type": "core/tree",
+   "type": "stadium/tree-grove",
    "at": [
+    30,
     -26,
-    34,
     0
    ],
    "params": {
-    "kind": "palm",
-    "height": 19,
-    "count": 4,
-    "spread": 7
+    "width": 18,
+    "depth": 16,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 20
    }
   },
   {
    "type": "core/tree",
    "at": [
-    22,
-    32,
+    -6,
+    30,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 17,
-    "count": 3,
-    "spread": 6
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    16,
-    44,
-    0
-   ],
-   "params": {
-    "kind": "conifer",
-    "height": 27,
+    "height": 24,
     "count": 2,
-    "spread": 5
+    "spread": 8
    }
   },
   {
-   "type": "stadium/park-pavilion",
+   "type": "core/tree",
    "at": [
-    -34,
-    -8,
+    -24,
+    28,
     0
    ],
    "params": {
-    "width": 9,
-    "depth": 6,
-    "height": 3.4,
-    "kind": "hip",
-    "roof_colour": "#a6522f"
-   }
-  },
-  {
-   "type": "stadium/path-strip",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      -34,
-      -14
-     ],
-     [
-      -34,
-      -26
-     ],
-     [
-      -6,
-      -26
-     ],
-     [
-      0,
-      -10
-     ]
-    ],
-    "width": 2.4,
-    "colour": "#b9ad92"
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -4.5,
-    -12,
-    0
-   ],
-   "params": {
-    "length": 16,
-    "height": 1.1,
-    "thickness": 0.15,
-    "kind": "fence",
-    "colour": "#4a3a2a"
+    "kind": "palm",
+    "height": 20,
+    "count": 2,
+    "spread": 8
    }
   },
   {
    "type": "core/tree",
    "at": [
     24,
-    -4,
+    28,
     0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 10,
-    "count": 3,
-    "spread": 5
+    "kind": "palm",
+    "height": 22,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 34,
+    "count": 2,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 30,
+    "count": 2,
+    "spread": 10
    }
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "none",
-  "trees": 6,
+  "trees": 0,
   "treeKind": "broadleaf",
   "extent": [
    110,
@@ -275,8 +365,8 @@
  "city": "sao-paulo",
  "venueId": "sao-paulo-osm-way-547462224",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Photo is a close deck-and-pond view; the model is a wider scene with a flat disc deck, boxy water, and low-poly trees instead of dense Atlantic forest; park is 800 m and only one corner is modelled."
+  "gaps": "Deck and pond now read as a round red-brown deck on a stone drum with plank walkway, but the forest is low-poly trees with bare trunks, the sky is bright blue and the walkway base looks like a slab."
  }
 }

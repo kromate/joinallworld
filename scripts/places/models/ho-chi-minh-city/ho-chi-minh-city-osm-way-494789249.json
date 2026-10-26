@@ -66,7 +66,7 @@
     "colour": "#c4623a",
     "material": "clay-tile",
     "pitch": 22,
-    "overhang": 2.2
+    "overhang": 0.8
    }
   },
   {
@@ -96,102 +96,355 @@
     "colour": "#c4623a",
     "material": "clay-tile",
     "pitch": 24,
-    "overhang": 2.4
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     20
+    ],
+    "height": 1.2,
+    "colour": "#e9dfc0"
    }
   },
   {
    "type": "mosque-domed/pagoda-tower",
    "at": [
-    -12,
-    -24,
-    0
+    -26,
+    -30,
+    1.2
    ],
    "params": {
     "storeys": 7,
-    "base_width": 14,
-    "height": 46,
+    "base_width": 11,
+    "height": 40,
     "sides": 4,
     "colour": "#efe3b8",
-    "accent": "#a8332a",
+    "accent": "#d9a441",
     "cap_colour": "#c4623a"
    }
   },
   {
+   "type": "revolve",
+   "at": [
+    -26,
+    -30,
+    34.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0.2,
+      0,
+      "#4a4a50"
+     ],
+     [
+      1.0,
+      0.3,
+      "#4a4a50"
+     ],
+     [
+      0.7,
+      3,
+      "#3a3a40"
+     ],
+     [
+      0.4,
+      6,
+      "#3a3a40"
+     ],
+     [
+      0.05,
+      9,
+      "#3a3a40"
+     ]
+    ]
+   }
+  },
+  {
    "type": "prism",
    "at": [
-    12,
-    -36,
+    8,
+    -44,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.2
+     2.4,
+     2.4
     ],
-    "height": 7,
+    "height": 8,
     "colour": "#9a9488"
    }
   },
   {
    "type": "prism",
    "at": [
-    24,
-    -36,
+    20,
+    -44,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.2
+     2.4,
+     2.4
     ],
-    "height": 7,
+    "height": 8,
     "colour": "#9a9488"
    }
   },
   {
    "type": "prism",
    "at": [
-    18,
-    -36,
-    5.5
+    32,
+    -44,
+    0
    ],
    "params": {
     "rect": [
-     13,
+     2.4,
+     2.4
+    ],
+    "height": 8,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -44,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 8,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -44,
+    6
+   ],
+   "params": {
+    "rect": [
+     40,
      2.2
     ],
-    "height": 1.5,
+    "height": 1.6,
     "colour": "#b8b2a4"
    }
   },
   {
-   "type": "mosque-domed/pagoda-roof",
+   "type": "prism",
    "at": [
-    18,
-    -36,
-    7
+    26,
+    -44.2,
+    3.5
    ],
    "params": {
-    "width": 14,
-    "depth": 7,
-    "rise": 2.4,
-    "overhang": 1.4,
-    "colour": "#c4623a"
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#c9b36a"
    }
   },
   {
    "type": "mosque-domed/pagoda-roof",
    "at": [
-    18,
-    -36,
-    10
+    26,
+    -44,
+    7.4
    ],
    "params": {
-    "width": 9,
-    "depth": 5,
-    "rise": 2.2,
-    "overhang": 1.2,
-    "colour": "#c4623a"
+    "width": 22,
+    "depth": 8,
+    "rise": 2.6,
+    "overhang": 1.4,
+    "upturn": 1.8,
+    "colour": "#c4623a",
+    "trim": "#c9a24a"
+   }
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    26,
+    -44,
+    10.2
+   ],
+   "params": {
+    "width": 15,
+    "depth": 6,
+    "rise": 2.4,
+    "overhang": 1.4,
+    "upturn": 1.8,
+    "colour": "#c4623a",
+    "trim": "#c9a24a"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    10,
+    -44,
+    6.8
+   ],
+   "params": {
+    "width": 11,
+    "depth": 6,
+    "rise": 1.8,
+    "overhang": 1.0,
+    "upturn": 1.2,
+    "colour": "#c4623a",
+    "trim": "#c9a24a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    10,
+    -44,
+    9
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4.6,
+    "rise": 1.6,
+    "overhang": 0.9,
+    "upturn": 1.0,
+    "colour": "#c4623a",
+    "trim": "#c9a24a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    42,
+    -44,
+    6.8
+   ],
+   "params": {
+    "width": 11,
+    "depth": 6,
+    "rise": 1.8,
+    "overhang": 1.0,
+    "upturn": 1.2,
+    "colour": "#c4623a",
+    "trim": "#c9a24a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    42,
+    -44,
+    9
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4.6,
+    "rise": 1.6,
+    "overhang": 0.9,
+    "upturn": 1.0,
+    "colour": "#c4623a",
+    "trim": "#c9a24a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -47,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.6
+    ],
+    "height": 2.2,
+    "colour": "#efe3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -47.1,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.7
+    ],
+    "height": 0.35,
+    "colour": "#a8332a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    52,
+    -47,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.6
+    ],
+    "height": 2.2,
+    "colour": "#efe3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    52,
+    -47.1,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.7
+    ],
+    "height": 0.35,
+    "colour": "#a8332a"
    }
   }
  ],
@@ -200,14 +453,14 @@
   "forecourt": "plaza",
   "trees": [],
   "extent": [
-   110,
-   100
+   130,
+   110
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Tower is shorter and plainer than the photo (no dark finial, no balcony detail), gate is a single-roof kiosk not the two-tier tam quan, no boundary wall or street; hall roof is a generic hip."
+  "gaps": "Seven-tier tower on a cream podium with dark spire, three-bay two-tier tam quan on the street edge and red-cream boundary wall added; tower balcony bands and curled eave ends are simplified, hall roof is a generic hip."
  },
  "schema": "allworld-place-model",
  "version": 2,

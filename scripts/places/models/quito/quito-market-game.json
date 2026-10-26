@@ -57,22 +57,23 @@
     "material": "stucco",
     "colour": "#f3f1ea",
     "windows": "none",
-    "plinth": 0.7,
+    "plinth": 1.0,
     "cornice": true,
     "pattern": [
      {
       "type": "arcade",
       "shape": "arch",
-      "bay": 6.2,
-      "opening": 0.62,
-      "height": 0.82,
+      "bay": 6.0,
+      "opening": 0.7,
+      "height": 0.85,
       "depth": 1.0,
       "pierColour": "#f3f1ea",
       "faces": [
        "front"
       ]
      }
-    ]
+    ],
+    "trimColour": "#5a5852"
    },
    "roof": {
     "form": "flat",
@@ -98,7 +99,7 @@
    "storeys": 1,
    "wall": {
     "material": "stucco",
-    "colour": "#f3f1ea",
+    "colour": "#4a4640",
     "windows": "punched",
     "windowRatio": 0.22,
     "bay": 5,
@@ -111,7 +112,7 @@
    "roof": {
     "form": "flat",
     "colour": "#ddd9cf",
-    "parapet": 0.9
+    "parapet": 0.3
    }
   },
   {
@@ -123,12 +124,34 @@
    ],
    "params": {
     "length": 52,
-    "count": 18,
+    "count": 13,
     "height": 4.2,
-    "radius": 0.3,
+    "radius": 0.22,
     "kind": "round",
-    "beamHeight": 0.7,
-    "roofDepth": 3.0,
+    "beamHeight": 0.5,
+    "roofDepth": 0.0,
+    "colour": "#f6f4ee",
+    "roofColour": "#e4e0d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    2.5,
+    5.8
+   ],
+   "params": {
+    "length": 52,
+    "count": 13,
+    "height": 4.2,
+    "radius": 0.22,
+    "kind": "round",
+    "beamHeight": 0.3,
+    "roofDepth": 0.0,
     "colour": "#f6f4ee",
     "roofColour": "#e4e0d6"
    },
@@ -179,27 +202,28 @@
      "front": "punched",
      "back": "punched"
     },
-    "plinth": 0.7,
+    "plinth": 1.0,
     "cornice": true,
     "pattern": [
      {
       "type": "arcade",
       "shape": "arch",
       "bay": 9,
-      "opening": 0.6,
-      "height": 0.8,
+      "opening": 0.7,
+      "height": 0.85,
       "depth": 1.0,
       "pierColour": "#f6f4ee",
       "faces": [
        "front"
       ]
      }
-    ]
+    ],
+    "trimColour": "#5a5852"
    },
    "roof": {
     "form": "gable",
     "colour": "#e8e4d8",
-    "pitch": 14,
+    "pitch": 10,
     "axis": "x",
     "overhang": 0.4
    }
@@ -228,27 +252,28 @@
      "front": "punched",
      "back": "punched"
     },
-    "plinth": 0.7,
+    "plinth": 1.0,
     "cornice": true,
     "pattern": [
      {
       "type": "arcade",
       "shape": "arch",
       "bay": 9,
-      "opening": 0.6,
-      "height": 0.8,
+      "opening": 0.7,
+      "height": 0.85,
       "depth": 1.0,
       "pierColour": "#f6f4ee",
       "faces": [
        "front"
       ]
      }
-    ]
+    ],
+    "trimColour": "#5a5852"
    },
    "roof": {
     "form": "gable",
     "colour": "#e8e4d8",
-    "pitch": 14,
+    "pitch": 10,
     "axis": "x",
     "overhang": 0.4
    }
@@ -272,8 +297,8 @@
     "material": "stucco",
     "colour": "#f1eee6",
     "windows": "punched",
-    "windowRatio": 0.16,
-    "bay": 6,
+    "windowRatio": 0.12,
+    "bay": 9,
     "plinth": 0.6,
     "cornice": true,
     "faces": {
@@ -285,9 +310,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8522f",
+    "colour": "#9c5a3c",
     "material": "clay-tile",
-    "pitch": 22,
+    "pitch": 12,
     "overhang": 1.2
    }
   },
@@ -310,8 +335,8 @@
     "material": "stucco",
     "colour": "#f1eee6",
     "windows": "punched",
-    "windowRatio": 0.16,
-    "bay": 6,
+    "windowRatio": 0.12,
+    "bay": 9,
     "plinth": 0.6,
     "cornice": true,
     "faces": {
@@ -323,9 +348,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8522f",
+    "colour": "#9c5a3c",
     "material": "clay-tile",
-    "pitch": 22,
+    "pitch": 12,
     "overhang": 1.2
    }
   },
@@ -348,8 +373,8 @@
     "material": "stucco",
     "colour": "#f1eee6",
     "windows": "punched",
-    "windowRatio": 0.16,
-    "bay": 7,
+    "windowRatio": 0.12,
+    "bay": 9,
     "plinth": 0.6,
     "cornice": true,
     "faces": {
@@ -361,9 +386,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8522f",
+    "colour": "#9c5a3c",
     "material": "clay-tile",
-    "pitch": 22,
+    "pitch": 12,
     "overhang": 1.2
    }
   },
@@ -378,6 +403,76 @@
     "radius": 3.2,
     "tiers": 2
    }
+  },
+  {
+   "type": "market-open/pediment",
+   "at": [
+    -33.5,
+    -1.7,
+    11.6
+   ],
+   "params": {
+    "width": 12,
+    "rise": 3.4,
+    "depth": 0.7,
+    "colour": "#f6f4ee",
+    "trim_colour": "#e8e4d8",
+    "wall_colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -33.5,
+    -1.9,
+    5.8
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "balustrade",
+    "pillarEvery": 1.3,
+    "colour": "#f6f4ee"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/pediment",
+   "at": [
+    33.5,
+    -1.7,
+    11.6
+   ],
+   "params": {
+    "width": 12,
+    "rise": 3.4,
+    "depth": 0.7,
+    "colour": "#f6f4ee",
+    "trim_colour": "#e8e4d8",
+    "wall_colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    33.5,
+    -1.9,
+    5.8
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "balustrade",
+    "pillarEvery": 1.3,
+    "colour": "#f6f4ee"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -393,6 +488,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Pavilion pediments, garlanded cornice, balcony and relief ornaments missing; gallery columns read faintly; arch openings filled dark; rear U wings are composed, not the irregular OSM outline."
+  "gaps": "Pediment is a plain triangle without relief, garlands or balcony; gallery columns are single-file not paired; arch openings still read dark glazed; rear U wings composed, not the irregular OSM outline."
  }
 }

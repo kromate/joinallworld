@@ -11,7 +11,7 @@
    "licence": "CC BY 4.0",
    "author": "LittleT889",
    "view": "front",
-   "file": "/tmp/places-evidence/philipsburg/church.jpg",
+   "file": "/tmp/places-evidence/philipsburg/msts.jpg",
    "used": "multi-coloured fieldstone walls, steep gable with red-and-white trimmed roof edge and white cross, crenellated stone bell tower at front left, pale blue and white arched portal with brown double doors, small arched side windows, detached white-post shelter with pale blue roof at left, stone-paved forecourt"
   },
   {
@@ -23,7 +23,7 @@
  "camera": {
   "yawDeg": 0,
   "pitchDeg": 3,
-  "fovDeg": 42,
+  "fovDeg": 50,
   "aspect": 1.333
  },
  "parts": [
@@ -44,11 +44,11 @@
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#847769",
+    "colour": "#8c7d6a",
     "windows": "punched",
     "windowShape": "arched",
-    "windowRatio": 0.08,
-    "bay": 5,
+    "windowRatio": 0.14,
+    "bay": 4,
     "faces": {
      "front": "none"
     },
@@ -56,7 +56,7 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#8a4a42",
+    "colour": "#a0433c",
     "material": "metal-sheet",
     "pitch": 44,
     "overhang": 0.5
@@ -72,73 +72,21 @@
     ]
    },
    "at": [
-    -4.8,
-    -1.5
+    -3.6,
+    2.0
    ],
-   "height": 8.6,
+   "height": 9.6,
    "storeys": 2,
    "wall": {
     "material": "stone",
-    "colour": "#6f655b",
+    "colour": "#7a6c5c",
     "windows": "none",
     "parapet": 0.8
    },
    "roof": {
     "form": "flat",
-    "colour": "#6f655b",
+    "colour": "#7a6c5c",
     "parapet": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "porch",
-   "footprint": {
-    "rect": [
-     5.4,
-     1.6
-    ]
-   },
-   "at": [
-    0,
-    -8.3
-   ],
-   "height": 4.6,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f4f1ea",
-    "windows": "none",
-    "bands": "#8fb7dc"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8fb7dc",
-    "parapet": 0.3
-   }
-  },
-  {
-   "type": "mass",
-   "id": "door",
-   "footprint": {
-    "rect": [
-     2.2,
-     0.5
-    ]
-   },
-   "at": [
-    0,
-    -9.3
-   ],
-   "height": 3.0,
-   "storeys": 1,
-   "wall": {
-    "material": "timber",
-    "colour": "#5b2f26",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#5b2f26"
    }
   },
   {
@@ -192,36 +140,151 @@
    }
   },
   {
-   "type": "canopy",
-   "at": [
-    -8.2,
-    -8.5,
-    0
-   ],
-   "params": {
-    "form": "flat",
-    "width": 3.6,
-    "depth": 3.2,
-    "height": 3.2,
-    "columns": 4,
-    "colour": "#8fb7dc",
-    "edgeColour": "#f4f1ea"
-   }
-  },
-  {
    "type": "mass",
-   "id": "steps",
+   "id": "arch-blue",
    "footprint": {
     "rect": [
-     6.6,
-     1.6
+     6.4,
+     0.5
     ]
    },
    "at": [
     0,
-    -10.0
+    -8.0
    ],
+   "z0": 0,
+   "height": 5.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb7dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb7dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-white",
+   "footprint": {
+    "rect": [
+     5.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -8.35
+   ],
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-blue2",
+   "footprint": {
+    "rect": [
+     3.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -8.7
+   ],
+   "z0": 0,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7aa7d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7aa7d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b2f26",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b2f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transom",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.0
+   ],
+   "z0": 3.1,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6a8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step",
+   "footprint": {
+    "rect": [
+     7.0,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
    "height": 0.5,
+   "storeys": 1,
    "wall": {
     "material": "stone",
     "colour": "#c79a68",
@@ -230,6 +293,292 @@
    "roof": {
     "form": "flat",
     "colour": "#c79a68"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -3.6,
+    0.4
+   ],
+   "z0": 6.8,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e2a26",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2a26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shbase",
+   "footprint": {
+    "rect": [
+     4.4,
+     3.4
+    ]
+   },
+   "at": [
+    -9,
+    -9
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7a6c5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shroof",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.6
+    ]
+   },
+   "at": [
+    -9,
+    -9
+   ],
+   "z0": 3.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c8e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9c8e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10.7,
+    -10.5
+   ],
+   "z0": 0.9,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -7.3,
+    -10.5
+   ],
+   "z0": 0.9,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10.7,
+    -7.5
+   ],
+   "z0": 0.9,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -7.3,
+    -7.5
+   ],
+   "z0": 0.9,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mer0",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -4.8999999999999995,
+    0.19999999999999996
+   ],
+   "z0": 9.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a6c5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mer1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -2.3,
+    0.19999999999999996
+   ],
+   "z0": 9.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a6c5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mer2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -3.5999999999999996,
+    -1.2999999999999998
+   ],
+   "z0": 9.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a6c5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mer3",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -3.5999999999999996,
+    1.7
+   ],
+   "z0": 9.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a6c5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c5c"
    }
   }
  ],
@@ -259,7 +608,7 @@
  },
  "review": {
   "rounds": 2,
-  "match": "close",
-  "gaps": "Porch is a plain white box (no blue-and-white stepped arch, no stained transom); no arched side windows, crenellations or red-white roof trim; stone is a uniform brick-like texture, not multi-coloured fieldstone."
+  "match": "fair",
+  "gaps": "stone texture is uniform brick not multi-coloured fieldstone; arches are stepped rectangles not rounded; side windows not arched; red roof trim only on one edge; evidence replaced with true Mary Star of the Sea photo"
  }
 }

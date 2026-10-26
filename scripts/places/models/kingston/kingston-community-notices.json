@@ -42,16 +42,16 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d8cfa9",
+    "colour": "#d2bf8a",
     "windows": "none",
-    "plinth": 0.3,
+    "plinth": 0,
     "faces": {
      "front": "none"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#cfc8b0",
+    "colour": "#c9b98c",
     "parapet": 0.1
    }
   },
@@ -60,13 +60,13 @@
    "id": "lattice",
    "footprint": {
     "rect": [
-     22,
+     23,
      0.5
     ]
    },
    "at": [
     0,
-    -9.2
+    -9.4
    ],
    "rotDeg": 2,
    "z0": 0,
@@ -87,8 +87,8 @@
    "id": "upper",
    "footprint": {
     "rect": [
-     24.6,
-     19.5
+     26.4,
+     21.3
     ]
    },
    "at": [
@@ -101,7 +101,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9d2bb",
+    "colour": "#cfc6a8",
     "windows": "rect",
     "windowRatio": 0.22,
     "bay": 2.8,
@@ -112,9 +112,9 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#8c9296",
+    "colour": "#5f6468",
     "material": "corrugated",
-    "pitch": 16,
+    "pitch": 11,
     "overhang": 0.8
    }
   },
@@ -123,13 +123,13 @@
    "id": "gable-left",
    "footprint": {
     "rect": [
-     8,
-     2.2
+     8.5,
+     4.5
     ]
    },
    "at": [
-    -8.5,
-    -10.4
+    -8,
+    -10.3
    ],
    "rotDeg": 2,
    "z0": 3.6,
@@ -137,16 +137,17 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9d2bb",
+    "colour": "#cfc6a8",
     "windows": "rect",
     "windowRatio": 0.25,
     "cornice": true
    },
    "roof": {
     "form": "gable",
-    "colour": "#d9d2bb",
-    "pitch": 24,
-    "overhang": 0.3
+    "colour": "#cfc6a8",
+    "pitch": 34,
+    "overhang": 0.2,
+    "axis": "y"
    }
   },
   {
@@ -154,13 +155,13 @@
    "id": "gable-right",
    "footprint": {
     "rect": [
-     8,
-     2.2
+     8.5,
+     4.5
     ]
    },
    "at": [
-    8.5,
-    -10.4
+    8,
+    -10.3
    ],
    "rotDeg": 2,
    "z0": 3.6,
@@ -168,43 +169,60 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9d2bb",
+    "colour": "#cfc6a8",
     "windows": "rect",
     "windowRatio": 0.25,
     "cornice": true
    },
    "roof": {
     "form": "gable",
-    "colour": "#d9d2bb",
-    "pitch": 24,
-    "overhang": 0.3
+    "colour": "#cfc6a8",
+    "pitch": 34,
+    "overhang": 0.2,
+    "axis": "y"
    }
   },
   {
    "type": "array",
    "params": {
     "of": {
-     "type": "prism",
+     "type": "revolve",
      "params": {
-      "rect": [
-       0.45,
-       0.45
+      "profile": [
+       [
+        0.35,
+        0,
+        "#f2efe6"
+       ],
+       [
+        0.35,
+        3.6,
+        "#f2efe6"
+       ],
+       [
+        0.45,
+        3.6,
+        "#f2efe6"
+       ],
+       [
+        0.45,
+        3.75,
+        "#f2efe6"
+       ]
       ],
-      "height": 3.6,
-      "colour": "#f2efe6",
-      "topColour": "#f2efe6"
+      "segments": 10
      }
     },
     "mode": "line",
-    "count": 10,
+    "count": 8,
     "start": [
      -10.5,
-     -10.6,
+     -10.9,
      0
     ],
     "end": [
      10.5,
-     -10.6,
+     -10.9,
      0
     ]
    }
@@ -217,20 +235,84 @@
    "params": {
     "of": {
      "type": "awning",
-     "params": {}
+     "params": {
+      "width": 2.1,
+      "depth": 0.9,
+      "height": 2.0,
+      "colours": [
+       "#d9d2bb",
+       "#d9d2bb"
+      ],
+      "stripe": 5,
+      "posts": false
+     }
     },
     "mode": "line",
-    "count": 6,
+    "count": 8,
     "start": [
-     -9,
-     -10.7,
-     5.4
+     -9.5,
+     -10.85,
+     5.2
     ],
     "end": [
-     9,
-     -10.7,
-     5.4
+     9.5,
+     -10.85,
+     5.2
     ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8,
+    -12.56,
+    9.4
+   ],
+   "params": {
+    "radius": 0.1,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.6,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#b8b09a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    8,
+    -12.56,
+    9.4
+   ],
+   "params": {
+    "radius": 0.1,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.6,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#b8b09a"
    }
   },
   {
@@ -242,10 +324,27 @@
    ],
    "params": {
     "length": 34,
-    "height": 1.9,
+    "height": 1.0,
+    "thickness": 0.35,
     "kind": "wall",
     "pillarEvery": 4,
     "colour": "#e6dfc4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -15,
+    1.0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.8,
+    "thickness": 0.05,
+    "kind": "fence",
+    "pillarEvery": 0.5,
+    "colour": "#2f5a3f"
    }
   },
   {
@@ -293,8 +392,8 @@
  "city": "kingston",
  "venueId": "kingston-community-notices",
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Not rendered: render queue down, no comparison done; gabled bays, lattice ground floor and awnings unchecked against the photo."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pediments are smaller than the photo and the lattice ground floor sits in shadow; only 4 awnings visible, pediment dentils and the right-hand side wing not modelled"
  }
 }

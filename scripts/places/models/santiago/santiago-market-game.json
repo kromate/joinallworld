@@ -52,7 +52,7 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#a39f96",
+    "colour": "#b3a894",
     "windows": "none",
     "plinth": 0.4,
     "parapet": 0.6,
@@ -69,93 +69,6 @@
    }
   },
   {
-   "type": "prism",
-   "id": "entrance-bay",
-   "at": [
-    -8,
-    -52,
-    0
-   ],
-   "params": {
-    "rect": [
-     14,
-     6
-    ],
-    "height": 14,
-    "colour": "#d1bd98",
-    "windows": "none",
-    "topColour": "#bdb8ab"
-   }
-  },
-  {
-   "type": "loft",
-   "id": "glass-vault",
-   "at": [
-    -8,
-    -55.2,
-    0
-   ],
-   "params": {
-    "colour": "#5d7f93",
-    "material": "glass-curtain",
-    "capTop": true,
-    "curve": true,
-    "steps": 5,
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       10,
-       0.8
-      ]
-     },
-     {
-      "z": 7,
-      "rect": [
-       10,
-       0.8
-      ]
-     },
-     {
-      "z": 11,
-      "rect": [
-       8.4,
-       0.8
-      ]
-     },
-     {
-      "z": 13.2,
-      "rect": [
-       4.5,
-       0.8
-      ]
-     },
-     {
-      "z": 14,
-      "rect": [
-       1.2,
-       0.8
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    -30,
-    -62,
-    0
-   ],
-   "params": {
-    "width": 3,
-    "height": 9,
-    "bottom": 0,
-    "colour": "#2b2b2e",
-    "posts": false
-   }
-  },
-  {
    "type": "core/tree",
    "at": [
     -46,
@@ -165,7 +78,7 @@
    "params": {
     "kind": "palm",
     "height": 9,
-    "count": 4,
+    "count": 3,
     "spread": 5,
     "line": 1
    }
@@ -188,20 +101,249 @@
      50,
      -70
     ],
-    "count": 6
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-bay",
+   "at": [
+    -8,
+    -51.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     3
+    ],
+    "height": 11,
+    "colour": "#c9bca3",
+    "windows": "none",
+    "topColour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-band",
+   "at": [
+    -8,
+    -54.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.6
+    ],
+    "height": 3.8,
+    "colour": "#4c6b78",
+    "material": "glass-curtain",
+    "windows": "none",
+    "topColour": "#4c6b78"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hoarding-1",
+   "at": [
+    14,
+    -54,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 2.8,
+    "colour": "#d6458f",
+    "windows": "none",
+    "topColour": "#d6458f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hoarding-2",
+   "at": [
+    -22,
+    -54,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "height": 2.4,
+    "colour": "#c23b7e",
+    "windows": "none",
+    "topColour": "#c23b7e"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    34,
+    -62,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.3,
+    "columns": 4,
+    "colour": "#f2f2f0",
+    "edgeColour": "#f2f2f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 8.5,
+    "bottom": 0,
+    "colour": "#2b2b2e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 8.5,
+    "bottom": 0,
+    "colour": "#2b2b2e",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 0.8,
+      "colour": "#2f3a36",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -60
+    ],
+    "end": [
+     20,
+     -60
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.9
+      ],
+      "height": 0.5,
+      "colour": "#b5b0a6",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -67
+    ],
+    "end": [
+     20,
+     -67
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -66,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 6,
+    "line": 1
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -80
+    ],
+    "end": [
+     50,
+     -80
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
-  "forecourtDepth": 30,
-  "trees": 4,
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 36,
+  "trees": 0,
   "cars": [
    {
     "at": [
      -30,
-     -64
+     -76
     ],
     "yawDeg": 90,
     "colour": "#c9c9cc"
@@ -209,7 +351,7 @@
    {
     "at": [
      -23,
-     -64
+     -76
     ],
     "yawDeg": 90,
     "colour": "#2e3238"
@@ -217,50 +359,10 @@
    {
     "at": [
      -16,
-     -64
+     -76
     ],
     "yawDeg": 90,
     "colour": "#8a1f1f"
-   },
-   {
-    "at": [
-     -9,
-     -64
-    ],
-    "yawDeg": 90,
-    "colour": "#e8e8e8"
-   },
-   {
-    "at": [
-     -2,
-     -64
-    ],
-    "yawDeg": 90,
-    "colour": "#3d5a80"
-   },
-   {
-    "at": [
-     5,
-     -64
-    ],
-    "yawDeg": 90,
-    "colour": "#1d1d1f"
-   },
-   {
-    "at": [
-     -30,
-     -70
-    ],
-    "yawDeg": 90,
-    "colour": "#c9c9cc"
-   },
-   {
-    "at": [
-     -23,
-     -70
-    ],
-    "yawDeg": 90,
-    "colour": "#e8e8e8"
    }
   ],
   "extent": [
@@ -269,8 +371,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "whole 392 m mall is scaled to 118 m so the street-level photo (entrance gate-frames, pink hoardings, benches, canopy of the east entrance) cannot match; entrance canopy is hidden behind the vault bay; facade panelling and palms simplified; heights compressed"
+  "gaps": "Whole 392 m mall is scaled to 118 m so the street view cannot match exactly; gate frames, canopy, pink hoardings, bollards and benches are blocky stand-ins; no granite benches detail or mall arc facade; tall palms reduced."
  }
 }

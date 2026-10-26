@@ -19,7 +19,7 @@
  "camera": {
   "yawDeg": 0,
   "pitchDeg": 3,
-  "fovDeg": 30,
+  "fovDeg": 24,
   "aspect": 1.333
  },
  "parts": [
@@ -28,17 +28,17 @@
    "id": "mall",
    "footprint": {
     "rect": [
-     62,
-     60
+     22,
+     40
     ]
    },
    "at": [
     0,
-    10
+    0
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 22,
+   "height": 32,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -54,7 +54,7 @@
       "type": "floors",
       "colours": [
        "#2f64b8",
-       "#3d73c6"
+       "#3a70c2"
       ]
      }
     ]
@@ -71,7 +71,7 @@
    "id": "sign-board",
    "footprint": {
     "rect": [
-     28,
+     16,
      0.6
     ]
    },
@@ -80,18 +80,18 @@
     -20.4
    ],
    "rotDeg": 0,
-   "z0": 8.5,
-   "height": 10.5,
+   "z0": 23,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#1f4f9c",
+    "colour": "#c8302e",
     "windows": "none",
     "windowRatio": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#1f4f9c"
+    "colour": "#c8302e"
    }
   },
   {
@@ -99,27 +99,27 @@
    "id": "deco-panel",
    "footprint": {
     "rect": [
-     11,
-     0.5
+     13,
+     0.6
     ]
    },
    "at": [
     0,
-    -20.8
+    -20.5
    ],
    "rotDeg": 0,
-   "z0": 3,
-   "height": 5.5,
+   "z0": 10,
+   "height": 9,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#6a2a30",
+    "colour": "#2f6a3a",
     "windows": "none",
     "windowRatio": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#6a2a30"
+    "colour": "#2f6a3a"
    }
   },
   {
@@ -127,18 +127,18 @@
    "id": "left-block-pink",
    "footprint": {
     "rect": [
-     16,
+     17,
      24
     ]
    },
    "at": [
-    -28,
+    -19.5,
     -8
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 28,
-   "storeys": 7,
+   "height": 30,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#e19aa8",
@@ -165,18 +165,18 @@
    "id": "left-block-blue",
    "footprint": {
     "rect": [
-     13,
+     14,
      24
     ]
    },
    "at": [
-    -40,
+    -34,
     -6
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 24,
-   "storeys": 6,
+   "height": 26,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#7db5d6",
@@ -203,18 +203,18 @@
    "id": "right-block-green",
    "footprint": {
     "rect": [
-     14,
+     16,
      24
     ]
    },
    "at": [
-    30,
+    18.5,
     -8
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 26,
-   "storeys": 6,
+   "height": 29,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#8fc08b",
@@ -246,13 +246,13 @@
     ]
    },
    "at": [
-    43,
+    33,
     -6
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 20,
-   "storeys": 5,
+   "height": 24,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#d9cdb0",
@@ -275,45 +275,9 @@
    }
   },
   {
-   "type": "stall-row",
-   "at": [
-    -22,
-    -24,
-    0
-   ],
-   "params": {
-    "count": 5,
-    "pitch": 3.2,
-    "kind": "umbrella",
-    "colours": [
-     "#2f6cb5",
-     "#e0a030",
-     "#c0392b"
-    ]
-   }
-  },
-  {
-   "type": "stall-row",
-   "at": [
-    8,
-    -24,
-    0
-   ],
-   "params": {
-    "count": 6,
-    "pitch": 3.2,
-    "kind": "umbrella",
-    "colours": [
-     "#2f6cb5",
-     "#e0a030",
-     "#c0392b"
-    ]
-   }
-  },
-  {
    "type": "car",
    "at": [
-    2,
+    4,
     -34,
     0
    ],
@@ -336,16 +300,196 @@
      "#ffffff"
     ]
    }
+  },
+  {
+   "type": "mass",
+   "id": "frame-top",
+   "footprint": {
+    "rect": [
+     14.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -20.6
+   ],
+   "rotDeg": 0,
+   "z0": 19,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4c8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inner-panel",
+   "footprint": {
+    "rect": [
+     10.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -20.9
+   ],
+   "rotDeg": 0,
+   "z0": 11,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a2a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a2a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-sign-r",
+   "footprint": {
+    "rect": [
+     3,
+     0.5
+    ]
+   },
+   "at": [
+    24,
+    -20.9
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c0302c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0302c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -27,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "colours": [
+     "#2f6cb5",
+     "#e0a030",
+     "#c0392b",
+     "#2f8a5a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "colours": [
+     "#c0392b",
+     "#2f6cb5",
+     "#e0a030"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -22,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "colours": [
+     "#2f6cb5",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -33,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "colours": [
+     "#c0392b",
+     "#e0a030"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    14,
+    -25,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#e0a030",
+     "#2f6cb5"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d4",
+    "count": 1
+   }
   }
  ],
  "site": {
   "ground": "asphalt",
   "forecourt": "road",
-  "forecourtDepth": 30,
+  "forecourtDepth": 24,
   "trees": [],
   "extent": [
-   120,
-   100
+   110,
+   90
   ]
  },
  "schema": "allworld-place-model",
@@ -354,7 +498,7 @@
  "venueId": "manila-osm-way-319524305",
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "Only the blue end facade and flanking coloured blocks are modelled; no cables, vehicles, stall clutter or the real irregular footprint (matched OSM way is a neighbouring wing)."
+  "match": "fair",
+  "gaps": "Street canyon simplified: no overhead cable runs, tricycles/trucks or tiled roof-edge awnings; blue slab is a flat box; sign boards are plain colour blocks without lettering."
  }
 }

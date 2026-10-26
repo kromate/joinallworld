@@ -7,7 +7,7 @@
  "evidence": [
   {
    "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:Chính_điện_chùa_Hoằng_Pháp.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Ch\u00ednh_\u0111i\u1ec7n_ch\u00f9a_Ho\u1eb1ng_Ph\u00e1p.jpg",
    "licence": "CC BY-SA 3.0",
    "author": "Thuydaonguyen",
    "view": "front",
@@ -16,9 +16,9 @@
   },
   {
    "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:Tháp_Nhị_Nghiêm.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Th\u00e1p_Nh\u1ecb_Nghi\u00eam.jpg",
    "licence": "CC BY-SA 3.0",
-   "author": "Bùi Thụy Đào Nguyên",
+   "author": "B\u00f9i Th\u1ee5y \u0110\u00e0o Nguy\u00ean",
    "view": "front",
    "file": "/tmp/places-evidence/ho-chi-minh-city/hp-tower.jpg",
    "used": "Nhi Nghiem tower: stepped round base, striped drum, grey tiled dome with niche, white spire"
@@ -50,10 +50,10 @@
     1
    ],
    "params": {
-    "width": 20,
-    "rise": 0.1,
+    "width": 26,
+    "rise": 0.08,
     "run": 0.5,
-    "count": 8,
+    "count": 10,
     "colour": "#b8ad9b"
    }
   },
@@ -75,7 +75,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#7a3a2a",
+    "colour": "#6b2e22",
     "windows": "none",
     "bands": "#efe4c8",
     "cornice": true,
@@ -85,15 +85,15 @@
       "type": "arcade",
       "shape": "rect",
       "bay": 4.0,
-      "opening": 0.72,
+      "opening": 0.78,
       "height": 0.9,
       "depth": 0.9,
       "storeys": 1,
       "faces": [
        "front"
       ],
-      "colour": "#241410",
-      "pierColour": "#8f4531"
+      "colour": "#4a2218",
+      "pierColour": "#7a3426"
      },
      {
       "type": "bands",
@@ -103,7 +103,7 @@
       "at": 0.88
      }
     ],
-    "glassColour": "#241410"
+    "glassColour": "#4a2218"
    },
    "roof": {
     "form": "flat",
@@ -120,9 +120,9 @@
    "params": {
     "width": 24,
     "depth": 13,
-    "rise": 2.6,
+    "rise": 2.8000000000000003,
     "overhang": 3.6,
-    "upturn": 1.5,
+    "upturn": 2.2,
     "colour": "#9c4a38",
     "trim": "#efe4c8",
     "material": "tile",
@@ -176,9 +176,9 @@
    "params": {
     "width": 14,
     "depth": 7.5,
-    "rise": 3.4,
+    "rise": 3.6,
     "overhang": 3.4,
-    "upturn": 1.7,
+    "upturn": 2.4,
     "colour": "#b0503a",
     "trim": "#efe4c8",
     "material": "tile",
@@ -240,18 +240,18 @@
     "of": {
      "type": "revolve",
      "params": {
-      "colour": "#8f4531",
+      "colour": "#7a3426",
       "profile": [
        [
         0,
         0
        ],
        [
-        0.35,
+        0.5,
         0
        ],
        [
-        0.35,
+        0.5,
         5.4
        ],
        [
@@ -278,8 +278,8 @@
   {
    "type": "revolve",
    "at": [
-    -19,
-    9,
+    -24,
+    18,
     0
    ],
    "params": {
@@ -370,86 +370,6 @@
      ]
     ]
    }
-  },
-  {
-   "type": "loft",
-   "at": [
-    19,
-    8,
-    0
-   ],
-   "params": {
-    "colour": "#f4f1ea",
-    "sections": [
-     {
-      "z": 0.0,
-      "rect": [
-       3.85,
-       3.85
-      ]
-     },
-     {
-      "z": 0.66,
-      "rect": [
-       3.3,
-       3.3
-      ]
-     },
-     {
-      "z": 1.21,
-      "circle": 1.43
-     },
-     {
-      "z": 3.3,
-      "ellipse": [
-       1.21,
-       0.77
-      ]
-     },
-     {
-      "z": 5.5,
-      "ellipse": [
-       1.1,
-       0.66
-      ]
-     },
-     {
-      "z": 6.88,
-      "ellipse": [
-       0.77,
-       0.55
-      ]
-     },
-     {
-      "z": 7.37,
-      "circle": 0.55
-     },
-     {
-      "z": 8.14,
-      "circle": 0.17
-     }
-    ]
-   }
-  },
-  {
-   "type": "gate",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    -24,
-    -12,
-    0
-   ],
-   "params": {
-    "width": 8,
-    "height": 4,
-    "colour": "#9a2f22",
-    "board_colour": "#d9a441",
-    "arch": false
-   },
-   "rotDeg": 90
   },
   {
    "type": "revolve",
@@ -656,144 +576,42 @@
    }
   },
   {
-   "type": "revolve",
+   "type": "prism",
+   "id": "lattice",
+   "params": {
+    "rect": [
+     20,
+     0.15
+    ],
+    "z0": 5.0,
+    "height": 0.9,
+    "colour": "#efe4c8"
+   },
+   "at": [
+    0,
+    -6.1
+   ],
    "lod": [
     0,
     1
-   ],
-   "at": [
-    -14,
-    -8.5,
-    0
-   ],
-   "params": {
-    "colour": "#c4261f",
-    "profile": [
-     [
-      0,
-      2.2
-     ],
-     [
-      0.5,
-      2.4
-     ],
-     [
-      0.7,
-      3.0
-     ],
-     [
-      0.5,
-      3.6
-     ],
-     [
-      0,
-      3.8
-     ]
-    ]
-   }
+   ]
   },
   {
-   "type": "revolve",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    -14,
-    -8.5,
-    0
-   ],
+   "type": "prism",
+   "id": "forecourt",
    "params": {
-    "colour": "#6b5a48",
-    "profile": [
-     [
-      0,
-      0
-     ],
-     [
-      0.12,
-      0
-     ],
-     [
-      0.12,
-      2.2
-     ],
-     [
-      0,
-      2.2
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "lod": [
-    0,
-    1
-   ],
+    "rect": [
+     30,
+     8
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#cfc7b5"
+   },
    "at": [
-    14,
-    -8.5,
-    0
-   ],
-   "params": {
-    "colour": "#c4261f",
-    "profile": [
-     [
-      0,
-      2.2
-     ],
-     [
-      0.5,
-      2.4
-     ],
-     [
-      0.7,
-      3.0
-     ],
-     [
-      0.5,
-      3.6
-     ],
-     [
-      0,
-      3.8
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "lod": [
     0,
-    1
-   ],
-   "at": [
-    14,
-    -8.5,
-    0
-   ],
-   "params": {
-    "colour": "#6b5a48",
-    "profile": [
-     [
-      0,
-      0
-     ],
-     [
-      0.12,
-      0
-     ],
-     [
-      0.12,
-      2.2
-     ],
-     [
-      0,
-      2.2
-     ]
-    ]
-   }
+    -16
+   ]
   }
  ],
  "site": {
@@ -825,6 +643,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof corner curls are simple upturns without carved dragon ends; front bays have glazed look rather than open dark colonnade; lattice band and arched side doors only suggested; tower and obelisk are background stand-ins"
+  "gaps": "Roof tails raised but not carved dragon finials; colonnade is simple columns with arched dark openings; side doors and fretwork only suggested; tower and stupa are background stand-ins"
  }
 }

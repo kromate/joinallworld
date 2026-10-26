@@ -34,13 +34,13 @@
     "osm": true,
     "simplify": 6
    },
-   "height": 13,
+   "height": 14,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#cfd1d0",
+    "colour": "#c9cccb",
     "windows": "none",
-    "bands": "#aeb0b1",
+    "bands": "#b4b8b8",
     "plinth": 0.4
    },
    "roof": {
@@ -54,12 +54,12 @@
    "id": "glass-band",
    "footprint": {
     "rect": [
-     24,
+     16,
      3
     ]
    },
    "at": [
-    8,
+    -2,
     -16
    ],
    "height": 10,
@@ -81,34 +81,34 @@
    "id": "banner-board",
    "footprint": {
     "rect": [
-     22,
+     34,
      0.6
     ]
    },
    "at": [
-    22,
+    14,
     -17
    ],
-   "height": 7,
+   "height": 8,
    "z0": 5,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3f78c4",
+    "colour": "#6fa0d8",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#3f78c4"
+    "colour": "#6fa0d8"
    }
   },
   {
    "type": "loft",
    "id": "prow",
    "at": [
-    -6,
-    -16,
-    13
+    -10,
+    -14,
+    14
    ],
    "params": {
     "sections": [
@@ -116,77 +116,120 @@
       "z": 0,
       "rect": [
        12,
-       5
+       6
       ],
       "colour": "#2c3a45"
      },
      {
-      "z": 3,
+      "z": 4,
       "rect": [
        10,
-       4.5
+       5
       ],
-      "cx": 2,
+      "cx": -1,
+      "colour": "#31465a"
+     },
+     {
+      "z": 8,
+      "rect": [
+       6,
+       3
+      ],
+      "cx": -3,
       "colour": "#2c3a45"
      },
      {
-      "z": 5.5,
+      "z": 11,
       "rect": [
-       5,
-       3
+       1.5,
+       1
       ],
-      "cx": 5,
+      "cx": -5,
       "colour": "#232d35"
      }
     ],
-    "colour": "#2c3a45"
+    "colour": "#2c3a45",
+    "curve": true
    }
   },
   {
-   "type": "mass",
+   "type": "prism",
    "id": "glass-tower",
-   "footprint": {
-    "rect": [
-     22,
-     18
-    ]
-   },
    "at": [
     44,
-    24
+    26,
+    0
    ],
-   "height": 44,
-   "storeys": 6,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#34545c",
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "height": 34,
+    "topScale": [
+     0.85,
+     0.85
+    ],
+    "colour": "#2c4a4c",
+    "topColour": "#1f3236",
     "windows": "curtain",
-    "windowRatio": 0.5,
-    "bands": "#2a3a42"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2a3338"
+    "windowRatio": 0.6,
+    "glassColour": "#2f5a5c",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 0.8,
+      "spacing": 2.2,
+      "colour": "#8a8a4a",
+      "margin": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    44,
+    26,
+    34
+   ],
+   "params": {
+    "rect": [
+     19,
+     12
+    ],
+    "height": 3,
+    "topScale": [
+     0.7,
+     0.7
+    ],
+    "colour": "#1c2a2d",
+    "topColour": "#1c2a2d"
    }
   },
   {
    "type": "core/tree",
    "at": [
     0,
-    -30
+    -26
    ],
    "params": {
     "kind": "palm",
-    "height": 9,
-    "count": 10,
-    "line": 100,
-    "spread": 3
+    "height": 12,
+    "count": 16,
+    "line": 110,
+    "spread": 2
    }
   }
  ],
  "site": {
   "ground": "asphalt",
-  "forecourt": "parking",
+  "forecourt": "road",
   "extent": [
    150,
    100
@@ -194,8 +237,8 @@
   "cars": 0
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "mall wing outline is the real OSM shape seen from the front; prow, glass band and tower placed by eye; no logos or banner art"
+  "gaps": "Mall wall is the faceted OSM outline not a straight long panel wall; tower fins and chamfered top simplified; prow is a single swept loft; foreground is a palm row only, no retaining wall or hillside planting."
  }
 }

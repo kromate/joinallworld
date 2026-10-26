@@ -27,25 +27,11 @@
   "aspect": 1.333
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "viewpoint is on the monument axis, the photo is off-axis from the left; ivy walls, stepped podium and statue pose simplified; no big shade trees or pond; backdrop block is generic"
+  "gaps": "viewpoint is on the monument axis, photo is off-axis; walls and vines simplified; trees are generic and sparse, no dense tree line; statue is a stand figure with V arms added; backdrop block simplified"
  },
  "parts": [
-  {
-   "type": "plaza",
-   "at": [
-    0,
-    -30,
-    0
-   ],
-   "params": {
-    "width": 100,
-    "depth": 90,
-    "colour": "#bdb5a6",
-    "border_colour": "#a79f90"
-   }
-  },
   {
    "type": "lawn",
    "at": [
@@ -73,6 +59,20 @@
    }
   },
   {
+   "type": "plaza",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 90,
+    "colour": "#9a8f80",
+    "border_colour": "#857b6d"
+   }
+  },
+  {
    "type": "prism",
    "id": "podium",
    "at": [
@@ -82,11 +82,11 @@
    ],
    "params": {
     "rect": [
-     34,
+     40,
      26
     ],
     "z0": 0,
-    "height": 2.6,
+    "height": 2.2,
     "colour": "#ecebe6"
    }
   },
@@ -100,63 +100,44 @@
    ],
    "params": {
     "rect": [
-     30,
+     36,
      22
     ],
-    "z0": 2.6,
+    "z0": 2.2,
     "height": 0.6,
     "colour": "#d5d0c4"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "plinth-dark",
-   "at": [
-    0,
-    -14,
-    0
-   ],
-   "params": {
-    "rect": [
-     34,
-     2
-    ],
-    "z0": 0,
-    "height": 0.5,
-    "colour": "#3a3a3a"
    }
   },
   {
    "type": "stair",
    "at": [
     0,
-    -27,
+    -20,
     0
    ],
    "params": {
-    "width": 22,
-    "height": 2.6,
-    "run": 13,
+    "width": 32,
+    "height": 2.2,
+    "run": 14,
     "colour": "#ecebe6",
     "rails": false
-   },
-   "rotDeg": 0
+   }
   },
   {
    "type": "prism",
    "id": "pylon0",
    "at": [
-    -3.4,
+    -4.2,
     0,
     0
    ],
    "params": {
     "rect": [
-     1.8,
+     2.0,
      2.6
     ],
-    "z0": 3.2,
-    "height": 38,
+    "z0": 2.8,
+    "height": 48,
     "colour": "#cfc6b4"
    }
   },
@@ -164,17 +145,17 @@
    "type": "prism",
    "id": "pylon1",
    "at": [
-    3.4,
+    4.2,
     0,
     0
    ],
    "params": {
     "rect": [
-     1.8,
+     2.0,
      2.6
     ],
-    "z0": 3.2,
-    "height": 38,
+    "z0": 2.8,
+    "height": 48,
     "colour": "#cfc6b4"
    }
   },
@@ -188,10 +169,10 @@
    ],
    "params": {
     "rect": [
-     8.6,
+     10.4,
      2.6
     ],
-    "z0": 41.2,
+    "z0": 48.8,
     "height": 1.2,
     "colour": "#cfc6b4"
    }
@@ -206,10 +187,10 @@
    ],
    "params": {
     "rect": [
-     8.6,
+     10.4,
      2.6
     ],
-    "z0": 20,
+    "z0": 17,
     "height": 1.0,
     "colour": "#cfc6b4"
    }
@@ -219,175 +200,163 @@
    "at": [
     0,
     0,
-    42.4
+    50
    ],
    "params": {
-    "height": 10.5,
+    "height": 12,
     "pose": "stand",
     "colour": "#2f2d2b"
    }
   },
   {
    "type": "prism",
-   "id": "wall-1",
+   "id": "wall-l",
    "at": [
-    -60,
-    -10,
+    -40,
+    22,
     0
    ],
    "params": {
     "rect": [
-     52,
-     5
+     4,
+     64
     ],
     "z0": 0,
-    "height": 3.4,
+    "height": 3.2,
     "colour": "#ecebe6"
    }
   },
   {
    "type": "prism",
-   "id": "ivy-1",
+   "id": "ivy-l",
    "at": [
-    -60,
-    -10,
+    -37.6,
+    22,
     0
    ],
    "params": {
     "rect": [
-     51,
-     2.4
+     0.8,
+     62
     ],
-    "z0": 3.4,
-    "height": 1.6,
-    "colour": "#6b8a4a"
+    "z0": 1.8,
+    "height": 1.4,
+    "colour": "#3f6a35"
    }
   },
   {
    "type": "prism",
-   "id": "wall1",
+   "id": "ivy-l-top",
    "at": [
-    45,
-    -10,
+    -40,
+    22,
     0
    ],
    "params": {
     "rect": [
-     20,
-     5
+     4.2,
+     62
     ],
-    "z0": 0,
-    "height": 3.4,
-    "colour": "#ecebe6"
+    "z0": 3.2,
+    "height": 0.4,
+    "colour": "#3f6a35"
    }
   },
   {
    "type": "prism",
-   "id": "ivy1",
-   "at": [
-    45,
-    -10,
-    0
-   ],
-   "params": {
-    "rect": [
-     19,
-     2.4
-    ],
-    "z0": 3.4,
-    "height": 1.6,
-    "colour": "#6b8a4a"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "block-r",
+   "id": "wall-r0",
    "at": [
     52,
-    -22,
+    -18,
     0
    ],
    "params": {
     "rect": [
-     16,
-     16
+     18,
+     12
     ],
     "z0": 0,
-    "height": 5,
+    "height": 4.5,
     "colour": "#ecebe6"
    }
   },
   {
    "type": "prism",
-   "id": "block-r-ivy",
+   "id": "wall-r1",
    "at": [
-    52,
-    -22,
+    54,
+    -18,
     0
    ],
    "params": {
     "rect": [
-     15,
-     14
+     14,
+     12
     ],
-    "z0": 5,
-    "height": 1.6,
-    "colour": "#6b8a4a"
+    "z0": 4.5,
+    "height": 2.2,
+    "colour": "#e4e2dc"
    }
   },
   {
-   "type": "sweep-path",
+   "type": "prism",
+   "id": "wall-r2",
    "at": [
-    0,
-    0,
-    46.5
+    56,
+    -18,
+    0
    ],
    "params": {
-    "points": [
-     [
-      0,
-      0,
-      0
-     ],
-     [
-      -2.6,
-      0,
-      3.6
-     ]
+    "rect": [
+     10,
+     12
     ],
-    "radius": 0.4,
-    "colour": "#2f2d2b"
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#dcdad3"
    }
   },
   {
-   "type": "sweep-path",
+   "type": "prism",
+   "id": "ivy-r",
    "at": [
-    0,
-    0,
-    46.5
+    46.6,
+    -18,
+    0
    ],
    "params": {
-    "points": [
-     [
-      0,
-      0,
-      0
-     ],
-     [
-      2.6,
-      0,
-      3.6
-     ]
+    "rect": [
+     0.8,
+     11
     ],
-    "radius": 0.4,
-    "colour": "#2f2d2b"
+    "z0": 4.0,
+    "height": 2.0,
+    "colour": "#3f6a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ivy-r-top",
+   "at": [
+    52,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     12
+    ],
+    "z0": 4.5,
+    "height": 0.01,
+    "colour": "#3f6a35"
    }
   },
   {
    "type": "floodlight-mast",
    "at": [
-    -70,
-    -22,
+    -44,
+    -14,
     0
    ],
    "params": {
@@ -399,8 +368,8 @@
   {
    "type": "array",
    "at": [
-    -62,
-    6,
+    -44,
+    4,
     0
    ],
    "params": {
@@ -411,8 +380,8 @@
      0
     ],
     "end": [
-     60,
      0,
+     56,
      0
     ],
     "count": 16,
@@ -438,33 +407,88 @@
    "id": "backdrop",
    "footprint": {
     "rect": [
-     50,
-     14
+     44,
+     12
     ]
    },
    "at": [
-    42,
-    62
+    52,
+    88
    ],
    "height": 21,
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8e6df",
-    "windows": "none",
+    "colour": "#ebe9e3",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
     "pattern": [
      {
       "type": "floors",
       "colours": [
-       "#e8e6df",
-       "#9fb0b8"
+       "#ebe9e3",
+       "#dedcd5"
       ]
      }
-    ]
+    ],
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "flat",
     "colour": "#b8b8b4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    58
+   ],
+   "params": {
+    "points": [
+     [
+      -0.8,
+      0,
+      0
+     ],
+     [
+      -3.4,
+      0,
+      4.6
+     ]
+    ],
+    "radius": 0.45,
+    "colour": "#2f2d2b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    58
+   ],
+   "params": {
+    "points": [
+     [
+      0.8,
+      0,
+      0
+     ],
+     [
+      3.4,
+      0,
+      4.6
+     ]
+    ],
+    "radius": 0.45,
+    "colour": "#2f2d2b"
    }
   }
  ],
@@ -476,34 +500,90 @@
     "kind": "broadleaf",
     "at": [
      -85,
-     -40
+     -45
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
-     -90,
-     -15
+     -92,
+     -20
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
-     75,
-     -30
+     -80,
+     -5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -72,
+     15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     70
     ]
    },
    {
     "kind": "broadleaf",
     "at": [
      -30,
-     60
+     85
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     88
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     90
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     -35
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     82,
+     -15
     ]
    }
   ],
   "extent": [
-   130,
-   130
+   110,
+   110
   ]
  }
 }

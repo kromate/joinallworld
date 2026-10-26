@@ -41,9 +41,9 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3d6b4",
+    "colour": "#dccdaa",
     "windows": "punched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.26,
     "faces": {
      "front": "punched",
      "back": "punched",
@@ -84,129 +84,6 @@
     "form": "flat",
     "colour": "#b9b5aa",
     "parapet": 0.6
-   }
-  },
-  {
-   "type": "prism",
-   "id": "drum",
-   "at": [
-    0,
-    -3.6,
-    0
-   ],
-   "params": {
-    "radius": 3.9,
-    "n": 28,
-    "height": 12,
-    "colour": "#a9d3cb",
-    "windows": "punched",
-    "windowRatio": 0.06,
-    "storeys": 3
-   }
-  },
-  {
-   "type": "prism",
-   "id": "drum-cap",
-   "at": [
-    0,
-    -3.6,
-    12
-   ],
-   "params": {
-    "radius": 4.0,
-    "n": 28,
-    "height": 0.5,
-    "colour": "#d9d9d2"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "wing-l",
-   "footprint": {
-    "rect": [
-     18,
-     6
-    ]
-   },
-   "at": [
-    -15,
-    -8
-   ],
-   "height": 4.8,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efebe3",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#b9b5aa",
-    "parapet": 0.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "wing-r",
-   "footprint": {
-    "rect": [
-     18,
-     6
-    ]
-   },
-   "at": [
-    15,
-    -8
-   ],
-   "height": 4.8,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efebe3",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#b9b5aa",
-    "parapet": 0.4
-   }
-  },
-  {
-   "type": "core/colonnade",
-   "id": "piers-l",
-   "at": [
-    -15,
-    -11.5,
-    0
-   ],
-   "params": {
-    "length": 17,
-    "count": 5,
-    "height": 4.4,
-    "radius": 0.4,
-    "kind": "square",
-    "roofDepth": 0,
-    "colour": "#efebe3"
-   }
-  },
-  {
-   "type": "core/colonnade",
-   "id": "piers-r",
-   "at": [
-    15,
-    -11.5,
-    0
-   ],
-   "params": {
-    "length": 17,
-    "count": 5,
-    "height": 4.4,
-    "radius": 0.4,
-    "kind": "square",
-    "roofDepth": 0,
-    "colour": "#efebe3"
    }
   },
   {
@@ -281,6 +158,652 @@
     "height": 14,
     "spread": 10
    }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "radius": 3.9,
+    "n": 24,
+    "height": 15.6,
+    "colour": "#a9d6cf",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-cap",
+   "at": [
+    0,
+    -3.6,
+    15.6
+   ],
+   "params": {
+    "radius": 4.0,
+    "n": 24,
+    "height": 0.5,
+    "colour": "#d9d9d2"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "drum-w1",
+   "at": [
+    0,
+    -7.55,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#2c2f33"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "drum-w2",
+   "at": [
+    0,
+    -7.55,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#2c2f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-l",
+   "at": [
+    -12,
+    -4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     3
+    ],
+    "height": 9.5,
+    "colour": "#d3c6a2",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "storeys": 2,
+    "faces": {
+     "front": "punched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-r",
+   "at": [
+    12,
+    -4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     3
+    ],
+    "height": 9.5,
+    "colour": "#d3c6a2",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "storeys": 2,
+    "faces": {
+     "front": "punched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "ramp-l",
+   "at": [
+    -5,
+    -11,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      3.5
+     ],
+     [
+      0,
+      3.5
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier-10",
+   "at": [
+    -8.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier-11",
+   "at": [
+    -12.5,
+    -9.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier-12",
+   "at": [
+    -16.5,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier-13",
+   "at": [
+    -19.5,
+    -16.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier-14",
+   "at": [
+    -21.3,
+    -21.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-10",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      -9.16,
+      -6.54
+     ],
+     [
+      -13.16,
+      -8.34
+     ],
+     [
+      -11.84,
+      -11.26
+     ],
+     [
+      -7.84,
+      -9.46
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-11",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      -13.46,
+      -8.52
+     ],
+     [
+      -17.46,
+      -11.52
+     ],
+     [
+      -15.54,
+      -14.08
+     ],
+     [
+      -11.54,
+      -11.08
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-12",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      -17.78,
+      -11.84
+     ],
+     [
+      -20.78,
+      -15.84
+     ],
+     [
+      -18.22,
+      -17.76
+     ],
+     [
+      -15.22,
+      -13.76
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-13",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      -20.99,
+      -16.23
+     ],
+     [
+      -22.79,
+      -20.93
+     ],
+     [
+      -19.81,
+      -22.07
+     ],
+     [
+      -18.01,
+      -17.37
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-1",
+   "at": [
+    -14.5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 0.1,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier10",
+   "at": [
+    8.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier11",
+   "at": [
+    12.5,
+    -9.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier12",
+   "at": [
+    16.5,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier13",
+   "at": [
+    19.5,
+    -16.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "pier14",
+   "at": [
+    21.3,
+    -21.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof10",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      7.84,
+      -9.46
+     ],
+     [
+      11.84,
+      -11.26
+     ],
+     [
+      13.16,
+      -8.34
+     ],
+     [
+      9.16,
+      -6.54
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof11",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      11.54,
+      -11.08
+     ],
+     [
+      15.54,
+      -14.08
+     ],
+     [
+      17.46,
+      -11.52
+     ],
+     [
+      13.46,
+      -8.52
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof12",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      15.22,
+      -13.76
+     ],
+     [
+      18.22,
+      -17.76
+     ],
+     [
+      20.78,
+      -15.84
+     ],
+     [
+      17.78,
+      -11.84
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof13",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      18.01,
+      -17.37
+     ],
+     [
+      19.81,
+      -22.07
+     ],
+     [
+      22.79,
+      -20.93
+     ],
+     [
+      20.99,
+      -16.23
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#efebe3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail1",
+   "at": [
+    14.5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 0.1,
+    "colour": "#efebe3"
+   }
   }
  ],
  "site": {
@@ -312,7 +835,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "curved arcade wings are straight slabs; ramps, railings, flower bed and window reveals simplified; trees approximate"
+  "gaps": "Arcade wings are 4 angled segments on square piers, not a smooth curve, and lack the back wall, railings and ramps; main facade bays only roughly staggered; statue and flower bed missing context."
  },
  "schema": "allworld-place-model",
  "version": 2,

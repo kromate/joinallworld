@@ -21,8 +21,8 @@
   }
  ],
  "camera": {
-  "yawDeg": -8,
-  "pitchDeg": 6,
+  "yawDeg": -25,
+  "pitchDeg": 5,
   "fovDeg": 55,
   "aspect": 1.333
  },
@@ -37,8 +37,8 @@
     ],
     "z0": 0,
     "height": 0.9,
-    "colour": "#b6b8b8",
-    "topColour": "#b0b3b3"
+    "colour": "#a9abab",
+    "topColour": "#9fa2a2"
    },
    "at": [
     0,
@@ -46,20 +46,77 @@
    ]
   },
   {
-   "type": "open-shelter",
+   "type": "prism",
+   "id": "canopy",
    "at": [
     0,
-    2.5,
-    0.9
+    3,
+    4.2
    ],
    "params": {
-    "length": 44,
-    "depth": 5.5,
-    "height": 4.6,
-    "form": "shed",
-    "support": "steel",
-    "colour": "#2d56a0",
-    "accent": "#eef1f3"
+    "rect": [
+     46,
+     6.6
+    ],
+    "height": 0.35,
+    "colour": "#f2f4f6",
+    "topColour": "#2d56a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-edge",
+   "at": [
+    0,
+    -0.1,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     46,
+     0.5
+    ],
+    "height": 0.6,
+    "colour": "#2d56a0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     0.8,
+     0.9
+    ],
+    "end": [
+     20,
+     0.8,
+     0.9
+    ],
+    "count": 6,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#e6e8ea",
+      "profile": [
+       [
+        0.16,
+        0
+       ],
+       [
+        0.16,
+        3.2
+       ],
+       [
+        0.3,
+        3.65
+       ]
+      ]
+     }
+    }
    }
   },
   {
@@ -67,14 +124,29 @@
    "at": [
     0,
     -1.5,
+    0.9
+   ],
+   "params": {
+    "length": 47,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -3.4,
     0
    ],
    "params": {
     "length": 47,
-    "height": 1.4,
+    "height": 1.0,
     "kind": "railing",
     "pillarEvery": 0,
-    "colour": "#2f5a3a"
+    "colour": "#9a9d9f"
    }
   },
   {
@@ -91,6 +163,54 @@
   },
   {
    "type": "array",
+   "id": "poles",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -6.5,
+     0
+    ],
+    "end": [
+     22,
+     -6.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 6.5,
+      "colour": "#6b6e70"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5,
+    6.2
+   ],
+   "params": {
+    "length": 47,
+    "height": 0.1,
+    "thickness": 0.05,
+    "kind": "wall",
+    "colour": "#303233"
+   }
+  },
+  {
+   "type": "array",
    "id": "screens",
    "lod": [
     0,
@@ -100,26 +220,60 @@
     "mode": "line",
     "start": [
      -16,
-     4.5,
-     2.4
+     0.8,
+     2.6
     ],
     "end": [
      16,
-     4.5,
-     2.4
+     0.8,
+     2.6
     ],
     "count": 4,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       1.4,
-       0.3
+       1.0,
+       0.25
       ],
-      "height": 0.8,
-      "colour": "#1f2228"
+      "height": 0.6,
+      "colour": "#e8892a"
      }
     }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "building",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    10,
+    26
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4ab",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a89d86"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
    }
   },
   {
@@ -135,6 +289,40 @@
     "run": 1.0,
     "count": 4,
     "colour": "#b6b8b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ticket-0",
+   "at": [
+    -8,
+    4.6,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 1.6,
+    "colour": "#3b4046"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ticket-1",
+   "at": [
+    8,
+    4.6,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 1.6,
+    "colour": "#3b4046"
    }
   },
   {
@@ -154,23 +342,15 @@
  "site": {
   "ground": "asphalt",
   "forecourt": "road",
-  "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     -26,
-     12
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
    80,
    50
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "canopy is a generic shed shelter, no tapered column heads or ticket machines; adjoining bus terminal not modelled"
+  "gaps": "canopy is a flat slab not sloped with light strips; mesh fence is a green railing; no catenary wires or tapered column heads; background building simplified"
  }
 }

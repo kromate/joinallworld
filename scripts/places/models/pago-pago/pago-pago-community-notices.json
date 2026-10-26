@@ -30,7 +30,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "shingle texture is smooth, entry arch is a flat glazed box not an arched gable, no lava-stone stair flanks detail, lobed OSM wings omitted as the photo shows one hall"
+  "gaps": "shingle smooth; entry arch via arched windows in a gabled bay, not true semicircular rim; flags are plain white (flag part has one colour)"
  },
  "parts": [
   {
@@ -46,7 +46,7 @@
      28
     ],
     "height": 3.2,
-    "colour": "#e9e6dc",
+    "colour": "#3e3b38",
     "windows": "none"
    }
   },
@@ -58,7 +58,7 @@
     2.6
    ],
    "params": {
-    "colour": "#4a3a32",
+    "colour": "#4a3a2e",
     "curve": true,
     "sections": [
      {
@@ -69,45 +69,45 @@
       ]
      },
      {
-      "z": 1.36,
+      "z": 2.46,
       "ellipse": [
-       26.62,
-       14.79
+       26.08,
+       14.49
       ]
      },
      {
-      "z": 2.73,
-      "ellipse": [
-       25.46,
-       14.14
-      ]
-     },
-     {
-      "z": 4.09,
+      "z": 4.75,
       "ellipse": [
        23.38,
        12.99
       ]
      },
      {
-      "z": 5.46,
+      "z": 6.72,
       "ellipse": [
-       20.12,
-       11.18
+       19.09,
+       10.61
       ]
      },
      {
-      "z": 6.83,
+      "z": 8.23,
       "ellipse": [
-       14.92,
-       8.29
+       13.5,
+       7.5
       ]
      },
      {
-      "z": 10.5,
+      "z": 9.04,
       "ellipse": [
-       3.24,
-       1.8
+       8.34,
+       4.64
+      ]
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       2.16,
+       1.2
       ]
      }
     ]
@@ -118,7 +118,7 @@
    "id": "entry",
    "footprint": {
     "rect": [
-     16,
+     14,
      3
     ]
    },
@@ -126,22 +126,26 @@
     0,
     -14.5
    ],
-   "height": 8.4,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#efece2",
+    "colour": "#f2efe6",
     "windows": "curtain",
-    "windowRatio": 0.8,
+    "windowRatio": 0.85,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "windowShape": "arched"
    },
    "roof": {
-    "form": "flat",
-    "colour": "#e9e6dc"
+    "form": "gable",
+    "colour": "#4a3a2e",
+    "pitch": 30,
+    "overhang": 0.4,
+    "material": "timber-shingle"
    }
   },
   {
@@ -191,18 +195,18 @@
    "id": "wall-l",
    "footprint": {
     "rect": [
-     6,
+     7,
      4
     ]
    },
    "at": [
-    -12,
+    -11.5,
     -16
    ],
-   "height": 2.8,
+   "height": 3.4,
    "wall": {
     "material": "stone",
-    "colour": "#4a4a48",
+    "colour": "#3a3836",
     "windows": "none"
    },
    "roof": {
@@ -215,18 +219,18 @@
    "id": "wall-r",
    "footprint": {
     "rect": [
-     6,
+     7,
      4
     ]
    },
    "at": [
-    12,
+    11.5,
     -16
    ],
-   "height": 2.8,
+   "height": 3.4,
    "wall": {
     "material": "stone",
-    "colour": "#4a4a48",
+    "colour": "#3a3836",
     "windows": "none"
    },
    "roof": {
@@ -242,8 +246,8 @@
     0
    ],
    "params": {
-    "height": 11,
-    "colour": "#b22234"
+    "height": 14,
+    "colour": "#ffffff"
    }
   },
   {
@@ -254,8 +258,166 @@
     0
    ],
    "params": {
-    "height": 11,
-    "colour": "#3a4a9a"
+    "height": 14,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -15,
+    3,
+    2.6
+   ],
+   "params": {
+    "colour": "#4a3a2e",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       13.0,
+       12.0
+      ]
+     },
+     {
+      "z": 1.81,
+      "ellipse": [
+       12.56,
+       11.59
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       11.26,
+       10.39
+      ]
+     },
+     {
+      "z": 4.95,
+      "ellipse": [
+       9.19,
+       8.49
+      ]
+     },
+     {
+      "z": 6.06,
+      "ellipse": [
+       6.5,
+       6.0
+      ]
+     },
+     {
+      "z": 6.66,
+      "ellipse": [
+       4.02,
+       3.71
+      ]
+     },
+     {
+      "z": 7.0,
+      "ellipse": [
+       1.04,
+       0.96
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    15,
+    3,
+    2.6
+   ],
+   "params": {
+    "colour": "#4a3a2e",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       13.0,
+       12.0
+      ]
+     },
+     {
+      "z": 1.81,
+      "ellipse": [
+       12.56,
+       11.59
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       11.26,
+       10.39
+      ]
+     },
+     {
+      "z": 4.95,
+      "ellipse": [
+       9.19,
+       8.49
+      ]
+     },
+     {
+      "z": 6.06,
+      "ellipse": [
+       6.5,
+       6.0
+      ]
+     },
+     {
+      "z": 6.66,
+      "ellipse": [
+       4.02,
+       3.71
+      ]
+     },
+     {
+      "z": 7.0,
+      "ellipse": [
+       1.04,
+       0.96
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.8,
+    "colour": "#3a3836"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.8,
+    "colour": "#3a3836"
    }
   }
  ],

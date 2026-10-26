@@ -37,11 +37,11 @@
     0
    ],
    "params": {
-    "length": 120,
-    "width": 68,
-    "lane_width": 6,
+    "length": 124,
+    "width": 72,
+    "lane_width": 7,
     "infield": true,
-    "pitch": true,
+    "pitch": false,
     "colour": "#b5483f"
    }
   },
@@ -61,13 +61,13 @@
      44,
      42
     ],
-    "rows": 18,
+    "rows": 22,
     "seatColour": "#d9b04c",
     "under": "solid",
     "concreteColour": "#d8d4ca",
     "backWall": 1.0,
     "canopy": {
-     "height": 13,
+     "height": 15,
      "depth": 6,
      "colour": "#eeeeea",
      "slopeDeg": 3,
@@ -89,13 +89,14 @@
     ],
     "radius": 70,
     "radiusY": 43,
-    "startDeg": -52,
-    "endDeg": 52,
-    "rows": 14,
+    "startDeg": -70,
+    "endDeg": 70,
+    "rows": 16,
     "seatColour": "#d9b04c",
     "under": "solid",
     "concreteColour": "#d8d4ca",
-    "facetDeg": 10
+    "facetDeg": 10,
+    "backWall": 1.0
    }
   },
   {
@@ -112,29 +113,30 @@
     ],
     "radius": 70,
     "radiusY": 43,
-    "startDeg": 148,
-    "endDeg": 212,
-    "rows": 10,
+    "startDeg": 135,
+    "endDeg": 225,
+    "rows": 14,
     "seatColour": "#d9b04c",
-    "under": "open",
+    "under": "solid",
     "concreteColour": "#d8d4ca",
-    "facetDeg": 10
+    "facetDeg": 10,
+    "backWall": 1.0
    }
   },
   {
    "type": "prism",
    "at": [
     0,
-    -54,
+    -52,
     0
    ],
    "params": {
     "rect": [
-     104,
-     15
+     112,
+     12
     ],
     "z0": 0,
-    "height": 7,
+    "height": 5,
     "colour": "#e8e6df",
     "windows": "none"
    }
@@ -143,19 +145,19 @@
    "type": "surface",
    "at": [
     0,
-    -57,
-    7
+    -52,
+    5
    ],
    "params": {
     "kind": "folded",
-    "width": 108,
-    "depth": 24,
-    "rise": 2,
+    "width": 112,
+    "depth": 22,
+    "rise": 1.5,
     "folds": 10,
     "thickness": 0.4,
     "colour": "#eeeeea",
     "edgeColour": "#cfd3d6",
-    "slopeY": 0.12
+    "slopeY": -0.1
    }
   },
   {
@@ -167,12 +169,12 @@
    ],
    "params": {
     "rect": [
-     36,
-     7
+     30,
+     8
     ],
     "z0": 0,
     "height": 6,
-    "colour": "#f2f2ee",
+    "colour": "#ffffff",
     "windows": "none"
    }
   },
@@ -227,18 +229,54 @@
   {
    "type": "prism",
    "at": [
-    -56,
     -62,
+    -52,
     0
    ],
    "params": {
     "rect": [
-     24,
-     16
+     20,
+     14
     ],
     "z0": 0,
     "height": 5,
     "colour": "#2f5fa8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    88,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     50
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#eeeeea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    102,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     90
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#55575a",
     "windows": "none"
    }
   }
@@ -277,6 +315,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "scaled down to the scene clamp; infield is a football pitch not plain grass; end stands are plain arcs; no adjacent buildings"
+  "gaps": "scaled to the scene clamp; stands are straight/arc approximations not one continuous bowl; adjacent buildings and road simple blocks"
  }
 }

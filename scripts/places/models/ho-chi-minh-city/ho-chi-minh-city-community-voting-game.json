@@ -43,9 +43,9 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2c680",
+    "colour": "#e0c78e",
     "windows": "arched",
-    "windowRatio": 0.32,
+    "windowRatio": 0.3,
     "faces": {
      "back": "plain",
      "left": "plain",
@@ -67,23 +67,23 @@
    "id": "pavilion-l",
    "footprint": {
     "rect": [
-     11,
-     15
+     14,
+     18
     ]
    },
    "at": [
     -13.5,
-    0
+    -2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
     "colour": "#e2c783",
     "windows": "arched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.4,
     "faces": {
      "left": "plain",
      "right": "plain"
@@ -93,11 +93,11 @@
     "cornice": true
    },
    "roof": {
-    "form": "hip",
-    "colour": "#c0622d",
+    "form": "mansard",
+    "colour": "#b8532a",
     "material": "clay-tile",
-    "pitch": 52,
-    "overhang": 0.8
+    "pitch": 62,
+    "overhang": 0.6
    }
   },
   {
@@ -105,23 +105,23 @@
    "id": "pavilion-r",
    "footprint": {
     "rect": [
-     11,
-     15
+     14,
+     18
     ]
    },
    "at": [
     13.5,
-    0
+    -2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 18,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
     "colour": "#e2c783",
     "windows": "arched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.4,
     "faces": {
      "left": "plain",
      "right": "plain"
@@ -131,11 +131,11 @@
     "cornice": true
    },
    "roof": {
-    "form": "hip",
-    "colour": "#c0622d",
+    "form": "mansard",
+    "colour": "#b8532a",
     "material": "clay-tile",
-    "pitch": 52,
-    "overhang": 0.8
+    "pitch": 62,
+    "overhang": 0.6
    }
   },
   {
@@ -153,12 +153,12 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 17,
+   "height": 19,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
     "colour": "#ecd9a0",
-    "windows": "arched",
+    "windows": "none",
     "windowRatio": 0.3,
     "faces": {
      "left": "plain",
@@ -180,19 +180,19 @@
    "at": [
     0,
     2,
-    17
+    19
    ],
    "params": {
-    "width": 4.2,
-    "height": 15,
+    "width": 4.4,
+    "height": 13,
     "cap": "hip",
-    "capRise": 9,
+    "capRise": 7,
     "clock": true,
     "belfry": true,
-    "colour": "#ecd9a0",
+    "colour": "#e8d29a",
     "trimColour": "#f3efe4",
-    "capColour": "#8a8a82",
-    "finial": 4
+    "capColour": "#a56b3f",
+    "finial": 5
    }
   },
   {
@@ -200,7 +200,7 @@
    "at": [
     0,
     2,
-    41
+    45
    ],
    "params": {
     "height": 6,
@@ -239,18 +239,6 @@
   {
    "type": "tree",
    "at": [
-    -30,
-    -18,
-    0
-   ],
-   "params": {
-    "kind": "conifer",
-    "height": 7
-   }
-  },
-  {
-   "type": "tree",
-   "at": [
     30,
     -18,
     0
@@ -261,40 +249,83 @@
    }
   },
   {
-   "type": "tree",
+   "type": "arcade-bays",
    "at": [
-    -10,
-    -22,
-    0
+    0,
+    -9,
+    7
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 3.5
+    "length": 14,
+    "depth": 1.6,
+    "springHeight": 3,
+    "topHeight": 4.5,
+    "bayWidth": 3.2,
+    "pierWidth": 0.9,
+    "shape": "round",
+    "colour": "#f3ead0",
+    "roofColour": "#d9c58e"
    }
   },
   {
-   "type": "tree",
+   "type": "arcade-bays",
    "at": [
-    10,
-    -22,
-    0
+    0,
+    -9,
+    0.5
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 3.5
+    "length": 14,
+    "depth": 1.6,
+    "springHeight": 3,
+    "topHeight": 4.5,
+    "bayWidth": 3.2,
+    "pierWidth": 0.9,
+    "shape": "round",
+    "colour": "#f3ead0",
+    "roofColour": "#d9c58e"
    }
   },
   {
-   "type": "lamp",
+   "type": "balustrade",
    "at": [
-    -18,
-    -16,
-    0
+    -33,
+    -6.5,
+    13
    ],
    "params": {
-    "height": 4,
-    "count": 4,
-    "spacing": 12
+    "length": 30,
+    "height": 1.3,
+    "postEvery": 2.4,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    33,
+    -6.5,
+    13
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.3,
+    "postEvery": 2.4,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -9.5,
+    19
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.3,
+    "postEvery": 2.4,
+    "colour": "#f3efe4"
    }
   }
  ],
@@ -312,8 +343,8 @@
  "city": "ho-chi-minh-city",
  "venueId": "ho-chi-minh-city-community-voting-game",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Ornate pediments, sculptures, loggia arcade and balustrade detail missing; tower simplified; pavilion roofs plain hips."
+  "gaps": "Pediments, sculpture and rich ornament absent; arcaded loggia is two simple rows; tower lantern/cupola simplified to a hip cap; ornate dormers omitted."
  }
 }

@@ -123,7 +123,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#8f8a78",
+    "colour": "#2b3338",
     "windows": "ribbon",
     "windowRatio": 0.25,
     "faces": {
@@ -163,12 +163,12 @@
   {
    "type": "control-tower",
    "at": [
-    44,
-    10,
+    66,
+    14,
     0
    ],
    "params": {
-    "height": 15,
+    "height": 9,
     "style": "round",
     "colour": "#d8d4c4",
     "cabColour": "#4a5a5c"
@@ -179,25 +179,28 @@
    "id": "hangar",
    "footprint": {
     "rect": [
-     22,
-     16
+     26,
+     20
     ]
    },
    "at": [
-    84,
+    34,
     -30
    ],
    "height": 3,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#2f3c52",
-    "windows": "none"
+    "colour": "#1c2228",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
    },
    "roof": {
     "form": "curved",
     "curve": "arch",
-    "rise": 6,
+    "rise": 9,
     "colour": "#f0f0ec",
     "material": "metal-sheet"
    }
@@ -214,21 +217,132 @@
     "count": 3,
     "spacing": 3
    }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    0,
-    -22,
-    0
-   ],
-   "params": {}
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "grass",
+  "forecourt": "none",
   "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     28
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -68,
+     33
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     38
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     28
+    ],
+    "height": 23
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     33
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     38
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     28
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     33
+    ],
+    "height": 23
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     38
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     28
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     33
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     38
+    ],
+    "height": 23
+   },
+   {
+    "kind": "palm",
+    "at": [
+     64,
+     28
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     76,
+     33
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     88,
+     38
+    ],
+    "height": 20
+   },
    {
     "kind": "palm",
     "at": [
@@ -264,8 +378,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Not render-checked: queue down. Central gable, wing roofs, hangar placed from the photo; control tower position and glazing unverified."
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Hangar roof reads as a pitched gable not a smooth arch; hall glazing and tree-line approximate; tower is a small stand-in; apron and ground-level clutter missing."
  }
 }

@@ -121,7 +121,7 @@
    "storeys": 2,
    "wall": {
     "material": "stone",
-    "colour": "#8b8378",
+    "colour": "#8d7e70",
     "windows": "none",
     "plinth": 1.0
    },
@@ -138,28 +138,23 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     9.5,
-     7.5
+     6,
+     6
     ]
    },
    "at": [
     0,
-    3.5
+    3
    ],
    "height": 21,
    "storeys": 3,
    "wall": {
     "material": "stone",
-    "colour": "#8b8378",
-    "windows": "punched",
+    "colour": "#8d7e70",
+    "windows": "none",
     "windowShape": "pointed",
     "windowRatio": 0.22,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    },
-    "bands": "#a89f91",
+    "bands": "#b09a85",
     "plinth": 1.2,
     "cornice": true
    },
@@ -171,79 +166,11 @@
    }
   },
   {
-   "type": "core/prism",
-   "at": [
-    -4.56,
-    0.2,
-    21
-   ],
-   "params": {
-    "rect": [
-     0.9,
-     0.9
-    ],
-    "height": 2.2,
-    "topScale": 0.3,
-    "colour": "#8b8378"
-   }
-  },
-  {
-   "type": "core/prism",
-   "at": [
-    4.56,
-    0.2,
-    21
-   ],
-   "params": {
-    "rect": [
-     0.9,
-     0.9
-    ],
-    "height": 2.2,
-    "topScale": 0.3,
-    "colour": "#8b8378"
-   }
-  },
-  {
-   "type": "core/prism",
-   "at": [
-    -4.56,
-    6.8,
-    21
-   ],
-   "params": {
-    "rect": [
-     0.9,
-     0.9
-    ],
-    "height": 2.2,
-    "topScale": 0.3,
-    "colour": "#8b8378"
-   }
-  },
-  {
-   "type": "core/prism",
-   "at": [
-    4.56,
-    6.8,
-    21
-   ],
-   "params": {
-    "rect": [
-     0.9,
-     0.9
-    ],
-    "height": 2.2,
-    "topScale": 0.3,
-    "colour": "#8b8378"
-   }
-  },
-  {
    "type": "core/loft",
    "at": [
-    12,
-    26,
-    9
+    0,
+    3,
+    21
    ],
    "params": {
     "colour": "#6c6f76",
@@ -251,23 +178,23 @@
      {
       "z": 0,
       "rect": [
-       4,
-       4
+       4.6,
+       4.6
       ]
      },
      {
-      "z": 4,
+      "z": 2,
       "rect": [
-       3.6,
-       3.6
+       3.4,
+       3.4
       ],
-      "colour": "#8b8378"
+      "colour": "#8d7e70"
      },
      {
-      "z": 13,
+      "z": 8,
       "rect": [
-       0.4,
-       0.4
+       0.3,
+       0.3
       ],
       "colour": "#6c6f76"
      }
@@ -278,14 +205,14 @@
    "type": "core/steps",
    "at": [
     0,
-    -1,
+    -3.5,
     0
    ],
    "params": {
-    "width": 6,
+    "width": 12,
     "rise": 1.0,
-    "run": 0.6,
-    "count": 6,
+    "run": 0.7,
+    "count": 7,
     "colour": "#7d766b"
    }
   },
@@ -319,6 +246,256 @@
     ],
     "height": 6,
     "colour": "#8b8378"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -2.7,
+    0.3,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.0,
+    "topScale": 0.3,
+    "colour": "#8d7e70"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -2.7,
+    5.7,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.0,
+    "topScale": 0.3,
+    "colour": "#8d7e70"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    2.7,
+    0.3,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.0,
+    "topScale": 0.3,
+    "colour": "#8d7e70"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    2.7,
+    5.7,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.0,
+    "topScale": 0.3,
+    "colour": "#8d7e70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door1",
+   "footprint": {
+    "rect": [
+     2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.1
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6b2a24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#6b2a24"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche2",
+   "footprint": {
+    "rect": [
+     1,
+     0.5
+    ]
+   },
+   "at": [
+    -1.9,
+    -0.1
+   ],
+   "z0": 8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche3",
+   "footprint": {
+    "rect": [
+     1,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.1
+   ],
+   "z0": 8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche4",
+   "footprint": {
+    "rect": [
+     1,
+     0.5
+    ]
+   },
+   "at": [
+    1.9,
+    -0.1
+   ],
+   "z0": 8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "louvre5",
+   "footprint": {
+    "rect": [
+     1.1,
+     0.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -0.1
+   ],
+   "z0": 15,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a342f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#3a342f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "louvre6",
+   "footprint": {
+    "rect": [
+     1.1,
+     0.5
+    ]
+   },
+   "at": [
+    1.5,
+    -0.1
+   ],
+   "z0": 15,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a342f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#3a342f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock7",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.1
+   ],
+   "z0": 16,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#efe9d8"
    }
   }
  ],
@@ -357,8 +534,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "tower is too wide and tall for its front, no niches/statues/clock, front door not modelled; nave roof and window rhythm from side photo; grey stone more uniform than the multicolour real masonry"
+  "gaps": "tower narrower with niches, louvres, clock and red door as flat panels; masonry still near-uniform, not multicolour; steps simple"
  }
 }

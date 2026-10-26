@@ -24,7 +24,9 @@
   "yawDeg": 6,
   "pitchDeg": 2,
   "fovDeg": 40,
-  "aspect": 1.6
+  "aspect": 1.6,
+  "fit": "building",
+  "margin": 0.02
  },
  "parts": [
   {
@@ -40,11 +42,11 @@
     -3,
     6
    ],
-   "height": 6.8,
+   "height": 6.4,
    "storeys": 1,
    "wall": {
-    "material": "timber",
-    "colour": "#b4bfcc",
+    "material": "painted-render",
+    "colour": "#aeb9c6",
     "windows": "pointed-arch",
     "windowRatio": 0.14,
     "faces": {
@@ -57,11 +59,10 @@
     "plinth": 0.3
    },
    "roof": {
-    "form": "gable",
-    "axis": "x",
-    "colour": "#5a3f3c",
-    "material": "timber-shingle",
-    "rise": 5,
+    "form": "hip",
+    "colour": "#5a3a3e",
+    "material": "metal-sheet",
+    "rise": 4.2,
     "overhang": 0.4
    }
   },
@@ -78,11 +79,11 @@
     -9,
     -2.5
    ],
-   "height": 6,
+   "height": 5.4,
    "storeys": 1,
    "wall": {
-    "material": "timber",
-    "colour": "#b4bfcc",
+    "material": "painted-render",
+    "colour": "#aeb9c6",
     "windows": "pointed-arch",
     "windowRatio": 0.14,
     "faces": {
@@ -95,9 +96,9 @@
    "roof": {
     "form": "gable",
     "axis": "y",
-    "colour": "#5a3f3c",
-    "material": "timber-shingle",
-    "rise": 3.2,
+    "colour": "#5a3a3e",
+    "material": "metal-sheet",
+    "rise": 2.8,
     "overhang": 0.3
    }
   },
@@ -117,10 +118,10 @@
    "height": 12.5,
    "storeys": 3,
    "wall": {
-    "material": "timber",
-    "colour": "#9aa7b8",
+    "material": "painted-render",
+    "colour": "#a3afc0",
     "windows": "pointed-arch",
-    "windowRatio": 0.1,
+    "windowRatio": 0.08,
     "faces": {
      "front": "pointed-arch",
      "back": "none",
@@ -132,7 +133,7 @@
    "roof": {
     "form": "pyramidal",
     "colour": "#26262a",
-    "material": "timber-shingle",
+    "material": "metal-sheet",
     "rise": 4.5,
     "overhang": 0.3
    }
@@ -142,29 +143,29 @@
    "id": "house",
    "footprint": {
     "rect": [
-     10,
-     7
+     7,
+     9
     ]
    },
    "at": [
-    -28,
-    -10
+    -27,
+    -9
    ],
-   "height": 5.5,
+   "height": 6.5,
    "storeys": 2,
    "wall": {
-    "material": "timber",
-    "colour": "#d4b94a",
+    "material": "painted-render",
+    "colour": "#d2b84c",
     "windows": "rect",
     "windowRatio": 0.15,
     "bay": 3
    },
    "roof": {
     "form": "gable",
-    "axis": "x",
+    "axis": "y",
     "colour": "#3a3a3e",
-    "material": "timber-shingle",
-    "rise": 3,
+    "material": "metal-sheet",
+    "rise": 3.5,
     "overhang": 0.4
    }
   },
@@ -211,6 +212,109 @@
     "kind": "fence",
     "colour": "#c9c3b4"
    }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -33,
+    -8
+   ],
+   "height": 3.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b24c",
+    "windows": "rect",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6a6a6e",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    -17,
+    -9
+   ],
+   "height": 4.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c27a",
+    "windows": "rect",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#33343a",
+    "material": "metal-sheet",
+    "rise": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rise",
+   "footprint": {
+    "rect": [
+     90,
+     30
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 1.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8a5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shore",
+   "footprint": {
+    "rect": [
+     100,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 0.8,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6a64",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a64"
+   }
   }
  ],
  "site": {
@@ -223,8 +327,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "close",
-  "gaps": "no clock, cross, side doorway or fenced yard; clapboard is a generic timber texture; neighbouring houses reduced to two"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hipped-gable roof approximated with a full hip; no clock, cross or tower door; clapboard lap lines omitted; outside stair and fence not modelled; shore is a flat grey strip"
  }
 }

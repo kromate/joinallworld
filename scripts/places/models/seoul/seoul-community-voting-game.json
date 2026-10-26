@@ -32,21 +32,21 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     28,
-     22
+     26,
+     20
     ]
    },
    "at": [
-    -3,
+    -2,
     0
    ],
-   "height": 5,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
     "material": "granite",
-    "colour": "#d3cbb8",
-    "windows": "curtain",
-    "windowRatio": 0.5,
+    "colour": "#d9cfb6",
+    "windows": "punched",
+    "windowRatio": 0.15,
     "plinth": 0.3
    },
    "roof": {
@@ -60,27 +60,28 @@
    "id": "glass-tower",
    "footprint": {
     "rect": [
-     28,
-     22
+     26,
+     20
     ]
    },
    "at": [
-    -3,
+    -2,
     0
    ],
-   "z0": 5,
-   "height": 19,
-   "storeys": 6,
+   "z0": 4.5,
+   "height": 14,
+   "storeys": 4,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#a9d8c6",
+    "colour": "#a6dcc8",
     "windows": "curtain",
-    "windowRatio": 0.7,
-    "bands": "#e9e6dc",
+    "windowRatio": 0.6,
+    "bands": "#eef0e6",
     "faces": {
      "left": "plain",
      "right": "plain"
-    }
+    },
+    "pattern": null
    },
    "roof": {
     "form": "flat",
@@ -93,21 +94,21 @@
    "id": "pale-side",
    "footprint": {
     "rect": [
-     4,
-     20
+     8,
+     16
     ]
    },
    "at": [
-    -19,
-    0
+    16,
+    2
    ],
-   "height": 14,
+   "height": 10,
    "storeys": 3,
    "wall": {
-    "material": "granite",
-    "colour": "#d9d6cc",
-    "windows": "punched",
-    "windowRatio": 0.12
+    "material": "glass-curtain",
+    "colour": "#bfe6d4",
+    "windows": "curtain",
+    "windowRatio": 0.6
    },
    "roof": {
     "form": "flat",
@@ -118,64 +119,18 @@
    "type": "prism",
    "id": "entrance-canopy",
    "at": [
-    -3,
-    -13
+    -2,
+    -12
    ],
    "params": {
     "rect": [
-     30,
-     4
+     28,
+     5
     ],
-    "z0": 4.6,
+    "z0": 4.0,
     "height": 0.7,
     "colour": "#3f8f6f",
     "topColour": "#4ca482"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "roof-pavilion",
-   "footprint": {
-    "rect": [
-     14,
-     10
-    ]
-   },
-   "at": [
-    -3,
-    0
-   ],
-   "z0": 24,
-   "height": 4.5,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#d8d3c5",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e6dfd0",
-    "overhang": 2.5,
-    "parapet": 0.5
-   }
-  },
-  {
-   "type": "prism",
-   "id": "orange-fascia",
-   "at": [
-    -3,
-    0
-   ],
-   "params": {
-    "rect": [
-     19.5,
-     15
-    ],
-    "z0": 28,
-    "height": 0.5,
-    "colour": "#d9733a",
-    "topColour": "#d9733a"
    }
   },
   {
@@ -183,7 +138,7 @@
    "at": [
     -9,
     -4,
-    29
+    22.7
    ],
    "params": {}
   },
@@ -192,16 +147,16 @@
    "at": [
     3,
     -4,
-    29
+    22.7
    ],
    "params": {}
   },
   {
    "type": "sign-board",
    "at": [
-    -3,
-    -12.4,
-    4.3
+    -2,
+    -14.6,
+    3.9
    ],
    "params": {
     "width": 18,
@@ -225,6 +180,185 @@
     "spread": 3,
     "line": 18
    }
+  },
+  {
+   "type": "array",
+   "id": "pavilion-posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     -4,
+     18.5
+    ],
+    "end": [
+     4,
+     -4,
+     18.5
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 3.6,
+      "colour": "#d8d3c5",
+      "topColour": "#d8d3c5"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pavilion-posts-back",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     4,
+     18.5
+    ],
+    "end": [
+     4,
+     4,
+     18.5
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 3.6,
+      "colour": "#d8d3c5",
+      "topColour": "#d8d3c5"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-slab",
+   "at": [
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     11
+    ],
+    "z0": 22.1,
+    "height": 0.6,
+    "colour": "#ece6d6",
+    "topColour": "#d9733a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -7,
+    0,
+    22.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3,
+    0,
+    22.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    7,
+    -8,
+    22.7
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "neighbour--26",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -19,
+    3
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c98f6e",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-20",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    19,
+    3
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cdb8",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -2,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 0.8,
+    "thickness": 0.6,
+    "colour": "#8a6a45"
+   }
   }
  ],
  "site": {
@@ -238,6 +372,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Block is a simplified box: the photo's stepped glass bands and side wing, utility poles, neighbours, wooden planters and trellis at the entrance are not modelled; render glass reads darker than the photo's sea-green."
+  "gaps": "Glass reads dark navy not mint with louvres; no utility pole, wires or trellis/planters; neighbours are generic boxes; pavilion is a simple post frame."
  }
 }

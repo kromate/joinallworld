@@ -22,7 +22,7 @@
  ],
  "camera": {
   "yawDeg": 8,
-  "pitchDeg": 6,
+  "pitchDeg": 4,
   "fovDeg": 50,
   "aspect": 1.333,
   "margin": 0.02,
@@ -31,25 +31,41 @@
  },
  "parts": [
   {
+   "type": "core/prism",
+   "at": [
+    4,
+    4
+   ],
+   "params": {
+    "rect": [
+     62,
+     36
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#9a5f4c"
+   }
+  },
+  {
    "type": "mass",
-   "id": "palace",
+   "id": "cathedral",
    "footprint": {
     "rect": [
-     40,
-     15
+     34,
+     14
     ]
    },
    "at": [
     -22,
-    22
+    24
    ],
-   "height": 11,
+   "height": 13,
    "storeys": 2,
    "wall": {
     "material": "limestone",
-    "colour": "#a8977a",
+    "colour": "#8a7c63",
     "windows": "rect",
-    "windowRatio": 0.08,
+    "windowRatio": 0.06,
     "windowShape": "arched",
     "faces": {
      "front": "rect",
@@ -63,21 +79,51 @@
       "faces": [
        "front"
       ],
-      "count": 7,
-      "width": 3.4,
-      "height": 5.2,
+      "bay": 6.5,
+      "opening": 3.2,
+      "height": 5,
       "shape": "arched",
       "depth": 0.8
      }
     ],
     "cornice": true,
-    "parapet": 0.9
+    "parapet": 0.8
    },
    "roof": {
     "form": "hip",
     "colour": "#a8573a",
     "material": "clay-tile",
-    "pitch": 18
+    "pitch": 14
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22,
+    16.8
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.8
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#2a241e"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -22,
+    17.2,
+    13
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "thickness": 0.6,
+    "colour": "#8a7c63"
    }
   },
   {
@@ -86,18 +132,18 @@
    "footprint": {
     "rect": [
      22,
-     14
+     12
     ]
    },
    "at": [
-    15,
-    28
+    12,
+    30
    ],
-   "height": 9,
+   "height": 8,
    "storeys": 2,
    "wall": {
     "material": "limestone",
-    "colour": "#9c8767",
+    "colour": "#7e7059",
     "windows": "rect",
     "windowRatio": 0.05,
     "faces": {
@@ -111,88 +157,242 @@
     "form": "hip",
     "colour": "#a8573a",
     "material": "clay-tile",
-    "pitch": 15
+    "pitch": 14
    }
   },
   {
-   "type": "mosque-domed/crenellated-wall",
+   "type": "core/prism",
    "at": [
-    -42,
-    14.8,
-    11
+    12,
+    6
    ],
    "params": {
-    "length": 40,
-    "height": 1.2,
-    "thickness": 0.6,
-    "colour": "#b3a283"
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#5e6062"
    }
   },
   {
-   "type": "statue-plinth",
+   "type": "core/prism",
+   "at": [
+    12,
+    6
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "z0": 0.4,
+    "height": 0.4,
+    "colour": "#5e6062"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    12,
+    6
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 0.8,
+    "height": 0.5,
+    "colour": "#5e6062"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    12,
+    6
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 1.3,
+    "height": 7,
+    "colour": "#6a6c6d",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    12,
+    6
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "z0": 8.3,
+    "height": 0.5,
+    "colour": "#5e6062"
+   }
+  },
+  {
+   "type": "statue-figure",
    "at": [
     12,
     6,
-    0
+    8.8
    ],
    "params": {
-    "height": 14,
-    "width": 8,
-    "steps": 3,
-    "figure_colour": "#3f3d3a",
-    "figure_ratio": 0.3
+    "height": 5.4,
+    "pose": "point",
+    "colour": "#3a3a36"
    }
   },
   {
-   "type": "lamp",
-   "at": [
-    -26,
-    -14,
-    0
+   "type": "array",
+   "lod": [
+    0,
+    1
    ],
    "params": {
-    "height": 9
+    "mode": "arc",
+    "centre": [
+     12,
+     6,
+     0
+    ],
+    "radius": 8.4,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 14,
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 0.9,
+      "colour": "#1c1c1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -24,
+    -12
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -24,
+     -12,
+     6.8
+    ],
+    "radius": 1.3,
+    "startDeg": 0,
+    "endDeg": 288,
+    "count": 5,
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "radius": 0.45,
+      "n": 8,
+      "height": 1.0,
+      "colour": "#e8d9a8"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -24,
+    -12
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 7,
+    "height": 0.9,
+    "colour": "#1c1c1c"
    }
   },
   {
    "type": "lamp",
    "at": [
     34,
-    6,
+    0,
     0
    ],
    "params": {
-    "height": 7
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    34,
-    12,
-    0
-   ],
-   "params": {
-    "width": 22,
-    "depth": 30,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 13
+    "height": 6
    }
   }
  ],
  "site": {
-  "ground": "cobble",
+  "ground": "paving",
   "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     5
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     22
+    ],
+    "height": 11
+   }
+  ],
   "extent": [
-   80,
-   56
+   62,
+   40
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Plaza shown from afar; real ground is red brick pavers (cobble ground is pale), no chain posts, statue plinth/figure is crude and taller than real, palace is a plain arcaded box instead of the weathered cathedral-side facade with big portal, ornate lamp is a plain pole, trees are low-poly."
+  "gaps": "Camera still frames the whole square from far and does not sit low near the lamp; plinth, brick ground, dark granite, chain posts and 5-lantern lamp added but small; cathedral facade has a dark box portal rather than a round-arched portal and the stone is a flat limestone texture; trees remain low-poly."
  }
 }

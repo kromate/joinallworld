@@ -12,7 +12,7 @@
    "author": "Giulia Granchi",
    "view": "side",
    "file": "/tmp/places-evidence/sao-paulo/m10_art1.jpg",
-   "used": "red painted brick end wall, ribbon of glazing under a thin white slab roof with a V (butterfly) section, raised terrace on slim blue steel posts with red tile floor, white stair rail"
+   "used": "red painted brick end wall, ribbon of glazing under a thin white slab roof with a V (butterfly) section, raised terrace on slim blue steel posts with red tile floor, white stair rail; raised glazed floor on blue posts over red-tile terrace, white V roof slab"
   },
   {
    "kind": "photo",
@@ -29,9 +29,9 @@
   }
  ],
  "camera": {
-  "yawDeg": 30,
+  "yawDeg": 15,
   "pitchDeg": 5,
-  "fovDeg": 50,
+  "fovDeg": 45,
   "aspect": 1.5
  },
  "parts": [
@@ -41,30 +41,32 @@
    "footprint": {
     "osm": true
    },
-   "height": 3.4,
+   "z0": 2.5,
+   "height": 3.0,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#c8553f",
+    "colour": "#b8493a",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.8,
     "faces": {
      "front": "curtain",
-     "back": "ribbon",
+     "back": "curtain",
      "left": "plain",
-     "right": "plain"
+     "right": "curtain"
     },
-    "plinth": 0.3,
-    "glassColour": "#8fa3a0"
+    "glassColour": "#8fa3a0",
+    "trimColour": "#2a2f33",
+    "plinth": 0
    },
    "roof": {
     "form": "wave",
-    "colour": "#f2f1ec",
+    "colour": "#f4f3ee",
     "material": "concrete",
     "waves": 1,
     "rise": 1.1,
-    "thickness": 0.3,
-    "overhang": 1.0,
+    "thickness": 0.2,
+    "overhang": 1.2,
     "infill": "glass"
    }
   },
@@ -72,27 +74,38 @@
    "type": "mass",
    "id": "terrace",
    "footprint": {
-    "rect": [
-     6,
-     5
-    ]
+    "osm": true
    },
-   "at": [
-    2,
-    -9
-   ],
-   "rotDeg": 41,
-   "z0": 1.5,
+   "z0": 0,
    "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#d9d4c8",
+    "colour": "#c4614a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#c4614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floor-slab",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 2.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f4f3ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f3ee"
    }
   },
   {
@@ -103,23 +116,74 @@
      "params": {
       "length": 0.5,
       "count": 1,
-      "height": 1.6,
+      "height": 2.4,
       "radius": 0.1,
       "colour": "#2d4e8f"
      }
     },
     "mode": "line",
     "start": [
-     -0.5,
-     -11.5,
+     -3.54,
+     -8.86,
      0
     ],
     "end": [
-     4.5,
-     -6.5,
+     8.34,
+     4.64,
      0
     ],
-    "count": 3
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 0.5,
+      "count": 1,
+      "height": 2.4,
+      "radius": 0.1,
+      "colour": "#2d4e8f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8.34,
+     -4.64,
+     0
+    ],
+    "end": [
+     3.54,
+     8.86,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      6.57,
+      -3.12,
+      0.1
+     ],
+     [
+      4.32,
+      -1.14,
+      2.3
+     ]
+    ],
+    "colour": "#f4f3ee"
    }
   }
  ],
@@ -130,18 +194,26 @@
    {
     "kind": "broadleaf",
     "at": [
-     -12,
-     12
+     -24,
+     -12
     ],
-    "height": 14
+    "height": 10
    },
    {
     "kind": "broadleaf",
     "at": [
-     14,
-     12
+     24,
+     -10
     ],
-    "height": 12
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     16
+    ],
+    "height": 7
    }
   ],
   "extent": [
@@ -152,6 +224,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "OSM plan is a narrow rotated bar so the V roof and glass band read smaller than in the photo; stair, white terrace slab edge and the brick end wall step are not modelled; vegetation differs"
+  "gaps": "stair rail and red-brick end wall step not modelled in detail; vegetation and photo foreground differ; OSM plan narrow rotated bar"
  }
 }

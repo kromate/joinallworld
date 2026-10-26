@@ -29,16 +29,62 @@
  },
  "parts": [
   {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    5,
+    30,
+    0
+   ],
+   "params": {
+    "colour": "#365f2e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       118,
+       50
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       112,
+       40
+      ],
+      "cy": 8
+     },
+     {
+      "z": 36,
+      "rect": [
+       98,
+       30
+      ],
+      "cy": 16
+     },
+     {
+      "z": 52,
+      "rect": [
+       82,
+       12
+      ],
+      "cy": 22
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
    "type": "prism",
    "at": [
     0,
-    6,
+    -2,
     0
    ],
    "params": {
     "rect": [
-     130,
-     70
+     116,
+     20
     ],
     "height": 0.2,
     "colour": "#5f8a3f",
@@ -66,16 +112,16 @@
     "colour": "#f1eee4",
     "windows": "rect",
     "windowRatio": 0.22,
-    "bay": 4.4,
+    "bay": 5.8,
     "plinth": 0.3,
     "bands": "#e2ddcc"
    },
    "roof": {
     "form": "hip",
-    "colour": "#b8353a",
+    "colour": "#a82f35",
     "material": "metal-sheet",
-    "pitch": 16,
-    "overhang": 0.8
+    "pitch": 24,
+    "overhang": 0.6
    }
   },
   {
@@ -92,23 +138,23 @@
     0
    ],
    "z0": 0,
-   "height": 18,
-   "storeys": 5,
+   "height": 21,
+   "storeys": 6,
    "wall": {
     "material": "painted-render",
     "colour": "#f1eee4",
     "windows": "rect",
     "windowRatio": 0.22,
-    "bay": 4.2,
+    "bay": 5.8,
     "plinth": 0.3,
     "bands": "#e2ddcc"
    },
    "roof": {
-    "form": "hip",
-    "colour": "#b8353a",
+    "form": "gable",
+    "colour": "#a82f35",
     "material": "metal-sheet",
-    "pitch": 16,
-    "overhang": 0.8
+    "pitch": 48,
+    "overhang": 0.5
    }
   },
   {
@@ -132,16 +178,16 @@
     "colour": "#f1eee4",
     "windows": "rect",
     "windowRatio": 0.22,
-    "bay": 4.4,
+    "bay": 5.8,
     "plinth": 0.3,
     "bands": "#e2ddcc"
    },
    "roof": {
     "form": "hip",
-    "colour": "#b8353a",
+    "colour": "#a82f35",
     "material": "metal-sheet",
-    "pitch": 16,
-    "overhang": 0.8
+    "pitch": 26,
+    "overhang": 0.5
    }
   },
   {
@@ -165,16 +211,16 @@
     "colour": "#f1eee4",
     "windows": "rect",
     "windowRatio": 0.22,
-    "bay": 4.4,
+    "bay": 5.8,
     "plinth": 0.3,
     "bands": "#e2ddcc"
    },
    "roof": {
     "form": "hip",
-    "colour": "#b8353a",
+    "colour": "#a82f35",
     "material": "metal-sheet",
-    "pitch": 16,
-    "overhang": 0.8
+    "pitch": 12,
+    "overhang": 0.4
    }
   },
   {
@@ -196,8 +242,8 @@
    "wall": {
     "material": "painted-render",
     "colour": "#ece8dc",
-    "windows": "rect",
-    "windowRatio": 0.22,
+    "windows": "none",
+    "windowRatio": 0,
     "bay": 3.2,
     "plinth": 0.3,
     "bands": "#e2ddcc"
@@ -211,74 +257,133 @@
    }
   },
   {
-   "type": "loft",
+   "type": "prism",
+   "id": "terrace",
    "at": [
-    40,
-    -3,
+    10,
+    -8,
     0
    ],
    "params": {
+    "rect": [
+     96,
+     2.2
+    ],
+    "height": 2.6,
+    "colour": "#a8a08c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-cap",
+   "at": [
+    10,
+    -8,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     96.6,
+     2.6
+    ],
+    "height": 0.3,
+    "colour": "#c4bda9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    39.5,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "z0": 0,
+    "height": 19,
     "colour": "#f2efe6",
-    "sections": [
-     {
-      "z": 0,
-      "rect": [
-       9,
-       9
-      ]
-     },
-     {
-      "z": 24,
-      "rect": [
-       8,
-       8
-      ]
-     }
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.15,
+    "storeys": 5,
+    "faces": [
+     "front"
     ]
    }
   },
   {
    "type": "prism",
+   "id": "tower-belfry",
    "at": [
-    40,
-    -3,
-    24
-   ],
-   "lod": [
-    0,
-    1
+    39.5,
+    -2,
+    0
    ],
    "params": {
     "rect": [
-     8.4,
-     8.4
+     6.6,
+     6.6
     ],
-    "height": 1.0,
+    "z0": 19,
+    "height": 6,
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "storeys": 1,
+    "faces": [
+     "front",
+     "left",
+     "right"
+    ],
+    "glassColour": "#4a4f50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-eave",
+   "at": [
+    39.5,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     7.4
+    ],
+    "z0": 25,
+    "height": 0.6,
     "colour": "#e4e0d2"
    }
   },
   {
    "type": "loft",
+   "id": "tower-cap",
    "at": [
-    40,
-    -3,
-    24
+    39.5,
+    -2,
+    25.6
    ],
    "params": {
-    "colour": "#b8353a",
+    "colour": "#a82f35",
     "sections": [
      {
       "z": 0,
       "rect": [
-       8.4,
-       8.4
+       7.4,
+       7.4
       ]
      },
      {
-      "z": 4,
+      "z": 3.2,
       "rect": [
-       0.5,
-       0.5
+       0.4,
+       0.4
       ]
      }
     ]
@@ -286,68 +391,54 @@
   },
   {
    "type": "prism",
+   "id": "cross-v",
    "at": [
-    40,
-    -3,
-    35
+    39.5,
+    -2,
+    28.8
    ],
    "params": {
     "rect": [
-     0.3,
-     0.3
+     0.25,
+     0.25
     ],
-    "height": 2,
+    "height": 2.0,
     "colour": "#e9e6dc"
    }
   },
   {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     48,
-     -4,
-     0
-    ],
-    "end": [
-     62,
-     -4,
-     0
-    ],
-    "count": 4,
-    "lod2Step": 4,
-    "of": {
-     "type": "prism",
-     "params": {
-      "rect": [
-       2.2,
-       3
-      ],
-      "height": 6,
-      "colour": "#a8a08c"
-     }
-    }
-   }
-  },
-  {
    "type": "prism",
+   "id": "cross-h",
    "at": [
-    55,
-    -4,
-    6
+    39.5,
+    -2,
+    30.0
    ],
    "params": {
     "rect": [
-     16,
-     3.2
+     1.0,
+     0.25
     ],
-    "height": 0.8,
-    "colour": "#bdb5a0"
+    "height": 0.25,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    56,
+    -3.5,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 7,
+    "thickness": 3.5,
+    "bays": 6,
+    "shape": "round",
+    "colour": "#a8a08c",
+    "trim": "#bdb5a0",
+    "parapet": true
    }
   },
   {
@@ -360,48 +451,32 @@
    "params": {
     "kind": "palm",
     "height": 12,
-    "count": 4,
+    "count": 2,
     "spread": 5,
-    "line": 50
+    "line": 40
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -60,
-    18,
+    -20,
+    -14,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 18,
-    "count": 2,
-    "spread": 12,
-    "line": 120,
-    "colour": "#2f5f2c"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -60,
-    30,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 22,
-    "count": 2,
-    "spread": 12,
-    "line": 120,
-    "colour": "#2a5528"
+    "height": 9,
+    "count": 4,
+    "spread": 6,
+    "line": 70,
+    "colour": "#3d6e34"
    }
   }
  ],
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Hillside setting, stone viaduct and tower belfry louvres absent; wings simplified to flat-fronted blocks"
+  "gaps": "Hill is a smooth green loft not forest texture; viaduct is a simple arcade, stone retaining terraces plain; wings are flat-fronted with stylised windows; white gable pavilion roof only approximates the tall pointed gable"
  },
  "site": {
   "ground": "grass",

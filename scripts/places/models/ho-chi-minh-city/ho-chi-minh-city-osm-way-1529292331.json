@@ -39,22 +39,23 @@
    },
    "at": [
     8,
-    14
+    26
    ],
-   "height": 16,
-   "storeys": 4,
+   "height": 20,
+   "storeys": 5,
    "wall": {
     "material": "painted-render",
     "colour": "#f4f2ee",
     "windows": "punched",
-    "windowRatio": 0.5,
-    "windowShape": "round",
+    "windowRatio": 0.6,
+    "windowShape": "arched",
     "plinth": 0.4,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    }
+    },
+    "bay": 3.2
    },
    "roof": {
     "form": "flat",
@@ -67,15 +68,15 @@
    "id": "pier-left",
    "footprint": {
     "rect": [
-     4,
-     4
+     3,
+     3
     ]
    },
    "at": [
     -14,
     -9
    ],
-   "height": 8.5,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -93,15 +94,15 @@
    "id": "pier-mid",
    "footprint": {
     "rect": [
-     4,
-     4
+     3,
+     3
     ]
    },
    "at": [
     2,
     -9
    ],
-   "height": 9.5,
+   "height": 11,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -145,15 +146,15 @@
    "id": "sign-lintel",
    "footprint": {
     "rect": [
-     16,
-     1.4
+     20,
+     3
     ]
    },
    "at": [
     -6,
     -9
    ],
-   "height": 3.4,
+   "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -165,34 +166,7 @@
     "colour": "#d9d9d4",
     "parapet": 0.3
    },
-   "z0": 7.0
-  },
-  {
-   "type": "mass",
-   "id": "gatehouse",
-   "footprint": {
-    "rect": [
-     12,
-     9
-    ]
-   },
-   "at": [
-    -26,
-    -10
-   ],
-   "height": 4.5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8dcc0",
-    "windows": "punched",
-    "windowRatio": 0.3
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#d9d9d4",
-    "parapet": 0.3
-   }
+   "z0": 8.5
   },
   {
    "type": "fence-wall",
@@ -203,6 +177,166 @@
    ],
    "params": {
     "length": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     16,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -10.8
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2a24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2a24"
+   },
+   "z0": 9.4
+  },
+  {
+   "type": "mass",
+   "id": "cross-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.5
+    ]
+   },
+   "at": [
+    -13,
+    -10.8
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8281f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8281f"
+   },
+   "z0": 10.6
+  },
+  {
+   "type": "mass",
+   "id": "cross-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.5
+    ]
+   },
+   "at": [
+    1,
+    -10.8
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8281f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8281f"
+   },
+   "z0": 10.6
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    60
+   ],
+   "height": 70,
+   "storeys": 22,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9ea4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "railing-post",
+   "footprint": {
+    "rect": [
+     0.5,
+     22
+    ]
+   },
+   "at": [
+    28,
+    -8
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -28,
+    -8
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c4",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3c4"
    }
   }
  ],
@@ -235,6 +369,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "the real lintel is a shallow arch rising to the right pier with red cross marks (blank here), arched ward windows are plain rounds, rails, pavement stalls and the neighbouring tower are not modelled; ward block position and length are estimated"
+  "gaps": "lintel is a flat box (real one is a shallow arch rising to the right) with blank sign band and red crosses; arched ward windows are small slots; railing lattice, pavement stalls and tower detail simplified; ward position estimated"
  }
 }

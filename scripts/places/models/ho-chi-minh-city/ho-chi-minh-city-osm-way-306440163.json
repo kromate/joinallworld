@@ -36,47 +36,47 @@
    "type": "mass",
    "id": "campus",
    "footprint": {
-    "osm": true,
-    "simplify": 1
+    "rect": [
+     24,
+     16
+    ]
    },
-   "height": 23,
+   "height": 24,
    "storeys": 6,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#b4bcc6",
-    "windows": "ribbon",
-    "windowRatio": 0.55,
-    "bay": 9,
-    "bands": "#6b6a78",
-    "plinth": 0.3,
-    "pattern": [
-     {
-      "type": "bands",
-      "colour": "#5d5e70"
-     }
-    ]
+    "material": "painted-render",
+    "colour": "#c9ccd0",
+    "windows": "punched",
+    "windowRatio": 0.7,
+    "bay": 8,
+    "plinth": 0,
+    "glassColour": "#a9c4b4"
    },
    "roof": {
     "form": "flat",
     "colour": "#b9bcc0",
     "material": "membrane",
     "parapet": 0.9
-   }
+   },
+   "at": [
+    0,
+    0
+   ]
   },
   {
    "type": "mass",
    "id": "sign-band",
    "footprint": {
     "rect": [
-     28,
+     16,
      1.2
     ]
    },
    "at": [
     0,
-    -20
+    -6
    ],
-   "z0": 23,
+   "z0": 24,
    "height": 2.2,
    "storeys": 1,
    "rotDeg": 0,
@@ -94,11 +94,11 @@
    "type": "core/flag",
    "at": [
     -12,
-    -30,
+    -16,
     0
    ],
    "params": {
-    "height": 24,
+    "height": 16,
     "count": 3,
     "spacing": 5,
     "colours": [
@@ -112,7 +112,7 @@
    "type": "core/sign-board",
    "at": [
     0,
-    -34,
+    -19.5,
     0
    ],
    "params": {
@@ -127,8 +127,8 @@
   {
    "type": "core/tree",
    "at": [
-    -45,
     -30,
+    -24,
     0
    ],
    "params": {
@@ -138,12 +138,115 @@
     "spread": 6,
     "line": 30
    }
+  },
+  {
+   "type": "mass",
+   "id": "glass-corner",
+   "footprint": {
+    "rect": [
+     5,
+     16
+    ]
+   },
+   "at": [
+    14.5,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c4b4",
+    "windows": "punched",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9c4b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pergola",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e08a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e08a2a"
+   },
+   "z0": 25.5
+  },
+  {
+   "type": "mass",
+   "id": "banner",
+   "footprint": {
+    "rect": [
+     2,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -8.2
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8281f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8281f"
+   },
+   "z0": 3
+  },
+  {
+   "type": "mass",
+   "id": "stone-wall",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d2c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c2"
+   }
   }
  ],
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Photo shows only the 6-storey front block with framed glazing bays; the model uses the full 181 m OSM outline with generic ribbon glazing, no glass corner or dark framing grid, flags are small."
+  "gaps": "narrow 6-storey block with glass corner, banner, rooftop pergola, sign wall and flags; framing grid and green tint approximate; actual photo also shows a taller tower and white arched gate, not modelled"
  },
  "site": {
   "ground": "paving",

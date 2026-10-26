@@ -30,7 +30,124 @@
  "parts": [
   {
    "type": "mass",
-   "id": "block",
+   "id": "glazed-core",
+   "footprint": {
+    "rect": [
+     54,
+     38
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f2e2b",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -28,
+     -21
+    ],
+    "end": [
+     28,
+     -21
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 5.2,
+      "colour": "#cfcabb"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -28,
+     21
+    ],
+    "end": [
+     28,
+     21
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 5.2,
+      "colour": "#cfcabb"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -31,
+     -10
+    ],
+    "end": [
+     -31,
+     10
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 5.2,
+      "colour": "#cfcabb"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid",
    "footprint": {
     "rect": [
      62,
@@ -41,20 +158,13 @@
     0,
     0
    ],
-   "height": 8.5,
-   "storeys": 2,
+   "z0": 5,
+   "height": 4,
+   "storeys": 1,
    "wall": {
     "material": "concrete",
     "colour": "#e2dfd3",
-    "windows": "none",
-    "pattern": [
-     {
-      "type": "pilotis",
-      "inset": 3,
-      "spacing": 7,
-      "width": 1.4
-     }
-    ]
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
@@ -64,26 +174,84 @@
    }
   },
   {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -26,
+     -23.5
+    ],
+    "end": [
+     26,
+     -23.5
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "radius": 1.9,
+      "n": 12,
+      "z0": 5.3,
+      "height": 3.4,
+      "colour": "#a9a69c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -32.5,
+     -14
+    ],
+    "end": [
+     -32.5,
+     14
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "radius": 1.9,
+      "n": 12,
+      "z0": 5.3,
+      "height": 3.4,
+      "colour": "#a9a69c"
+     }
+    }
+   }
+  },
+  {
    "type": "mass",
-   "id": "upper",
+   "id": "up-front",
    "footprint": {
     "rect": [
-     62,
-     44
+     44,
+     26
     ]
    },
    "at": [
-    0,
-    0
+    -8,
+    -8
    ],
-   "z0": 8.5,
-   "height": 7,
+   "z0": 9,
+   "height": 8,
    "storeys": 1,
    "wall": {
     "material": "concrete",
     "colour": "#e2dfd3",
     "windows": "rect",
-    "windowRatio": 0.07,
+    "windowRatio": 0.3,
     "faces": {
      "front": "rect",
      "left": "rect",
@@ -101,53 +269,103 @@
   },
   {
    "type": "mass",
-   "id": "glazed-core",
+   "id": "up-corner",
    "footprint": {
     "rect": [
-     52,
-     34
+     26,
+     24
     ]
    },
    "at": [
-    0,
-    0
+    -14,
+    8
    ],
-   "height": 4.8,
+   "z0": 9,
+   "height": 13,
    "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#3d3c38",
-    "windows": "curtain",
-    "windowRatio": 0.7
+    "material": "concrete",
+    "colour": "#e2dfd3",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "rect",
+     "left": "rect",
+     "back": "none",
+     "right": "none"
+    },
+    "cornice": true
    },
    "roof": {
     "form": "flat",
-    "colour": "#8f8c82"
+    "colour": "#c9c5b8",
+    "material": "concrete",
+    "parapet": 0.5
    }
   },
   {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "core/prism",
-     "params": {
-      "radius": 2.6,
-      "n": 12,
-      "z0": 5,
-      "height": 4.5,
-      "colour": "#8a93a6"
-     }
-    },
-    "mode": "line",
-    "count": 6,
-    "start": [
-     -22,
-     -23.2
-    ],
-    "end": [
-     22,
-     -23.2
+   "type": "mass",
+   "id": "up-right",
+   "footprint": {
+    "rect": [
+     24,
+     22
     ]
+   },
+   "at": [
+    19,
+    -4
+   ],
+   "z0": 9,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2dfd3",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "rect",
+     "left": "rect",
+     "back": "none",
+     "right": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cantilever",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    -19
+   ],
+   "z0": 12,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb9ac",
+    "windows": "rect",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "material": "concrete",
+    "parapet": 0.5
    }
   },
   {
@@ -174,22 +392,75 @@
    ],
    "params": {
     "length": 60,
-    "height": 1.0,
-    "thickness": 0.5,
+    "height": 0.7,
+    "thickness": 0.6,
     "kind": "wall",
-    "pillarEvery": 6,
-    "colour": "#9d9684"
+    "pillarEvery": 5,
+    "colour": "#a89c84"
    }
   },
   {
-   "type": "lamp",
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -34,
+    0.7
+   ],
+   "params": {
+    "length": 60,
+    "height": 0.9,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -31
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#6b7280"
+   }
+  },
+  {
+   "type": "revolve",
    "at": [
     8,
     -31,
-    0
+    10.5
    ],
    "params": {
-    "height": 9
+    "segments": 16,
+    "colour": "#6b7280",
+    "profile": [
+     [
+      0.2,
+      0
+     ],
+     [
+      1.6,
+      0.15
+     ],
+     [
+      1.6,
+      0.35
+     ],
+     [
+      0.2,
+      0.5
+     ]
+    ]
    }
   }
  ],
@@ -228,8 +499,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Drum bays are rounder and bluer than the photo and sit under the storey rather than as recessed bays; no setback corner volume, cantilevers or ribbon windows; fence is plain rubble wall."
+  "gaps": "Upper mass is three offset boxes but with a plain window grid rather than deep ribbon slots; drum bays are still round and protrude instead of sitting recessed; fence is a stone wall with thin black rail, not ornamental iron panels; saucer lamp is small; palms are low-poly."
  }
 }

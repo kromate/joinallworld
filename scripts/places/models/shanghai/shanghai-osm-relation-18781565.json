@@ -38,9 +38,9 @@
   "margin": 0.0
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Library only (campus is 768 m wide); tower shown as two flat lobes without the cantilever overhang, balconies or trees; brick piers simplified to bays and cream bands; entrance glazing generic"
+  "gaps": "entrance bay is a blank cream block (no glazed band or doors); tower lobes are plain boxes without balconies; window slots on brick piers approximate; tower is not as narrow or set back as real; Library only of a 768 m campus"
  },
  "parts": [
   {
@@ -56,20 +56,19 @@
     0,
     0
    ],
-   "height": 10,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "brick",
     "colour": "#c2785a",
-    "windows": "ribbon",
-    "windowRatio": 0.45,
-    "bay": 4.4,
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 3.4,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#e4d9c4",
     "plinth": 0.6,
     "cornice": true
    },
@@ -77,7 +76,8 @@
     "form": "flat",
     "colour": "#8f8d88",
     "material": "membrane",
-    "parapet": 0
+    "parapet": 0,
+    "overhang": 1.2
    }
   },
   {
@@ -91,21 +91,22 @@
    },
    "at": [
     0,
-    -1
+    -2
    ],
-   "height": 11,
+   "height": 10.5,
    "storeys": 2,
    "wall": {
     "material": "brick",
-    "colour": "#b05d42",
+    "colour": "#e1d3b8",
     "windows": "none",
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
     },
-    "bands": "#e4d9c4",
-    "cornice": true
+    "cornice": true,
+    "windowRatio": 0.45,
+    "bay": 6
    },
    "roof": {
     "form": "flat",
@@ -116,52 +117,26 @@
   },
   {
    "type": "mass",
-   "id": "canopy-slab",
-   "footprint": {
-    "rect": [
-     20,
-     5
-    ]
-   },
-   "at": [
-    0,
-    -12
-   ],
-   "z0": 4,
-   "height": 0.8,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#e4d9c4",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e4d9c4"
-   }
-  },
-  {
-   "type": "mass",
    "id": "lobe-17",
    "footprint": {
     "rect": [
-     32,
+     26,
      26
     ]
    },
    "at": [
-    -17,
-    16
+    -14,
+    7
    ],
-   "z0": 11,
-   "height": 44,
-   "storeys": 8,
+   "z0": 9,
+   "height": 34,
+   "storeys": 7,
    "wall": {
     "material": "concrete",
     "colour": "#d8b8a4",
     "windows": "ribbon",
-    "windowRatio": 0.3,
-    "bay": 16,
+    "windowRatio": 0.4,
+    "bay": 8,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -180,23 +155,23 @@
    "id": "lobe17",
    "footprint": {
     "rect": [
-     32,
+     26,
      26
     ]
    },
    "at": [
-    17,
-    16
+    14,
+    7
    ],
-   "z0": 11,
-   "height": 44,
-   "storeys": 8,
+   "z0": 9,
+   "height": 34,
+   "storeys": 7,
    "wall": {
     "material": "concrete",
     "colour": "#d8b8a4",
     "windows": "ribbon",
-    "windowRatio": 0.3,
-    "bay": 16,
+    "windowRatio": 0.4,
+    "bay": 8,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -216,15 +191,15 @@
    "footprint": {
     "rect": [
      8,
-     14
+     24
     ]
    },
    "at": [
     0,
-    16
+    7
    ],
-   "z0": 11,
-   "height": 44,
+   "z0": 9,
+   "height": 34,
    "storeys": 8,
    "wall": {
     "material": "glass-curtain",
@@ -255,9 +230,9 @@
      -8.3,
      0
     ],
-    "count": 19,
+    "count": 31,
     "lod1Step": 3,
-    "lod2Step": 19,
+    "lod2Step": 31,
     "of": {
      "type": "prism",
      "params": {
@@ -266,10 +241,51 @@
        0.7
       ],
       "z0": 0,
-      "height": 10,
+      "height": 9,
       "colour": "#a85a40"
      }
     }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     54,
+     26
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "z0": 8.4,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3532",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3532"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "count": 3,
+    "rise": 0.2,
+    "run": 1.0,
+    "colour": "#b4b1a6"
    }
   }
  ],
@@ -300,6 +316,22 @@
      -12
     ],
     "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -20
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -20
+    ],
+    "height": 4
    }
   ],
   "extent": [

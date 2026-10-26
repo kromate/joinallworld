@@ -34,25 +34,100 @@
    "footprint": {
     "osm": true
    },
-   "height": 8.0,
-   "storeys": 2,
+   "height": 10.5,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
     "colour": "#f1eee8",
     "windows": "punched",
-    "windowShape": "rect",
-    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "windowRatio": 0.28,
     "plinth": 0.6,
     "cornice": true,
-    "bands": "#e4e0d6"
+    "bands": "#e4e0d6",
+    "trimColour": "#d8d2c4",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
    },
    "roof": {
-    "form": "mansard",
+    "form": "flat",
     "colour": "#44474c",
-    "material": "slate",
-    "rise": 4.2,
-    "pitch": 75,
-    "overhang": 0.15
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -12.3,
+      -1.9
+     ],
+     [
+      -9.9,
+      -9.8
+     ],
+     [
+      10.1,
+      -3.8
+     ],
+     [
+      5.4,
+      12.2
+     ],
+     [
+      -2.5,
+      9.9
+     ],
+     [
+      -0.1,
+      1.7
+     ]
+    ],
+    "z0": 10.5,
+    "height": 2.6,
+    "topScale": 0.93,
+    "colour": "#3c3f44",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -11.439000000000002,
+      -1.767
+     ],
+     [
+      -9.207,
+      -9.114
+     ],
+     [
+      9.393,
+      -3.534
+     ],
+     [
+      5.022,
+      11.346
+     ],
+     [
+      -2.325,
+      9.207
+     ],
+     [
+      -0.09300000000000001,
+      1.581
+     ]
+    ],
+    "z0": 13.1,
+    "height": 0.6,
+    "topScale": 0.8,
+    "colour": "#3c3f44",
+    "material": "slate"
    }
   },
   {
@@ -64,11 +139,12 @@
    ],
    "rotDeg": 15,
    "params": {
-    "width": 3.4,
-    "height": 2.2,
-    "pillar": 0.9,
+    "width": 3.6,
+    "height": 2.4,
+    "pillar": 1.0,
     "leaf": "bars",
-    "colour": "#ece9e2",
+    "arch": false,
+    "colour": "#f0ede6",
     "leafColour": "#1f2023"
    }
   },
@@ -81,13 +157,72 @@
    ],
    "rotDeg": 15,
    "params": {
-    "length": 12,
-    "height": 1.8
+    "length": 14,
+    "height": 2.2,
+    "thickness": 0.35,
+    "colour": "#f2efe9",
+    "pillarEvery": 4.5
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -6,
+    -6.5,
+    11.2
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.5,
+    "colour": "#f0ede6",
+    "roof_colour": "#3c3f44"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -2,
+    -6.5,
+    11.2
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.5,
+    "colour": "#f0ede6",
+    "roof_colour": "#3c3f44"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    2,
+    -6.5,
+    11.2
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.5,
+    "colour": "#f0ede6",
+    "roof_colour": "#3c3f44"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    6,
+    -6.5,
+    11.2
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.5,
+    "colour": "#f0ede6",
+    "roof_colour": "#3c3f44"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "cobble",
   "forecourt": "road",
   "trees": [
    {
@@ -96,7 +231,7 @@
      -2,
      -18
     ],
-    "height": 10
+    "height": 11
    },
    {
     "kind": "palm",
@@ -115,6 +250,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Mansard is a plain hip form without dormers; no iron balconies, stone quoins or rear annex; outline is the irregular OSM house so the facade angle differs from the photo."
+  "gaps": "Steep mansard and 3 storeys now read, but dormers are only 2 of 4 visible on the street face and windows are arched not French windows; no iron balconettes, quoins, cables/pole or cobbled forecourt; gate piers shorter than photo."
  }
 }

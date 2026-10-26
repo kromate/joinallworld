@@ -12,7 +12,7 @@
    "author": "Kiensvay",
    "view": "front",
    "file": "/tmp/places-evidence/phnom-penh/rua.jpg",
-   "used": "campus entrance only: brick-orange gate wall with gold-framed relief panels, two gate piers, white banner board and green notice board on posts, blue signboard, tall broadleaf trees. The teaching block behind is NOT in the photo; it is typed from the brief (1960s Cambodian campus, tile hip roof)"
+   "used": "campus entrance only: long brick-orange gate wall with maroon relief panels in gold frames, gold pilasters, two gate piers, white banner board and green notice board raised on posts with blue strips, dark plaque, tall broadleaf trees. Nothing behind the gate is modelled"
   },
   {
    "kind": "osm",
@@ -33,22 +33,22 @@
    "id": "gate-wall-l",
    "footprint": {
     "rect": [
-     30,
-     0.8
+     22,
+     0.9
     ]
    },
    "at": [
-    -19,
+    -16,
     0
    ],
    "z0": 0,
-   "height": 3.0,
+   "height": 2.5,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#9c5b2e",
+    "colour": "#a9632f",
     "windows": "none",
-    "plinth": 0.3,
+    "plinth": 0.2,
     "cornice": true
    },
    "roof": {
@@ -63,29 +63,192 @@
    "id": "gate-pier-l",
    "footprint": {
     "rect": [
-     1.4,
-     1.4
+     1.6,
+     1.6
     ]
    },
    "at": [
-    -3.5,
+    -5,
     0
    ],
    "z0": 0,
-   "height": 4.4,
+   "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#c9a24a",
+    "colour": "#a9632f",
     "windows": "none",
     "plinth": 0.3,
     "cornice": true
    },
    "roof": {
-    "form": "flat",
+    "form": "pyramidal",
     "colour": "#c99a4a",
     "material": "concrete",
+    "pitch": 40,
     "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-l0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -6.8,
+    -0.7
+   ],
+   "z0": 0.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-l1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -26.2,
+    -0.7
+   ],
+   "z0": 0.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-l0",
+   "footprint": {
+    "rect": [
+     5.0,
+     0.5
+    ]
+   },
+   "at": [
+    -11,
+    -0.7
+   ],
+   "z0": 0.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f2f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-l0g",
+   "footprint": {
+    "rect": [
+     5.6,
+     0.5
+    ]
+   },
+   "at": [
+    -11,
+    -0.66
+   ],
+   "z0": 0.4,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-l1",
+   "footprint": {
+    "rect": [
+     5.0,
+     0.5
+    ]
+   },
+   "at": [
+    -20,
+    -0.7
+   ],
+   "z0": 0.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f2f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-l1g",
+   "footprint": {
+    "rect": [
+     5.6,
+     0.5
+    ]
+   },
+   "at": [
+    -20,
+    -0.66
+   ],
+   "z0": 0.4,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
    }
   },
   {
@@ -93,22 +256,22 @@
    "id": "gate-wall-r",
    "footprint": {
     "rect": [
-     30,
-     0.8
+     22,
+     0.9
     ]
    },
    "at": [
-    19,
+    16,
     0
    ],
    "z0": 0,
-   "height": 3.0,
+   "height": 2.5,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#9c5b2e",
+    "colour": "#a9632f",
     "windows": "none",
-    "plinth": 0.3,
+    "plinth": 0.2,
     "cornice": true
    },
    "roof": {
@@ -123,42 +286,232 @@
    "id": "gate-pier-r",
    "footprint": {
     "rect": [
-     1.4,
-     1.4
+     1.6,
+     1.6
     ]
    },
    "at": [
-    3.5,
+    5,
     0
    ],
    "z0": 0,
-   "height": 4.4,
+   "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#c9a24a",
+    "colour": "#a9632f",
     "windows": "none",
     "plinth": 0.3,
     "cornice": true
    },
    "roof": {
-    "form": "flat",
+    "form": "pyramidal",
     "colour": "#c99a4a",
     "material": "concrete",
+    "pitch": 40,
     "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-r0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    6.8,
+    -0.7
+   ],
+   "z0": 0.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-r1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    26.2,
+    -0.7
+   ],
+   "z0": 0.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-r0",
+   "footprint": {
+    "rect": [
+     5.0,
+     0.5
+    ]
+   },
+   "at": [
+    11,
+    -0.7
+   ],
+   "z0": 0.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f2f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-r0g",
+   "footprint": {
+    "rect": [
+     5.6,
+     0.5
+    ]
+   },
+   "at": [
+    11,
+    -0.66
+   ],
+   "z0": 0.4,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-r1",
+   "footprint": {
+    "rect": [
+     5.0,
+     0.5
+    ]
+   },
+   "at": [
+    20,
+    -0.7
+   ],
+   "z0": 0.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f2f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-r1g",
+   "footprint": {
+    "rect": [
+     5.6,
+     0.5
+    ]
+   },
+   "at": [
+    20,
+    -0.66
+   ],
+   "z0": 0.4,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4a82f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    20,
+    -0.7
+   ],
+   "z0": 0.7,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a24",
+    "material": "concrete"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    -24,
+    -17,
     -0.5,
-    3.0
+    2.6
    ],
    "params": {
-    "width": 11.25,
-    "height": 5.76,
-    "bottom": 0,
+    "width": 10,
+    "height": 5,
+    "bottom": 3.4,
     "colour": "#f1efe8",
     "frameColour": "#7a3b2a",
     "posts": true
@@ -167,14 +520,30 @@
   {
    "type": "core/sign-board",
    "at": [
-    18,
+    -17,
     -0.5,
-    3.0
+    2.6
    ],
    "params": {
-    "width": 8.75,
-    "height": 4.32,
-    "bottom": 0,
+    "width": 10,
+    "height": 1.0,
+    "bottom": 2.5,
+    "colour": "#2d6fb8",
+    "frameColour": "#2d6fb8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    17,
+    -0.5,
+    2.6
+   ],
+   "params": {
+    "width": 7,
+    "height": 4,
+    "bottom": 4.0,
     "colour": "#2f7d45",
     "frameColour": "#c9a24a",
     "posts": true
@@ -183,159 +552,97 @@
   {
    "type": "core/sign-board",
    "at": [
-    -6,
+    17,
     -0.5,
-    3.0
+    2.6
    ],
    "params": {
-    "width": 6.25,
-    "height": 1.44,
-    "bottom": 0,
+    "width": 7,
+    "height": 0.9,
+    "bottom": 2.9,
     "colour": "#2d6fb8",
     "frameColour": "#2d6fb8",
     "posts": false
    }
-  },
-  {
-   "type": "mass",
-   "id": "block",
-   "footprint": {
-    "rect": [
-     60,
-     16
-    ]
-   },
-   "at": [
-    0,
-    38
-   ],
-   "z0": 0,
-   "height": 11.5,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8dcc0",
-    "windows": "ribbon",
-    "windowRatio": 0.35,
-    "plinth": 0.4,
-    "bands": "#b5b0a5",
-    "bay": 4,
-    "faces": {
-     "left": "plain",
-     "right": "plain"
-    }
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#b5532f",
-    "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 1.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "stair-bay",
-   "footprint": {
-    "rect": [
-     8,
-     4
-    ]
-   },
-   "at": [
-    0,
-    28
-   ],
-   "z0": 0,
-   "height": 9,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#efece4",
-    "windows": "none",
-    "plinth": 0.4
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#b5532f",
-    "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 0.6
-   }
-  },
-  {
-   "type": "core/flag",
-   "at": [
-    -8,
-    22,
-    0
-   ],
-   "params": {
-    "height": 9,
-    "count": 1,
-    "spacing": 3,
-    "colours": [
-     "#c8362f",
-     "#2f4a9c"
-    ]
-   }
   }
  ],
  "site": {
-  "ground": "laterite",
+  "ground": "sand",
   "forecourt": "road",
+  "extent": [
+   70,
+   50
+  ],
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     -30,
-     6
-    ]
+     -24,
+     7
+    ],
+    "height": 22
    },
    {
     "kind": "broadleaf",
     "at": [
-     -8,
-     12
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     6,
-     10
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     24,
-     12
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -18,
-     18
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     36,
+     -10,
      8
-    ]
+    ],
+    "height": 24
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     10
+    ],
+    "height": 19
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     9
+    ],
+    "height": 24
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     8
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     16
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     14
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     14
+    ],
+    "height": 16
    }
-  ],
-  "extent": [
-   110,
-   90
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "only the entrance gate is photographed; teaching block behind is typed from the brief. Gate relief panels, railings and overhead wires not modelled; trees are stock broadleaf"
+  "gaps": "gate only; relief panels are flat boxes without carving, trunks read bare, no railings/wires/motorbikes; signs are blank boards; ground flat beige"
  }
 }

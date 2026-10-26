@@ -27,102 +27,108 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 8,
-  "fovDeg": 40,
+  "pitchDeg": 6,
+  "fovDeg": 42,
   "aspect": 1.333
  },
  "parts": [
   {
-   "type": "loft",
+   "type": "mass",
    "id": "podium",
-   "params": {
-    "sections": [
-     {
-      "z": 0,
-      "ellipse": [
-       72,
-       46
-      ],
-      "colour": "#8e8f8e"
-     },
-     {
-      "z": 4.5,
-      "ellipse": [
-       69,
-       44
-      ],
-      "colour": "#9a9b99"
-     },
-     {
-      "z": 4.6,
-      "ellipse": [
-       66,
-       42
-      ],
-      "colour": "#7d8c96"
-     }
-    ],
-    "colour": "#8e8f8e",
-    "capTop": true
+   "footprint": {
+    "rect": [
+     80,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5f6c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8e"
    }
   },
   {
    "type": "loft",
-   "id": "eye-body",
+   "id": "eye",
+   "at": [
+    0,
+    -4
+   ],
    "params": {
     "sections": [
      {
-      "z": 4.5,
+      "z": 4.0,
       "rect": [
-       78,
-       66
+       55.0,
+       8
       ],
-      "colour": "#7f9eb3"
+      "colour": "#5f8f9f"
      },
      {
-      "z": 12,
+      "z": 8.6,
       "rect": [
-       116,
-       76
+       70.0,
+       8
       ],
-      "colour": "#6a8fa8"
+      "colour": "#5f8f9f"
      },
      {
-      "z": 19,
+      "z": 12.049999999999999,
       "rect": [
-       146,
-       80
+       77.5,
+       8
       ],
-      "colour": "#6a8fa8"
+      "colour": "#5f8f9f"
      },
      {
-      "z": 26,
+      "z": 16.65,
       "rect": [
-       116,
-       72
+       71.25,
+       8
       ],
-      "colour": "#6a8fa8"
+      "colour": "#5f8f9f"
      },
      {
-      "z": 33,
+      "z": 21.25,
       "rect": [
-       70,
-       52
+       60.0,
+       8
       ],
-      "colour": "#a9b8c2"
+      "colour": "#5f8f9f"
      },
      {
-      "z": 36,
+      "z": 25.849999999999998,
       "rect": [
-       40,
-       40
+       42.5,
+       8
       ],
-      "colour": "#c8cbcd"
+      "colour": "#b9c4ca"
+     },
+     {
+      "z": 29.299999999999997,
+      "rect": [
+       20.0,
+       8
+      ],
+      "colour": "#c9d0d4"
      }
     ],
     "curve": false,
-    "colour": "#6a8fa8",
-    "material": "glass-curtain"
+    "colour": "#5f8f9f",
+    "material": "glass-curtain",
+    "capTop": true
    }
   },
   {
@@ -130,16 +136,17 @@
    "id": "dark-panel",
    "footprint": {
     "rect": [
-     26,
-     0.6
+     30,
+     0.5
     ]
    },
    "at": [
     0,
-    -41.5
+    -8.3
    ],
-   "z0": 15,
-   "height": 13,
+   "z0": 10,
+   "height": 11,
+   "storeys": 1,
    "wall": {
     "material": "glass-curtain",
     "colour": "#2b2c30",
@@ -152,81 +159,94 @@
    }
   },
   {
+   "type": "mass",
+   "id": "ikea-block",
+   "footprint": {
+    "rect": [
+     40,
+     36
+    ]
+   },
+   "at": [
+    72,
+    0
+   ],
+   "z0": 0,
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f4fa8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f4fa8"
+   }
+  },
+  {
    "type": "array",
    "id": "bus-bay-canopies",
    "params": {
     "of": {
      "type": "canopy",
      "params": {
-      "form": "shed",
-      "width": 6,
-      "depth": 22,
-      "height": 4,
+      "form": "flat",
+      "width": 5,
+      "depth": 42,
+      "height": 4.2,
       "colour": "#f2f4f5",
-      "columns": 0
+      "columns": 0,
+      "thickness": 0.4
      }
     },
     "mode": "line",
     "start": [
-     -45,
-     -62
+     -42,
+     -48
     ],
     "end": [
-     45,
-     -62
+     42,
+     -48
     ],
-    "count": 6
-   }
-  },
-  {
-   "type": "stair",
-   "at": [
-    -40,
-    -50,
-    0
-   ],
-   "rotDeg": 0,
-   "params": {
-    "width": 6,
-    "height": 4.5,
-    "run": 8,
-    "colour": "#7d7e7f"
+    "count": 8
    }
   },
   {
    "type": "array",
-   "id": "entrance-columns",
+   "id": "kerbs",
    "params": {
     "of": {
      "type": "mass",
      "footprint": {
       "rect": [
-       2.4,
-       2.4
+       1.2,
+       42
       ]
      },
-     "height": 12,
+     "height": 0.4,
      "wall": {
       "material": "concrete",
-      "colour": "#a8a9a8",
+      "colour": "#d8b92e",
       "windows": "none",
-      "windowRatio": 0.1
+      "windowRatio": 0
      },
      "roof": {
       "form": "flat",
-      "colour": "#a8a9a8"
+      "colour": "#d8b92e"
      }
     },
     "mode": "line",
     "start": [
-     -46,
-     -52
+     -42,
+     -48
     ],
     "end": [
-     46,
-     -52
+     42,
+     -48
     ],
-    "count": 4
+    "count": 8
    }
   }
  ],
@@ -252,7 +272,7 @@
   ],
   "extent": [
    130,
-   100
+   90
   ]
  },
  "schema": "allworld-place-model",
@@ -260,8 +280,8 @@
  "city": "manila",
  "venueId": "manila-osm-way-368600427",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Eye shape is a faceted lens loft, not the thin curved silver rim and tapering podium; no IKEA/annex neighbours; bus canopies simplified."
+  "gaps": "Eye is a stepped octagonal loft not a smooth pointed lens, glass-curtain material still shows a chevron tint, no silver rim, bus canopies flat slabs without ribbing or columns, IKEA block plain."
  }
 }

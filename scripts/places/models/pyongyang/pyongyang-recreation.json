@@ -25,21 +25,722 @@
  },
  "parts": [
   {
-   "type": "pagoda-tower",
-   "id": "nine-storey-pagoda",
+   "type": "prism",
+   "id": "pagoda-base",
    "at": [
     -38,
     8,
     0
    ],
    "params": {
-    "storeys": 9,
-    "base_width": 9,
-    "height": 34,
-    "sides": 8,
-    "colour": "#6d4a37",
-    "accent": "#c4532e",
-    "cap_colour": "#c4532e"
+    "rect": [
+     11,
+     11
+    ],
+    "height": 1.5,
+    "colour": "#8a8378"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-0",
+   "at": [
+    -38,
+    8,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     8.25,
+     8.25
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-0",
+   "at": [
+    -38,
+    8,
+    1.9
+   ],
+   "params": {
+    "rect": [
+     10.200000000000001,
+     10.200000000000001
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-0",
+   "at": [
+    -38,
+    8,
+    3.1999999999999997
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       15.0,
+       15.0
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       13.8,
+       13.8
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       7.5,
+       7.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-1",
+   "at": [
+    -38,
+    8,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     7.782500000000001,
+     7.782500000000001
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-1",
+   "at": [
+    -38,
+    8,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     9.622000000000002,
+     9.622000000000002
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-1",
+   "at": [
+    -38,
+    8,
+    5.7
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14.15,
+       14.15
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       13.018,
+       13.018
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       7.075,
+       7.075
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-2",
+   "at": [
+    -38,
+    8,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     7.315000000000001,
+     7.315000000000001
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-2",
+   "at": [
+    -38,
+    8,
+    6.9
+   ],
+   "params": {
+    "rect": [
+     9.044,
+     9.044
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-2",
+   "at": [
+    -38,
+    8,
+    8.200000000000001
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13.3,
+       13.3
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       12.236,
+       12.236
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       6.65,
+       6.65
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-3",
+   "at": [
+    -38,
+    8,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     6.8475,
+     6.8475
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-3",
+   "at": [
+    -38,
+    8,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     8.466,
+     8.466
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-3",
+   "at": [
+    -38,
+    8,
+    10.700000000000001
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12.45,
+       12.45
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       11.454,
+       11.454
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       6.225,
+       6.225
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-4",
+   "at": [
+    -38,
+    8,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     6.38,
+     6.38
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-4",
+   "at": [
+    -38,
+    8,
+    11.9
+   ],
+   "params": {
+    "rect": [
+     7.888,
+     7.888
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-4",
+   "at": [
+    -38,
+    8,
+    13.200000000000001
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11.6,
+       11.6
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       10.672,
+       10.672
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       5.8,
+       5.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-5",
+   "at": [
+    -38,
+    8,
+    14.0
+   ],
+   "params": {
+    "rect": [
+     5.9125000000000005,
+     5.9125000000000005
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-5",
+   "at": [
+    -38,
+    8,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     7.3100000000000005,
+     7.3100000000000005
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-5",
+   "at": [
+    -38,
+    8,
+    15.700000000000001
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10.75,
+       10.75
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       9.89,
+       9.89
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       5.375,
+       5.375
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-6",
+   "at": [
+    -38,
+    8,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     5.445,
+     5.445
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-6",
+   "at": [
+    -38,
+    8,
+    16.9
+   ],
+   "params": {
+    "rect": [
+     6.732000000000001,
+     6.732000000000001
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-6",
+   "at": [
+    -38,
+    8,
+    18.2
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.9,
+       9.9
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       9.108,
+       9.108
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       4.95,
+       4.95
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-7",
+   "at": [
+    -38,
+    8,
+    19.0
+   ],
+   "params": {
+    "rect": [
+     4.977500000000001,
+     4.977500000000001
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-7",
+   "at": [
+    -38,
+    8,
+    19.4
+   ],
+   "params": {
+    "rect": [
+     6.154000000000001,
+     6.154000000000001
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-7",
+   "at": [
+    -38,
+    8,
+    20.7
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.05,
+       9.05
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       8.326,
+       8.326
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       4.525,
+       4.525
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-8",
+   "at": [
+    -38,
+    8,
+    21.5
+   ],
+   "params": {
+    "rect": [
+     4.51,
+     4.51
+    ],
+    "height": 2.0,
+    "colour": "#5c3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-8",
+   "at": [
+    -38,
+    8,
+    21.9
+   ],
+   "params": {
+    "rect": [
+     5.576,
+     5.576
+    ],
+    "height": 0.35,
+    "colour": "#8a5a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eave-8",
+   "at": [
+    -38,
+    8,
+    23.2
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.2,
+       8.2
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       7.544,
+       7.544
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       4.1,
+       4.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "top-roof",
+   "at": [
+    -38,
+    8,
+    22.9
+   ],
+   "params": {
+    "colour": "#c9632f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire",
+   "at": [
+    -38,
+    8,
+    24.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 5.0,
+    "colour": "#b89a5a"
    }
   },
   {
@@ -47,16 +748,16 @@
    "id": "white-hall",
    "footprint": {
     "rect": [
-     34,
+     40,
      7
     ]
    },
    "at": [
-    -24,
-    14
+    -13.2,
+    8
    ],
    "z0": 0,
-   "height": 8.5,
+   "height": 7.0,
    "storeys": 1,
    "wall": {
     "material": "whitewash",
@@ -66,30 +767,47 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#e6e4de",
-    "parapet": 0.3
+    "colour": "#9a9c9c",
+    "parapet": 0.4
    }
   },
   {
-   "type": "obelisk",
-   "id": "white-tower",
+   "type": "loft",
+   "id": "lighthouse",
    "at": [
-    34,
+    42,
     30,
     0
    ],
    "params": {
-    "height": 30,
-    "base_width": 2.4,
-    "style": "square",
-    "steps": 2
+    "colour": "#f2f2f0",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.1
+     },
+     {
+      "z": 14,
+      "circle": 0.7
+     },
+     {
+      "z": 14.4,
+      "circle": 0.9,
+      "colour": "#c23a2c"
+     },
+     {
+      "z": 17,
+      "circle": 0.5,
+      "colour": "#c23a2c"
+     }
+    ]
    }
   },
   {
    "type": "revolve",
    "id": "white-tent",
    "at": [
-    8,
+    27,
     32,
     0
    ],
@@ -102,24 +820,24 @@
       0
      ],
      [
-      13,
+      14,
       0
      ],
      [
       12,
-      1.2
+      1.0
      ],
      [
       8,
-      3.4
+      2.4
      ],
      [
       4,
-      4.8
+      3.2
      ],
      [
       0,
-      5.4
+      3.6
      ]
     ]
    }
@@ -128,43 +846,42 @@
    "type": "core/fence-wall",
    "id": "front-balustrade",
    "at": [
-    0,
+    -5,
     -8,
     0
    ],
    "params": {
-    "length": 100,
-    "height": 0.9,
+    "length": 120,
+    "height": 1.2,
     "thickness": 0.35,
     "kind": "wall",
     "pillarEvery": 4,
-    "colour": "#dcdfdc"
+    "colour": "#f0f0ec"
    }
   },
   {
-   "type": "pavilion",
-   "id": "pavilion",
+   "type": "prism",
+   "id": "fence-cap",
    "at": [
+    -5,
     -8,
-    6,
-    0
+    1.15
    ],
    "params": {
-    "width": 7,
-    "depth": 6,
-    "height": 3.8,
-    "roof": "curved",
-    "rise": 2,
-    "colour": "#a8452d",
-    "cap_colour": "#4a4e50"
+    "rect": [
+     120,
+     0.6
+    ],
+    "height": 0.2,
+    "colour": "#2f5a43"
    }
   },
   {
    "type": "tree-grove",
    "id": "grove-r",
    "at": [
-    40,
-    5,
+    62,
+    10,
     0
    ],
    "params": {
@@ -206,8 +923,8 @@
  "city": "pyongyang",
  "venueId": "pyongyang-recreation",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Distant view only: pagoda eaves are fewer and flatter, white hall and tent are approximate, layout of the demolished park is inferred."
+  "gaps": "Distant view: pagoda is square-plan not octagonal, eaves simplified, white hall and tent positions inferred, fence tile pattern omitted."
  }
 }

@@ -47,78 +47,97 @@
  "parts": [
   {
    "type": "mass",
-   "id": "terminal",
+   "id": "terminal-main",
    "footprint": {
     "rect": [
-     118,
-     26
+     96,
+     20
     ]
    },
    "at": [
     0,
     0
    ],
-   "height": 16,
-   "storeys": 3,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#a9bdb8",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "plinth": 0.6,
-    "cornice": true,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    }
-   },
-   "roof": {
-    "form": "curved",
-    "curve": "arch",
-    "colour": "#c0553b",
-    "material": "metal-sheet",
-    "rise": 3,
-    "overhang": 2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "east-wing",
-   "footprint": {
-    "rect": [
-     30,
-     18
-    ]
-   },
-   "at": [
-    42,
-    -18
-   ],
    "height": 9,
    "storeys": 2,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#a9bdb8",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    }
+    "material": "render",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
    },
    "roof": {
     "form": "hip",
     "colour": "#c0553b",
     "material": "metal-sheet",
-    "pitch": 8,
-    "overhang": 1.5
+    "pitch": 12,
+    "overhang": 2
    }
   },
   {
    "type": "mass",
-   "id": "west-wing",
+   "id": "terminal-high",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    -6,
+    -2
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc9bb",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-east",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    38,
+    -2
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-west",
    "footprint": {
     "rect": [
      28,
@@ -126,94 +145,284 @@
     ]
    },
    "at": [
-    -44,
-    -17
+    -40,
+    -2
    ],
-   "height": 9,
-   "storeys": 2,
+   "height": 6,
+   "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#a9bdb8",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    }
+    "material": "render",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
    },
    "roof": {
     "form": "hip",
     "colour": "#c0553b",
     "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-0",
+   "footprint": {
+    "rect": [
+     8,
+     40
+    ]
+   },
+   "at": [
+    -34,
+    -30
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c6bd",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-1",
+   "footprint": {
+    "rect": [
+     8,
+     40
+    ]
+   },
+   "at": [
+    -10,
+    -30
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c6bd",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-2",
+   "footprint": {
+    "rect": [
+     8,
+     40
+    ]
+   },
+   "at": [
+    14,
+    -30
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c6bd",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-3",
+   "footprint": {
+    "rect": [
+     8,
+     40
+    ]
+   },
+   "at": [
+    38,
+    -30
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c6bd",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-1",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    -58,
+    -24
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#eeeeea",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f1f1ee",
+    "material": "metal-sheet",
     "pitch": 8,
-    "overhang": 1.5
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-2",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -58,
+    0
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e8e4",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f1f1ee",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    -52
+   ],
+   "params": {
+    "rect": [
+     120,
+     60
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#8e8e8a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-road",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "section": "rect",
+    "width": 9,
+    "height": 0.2,
+    "points": [
+     [
+      -55,
+      14,
+      0.1
+     ],
+     [
+      -38,
+      32,
+      0.1
+     ],
+     [
+      0,
+      40,
+      0.1
+     ],
+     [
+      38,
+      32,
+      0.1
+     ],
+     [
+      55,
+      14,
+      0.1
+     ]
+    ],
+    "curve": true,
+    "colour": "#55575a"
    }
   },
   {
    "type": "control-tower",
    "at": [
-    -20,
-    22,
+    -70,
+    26,
     0
    ],
    "params": {
-    "height": 42,
+    "height": 16,
     "style": "round",
     "colour": "#d8d8d2",
     "cabColour": "#5c7480"
    }
   },
   {
-   "type": "canopy",
-   "at": [
-    0,
-    28,
-    0
-   ],
-   "params": {
-    "form": "flat",
-    "width": 80,
-    "depth": 10,
-    "height": 5,
-    "colour": "#d9d6cf",
-    "columns": 6
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "of": {
-     "type": "jet-bridge",
-     "params": {
-      "length": 20,
-      "colour": "#b9bec2"
-     }
-    },
-    "mode": "line",
-    "count": 5,
-    "start": [
-     -30,
-     -24,
-     5
-    ],
-    "end": [
-     30,
-     -24,
-     5
-    ]
-   }
-  },
-  {
    "type": "core/sign-board",
    "at": [
     40,
-    40,
+    52,
     0
    ],
    "params": {
@@ -221,36 +430,52 @@
     "height": 3,
     "colour": "#2f6b4f"
    }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 8,
+    "height": 4,
+    "colour": "#d9d6cf",
+    "columns": 6
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "grass",
   "forecourt": "road",
-  "forecourtDepth": 16,
+  "forecourtDepth": 12,
   "trees": [
    {
     "kind": "palm",
     "at": [
-     -50,
-     -90
+     -45,
+     50
     ]
    },
    {
     "kind": "palm",
     "at": [
-     50,
-     -92
+     45,
+     50
     ]
    }
   ],
   "extent": [
-   160,
-   160
+   120,
+   120
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Only a 118 m stretch of the 480 m terminal is modelled as a rectangular hall with two wings; the real terracotta roofs are stepped and hipped, the forecourt ring road, hangars and aircraft are missing."
+  "gaps": "Terminal shortened to ~100 m of the 480 m; stepped hipped terracotta roofs, long piers, hangars, apron and curved ring road now present; no aircraft, apron markings or surrounding greenery/roads."
  }
 }

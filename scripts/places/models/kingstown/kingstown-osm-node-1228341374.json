@@ -34,132 +34,391 @@
  },
  "parts": [
   {
-   "type": "prism",
-   "id": "pier-left",
+   "type": "loft",
+   "id": "left-mass",
    "at": [
-    0,
-    0,
+    -15,
+    2,
     0
    ],
    "params": {
-    "points": [
-     [
-      -23,
-      -4
-     ],
-     [
-      -1.5,
-      -3
-     ],
-     [
-      -1,
-      7
-     ],
-     [
-      -23,
-      10
-     ]
-    ],
-    "height": 24,
-    "topScale": 0.8,
-    "colour": "#6f5446"
+    "curve": true,
+    "colour": "#5d4a40",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       12,
+       9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       11,
+       8.5
+      ],
+      "cx": -1,
+      "cy": 0
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       10,
+       8
+      ],
+      "cx": -1,
+      "cy": 0
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       8,
+       7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       5,
+       5
+      ],
+      "cx": 2,
+      "cy": 0
+     }
+    ]
    }
   },
   {
-   "type": "prism",
-   "id": "pier-right",
+   "type": "loft",
+   "id": "right-mass",
    "at": [
-    0,
-    0,
+    17,
+    2,
     0
    ],
    "params": {
-    "points": [
-     [
-      5.5,
-      -3
-     ],
-     [
-      24,
-      -5
-     ],
-     [
-      24,
-      9
-     ],
-     [
-      6,
-      7
-     ]
-    ],
-    "height": 22,
-    "topScale": 0.8,
-    "colour": "#7d5a48"
+    "curve": true,
+    "colour": "#66503f",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       8,
+       9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       7.5,
+       8.5
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       7,
+       8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 19,
+      "ellipse": [
+       5,
+       6
+      ],
+      "cx": -1,
+      "cy": 0
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       2,
+       3
+      ],
+      "cx": -1,
+      "cy": 0
+     }
+    ]
    }
   },
   {
-   "type": "prism",
-   "id": "lintel",
+   "type": "loft",
+   "id": "crown",
    "at": [
-    0,
-    0,
+    1,
+    2.5,
     0
    ],
    "params": {
-    "points": [
-     [
-      -23,
-      -2
-     ],
-     [
-      24,
-      -3
-     ],
-     [
-      24,
-      9
-     ],
-     [
-      -23,
-      9
-     ]
-    ],
-    "z0": 14,
-    "height": 11,
-    "topScale": 0.85,
-    "colour": "#6a5144"
+    "curve": true,
+    "colour": "#5a483e",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 15,
+      "ellipse": [
+       14,
+       8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 19,
+      "ellipse": [
+       14,
+       8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 23,
+      "ellipse": [
+       11,
+       7
+      ],
+      "cx": -1,
+      "cy": 0
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       6,
+       5
+      ],
+      "cx": -1,
+      "cy": 0
+     }
+    ]
    }
   },
   {
-   "type": "prism",
-   "id": "red-strata",
+   "type": "sweep-path",
+   "id": "arch",
    "at": [
-    0,
-    0,
-    0
+    2.5,
+    2,
+    6
    ],
    "params": {
-    "points": [
-     [
-      -26,
-      -9
-     ],
-     [
-      -3,
-      -8
-     ],
-     [
-      -3,
+    "section": {
+     "ellipse": [
+      3,
+      4.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
       0
      ],
-     [
-      -26,
-      2
-     ]
-    ],
-    "height": 4.5,
+     "radius": 6.5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 10
+    },
+    "colour": "#6b5447"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "red-strata",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "curve": true,
     "colour": "#8a4a38",
-    "topScale": 0.9
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16,
+       8
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#8a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       15,
+       7.5
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#8a4a38"
+     },
+     {
+      "z": 5.5,
+      "ellipse": [
+       10,
+       5
+      ],
+      "cx": -3,
+      "cy": 0,
+      "colour": "#7c4132"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "scrub-crown",
+   "at": [
+    -1,
+    2,
+    22
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#4a8738",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       14,
+       7
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#3f7a34"
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       12,
+       6.5
+      ],
+      "cx": 1,
+      "cy": 0,
+      "colour": "#4d8c3a"
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       7,
+       5
+      ],
+      "cx": 2,
+      "cy": 0,
+      "colour": "#5a9a42"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "scrub-right",
+   "at": [
+    19,
+    2,
+    15
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#4a8738",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       8,
+       7
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#3f7a34"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       7,
+       6
+      ],
+      "cx": 1,
+      "cy": 0,
+      "colour": "#4d8c3a"
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       3.5,
+       4
+      ],
+      "cx": 2,
+      "cy": 0,
+      "colour": "#5a9a42"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "scrub-left",
+   "at": [
+    -26,
+    2,
+    13
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#4a8738",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       4,
+       5
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#3f7a34"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       3.5,
+       4.5
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#4d8c3a"
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       1.5,
+       2.5
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#5a9a42"
+     }
+    ]
    }
   },
   {
@@ -271,36 +530,6 @@
    }
   },
   {
-   "type": "core/array",
-   "at": [
-    0,
-    0,
-    24
-   ],
-   "params": {
-    "mode": "line",
-    "start": [
-     -20,
-     3
-    ],
-    "end": [
-     20,
-     3
-    ],
-    "count": 8,
-    "of": [
-     {
-      "type": "tree",
-      "params": {
-       "kind": "broadleaf",
-       "height": 6
-      }
-     }
-    ],
-    "vary": {}
-   }
-  },
-  {
    "type": "core/water-tank",
    "at": [
     -8,
@@ -321,8 +550,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "render queue backlogged (no heartbeat), no comparison done; cliff is stacked prisms, arch is a rectangular opening, scrub crown is sparse trees"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "lofted lumpy basalt with a real rounded opening, red stratum ledge and scrub now present; the arch is lower and more symmetric than the tall asymmetric original, surface still shows the plank-like rock texture, scrub caps are smooth blobs"
  }
 }

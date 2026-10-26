@@ -25,7 +25,7 @@
   }
  ],
  "camera": {
-  "yawDeg": -14,
+  "yawDeg": 3,
   "pitchDeg": 3,
   "fovDeg": 55,
   "aspect": 1.333,
@@ -48,63 +48,134 @@
    }
   },
   {
-   "type": "stand",
+   "type": "prism",
    "at": [
     0,
-    0,
-    0
+    3,
+    3.4
    ],
    "params": {
-    "start": [
-     -26,
+    "rect": [
+     58,
      6
     ],
-    "end": [
-     26,
-     6
-    ],
-    "flip": false,
-    "rows": 6,
-    "rise": 0.4,
-    "run": 0.8,
-    "firstHeight": 0.6,
-    "seatColour": "#6c9aa8",
-    "under": "open",
-    "backWall": 0.8,
-    "canopy": {
-     "height": 4.6,
-     "depth": 5,
-     "colour": "#cdc49c",
-     "supports": 8
-    }
+    "height": 0.4,
+    "colour": "#cdc49c"
    }
   },
   {
-   "type": "fence-wall",
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.4,
+      "colour": "#2f8f8a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     0.5
+    ],
+    "end": [
+     27,
+     0.5
+    ],
+    "count": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.4,
+      "colour": "#2f8f8a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     5.5
+    ],
+    "end": [
+     27,
+     5.5
+    ],
+    "count": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
    "at": [
     0,
-    0,
+    6.2,
     0
    ],
    "params": {
-    "length": 56,
-    "height": 2.2,
-    "thickness": 0.3,
-    "kind": "wall",
+    "rect": [
+     58,
+     0.4
+    ],
+    "height": 3.4,
     "colour": "#d9d5c6"
    }
   },
   {
    "type": "prism",
    "at": [
-    -31,
     0,
+    3,
     0
    ],
    "params": {
     "rect": [
-     4,
-     0.5
+     56,
+     3.4
+    ],
+    "height": 0.5,
+    "colour": "#9aa0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     6.5
     ],
     "height": 3.4,
     "colour": "#7a56a3"
@@ -113,85 +184,258 @@
   {
    "type": "prism",
    "at": [
-    -35,
-    0,
+    30,
+    3,
     0
    ],
    "params": {
     "rect": [
-     4,
-     0.5
+     2.4,
+     6.5
     ],
     "height": 3.4,
     "colour": "#3f86a6"
    }
   },
   {
-   "type": "fence-wall",
+   "type": "prism",
    "at": [
-    -33,
     0,
+    -1.5,
     0
    ],
    "params": {
-    "length": 14,
-    "height": 2.2,
-    "thickness": 0.3,
-    "kind": "wall",
+    "rect": [
+     58,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#5f86b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.5,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.32
+    ],
+    "height": 0.3,
+    "colour": "#e8ecef"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -39,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 3.0,
     "colour": "#d9d5c6"
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
    "at": [
-    -30,
-    16,
+    -48,
+    5,
     0
    ],
    "params": {
-    "height": 26,
-    "head_width": 4,
-    "colour": "#2e3338"
+    "rect": [
+     3.5,
+     0.6
+    ],
+    "height": 3.4,
+    "colour": "#7a56a3"
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
    "at": [
-    30,
-    16,
+    -52,
+    5,
     0
    ],
    "params": {
-    "height": 26,
-    "head_width": 4,
-    "colour": "#2e3338"
+    "rect": [
+     3.5,
+     0.6
+    ],
+    "height": 3.4,
+    "colour": "#3f86a6"
    }
   },
   {
-   "type": "floodlight-mast",
+   "type": "lattice-mast",
    "at": [
-    -30,
-    58,
+    -34,
+    22,
     0
    ],
    "params": {
     "height": 26,
-    "head_width": 4,
-    "colour": "#2e3338"
-   }
+    "baseWidth": 1.8,
+    "topWidth": 0.6,
+    "panels": 9,
+    "colour": "#1f2328",
+    "colour2": "#1f2328"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
    "at": [
-    30,
-    58,
+    -34,
+    22,
+    25.5
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#2e3338"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    34,
+    22,
     0
    ],
    "params": {
     "height": 26,
-    "head_width": 4,
+    "baseWidth": 1.8,
+    "topWidth": 0.6,
+    "panels": 9,
+    "colour": "#1f2328",
+    "colour2": "#1f2328"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    22,
+    25.5
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "height": 1.6,
     "colour": "#2e3338"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -34,
+    60,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "baseWidth": 1.8,
+    "topWidth": 0.6,
+    "panels": 9,
+    "colour": "#1f2328",
+    "colour2": "#1f2328"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    60,
+    25.5
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#2e3338"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    34,
+    60,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "baseWidth": 1.8,
+    "topWidth": 0.6,
+    "panels": 9,
+    "colour": "#1f2328",
+    "colour2": "#1f2328"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    60,
+    25.5
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#2e3338"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "fence-wall",
@@ -210,39 +454,102 @@
   },
   {
    "type": "mass",
-   "id": "tower-b",
+   "id": "tower-0",
    "footprint": {
     "rect": [
-     26,
-     16
+     16,
+     12
     ]
    },
    "at": [
-    -6,
-    78
+    -34,
+    84
    ],
-   "height": 70,
-   "storeys": 28,
+   "height": 59,
+   "storeys": 10,
    "wall": {
     "material": "render",
-    "colour": "#cdbf9f",
+    "colour": "#d4c4a0",
     "windows": "none",
-    "windowRatio": 0.35,
-    "pattern": {
-     "type": "floors"
-    },
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ],
     "bands": "#a89c84"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b8b4a8"
+    "colour": "#9fb8b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-1",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -10,
+    84
+   ],
+   "height": 54,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbf9f",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ],
+    "bands": "#a89c84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb8b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-2",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    14,
+    84
+   ],
+   "height": 51,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c8a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ],
+    "bands": "#a89c84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb8b0"
    }
   },
   {
    "type": "tree-grove",
    "at": [
     0,
-    64,
+    66,
     0
    ],
    "params": {
@@ -251,11 +558,15 @@
     "count": 8,
     "min_height": 8,
     "max_height": 13
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "road",
   "trees": 0,
   "extent": [
@@ -264,9 +575,9 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "housing towers are a single plain block, no teal posts or striped boundary wall, lattice masts simplified; camera is oblique so the stand is seen end-on"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stand ends and striped boundary wall are plain colour blocks; masts reduced to thin lattice without lamp frames; towers have only storey bands, no balconies; road in front is not modelled in detail"
  },
  "schema": "allworld-place-model",
  "version": 2,

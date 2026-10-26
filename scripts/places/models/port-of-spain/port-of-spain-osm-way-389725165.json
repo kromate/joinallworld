@@ -17,7 +17,7 @@
   {
    "kind": "osm",
    "ref": "way/544637769",
-   "used": "real outline of the school range (127 x 72 m, 1 level) for the low gallery wings"
+   "used": "school range scale only; footprint no longer used because the photo shows a frontal main block plus veranda wings"
   }
  ],
  "camera": {
@@ -30,46 +30,16 @@
  "parts": [
   {
    "type": "mass",
-   "id": "range",
-   "footprint": {
-    "osm": true,
-    "scale": 0.85
-   },
-   "at": [
-    0,
-    0
-   ],
-   "height": 7.5,
-   "storeys": 2,
-   "wall": {
-    "material": "stucco",
-    "colour": "#efe9cf",
-    "windows": "none",
-    "windowRatio": 0.28,
-    "bay": 2.8,
-    "plinth": 0.5,
-    "cornice": true,
-    "bands": "#2f8f78"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e4ddc4",
-    "parapet": 0.5,
-    "overhang": 0.4
-   }
-  },
-  {
-   "type": "mass",
    "id": "main-block",
    "footprint": {
     "rect": [
-     26,
+     16,
      14
     ]
    },
    "at": [
-    -12,
-    -46
+    -8,
+    0
    ],
    "height": 13,
    "storeys": 3,
@@ -77,112 +47,17 @@
     "material": "stucco",
     "colour": "#efe9cf",
     "windows": "rect",
-    "windowRatio": 0.2,
-    "bay": 5,
-    "plinth": 0.5,
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "plinth": 0.4,
     "cornice": true,
     "bands": "#2f8f78"
    },
    "roof": {
     "form": "flat",
     "colour": "#efe9cf",
-    "parapet": 0.6,
-    "overhang": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "tower",
-   "footprint": {
-    "rect": [
-     7,
-     6.5
-    ]
-   },
-   "at": [
-    -4,
-    -50
-   ],
-   "height": 27,
-   "storeys": 6,
-   "wall": {
-    "material": "stucco",
-    "colour": "#efe9cf",
-    "windows": "rect",
-    "windowRatio": 0.08,
-    "bay": 5,
-    "plinth": 0,
-    "cornice": true
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#f4f0dc",
-    "parapet": 0.8,
-    "overhang": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "balcony-low",
-   "footprint": {
-    "rect": [
-     14,
-     3.5
-    ]
-   },
-   "at": [
-    -10,
-    -55
-   ],
-   "height": 4.2,
-   "storeys": 1,
-   "wall": {
-    "material": "stucco",
-    "colour": "#efe9cf",
-    "windows": "none",
-    "windowRatio": 0.28,
-    "bay": 2.8,
-    "plinth": 0.5,
-    "cornice": true,
-    "bands": "#2f8f78"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2f8f78",
-    "parapet": 0.4,
-    "overhang": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "balcony-mid",
-   "footprint": {
-    "rect": [
-     8,
-     3
-    ]
-   },
-   "at": [
-    -6,
-    -53.5
-   ],
-   "z0": 4.2,
-   "height": 3.5,
-   "storeys": 1,
-   "wall": {
-    "material": "stucco",
-    "colour": "#efe9cf",
-    "windows": "none",
-    "windowRatio": 0.28,
-    "bay": 2.8,
-    "plinth": 0.5,
-    "cornice": true
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2f8f78",
-    "parapet": 0.3,
-    "overhang": 0.5
+    "parapet": 0.7,
+    "overhang": 0.4
    }
   },
   {
@@ -190,30 +65,30 @@
    "id": "teal-wing",
    "footprint": {
     "rect": [
-     22,
+     16,
      14
     ]
    },
    "at": [
-    -26,
-    -46
+    -24,
+    0
    ],
-   "height": 8,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "stucco",
     "colour": "#efe9cf",
     "windows": "rect",
-    "windowRatio": 0.2,
-    "bay": 4,
-    "plinth": 0.5,
+    "windowRatio": 0.26,
+    "bay": 3.2,
+    "plinth": 0.4,
     "cornice": true
    },
    "roof": {
     "form": "hip",
     "colour": "#2fa08a",
     "material": "metal-sheet",
-    "pitch": 18,
+    "pitch": 32,
     "overhang": 0.8
    }
   },
@@ -222,79 +97,347 @@
    "id": "gallery-wing",
    "footprint": {
     "rect": [
-     34,
-     12
+     30,
+     11
     ]
    },
    "at": [
-    19,
-    -43
+    15,
+    -1.5
    ],
-   "height": 7.5,
+   "height": 8,
    "storeys": 2,
    "wall": {
     "material": "stucco",
     "colour": "#efe9cf",
-    "windows": "rect",
-    "windowRatio": 0.2,
-    "bay": 4,
-    "plinth": 0.5,
-    "cornice": true
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#2f8f78",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "storeys": 2,
+      "spacing": 3.0,
+      "width": 0.55,
+      "kind": "square",
+      "colour": "#f1ecd6",
+      "backColour": "#cdc4a4",
+      "inset": 0.6
+     }
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#e4ddc4",
+    "colour": "#efe9cf",
     "parapet": 0.5,
     "overhang": 0.5
    }
   },
   {
-   "type": "balustrade",
+   "type": "prism",
+   "id": "tower",
    "at": [
-    3,
-    -49.2,
-    3.7
-   ],
-   "params": {
-    "length": 32,
-    "height": 1.0,
-    "postEvery": 1.6,
-    "colour": "#f6f2e4"
-   }
-  },
-  {
-   "type": "balustrade",
-   "at": [
-    3,
-    -49.2,
-    0.4
-   ],
-   "params": {
-    "length": 32,
-    "height": 0.9,
-    "postEvery": 2.4,
-    "colour": "#f6f2e4"
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -3,
-    -60,
+    -11,
+    -3.5,
     0
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 16,
-    "count": 1,
-    "colour": "#2d5a30"
+    "rect": [
+     7,
+     6.5
+    ],
+    "z0": 0,
+    "height": 27,
+    "colour": "#efe9cf",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.45,
+      "depth": 0.35,
+      "spacing": 1.3,
+      "colour": "#f6f2e0"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-top",
+   "at": [
+    -11,
+    -3.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     6.9
+    ],
+    "z0": 27,
+    "height": 1.2,
+    "colour": "#f6f2e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "at": [
+    -11,
+    -6.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.25
+    ],
+    "z0": 23.2,
+    "height": 2.2,
+    "colour": "#faf8ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-2.2",
+   "at": [
+    -13.2,
+    -6.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "z0": 25.9,
+    "height": 0.9,
+    "colour": "#7e8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre2.2",
+   "at": [
+    -8.8,
+    -6.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "z0": 25.9,
+    "height": 0.9,
+    "colour": "#7e8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab3.9",
+   "at": [
+    -8,
+    -7.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     1.7
+    ],
+    "z0": 3.9,
+    "height": 0.4,
+    "colour": "#efe9cf",
+    "topColour": "#2f8f78"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -8,
+    -8.5,
+    4.3
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.9,
+    "postEvery": 0.9,
+    "colour": "#f6f2e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab7.7",
+   "at": [
+    -8,
+    -7.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.7
+    ],
+    "z0": 7.7,
+    "height": 0.4,
+    "colour": "#efe9cf",
+    "topColour": "#2f8f78"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -8,
+    -8.5,
+    8.1
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 7,
+    "height": 0.9,
+    "postEvery": 0.9,
+    "colour": "#f6f2e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab11.1",
+   "at": [
+    -8,
+    -7.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     1.7
+    ],
+    "z0": 11.1,
+    "height": 0.4,
+    "colour": "#efe9cf",
+    "topColour": "#2f8f78"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -8,
+    -8.5,
+    11.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 0.9,
+    "postEvery": 0.9,
+    "colour": "#f6f2e4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    15,
+    -7.4,
+    4.2
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.95,
+    "postEvery": 1.0,
+    "colour": "#f6f2e4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    15,
+    -7.4,
+    0.4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.95,
+    "postEvery": 1.0,
+    "colour": "#f6f2e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth1",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.4,
+    "colour": "#e9e4d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth2",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 0.4,
+    "height": 1.6,
+    "colour": "#f1ede0"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    20,
-    -60,
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "colour": "#23402a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -18,
     0
    ],
    "params": {
@@ -302,22 +445,22 @@
     "height": 12,
     "count": 3,
     "spread": 8,
-    "line": 24,
+    "line": 16,
     "colour": "#3f7a36"
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "road",
+  "forecourt": "garden",
   "extent": [
-   110,
-   100
+   80,
+   45
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Gallery wing arcade/balustrade, stepped balcony detail and clock face are simplified; wing placement against the real outline is approximate"
+  "gaps": "Tower is a fin-patterned prism without stepped pilasters or readable clock; veranda uses plain square columns; real wing recedes at an angle and the OSM range footprint is not used"
  }
 }

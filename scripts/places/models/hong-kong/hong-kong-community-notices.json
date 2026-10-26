@@ -29,7 +29,7 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     22,
+     20,
      20
     ]
    },
@@ -38,7 +38,7 @@
     0
    ],
    "z0": 0,
-   "height": 26,
+   "height": 30,
    "storeys": 7,
    "wall": {
     "material": "tile-cladding",
@@ -65,22 +65,22 @@
    "id": "glass-front",
    "footprint": {
     "rect": [
-     18,
-     1.2
+     15,
+     1.0
     ]
    },
    "at": [
     0,
-    -10.4
+    -10.3
    ],
-   "z0": 2.5,
-   "height": 16,
-   "storeys": 4,
+   "z0": 4,
+   "height": 18,
+   "storeys": 6,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#5a4a38",
+    "colour": "#34291f",
     "windows": "curtain",
-    "windowRatio": 0.85,
+    "windowRatio": 0.9,
     "faces": {
      "left": "none",
      "right": "none",
@@ -98,21 +98,21 @@
    "id": "clinic",
    "footprint": {
     "rect": [
-     30,
-     18
+     14,
+     14
     ]
    },
    "at": [
-    -24,
-    14
+    -12,
+    12
    ],
    "z0": 0,
-   "height": 13,
+   "height": 16,
    "storeys": 4,
    "wall": {
     "material": "concrete",
-    "colour": "#aeb0b0",
-    "windows": "ribbon",
+    "colour": "#9a9c9c",
+    "windows": "none",
     "windowRatio": 0.3,
     "plinth": 0.2
    },
@@ -127,7 +127,7 @@
    "id": "annex",
    "footprint": {
     "rect": [
-     22,
+     20,
      15
     ]
    },
@@ -136,13 +136,13 @@
     2
    ],
    "z0": 0,
-   "height": 9,
+   "height": 10,
    "storeys": 3,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#efeee9",
+    "colour": "#f3f2ee",
     "windows": "punched",
-    "windowRatio": 0.18,
+    "windowRatio": 0.1,
     "plinth": 0.3
    },
    "roof": {
@@ -156,13 +156,13 @@
    "id": "rear-wing",
    "footprint": {
     "rect": [
-     34,
-     24
+     22,
+     22
     ]
    },
    "at": [
-    22,
-    16
+    16,
+    14
    ],
    "z0": 0,
    "height": 16,
@@ -188,9 +188,9 @@
     0
    ],
    "params": {
-    "width": 20,
-    "depth": 5,
-    "height": 3.6,
+    "width": 22,
+    "depth": 6,
+    "height": 3.4,
     "thickness": 0.4,
     "colour": "#f2f1ec"
    }
@@ -217,6 +217,34 @@
    "params": {
     "height": 3,
     "width": 2.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.4,
+    24.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.1,
+    "thickness": 0.15,
+    "colour": "#f2f2f2"
    }
   }
  ],
@@ -260,6 +288,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Glass curtain tint too dark and no mullion grid; lettering band and dental-clinic wall details absent; surrounding towers not modelled; real outline is irregular and composed from boxes."
+  "gaps": "Bronze curtain wall is smaller than the real full-height grid and has no thin white mullions; sign band is blank; dental-clinic block plain; entrance ramp and railings only a short fence."
  }
 }

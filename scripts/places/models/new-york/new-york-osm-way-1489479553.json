@@ -40,7 +40,7 @@
     0,
     0
    ],
-   "height": 13,
+   "height": 18,
    "storeys": 2,
    "wall": {
     "material": "brick",
@@ -62,7 +62,7 @@
     "form": "gable",
     "colour": "#3d4147",
     "material": "slate",
-    "pitch": 50,
+    "pitch": 55,
     "axis": "x",
     "overhang": 0.3
    }
@@ -76,10 +76,10 @@
    ],
    "params": {
     "rect": [
-     4.2,
-     4.2
+     4.6,
+     4.6
     ],
-    "height": 24,
+    "height": 32,
     "colour": "#9a4b36",
     "topColour": "#9a4b36",
     "windows": "pointed",
@@ -93,7 +93,7 @@
    "at": [
     12.2,
     0,
-    24
+    32
    ],
    "params": {
     "rect": [
@@ -110,14 +110,14 @@
    "at": [
     12.2,
     0,
-    24.4
+    32.4
    ],
    "params": {
     "rect": [
      3.8,
      3.8
     ],
-    "height": 5.2,
+    "height": 6.5,
     "colour": "#6f9c8d",
     "topColour": "#6f9c8d",
     "windows": "pointed",
@@ -130,7 +130,7 @@
    "at": [
     12.2,
     0,
-    29.6
+    38.9
    ],
    "params": {
     "rect": [
@@ -168,7 +168,7 @@
    "at": [
     12.2,
     -2.15,
-    19
+    26
    ],
    "lod": [
     0
@@ -188,7 +188,7 @@
    "at": [
     10.299999999999999,
     -1.9,
-    29.6
+    38.9
    ],
    "lod": [
     0
@@ -209,7 +209,7 @@
    "at": [
     10.299999999999999,
     1.9,
-    29.6
+    38.9
    ],
    "lod": [
     0
@@ -230,7 +230,7 @@
    "at": [
     14.1,
     -1.9,
-    29.6
+    38.9
    ],
    "lod": [
     0
@@ -251,7 +251,7 @@
    "at": [
     14.1,
     1.9,
-    29.6
+    38.9
    ],
    "lod": [
     0
@@ -273,7 +273,7 @@
    "at": [
     12.2,
     0,
-    30.1
+    39.4
    ],
    "lod": [
     0,
@@ -282,7 +282,7 @@
    "params": {
     "n": 8,
     "radius": 2.2,
-    "height": 11,
+    "height": 14,
     "topScale": 0.03,
     "colour": "#7f9588",
     "topColour": "#7f9588"
@@ -294,7 +294,7 @@
    "at": [
     12.2,
     0,
-    30.1
+    39.4
    ],
    "lod": [
     2
@@ -302,7 +302,7 @@
    "params": {
     "n": 4,
     "radius": 2.2,
-    "height": 11,
+    "height": 14,
     "topScale": 0.04,
     "colour": "#7f9588",
     "topColour": "#7f9588"
@@ -536,7 +536,7 @@
    "at": [
     0,
     -6.208,
-    13
+    18.0
    ],
    "lod": [
     0,
@@ -632,7 +632,7 @@
    "at": [
     0,
     6.208,
-    13
+    18.0
    ],
    "lod": [
     0,
@@ -691,7 +691,7 @@
    "at": [
     0,
     0,
-    20.4
+    27
    ],
    "lod": [
     0,
@@ -722,12 +722,12 @@
     "start": [
      -10,
      -3.6,
-     15.8
+     21
     ],
     "end": [
      4,
      -3.6,
-     15.8
+     21
     ],
     "count": 5,
     "of": {
@@ -760,12 +760,12 @@
     "start": [
      -10,
      3.6,
-     15.8
+     21
     ],
     "end": [
      4,
      3.6,
-     15.8
+     21
     ],
     "count": 5,
     "of": {
@@ -810,7 +810,7 @@
    ],
    "params": {
     "rect": [
-     60,
+     40,
      3
     ],
     "height": 0.1,
@@ -822,13 +822,13 @@
    "type": "prism",
    "at": [
     0,
-    -17,
+    -16,
     0
    ],
    "params": {
     "rect": [
-     70,
-     8
+     44,
+     6
     ],
     "height": 0.05,
     "colour": "#4a4c4f",
@@ -1382,19 +1382,58 @@
     "steps": 3,
     "colour": "#5f564d"
    }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    5,
+    -8.5
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4b36",
+    "windows": "pointed-arch",
+    "windowRatio": 0.5,
+    "plinth": 0.8,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4,
+    "trimColour": "#d9d0bb"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d4147",
+    "material": "slate",
+    "pitch": 55,
+    "axis": "y",
+    "overhang": 0.2
+   }
   }
  ],
  "site": {
   "ground": "asphalt",
   "forecourt": "road",
   "extent": [
-   70,
-   50
+   44,
+   40
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Tower now rises from the front gable with green belfry, pinnacles, spire, dormers, eave parapet, stone porch and street frontage; no real tracery, clock detail or crocketed spire, nave windows are plain pointed cuts, ground arcade is dark blocks, trees are sparse bare stand-ins."
+  "gaps": "Nave raised to 18 m eaves with 55 degree slate roof, tower and green belfry/spire made much taller (about 46 m), side gable added; still no real tracery, crocketed spire, clock face or buttresses, trees sparse sticks."
  }
 }

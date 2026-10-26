@@ -33,19 +33,19 @@
    "id": "platform",
    "footprint": {
     "rect": [
-     14,
-     9
+     15,
+     10
     ]
    },
    "at": [
     0,
     0
    ],
-   "height": 0.7,
+   "height": 1.0,
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#9a9a94",
+    "colour": "#8d8a82",
     "windows": "none"
    },
    "roof": {
@@ -66,21 +66,21 @@
     0,
     0
    ],
-   "z0": 0.7,
+   "z0": 1.0,
    "height": 3.8,
    "storeys": 1,
    "wall": {
-    "material": "whitewash",
-    "colour": "#e6dccb",
+    "material": "concrete",
+    "colour": "#f4efe4",
     "windows": "none",
     "bay": 3.1
    },
    "roof": {
     "form": "hip",
-    "colour": "#4b4f55",
+    "colour": "#5a5d62",
     "material": "clay-tile",
-    "rise": 1.7,
-    "overhang": 1.5,
+    "rise": 2.0,
+    "overhang": 2.0,
     "pitch": 18
    }
   },
@@ -89,25 +89,43 @@
    "id": "hall-eave-beam",
    "footprint": {
     "rect": [
-     13.4,
-     0.5
+     13.6,
+     0.8
     ]
    },
    "at": [
     0,
-    -3.3
+    -3.6
    ],
-   "z0": 3.8,
-   "height": 0.55,
+   "z0": 3.7,
+   "height": 0.9,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#3f7a63",
+    "colour": "#2f9a8a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dark-bay",
+   "at": [
+    0,
+    -3.0
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     0.5
+    ],
+    "z0": 1.0,
+    "height": 3.8,
+    "colour": "#2b2420",
+    "topColour": "#2b2420"
    }
   },
   {
@@ -117,11 +135,11 @@
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.22,
-      "n": 8,
-      "height": 3.3,
-      "z0": 0.7,
-      "colour": "#8a2f26"
+      "radius": 0.3,
+      "n": 4,
+      "height": 3.8,
+      "z0": 1.0,
+      "colour": "#9a2a22"
      }
     },
     "mode": "line",
@@ -170,7 +188,8 @@
     "rise": 1.9,
     "overhang": 1.1,
     "axis": "y"
-   }
+   },
+   "z0": 0
   },
   {
    "type": "core/steps",
@@ -200,35 +219,105 @@
     "thickness": 0.4,
     "colour": "#a3a39c"
    }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -4.3
+   ],
+   "params": {
+    "rect": [
+     15.5,
+     0.35
+    ],
+    "z0": 4.7,
+    "height": 0.35,
+    "colour": "#2a2a2c",
+    "topColour": "#2a2a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ridge-cap",
+   "at": [
+    -6.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     1.2
+    ],
+    "z0": 6.3,
+    "height": 0.9,
+    "colour": "#2a2a2c",
+    "topColour": "#2a2a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ridge-cap",
+   "at": [
+    6.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     1.2
+    ],
+    "z0": 6.3,
+    "height": 0.9,
+    "colour": "#2a2a2c",
+    "topColour": "#2a2a2c"
+   }
   }
  ],
  "site": {
-  "ground": "paving",
-  "forecourt": "garden",
+  "ground": "cobble",
+  "forecourt": "none",
   "trees": [
    {
-    "kind": "conifer",
+    "kind": "broadleaf",
     "at": [
-     -22,
-     18
+     -20,
+     16
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     17
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     22
     ],
     "height": 13
    },
    {
-    "kind": "conifer",
+    "kind": "broadleaf",
     "at": [
-     22,
-     18
+     -10,
+     26
     ],
     "height": 12
    },
    {
-    "kind": "conifer",
+    "kind": "broadleaf",
     "at": [
-     3,
-     24
+     12,
+     26
     ],
-    "height": 14
+    "height": 12
    }
   ],
   "extent": [
@@ -241,8 +330,8 @@
  "city": "seoul",
  "venueId": "seoul-osm-node-368860625",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "no dancheong detail or stone-chip wall panels, open front bay and carved eave rafters simplified; roof lacks upturned corner ends; shrine hall is a plain gable"
+  "gaps": "Eave corners not upturned and no dancheong detail; wall colour renders bluish instead of white plaster; front bay only dark-recessed with no stone-chip panels; gravel shown as cobble paving; autumn trees are generic broadleaf."
  }
 }

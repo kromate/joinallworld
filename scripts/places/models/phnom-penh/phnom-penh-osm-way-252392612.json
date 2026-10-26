@@ -125,11 +125,11 @@
     "z0": 0,
     "height": 24,
     "storeys": 7,
-    "colour": "#ddd6c4",
+    "colour": "#e6dec9",
     "topColour": "#9a9a94",
     "windows": "ribbon",
-    "windowRatio": 0.34,
-    "glassColour": "#38414a",
+    "windowRatio": 0.5,
+    "glassColour": "#2c343c",
     "trimColour": "#efece4",
     "plinth": 0.6,
     "faces": {
@@ -150,10 +150,10 @@
    ],
    "params": {
     "z0": 0,
-    "height": 13,
-    "colour": "#cdc3ae",
+    "height": 19,
+    "colour": "#6b6255",
     "rect": [
-     30,
+     28,
      12
     ]
    },
@@ -163,17 +163,17 @@
    "type": "prism",
    "id": "pav-podium",
    "at": [
-    0.51,
-    -20.97,
+    0.4,
+    -22.5,
     0
    ],
    "params": {
     "z0": 0,
-    "height": 2.6,
-    "colour": "#aeb0ac",
+    "height": 2.4,
+    "colour": "#9c9d99",
     "rect": [
-     16,
-     5
+     34,
+     8
     ]
    },
    "rotDeg": 7.3
@@ -182,16 +182,16 @@
    "type": "prism",
    "id": "pav-steps",
    "at": [
-    1.14,
-    -25.93,
+    1.2,
+    -27.5,
     0
    ],
    "params": {
     "z0": 0,
     "height": 0.7,
-    "colour": "#c8a58f",
+    "colour": "#a85b45",
     "rect": [
-     22,
+     20,
      5
     ]
    },
@@ -240,16 +240,16 @@
    "id": "slab1",
    "at": [
     0.13,
-    -17.99,
+    -19.5,
     0
    ],
    "params": {
     "z0": 7.5,
-    "height": 1.0,
-    "colour": "#e6dfcf",
+    "height": 2.0,
+    "colour": "#e8e0cc",
     "rect": [
-     62,
-     20
+     34,
+     18
     ]
    },
    "rotDeg": 7.3
@@ -259,16 +259,16 @@
    "id": "slab2",
    "at": [
     0.13,
-    -17.99,
+    -19.5,
     0
    ],
    "params": {
     "z0": 11.0,
-    "height": 1.0,
-    "colour": "#e9e3d4",
+    "height": 2.0,
+    "colour": "#e8e0cc",
     "rect": [
-     48,
-     16
+     42,
+     20
     ]
    },
    "rotDeg": 7.3
@@ -278,16 +278,16 @@
    "id": "slab3",
    "at": [
     0.13,
-    -17.99,
+    -19.5,
     0
    ],
    "params": {
     "z0": 14.5,
-    "height": 1.0,
-    "colour": "#e9e3d4",
+    "height": 2.0,
+    "colour": "#e8e0cc",
     "rect": [
-     34,
-     12
+     36,
+     17
     ]
    },
    "rotDeg": 7.3
@@ -296,17 +296,17 @@
    "type": "prism",
    "id": "slab4",
    "at": [
-    0.0,
-    -17.0,
+    0.13,
+    -19.5,
     0
    ],
    "params": {
     "z0": 17.5,
-    "height": 1.0,
-    "colour": "#e9e3d4",
+    "height": 2.0,
+    "colour": "#e8e0cc",
     "rect": [
-     22,
-     8
+     28,
+     14
     ]
    },
    "rotDeg": 7.3
@@ -317,14 +317,14 @@
    "params": {
     "mode": "line",
     "start": [
-     -10.89,
-     -26.46
+     -14,
+     -29.5
     ],
     "end": [
-     12.92,
-     -23.41
+     14.5,
+     -26
     ],
-    "count": 7,
+    "count": 9,
     "of": {
      "type": "prism",
      "params": {
@@ -343,58 +343,217 @@
    "type": "loft",
    "id": "gable",
    "at": [
-    0.06,
-    -17.5,
+    0.0,
+    -22,
     0
    ],
    "rotDeg": 7.3,
    "params": {
-    "colour": "#e9e2cf",
+    "colour": "#e6dec8",
     "sections": [
      {
       "z": 18.5,
       "rect": [
-       13,
-       1.6
+       24,
+       1.8
       ]
      },
      {
-      "z": 22,
+      "z": 21.8,
       "rect": [
-       10.4,
-       1.6
+       20,
+       1.8
       ]
      },
      {
-      "z": 25.5,
+      "z": 25.1,
       "rect": [
-       7.8,
-       1.6
+       16,
+       1.8
       ]
      },
      {
-      "z": 29,
+      "z": 28.4,
       "rect": [
-       5.2,
-       1.6
+       12,
+       1.8
       ]
      },
      {
-      "z": 32.5,
+      "z": 31.7,
       "rect": [
-       2.6,
-       1.6
+       8,
+       1.8
       ]
      },
      {
-      "z": 35,
+      "z": 35.0,
+      "rect": [
+       4,
+       1.8
+      ]
+     },
+     {
+      "z": 38.3,
       "rect": [
        0.5,
-       1.2
+       1.8
       ]
      }
     ]
    }
+  },
+  {
+   "type": "loft",
+   "id": "tympanum",
+   "at": [
+    0.0,
+    -23,
+    0
+   ],
+   "rotDeg": 7.3,
+   "params": {
+    "colour": "#8a7a62",
+    "sections": [
+     {
+      "z": 19.2,
+      "rect": [
+       19,
+       0.6
+      ]
+     },
+     {
+      "z": 22.2,
+      "rect": [
+       15,
+       0.6
+      ]
+     },
+     {
+      "z": 25.2,
+      "rect": [
+       11,
+       0.6
+      ]
+     },
+     {
+      "z": 28.2,
+      "rect": [
+       7,
+       0.6
+      ]
+     },
+     {
+      "z": 31.2,
+      "rect": [
+       3,
+       0.6
+      ]
+     },
+     {
+      "z": 33.5,
+      "rect": [
+       0.4,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "marble",
+   "at": [
+    1.0,
+    -25.5,
+    0
+   ],
+   "rotDeg": 7.3,
+   "params": {
+    "rect": [
+     9,
+     2.5
+    ],
+    "z0": 0.7,
+    "height": 3.4,
+    "colour": "#cdd0cd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab1-shadow",
+   "at": [
+    0.13,
+    -19.5,
+    0
+   ],
+   "params": {
+    "z0": 7.0,
+    "height": 0.5,
+    "colour": "#2e2a26",
+    "rect": [
+     33,
+     17
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab2-shadow",
+   "at": [
+    0.13,
+    -19.5,
+    0
+   ],
+   "params": {
+    "z0": 10.5,
+    "height": 0.5,
+    "colour": "#2e2a26",
+    "rect": [
+     41,
+     19
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab3-shadow",
+   "at": [
+    0.13,
+    -19.5,
+    0
+   ],
+   "params": {
+    "z0": 14.0,
+    "height": 0.5,
+    "colour": "#2e2a26",
+    "rect": [
+     35,
+     16
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab4-shadow",
+   "at": [
+    0.13,
+    -19.5,
+    0
+   ],
+   "params": {
+    "z0": 17.0,
+    "height": 0.5,
+    "colour": "#2e2a26",
+    "rect": [
+     27,
+     13
+    ]
+   },
+   "rotDeg": 7.3
   }
  ],
  "site": {
@@ -437,8 +596,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Photo shows only the entrance pavilion, not the 203 m block; pavilion is simplified (no stepped central stair, flag, trees, stone walls); block scaled 0.82 to fit the 170 m limit."
+  "gaps": "photo shows only the entrance pavilion, not the full block; carved tympanum and stepped central stair simplified; no flag, trees or stone walls; block scaled to fit 170 m limit"
  }
 }

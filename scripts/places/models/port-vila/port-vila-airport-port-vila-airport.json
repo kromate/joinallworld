@@ -44,14 +44,14 @@
    "footprint": {
     "rect": [
      92,
-     18
+     15
     ]
    },
    "at": [
     0,
-    0
+    1.5
    ],
-   "height": 4.6,
+   "height": 4.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -67,7 +67,7 @@
     "form": "flat",
     "colour": "#aeb2b4",
     "material": "membrane",
-    "overhang": 1.5,
+    "overhang": 0,
     "parapet": 0.2
    }
   },
@@ -77,19 +77,19 @@
    "footprint": {
     "rect": [
      100,
-     1.0
+     1.2
     ]
    },
    "at": [
     0,
-    -10.2
+    -9.3
    ],
-   "z0": 4.2,
-   "height": 2.2,
+   "z0": 3.6,
+   "height": 2.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#3cc46a",
+    "colour": "#2fbf5f",
     "windows": "none"
    },
    "roof": {
@@ -100,23 +100,23 @@
   },
   {
    "type": "mass",
-   "id": "deck-parapet",
+   "id": "deck-back-wall",
    "footprint": {
     "rect": [
      92,
-     18
+     1.5
     ]
    },
    "at": [
     0,
-    0
+    7.5
    ],
-   "z0": 6.4,
-   "height": 1.0,
+   "z0": 4.0,
+   "height": 4.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d8d6b4",
+    "colour": "#d9d33a",
     "windows": "none"
    },
    "roof": {
@@ -130,28 +130,28 @@
    "at": [
     0,
     0,
-    4.6
+    4.0
    ],
    "params": {
     "mode": "line",
     "start": [
      -24,
-     -8
+     -8.5
     ],
     "end": [
      24,
-     -8
+     -8.5
     ],
-    "count": 8,
+    "count": 9,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.5,
-       0.5
+       0.3,
+       0.3
       ],
-      "height": 3.9,
-      "colour": "#c9a838"
+      "height": 4.0,
+      "colour": "#f2f2f0"
      }
     }
    }
@@ -161,7 +161,7 @@
    "at": [
     0,
     -1,
-    8.6
+    8.0
    ],
    "params": {
     "form": "flat",
@@ -183,23 +183,23 @@
    "params": {
     "mode": "line",
     "start": [
-     -36,
-     -10
+     -40,
+     -9.3
     ],
     "end": [
-     38,
-     -10
+     40,
+     -9.3
     ],
-    "count": 8,
+    "count": 7,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.5,
-       0.5
+       0.6,
+       0.6
       ],
-      "height": 4.6,
-      "colour": "#f2f2f0"
+      "height": 3.6,
+      "colour": "#f6f6f4"
      }
     }
    }
@@ -209,73 +209,28 @@
    "id": "blue-annex",
    "footprint": {
     "rect": [
-     10,
-     12
+     6,
+     10
     ]
    },
    "at": [
-    51,
-    -3
+    49,
+    -1
    ],
-   "height": 6.4,
-   "storeys": 2,
+   "height": 4.6,
+   "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7aa7c9",
+    "colour": "#5fa8e0",
     "windows": "curtain",
     "windowRatio": 0.65,
-    "bands": "#2a5aa6"
+    "bands": "#1f5fd0"
    },
    "roof": {
     "form": "flat",
-    "colour": "#2a5aa6",
+    "colour": "#1f5fd0",
     "material": "membrane",
     "parapet": 0.3
-   }
-  },
-  {
-   "type": "mass",
-   "id": "rear-hall",
-   "footprint": {
-    "rect": [
-     60,
-     22
-    ]
-   },
-   "at": [
-    -5,
-    20
-   ],
-   "height": 7.5,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e6e0c8",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "bands": "#8fb7c4"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#9aa0a2",
-    "material": "metal-sheet",
-    "overhang": 1.0,
-    "parapet": 0.3
-   }
-  },
-  {
-   "type": "control-tower",
-   "at": [
-    -38,
-    24,
-    0
-   ],
-   "params": {
-    "height": 24,
-    "style": "round",
-    "colour": "#e6e6e0",
-    "cabColour": "#6d8fa0",
-    "bandColour": "#c8362f"
    }
   },
   {
@@ -289,6 +244,54 @@
     "width": 5,
     "height": 2.2,
     "colour": "#3cc46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    0,
+    -9.0,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     92,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    6.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -8.8
+    ],
+    "end": [
+     44,
+     -8.8
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 0.9,
+      "colour": "#e8e8e4"
+     }
+    }
    }
   }
  ],
@@ -319,6 +322,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "upper deck is a solid parapet slab rather than open railings with slim columns; no lettering by design; rear hall and tower are inferred from OSM size only; apron stairs and trolleys omitted"
+  "gaps": "upper deck still reads low and mostly hidden behind the tall fascia (camera is near ground level); deck roof is a thin slab without slim columns visible; columns evenly spaced; no lettering by design; apron stairs and trolleys omitted; tower and rear hall removed as unevidenced"
  }
 }

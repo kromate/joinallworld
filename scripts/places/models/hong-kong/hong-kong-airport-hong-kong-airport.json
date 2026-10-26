@@ -38,19 +38,19 @@
    "footprint": {
     "rect": [
      110,
-     36
+     26
     ]
    },
    "at": [
     0,
-    0
+    9
    ],
    "z0": 0,
-   "height": 20,
+   "height": 22,
    "storeys": 3,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#8fa690",
+    "colour": "#7fa58f",
     "windows": "curtain",
     "windowRatio": 0.9,
     "faces": {
@@ -71,71 +71,212 @@
    "id": "vault-roof",
    "at": [
     0,
-    0,
-    20
+    -9,
+    22.5
    ],
    "params": {
     "kind": "folded",
-    "width": 126,
-    "depth": 56,
-    "rise": 1.2,
-    "folds": 2,
-    "thickness": 2.2,
-    "colour": "#b8bec0",
-    "underColour": "#8e969a",
-    "edgeColour": "#c9cfd0"
+    "width": 128,
+    "depth": 64,
+    "rise": 1.0,
+    "folds": 1,
+    "thickness": 2.6,
+    "colour": "#c3c8ca",
+    "underColour": "#8a9296",
+    "edgeColour": "#e2e5e6"
    }
   },
   {
-   "type": "surface",
-   "id": "prow",
+   "type": "array",
    "at": [
+    -56,
     0,
-    -30,
-    17
+    0
    ],
    "params": {
-    "kind": "folded",
-    "width": 126,
-    "depth": 18,
-    "rise": -3,
-    "folds": 6,
-    "thickness": 1.4,
-    "colour": "#aab1b3",
-    "underColour": "#7d868a",
-    "edgeColour": "#c4cacb"
-   }
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     112,
+     0,
+     0
+    ],
+    "count": 15,
+    "of": [
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         1.0,
+         1.0
+        ]
+       },
+       "points": [
+        [
+         0,
+         -40,
+         21.4
+        ],
+        [
+         8,
+         -24,
+         21.4
+        ]
+       ],
+       "colour": "#5a6266"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         1.0,
+         1.0
+        ]
+       },
+       "points": [
+        [
+         8,
+         -24,
+         21.4
+        ],
+        [
+         0,
+         -8,
+         21.4
+        ]
+       ],
+       "colour": "#5a6266"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         1.0,
+         1.0
+        ]
+       },
+       "points": [
+        [
+         8,
+         -40,
+         21.4
+        ],
+        [
+         0,
+         -24,
+         21.4
+        ]
+       ],
+       "colour": "#5a6266"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         1.0,
+         1.0
+        ]
+       },
+       "points": [
+        [
+         0,
+         -24,
+         21.4
+        ],
+        [
+         8,
+         -8,
+         21.4
+        ]
+       ],
+       "colour": "#5a6266"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         1.0,
+         1.0
+        ]
+       },
+       "points": [
+        [
+         0,
+         -40,
+         21.4
+        ],
+        [
+         0,
+         -8,
+         21.4
+        ]
+       ],
+       "colour": "#5a6266"
+      }
+     }
+    ],
+    "lod1Step": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "canopy",
    "at": [
     0,
-    -44,
+    -46,
     0
    ],
    "params": {
     "form": "curved",
-    "width": 116,
-    "depth": 12,
-    "height": 7.5,
-    "thickness": 0.8,
+    "width": 110,
+    "depth": 10,
+    "height": 9.5,
+    "thickness": 0.9,
     "columns": 14,
-    "rise": 1.6,
+    "rise": 2.2,
     "colour": "#dfe3e4",
     "edgeColour": "#f0f2f2"
-   }
-  },
-  {
-   "type": "control-tower",
-   "at": [
-    -70,
-    40,
-    0
-   ],
-   "params": {
-    "height": 70,
-    "style": "round",
-    "colour": "#c9ced1"
    }
   },
   {
@@ -205,6 +346,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Roof is a smooth slab plus zigzag prow, not the triangulated steel truss soffit; no jet bridges or airside shown; only about 110 m of 1.2 km terminal; canopy is flat-curved without the wing-shaped cantilever."
+  "gaps": "Roof is a flat slab with an X-lattice soffit, not the true swept truss prow; only ~110 m of the 1.2 km terminal; canopy is a simple curved slab, not the bird-wing form; no airside."
  }
 }

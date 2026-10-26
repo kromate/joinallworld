@@ -29,6 +29,45 @@
  },
  "parts": [
   {
+   "type": "loft",
+   "id": "hill",
+   "params": {
+    "colour": "#b09a76",
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       78,
+       58
+      ],
+      "rotDeg": -41
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       66,
+       48
+      ],
+      "rotDeg": -41
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       58,
+       40
+      ],
+      "rotDeg": -41
+     }
+    ]
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
    "type": "mass",
    "id": "ramparts",
    "footprint": {
@@ -38,7 +77,7 @@
     0,
     0
    ],
-   "z0": 0,
+   "z0": 7,
    "height": 9,
    "storeys": 2,
    "wall": {
@@ -51,9 +90,12 @@
     "pattern": {
      "type": "arcade",
      "faces": [
-      "front"
+      "front",
+      "right",
+      "left",
+      "back"
      ],
-     "bay": 7,
+     "bay": 9,
      "opening": 0.55,
      "depth": 0.9,
      "colour": "#2a2b2d"
@@ -79,7 +121,7 @@
     6
    ],
    "rotDeg": -41,
-   "z0": 9,
+   "z0": 16,
    "height": 4,
    "storeys": 1,
    "wall": {
@@ -101,7 +143,7 @@
    "at": [
     10,
     -14,
-    9
+    16
    ],
    "params": {
     "rect": [
@@ -112,10 +154,118 @@
     "colour": "#8d9296"
    },
    "rotDeg": -41
+  },
+  {
+   "type": "mass",
+   "id": "quarters-2",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    18
+   ],
+   "rotDeg": -41,
+   "z0": 16,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d887c",
+    "windows": "rect",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7fb0",
+    "material": "metal-sheet",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quarters-3",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    30,
+    -22
+   ],
+   "rotDeg": -41,
+   "z0": 16,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d887c",
+    "windows": "rect",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7fb0",
+    "material": "metal-sheet",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quarters-4",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "rotDeg": 49,
+   "z0": 16,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d887c",
+    "windows": "rect",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7fb0",
+    "material": "metal-sheet",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "yard",
+   "at": [
+    44,
+    -34,
+    7
+   ],
+   "rotDeg": -41,
+   "params": {
+    "rect": [
+     18,
+     14
+    ],
+    "height": 0.3,
+    "colour": "#b9bcbd"
+   }
   }
  ],
  "site": {
-  "ground": "laterite",
+  "ground": "sand",
   "trees": [
    {
     "kind": "broadleaf",
@@ -128,18 +278,25 @@
     "kind": "broadleaf",
     "at": [
      60,
-     -40
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -20
     ]
    }
   ],
   "extent": [
-   160,
-   140
+   130,
+   110
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "OSM outline only covers part of the fort; no hill terrain, no inner courtyard wings, front arcade only approximately placed, no pylon"
+  "gaps": "hill is a smooth tan mound not the real slope; arcade reads as small openings; courtyard quarters approximate; no pylon or white-fenced yard rails"
  }
 }

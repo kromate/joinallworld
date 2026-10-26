@@ -47,20 +47,20 @@
     "material": "whitewash",
     "colour": "#f3f1ea",
     "windows": "punched",
-    "windowRatio": 0.14,
+    "windowRatio": 0.17,
     "plinth": 0.8,
     "cornice": true,
     "trimColour": "#d8b46c",
-    "glassColour": "#6a8f80",
+    "glassColour": "#2f6f5e",
     "bands": "#d8b46c",
-    "bay": 6.5,
+    "bay": 9,
     "windowShape": "rect"
    },
    "roof": {
     "form": "hip",
-    "colour": "#4a3a35",
+    "colour": "#6b4a3e",
     "material": "clay-tile",
-    "pitch": 9,
+    "pitch": 3,
     "overhang": 0.7
    }
   },
@@ -69,7 +69,7 @@
    "id": "porch",
    "footprint": {
     "rect": [
-     10,
+     11,
      4
     ]
    },
@@ -78,13 +78,13 @@
     -38
    ],
    "rotDeg": -17.8,
-   "height": 5.5,
+   "height": 9.4,
    "storeys": 1,
    "wall": {
     "material": "whitewash",
     "colour": "#f3f1ea",
     "windows": "arched",
-    "windowRatio": 0.35,
+    "windowRatio": 0.6,
     "faces": {
      "front": "arched",
      "left": "none",
@@ -92,7 +92,15 @@
      "back": "none"
     },
     "plinth": 0.6,
-    "trimColour": "#d8b46c"
+    "trimColour": "#d8b46c",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "count": 3
+    },
+    "bands": "#d8b46c"
    },
    "roof": {
     "form": "flat",
@@ -105,23 +113,91 @@
    "id": "gable-base",
    "footprint": {
     "rect": [
-     9,
-     2.6
+     8,
+     3
     ]
    },
    "at": [
-    -10.4,
-    -35.2
+    -10.2,
+    -37.0
    ],
    "rotDeg": -17.8,
    "z0": 9.4,
-   "height": 8,
+   "height": 5,
    "storeys": 1,
    "wall": {
     "material": "whitewash",
     "colour": "#f3f1ea",
     "windows": "arched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched"
+    },
+    "trimColour": "#d8b46c",
+    "bands": "#d8b46c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b46c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-mid",
+   "footprint": {
+    "rect": [
+     5.4,
+     2.6
+    ]
+   },
+   "at": [
+    -10.2,
+    -36.9
+   ],
+   "rotDeg": -17.8,
+   "z0": 14.4,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched"
+    },
+    "trimColour": "#d8b46c",
+    "bands": "#d8b46c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b46c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-top",
+   "footprint": {
+    "rect": [
+     3,
+     2.2
+    ]
+   },
+   "at": [
+    -10.1,
+    -36.8
+   ],
+   "rotDeg": -17.8,
+   "z0": 18.9,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "none",
+    "windowRatio": 0.5,
     "faces": {
      "front": "arched"
     },
@@ -130,9 +206,8 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#4a3a35",
-    "material": "clay-tile",
-    "pitch": 45
+    "colour": "#6b4a3e",
+    "pitch": 35
    }
   },
   {
@@ -140,7 +215,7 @@
    "at": [
     -10.4,
     -35.2,
-    21.2
+    23.4
    ],
    "params": {
     "height": 2.2,
@@ -152,24 +227,15 @@
   "ground": "grass",
   "forecourt": "garden",
   "forecourtDepth": 12,
-  "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     -48,
-     -40
-    ],
-    "height": 8
-   }
-  ],
+  "trees": [],
   "extent": [
    130,
    130
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "stepped baroque bell gable simplified to a plain gable block, porch arches only cut windows, green window frames and green eave band not reproduced, side wings follow OSM parallelogram"
+  "gaps": "bell gable is stacked blocks (no scrolled shoulders or bell openings cut); porch arches cut as windows; wing roof pitch lowered but still reads dark; no green eave band; OSM parallelogram wings"
  }
 }

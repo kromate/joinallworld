@@ -3,12 +3,21 @@
  "evidence": [
   {
    "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint-Pierre_Pointe-Blanche_Airport_Exterior.png",
+   "licence": "CC BY 4.0",
+   "author": "Hayden Soloviev",
+   "view": "front",
+   "file": "/tmp/places-evidence/saint-pierre/airport-ext.png",
+   "used": "terminal wing the cafe sits in: white clapboard wing at left, dark glazed hall with swept grey roof and low glass canopy at right, red-brown tarmac, grass verge, planters"
+  },
+  {
+   "kind": "photo",
    "url": "https://commons.wikimedia.org/wiki/File:2022-10-21_Arm%C3%A9e_de_l%27air_68-IO_(France)_plane_%E2%80%93_Saint-Pierre_Airport.jpg",
    "licence": "CC BY 4.0",
    "author": "Gordon Leggett",
    "view": "side",
    "file": "/tmp/places-evidence/saint-pierre/airport.jpg",
-   "used": "terminal: low pale-grey block with a glazed barrel-vaulted hall front, flat roof wings at the sides; hangar with large arched roof to the right"
+   "used": "hangar behind the terminal: pale cream walls, large arched light-grey metal roof, sliding doors; smaller glazed arched hangar to the left; tarmac apron and grass strip, no trees (the aircraft is not modelled)"
   },
   {
    "kind": "osm",
@@ -17,39 +26,230 @@
   }
  ],
  "camera": {
-  "yawDeg": -12,
-  "pitchDeg": 3,
-  "fovDeg": 55,
+  "yawDeg": -38,
+  "pitchDeg": 2,
+  "fovDeg": 50,
   "aspect": 1.5,
-  "margin": 0.12
+  "margin": 0.04,
+  "fit": "building"
  },
  "parts": [
   {
    "type": "mass",
-   "id": "hall",
+   "id": "wing",
    "footprint": {
     "rect": [
-     34,
-     20
+     40,
+     17
     ]
    },
    "at": [
-    -24,
+    -22,
     0
    ],
-   "height": 6.5,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2f1ec",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "size": [
+      8,
+      0.5
+     ],
+     "colours": [
+      "#f4f3ee",
+      "#e6e5df"
+     ],
+     "mode": "stripes-h",
+     "proud": 0.02,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f666b",
+    "material": "membrane",
+    "overhang": 2,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    9
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f3ee",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "size": [
+      8,
+      0.5
+     ],
+     "colours": [
+      "#f4f3ee",
+      "#e6e5df"
+     ],
+     "mode": "stripes-h",
+     "proud": 0.02,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe1e0",
+    "material": "metal-sheet",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe-hall",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1d2a33",
+    "glassColour": "#1b2a35",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "bay": 3.2,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "sweep",
+    "colour": "#7a8085",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 3.2,
+    "thickness": 0.18,
+    "columns": 3,
+    "colour": "#8d959a",
+    "edgeColour": "#cfd4d6"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "board",
+   "at": [
+    8,
+    -9.2,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#3f6fa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     36,
+     28
+    ]
+   },
+   "at": [
+    34,
+    40
+   ],
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d7dadc",
+    "colour": "#e6dfcc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "axis": "x",
+    "colour": "#b9bfc3",
+    "material": "metal-sheet",
+    "rise": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-small",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    40
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9ced0",
+    "glassColour": "#8fa3ad",
     "windows": "curtain",
     "windowRatio": 0.7,
-    "glassColour": "#7f9aa6",
     "faces": {
      "front": "curtain",
-     "back": "none",
-     "left": "none",
-     "right": "none"
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
     }
    },
    "roof": {
@@ -58,118 +258,39 @@
     "axis": "x",
     "colour": "#c4c9cc",
     "material": "metal-sheet",
-    "rise": 3.2
-   }
-  },
-  {
-   "type": "mass",
-   "id": "annex",
-   "footprint": {
-    "rect": [
-     44,
-     22
-    ]
-   },
-   "at": [
-    17,
-    0
-   ],
-   "height": 5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e0dfd8",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
-    "faces": {
-     "front": "ribbon",
-     "back": "none",
-     "left": "none",
-     "right": "none"
-    }
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6b6f73",
-    "material": "membrane",
-    "parapet": 0.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "cafe",
-   "footprint": {
-    "rect": [
-     12,
-     10
-    ]
-   },
-   "at": [
-    -4,
-    -13
-   ],
-   "height": 4,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8e4da",
-    "windows": "curtain",
-    "windowRatio": 0.55,
-    "faces": {
-     "front": "curtain",
-     "back": "none",
-     "left": "curtain",
-     "right": "none"
-    },
-    "trimColour": "#3f6fa0"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6b6f73",
-    "material": "membrane",
-    "parapet": 0.3,
-    "overhang": 0.6
-   }
-  },
-  {
-   "type": "core/canopy",
-   "at": [
-    -4,
-    -19.5,
-    0
-   ],
-   "params": {
-    "width": 11,
-    "depth": 2.5,
-    "height": 3,
-    "colour": "#3f6fa0"
+    "rise": 3.5
    }
   },
   {
    "type": "core/prism",
-   "id": "board",
+   "id": "verge",
    "at": [
-    -4,
-    -18.2,
-    4.2
+    -12,
+    -16,
+    0
+   ],
+   "lod": [
+    0
    ],
    "params": {
     "rect": [
-     7,
-     0.2
+     40,
+     7
     ],
-    "height": 0.9,
-    "colour": "#3f6fa0"
+    "height": 0.12,
+    "colour": "#5f8a3c"
    }
   }
  ],
  "site": {
   "ground": "asphalt",
-  "forecourt": "parking",
+  "groundColour": "#8a5d54",
+  "forecourt": "none",
   "trees": 0,
+  "cars": 0,
   "extent": [
-   110,
-   60
+   120,
+   100
   ]
  },
  "schema": "allworld-place-model",
@@ -177,8 +298,8 @@
  "city": "saint-pierre",
  "venueId": "saint-pierre-osm-node-6763941639",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "photo shows the glazed vaulted terminal end and a hangar, not the cafe itself; the cafe wing and its awning are invented from the brief, hangar not modelled"
+  "gaps": "cafe has no photo of its own so it is the glazed hall end with a blank blue board; clapboard courses coarse, wing too long and hall roof end not rounded, hangar doors and small hangar glazing simplified, no planters or road curve"
  }
 }

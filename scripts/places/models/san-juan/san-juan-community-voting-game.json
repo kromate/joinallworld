@@ -47,19 +47,19 @@
    "id": "pier-l",
    "footprint": {
     "rect": [
-     16,
+     26,
      30
     ]
    },
    "at": [
-    -38,
+    -27,
     0
    ],
    "height": 7,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#a8a398",
+    "colour": "#b9ad98",
     "windows": "none",
     "plinth": 0
    },
@@ -73,19 +73,19 @@
    "id": "pier-r",
    "footprint": {
     "rect": [
-     14,
+     24,
      30
     ]
    },
    "at": [
-    32,
+    16,
     0
    ],
    "height": 7,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#a8a398",
+    "colour": "#b9ad98",
     "windows": "none",
     "plinth": 0
    },
@@ -111,9 +111,9 @@
    "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#b9ad98",
+    "colour": "#c9bfa8",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.4,
     "glassColour": "#3d6fa6",
     "faces": {
      "back": "plain",
@@ -123,8 +123,8 @@
     "pattern": [
      {
       "type": "bands",
-      "colour": "#d8d0bf",
-      "height": 0.18,
+      "colour": "#e2dac8",
+      "height": 0.3,
       "at": 0.0,
       "floors": "all",
       "faces": [
@@ -163,154 +163,20 @@
    "id": "bridge-walk",
    "at": [
     -6,
-    -8
+    -6
    ],
    "params": {
     "rect": [
      16,
-     6
+     24
     ],
-    "z0": 6,
-    "height": 1.6,
+    "z0": 4.2,
+    "height": 2.2,
     "colour": "#7f8488",
     "windows": "ribbon",
     "windowRatio": 0.5,
     "glassColour": "#4d7090"
    }
-  },
-  {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "sweep-path",
-     "params": {
-      "section": {
-       "rect": [
-        0.5,
-        0.5
-       ]
-      },
-      "points": [
-       [
-        0,
-        0,
-        7.4
-       ],
-       [
-        7,
-        0,
-        21
-       ]
-      ],
-      "colour": "#e2b324"
-     }
-    },
-    "mode": "line",
-    "count": 6,
-    "start": [
-     -38,
-     -16.2,
-     0
-    ],
-    "end": [
-     38,
-     -16.2,
-     0
-    ]
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "sweep-path",
-     "params": {
-      "section": {
-       "rect": [
-        0.5,
-        0.5
-       ]
-      },
-      "points": [
-       [
-        0,
-        0,
-        21
-       ],
-       [
-        7,
-        0,
-        7.4
-       ]
-      ],
-      "colour": "#e2b324"
-     }
-    },
-    "mode": "line",
-    "count": 6,
-    "start": [
-     -38,
-     -16.2,
-     0
-    ],
-    "end": [
-     38,
-     -16.2,
-     0
-    ]
-   }
-  },
-  {
-   "type": "mass",
-   "id": "plant-l",
-   "footprint": {
-    "rect": [
-     10,
-     8
-    ]
-   },
-   "at": [
-    -34,
-    4
-   ],
-   "height": 5,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#a8a398",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#9b9ea0"
-   },
-   "z0": 23.2
-  },
-  {
-   "type": "mass",
-   "id": "plant-r",
-   "footprint": {
-    "rect": [
-     8,
-     8
-    ]
-   },
-   "at": [
-    36,
-    6
-   ],
-   "height": 4,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#a8a398",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#9b9ea0"
-   },
-   "z0": 23.2
   },
   {
    "type": "lamp",
@@ -323,22 +189,6 @@
     "height": 9,
     "count": 3,
     "spacing": 30
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    -7,
-    -17,
-    8
-   ],
-   "params": {
-    "width": 16,
-    "height": 4,
-    "bottom": 0,
-    "colour": "#1f7a4d",
-    "frameColour": "#f2f1ec",
-    "posts": false
    }
   },
   {
@@ -365,6 +215,432 @@
     "count": 2,
     "spacing": 9,
     "yaw": 90
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -36,
+      -16.2,
+      8
+     ],
+     [
+      -24,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -24,
+      -16.2,
+      21
+     ],
+     [
+      -14,
+      -16.2,
+      9
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -16.2,
+      21
+     ],
+     [
+      -34,
+      -16.2,
+      9
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -26,
+      -16.2,
+      8
+     ],
+     [
+      -18,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -8,
+      -16.2,
+      10
+     ],
+     [
+      -1,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      12,
+      -16.2,
+      21
+     ],
+     [
+      24,
+      -16.2,
+      10
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      30,
+      -16.2,
+      10
+     ],
+     [
+      38,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      38,
+      -16.2,
+      21
+     ],
+     [
+      34,
+      -16.2,
+      9
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -36,
+      -16.2,
+      8
+     ],
+     [
+      -36,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -16.2,
+      8
+     ],
+     [
+      -30,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -24,
+      -16.2,
+      8
+     ],
+     [
+      -24,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -18,
+      -16.2,
+      8
+     ],
+     [
+      -18,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      -8,
+      -16.2,
+      8
+     ],
+     [
+      -8,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      12,
+      -16.2,
+      8
+     ],
+     [
+      12,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      24,
+      -16.2,
+      8
+     ],
+     [
+      24,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      34,
+      -16.2,
+      8
+     ],
+     [
+      34,
+      -16.2,
+      21
+     ]
+    ],
+    "colour": "#e2b324"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -28,
+    4
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a58a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89c88"
+   },
+   "z0": 23.2
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -38,
+    8,
+    23.2
+   ],
+   "params": {
+    "height": 18,
+    "baseWidth": 1.6,
+    "topWidth": 0.5,
+    "panels": 8,
+    "colour": "#d8d8d4",
+    "colour2": "#d8d8d4"
    }
   }
  ],
@@ -400,6 +676,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "Bracing drawn as X pairs not the real irregular yellow frame; road passes under as a flat strip and the glass-floored bridge is a simple slab; plant boxes and mast simplified; main block 84 m wide not the full 105 m"
+  "gaps": "irregular braces approximate the real frame; ribbon glazing is darker than the photo; bridge is a simple glazed slab; roof plant block not on left edge; real main block 105 m wide, 84 m modelled"
  }
 }

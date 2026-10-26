@@ -28,25 +28,36 @@
    "type": "mass",
    "id": "mall",
    "footprint": {
-    "osm": true,
-    "simplify": 8
+    "rect": [
+     84,
+     30
+    ]
    },
-   "height": 12,
-   "storeys": 3,
+   "height": 9,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e3d3a8",
-    "windows": "none",
-    "windowRatio": 0.05,
+    "colour": "#e8d6a6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
     "plinth": 0.5,
-    "pattern": []
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d9833a"
+     }
+    ]
    },
    "roof": {
     "form": "flat",
     "colour": "#c9c4b8",
     "material": "membrane",
     "parapet": 0.8
-   }
+   },
+   "at": [
+    0,
+    -6
+   ]
   },
   {
    "type": "mass",
@@ -67,18 +78,18 @@
    "storeys": 20,
    "wall": {
     "material": "painted-render",
-    "colour": "#e9e7e0",
+    "colour": "#ece9e0",
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0,
     "pattern": [
      {
       "type": "fins",
-      "width": 1.0,
+      "width": 0.7,
       "depth": 0.2,
-      "spacing": 3.2,
+      "spacing": 1.6,
       "colour": "#1e2a3a",
-      "margin": 2,
+      "margin": 1.2,
       "faces": [
        "front",
        "back"
@@ -99,8 +110,8 @@
    "id": "tower-crown",
    "footprint": {
     "rect": [
-     32,
-     20
+     36,
+     23
     ]
    },
    "at": [
@@ -108,7 +119,7 @@
     18
    ],
    "rotDeg": 0,
-   "z0": 64.8,
+   "z0": 65,
    "height": 3.4,
    "storeys": 1,
    "wall": {
@@ -120,51 +131,6 @@
     "form": "flat",
     "colour": "#f1efe9",
     "overhang": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "bridge",
-   "footprint": {
-    "rect": [
-     60,
-     3.4
-    ]
-   },
-   "at": [
-    -6,
-    2
-   ],
-   "rotDeg": 0,
-   "z0": 14,
-   "height": 3.4,
-   "storeys": 1,
-   "wall": {
-    "material": "metal-cladding",
-    "colour": "#f4f4f2",
-    "windows": "ribbon",
-    "windowRatio": 0.35
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#f4f4f2",
-    "parapet": 0.3
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    -6,
-    2,
-    17.4
-   ],
-   "params": {
-    "rect": [
-     60,
-     3.8
-    ],
-    "height": 0.4,
-    "colour": "#f4f4f2"
    }
   },
   {
@@ -208,6 +174,210 @@
     "count": 3,
     "spread": 14
    }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.3
+      ],
+      "height": 2.2,
+      "colour": "#2a2f38"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17,
+     9.2,
+     62.8
+    ],
+    "end": [
+     13,
+     9.2,
+     62.8
+    ],
+    "count": 19
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    18,
+    68.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    18,
+    68.4
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "rect",
+    "width": 0.5,
+    "height": 0.5,
+    "points": [
+     [
+      -50,
+      2,
+      10
+     ],
+     [
+      -8,
+      2,
+      10
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "rect",
+    "width": 0.5,
+    "height": 0.5,
+    "points": [
+     [
+      -50,
+      2,
+      13.2
+     ],
+     [
+      -8,
+      2,
+      13.2
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": "rect",
+    "width": 0.3,
+    "height": 0.3,
+    "points": [
+     [
+      -50.0,
+      2,
+      10
+     ],
+     [
+      -47.0,
+      2,
+      13.2
+     ],
+     [
+      -44.0,
+      2,
+      10
+     ],
+     [
+      -41.0,
+      2,
+      13.2
+     ],
+     [
+      -38.0,
+      2,
+      10
+     ],
+     [
+      -35.0,
+      2,
+      13.2
+     ],
+     [
+      -32.0,
+      2,
+      10
+     ],
+     [
+      -29.0,
+      2,
+      13.2
+     ],
+     [
+      -26.0,
+      2,
+      10
+     ],
+     [
+      -23.0,
+      2,
+      13.2
+     ],
+     [
+      -20.0,
+      2,
+      10
+     ],
+     [
+      -17.0,
+      2,
+      13.2
+     ],
+     [
+      -14.0,
+      2,
+      10
+     ],
+     [
+      -11.0,
+      2,
+      13.2
+     ],
+     [
+      -8.0,
+      2,
+      10
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29.0,
+    2,
+    9.7
+   ],
+   "params": {
+    "rect": [
+     42,
+     3.2
+    ],
+    "height": 0.3,
+    "colour": "#d8d8d4"
+   }
   }
  ],
  "site": {
@@ -225,6 +395,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Mall outline scaled 0.26 so tower is oversized relative to it; truss footbridge reads as a plain white slab; tower window slots coarser, no rooftop mast"
+  "gaps": "Tower slots read as dense stripes over the full face, crown slots and mast are simplified; truss footbridge is a thin zigzag and sits behind the mall roof edge; mall frontage has ribbon glazing not real shopfronts."
  }
 }

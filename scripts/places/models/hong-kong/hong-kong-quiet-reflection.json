@@ -1,8 +1,8 @@
 {
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "brick, red door, couplets and green roof match; painted friezes, ornate ridge figures and potted plants are simplified"
+  "gaps": "painted friezes simplified to coloured panels; scalloped tile fringe and ornate ridge omitted; plants are generic"
  },
  "verified": "photo",
  "evidence": [
@@ -45,7 +45,7 @@
    "storeys": 1,
    "wall": {
     "material": "brick",
-    "colour": "#7d828b",
+    "colour": "#8a8f9a",
     "windows": "none",
     "plinth": 0.7,
     "bands": {
@@ -71,13 +71,13 @@
    ],
    "params": {
     "rect": [
-     2.0,
-     0.35
+     2.2,
+     0.4
     ],
     "z0": 0,
-    "height": 3.4,
-    "colour": "#c9a96a",
-    "topColour": "#c9a96a"
+    "height": 3.3,
+    "colour": "#cdb590",
+    "topColour": "#cdb590"
    }
   },
   {
@@ -89,28 +89,13 @@
    ],
    "params": {
     "rect": [
-     3.2,
+     2.9,
      0.4
     ],
     "z0": 3.4,
     "height": 0.7,
-    "colour": "#d9b56a",
-    "topColour": "#d9b56a"
-   }
-  },
-  {
-   "type": "church-door",
-   "at": [
-    0,
-    -4.85,
-    0
-   ],
-   "params": {
-    "width": 1.5,
-    "height": 2.9,
-    "arch": false,
-    "colour": "#a8221f",
-    "trim": "#c9a96a"
+    "colour": "#d9b04a",
+    "topColour": "#d9b04a"
    }
   },
   {
@@ -158,10 +143,10 @@
    ],
    "params": {
     "rect": [
-     3.2,
-     0.12
+     3.4,
+     0.15
     ],
-    "z0": 3.0,
+    "z0": 3.1,
     "height": 1.5,
     "colour": "#e9e1cf",
     "topColour": "#e9e1cf",
@@ -177,10 +162,10 @@
    ],
    "params": {
     "rect": [
-     3.2,
-     0.12
+     3.4,
+     0.15
     ],
-    "z0": 3.0,
+    "z0": 3.1,
     "height": 1.5,
     "colour": "#e9e1cf",
     "topColour": "#e9e1cf"
@@ -195,13 +180,13 @@
    ],
    "params": {
     "rect": [
-     11,
-     0.35
+     11.4,
+     0.4
     ],
-    "z0": 4.0,
-    "height": 0.6,
-    "colour": "#2f7a6a",
-    "topColour": "#2f7a6a"
+    "z0": 4.3,
+    "height": 0.7,
+    "colour": "#3f9a7a",
+    "topColour": "#3f9a7a"
    }
   },
   {
@@ -214,30 +199,12 @@
    "params": {
     "rect": [
      10.5,
-     0.6
+     0.35
     ],
     "z0": 5.9,
-    "height": 0.6,
+    "height": 0.45,
     "colour": "#2f6a55",
     "topColour": "#2f6a55"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "figures",
-   "at": [
-    0,
-    0
-   ],
-   "params": {
-    "rect": [
-     6,
-     0.4
-    ],
-    "z0": 6.4,
-    "height": 0.7,
-    "colour": "#d8b04a",
-    "topColour": "#d8b04a"
    }
   },
   {
@@ -256,44 +223,243 @@
    }
   },
   {
-   "type": "core/tree",
+   "type": "prism",
+   "id": "panel0",
    "at": [
-    -6.5,
-    -6.5,
-    0
+    -4.2,
+    -4.78
    ],
    "params": {
-    "kind": "palm",
-    "height": 3,
-    "spread": 2,
-    "count": 3,
-    "line": 3
+    "rect": [
+     2.0,
+     0.12
+    ],
+    "z0": 3.4,
+    "height": 1.0,
+    "colour": "#c9a24a",
+    "topColour": "#a8322b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel1",
+   "at": [
+    -1.8,
+    -4.78
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.12
+    ],
+    "z0": 3.4,
+    "height": 1.0,
+    "colour": "#b8472f",
+    "topColour": "#a8322b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel2",
+   "at": [
+    1.8,
+    -4.78
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.12
+    ],
+    "z0": 3.4,
+    "height": 1.0,
+    "colour": "#c9a24a",
+    "topColour": "#a8322b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel3",
+   "at": [
+    4.2,
+    -4.78
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.12
+    ],
+    "z0": 3.4,
+    "height": 1.0,
+    "colour": "#b8472f",
+    "topColour": "#a8322b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-course",
+   "at": [
+    0,
+    -4.55
+   ],
+   "params": {
+    "rect": [
+     11.6,
+     0.25
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#b9ad98",
+    "topColour": "#b9ad98"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    7,
-    -6,
-    0
+    -3,
+    -5.3,
+    0.0
    ],
    "params": {
     "kind": "palm",
-    "height": 3,
-    "spread": 2,
-    "count": 2,
-    "line": 2
+    "height": 1.7,
+    "spread": 1.5
    }
   },
   {
-   "type": "park-bench",
+   "type": "core/tree",
    "at": [
-    -3.5,
-    -7,
-    0
+    -2.4,
+    -5.3,
+    0.0
    ],
    "params": {
-    "count": 1
+    "kind": "palm",
+    "height": 1.7,
+    "spread": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2.2,
+    -5.3,
+    0.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 1.7,
+    "spread": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3.0,
+    -5.3,
+    0.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 1.7,
+    "spread": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4.6,
+    -5.6,
+    0.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.0,
+    "spread": 1.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4.6,
+    -5.6,
+    0.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 1.8,
+    "spread": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pot0",
+   "at": [
+    -3,
+    -5.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#b5442f",
+    "topColour": "#b5442f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pot1",
+   "at": [
+    -2.4,
+    -5.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#b5442f",
+    "topColour": "#b5442f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pot2",
+   "at": [
+    2.2,
+    -5.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#b5442f",
+    "topColour": "#b5442f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pot3",
+   "at": [
+    3.0,
+    -5.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#b5442f",
+    "topColour": "#b5442f"
    }
   },
   {
@@ -304,20 +470,26 @@
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 9,
-    "spread": 6.3
+    "height": 6,
+    "spread": 4
    }
   },
   {
-   "type": "core/tree",
+   "type": "prism",
+   "id": "door",
    "at": [
-    11,
-    8
+    0,
+    -4.85
    ],
    "params": {
-    "kind": "broadleaf",
-    "height": 10,
-    "spread": 7.0
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.9,
+    "colour": "#a8221f",
+    "topColour": "#a8221f"
    }
   }
  ],

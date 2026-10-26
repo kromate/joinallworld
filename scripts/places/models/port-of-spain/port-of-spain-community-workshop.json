@@ -45,18 +45,18 @@
     0,
     0
    ],
-   "height": 4.6,
+   "height": 4.4,
    "storeys": 1,
    "wall": {
     "material": "exposed-concrete",
     "colour": "#a8a39a",
     "windows": "punched",
-    "windowRatio": 0.55,
+    "windowRatio": 0.75,
     "windowShape": "rect",
-    "glassColour": "#e8e0d0",
-    "trimColour": "#8a5a3a",
+    "glassColour": "#d8d0bc",
+    "trimColour": "#7a4f30",
     "plinth": 0.8,
-    "bay": 6.5,
+    "bay": 4.2,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -67,13 +67,13 @@
    "roof": {
     "form": "flat",
     "colour": "#8c887f",
-    "parapet": 1.0,
-    "overhang": 0.8
+    "parapet": 0.2,
+    "overhang": 0.4
    }
   },
   {
    "type": "mass",
-   "id": "floor-2",
+   "id": "win-2",
    "footprint": {
     "rect": [
      64,
@@ -81,19 +81,17 @@
     ]
    },
    "at": [
-    2,
-    2
+    0,
+    0
    ],
-   "height": 3.6,
+   "height": 2.0,
    "storeys": 1,
    "wall": {
     "material": "exposed-concrete",
-    "colour": "#a09b92",
+    "colour": "#8d8980",
     "windows": "ribbon",
-    "windowRatio": 0.5,
-    "glassColour": "#26343f",
-    "parapet": 0.5,
-    "bands": "#8d8980",
+    "windowRatio": 0.7,
+    "glassColour": "#1f2c36",
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -102,35 +100,58 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8c887f",
-    "material": "concrete",
-    "parapet": 0.5,
-    "overhang": 0.6
+    "colour": "#8c887f"
    },
-   "z0": 4.6
+   "z0": 4.4
   },
   {
    "type": "mass",
-   "id": "floor-3",
+   "id": "fascia-2",
    "footprint": {
     "rect": [
-     56,
+     66,
+     48
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a39a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "parapet": 0.2
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "win-3",
+   "footprint": {
+    "rect": [
+     58,
      40
     ]
    },
    "at": [
-    2,
-    4
+    0,
+    0
    ],
-   "height": 3.6,
+   "height": 2.0,
    "storeys": 1,
    "wall": {
     "material": "exposed-concrete",
-    "colour": "#a09b92",
+    "colour": "#8d8980",
     "windows": "ribbon",
-    "windowRatio": 0.5,
-    "glassColour": "#26343f",
-    "parapet": 0.5,
+    "windowRatio": 0.7,
+    "glassColour": "#1f2c36",
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -139,35 +160,58 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8c887f",
-    "material": "concrete",
-    "parapet": 0.5,
-    "overhang": 0.6
+    "colour": "#8c887f"
    },
-   "z0": 8.2
+   "z0": 8.0
   },
   {
    "type": "mass",
-   "id": "floor-4",
+   "id": "fascia-3",
    "footprint": {
     "rect": [
-     44,
+     60,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a39a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "parapet": 0.2
+   },
+   "z0": 10.0
+  },
+  {
+   "type": "mass",
+   "id": "win-4",
+   "footprint": {
+    "rect": [
+     52,
      34
     ]
    },
    "at": [
-    4,
-    6
+    0,
+    0
    ],
-   "height": 3.4,
+   "height": 2.0,
    "storeys": 1,
    "wall": {
     "material": "exposed-concrete",
-    "colour": "#a09b92",
+    "colour": "#8d8980",
     "windows": "ribbon",
-    "windowRatio": 0.5,
-    "glassColour": "#26343f",
-    "parapet": 0.5,
+    "windowRatio": 0.7,
+    "glassColour": "#1f2c36",
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -176,71 +220,154 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8c887f",
-    "material": "concrete",
-    "parapet": 0.5,
-    "overhang": 0.6
+    "colour": "#8c887f"
    },
-   "z0": 11.8
+   "z0": 11.6
+  },
+  {
+   "type": "mass",
+   "id": "fascia-4",
+   "footprint": {
+    "rect": [
+     54,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a39a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "parapet": 0.2
+   },
+   "z0": 13.6
+  },
+  {
+   "type": "mass",
+   "id": "top",
+   "footprint": {
+    "rect": [
+     44,
+     28
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9a958c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c887f",
+    "parapet": 0.2
+   },
+   "z0": 15.2
   },
   {
    "type": "prism",
    "at": [
     24,
-    -26.5,
+    -27,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.2
+     2.4,
+     2.4
     ],
-    "height": 4.4,
+    "height": 4.8,
     "colour": "#9a958c"
    }
   },
   {
    "type": "prism",
    "at": [
-    34,
-    -26.5,
+    36,
+    -27,
     0
    ],
    "params": {
     "rect": [
-     2.2,
-     2.2
+     2.4,
+     2.4
     ],
-    "height": 4.4,
+    "height": 4.8,
     "colour": "#9a958c"
    }
   },
   {
    "type": "prism",
    "at": [
-    29,
-    -26.5,
-    4.4
+    30,
+    -27,
+    4.8
    ],
    "params": {
     "rect": [
-     14,
-     3.6
+     16,
+     4.4
     ],
-    "height": 1.6,
+    "height": 1.4,
     "colour": "#a8a39a"
    }
   },
   {
    "type": "prism",
    "at": [
-    29,
-    -24.2,
+    30,
+    -27,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     13,
+     3.4
+    ],
+    "height": 1.0,
+    "colour": "#9a958c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -28.4,
+    4.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -24.5,
     0
    ],
    "params": {
     "rect": [
-     7,
+     8,
      3
     ],
     "height": 1.6,
@@ -250,15 +377,15 @@
   {
    "type": "core/steps",
    "at": [
-    29,
-    -28.5,
+    30,
+    -30,
     0
    ],
    "params": {
-    "width": 8,
-    "rise": 1.0,
-    "run": 0.5,
-    "count": 5,
+    "width": 20,
+    "rise": 0.45,
+    "run": 0.9,
+    "count": 4,
     "colour": "#9a958c"
    }
   },
@@ -296,8 +423,8 @@
  },
  "review": {
   "rounds": 1,
-  "match": "fair",
-  "gaps": "Stepped concrete floors and entrance porch match; real ground floor has deeper timber-framed windows and the upper floors are wider with stronger fascias; OSM plan is irregular."
+  "match": "close",
+  "gaps": "Heavy overhanging fascias, ribbon glazing, tall timber ground windows and piered porch now match; porch is simplified, no lettered board detail, irregular OSM plan approximated by a stepped rect."
  },
  "schema": "allworld-place-model",
  "version": 2,

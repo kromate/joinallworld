@@ -28,8 +28,8 @@
    "id": "core-left",
    "footprint": {
     "rect": [
-     16,
-     24
+     14,
+     16
     ]
    },
    "at": [
@@ -37,16 +37,17 @@
     0
    ],
    "z0": 0,
-   "height": 21,
-   "storeys": 5,
+   "height": 22,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e6e4de",
+    "colour": "#eceae4",
     "windows": "punched",
-    "windowRatio": 0.06,
+    "windowRatio": 0.02,
     "faces": {
-     "left": "punched",
+     "front": "punched",
      "right": "none",
+     "left": "punched",
      "back": "punched"
     },
     "plinth": 0.3
@@ -62,23 +63,23 @@
    "id": "stone-pier",
    "footprint": {
     "rect": [
-     7,
-     18
+     4,
+     12
     ]
    },
    "at": [
-    16.5,
-    2
+    17,
+    -2
    ],
    "z0": 0,
-   "height": 25,
-   "storeys": 5,
+   "height": 26,
+   "storeys": 13,
    "wall": {
     "material": "stone",
-    "colour": "#b3ada1",
+    "colour": "#aaa598",
     "windows": "none",
     "plinth": 0.0,
-    "bands": "#9c968a"
+    "bands": "#8e887c"
    },
    "roof": {
     "form": "flat",
@@ -91,27 +92,27 @@
    "id": "right-wing",
    "footprint": {
     "rect": [
-     16,
-     24
+     8,
+     16
     ]
    },
    "at": [
-    9,
+    11,
     0
    ],
    "z0": 0,
-   "height": 19,
-   "storeys": 4,
+   "height": 22,
+   "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2e0da",
+    "colour": "#eceae4",
     "windows": "punched",
-    "windowRatio": 0.06,
+    "windowRatio": 0.02,
     "faces": {
+     "front": "punched",
      "left": "none",
      "right": "punched",
-     "back": "punched",
-     "front": "punched"
+     "back": "punched"
     },
     "plinth": 0.3
    },
@@ -127,19 +128,19 @@
    "footprint": {
     "rect": [
      14,
-     22
+     14
     ]
    },
    "at": [
-    -2,
-    -1
+    0,
+    0
    ],
-   "z0": 7,
+   "z0": 9,
    "height": 17,
-   "storeys": 3,
+   "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#2a2e31",
+    "colour": "#0e1113",
     "windows": "curtain",
     "windowRatio": 0.9,
     "faces": {
@@ -158,16 +159,16 @@
    "id": "entrance",
    "footprint": {
     "rect": [
-     10,
-     5
+     14,
+     0.8
     ]
    },
    "at": [
-    -2,
-    -13.5
+    0,
+    1.5
    ],
    "z0": 0,
-   "height": 6.5,
+   "height": 8,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
@@ -178,35 +179,20 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8c6b4d",
+    "colour": "#444444",
     "overhang": 0.2
    }
   },
   {
-   "type": "flat-canopy",
-   "at": [
-    -2,
-    -16.5,
-    0
-   ],
-   "params": {
-    "width": 14,
-    "depth": 7,
-    "height": 6.5,
-    "thickness": 0.7,
-    "colour": "#7a5a40"
-   }
-  },
-  {
    "type": "fin-row",
    "at": [
-    -20,
-    -12.2,
+    -15,
+    -8.3,
     0
    ],
    "params": {
-    "length": 8,
-    "height": 9,
+    "length": 7,
+    "height": 10,
     "pitch": 0.55,
     "finWidth": 0.35,
     "proud": 0.4,
@@ -214,19 +200,55 @@
    }
   },
   {
-   "type": "fin-row",
+   "type": "mass",
+   "id": "soffit-slab",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
    "at": [
-    -9.5,
-    -12.2,
-    0
+    0,
+    -4
    ],
-   "params": {
-    "length": 4,
-    "height": 9,
-    "pitch": 0.55,
-    "finWidth": 0.35,
-    "proud": 0.4,
-    "colour": "#8a5a38"
+   "z0": 7.4,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6b6d6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c7e7f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit-timber",
+   "footprint": {
+    "rect": [
+     13.6,
+     9.6
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 6.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a3d2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3d2b"
    }
   }
  ],
@@ -238,18 +260,10 @@
    {
     "kind": "broadleaf",
     "at": [
-     -17,
-     -20
+     -18,
+     -14
     ],
     "height": 7
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     22,
-     -18
-    ],
-    "height": 8
    }
   ],
   "extent": [
@@ -264,6 +278,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is a close-up of the entrance so overall massing is inferred; timber soffit and louvres simplified; upper glazed volume lighter in reality; OSM match was the MTR station so no outline used."
+  "gaps": "Timber louvres are vertical slats, not angled horizontal ones; no ramped stone approach or railings; upper glazed box has a visible mullion grid unlike the near-black interior; stone fin is a block with courses, slightly short."
  }
 }

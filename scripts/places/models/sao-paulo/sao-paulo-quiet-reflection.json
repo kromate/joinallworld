@@ -41,13 +41,14 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecdfae",
+    "colour": "#e6d28f",
     "windows": "pointed",
     "windowRatio": 0.3,
     "bay": 6,
     "faces": {
      "front": "plain",
-     "back": "plain"
+     "back": "plain",
+     "left": "plain"
     },
     "plinth": 0.6,
     "cornice": true,
@@ -78,7 +79,7 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecdfae",
+    "colour": "#e6d28f",
     "windows": "pointed",
     "windowRatio": 0.3,
     "bay": 6,
@@ -113,8 +114,8 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#ecdfae",
-    "windows": "pointed",
+    "colour": "#e6d28f",
+    "windows": "none",
     "windowRatio": 0.3,
     "bay": 6,
     "faces": {
@@ -148,8 +149,8 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8d9a4",
-    "windows": "pointed",
+    "colour": "#e2cd8a",
+    "windows": "none",
     "windowRatio": 0.25,
     "plinth": 0.5
    },
@@ -177,13 +178,13 @@
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#efe2b2",
+    "colour": "#ead79a",
     "windows": "pointed",
-    "windowRatio": 0.2,
+    "windowRatio": 0.32,
     "faces": {
      "front": "pointed",
      "back": "plain",
-     "left": "plain",
+     "left": "pointed",
      "right": "plain"
     },
     "plinth": 0.8,
@@ -192,7 +193,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#cdbf8e",
+    "colour": "#cdbb82",
     "parapet": 0.8
    }
   },
@@ -213,14 +214,14 @@
    "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#efe2b2",
+    "colour": "#ead79a",
     "windows": "pointed",
-    "windowRatio": 0.2,
+    "windowRatio": 0.32,
     "faces": {
      "front": "pointed",
      "back": "plain",
      "left": "plain",
-     "right": "plain"
+     "right": "pointed"
     },
     "plinth": 0.8,
     "cornice": true,
@@ -228,7 +229,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#cdbf8e",
+    "colour": "#cdbb82",
     "parapet": 0.8
    }
   },
@@ -249,7 +250,7 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#f1e5b8",
+    "colour": "#eddb9f",
     "windows": "pointed",
     "windowRatio": 0.3,
     "plinth": 0.6,
@@ -263,186 +264,6 @@
    }
   },
   {
-   "type": "revolve",
-   "at": [
-    -6.5,
-    2.5,
-    32
-   ],
-   "params": {
-    "segments": 8,
-    "colour": "#3f5a3c",
-    "profile": [
-     [
-      4.4,
-      0
-     ],
-     [
-      2.728,
-      13.5
-     ],
-     [
-      1.32,
-      24.0
-     ],
-     [
-      0.1,
-      30
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    6.5,
-    2.5,
-    32
-   ],
-   "params": {
-    "segments": 8,
-    "colour": "#3f5a3c",
-    "profile": [
-     [
-      4.4,
-      0
-     ],
-     [
-      2.728,
-      17.1
-     ],
-     [
-      1.32,
-      30.400000000000002
-     ],
-     [
-      0.1,
-      38
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    -10.6,
-    1.0,
-    32
-   ],
-   "params": {
-    "segments": 6,
-    "colour": "#3f5a3c",
-    "profile": [
-     [
-      1.1,
-      0
-     ],
-     [
-      0.682,
-      3.6
-     ],
-     [
-      0.33,
-      6.4
-     ],
-     [
-      0.1,
-      8
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    -10.6,
-    9.0,
-    32
-   ],
-   "params": {
-    "segments": 6,
-    "colour": "#3f5a3c",
-    "profile": [
-     [
-      1.1,
-      0
-     ],
-     [
-      0.682,
-      3.6
-     ],
-     [
-      0.33,
-      6.4
-     ],
-     [
-      0.1,
-      8
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    10.6,
-    1.0,
-    32
-   ],
-   "params": {
-    "segments": 6,
-    "colour": "#3f5a3c",
-    "profile": [
-     [
-      1.1,
-      0
-     ],
-     [
-      0.682,
-      3.6
-     ],
-     [
-      0.33,
-      6.4
-     ],
-     [
-      0.1,
-      8
-     ]
-    ]
-   }
-  },
-  {
-   "type": "revolve",
-   "at": [
-    10.6,
-    9.0,
-    32
-   ],
-   "params": {
-    "segments": 6,
-    "colour": "#3f5a3c",
-    "profile": [
-     [
-      1.1,
-      0
-     ],
-     [
-      0.682,
-      3.6
-     ],
-     [
-      0.33,
-      6.4
-     ],
-     [
-      0.1,
-      8
-     ]
-    ]
-   }
-  },
-  {
    "type": "array",
    "at": [
     0,
@@ -476,8 +297,7 @@
     }
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -514,8 +334,7 @@
     }
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -552,8 +371,7 @@
     }
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -590,8 +408,7 @@
     }
    },
    "lod": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -608,12 +425,698 @@
     "count": 5,
     "colour": "#d7cdb0"
    }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6.5,
+    2.5,
+    32
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      3.7,
+      0.0,
+      "#2c4a30"
+     ],
+     [
+      3.193,
+      3.56,
+      "#5f8454"
+     ],
+     [
+      2.703,
+      7.11,
+      "#2c4a30"
+     ],
+     [
+      2.229,
+      10.67,
+      "#5f8454"
+     ],
+     [
+      1.775,
+      14.22,
+      "#2c4a30"
+     ],
+     [
+      1.343,
+      17.78,
+      "#5f8454"
+     ],
+     [
+      0.937,
+      21.33,
+      "#2c4a30"
+     ],
+     [
+      0.565,
+      24.89,
+      "#5f8454"
+     ],
+     [
+      0.237,
+      28.44,
+      "#2c4a30"
+     ],
+     [
+      0.1,
+      32.0,
+      "#5f8454"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6.5,
+    2.5,
+    32
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      3.7,
+      0.0,
+      "#2c4a30"
+     ],
+     [
+      3.193,
+      4.22,
+      "#5f8454"
+     ],
+     [
+      2.703,
+      8.44,
+      "#2c4a30"
+     ],
+     [
+      2.229,
+      12.67,
+      "#5f8454"
+     ],
+     [
+      1.775,
+      16.89,
+      "#2c4a30"
+     ],
+     [
+      1.343,
+      21.11,
+      "#5f8454"
+     ],
+     [
+      0.937,
+      25.33,
+      "#2c4a30"
+     ],
+     [
+      0.565,
+      29.56,
+      "#5f8454"
+     ],
+     [
+      0.237,
+      33.78,
+      "#2c4a30"
+     ],
+     [
+      0.1,
+      38.0,
+      "#5f8454"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    2.5,
+    64
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 2.4,
+    "colour": "#d8c88a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    2.5,
+    65.5
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.18
+    ],
+    "height": 0.18,
+    "colour": "#d8c88a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.5,
+    2.5,
+    70
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 2.4,
+    "colour": "#d8c88a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.5,
+    2.5,
+    71.5
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.18
+    ],
+    "height": 0.18,
+    "colour": "#d8c88a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.4,
+    -1.4,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#ead79a"
+     ],
+     [
+      0.8,
+      3.5,
+      "#ead79a"
+     ],
+     [
+      0.9,
+      3.6,
+      "#3f5a3c"
+     ],
+     [
+      0.55,
+      6.0,
+      "#5f8454"
+     ],
+     [
+      0.1,
+      8.5,
+      "#3f5a3c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.4,
+    6.4,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#ead79a"
+     ],
+     [
+      0.8,
+      3.5,
+      "#ead79a"
+     ],
+     [
+      0.9,
+      3.6,
+      "#3f5a3c"
+     ],
+     [
+      0.55,
+      6.0,
+      "#5f8454"
+     ],
+     [
+      0.1,
+      8.5,
+      "#3f5a3c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2.6,
+    6.4,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#ead79a"
+     ],
+     [
+      0.8,
+      3.5,
+      "#ead79a"
+     ],
+     [
+      0.9,
+      3.6,
+      "#3f5a3c"
+     ],
+     [
+      0.55,
+      6.0,
+      "#5f8454"
+     ],
+     [
+      0.1,
+      8.5,
+      "#3f5a3c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2.6,
+    6.4,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#ead79a"
+     ],
+     [
+      0.8,
+      3.5,
+      "#ead79a"
+     ],
+     [
+      0.9,
+      3.6,
+      "#3f5a3c"
+     ],
+     [
+      0.55,
+      6.0,
+      "#5f8454"
+     ],
+     [
+      0.1,
+      8.5,
+      "#3f5a3c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.4,
+    -1.4,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#ead79a"
+     ],
+     [
+      0.8,
+      3.5,
+      "#ead79a"
+     ],
+     [
+      0.9,
+      3.6,
+      "#3f5a3c"
+     ],
+     [
+      0.55,
+      6.0,
+      "#5f8454"
+     ],
+     [
+      0.1,
+      8.5,
+      "#3f5a3c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.4,
+    6.4,
+    32
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#3f5a3c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#ead79a"
+     ],
+     [
+      0.8,
+      3.5,
+      "#ead79a"
+     ],
+     [
+      0.9,
+      3.6,
+      "#3f5a3c"
+     ],
+     [
+      0.55,
+      6.0,
+      "#5f8454"
+     ],
+     [
+      0.1,
+      8.5,
+      "#3f5a3c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.1,
+    -2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "height": 26,
+    "topScale": 0.55,
+    "colour": "#e0cb88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.1,
+    -2.5,
+    26
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.5,
+    "topScale": 0.1,
+    "colour": "#e6d28f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    -2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "height": 26,
+    "topScale": 0.55,
+    "colour": "#e0cb88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    -2.5,
+    26
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.5,
+    "topScale": 0.1,
+    "colour": "#e6d28f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.9,
+    -2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "height": 26,
+    "topScale": 0.55,
+    "colour": "#e0cb88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.9,
+    -2.5,
+    26
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.5,
+    "topScale": 0.1,
+    "colour": "#e6d28f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.1,
+    -2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "height": 26,
+    "topScale": 0.55,
+    "colour": "#e0cb88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.1,
+    -2.5,
+    26
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.5,
+    "topScale": 0.1,
+    "colour": "#e6d28f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "colour": "#496a9c",
+    "sections": [
+     {
+      "z": 5.2,
+      "rect": [
+       4.4,
+       0.35
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       4.2,
+       0.35
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       3.0,
+       0.35
+      ]
+     },
+     {
+      "z": 13.2,
+      "rect": [
+       1.2,
+       0.35
+      ]
+     },
+     {
+      "z": 13.9,
+      "rect": [
+       0.3,
+       0.35
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
-  "trees": 6,
+  "trees": 2,
   "treeKind": "broadleaf",
   "extent": [
    100,
@@ -625,8 +1128,8 @@
  "city": "sao-paulo",
  "venueId": "sao-paulo-quiet-reflection",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Twin spires are plain cones without the dark/green striping, crockets and lanterns; roof lacks the diamond-patterned tile; no tracery on the nave parapet; facade gable and rose window simplified."
+  "gaps": "Walls now warm cream with buttressed towers, banded green spires, pinnacles and a coloured pointed gable window; roof still lacks the diamond multicolour tile pattern, no tracery parapet, spires lack crockets."
  }
 }

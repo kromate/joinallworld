@@ -8,7 +8,7 @@
    "author": "Younghopark7",
    "view": "front",
    "file": "/tmp/places-evidence/seoul/hosp.jpg",
-   "used": "grey metal-panel wings with banded windows, low glazed teal central entrance block with a blank roof sign frame, blue-green glass curtain-wall block in the foreground right, grassed embankment with a wide stair, paved plaza and car park"
+   "used": "grey metal-panel wings with banded windows, low glazed teal central entrance block with a blank roof sign frame, blue-green glass curtain-wall block in the foreground right, grassed embankment with a wide stair, paved plaza and car park (revised: dark deep-teal tower with dark roof slab, footbridge, roof sign frame with cross, khaki-green bank)"
   },
   {
    "kind": "osm",
@@ -57,8 +57,8 @@
      0,
      3
     ],
-    "colour": "#a8964f",
-    "topColour": "#a8964f"
+    "colour": "#9c9a52",
+    "topColour": "#9c9a52"
    },
    "at": [
     0,
@@ -83,9 +83,9 @@
    "storeys": 3,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#8f8d86",
+    "colour": "#8c8b86",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.22,
     "bands": "#a6a49d"
    },
    "roof": {
@@ -112,7 +112,7 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7fa7a3",
+    "colour": "#4f8f8a",
     "windows": "curtain",
     "windowRatio": 0.75,
     "bay": 3.4
@@ -141,9 +141,9 @@
    "storeys": 3,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#8a8983",
+    "colour": "#8c8b86",
     "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windowRatio": 0.22,
     "bands": "#a6a49d"
    },
    "roof": {
@@ -158,53 +158,44 @@
    "id": "tower-block",
    "footprint": {
     "rect": [
-     20,
-     22
+     24,
+     24
     ]
    },
    "at": [
-    36,
-    -8
+    40,
+    -4
    ],
-   "height": 22,
-   "storeys": 6,
+   "height": 28,
+   "storeys": 8,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4f7f93",
+    "colour": "#2d5c60",
     "windows": "curtain",
-    "windowRatio": 0.85,
-    "bay": 3.3,
+    "windowRatio": 0.7,
+    "bay": 2.6,
     "faces": {
      "front": "curtain",
      "left": "curtain",
      "right": "curtain",
      "back": "curtain"
-    }
+    },
+    "glassColour": "#2a5558",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#355f62",
+       "#2a4c50"
+      ]
+     }
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#6c7a80",
-    "parapet": 0.4
+    "colour": "#3a3f42",
+    "parapet": 0.3
    }
-  },
-  {
-   "type": "prism",
-   "id": "sign-frame",
-   "params": {
-    "rect": [
-     22,
-     0.6
-    ],
-    "z0": 8.2,
-    "height": 2.2,
-    "colour": "#f2f2f0",
-    "topColour": "#f2f2f0"
-   },
-   "at": [
-    0,
-    22,
-    6
-   ]
   },
   {
    "type": "array",
@@ -276,6 +267,150 @@
     6,
     0
    ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-frame-l",
+   "params": {
+    "rect": [
+     0.4,
+     0.5
+    ],
+    "z0": 14.2,
+    "height": 3.6,
+    "colour": "#e8e8e4"
+   },
+   "at": [
+    -7,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-frame-r",
+   "params": {
+    "rect": [
+     0.4,
+     0.5
+    ],
+    "z0": 14.2,
+    "height": 3.6,
+    "colour": "#e8e8e4"
+   },
+   "at": [
+    7,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-frame-top",
+   "params": {
+    "rect": [
+     14.4,
+     0.5
+    ],
+    "z0": 17.4,
+    "height": 0.5,
+    "colour": "#e8e8e4"
+   },
+   "at": [
+    0,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "z0": 14.6,
+    "height": 3.2,
+    "colour": "#2a5fa8"
+   },
+   "at": [
+    -9,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 15.9,
+    "height": 0.9,
+    "colour": "#2a5fa8"
+   },
+   "at": [
+    -9,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-slab",
+   "params": {
+    "rect": [
+     28,
+     28
+    ],
+    "z0": 28,
+    "height": 1.2,
+    "colour": "#3b3d3f"
+   },
+   "at": [
+    40,
+    -4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "footbridge",
+   "params": {
+    "rect": [
+     34,
+     2.6
+    ],
+    "z0": 15,
+    "height": 1.0,
+    "colour": "#7c9a98"
+   },
+   "at": [
+    18,
+    14,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza-edge",
+   "params": {
+    "rect": [
+     110,
+     3
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#b5b3ad"
+   },
+   "at": [
+    0,
+    -22,
+    0
+   ]
   }
  ],
  "site": {
@@ -295,13 +430,6 @@
      -50,
      36
     ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -22,
-     34
-    ]
    }
   ],
   "extent": [
@@ -316,6 +444,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Stair is a ramp-walled flight at left; no roof sign text/frame detail or footbridge; camera is frontal not oblique"
+  "gaps": "Dark teal gridded tower with dark roof slab, footbridge, roof sign frame with cross and khaki bank added; camera is frontal not oblique, no large foreground plaza or van, stair still ramp-walled, tower mullions lighter than photo."
  }
 }

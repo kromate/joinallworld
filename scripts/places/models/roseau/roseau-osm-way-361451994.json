@@ -101,8 +101,8 @@
     ]
    },
    "at": [
-    17,
-    -14
+    14,
+    -11
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -110,9 +110,9 @@
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#8c8272",
+    "colour": "#6b6258",
     "windows": "none",
-    "parapet": 0.8,
+    "parapet": 1.0,
     "pattern": [
      {
       "type": "panels",
@@ -122,9 +122,10 @@
       "colours": [
        "#e6c040",
        "#e87aa8",
-       "#2f7a4a"
+       "#2f7a4a",
+       "#b8372f"
       ],
-      "cols": 6,
+      "cols": 8,
       "rows": 1,
       "mode": "random",
       "skipGround": false
@@ -141,8 +142,8 @@
   {
    "type": "mosque-domed/crenellated-wall",
    "at": [
-    17,
-    -11.6,
+    14,
+    -8.6,
     4.2
    ],
    "params": {
@@ -152,8 +153,8 @@
     "merlon_height": 1.2,
     "merlon_width": 1.6,
     "pitch": 3.2,
-    "colour": "#7b7264",
-    "trim": "#7b7264"
+    "colour": "#6b6258",
+    "trim": "#6b6258"
    }
   },
   {
@@ -166,8 +167,8 @@
     ]
    },
    "at": [
-    -24,
-    -4
+    -21,
+    -3
    ],
    "z0": 0,
    "height": 7.2,
@@ -176,27 +177,30 @@
     "material": "painted-render",
     "colour": "#a9d6a0",
     "windows": "punched",
-    "windowRatio": 0.2,
-    "plinth": 0.5
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "windowShape": "rect",
+    "faces": {}
    },
    "roof": {
-    "form": "shed",
+    "form": "hip",
     "colour": "#c9c2b0",
     "material": "metal-sheet",
-    "pitch": 6,
+    "pitch": 14,
     "overhang": 0.4
    }
   },
   {
    "type": "market-open/water-tank",
    "at": [
-    -24,
+    -21,
     0,
     7.4
    ],
    "params": {
     "radius": 1.1,
-    "height": 1.7
+    "height": 1.7,
+    "colour": "#222222"
    }
   },
   {
@@ -212,6 +216,33 @@
     "count": 1,
     "spread": 6
    }
+  },
+  {
+   "type": "mass",
+   "id": "verandah",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    -9,
+    -2
+   ],
+   "z0": 2.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a5a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3a",
+    "material": "metal-sheet"
+   }
   }
  ],
  "site": {
@@ -223,8 +254,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "Pavilion is seen only far away in the photo so roof pitch and post count are estimated; adjoining ruin and houses are context, not the OSM building."
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "ruin wall darker with narrow coloured doors, hip-roof house, verandah added; wall panels are flat colour, rubble texture and ragged top only approximated; pavilion still separated by plaza"
  }
 }

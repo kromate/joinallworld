@@ -34,8 +34,7 @@
   "pitchDeg": 2,
   "fovDeg": 40,
   "aspect": 1.333,
-  "margin": 0.02,
-  "fit": "all"
+  "fit": "building"
  },
  "parts": [
   {
@@ -96,106 +95,55 @@
    ],
    "params": {
     "height": 15,
-    "width": 4.6,
+    "width": 9,
     "steps": 1,
     "shape": "tier",
     "figure": "stand",
     "figure_colour": "#3b4044",
-    "figure_ratio": 0.33
+    "figure_ratio": 0.34
    }
   },
   {
    "type": "fence-wall",
    "at": [
-    -10.5,
+    -14,
     4.5,
     0.5
    ],
    "params": {
-    "length": 20,
-    "height": 2.4,
+    "length": 16,
+    "height": 2.2,
     "thickness": 0.7,
-    "colour": "#bdb6a8"
+    "colour": "#cfc8ba"
    }
   },
   {
    "type": "fence-wall",
    "at": [
-    10.5,
+    14,
     4.5,
     0.5
    ],
    "params": {
-    "length": 20,
-    "height": 2.4,
+    "length": 16,
+    "height": 2.2,
     "thickness": 0.7,
-    "colour": "#8a6a45"
+    "colour": "#cfc8ba"
    }
   },
   {
    "type": "fence-wall",
    "at": [
     0,
-    -5,
+    -7,
     0.5
    ],
    "params": {
-    "length": 34,
-    "height": 1.1,
-    "thickness": 0.15,
+    "length": 40,
+    "height": 1.4,
+    "thickness": 0.25,
     "colour": "#25282b",
     "kind": "railing"
-   }
-  },
-  {
-   "type": "obelisk",
-   "at": [
-    -28,
-    10,
-    0.3
-   ],
-   "params": {
-    "height": 24,
-    "base_width": 3.2,
-    "style": "square",
-    "steps": 3,
-    "crown": "none"
-   }
-  },
-  {
-   "type": "pavilion",
-   "at": [
-    28,
-    -18,
-    0.3
-   ],
-   "params": {
-    "width": 7,
-    "depth": 7,
-    "height": 3.8,
-    "roof": "hip",
-    "rise": 2.2,
-    "posts": 4,
-    "colour": "#b5382f",
-    "cap_colour": "#5b6a5e"
-   }
-  },
-  {
-   "type": "pavilion",
-   "at": [
-    -28,
-    -20,
-    0.3
-   ],
-   "params": {
-    "width": 6,
-    "depth": 6,
-    "height": 3.6,
-    "roof": "hip",
-    "rise": 2.0,
-    "posts": 4,
-    "colour": "#b5382f",
-    "cap_colour": "#5b6a5e"
    }
   },
   {
@@ -221,36 +169,6 @@
    }
   },
   {
-   "type": "mass",
-   "id": "rest-house",
-   "footprint": {
-    "rect": [
-     10,
-     6
-    ]
-   },
-   "at": [
-    26,
-    20
-   ],
-   "height": 3.4,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#bdb6a8",
-    "windows": "punched",
-    "windowRatio": 0.15
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#5b6a5e",
-    "material": "clay-tile",
-    "pitch": 28,
-    "overhang": 1.0
-   },
-   "z0": 0.3
-  },
-  {
    "type": "path-strip",
    "at": [
     0,
@@ -270,6 +188,101 @@
     ],
     "width": 6,
     "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.7
+    ],
+    "height": 0.4,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.3,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    2.6,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6b4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    2.6,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6b4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.1,
+    5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#3b4044"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     30,
+     10
+    ],
+    "height": 0.6,
+    "colour": "#b4aea0"
    }
   }
  ],
@@ -347,6 +360,150 @@
      -10
     ],
     "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     31,
+     27
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     22
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     27
+    ],
+    "height": 20
    }
   ],
   "extent": [
@@ -355,8 +512,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Only the MacArthur monument is photo-matched; plinth narrower than photo, relief panels plain, fence is a plain rail, rest of park (pavilions, obelisk, stairs) from brief."
+  "gaps": "Plinth still narrower than photo, relief panels plain brown boxes, fence is a plain rail not square-meander lattice; obelisk and pavilions dropped for framing; tree screen is lollipop trees not dense canopy."
  }
 }

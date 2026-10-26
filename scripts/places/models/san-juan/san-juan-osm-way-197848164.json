@@ -51,12 +51,12 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#c8cbc9",
+    "colour": "#d5d8d6",
     "windows": "arched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.3,
     "plinth": 0.5,
     "cornice": true,
-    "bands": "#e6e7e2",
+    "bands": "#f4f4f0",
     "faces": {
      "back": "none",
      "left": "none",
@@ -65,7 +65,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcba",
+    "colour": "#cfd2d0",
     "parapet": 1.0
    }
   },
@@ -86,12 +86,12 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#c8cbc9",
+    "colour": "#d5d8d6",
     "windows": "arched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.3,
     "plinth": 0.5,
     "cornice": true,
-    "bands": "#e6e7e2",
+    "bands": "#f4f4f0",
     "faces": {
      "back": "none",
      "left": "none",
@@ -100,7 +100,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcba",
+    "colour": "#cfd2d0",
     "parapet": 1.0
    }
   },
@@ -121,12 +121,12 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#c8cbc9",
+    "colour": "#d5d8d6",
     "windows": "arched",
-    "windowRatio": 0.2,
+    "windowRatio": 0.3,
     "plinth": 0.5,
     "cornice": true,
-    "bands": "#e6e7e2",
+    "bands": "#f4f4f0",
     "faces": {
      "back": "none",
      "left": "none",
@@ -135,7 +135,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcba",
+    "colour": "#cfd2d0",
     "parapet": 1.0
    }
   },
@@ -152,16 +152,16 @@
     -40,
     0
    ],
-   "height": 13,
-   "storeys": 3,
+   "height": 13.5,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#c8cbc9",
+    "colour": "#d5d8d6",
     "windows": "punched",
-    "windowRatio": 0.16,
+    "windowRatio": 0.3,
     "plinth": 0.5,
     "cornice": true,
-    "bands": "#e6e7e2",
+    "bands": "#f4f4f0",
     "faces": {
      "back": "none",
      "left": "none",
@@ -170,7 +170,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcba",
+    "colour": "#cfd2d0",
     "parapet": 1.0
    }
   },
@@ -187,16 +187,16 @@
     40,
     0
    ],
-   "height": 13,
-   "storeys": 3,
+   "height": 13.5,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#c8cbc9",
+    "colour": "#d5d8d6",
     "windows": "punched",
-    "windowRatio": 0.16,
+    "windowRatio": 0.3,
     "plinth": 0.5,
     "cornice": true,
-    "bands": "#e6e7e2",
+    "bands": "#f4f4f0",
     "faces": {
      "back": "none",
      "left": "none",
@@ -205,7 +205,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcba",
+    "colour": "#cfd2d0",
     "parapet": 1.0
    }
   },
@@ -226,19 +226,20 @@
    "storeys": 4,
    "wall": {
     "material": "painted-render",
-    "colour": "#d4d6d2",
+    "colour": "#d5d8d6",
     "windows": "punched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.3,
     "cornice": true,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    }
+    },
+    "bands": "#f4f4f0"
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcba",
+    "colour": "#cfd2d0",
     "parapet": 1.0
    }
   },
@@ -251,13 +252,13 @@
     0
    ],
    "params": {
-    "width": 14,
+    "width": 11,
     "depth": 4.5,
-    "height": 8.8,
-    "columns": 6,
+    "height": 8.4,
+    "columns": 5,
     "pediment": true,
     "steps": 4,
-    "colour": "#f1f1ec",
+    "colour": "#f6f6f2",
     "roofColour": "#f1f1ec"
    }
   },
@@ -356,6 +357,120 @@
     "count": 2,
     "spread": 8
    }
+  },
+  {
+   "type": "mass",
+   "id": "quoin--40--1",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -46.4,
+    -9.8
+   ],
+   "height": 13.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin--40-1",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -33.6,
+    -9.8
+   ],
+   "height": 13.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-40--1",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    33.6,
+    -9.8
+   ],
+   "height": 13.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-40-1",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    46.4,
+    -9.8
+   ],
+   "height": 13.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -13.6,
+    4.6
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f6f6f2"
+   }
   }
  ],
  "site": {
@@ -370,7 +485,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "window storey count and arch rhythm simplified, no hedge parterre or Christ statue detail, rear tower block approximate; modelled as the historic main building rather than the whole campus"
+  "gaps": "Rounds 2 total. Pavilions only slightly taller than wings in photo; no hedge parterre or Christ statue detail; portico simplified to 5 columns with balustrade; rear tower approximate"
  },
  "schema": "allworld-place-model",
  "version": 2,

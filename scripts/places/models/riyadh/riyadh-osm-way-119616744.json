@@ -217,12 +217,12 @@
      0
     ],
     "radius": 46,
-    "startDeg": -103,
-    "endDeg": 231,
-    "count": 14,
+    "startDeg": -100,
+    "endDeg": 220,
+    "count": 9,
     "facing": "outward",
-    "lod2Step": 14,
-    "lod1Step": 4,
+    "lod2Step": 9,
+    "lod1Step": 3,
     "of": [
      {
       "type": "loft",
@@ -239,23 +239,23 @@
        "sections": [
         {
          "z": 3,
-         "circle": 16
+         "circle": 22
         },
         {
-         "z": 10,
-         "circle": 8
+         "z": 8,
+         "circle": 12
         },
         {
-         "z": 17,
-         "circle": 3.6
+         "z": 14,
+         "circle": 5.5
         },
         {
-         "z": 23,
-         "circle": 1.5
+         "z": 19,
+         "circle": 2.4
         },
         {
-         "z": 28,
-         "circle": 0.7
+         "z": 22,
+         "circle": 1.0
         }
        ]
       }
@@ -272,16 +272,16 @@
        "colour": "#d0d4d6",
        "profile": [
         [
-         0.4,
-         27.5
+         0.45,
+         21.5
         ],
         [
-         0.25,
-         30
+         0.3,
+         24
         ],
         [
          0.06,
-         34
+         28
         ]
        ]
       },
@@ -354,7 +354,11 @@
       21
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "loft",
@@ -367,38 +371,42 @@
     "curve": true,
     "colour": "#f4f2ea",
     "steps": 3,
-    "round": 8,
+    "round": 10,
     "sections": [
      {
       "z": 0,
-      "circle": 1.2
+      "circle": 4
+     },
+     {
+      "z": 4,
+      "circle": 14
      },
      {
       "z": 9,
-      "circle": 1.5
-     },
-     {
-      "z": 10.5,
-      "circle": 12
+      "circle": 9
      },
      {
       "z": 14,
-      "circle": 8
+      "circle": 5
      },
      {
-      "z": 19,
-      "circle": 4.5
+      "z": 20,
+      "circle": 2.4
      },
      {
-      "z": 25,
-      "circle": 1.8
+      "z": 27,
+      "circle": 1.2
      },
      {
       "z": 30,
       "circle": 0.8
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
@@ -440,38 +448,42 @@
     "curve": true,
     "colour": "#f4f2ea",
     "steps": 3,
-    "round": 8,
+    "round": 10,
     "sections": [
      {
       "z": 0,
-      "circle": 1.2
+      "circle": 4
+     },
+     {
+      "z": 4,
+      "circle": 14
      },
      {
       "z": 9,
-      "circle": 1.5
-     },
-     {
-      "z": 10.5,
-      "circle": 12
+      "circle": 9
      },
      {
       "z": 14,
-      "circle": 8
+      "circle": 5
      },
      {
-      "z": 19,
-      "circle": 4.5
+      "z": 20,
+      "circle": 2.4
      },
      {
-      "z": 25,
-      "circle": 1.8
+      "z": 27,
+      "circle": 1.2
      },
      {
       "z": 30,
       "circle": 0.8
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
@@ -545,35 +557,45 @@
      [
       -17,
       0,
+      15
+     ],
+     [
+      -11,
+      0,
       10.5
      ],
      [
-      -9,
+      -5,
       0,
-      14.5
+      8.6
      ],
      [
       0,
       0,
-      15.5
+      8.2
      ],
      [
-      9,
+      5,
       0,
-      14.5
+      8.6
+     ],
+     [
+      11,
+      0,
+      10.5
      ],
      [
       17,
       0,
-      10.5
+      15
      ]
     ],
     "curve": true,
-    "steps": 8,
+    "steps": 10,
     "section": {
      "rect": [
       13,
-      1.4
+      0.5
      ]
     },
     "colour": "#f4f2ea"
@@ -746,6 +768,154 @@
     0,
     1
    ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 0,
+    "startDeg": 0,
+    "endDeg": 337.5,
+    "count": 16,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "points": [
+       [
+        27,
+        0,
+        23.2
+       ],
+       [
+        40,
+        0,
+        18.2
+       ],
+       [
+        54,
+        0,
+        14.8
+       ]
+      ],
+      "curve": true,
+      "steps": 3,
+      "section": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "colour": "#c9cccf"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#7a5a3c",
+       "curve": true,
+       "round": 5,
+       "sections": [
+        {
+         "z": 0,
+         "circle": 0.5
+        },
+        {
+         "z": 7,
+         "circle": 0.35
+        },
+        {
+         "z": 13,
+         "circle": 0.3
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "segments": 8,
+       "colour": "#3f7a3a",
+       "profile": [
+        [
+         0.2,
+         13.6
+        ],
+        [
+         2.6,
+         13.2
+        ],
+        [
+         3.8,
+         11.6
+        ],
+        [
+         2.2,
+         12.4
+        ],
+        [
+         0.2,
+         12.6
+        ]
+       ]
+      }
+     }
+    ],
+    "start": [
+     -56,
+     -76,
+     0
+    ],
+    "end": [
+     56,
+     -76,
+     0
+    ]
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -801,8 +971,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Masts are wide concave tent peaks but gate masts still read as mushroom skirts on thin posts; membrane between masts is a thin arch band, not a swept sheet; no radiating ribs under roof; gate shelters simple; palms generic"
+  "gaps": "Gate masts now solid concave cones but taller/narrower than photo; no real swept membrane sheet spanning the gate (thin arch band), gate shelters simple; wall/red railings not visible from camera; palms are stylised umbrella crowns; perimeter masts reduced to 9 with ribs only at LOD0"
  }
 }

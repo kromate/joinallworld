@@ -43,21 +43,16 @@
    "wall": {
     "material": "painted-render",
     "colour": "#6f7a85",
-    "windows": "curtain",
-    "windowRatio": 0.5,
-    "plinth": 0.25,
-    "faces": {
-     "left": "none",
-     "right": "none",
-     "back": "none"
-    }
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
    },
    "roof": {
     "colour": "#a2452e",
     "material": "clay-tile",
-    "overhang": 1.2,
+    "overhang": 1.4,
     "form": "hip",
-    "pitch": 10
+    "pitch": 22
    }
   },
   {
@@ -104,7 +99,7 @@
     -37,
     -25
    ],
-   "height": 9.5,
+   "height": 11.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -117,9 +112,8 @@
     "colour": "#a2452e",
     "material": "clay-tile",
     "overhang": 0.8,
-    "form": "gable",
-    "pitch": 38,
-    "axis": "x"
+    "form": "shed",
+    "pitch": 38
    }
   },
   {
@@ -135,7 +129,7 @@
     20,
     -22
    ],
-   "height": 11,
+   "height": 13,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -143,25 +137,14 @@
     "windows": "none",
     "windowRatio": 0,
     "plinth": 0.25,
-    "pattern": [
-     {
-      "type": "louvres",
-      "faces": [
-       "front"
-      ],
-      "colour": "#4a4f55",
-      "backColour": "#1f2226",
-      "band": 0.18,
-      "at": 0.62
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "colour": "#a2452e",
     "material": "clay-tile",
     "overhang": 0.8,
     "form": "gable",
-    "pitch": 30,
+    "pitch": 34,
     "axis": "y"
    }
   },
@@ -291,17 +274,17 @@
    "id": "brick-court",
    "at": [
     0,
-    -40
+    -42
    ],
    "params": {
     "rect": [
-     22,
-     14
+     30,
+     16
     ],
     "z0": 0,
     "height": 0.08,
-    "colour": "#8a4b40",
-    "topColour": "#8a4b40"
+    "colour": "#8d4f45",
+    "topColour": "#8d4f45"
    }
   },
   {
@@ -309,12 +292,12 @@
    "id": "slate-strip",
    "at": [
     0,
-    -48
+    -51.1
    ],
    "params": {
     "rect": [
-     26,
-     2
+     34,
+     2.2
     ],
     "z0": 0,
     "height": 0.1,
@@ -356,7 +339,10 @@
      -34
     ],
     "count": 3
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
@@ -368,24 +354,24 @@
       "colour": "#3f6a3a",
       "profile": [
        [
+        0.0,
+        0.09000000000000001
+       ],
+       [
+        3.5999999999999996,
+        0.18000000000000002
+       ],
+       [
+        4.5,
+        0.7200000000000001
+       ],
+       [
+        3.3000000000000003,
+        1.35
+       ],
+       [
         0,
-        0.2
-       ],
-       [
-        2.4,
-        0.4
-       ],
-       [
-        3.0,
-        1.6
-       ],
-       [
-        2.2,
-        3.0
-       ],
-       [
-        0,
-        3.6
+        1.62
        ]
       ]
      }
@@ -399,8 +385,11 @@
      21,
      -40
     ],
-    "count": 3
-   }
+    "count": 7
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
@@ -412,20 +401,20 @@
       "colour": "#4b7a45",
       "profile": [
        [
+        0.0,
+        0.045000000000000005
+       ],
+       [
+        2.25,
+        0.09000000000000001
+       ],
+       [
+        2.7,
+        0.405
+       ],
+       [
         0,
-        0.1
-       ],
-       [
-        1.5,
-        0.2
-       ],
-       [
-        1.8,
-        0.9
-       ],
-       [
-        0,
-        1.5
+        0.675
        ]
       ]
      }
@@ -439,7 +428,310 @@
      -8,
      -33
     ],
-    "count": 4
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-back",
+   "at": [
+    -1,
+    -30.2
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#232b30",
+    "topColour": "#232b30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door0",
+   "at": [
+    -5.2,
+    -30.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "z0": 0.05,
+    "height": 3.0,
+    "colour": "#2f3a40",
+    "topColour": "#2f3a40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door1",
+   "at": [
+    -1,
+    -30.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "z0": 0.05,
+    "height": 3.0,
+    "colour": "#2f3a40",
+    "topColour": "#2f3a40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door2",
+   "at": [
+    3.2,
+    -30.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "z0": 0.05,
+    "height": 3.0,
+    "colour": "#2f3a40",
+    "topColour": "#2f3a40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -8.4,
+    -30.6
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.4
+    ],
+    "z0": 0,
+    "height": 4.0,
+    "colour": "#6f7a85",
+    "topColour": "#6f7a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    6.4,
+    -30.6
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.4
+    ],
+    "z0": 0,
+    "height": 4.0,
+    "colour": "#6f7a85",
+    "topColour": "#6f7a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-lintel",
+   "at": [
+    -1,
+    -30.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.4
+    ],
+    "z0": 3.4,
+    "height": 0.8,
+    "colour": "#6f7a85",
+    "topColour": "#6f7a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slot0",
+   "at": [
+    13.25,
+    -33.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 6.5,
+    "colour": "#1f2226",
+    "topColour": "#1f2226"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot1",
+   "at": [
+    14.75,
+    -33.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 6.5,
+    "colour": "#1f2226",
+    "topColour": "#1f2226"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot2",
+   "at": [
+    16.25,
+    -33.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 6.5,
+    "colour": "#1f2226",
+    "topColour": "#1f2226"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot3",
+   "at": [
+    17.75,
+    -33.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 6.5,
+    "colour": "#1f2226",
+    "topColour": "#1f2226"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot4",
+   "at": [
+    19.25,
+    -33.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 6.5,
+    "colour": "#1f2226",
+    "topColour": "#1f2226"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot5",
+   "at": [
+    20.75,
+    -33.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 6.5,
+    "colour": "#1f2226",
+    "topColour": "#1f2226"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slate-l",
+   "at": [
+    -16.1,
+    -42
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     16
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#59606a",
+    "topColour": "#59606a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slate-r",
+   "at": [
+    16.1,
+    -42
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     16
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#59606a",
+    "topColour": "#59606a"
    }
   }
  ],
@@ -490,9 +782,9 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Rear/side wings still approximate masses; brick paving is a flat patch on the plaza (no slate border visible); louvre slots are a band not 6 distinct slots; shrubs are blob stand-ins."
+  "gaps": "Rear/side wings still approximate masses; west gable mono-pitch reads shallower than photo; porch is simple dark recess with three door panels; planting is low mounds."
  },
  "schema": "allworld-place-model",
  "version": 2,

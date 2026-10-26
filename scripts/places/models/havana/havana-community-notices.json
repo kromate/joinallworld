@@ -37,12 +37,12 @@
    "id": "wing-w",
    "footprint": {
     "rect": [
-     66,
-     88
+     44,
+     60
     ]
    },
    "at": [
-    -70,
+    -56,
     0
    ],
    "height": 20,
@@ -51,22 +51,23 @@
     "material": "limestone",
     "colour": "#e4dcc6",
     "windows": "punched",
-    "windowRatio": 0.28,
+    "windowRatio": 0.18,
     "windowShape": "rect",
     "plinth": 4,
     "cornice": true,
     "faces": {
      "front": "punched",
-     "back": "punched",
-     "left": "punched",
-     "right": "punched"
+     "back": "none",
+     "left": "none",
+     "right": "none"
     },
-    "bands": "#d3cab4"
+    "bands": "#d3cab4",
+    "bay": 6
    },
    "roof": {
     "form": "flat",
     "colour": "#cfc7b2",
-    "parapet": 1.2
+    "parapet": 0
    }
   },
   {
@@ -74,12 +75,12 @@
    "id": "wing-e",
    "footprint": {
     "rect": [
-     66,
-     88
+     44,
+     60
     ]
    },
    "at": [
-    70,
+    56,
     0
    ],
    "height": 20,
@@ -88,22 +89,23 @@
     "material": "limestone",
     "colour": "#e4dcc6",
     "windows": "punched",
-    "windowRatio": 0.28,
+    "windowRatio": 0.18,
     "windowShape": "rect",
     "plinth": 4,
     "cornice": true,
     "faces": {
      "front": "punched",
-     "back": "punched",
-     "left": "punched",
-     "right": "punched"
+     "back": "none",
+     "left": "none",
+     "right": "none"
     },
-    "bands": "#d3cab4"
+    "bands": "#d3cab4",
+    "bay": 6
    },
    "roof": {
     "form": "flat",
     "colour": "#cfc7b2",
-    "parapet": 1.2
+    "parapet": 0
    }
   },
   {
@@ -111,8 +113,8 @@
    "id": "centre",
    "footprint": {
     "rect": [
-     76,
-     92
+     64,
+     70
     ]
    },
    "at": [
@@ -132,7 +134,7 @@
    "roof": {
     "form": "flat",
     "colour": "#d6d0be",
-    "parapet": 1.5
+    "parapet": 0
    }
   },
   {
@@ -150,7 +152,7 @@
    },
    "at": [
     0,
-    -34,
+    -28,
     0
    ]
   },
@@ -159,8 +161,8 @@
    "id": "attic-back",
    "params": {
     "rect": [
-     50,
-     56
+     44,
+     44
     ],
     "z0": 24,
     "height": 4,
@@ -171,6 +173,10 @@
     0,
     2,
     0
+   ],
+   "lod": [
+    0,
+    1
    ]
   },
   {
@@ -178,33 +184,37 @@
    "id": "portico",
    "at": [
     0,
-    -50,
+    -42,
     4.6
    ],
    "params": {
     "width": 38,
     "depth": 9,
     "height": 19,
-    "columns": 10,
+    "columns": 8,
     "pediment": false,
     "steps": 0,
     "colour": "#f1ecde",
     "roofColour": "#e2dccb"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/steps",
    "id": "stair",
    "at": [
     0,
-    -60,
+    -52,
     0
    ],
    "params": {
-    "width": 34,
-    "rise": 0.3,
-    "run": 0.62,
-    "count": 16,
+    "width": 30,
+    "rise": 1.2,
+    "run": 2.4,
+    "count": 4,
     "colour": "#bdb8a8"
    }
   },
@@ -215,12 +225,12 @@
     "mode": "line",
     "start": [
      -20,
-     -52,
+     -45,
      0
     ],
     "end": [
      20,
-     -52,
+     -45,
      0
     ],
     "count": 2,
@@ -243,39 +253,47 @@
    "type": "core/colonnade",
    "id": "loggia-w",
    "at": [
-    -70,
-    -46,
+    -56,
+    -40,
     4
    ],
    "params": {
-    "length": 50,
-    "count": 12,
+    "length": 30,
+    "count": 7,
     "height": 14,
     "radius": 0.6,
     "kind": "round",
     "beamHeight": 1.2,
     "colour": "#f1ecde",
     "roofColour": "#e2dccb"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/colonnade",
    "id": "loggia-e",
    "at": [
-    70,
-    -46,
+    56,
+    -40,
     4
    ],
    "params": {
-    "length": 50,
-    "count": 12,
+    "length": 30,
+    "count": 7,
     "height": 14,
     "radius": 0.6,
     "kind": "round",
     "beamHeight": 1.2,
     "colour": "#f1ecde",
     "roofColour": "#e2dccb"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "revolve",
@@ -286,7 +304,7 @@
     29
    ],
    "params": {
-    "segments": 40,
+    "segments": 20,
     "colour": "#efe9d8",
     "profile": [
      [
@@ -329,7 +347,7 @@
     "arcade": {
      "from": 4,
      "to": 11,
-     "count": 16,
+     "count": 8,
      "width": 1.8,
      "height": 5.6,
      "sill": 0.5,
@@ -337,7 +355,11 @@
      "depth": 0.5,
      "innerColour": "#5a5448"
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -355,14 +377,13 @@
      0
     ],
     "radius": 14.3,
-    "count": 24,
+    "count": 12,
     "startDeg": 0,
     "endDeg": 360,
     "of": {
      "type": "prism",
      "lod": [
-      0,
-      1
+      0
      ],
      "params": {
       "radius": 0.75,
@@ -384,7 +405,7 @@
     45
    ],
    "params": {
-    "segments": 40,
+    "segments": 20,
     "colour": "#b5b3a2",
     "profile": [
      [
@@ -465,7 +486,11 @@
       46
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -474,12 +499,12 @@
     "mode": "line",
     "start": [
      -18,
-     -66,
+     -58,
      0
     ],
     "end": [
      18,
-     -66,
+     -58,
      0
     ],
     "count": 2,
@@ -525,28 +550,35 @@
       ]
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "lamp",
    "id": "lamps",
    "at": [
     0,
-    -78,
+    -66,
     0
    ],
    "params": {
     "height": 7,
     "count": 6,
     "spacing": 16
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "flag",
    "id": "flags",
    "at": [
     -45,
-    -70,
+    -60,
     0
    ],
    "params": {
@@ -554,50 +586,67 @@
     "count": 2,
     "spacing": 90
    }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-lo",
+   "at": [
+    0,
+    0,
+    29
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d9d3c0",
+    "profile": [
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      16
+     ],
+     [
+      15.8,
+      16
+     ],
+     [
+      15,
+      26
+     ],
+     [
+      9,
+      42
+     ],
+     [
+      2.4,
+      56
+     ],
+     [
+      0.3,
+      75
+     ]
+    ]
+   }
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
-  "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     -95,
-     -60
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     -95,
-     -40
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     100,
-     -60
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     100,
-     -40
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
-   160,
-   160
+   130,
+   130
   ]
  },
  "review": {
   "rounds": 0,
   "match": "rough",
-  "gaps": "Not rendered: shared render queue was down (no worker heartbeat, 93 jobs waiting). Composed from two photos and OSM extents but never compared; dome, portico and wing proportions unchecked."
+  "gaps": "Not rendered: shared render queue was down (no worker heartbeat, 93 jobs waiting). Composed from two photos and OSM extents but never compared; dome, portico and wing proportions unchecked. Rear and side wall windows removed and wings narrowed to fit the 170 m and triangle budgets."
  },
  "schema": "allworld-place-model",
  "version": 2,

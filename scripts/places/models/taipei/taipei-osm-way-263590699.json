@@ -36,12 +36,30 @@
  },
  "parts": [
   {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    0,
+    40
+   ],
+   "params": {
+    "rect": [
+     130,
+     50
+    ],
+    "z0": 0,
+    "height": 22,
+    "topScale": 0.6,
+    "colour": "#2f4a2c"
+   }
+  },
+  {
    "type": "mass",
    "id": "podium",
    "footprint": {
     "rect": [
-     56,
-     26
+     62,
+     28
     ]
    },
    "at": [
@@ -59,86 +77,112 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8a5a3a"
+    "colour": "#8a8683"
    }
   },
   {
    "type": "mass",
-   "id": "rear-wall",
+   "id": "rear-hall",
    "footprint": {
     "rect": [
-     44,
-     16
+     46,
+     18
     ]
    },
    "at": [
     0,
     6
    ],
-   "rotDeg": 0,
    "z0": 0.9,
-   "height": 5.5,
+   "height": 7,
    "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#c8452f",
+    "material": "brick",
+    "colour": "#c85a38",
     "windows": "none"
    },
    "roof": {
     "form": "gable",
     "colour": "#e0702c",
     "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 1.0
+    "pitch": 28,
+    "overhang": 1.2
    }
   },
   {
    "type": "mass",
-   "id": "front-hall",
+   "id": "front-recess",
    "footprint": {
     "rect": [
-     44,
-     10
+     46,
+     9
     ]
    },
    "at": [
     0,
-    -6
+    -7.5
    ],
-   "rotDeg": 0,
    "z0": 0.9,
-   "height": 5.4,
+   "height": 5.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#8a8785",
+    "colour": "#2e2a28",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#5a3a2a"
+    "colour": "#3a2a22"
    }
   },
   {
    "type": "mass",
-   "id": "side-wall-r",
+   "id": "end-wall-r",
    "footprint": {
     "rect": [
-     4,
-     22
+     3,
+     26
     ]
    },
    "at": [
-    26,
-    2
+    24.5,
+    0
    ],
-   "rotDeg": 0,
    "z0": 0.9,
-   "height": 6,
+   "height": 5.6,
    "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#c8452f",
+    "material": "brick",
+    "colour": "#c85a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e0702c",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wall-l",
+   "footprint": {
+    "rect": [
+     3,
+     26
+    ]
+   },
+   "at": [
+    -24.5,
+    0
+   ],
+   "z0": 0.9,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c85a38",
     "windows": "none"
    },
    "roof": {
@@ -153,65 +197,113 @@
    "type": "core/colonnade",
    "at": [
     0,
-    -11.2,
+    -12.2,
     0.9
    ],
    "params": {
-    "length": 42,
-    "count": 8,
-    "height": 6,
-    "radius": 0.55,
-    "colour": "#7c7b79",
-    "beamHeight": 0.6
+    "length": 46,
+    "count": 10,
+    "height": 5.4,
+    "radius": 0.65,
+    "colour": "#8a8a86",
+    "beamHeight": 0.7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.4
+      ],
+      "height": 3.6,
+      "colour": "#b32a1e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -11.6,
+     0.9
+    ],
+    "end": [
+     18,
+     -11.6,
+     0.9
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    -4,
+    5.9
+   ],
+   "params": {
+    "width": 60,
+    "depth": 22,
+    "rise": 2.4,
+    "overhang": 3.0,
+    "upturn": 1.8,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -17,
+    -3,
+    7.6
+   ],
+   "params": {
+    "width": 22,
+    "depth": 17,
+    "rise": 2.4,
+    "overhang": 2.4,
+    "upturn": 1.8,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    17,
+    -3,
+    7.6
+   ],
+   "params": {
+    "width": 22,
+    "depth": 17,
+    "rise": 2.4,
+    "overhang": 2.4,
+    "upturn": 1.8,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
    }
   },
   {
    "type": "pagoda-roof",
    "at": [
     0,
-    -5,
-    5.6
+    -2,
+    9.4
    ],
    "params": {
-    "width": 50,
-    "depth": 18,
-    "rise": 2.2,
-    "overhang": 2.8,
-    "upturn": 1.6,
-    "colour": "#e0702c",
-    "trim": "#b22a1c"
-   }
-  },
-  {
-   "type": "pagoda-roof",
-   "at": [
-    -14,
-    -5,
-    6.4
-   ],
-   "params": {
-    "width": 20,
-    "depth": 16,
-    "rise": 2.0,
+    "width": 24,
+    "depth": 14,
+    "rise": 2.8,
     "overhang": 2.2,
-    "upturn": 1.4,
-    "colour": "#e0702c",
-    "trim": "#b22a1c"
-   }
-  },
-  {
-   "type": "pagoda-roof",
-   "at": [
-    14,
-    -5,
-    6.4
-   ],
-   "params": {
-    "width": 20,
-    "depth": 16,
-    "rise": 2.0,
-    "overhang": 2.2,
-    "upturn": 1.4,
+    "upturn": 1.8,
     "colour": "#e0702c",
     "trim": "#b22a1c"
    }
@@ -220,62 +312,177 @@
    "type": "pagoda-roof",
    "at": [
     0,
-    -5,
-    8.0
+    0,
+    12.0
    ],
    "params": {
-    "width": 20,
-    "depth": 12,
-    "rise": 2.6,
-    "overhang": 2.0,
-    "upturn": 1.4,
+    "width": 13,
+    "depth": 10,
+    "rise": 3.4,
+    "overhang": 1.8,
+    "upturn": 2.0,
     "colour": "#e0702c",
     "trim": "#b22a1c"
    }
+  },
+  {
+   "type": "finial",
+   "at": [
+    -28,
+    -3,
+    8.3
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.4,
+    "colour": "#c8372a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "finial",
+   "at": [
+    28,
+    -3,
+    8.3
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.4,
+    "colour": "#c8372a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "finial",
+   "at": [
+    -17,
+    -3,
+    10.4
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.4,
+    "colour": "#c8372a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "finial",
+   "at": [
+    17,
+    -3,
+    10.4
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.4,
+    "colour": "#c8372a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "finial",
+   "at": [
+    0,
+    -3,
+    12.6
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.4,
+    "colour": "#c8372a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "finial",
+   "at": [
+    0,
+    -3,
+    16.4
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.4,
+    "colour": "#c8372a"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/steps",
    "at": [
     0,
-    -13.6,
+    -14.6,
     0
    ],
    "params": {
-    "width": 40,
-    "rise": 0.9,
+    "width": 44,
+    "rise": 0.3,
     "run": 0.8,
     "count": 3,
     "colour": "#7c7b79"
    }
   },
   {
-   "type": "core/sign-board",
+   "type": "core/fence-wall",
    "at": [
-    0,
-    -11.8,
-    6.1
+    -30,
+    -26,
+    0
    ],
    "params": {
-    "width": 5,
+    "length": 22,
     "height": 1.0,
-    "bottom": 0,
-    "colour": "#a8352a",
-    "frameColour": "#d9b24a",
-    "posts": false
-   }
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 1.5,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -36,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.3,
+    "depth": 1.4,
+    "colour": "#3f6a35"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
   "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     40,
-     22
-    ]
-   },
    {
     "kind": "palm",
     "at": [
@@ -286,19 +493,33 @@
    {
     "kind": "palm",
     "at": [
-     -44,
-     0
+     -45,
+     2
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     14
     ]
    }
   ],
   "extent": [
-   120,
+   130,
    80
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "no carved ridge dragons or swallowtail finials, dark colonnade hidden behind front wall, grounds and hill backdrop simplified, central gable only approximated"
+  "gaps": "stepped swept roofs and brick end wall now match; no carved dragon ridge ornaments (simple finials only), hill backdrop is a plain green mound, camera framing slightly low"
  }
 }

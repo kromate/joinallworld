@@ -42,9 +42,9 @@
     "material": "painted-render",
     "colour": "#f4f4f0",
     "windows": "punched",
-    "windowRatio": 0.22,
+    "windowRatio": 0.3,
     "windowShape": "rect",
-    "bay": 5.0,
+    "bay": 6.0,
     "faces": {
      "front": "punched",
      "back": "punched",
@@ -55,10 +55,10 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#2f78c4",
+    "colour": "#1f5fae",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 0.9
+    "pitch": 18,
+    "overhang": 1.6
    }
   },
   {
@@ -66,17 +66,17 @@
    "id": "gable-end",
    "footprint": {
     "rect": [
-     9,
-     10
+     10,
+     12
     ]
    },
    "at": [
-    -16,
-    -6
+    -17,
+    -4
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 10,
+   "height": 12,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -91,15 +91,177 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#2f78c4",
-    "pitch": 8,
-    "overhang": 0.5,
+    "colour": "#1f5fae",
+    "pitch": 24,
+    "overhang": 0.7,
     "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "pil",
+     "footprint": {
+      "rect": [
+       0.8,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "z0": 0,
+     "height": 7.8,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#ffffff",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -13.3,
+     0
+    ],
+    "end": [
+     18,
+     -13.3,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "emblem",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -17,
+    -10.3
+   ],
+   "rotDeg": 0,
+   "z0": 7.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d5e9e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b13a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-l",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.6
+    ]
+   },
+   "at": [
+    -21.5,
+    -10.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-r",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.6
+    ]
+   },
+   "at": [
+    -12.5,
+    -10.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -18
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      2,
+      -1.5
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      -2.5,
+      1
+     ]
+    ],
+    "height": 1.1,
+    "colour": "#8a7f70"
    }
   }
  ],
  "site": {
-  "ground": "laterite",
+  "ground": "grass",
   "forecourt": "parking",
   "trees": [
    {
@@ -118,8 +280,8 @@
    }
   ],
   "extent": [
-   100,
-   80
+   80,
+   60
   ]
  },
  "schema": "allworld-place-model",
@@ -127,8 +289,8 @@
  "city": "dili",
  "venueId": "dili-community-workshop",
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "blue hip roof and white two-storey block match; gable end with round emblem is only a plain block, no louvre window rhythm or pilaster bays, window rows too regular"
+  "gaps": "taller pedimented gable end with emblem, pilaster strips, deeper blue roof, grass ground; louvre window pairs and rubble pile approximate, window grid still regular"
  }
 }

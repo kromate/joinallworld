@@ -47,10 +47,10 @@
    "storeys": 5,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#b9b4ac",
+    "colour": "#a9b2b8",
     "windows": "ribbon",
-    "windowRatio": 0.14,
-    "bay": 9,
+    "windowRatio": 0.18,
+    "bay": 18,
     "glassColour": "#7fa7a0",
     "cornice": false,
     "plinth": 0.6
@@ -66,7 +66,7 @@
    "footprint": {
     "rect": [
      44,
-     30
+     28
     ]
    },
    "at": [
@@ -77,16 +77,16 @@
    "storeys": 2,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d8bdb2",
+    "colour": "#dcc3b8",
     "windows": "ribbon",
-    "windowRatio": 0.25,
-    "bay": 8,
+    "windowRatio": 0.22,
+    "bay": 12,
     "glassColour": "#7f98a6"
    },
    "roof": {
     "form": "flat",
     "colour": "#cdb6aa",
-    "overhang": 1.2
+    "overhang": 2.2
    },
    "z0": 17
   },
@@ -95,7 +95,7 @@
    "id": "terrace-2",
    "footprint": {
     "rect": [
-     36,
+     38,
      24
     ]
    },
@@ -107,71 +107,133 @@
    "storeys": 2,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#d4b8ad",
+    "colour": "#e0c9be",
     "windows": "ribbon",
-    "windowRatio": 0.25,
-    "bay": 8,
+    "windowRatio": 0.22,
+    "bay": 12,
     "glassColour": "#7f98a6"
    },
    "roof": {
     "form": "flat",
     "colour": "#cdb6aa",
-    "overhang": 1.2
+    "overhang": 2.2
    },
    "z0": 23
+  },
+  {
+   "type": "mass",
+   "id": "terrace-3",
+   "footprint": {
+    "rect": [
+     32,
+     20
+    ]
+   },
+   "at": [
+    -3,
+    9
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#dcc3b8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 12,
+    "glassColour": "#7f98a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb6aa",
+    "overhang": 2.2
+   },
+   "z0": 29
   },
   {
    "type": "mass",
    "id": "rear-tower",
    "footprint": {
     "rect": [
-     26,
-     18
+     24,
+     16
     ]
    },
    "at": [
     -4,
-    12
+    13
    ],
-   "height": 9,
-   "storeys": 3,
+   "height": 30,
+   "storeys": 9,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#e6dfd0",
-    "windows": "punched",
-    "windowRatio": 0.15,
-    "bay": 6,
+    "colour": "#e2d6c6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 12,
     "glassColour": "#7f98a6"
    },
    "roof": {
     "form": "flat",
     "colour": "#9a9a94"
    },
-   "z0": 29
+   "z0": 35
   },
   {
    "type": "canopy",
    "at": [
-    20,
-    -24,
+    22,
+    -22,
     0
    ],
    "params": {
-    "form": "curved",
-    "width": 22,
-    "depth": 9,
-    "height": 8,
-    "rise": 2,
+    "form": "flat",
+    "width": 18,
+    "depth": 8,
+    "height": 6,
     "colour": "#7f8c8d",
-    "edgeColour": "#8f9a9b"
-   }
+    "edgeColour": "#8f9a9b",
+    "rise": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      -9,
+      2,
+      7.5
+     ],
+     [
+      9,
+      2,
+      5.5
+     ]
+    ],
+    "colour": "#9aa5a8"
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
    "id": "glass-foyer",
    "footprint": {
     "rect": [
-     20,
+     18,
      8
     ]
    },
@@ -179,13 +241,15 @@
     22,
     -20
    ],
-   "height": 8,
+   "height": 6,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
     "colour": "#8fb0b8",
     "windows": "curtain",
-    "windowRatio": 0.85
+    "windowRatio": 0.85,
+    "bay": 8,
+    "glassColour": "#8fb0b8"
    },
    "roof": {
     "form": "flat",
@@ -206,7 +270,10 @@
     "height": 3.8,
     "colour": "#7fa89a",
     "edgeColour": "#9bbcb0"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "fence-wall",
@@ -217,15 +284,36 @@
    ],
    "params": {
     "length": 50,
-    "height": 1.6,
+    "height": 1.2,
     "kind": "wall",
-    "pillarEvery": 6,
+    "pillarEvery": 10,
     "colour": "#b9b4a6"
-   }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    4,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#b9b4a6"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "none",
   "trees": [
    {
@@ -244,8 +332,8 @@
    }
   ],
   "extent": [
-   120,
-   100
+   100,
+   80
   ]
  },
  "schema": "allworld-place-model",
@@ -253,8 +341,8 @@
  "city": "macau",
  "venueId": "macau-osm-way-172301929",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "podium is OSM outline with ribbon windows instead of grey panel grid and round medallions; terraces are rectangles not following the stepped plan; no gate or entrance glazing slope detail"
+  "gaps": "podium still OSM outline with white ribbon windows and not grey tile panels; terraces are centred rectangles not wrapping the L plan; canopy and gate are simple stand-ins"
  }
 }

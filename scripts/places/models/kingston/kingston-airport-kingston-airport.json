@@ -29,35 +29,35 @@
    "id": "terminal",
    "footprint": {
     "rect": [
-     100,
-     20
+     96,
+     18
     ]
    },
    "at": [
-    0,
+    -14,
     12
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 11,
+   "height": 8,
    "storeys": 2,
    "wall": {
     "material": "concrete",
-    "colour": "#e3e5e2",
+    "colour": "#dcdcd6",
     "windows": "ribbon",
     "windowRatio": 0.45,
     "faces": {
-     "front": "curtain"
+     "front": "ribbon"
     },
     "plinth": 0.4,
     "cornice": true
    },
    "roof": {
     "form": "flat",
-    "colour": "#b9bcbc",
+    "colour": "#e9e9e5",
     "material": "membrane",
     "parapet": 0.5,
-    "overhang": 1.0
+    "overhang": 3.0
    }
   },
   {
@@ -65,21 +65,21 @@
    "id": "departures",
    "footprint": {
     "rect": [
-     34,
-     22
+     18,
+     12
     ]
    },
    "at": [
-    34,
-    3
+    38,
+    5
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 11,
-   "storeys": 2,
+   "height": 6,
+   "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#6f8fa6",
+    "colour": "#9fb4bf",
     "windows": "curtain",
     "windowRatio": 0.7,
     "faces": {
@@ -99,24 +99,23 @@
    "id": "pier",
    "footprint": {
     "rect": [
-     9,
-     56
+     5,
+     48
     ]
    },
    "at": [
-    28,
-    -28
+    44,
+    -20
    ],
-   "rotDeg": 0,
+   "rotDeg": 20,
    "z0": 0,
-   "height": 8,
-   "storeys": 2,
+   "height": 4.5,
+   "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#dfe3e3",
-    "windows": "curtain",
-    "windowRatio": 0.45,
-    "bands": "#b9bcbc"
+    "material": "concrete",
+    "colour": "#f0f0ee",
+    "windows": "ribbon",
+    "windowRatio": 0.35
    },
    "roof": {
     "form": "flat",
@@ -130,23 +129,23 @@
    "id": "pier-head",
    "footprint": {
     "rect": [
-     18,
-     10
+     10,
+     6
     ]
    },
    "at": [
-    28,
-    -58
+    52,
+    -44
    ],
-   "rotDeg": 0,
+   "rotDeg": 20,
    "z0": 0,
-   "height": 8,
-   "storeys": 2,
+   "height": 4.5,
+   "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#dfe3e3",
-    "windows": "curtain",
-    "windowRatio": 0.5
+    "material": "concrete",
+    "colour": "#f0f0ee",
+    "windows": "ribbon",
+    "windowRatio": 0.3
    },
    "roof": {
     "form": "flat",
@@ -155,77 +154,10 @@
    }
   },
   {
-   "type": "canopy",
-   "at": [
-    34,
-    -10,
-    0
-   ],
-   "params": {
-    "form": "flat",
-    "width": 34,
-    "depth": 9,
-    "height": 5.2,
-    "columns": 6,
-    "colour": "#d4d7d6",
-    "edgeColour": "#6f8fa6"
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "jet-bridge",
-     "rotDeg": 90,
-     "params": {
-      "length": 9,
-      "colour": "#c9ced1"
-     }
-    },
-    "mode": "line",
-    "count": 4,
-    "start": [
-     23.5,
-     -22,
-     3.2
-    ],
-    "end": [
-     23.5,
-     -52,
-     3.2
-    ]
-   }
-  },
-  {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "jet-bridge",
-     "rotDeg": -90,
-     "params": {
-      "length": 9,
-      "colour": "#c9ced1"
-     }
-    },
-    "mode": "line",
-    "count": 4,
-    "start": [
-     32.5,
-     -22,
-     3.2
-    ],
-    "end": [
-     32.5,
-     -52,
-     3.2
-    ]
-   }
-  },
-  {
    "type": "control-tower",
    "at": [
-    -34,
-    22,
+    -48,
+    26,
     0
    ],
    "params": {
@@ -237,29 +169,29 @@
   },
   {
    "type": "mass",
-   "id": "hangar-east",
+   "id": "shed-east",
    "footprint": {
     "rect": [
-     40,
-     16
+     18,
+     14
     ]
    },
    "at": [
-    -48,
-    -20
+    54,
+    12
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8,
+   "height": 6,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#d7dad9",
+    "colour": "#ececea",
     "windows": "none"
    },
    "roof": {
     "form": "gable",
-    "colour": "#e6e8e8",
+    "colour": "#f4f4f2",
     "material": "metal-sheet",
     "pitch": 10,
     "overhang": 0.5
@@ -268,93 +200,155 @@
   {
    "type": "car-park",
    "at": [
-    -8,
-    38,
+    -14,
+    36,
     0
    ],
    "params": {
-    "width": 60,
-    "depth": 16
+    "width": 44,
+    "depth": 12
    }
   },
   {
    "type": "airliner",
    "at": [
-    -20,
-    -40,
+    -24.0,
+    -30,
     0
    ],
-   "rotDeg": 15,
+   "rotDeg": 90,
    "params": {
-    "scale": 0.9,
+    "scale": 0.6,
     "colour": "#eceff1",
     "tailColour": "#d98a1f"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "airliner",
    "at": [
-    62,
-    -38,
+    8.0,
+    -30,
     0
    ],
-   "rotDeg": -75,
+   "rotDeg": 90,
    "params": {
-    "scale": 0.9,
+    "scale": 0.6,
     "colour": "#eceff1",
     "tailColour": "#2f6b9a"
-   }
-  },
-  {
-   "type": "core/sign-board",
-   "at": [
-    34,
-    -16,
-    0
-   ],
-   "params": {
-    "width": 8,
-    "height": 2,
-    "bottom": 5.4,
-    "colour": "#2f6b9a"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "flag",
    "at": [
-    10,
-    0,
-    11.5
+    32,
+    4,
+    8.5
    ],
    "params": {
     "height": 9,
     "count": 3,
     "spacing": 3
    }
+  },
+  {
+   "type": "mass",
+   "id": "gate-stub-0",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    47,
+    -48
+   ],
+   "rotDeg": 20,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0e0dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-stub-1",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    57,
+    -48
+   ],
+   "rotDeg": 20,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0e0dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ee"
+   }
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "parking",
+  "ground": "paving",
+  "forecourt": "none",
   "trees": [
    {
     "kind": "palm",
     "at": [
-     -30,
+     -50,
      40
     ]
    },
    {
     "kind": "palm",
     "at": [
-     10,
+     -25,
      42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     5,
+     42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     38
     ]
    }
   ],
   "extent": [
-   140,
-   110
+   110,
+   90
   ]
  },
  "schema": "allworld-place-model",
@@ -362,8 +356,8 @@
  "city": "kingston",
  "venueId": "kingston-airport-kingston-airport",
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Not rendered: shared render queue was not running (workers dead since 20:18), so no comparison done; pier, gate bridges, sheds and aircraft are placed by eye from a small aerial photo."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Terminal is much shorter than the real 150+ m wing (120 m scene clamp); apron is paved tile not smooth concrete; no vegetation scrub or bay behind; real pier is slightly longer and terminal wing is angled."
  }
 }

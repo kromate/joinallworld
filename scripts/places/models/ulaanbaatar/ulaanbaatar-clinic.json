@@ -29,33 +29,33 @@
    "footprint": {
     "rect": [
      100,
-     19
+     16
     ]
    },
    "at": [
     0,
-    28
+    26
    ],
    "height": 21,
    "storeys": 5,
    "wall": {
     "material": "render",
-    "colour": "#c9a577",
+    "colour": "#cfae80",
     "trimColour": "#d8c29a",
-    "windows": "ribbon",
-    "windowRatio": 0.3,
+    "windows": "punched",
+    "windowRatio": 0.22,
     "plinth": 0.8,
-    "cornice": true,
-    "bands": "#d8c29a",
+    "cornice": false,
     "faces": {
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "bay": 4.8
    },
    "roof": {
     "form": "flat",
-    "colour": "#6e6a63",
+    "colour": "#a59a88",
     "material": "membrane",
     "parapet": 0.5
    }
@@ -65,22 +65,22 @@
    "id": "west-wing",
    "footprint": {
     "rect": [
-     18,
-     40
+     16,
+     24
     ]
    },
    "at": [
-    -44,
-    -2
+    -38,
+    12
    ],
-   "height": 14.5,
-   "storeys": 4,
+   "height": 11,
+   "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#c9a577",
+    "colour": "#cfae80",
     "windows": "punched",
-    "windowRatio": 0.2,
-    "bay": 5.2,
+    "windowRatio": 0.18,
+    "bay": 6,
     "plinth": 0.8,
     "faces": {
      "left": "plain",
@@ -90,7 +90,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#6e6a63",
+    "colour": "#a59a88",
     "material": "membrane",
     "parapet": 0.4
    }
@@ -100,22 +100,22 @@
    "id": "east-wing",
    "footprint": {
     "rect": [
-     18,
-     40
+     16,
+     24
     ]
    },
    "at": [
-    44,
-    -2
+    38,
+    12
    ],
-   "height": 14.5,
-   "storeys": 4,
+   "height": 11,
+   "storeys": 3,
    "wall": {
     "material": "render",
-    "colour": "#c9a577",
+    "colour": "#cfae80",
     "windows": "punched",
-    "windowRatio": 0.2,
-    "bay": 5.2,
+    "windowRatio": 0.18,
+    "bay": 6,
     "plinth": 0.8,
     "faces": {
      "left": "plain",
@@ -125,7 +125,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#6e6a63",
+    "colour": "#a59a88",
     "material": "membrane",
     "parapet": 0.4
    }
@@ -140,11 +140,11 @@
     ]
    },
    "at": [
-    10,
-    46
+    14,
+    44
    ],
    "z0": 0,
-   "height": 32,
+   "height": 30,
    "storeys": 8,
    "wall": {
     "material": "painted-render",
@@ -177,7 +177,7 @@
    },
    "at": [
     -20,
-    18.2
+    17.9
    ],
    "z0": 18.3,
    "height": 2.2,
@@ -254,31 +254,31 @@
   {
    "type": "core/tree",
    "at": [
-    -25,
-    -20,
+    -45,
+    -12,
     0
    ],
    "params": {
     "kind": "conifer",
-    "height": 6,
-    "count": 8,
-    "spread": 5,
-    "line": 50
+    "height": 7,
+    "count": 12,
+    "spread": 4,
+    "line": 90
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -48,
-    -30,
+    -45,
+    -20,
     0
    ],
    "params": {
     "kind": "conifer",
-    "height": 8,
-    "count": 3,
-    "spread": 4,
-    "line": 14
+    "height": 5,
+    "count": 10,
+    "spread": 5,
+    "line": 90
    }
   }
  ],
@@ -294,7 +294,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Buff brick is flat colour; photo shows a single long block with lower setback wings hidden by trees, wings and rear tower are inferred from the OSM extent; name board is blank; benches and bust are simplified."
+  "gaps": "Single buff slab with punched windows, lower setback wings and conifer screen now match; trees are generic low-poly, bust/path/benches simplified, wings and rear tower inferred from OSM extent."
  },
  "schema": "allworld-place-model",
  "version": 2,

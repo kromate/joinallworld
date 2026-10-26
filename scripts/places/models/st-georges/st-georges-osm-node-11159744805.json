@@ -22,7 +22,7 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 4,
+  "pitchDeg": 2,
   "fovDeg": 50,
   "aspect": 1.333,
   "margin": 0.05,
@@ -38,236 +38,234 @@
     0
    ],
    "params": {
-    "colour": "#7a7266",
-    "topColour": "#847b6d",
+    "colour": "#6b655c",
+    "topColour": "#756e63",
     "smooth": true,
     "curve": true,
     "sections": [
      {
-      "z": -0.4,
+      "z": 0,
       "ellipse": [
-       3.4,
-       2.2
+       5.6,
+       2.6
       ]
      },
      {
-      "z": 0.6,
+      "z": 0.8,
       "ellipse": [
-       3.9,
-       2.5
+       6.2,
+       3.0
       ],
-      "cx": 0.1
-     },
-     {
-      "z": 1.6,
-      "ellipse": [
-       3.7,
-       2.5
-      ],
-      "cx": 0.3
-     },
-     {
-      "z": 2.4,
-      "ellipse": [
-       3.0,
-       2.0
-      ],
-      "cx": 0.5,
-      "colour": "#8a8174"
-     },
-     {
-      "z": 3.0,
-      "ellipse": [
-       1.6,
-       1.1
-      ],
-      "cx": 0.7
-     },
-     {
-      "z": 3.2,
-      "ellipse": [
-       0.6,
-       0.5
-      ],
-      "cx": 0.8
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "boulder-right-lobe",
-   "at": [
-    3.3,
-    0.4,
-    0
-   ],
-   "params": {
-    "colour": "#6f685d",
-    "sections": [
-     {
-      "z": -0.3,
-      "ellipse": [
-       1.5,
-       1.5
-      ]
-     },
-     {
-      "z": 1.0,
-      "ellipse": [
-       1.7,
-       1.7
-      ]
+      "cx": 0.2
      },
      {
       "z": 2.0,
       "ellipse": [
-       1.0,
-       1.0
-      ]
+       6.0,
+       3.0
+      ],
+      "cx": -0.2
      },
      {
-      "z": 2.4,
+      "z": 3.2,
       "ellipse": [
-       0.4,
+       5.2,
+       2.6
+      ],
+      "cx": -0.6,
+      "colour": "#72695e"
+     },
+     {
+      "z": 4.2,
+      "ellipse": [
+       3.6,
+       1.9
+      ],
+      "cx": -1.0
+     },
+     {
+      "z": 4.9,
+      "ellipse": [
+       1.8,
+       1.0
+      ],
+      "cx": -1.4
+     },
+     {
+      "z": 5.1,
+      "ellipse": [
+       0.6,
        0.4
-      ]
+      ],
+      "cx": -1.6
      }
     ]
    }
   },
   {
    "type": "loft",
-   "id": "small-stone",
+   "id": "shoulder",
    "at": [
-    -6,
-    -3.5,
+    4.4,
+    -0.4,
     0
    ],
    "params": {
-    "colour": "#837b6e",
+    "colour": "#605a52",
+    "smooth": true,
+    "curve": true,
     "sections": [
      {
-      "z": -0.2,
+      "z": 0,
       "ellipse": [
-       1.1,
-       0.9
-      ]
-     },
-     {
-      "z": 0.5,
-      "ellipse": [
-       1.2,
-       1.0
+       3.0,
+       2.4
       ]
      },
      {
       "z": 1.0,
       "ellipse": [
-       0.6,
-       0.5
+       3.2,
+       2.5
       ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       2.5,
+       2.0
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       1.2,
+       1.0
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       0.4,
+       0.3
+      ],
+      "cx": 0.3
      }
     ]
    }
   },
   {
-   "type": "fence-wall",
-   "id": "rail",
+   "type": "core/tree",
    "at": [
-    0,
     -6,
-    0
-   ],
-   "params": {
-    "length": 10,
-    "height": 0.9,
-    "thickness": 0.1,
-    "kind": "rail",
-    "colour": "#8a6a45"
-   }
-  },
-  {
-   "type": "open-shelter",
-   "id": "shelter",
-   "at": [
-    12,
-    6,
-    0
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 7,
-    "depth": 4,
-    "height": 2.8,
-    "form": "shed",
-    "support": "timber",
-    "colour": "#8a6a45",
-    "accent": "#6f8a5a"
-   }
-  },
-  {
-   "type": "steps",
-   "id": "path-steps",
-   "at": [
     7,
-    -5,
     0
    ],
    "params": {
-    "width": 1.6,
-    "rise": 0.9,
-    "run": 1.8,
-    "count": 5,
-    "colour": "#9a8f7a"
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 8,
+    "spread": 6,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 8,
+    "spread": 6,
+    "line": 36
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 26,
+    "count": 7,
+    "spread": 6,
+    "line": 36
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 4,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 4,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    5.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 9,
+    "spread": 4,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    9.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 9,
+    "spread": 4,
+    "line": 30
    }
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "none",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     -9,
-     6
-    ],
-    "height": 14
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     6,
-     12
-    ],
-    "height": 12
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -4,
-     10
-    ],
-    "height": 15
-   },
-   {
-    "kind": "palm",
-    "at": [
-     17,
-     -4
-    ],
-    "height": 11
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -12,
-     -2
-    ],
-    "height": 10
-   }
-  ],
+  "trees": [],
   "extent": [
    50,
    40
@@ -276,6 +274,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Rock is a smooth ellipsoid without the cracks, pits and carved faces; setting is open lawn instead of a forest gully with a stream; shelter and steps are typed, not seen."
+  "gaps": "rock is smooth without pits, cracks or carved faces; ground is plain green instead of dark earth; trees are low-poly blobs"
  }
 }

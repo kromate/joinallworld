@@ -143,14 +143,15 @@
     0
    ],
    "params": {
-    "width": 16,
-    "depth": 9,
-    "height": 7.5,
-    "seed": 11,
+    "width": 22,
+    "depth": 6,
+    "height": 4.2,
+    "seed": 21,
     "stairs": false,
-    "rock_colour": "#5a5650",
-    "boulders": 3
-   }
+    "rock_colour": "#4d4a46",
+    "boulders": 6
+   },
+   "rotDeg": 25
   },
   {
    "type": "rock-hill",
@@ -160,14 +161,15 @@
     0
    ],
    "params": {
-    "width": 14,
-    "depth": 10,
-    "height": 8,
-    "seed": 12,
+    "width": 8,
+    "depth": 16,
+    "height": 3.6,
+    "seed": 32,
     "stairs": false,
-    "rock_colour": "#5a5650",
-    "boulders": 3
-   }
+    "rock_colour": "#57534d",
+    "boulders": 6
+   },
+   "rotDeg": 70
   },
   {
    "type": "rock-hill",
@@ -177,14 +179,15 @@
     0
    ],
    "params": {
-    "width": 12,
-    "depth": 8,
-    "height": 6,
-    "seed": 13,
+    "width": 18,
+    "depth": 5,
+    "height": 3.0,
+    "seed": 43,
     "stairs": false,
-    "rock_colour": "#5a5650",
-    "boulders": 3
-   }
+    "rock_colour": "#4d4a46",
+    "boulders": 6
+   },
+   "rotDeg": -20
   },
   {
    "type": "rock-hill",
@@ -194,42 +197,43 @@
     0
    ],
    "params": {
-    "width": 10,
-    "depth": 7,
-    "height": 6.5,
-    "seed": 14,
+    "width": 6,
+    "depth": 14,
+    "height": 4.8,
+    "seed": 54,
     "stairs": false,
-    "rock_colour": "#5a5650",
-    "boulders": 3
-   }
+    "rock_colour": "#5a564f",
+    "boulders": 6
+   },
+   "rotDeg": 110
   },
   {
    "type": "mass",
    "id": "cafe",
    "footprint": {
     "rect": [
-     10,
-     8
+     12,
+     7
     ]
    },
    "at": [
     2,
     28
    ],
-   "height": 8,
+   "height": 5.5,
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#efe6c6",
+    "colour": "#e6e0c4",
     "windows": "punched",
     "windowRatio": 0.12,
-    "plinth": 2.0
+    "plinth": 0
    },
    "roof": {
     "form": "gable",
     "colour": "#a3a77c",
     "material": "metal-sheet",
-    "pitch": 40,
+    "pitch": 32,
     "overhang": 0.4,
     "axis": "x"
    }
@@ -276,7 +280,11 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/tree",
@@ -291,7 +299,11 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/tree",
@@ -306,7 +318,11 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/tree",
@@ -321,7 +337,10 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -336,7 +355,10 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -351,7 +373,10 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -366,7 +391,10 @@
     "count": 1,
     "spread": 1,
     "colour": "#1f4a2e"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -396,7 +424,10 @@
     ],
     "height": 0.15,
     "colour": "#d8c89c"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
@@ -412,7 +443,10 @@
     ],
     "height": 0.4,
     "colour": "#d8c89c"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
@@ -460,23 +494,204 @@
     ],
     "height": 0.18,
     "colour": "#c9302e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    28,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.1,
+     7.1
+    ],
+    "height": 1.6,
+    "colour": "#6fb7c8"
    }
   },
   {
    "type": "prism",
    "at": [
-    -9,
-    25,
-    0.6
+    -2,
+    -2,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -8
+     ],
+     [
+      6,
+      -6
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      -4,
+      4
+     ]
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#6b7a45",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -4
+     ],
+     [
+      5,
+      -6
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      -3,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#7a7048",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    12,
+    0.06
    ],
    "params": {
     "rect": [
-     1,
+     2.2,
+     22
+    ],
+    "height": 0.06,
+    "colour": "#a8896a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    22,
+    0.06
+   ],
+   "params": {
+    "rect": [
+     22,
+     2
+    ],
+    "height": 0.06,
+    "colour": "#a8896a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    31,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1,
+    "spread": 1,
+    "colour": "#5d8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5,
+    "count": 1,
+    "spread": 1,
+    "colour": "#5d8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5.5,
+    "count": 1,
+    "spread": 1,
+    "colour": "#6a9446"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    26,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
      3
     ],
-    "height": 0.2,
-    "colour": "#e3b52f"
-   }
+    "height": 0.12,
+    "colour": "#b8b8b8"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -512,7 +727,7 @@
  },
  "review": {
   "rounds": 1,
-  "match": "rough",
-  "gaps": "Photo is Hellisgerdi, the intended venue (Hafnarfjordur). Lava still rounded domes not craggy outcrops; playground reduced to a simple swing frame; ground is flat not sloped."
+  "match": "fair",
+  "gaps": "Photo is Hellisgerdi (brief and OSM way/129577128 agree), not mismatched. Applied critic geometry: lower irregular rotated lava outcrops with moss patches, wider lower cafe with pale blue base, playground, rowans, paths. Lava still smooth-ish; flat ground."
  }
 }

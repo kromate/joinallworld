@@ -32,7 +32,7 @@
    "id": "osm",
    "footprint": {
     "osm": true,
-    "simplify": 0.8
+    "simplify": 2.0
    },
    "at": [
     0,
@@ -44,8 +44,8 @@
     "material": "painted-render",
     "colour": "#f3f1ea",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "windowShape": "pointed",
+    "windowRatio": 0.18,
+    "windowShape": "rect",
     "plinth": 0.6,
     "bands": "#e2dfd6"
    },
@@ -227,7 +227,11 @@
       "#c9a64a"
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -251,6 +255,44 @@
     "topColour": "#f3f1ea"
    },
    "rotDeg": 31
+  },
+  {
+   "type": "loft",
+   "id": "minaret-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    -38,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#f3f1ea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 42,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
   }
  ],
  "site": {

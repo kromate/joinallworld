@@ -45,9 +45,9 @@
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#d9a23f",
+    "colour": "#7a2e26",
     "windows": "screen",
-    "windowRatio": 0.6,
+    "windowRatio": 0.7,
     "faces": {
      "front": "screen",
      "back": "plain",
@@ -64,6 +64,56 @@
    }
   },
   {
+   "type": "mass",
+   "id": "end-1",
+   "footprint": {
+    "rect": [
+     6,
+     17.4
+    ]
+   },
+   "at": [
+    -14.5,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a23f",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end1",
+   "footprint": {
+    "rect": [
+     6,
+     17.4
+    ]
+   },
+   "at": [
+    14.5,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a23f",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
    "type": "curved-roof",
    "id": "eave-lower",
    "at": [
@@ -74,10 +124,10 @@
    "params": {
     "width": 34,
     "depth": 17,
-    "rise": 1.6,
-    "overhang": 2.4,
-    "upturn": 1.0,
-    "colour": "#4f5a60",
+    "rise": 2.2,
+    "overhang": 3.6,
+    "upturn": 1.5,
+    "colour": "#5a5f62",
     "trim": "#8c2f27"
    }
   },
@@ -111,7 +161,7 @@
     "bay": 3.2,
     "plinth": 0.6,
     "glassColour": "#8a2f25",
-    "bands": "#d9a23f"
+    "bands": "#c9a23a"
    },
    "roof": {
     "form": "none"
@@ -128,10 +178,10 @@
    "params": {
     "width": 22,
     "depth": 10,
-    "rise": 3.6,
-    "overhang": 2.6,
-    "upturn": 1.2,
-    "colour": "#4f5a60",
+    "rise": 4.2,
+    "overhang": 3.0,
+    "upturn": 1.8,
+    "colour": "#5a5f62",
     "trim": "#8c2f27"
    }
   },
@@ -140,8 +190,8 @@
    "id": "west-hall",
    "footprint": {
     "rect": [
-     9,
-     24
+     11,
+     26
     ]
    },
    "at": [
@@ -149,7 +199,7 @@
     6
    ],
    "z0": 0,
-   "height": 5.0,
+   "height": 6.0,
    "storeys": 1,
    "wall": {
     "material": "render",
@@ -176,15 +226,15 @@
    "at": [
     -34,
     6,
-    5.0
+    6.0
    ],
    "params": {
-    "width": 9,
-    "depth": 24,
-    "rise": 2.4,
-    "overhang": 1.6,
-    "upturn": 0.7,
-    "colour": "#4f5a60",
+    "width": 11,
+    "depth": 26,
+    "rise": 2.6,
+    "overhang": 2.2,
+    "upturn": 1.1,
+    "colour": "#5a5f62",
     "trim": "#8c2f27"
    }
   },
@@ -193,8 +243,8 @@
    "id": "east-hall",
    "footprint": {
     "rect": [
-     9,
-     24
+     11,
+     26
     ]
    },
    "at": [
@@ -202,7 +252,7 @@
     6
    ],
    "z0": 0,
-   "height": 5.0,
+   "height": 6.0,
    "storeys": 1,
    "wall": {
     "material": "render",
@@ -229,15 +279,15 @@
    "at": [
     34,
     6,
-    5.0
+    6.0
    ],
    "params": {
-    "width": 9,
-    "depth": 24,
-    "rise": 2.4,
-    "overhang": 1.6,
-    "upturn": 0.7,
-    "colour": "#4f5a60",
+    "width": 11,
+    "depth": 26,
+    "rise": 2.6,
+    "overhang": 2.2,
+    "upturn": 1.1,
+    "colour": "#5a5f62",
     "trim": "#8c2f27"
    }
   },
@@ -265,7 +315,7 @@
    ],
    "params": {
     "length": 60,
-    "height": 3.4,
+    "height": 2.4,
     "thickness": 0.6,
     "colour": "#d9a23f"
    }
@@ -327,6 +377,152 @@
      ]
     ]
    }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -13,
+     -9.2,
+     0
+    ],
+    "end": [
+     13,
+     -9.2,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 6.4,
+      "colour": "#a8342b",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     5
+    ],
+    "height": 0.7,
+    "colour": "#bdb8ac",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.4,
+    7.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.35
+    ],
+    "height": 1.2,
+    "colour": "#c9a23a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -18,
+    -13.9,
+    0.7
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.0,
+    "colour": "#c9c6bb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     61,
+     0.9
+    ],
+    "height": 0.4,
+    "colour": "#5a5f62",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    -15,
+    0
+   ],
+   "params": {
+    "colour": "#2e2b2b",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.0,
+      0
+     ],
+     [
+      2.0,
+      0.8
+     ],
+     [
+      1.2,
+      1.0
+     ],
+     [
+      1.4,
+      2.4
+     ],
+     [
+      1.0,
+      2.6
+     ],
+     [
+      1.1,
+      4.0
+     ],
+     [
+      0.7,
+      4.2
+     ],
+     [
+      0.8,
+      5.4
+     ],
+     [
+      0,
+      6.4
+     ]
+    ]
+   }
   }
  ],
  "site": {
@@ -335,16 +531,16 @@
    {
     "kind": "broadleaf",
     "at": [
-     -14,
-     -14
+     -24,
+     -18
     ],
     "height": 9
    },
    {
     "kind": "broadleaf",
     "at": [
-     18,
-     -18
+     26,
+     -20
     ],
     "height": 8
    }
@@ -355,8 +551,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "roof ornament, carved fascia boards, red column colonnade and stone balustrades are not modelled; upper storey plaques omitted; side halls placed from layout not photo; front gate hall omitted so the main hall faces the viewer"
+  "gaps": "roof ornament and carved fascia boards are not modelled; lattice doors are a screen texture; incense burners and pavilion are simplified silhouettes; side halls placed from layout not photo; no gate hall"
  }
 }

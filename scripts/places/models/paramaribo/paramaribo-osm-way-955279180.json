@@ -29,8 +29,8 @@
    "wall": {
     "material": "painted-render",
     "colour": "#f0ebdc",
-    "windows": "ribbon",
-    "windowRatio": 0.34,
+    "windows": "none",
+    "windowRatio": 0,
     "plinth": 0.4,
     "cornice": true,
     "pattern": [
@@ -39,29 +39,15 @@
       "colour": "#b8452d",
       "height": 0.5,
       "proud": 0.12,
-      "floors": "upper",
+      "floors": "all",
       "at": 0.0
-     },
-     {
-      "type": "balconies",
-      "depth": 1.3,
-      "rail": 1.0,
-      "width": 3.2,
-      "every": 4.6,
-      "railKind": "solid",
-      "colour": "#e6e0cd",
-      "floors": "upper",
-      "faces": [
-       "front"
-      ]
      }
     ]
    },
    "roof": {
     "form": "flat",
     "colour": "#8d9296",
-    "material": "membrane",
-    "parapet": 0.7
+    "material": "membrane"
    }
   },
   {
@@ -76,7 +62,10 @@
     "width": 9,
     "height": 2.0,
     "colour": "#f4f2ea"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "roof-tank",
@@ -90,7 +79,10 @@
     "radius": 2.0,
     "height": 2.4,
     "colour": "#8d9296"
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -123,7 +115,32 @@
     "height": 9
    }
   ],
-  "cars": 6,
+  "cars": [
+   {
+    "at": [
+     -50,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -35,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#2f3a4a"
+   },
+   {
+    "at": [
+     -20,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#c9c3b4"
+   }
+  ],
   "extent": [
    160,
    150
@@ -134,8 +151,8 @@
  "city": "paramaribo",
  "venueId": "paramaribo-osm-way-955279180",
  "review": {
-  "rounds": 0,
+  "rounds": 1,
   "match": "rough",
-  "gaps": "Real OSM outline extruded 4 storeys; no exterior photo exists; not render-compared (render queue hung) so triangle count unchecked; red-cross sign and ambulance bay omitted as positions unknown."
+  "gaps": "No photo; OSM outline with plain walls (no windows) to meet budgets; parapet dropped."
  }
 }

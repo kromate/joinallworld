@@ -166,73 +166,6 @@
   },
   {
    "type": "revolve",
-   "id": "pedestal-base",
-   "params": {
-    "segments": 16,
-    "colour": "#d9d8c0",
-    "profile": [
-     [
-      0.9,
-      0
-     ],
-     [
-      1.2,
-      1.0
-     ],
-     [
-      2.4,
-      2.6
-     ],
-     [
-      3.9,
-      4.6
-     ],
-     [
-      4.1,
-      5.0
-     ],
-     [
-      3.6,
-      5.0
-     ],
-     [
-      1.9,
-      4.6
-     ],
-     [
-      1.4,
-      5.2
-     ],
-     [
-      1.4,
-      6.4
-     ]
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "fan-ribs",
-   "params": {
-    "colour": "#c8c7ad",
-    "sections": [
-     {
-      "z": 0,
-      "circle": 1.0
-     },
-     {
-      "z": 2.5,
-      "circle": 2.4
-     },
-     {
-      "z": 4.8,
-      "circle": 3.9
-     }
-    ]
-   }
-  },
-  {
-   "type": "revolve",
    "id": "dish",
    "params": {
     "segments": 20,
@@ -262,58 +195,6 @@
       0.01,
       8.2
      ]
-    ]
-   }
-  },
-  {
-   "type": "statue-figure",
-   "at": [
-    0,
-    0,
-    8.4
-   ],
-   "params": {
-    "height": 9.0,
-    "pose": "stand",
-    "colour": "#2b2e30"
-   }
-  },
-  {
-   "type": "sweep-path",
-   "id": "flagstaff",
-   "params": {
-    "section": {
-     "circle": 0.08
-    },
-    "points": [
-     [
-      -1.4,
-      0,
-      8.6
-     ],
-     [
-      -1.4,
-      0,
-      18.4
-     ]
-    ],
-    "colour": "#1b1b1b"
-   }
-  },
-  {
-   "type": "core/flag",
-   "at": [
-    -1.4,
-    0,
-    15.6
-   ],
-   "params": {
-    "height": 2.7,
-    "colour": "#c8362f",
-    "colours": [
-     "#c8362f",
-     "#ecc92f",
-     "#1b1b1b"
     ]
    }
   },
@@ -599,23 +480,391 @@
        0.9
       ],
       "z0": 0,
-      "height": 2.6,
-      "colour": "#e3dbae",
+      "height": 3.0,
+      "colour": "#e8e0b0",
       "topScale": 0.85
      }
     },
     "mode": "arc",
-    "count": 8,
+    "count": 12,
     "radius": 14.2,
     "startDeg": 0,
-    "endDeg": 315
+    "endDeg": 330
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pedestal-base",
+   "params": {
+    "segments": 20,
+    "colour": "#d9d8c0",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      1.0,
+      1.0
+     ],
+     [
+      1.6,
+      2.6
+     ],
+     [
+      2.6,
+      3.8
+     ],
+     [
+      3.9,
+      4.6
+     ],
+     [
+      4.1,
+      5.0
+     ],
+     [
+      3.6,
+      5.0
+     ],
+     [
+      1.9,
+      4.6
+     ],
+     [
+      1.2,
+      5.2
+     ],
+     [
+      1.2,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "ribs",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#bdbca0",
+      "sections": [
+       {
+        "z": 0.4,
+        "rect": [
+         0.25,
+         0.3
+        ],
+        "cx": 1.0
+       },
+       {
+        "z": 2.6,
+        "rect": [
+         0.3,
+         0.4
+        ],
+        "cx": 1.9
+       },
+       {
+        "z": 4.7,
+        "rect": [
+         0.4,
+         0.5
+        ],
+        "cx": 3.8
+       }
+      ]
+     }
+    },
+    "mode": "arc",
+    "count": 14,
+    "radius": 0.01,
+    "startDeg": 0,
+    "endDeg": 334,
+    "facing": "outward"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rockbase",
+   "at": [
+    0,
+    0,
+    8.4
+   ],
+   "params": {
+    "colour": "#2a2623",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.3,
+      0.1
+     ],
+     [
+      1.1,
+      0.45
+     ],
+     [
+      0.01,
+      0.6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "legL",
+   "at": [
+    -0.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 8.9,
+    "height": 2.4,
+    "colour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "legR",
+   "at": [
+    0.45,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 8.9,
+    "height": 2.4,
+    "colour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "torso",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.9
+    ],
+    "z0": 11.2,
+    "height": 2.1,
+    "colour": "#2a2623",
+    "topScale": 1.05
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belt",
+   "at": [
+    0,
+    -0.02
+   ],
+   "params": {
+    "rect": [
+     1.55,
+     0.95
+    ],
+    "z0": 11.0,
+    "height": 0.3,
+    "colour": "#1b1816"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "head",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.65,
+     0.65
+    ],
+    "z0": 13.3,
+    "height": 0.7,
+    "colour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 13.95,
+    "height": 0.3,
+    "colour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "armDown",
+   "at": [
+    0.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.45
+    ],
+    "z0": 10.9,
+    "height": 2.4,
+    "colour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "armUp",
+   "params": {
+    "colour": "#2a2623",
+    "sections": [
+     {
+      "z": 12.6,
+      "rect": [
+       0.4,
+       0.45
+      ],
+      "cx": -0.85
+     },
+     {
+      "z": 13.9,
+      "rect": [
+       0.38,
+       0.4
+      ],
+      "cx": -1.05
+     },
+     {
+      "z": 14.9,
+      "rect": [
+       0.36,
+       0.36
+      ],
+      "cx": -1.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rifle",
+   "at": [
+    0.1,
+    -0.6
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "z0": 11.6,
+    "height": 0.2,
+    "colour": "#1b1816"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "flagstaff",
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "points": [
+     [
+      -1.2,
+      0,
+      13.0
+     ],
+     [
+      -2.0,
+      0,
+      20.0
+     ]
+    ],
+    "colour": "#1b1b1b"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -2.0,
+    0,
+    19.0
+   ],
+   "params": {
+    "height": 1.2,
+    "colour": "#c8362f",
+    "colours": [
+     "#c8362f",
+     "#f4f4f4"
+    ]
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -9,
-    8,
+    -17.6,
+    4.16,
     0
    ],
    "lod": [
@@ -624,15 +873,15 @@
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 10,
-    "colour": "#7a9a4a"
+    "height": 9,
+    "colour": "#3f7a3a"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    10,
-    9,
+    -10.780000000000001,
+    5.78,
     0
    ],
    "lod": [
@@ -641,15 +890,15 @@
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 11,
-    "colour": "#4f8a3f"
+    "height": 9,
+    "colour": "#d8b92a"
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -10,
-    -6,
+    6.38,
+    6.2,
     0
    ],
    "lod": [
@@ -658,8 +907,93 @@
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 6,
-    "colour": "#c9a52f"
+    "height": 9,
+    "colour": "#3f6e33"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16.17,
+    4.7,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#c97a8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16.0,
+    8.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#2f6a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8.5,
+    17.7,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8.5,
+    17.7,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#d8b92a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16.0,
+    8.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#c97a8a"
    }
   }
  ],
@@ -674,6 +1008,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "statue is a blocky stand-in (no raised arm, rifle), flag red only, pedestal fan has no ribs, trees are generic and sparse compared with the dense garden"
+  "gaps": "ribbed fan rendered as faint flares only; bronze figure is blocky (no rifle detail, flag simplified); no dense flowering canopy, trees are low-poly; fence is rails not black spiked railing"
  }
 }

@@ -109,24 +109,24 @@
     1.9
    ],
    "params": {
-    "width": 5.5,
-    "height": 0.9,
+    "width": 6.5,
+    "height": 1.1,
     "bottom": 1.9,
-    "colour": "#f4f4f1",
+    "colour": "#ffffff",
     "posts": true,
-    "frameColour": "#f4f4f1"
+    "frameColour": "#ffffff"
    }
   },
   {
    "type": "clock-tower",
    "at": [
-    35,
-    35,
+    22,
+    -8,
     0
    ],
    "params": {
-    "width": 4,
-    "height": 13,
+    "width": 4.5,
+    "height": 14,
     "cap": "hip",
     "cap_rise": 3.5,
     "wall_colour": "#ece6d4",
@@ -136,62 +136,124 @@
   {
    "type": "bandstand",
    "at": [
-    -30,
-    45,
+    -24,
+    -6,
     0
    ],
    "params": {
-    "radius": 5,
-    "height": 4
+    "radius": 5.5,
+    "height": 4.5
    }
   },
   {
    "type": "basin-fountain",
    "at": [
     0,
-    35,
+    -12,
     0
    ],
    "params": {
-    "radius": 2.0,
-    "rimColour": "#8a5a5a"
+    "radius": 2.6,
+    "rimColour": "#c98a8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -30,
+    0.9
+   ],
+   "params": {
+    "length": 42,
+    "height": 0.9,
+    "kind": "railing",
+    "colour": "#1f1f1f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    6,
+    -30,
+    0.9
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.9,
+    "kind": "railing",
+    "colour": "#1f1f1f"
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    -56.0,
-    0.0,
+    -50,
+    -12,
     0
    ],
    "params": {
-    "width": 45,
-    "depth": 60,
-    "count": 14,
-    "min_height": 8,
-    "max_height": 16
+    "width": 40,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 18,
+    "max_height": 25
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    38.5,
-    49.0,
+    46,
+    -6,
     0
    ],
    "params": {
-    "width": 45,
-    "depth": 50,
-    "count": 14,
-    "min_height": 8,
-    "max_height": 16
+    "width": 40,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 18,
+    "max_height": 25
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    30,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 18,
+    "max_height": 25
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    34,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 18,
+    "max_height": 25
    }
   },
   {
    "type": "tree",
    "at": [
-    -26,
-    -22,
+    -12,
+    -24,
     0
    ],
    "params": {
@@ -202,8 +264,8 @@
   {
    "type": "tree",
    "at": [
-    -18,
-    -22,
+    12,
+    -24,
     0
    ],
    "params": {
@@ -214,8 +276,8 @@
   {
    "type": "tree",
    "at": [
-    -10,
-    -22,
+    -12,
+    -15,
     0
    ],
    "params": {
@@ -226,8 +288,8 @@
   {
    "type": "tree",
    "at": [
-    14,
-    -22,
+    12,
+    -15,
     0
    ],
    "params": {
@@ -238,8 +300,92 @@
   {
    "type": "tree",
    "at": [
-    22,
-    -22,
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    21,
     0
    ],
    "params": {
@@ -259,6 +405,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Photo shows only the street gate: piers, railings and palms are modelled but the dense canopy, iron star gate leaf detail and red notice board are absent; clock tower, bandstand, fountain placed from text/photo 2 not verified in position"
+  "gaps": "Dense groves, palms, landmarks added but they sit in front of the gate and piers stay stone-textured; sign board stays blue with no lettering (blank boards only); no iron star leaf"
  }
 }

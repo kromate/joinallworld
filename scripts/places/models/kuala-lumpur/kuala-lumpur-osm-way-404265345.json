@@ -43,7 +43,7 @@
    "id": "block",
    "footprint": {
     "rect": [
-     32,
+     28,
      13
     ]
    },
@@ -55,10 +55,10 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8782a",
+    "colour": "#f26b16",
     "glassColour": "#8fa6b4",
     "windows": "ribbon",
-    "windowRatio": 0.4,
+    "windowRatio": 0.45,
     "plinth": 0.4,
     "bands": "#f0e6d0"
    },
@@ -66,7 +66,7 @@
     "form": "gable",
     "colour": "#2a5f9a",
     "material": "concrete",
-    "overhang": 1.2,
+    "overhang": 1.6,
     "parapet": 0,
     "pitch": 10
    }
@@ -76,22 +76,22 @@
    "id": "glazed-stair",
    "footprint": {
     "rect": [
-     11,
+     13,
      2.5
     ]
    },
    "at": [
     2,
-    -7.2
+    -7.4
    ],
-   "height": 12,
+   "height": 12.6,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8782a",
+    "colour": "#f26b16",
     "glassColour": "#7f98a8",
     "windows": "curtain",
-    "windowRatio": 0.85,
+    "windowRatio": 0.9,
     "plinth": 0.4,
     "faces": {
      "left": "plain",
@@ -100,29 +100,141 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#e8782a",
+    "colour": "#f26b16",
     "material": "concrete",
     "overhang": 0.5,
     "parapet": 0.5
    }
   },
   {
-   "type": "canopy",
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    12.3
+   ],
+   "params": {
+    "rect": [
+     31,
+     15.5
+    ],
+    "height": 0.9,
+    "colour": "#1f3f78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
    "at": [
     2,
-    -13,
+    -6.8,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.3
+    ],
+    "height": 2.0,
+    "colour": "#2a3a9c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    -12.5,
     0
    ],
    "params": {
-    "form": "flat",
-    "width": 22,
-    "depth": 8,
-    "height": 4.2,
-    "thickness": 0.4,
-    "columns": 4,
-    "colour": "#2f79b0",
-    "edgeColour": "#1f3f78",
-    "axis": "x"
+    "colour": "#4a9fc8",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 4.2,
+      "rect": [
+       20,
+       8.4
+      ]
+     },
+     {
+      "z": 6.6,
+      "rect": [
+       20,
+       0.8
+      ],
+      "cy": 3.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     -16.2,
+     0
+    ],
+    "end": [
+     11,
+     -16.2,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 4.3,
+      "colour": "#f26b16",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -9,
+     4.1
+    ],
+    "end": [
+     10,
+     -9,
+     4.1
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       7.6
+      ],
+      "height": 2.4,
+      "colour": "#3a86b0",
+      "windows": "none"
+     }
+    }
    }
   },
   {
@@ -159,68 +271,6 @@
   },
   {
    "type": "mass",
-   "id": "gate-wall-w",
-   "footprint": {
-    "rect": [
-     14,
-     1.2
-    ]
-   },
-   "at": [
-    -18,
-    -28
-   ],
-   "height": 2.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e3dac4",
-    "glassColour": "#93a9b3",
-    "windows": "none",
-    "windowRatio": 0,
-    "plinth": 0.4
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfc6b0",
-    "material": "concrete",
-    "overhang": 0.5,
-    "parapet": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "gate-wall-e",
-   "footprint": {
-    "rect": [
-     14,
-     1.2
-    ]
-   },
-   "at": [
-    18,
-    -28
-   ],
-   "height": 2.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e3dac4",
-    "glassColour": "#93a9b3",
-    "windows": "none",
-    "windowRatio": 0,
-    "plinth": 0.4
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#cfc6b0",
-    "material": "concrete",
-    "overhang": 0.5,
-    "parapet": 0.5
-   }
-  },
-  {
-   "type": "mass",
    "id": "guardhouse",
    "footprint": {
     "rect": [
@@ -229,8 +279,8 @@
     ]
    },
    "at": [
-    24,
-    -30
+    21,
+    -19
    ],
    "height": 3,
    "storeys": 1,
@@ -252,30 +302,17 @@
    }
   },
   {
-   "type": "flag",
-   "at": [
-    -4,
-    -30,
-    0
-   ],
-   "params": {
-    "height": 9,
-    "count": 3,
-    "spacing": 2.5
-   }
-  },
-  {
    "type": "core/tree",
    "at": [
-    -22,
-    -14,
+    -15,
+    -12,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 13,
-    "count": 4,
-    "spread": 8,
+    "height": 19,
+    "count": 2,
+    "spread": 3,
     "line": 0
    }
   },
@@ -283,29 +320,29 @@
    "type": "core/tree",
    "at": [
     -6,
-    -16,
+    -12,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 12,
-    "count": 2,
-    "spread": 4,
+    "height": 17,
+    "count": 1,
+    "spread": 3,
     "line": 0
    }
   },
   {
    "type": "core/tree",
    "at": [
-    22,
-    -16,
+    17,
+    -12,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 13,
-    "count": 3,
-    "spread": 8,
+    "height": 19,
+    "count": 2,
+    "spread": 3,
     "line": 0
    }
   }
@@ -314,13 +351,13 @@
   "ground": "asphalt",
   "forecourt": "none",
   "extent": [
-   80,
-   70
+   48,
+   38
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "photo is a close crop of the front porch; model shows the whole block from afar; porch roof lacks corrugation read; no lettering by design"
+  "gaps": "photo is a close crop of the porch and lettering wall; model shows the whole block, sloped porch roof is a smooth plane (no corrugation ribs), lettering is a blank blue band by design"
  }
 }

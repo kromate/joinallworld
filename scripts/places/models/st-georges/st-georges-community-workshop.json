@@ -30,7 +30,7 @@
    "id": "hall",
    "footprint": {
     "rect": [
-     38,
+     46,
      14
     ]
    },
@@ -38,16 +38,16 @@
     0,
     0
    ],
-   "height": 10.5,
+   "height": 11,
    "wall": {
     "material": "painted-render",
-    "colour": "#e8b99a",
+    "colour": "#edc79f",
     "windows": "punched",
     "windowRatio": 0.22,
     "glassColour": "#5d7384",
     "windowShape": "rect",
     "plinth": 0.3,
-    "bands": "#f1e4d2",
+    "bands": "#f4e6d4",
     "faces": {
      "front": "punched"
     }
@@ -56,7 +56,7 @@
     "form": "hip",
     "colour": "#c4623d",
     "material": "clay-tile",
-    "pitch": 24,
+    "pitch": 26,
     "overhang": 0.8
    }
   },
@@ -73,10 +73,10 @@
     0,
     -8.6
    ],
-   "height": 11.5,
+   "height": 12,
    "wall": {
     "material": "painted-render",
-    "colour": "#eeb594",
+    "colour": "#efc29d",
     "windows": "none",
     "windowRatio": 0.22,
     "glassColour": "#5d7384",
@@ -97,7 +97,7 @@
    "type": "core/portico",
    "at": [
     0,
-    -11.5,
+    -10.4,
     0
    ],
    "params": {
@@ -116,18 +116,18 @@
    "id": "shutter",
    "footprint": {
     "rect": [
-     4.2,
+     4.0,
      0.6
     ]
    },
    "at": [
     0,
-    -10.2
+    -10.7
    ],
-   "height": 6.0,
+   "height": 7.5,
    "wall": {
     "material": "painted-render",
-    "colour": "#9aa5ae",
+    "colour": "#8f9aa3",
     "windows": "louvre"
    },
    "roof": {
@@ -138,81 +138,42 @@
   },
   {
    "type": "mass",
-   "id": "wing-w",
+   "id": "brick-path",
    "footprint": {
     "rect": [
-     13,
-     22
+     3.4,
+     30
     ]
    },
    "at": [
-    -27,
-    -4
+    0,
+    -26
    ],
-   "height": 10.5,
+   "height": 0.5,
    "wall": {
-    "material": "painted-render",
-    "colour": "#e8b99a",
-    "windows": "punched",
-    "windowRatio": 0.22,
-    "glassColour": "#5d7384",
-    "windowShape": "rect",
-    "plinth": 0.3,
-    "bands": "#f1e4d2"
+    "material": "brick",
+    "colour": "#c98f78",
+    "windows": "none"
    },
    "roof": {
-    "form": "hip",
-    "colour": "#c4623d",
-    "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "wing-e",
-   "footprint": {
-    "rect": [
-     13,
-     22
-    ]
-   },
-   "at": [
-    27,
-    -4
-   ],
-   "height": 10.5,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e8b99a",
-    "windows": "punched",
-    "windowRatio": 0.22,
-    "glassColour": "#5d7384",
-    "windowShape": "rect",
-    "plinth": 0.3,
-    "bands": "#f1e4d2"
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#c4623d",
-    "material": "clay-tile",
-    "pitch": 24,
-    "overhang": 0.8
+    "form": "flat",
+    "colour": "#c98f78"
    }
   },
   {
    "type": "core/colonnade",
    "at": [
-    0,
-    -20,
+    30,
+    -6,
     0
    ],
+   "rotDeg": 90,
    "params": {
-    "length": 32,
-    "count": 9,
+    "length": 20,
+    "count": 6,
     "height": 3.4,
     "radius": 0.25,
-    "colour": "#f4efe4",
+    "colour": "#f7f3ea",
     "roofColour": "#c4623d",
     "roofDepth": 2.8
    }
@@ -220,8 +181,8 @@
   {
    "type": "core/tree",
    "at": [
-    -8,
-    -28,
+    -26,
+    -16,
     0
    ],
    "params": {
@@ -231,36 +192,36 @@
     "spread": 6,
     "line": 14
    }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "line": 10
+   }
   }
  ],
  "site": {
   "ground": "grass",
   "forecourt": "garden",
-  "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     -14,
-     -30
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     12,
-     -30
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
    110,
    80
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "one hall with wings only (campus is many buildings); photo shows no wings, no brick path or trees at photo scale"
+  "gaps": "one hall only (campus is many buildings); trees are low-poly; louvre bay and walkway simplified; wing window shutters not modelled"
  },
  "schema": "allworld-place-model",
  "version": 2,

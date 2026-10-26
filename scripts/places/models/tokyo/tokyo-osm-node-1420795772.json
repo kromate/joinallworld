@@ -46,21 +46,14 @@
      {
       "z": 0,
       "rect": [
-       24,
+       9,
        26
       ]
      },
      {
-      "z": 8,
+      "z": 11,
       "rect": [
-       15.0,
-       26
-      ]
-     },
-     {
-      "z": 16,
-      "rect": [
-       6,
+       5,
        26
       ]
      },
@@ -83,39 +76,31 @@
     0
    ],
    "params": {
-    "colour": "#5a4638",
+    "colour": "#4a3a30",
     "sections": [
      {
       "z": 0,
       "rect": [
-       2.4,
+       5,
        26.8
       ],
-      "cx": -10.8
+      "cx": -5.5
      },
      {
-      "z": 8,
+      "z": 11,
       "rect": [
-       2.4,
+       3,
        26.8
       ],
-      "cx": -6.3
-     },
-     {
-      "z": 16,
-      "rect": [
-       2.4,
-       26.8
-      ],
-      "cx": -1.8
+      "cx": -2.95
      },
      {
       "z": 22,
       "rect": [
-       2.4,
+       0.8,
        26.8
       ],
-      "cx": 0.6
+      "cx": -0.4
      }
     ]
    }
@@ -129,39 +114,31 @@
     0
    ],
    "params": {
-    "colour": "#5a4638",
+    "colour": "#4a3a30",
     "sections": [
      {
       "z": 0,
       "rect": [
-       2.4,
+       5,
        26.8
       ],
-      "cx": 10.8
+      "cx": 5.5
      },
      {
-      "z": 8,
+      "z": 11,
       "rect": [
-       2.4,
+       3,
        26.8
       ],
-      "cx": 6.3
-     },
-     {
-      "z": 16,
-      "rect": [
-       2.4,
-       26.8
-      ],
-      "cx": 1.8
+      "cx": 2.95
      },
      {
       "z": 22,
       "rect": [
-       2.4,
+       0.8,
        26.8
       ],
-      "cx": -0.6
+      "cx": 0.4
      }
     ]
    }
@@ -176,23 +153,23 @@
     ]
    },
    "at": [
-    -14,
-    -4
+    -18,
+    -8
    ],
-   "height": 4.5,
+   "height": 3.8,
    "storeys": 1,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#aeb7b4",
+    "colour": "#9fb0a4",
     "windows": "punched",
-    "windowRatio": 0.15
+    "windowRatio": 0.12
    },
    "roof": {
     "form": "hip",
-    "colour": "#5a4a40",
+    "colour": "#4a3a30",
     "material": "clay-tile",
-    "pitch": 18,
-    "overhang": 1
+    "pitch": 8,
+    "overhang": 1.4
    }
   },
   {
@@ -214,19 +191,248 @@
     "height": 0.2,
     "colour": "#2c2c2e"
    }
+  },
+  {
+   "type": "prism",
+   "id": "mull0",
+   "at": [
+    4,
+    -13.3,
+    3
+   ],
+   "params": {
+    "rect": [
+     5.590909090909091,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#1a1a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mull1",
+   "at": [
+    4,
+    -13.3,
+    6
+   ],
+   "params": {
+    "rect": [
+     4.881818181818182,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#1a1a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mull2",
+   "at": [
+    4,
+    -13.3,
+    9
+   ],
+   "params": {
+    "rect": [
+     4.172727272727273,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#1a1a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mull3",
+   "at": [
+    4,
+    -13.3,
+    12
+   ],
+   "params": {
+    "rect": [
+     3.4636363636363634,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#1a1a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mull4",
+   "at": [
+    4,
+    -13.3,
+    15
+   ],
+   "params": {
+    "rect": [
+     2.7545454545454544,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#1a1a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mull5",
+   "at": [
+    4,
+    -13.3,
+    18
+   ],
+   "params": {
+    "rect": [
+     2.045454545454545,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#1a1a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "column",
+   "at": [
+    4,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 20,
+    "colour": "#222226"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cpost0",
+   "at": [
+    -10.5,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.2,
+    "colour": "#4a3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cpost1",
+   "at": [
+    -6.5,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.2,
+    "colour": "#4a3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    -8.5,
+    -14,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 0.25,
+    "colour": "#4a3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-arch",
+   "at": [
+    -6,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     2
+    ],
+    "height": 0.15,
+    "colour": "#2c2c2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walk",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     14
+    ],
+    "height": 0.05,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     -26,
-     12
-    ],
-    "height": 11
-   },
    {
     "kind": "broadleaf",
     "at": [
@@ -248,6 +454,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "A-frame massing, bronze slopes and dark glazed gable match; no mullion grid, ridge too narrow, tree canopy and arched side bay absent, annexe is generic"
+  "gaps": "A-frame bronze slopes and dark glazed gable match; mullion grid is only horizontal bars, arched side bay and photo's overhanging canopy only roughly suggested, annexe simplified"
  }
 }

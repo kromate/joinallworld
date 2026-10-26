@@ -33,13 +33,13 @@
    "id": "paving",
    "footprint": {
     "osm": true,
-    "scale": 0.7
+    "scale": 0.55
    },
    "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "granite",
-    "colour": "#d8d4c8",
+    "colour": "#cfcbbd",
     "windows": "none",
     "windowRatio": 0
    },
@@ -53,52 +53,206 @@
    "id": "calcada-waves",
    "at": [
     0,
-    0,
+    -34,
     0.5
+   ],
+   "lod": [
+    0
    ],
    "params": {
     "mode": "line",
     "start": [
-     -30,
-     -30,
+     0,
+     0,
      0
     ],
     "end": [
-     30,
-     30,
+     0,
+     -26,
      0
     ],
-    "count": 9,
+    "count": 12,
     "of": {
-     "type": "prism",
+     "type": "sweep-path",
      "params": {
-      "rect": [
-       70,
-       1.6
+      "section": {
+       "rect": [
+        1.5,
+        0.06
+       ]
+      },
+      "points": [
+       [
+        -40,
+        1.6161158651584688,
+        0
+       ],
+       [
+        -32,
+        2.9702445632875065,
+        0
+       ],
+       [
+        -24,
+        0.8491675622467667,
+        0
+       ],
+       [
+        -16,
+        -2.265441078694974,
+        0
+       ],
+       [
+        -8,
+        -2.729468738823372,
+        0
+       ],
+       [
+        0,
+        0.0,
+        0
+       ],
+       [
+        8,
+        2.729468738823372,
+        0
+       ],
+       [
+        16,
+        2.265441078694974,
+        0
+       ],
+       [
+        24,
+        -0.8491675622467667,
+        0
+       ],
+       [
+        32,
+        -2.9702445632875065,
+        0
+       ],
+       [
+        40,
+        -1.6161158651584688,
+        0
+       ]
       ],
-      "height": 0.05,
-      "colour": "#454a4e",
-      "topColour": "#454a4e"
-     },
-     "rotDeg": -8
+      "curve": true,
+      "steps": 3,
+      "colour": "#3b4044"
+     }
     }
-   },
-   "lod": [
+   }
+  },
+  {
+   "type": "array",
+   "id": "calcada-waves-back",
+   "at": [
     0,
-    1
-   ]
+    22,
+    0.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     28,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        1.5,
+        0.06
+       ]
+      },
+      "points": [
+       [
+        -40,
+        1.6161158651584688,
+        0
+       ],
+       [
+        -32,
+        2.9702445632875065,
+        0
+       ],
+       [
+        -24,
+        0.8491675622467667,
+        0
+       ],
+       [
+        -16,
+        -2.265441078694974,
+        0
+       ],
+       [
+        -8,
+        -2.729468738823372,
+        0
+       ],
+       [
+        0,
+        0.0,
+        0
+       ],
+       [
+        8,
+        2.729468738823372,
+        0
+       ],
+       [
+        16,
+        2.265441078694974,
+        0
+       ],
+       [
+        24,
+        -0.8491675622467667,
+        0
+       ],
+       [
+        32,
+        -2.9702445632875065,
+        0
+       ],
+       [
+        40,
+        -1.6161158651584688,
+        0
+       ]
+      ],
+      "curve": true,
+      "steps": 3,
+      "colour": "#3b4044"
+     }
+    }
+   }
   },
   {
    "type": "prism",
    "id": "lawn",
    "at": [
-    -10,
-    -22
+    -6,
+    -14
    ],
    "params": {
     "rect": [
-     62,
-     16
+     70,
+     18
     ],
     "z0": 0.5,
     "height": 0.25,
@@ -107,56 +261,155 @@
    }
   },
   {
-   "type": "prism",
-   "id": "pergola-roof",
-   "at": [
-    -10,
-    10
-   ],
-   "params": {
-    "rect": [
-     26,
-     18
-    ],
-    "z0": 7,
-    "height": 0.5,
-    "colour": "#3f464b",
-    "topColour": "#4a5258"
-   }
-  },
-  {
    "type": "array",
-   "id": "pergola-columns",
+   "id": "pergola-a-cols",
    "at": [
-    -10,
-    10,
+    -14,
+    14,
     0
    ],
+   "rotDeg": 0,
    "params": {
     "mode": "grid",
-    "cols": 3,
-    "rows": 2,
-    "dx": 12,
-    "dy": 14,
+    "cols": 2,
+    "rows": 3,
+    "dx": 20,
+    "dy": 7.0,
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.5,
+      "radius": 0.3,
       "n": 8,
       "z0": 0.5,
-      "height": 6.7,
+      "height": 8,
       "colour": "#5c6a74",
       "topColour": "#5c6a74"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pergola-a-slats",
+   "at": [
+    -14,
+    14,
+    8.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "mode": "line",
+    "start": [
+     -11.0,
+     0,
+     0
+    ],
+    "end": [
+     11.0,
+     0,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       16
+      ],
+      "height": 0.3,
+      "colour": "#3f464b",
+      "topColour": "#566068"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pergola-b-cols",
+   "at": [
+    12,
+    32,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 3,
+    "dx": 14,
+    "dy": 5.0,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.3,
+      "n": 8,
+      "z0": 0.5,
+      "height": 7,
+      "colour": "#5c6a74",
+      "topColour": "#5c6a74"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pergola-b-slats",
+   "at": [
+    12,
+    32,
+    7.5
+   ],
+   "rotDeg": 20,
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.0,
+     0,
+     0
+    ],
+    "end": [
+     8.0,
+     0,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       12
+      ],
+      "height": 0.3,
+      "colour": "#3f464b",
+      "topColour": "#566068"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
    "id": "shrubs",
    "at": [
-    8,
-    -22,
+    -26,
+    -14,
     0
    ],
    "params": {
@@ -167,11 +420,11 @@
      0
     ],
     "end": [
-     22,
+     44,
      0,
      0
     ],
-    "count": 5,
+    "count": 7,
     "of": {
      "type": "revolve",
      "params": {
@@ -197,6 +450,77 @@
       ]
      }
     }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gold-tower",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    26,
+    56
+   ],
+   "height": 38,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d2a636",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-podium",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    40,
+    46
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a3a3c",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6f70"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-cylinder",
+   "at": [
+    62,
+    52
+   ],
+   "params": {
+    "radius": 8,
+    "n": 16,
+    "height": 34,
+    "colour": "#d0a840",
+    "topColour": "#c4c4be"
    }
   },
   {
@@ -223,26 +547,19 @@
    {
     "kind": "palm",
     "at": [
-     -60,
+     -50,
      -20
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     40,
-     -30
     ]
    }
   ],
   "extent": [
-   160,
-   120
+   130,
+   100
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Calcada wave paving is only straight dark stripes, pergola is a plain slab without louvres, the gold-glass casino backdrop is not part of the square and is omitted."
+  "gaps": "Wave bands overhang the shrunken paving slab and read as stepped ribbons; pergola slats simplified; gold-glass backdrop is blocky and reads small; framing is higher and wider than the photo."
  }
 }

@@ -29,7 +29,7 @@
    "id": "main",
    "footprint": {
     "osm": true,
-    "simplify": 3
+    "simplify": 8
    },
    "at": [
     0,
@@ -121,7 +121,7 @@
      -62
     ],
     "count": 10,
-    "lod1Step": 3,
+    "lod1Step": 5,
     "lod2Step": 10
    }
   },
@@ -151,7 +151,11 @@
     "count": 6,
     "spread": 5,
     "line": 14
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/tree",
@@ -166,7 +170,11 @@
     "count": 5,
     "spread": 5,
     "line": -12
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   }
  ],
  "review": {

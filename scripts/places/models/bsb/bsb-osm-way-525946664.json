@@ -38,7 +38,7 @@
    "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#e3b78c",
+    "colour": "#e8c096",
     "windows": "none",
     "plinth": 0.4,
     "cornice": true,
@@ -47,7 +47,21 @@
       "type": "arcade",
       "faces": [
        "front"
-      ]
+      ],
+      "bay": 6,
+      "shape": "pointed",
+      "columnColour": "#f2eee4",
+      "recess": 1.2
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f6f3ea"
+      ],
+      "height": 1.4,
+      "at": 0.9,
+      "proud": 0.1,
+      "floors": "all"
      }
     ]
    },
@@ -59,22 +73,30 @@
    }
   },
   {
-   "type": "prism",
+   "type": "mass",
    "id": "stage2",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
    "at": [
     0,
     2
    ],
-   "params": {
-    "rect": [
-     34,
-     26
-    ],
-    "z0": 8,
-    "height": 6,
+   "z0": 8,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
     "colour": "#e3b78c",
-    "topColour": "#2f6b4a",
-    "topScale": 0.96
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b4a",
+    "overhang": 1.5
    }
   },
   {
@@ -91,10 +113,15 @@
    "params": {
     "n": 16,
     "radius": 9,
-    "z0": 14,
-    "height": 4,
+    "z0": 11.5,
+    "height": 5.5,
     "colour": "#e9c9a0",
-    "topColour": "#f2eee4"
+    "topColour": "#f2eee4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "storeys": 1,
+    "glassColour": "#4c7a8c"
    }
   },
   {
@@ -106,7 +133,7 @@
    "at": [
     0,
     2,
-    18
+    17
    ],
    "params": {
     "segments": 28,
@@ -160,7 +187,7 @@
      17,
      17
     ],
-    "z0": 14,
+    "z0": 11.5,
     "height": 9,
     "colour": "#2f6b4a"
    }
@@ -169,7 +196,7 @@
    "type": "prism",
    "id": "minaret",
    "at": [
-    30,
+    34,
     -22
    ],
    "params": {
@@ -177,26 +204,30 @@
      6.5,
      6.5
     ],
-    "height": 30,
+    "height": 28,
     "colour": "#e3b78c",
     "topColour": "#f2eee4",
-    "windows": "none"
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "storeys": 4,
+    "glassColour": "#8fb4c8"
    }
   },
   {
    "type": "prism",
    "id": "mincap",
    "at": [
-    30,
+    34,
     -22
    ],
    "params": {
     "rect": [
-     8,
-     8
+     8.4,
+     8.4
     ],
-    "z0": 30,
-    "height": 2.5,
+    "z0": 28,
+    "height": 1.2,
     "colour": "#f2eee4",
     "topColour": "#f2eee4"
    }
@@ -208,9 +239,9 @@
     1
    ],
    "at": [
-    30,
+    34,
     -22,
-    32.5
+    29.2
    ],
    "params": {
     "segments": 28,
@@ -256,7 +287,7 @@
     2
    ],
    "at": [
-    30,
+    34,
     -22
    ],
    "params": {
@@ -264,7 +295,7 @@
      4,
      4
     ],
-    "z0": 32,
+    "z0": 29,
     "height": 4,
     "colour": "#2f6b4a"
    }
@@ -300,12 +331,97 @@
     "colour": "#8a8a88",
     "border_colour": "#cfcac0"
    }
+  },
+  {
+   "type": "prism",
+   "id": "min-lantern",
+   "at": [
+    34,
+    -22
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 29.2,
+    "height": 3.4,
+    "colour": "#e3b78c",
+    "topColour": "#e3b78c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "storeys": 1,
+    "glassColour": "#8fb4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "at": [
+    -26,
+    -18
+   ],
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "z0": 4,
+    "height": 0.6,
+    "colour": "#f6f3ea",
+    "topColour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-col-0",
+   "at": [
+    -32,
+    -20
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 4,
+    "colour": "#f2eee4",
+    "topColour": "#f2eee4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-col-1",
+   "at": [
+    -20,
+    -20
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 4,
+    "colour": "#f2eee4",
+    "topColour": "#f2eee4"
+   }
   }
  ],
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "OSM ragged outline used as plain podium; arcade pattern and lattice screens approximate; second minaret and stepped upper roofs simplified."
+  "gaps": "Front reads as pointed-arch bays with a pale frieze band, hipped green stage and arched drum/minaret; arcade is still shallow window-style openings, not a deep open loggia with white columns and jali screens, and the porch is a simple canopy."
  },
  "site": {
   "ground": "paving",

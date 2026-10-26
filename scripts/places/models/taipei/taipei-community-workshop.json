@@ -42,21 +42,21 @@
    "storeys": 6,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#c58a72",
+    "colour": "#c9917a",
     "windows": "punched",
-    "windowRatio": 0.22,
-    "bay": 4.8,
+    "windowRatio": 0.18,
+    "bay": 6,
     "plinth": 0.5,
     "pattern": [
      {
       "type": "balconies",
-      "depth": 1.6,
-      "width": 3.6,
-      "every": 6.4,
-      "colour": "#b8715a",
+      "depth": 2.4,
+      "width": 4.6,
+      "every": 6.0,
+      "colour": "#c27d66",
       "railColour": "#7a5448",
-      "floors": "upper",
-      "slab": 0.25
+      "floors": "all",
+      "slab": 0.4
      }
     ],
     "faces": {
@@ -68,8 +68,8 @@
    "roof": {
     "form": "shed",
     "high": "back",
-    "rise": 2.2,
-    "colour": "#5d4a42",
+    "rise": 3.6,
+    "colour": "#4a3a34",
     "material": "concrete",
     "overhang": 0.8
    }
@@ -92,7 +92,7 @@
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#e4e0d6",
+    "colour": "#e8dfc8",
     "windows": "ribbon",
     "windowRatio": 0.3
    },
@@ -108,83 +108,52 @@
    "footprint": {
     "kind": "round",
     "size": [
-     13,
-     13
+     14,
+     14
     ]
    },
    "at": [
     -26,
-    -12
+    -13
    ],
    "z0": 0,
-   "height": 4.6,
+   "height": 4.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#efefec",
+    "colour": "#e4e8e8",
     "windows": "curtain",
-    "windowRatio": 0.55
+    "windowRatio": 0.8
    },
    "roof": {
     "form": "flat",
-    "colour": "#e7e7e4",
-    "overhang": 2.2
-   }
-  },
-  {
-   "type": "prism",
-   "id": "gate-soffit",
-   "at": [
-    -26,
-    -12
-   ],
-   "params": {
-    "radius": 7.2,
-    "n": 20,
-    "z0": 4.4,
-    "height": 0.5,
-    "colour": "#34383c",
-    "topColour": "#34383c"
-   }
-  },
-  {
-   "type": "sign-board",
-   "at": [
-    -26,
-    -18.5,
-    5.2
-   ],
-   "params": {
-    "width": 12,
-    "height": 1.8,
-    "bottom": 0,
-    "colour": "#dcdcd8",
-    "posts": false
+    "colour": "#f0f0ec",
+    "overhang": 2.5
    }
   },
   {
    "type": "canopy",
    "at": [
-    -2,
-    -6,
+    -10,
+    -7,
     0
    ],
    "params": {
     "form": "flat",
     "width": 22,
-    "depth": 8,
-    "height": 5.2,
-    "thickness": 0.5,
-    "columns": 3,
-    "colour": "#bdbab0",
-    "edgeColour": "#aaa79c"
+    "depth": 9,
+    "height": 6.2,
+    "thickness": 1.1,
+    "columns": 0,
+    "colour": "#8c8378",
+    "edgeColour": "#6e675d"
    }
   },
   {
    "type": "steps",
    "at": [
-    -2,
-    -11,
+    -10,
+    -14.5,
     0
    ],
    "params": {
@@ -193,20 +162,6 @@
     "run": 0.9,
     "count": 4,
     "colour": "#bcb7ab"
-   }
-  },
-  {
-   "type": "water-tank",
-   "at": [
-    -20,
-    6,
-    24.2
-   ],
-   "params": {
-    "radius": 1.5,
-    "height": 2,
-    "legs": 1.1,
-    "colour": "#cfd3d4"
    }
   },
   {
@@ -231,6 +186,132 @@
    "params": {
     "kind": "broadleaf",
     "height": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-ring",
+   "at": [
+    -26,
+    -13
+   ],
+   "params": {
+    "radius": 9.5,
+    "n": 28,
+    "z0": 5.0,
+    "height": 1.9,
+    "colour": "#f2f2ee",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-soffit",
+   "at": [
+    -26,
+    -13
+   ],
+   "params": {
+    "radius": 9.3,
+    "n": 20,
+    "z0": 4.6,
+    "height": 0.15,
+    "colour": "#34383c",
+    "topColour": "#34383c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-soffit2",
+   "at": [
+    -26,
+    -13
+   ],
+   "params": {
+    "radius": 9.4,
+    "n": 28,
+    "z0": 4.7,
+    "height": 0.35,
+    "colour": "#2e3236",
+    "topColour": "#2e3236"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col0",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.5
+    ]
+   },
+   "at": [
+    -19,
+    -11
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9ad98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col1",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.5
+    ]
+   },
+   "at": [
+    -10,
+    -11
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9ad98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col2",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.5
+    ]
+   },
+   "at": [
+    -1,
+    -11
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9ad98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ad98"
    }
   }
  ],
@@ -259,6 +340,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Photo is a cropped composite; truss canopy is a plain slab on columns; gatehouse glazing simplified; block length and annex are estimates."
+  "gaps": "Truss canopy is a plain thick slab on stone columns; balcony slabs and window glazing colours simplified (windows read blue); no curved sign band; block length and annex estimated; photo is a cropped composite."
  }
 }

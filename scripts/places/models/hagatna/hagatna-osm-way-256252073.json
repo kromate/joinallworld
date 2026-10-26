@@ -28,7 +28,7 @@
    "id": "plaza",
    "footprint": {
     "osm": true,
-    "simplify": 1.2
+    "simplify": 3
    },
    "height": 15,
    "storeys": 3,
@@ -53,15 +53,6 @@
       "height": 0.9,
       "at": 0.0,
       "floors": "upper"
-     },
-     {
-      "type": "balconies",
-      "depth": 1.4,
-      "every": 4,
-      "colour": "#f4f1ea",
-      "railColour": "#2f6b7a",
-      "floors": "upper",
-      "continuous": true
      }
     ]
    },
@@ -138,7 +129,10 @@
      "#2f6b7a",
      "#f4f1ea"
     ]
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -153,7 +147,10 @@
     "height": 9,
     "count": 6,
     "spread": 30
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "market-open/car-park",
@@ -167,7 +164,10 @@
    "params": {
     "width": 30,
     "depth": 12
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {

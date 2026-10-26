@@ -81,7 +81,7 @@
    "wall": {
     "material": "render",
     "colour": "#efe6c4",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.2,
     "plinth": 0.3,
     "cornice": true,
@@ -117,7 +117,7 @@
    "wall": {
     "material": "render",
     "colour": "#efe6c4",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.3,
     "plinth": 0.3,
     "cornice": true,
@@ -152,7 +152,7 @@
    "wall": {
     "material": "render",
     "colour": "#efe6c4",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.2,
     "plinth": 0.3,
     "cornice": true,
@@ -187,7 +187,7 @@
    "wall": {
     "material": "render",
     "colour": "#efe6c4",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.12,
     "plinth": 0.3,
     "cornice": true,
@@ -220,7 +220,7 @@
    "wall": {
     "material": "render",
     "colour": "#efe6c4",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.25,
     "plinth": 0.3,
     "cornice": true
@@ -275,7 +275,7 @@
     "n": 20,
     "height": 21,
     "colour": "#f1ead0",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.12,
     "storeys": 6
    }
@@ -353,7 +353,10 @@
     -22,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -373,16 +376,34 @@
      52,
      -28
     ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     -40,
-     -28
-    ]
    }
   ],
-  "cars": 6,
+  "cars": [
+   {
+    "at": [
+     -20,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -16,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#8a2b2b"
+   },
+   {
+    "at": [
+     -12,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#2b4a7a"
+   }
+  ],
   "extent": [
    140,
    100

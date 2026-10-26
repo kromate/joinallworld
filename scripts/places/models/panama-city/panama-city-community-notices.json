@@ -3,7 +3,7 @@
  "version": 2,
  "city": "panama-city",
  "venueId": "panama-city-community-notices",
- "verified": "text",
+ "verified": "photo",
  "evidence": [
   {
    "kind": "photo",
@@ -47,16 +47,18 @@
    "height": 46,
    "storeys": 14,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#3f78b8",
+    "material": "painted-render",
+    "colour": "#eeeeea",
     "windows": "ribbon",
     "windowRatio": 0.7,
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     },
-    "bands": "#e8e8e4",
-    "plinth": 0
+    "bands": "#f2f2ee",
+    "plinth": 0,
+    "glassColour": "#3d73b5"
    },
    "roof": {
     "form": "flat",
@@ -79,18 +81,19 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 24,
-   "storeys": 5,
+   "height": 26,
+   "storeys": 6,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#9fa3a3",
+    "colour": "#c9cccc",
     "windows": "ribbon",
-    "windowRatio": 0.35,
+    "windowRatio": 0.22,
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     },
-    "bands": "#8a8e8e"
+    "bands": "#8f9394"
    },
    "roof": {
     "form": "flat",
@@ -104,21 +107,21 @@
    "footprint": {
     "rect": [
      8,
-     16
+     12
     ]
    },
    "at": [
-    0,
-    18
+    -6,
+    16
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 26,
+   "height": 29,
    "storeys": 6,
    "wall": {
     "material": "glass-curtain",
     "colour": "#2f3338",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.6
    },
    "roof": {
@@ -148,16 +151,19 @@
     "colour": "#f1f1ee",
     "windows": "none",
     "faces": {
-     "front": "ribbon"
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
     },
     "plinth": 0.3
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8523c",
-    "material": "clay-tile",
-    "pitch": 8,
-    "overhang": 1.2
+    "colour": "#b0503a",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 0.8
    }
   },
   {
@@ -178,18 +184,25 @@
    "height": 6,
    "storeys": 2,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#4b6279",
+    "material": "painted-render",
+    "colour": "#f1f1ee",
     "windows": "ribbon",
-    "windowRatio": 0.55,
-    "plinth": 0.3
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#3d73b5",
+    "glassColour": "#3d73b5"
    },
    "roof": {
     "form": "hip",
-    "colour": "#a8523c",
-    "material": "clay-tile",
-    "pitch": 10,
-    "overhang": 1.5
+    "colour": "#b0503a",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.8
    }
   },
   {
@@ -199,7 +212,10 @@
     -34,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/flag",
@@ -208,7 +224,10 @@
     -34,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/flag",
@@ -217,7 +236,10 @@
     -34,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/flag",
@@ -226,7 +248,10 @@
     -34,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/flag",
@@ -235,7 +260,10 @@
     -34,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/flag",
@@ -244,40 +272,48 @@
     -34,
     0
    ],
-   "params": {}
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "z0": 46,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc9"
+   }
   }
  ],
  "site": {
   "ground": "paving",
-  "forecourt": "parking",
+  "forecourt": "plaza",
   "forecourtDepth": 18,
   "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     -50,
-     -24
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     -62,
-     -18
-    ]
-   },
    {
     "kind": "broadleaf",
     "at": [
      -34,
      -20
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     60,
-     -30
     ]
    }
   ],
@@ -287,8 +323,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "NOT rendered or compared: shared render queue workers A/B were hung (heartbeats stale since 2026-10-24 21:40), jobs queued but unprocessed. Composed from the downloaded photo by eye; massing, roof, colour and placement unchecked."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower glass reads darker than photo; rear block banding subtle; side faces plain"
  }
 }

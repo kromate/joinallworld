@@ -45,7 +45,7 @@
    "params": {
     "z0": 0,
     "height": 5.4,
-    "colour": "#0f2f38",
+    "colour": "#0a1f26",
     "points": [
      [
       -30.8,
@@ -120,7 +120,7 @@
     "windows": "curtain",
     "windowRatio": 0.85,
     "storeys": 1,
-    "glassColour": "#17525e"
+    "glassColour": "#0a2229"
    }
   },
   {
@@ -289,7 +289,7 @@
    "params": {
     "z0": 7.6,
     "height": 11.3,
-    "colour": "#17535c",
+    "colour": "#0d2a33",
     "points": [
      [
       -29.2,
@@ -364,7 +364,7 @@
     "windows": "curtain",
     "windowRatio": 0.88,
     "storeys": 3,
-    "glassColour": "#27a3a4"
+    "glassColour": "#143c46"
    }
   },
   {
@@ -621,7 +621,6 @@
    ],
    "rotDeg": 53.13010235415599,
    "lod": [
-    0,
     1
    ],
    "params": {
@@ -637,7 +636,51 @@
   },
   {
    "type": "prism",
-   "id": "fin1",
+   "id": "fin0-s0",
+   "at": [
+    -32.4,
+    -0.3
+   ],
+   "rotDeg": 53.13010235415599,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     8.8
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin0-s2",
+   "at": [
+    -32.4,
+    -0.3
+   ],
+   "rotDeg": 53.13010235415599,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     8.8
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin1-s0",
    "at": [
     -29.16,
     -4.11
@@ -647,8 +690,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -659,7 +702,29 @@
   },
   {
    "type": "prism",
-   "id": "fin2",
+   "id": "fin1-s2",
+   "at": [
+    -29.16,
+    -4.11
+   ],
+   "rotDeg": 46.04608870693519,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     8.8
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin2-s0",
    "at": [
     -25.47,
     -7.49
@@ -669,8 +734,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -681,7 +746,29 @@
   },
   {
    "type": "prism",
-   "id": "fin3",
+   "id": "fin2-s2",
+   "at": [
+    -25.47,
+    -7.49
+   ],
+   "rotDeg": 38.96207505971439,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     8.8
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin3-s0",
    "at": [
     -21.39,
     -10.39
@@ -691,8 +778,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -703,7 +790,29 @@
   },
   {
    "type": "prism",
-   "id": "fin4",
+   "id": "fin3-s2",
+   "at": [
+    -21.39,
+    -10.39
+   ],
+   "rotDeg": 31.87806141249359,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     8.8
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin4-s0",
    "at": [
     -16.98,
     -12.77
@@ -713,8 +822,30 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     8.8
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin4-s2",
+   "at": [
+    -16.98,
+    -12.77
+   ],
+   "rotDeg": 24.794047765272794,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -732,7 +863,6 @@
    ],
    "rotDeg": 17.710034118051993,
    "lod": [
-    0,
     1
    ],
    "params": {
@@ -748,7 +878,51 @@
   },
   {
    "type": "prism",
-   "id": "fin6",
+   "id": "fin5-s0",
+   "at": [
+    -12.32,
+    -14.58
+   ],
+   "rotDeg": 17.710034118051993,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin5-s2",
+   "at": [
+    -12.32,
+    -14.58
+   ],
+   "rotDeg": 17.710034118051993,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin6-s0",
    "at": [
     -7.47,
     -15.81
@@ -758,8 +932,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -770,7 +944,29 @@
   },
   {
    "type": "prism",
-   "id": "fin7",
+   "id": "fin6-s2",
+   "at": [
+    -7.47,
+    -15.81
+   ],
+   "rotDeg": 10.6260204708312,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin7-s0",
    "at": [
     -2.5,
     -16.42
@@ -780,8 +976,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -792,7 +988,29 @@
   },
   {
    "type": "prism",
-   "id": "fin8",
+   "id": "fin7-s2",
+   "at": [
+    -2.5,
+    -16.42
+   ],
+   "rotDeg": 3.5420068236103996,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin8-s0",
    "at": [
     2.5,
     -16.42
@@ -802,8 +1020,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -814,7 +1032,29 @@
   },
   {
    "type": "prism",
-   "id": "fin9",
+   "id": "fin8-s2",
+   "at": [
+    2.5,
+    -16.42
+   ],
+   "rotDeg": -3.5420068236103996,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin9-s0",
    "at": [
     7.47,
     -15.81
@@ -824,8 +1064,30 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin9-s2",
+   "at": [
+    7.47,
+    -15.81
+   ],
+   "rotDeg": -10.6260204708312,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -843,7 +1105,6 @@
    ],
    "rotDeg": -17.710034118052,
    "lod": [
-    0,
     1
    ],
    "params": {
@@ -859,7 +1120,51 @@
   },
   {
    "type": "prism",
-   "id": "fin11",
+   "id": "fin10-s0",
+   "at": [
+    12.32,
+    -14.58
+   ],
+   "rotDeg": -17.710034118052,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin10-s2",
+   "at": [
+    12.32,
+    -14.58
+   ],
+   "rotDeg": -17.710034118052,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin11-s0",
    "at": [
     16.98,
     -12.77
@@ -869,8 +1174,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -881,7 +1186,29 @@
   },
   {
    "type": "prism",
-   "id": "fin12",
+   "id": "fin11-s2",
+   "at": [
+    16.98,
+    -12.77
+   ],
+   "rotDeg": -24.794047765272797,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin12-s0",
    "at": [
     21.39,
     -10.39
@@ -891,8 +1218,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -903,7 +1230,29 @@
   },
   {
    "type": "prism",
-   "id": "fin13",
+   "id": "fin12-s2",
+   "at": [
+    21.39,
+    -10.39
+   ],
+   "rotDeg": -31.878061412493587,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin13-s0",
    "at": [
     25.47,
     -7.49
@@ -913,8 +1262,8 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -925,7 +1274,29 @@
   },
   {
    "type": "prism",
-   "id": "fin14",
+   "id": "fin13-s2",
+   "at": [
+    25.47,
+    -7.49
+   ],
+   "rotDeg": -38.96207505971439,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin14-s0",
    "at": [
     29.16,
     -4.11
@@ -935,8 +1306,30 @@
     0
    ],
    "params": {
-    "z0": 19.7,
-    "height": 0.6,
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin14-s2",
+   "at": [
+    29.16,
+    -4.11
+   ],
+   "rotDeg": -46.04608870693519,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -954,12 +1347,55 @@
    ],
    "rotDeg": -53.13010235415599,
    "lod": [
-    0,
     1
    ],
    "params": {
     "z0": 19.7,
     "height": 0.6,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin15-s0",
+   "at": [
+    32.4,
+    -0.3
+   ],
+   "rotDeg": -53.13010235415599,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 19.3,
+    "height": 0.15,
+    "colour": "#f4f1ea",
+    "rect": [
+     3.0,
+     6.3
+    ],
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin15-s2",
+   "at": [
+    32.4,
+    -0.3
+   ],
+   "rotDeg": -53.13010235415599,
+   "lod": [
+    0
+   ],
+   "params": {
+    "z0": 20.4,
+    "height": 0.15,
     "colour": "#f4f1ea",
     "rect": [
      3.0,
@@ -1297,489 +1733,6 @@
   },
   {
    "type": "prism",
-   "id": "mull0",
-   "lod": [
-    0
-   ],
-   "at": [
-    -29.23,
-    1.97
-   ],
-   "rotDeg": 53.0,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull1",
-   "lod": [
-    0
-   ],
-   "at": [
-    -27.33,
-    -0.35
-   ],
-   "rotDeg": 48.3,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull2",
-   "lod": [
-    0
-   ],
-   "at": [
-    -25.24,
-    -2.5
-   ],
-   "rotDeg": 43.6,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull3",
-   "lod": [
-    0
-   ],
-   "at": [
-    -22.98,
-    -4.48
-   ],
-   "rotDeg": 38.9,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull4",
-   "lod": [
-    0
-   ],
-   "at": [
-    -20.57,
-    -6.27
-   ],
-   "rotDeg": 34.2,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull5",
-   "lod": [
-    0
-   ],
-   "at": [
-    -18.02,
-    -7.86
-   ],
-   "rotDeg": 29.5,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull6",
-   "lod": [
-    0
-   ],
-   "at": [
-    -15.35,
-    -9.22
-   ],
-   "rotDeg": 24.8,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull7",
-   "lod": [
-    0
-   ],
-   "at": [
-    -12.58,
-    -10.37
-   ],
-   "rotDeg": 20.1,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull8",
-   "lod": [
-    0
-   ],
-   "at": [
-    -9.72,
-    -11.29
-   ],
-   "rotDeg": 15.4,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull9",
-   "lod": [
-    0
-   ],
-   "at": [
-    -6.8,
-    -11.96
-   ],
-   "rotDeg": 10.7,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull10",
-   "lod": [
-    0
-   ],
-   "at": [
-    -3.83,
-    -12.4
-   ],
-   "rotDeg": 6.0,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull11",
-   "lod": [
-    0
-   ],
-   "at": [
-    -0.83,
-    -12.59
-   ],
-   "rotDeg": 1.3,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull12",
-   "lod": [
-    0
-   ],
-   "at": [
-    2.17,
-    -12.54
-   ],
-   "rotDeg": -3.4,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull13",
-   "lod": [
-    0
-   ],
-   "at": [
-    5.16,
-    -12.23
-   ],
-   "rotDeg": -8.1,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull14",
-   "lod": [
-    0
-   ],
-   "at": [
-    8.11,
-    -11.69
-   ],
-   "rotDeg": -12.8,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull15",
-   "lod": [
-    0
-   ],
-   "at": [
-    11.01,
-    -10.91
-   ],
-   "rotDeg": -17.5,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull16",
-   "lod": [
-    0
-   ],
-   "at": [
-    13.83,
-    -9.89
-   ],
-   "rotDeg": -22.2,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull17",
-   "lod": [
-    0
-   ],
-   "at": [
-    16.56,
-    -8.64
-   ],
-   "rotDeg": -26.9,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull18",
-   "lod": [
-    0
-   ],
-   "at": [
-    19.18,
-    -7.17
-   ],
-   "rotDeg": -31.6,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull19",
-   "lod": [
-    0
-   ],
-   "at": [
-    21.67,
-    -5.5
-   ],
-   "rotDeg": -36.3,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull20",
-   "lod": [
-    0
-   ],
-   "at": [
-    24.01,
-    -3.62
-   ],
-   "rotDeg": -41.0,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull21",
-   "lod": [
-    0
-   ],
-   "at": [
-    26.19,
-    -1.56
-   ],
-   "rotDeg": -45.7,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "mull22",
-   "lod": [
-    0
-   ],
-   "at": [
-    28.2,
-    0.67
-   ],
-   "rotDeg": -50.4,
-   "params": {
-    "z0": 7.6,
-    "height": 11.3,
-    "colour": "#f2f0ea",
-    "rect": [
-     0.18,
-     0.3
-    ]
-   }
-  },
-  {
-   "type": "prism",
    "id": "letter0",
    "lod": [
     0
@@ -1974,6 +1927,218 @@
     0,
     1
    ]
+  },
+  {
+   "type": "prism",
+   "id": "yard-ballast",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    40
+   ],
+   "params": {
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#6d6760",
+    "rect": [
+     96,
+     27
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "yard-tracks",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     28.5,
+     0.08
+    ],
+    "end": [
+     0,
+     46,
+     0.08
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 0.15,
+      "colour": "#4a443f",
+      "rect": [
+       94,
+       0.3
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars0",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -30,
+     31.8,
+     0.3
+    ],
+    "end": [
+     26,
+     31.8,
+     0.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 3.0,
+      "colour": "#8a8d90",
+      "rect": [
+       11,
+       2.8
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars1",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -26,
+     38.4,
+     0.3
+    ],
+    "end": [
+     30,
+     38.4,
+     0.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 3.0,
+      "colour": "#8a3a2e",
+      "rect": [
+       11,
+       2.8
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -22,
+     45.0,
+     0.3
+    ],
+    "end": [
+     34,
+     45.0,
+     0.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 3.0,
+      "colour": "#74777a",
+      "rect": [
+       11,
+       2.8
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    35
+   ],
+   "params": {
+    "z0": 0,
+    "height": 13,
+    "colour": "#6a6f73",
+    "rect": [
+     0.5,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    35
+   ],
+   "params": {
+    "z0": 0,
+    "height": 13,
+    "colour": "#6a6f73",
+    "rect": [
+     0.5,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2",
+   "lod": [
+    0
+   ],
+   "at": [
+    24,
+    35
+   ],
+   "params": {
+    "z0": 0,
+    "height": 13,
+    "colour": "#6a6f73",
+    "rect": [
+     0.5,
+     0.5
+    ]
+   }
   }
  ],
  "site": {
@@ -1982,12 +2147,12 @@
   "trees": 0,
   "extent": [
    130,
-   60
+   70
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Camera still frames the whole 70 m arc (fit cannot crop closer) so the photo close-up is not matched; curve is gentler and facade lower than the photo; letters are blank teal blocks; mullions are at 3 m bays but annex and footbridge are simplified; no people, bins or trees."
+  "gaps": "Curve not made tighter; glass darkened and mullions removed to fit the 20k budget (LOD0 19,825); louvred roof edge is stacked slats; railway yard sits behind the arc and is mostly hidden from the camera; letters are blank blocks; no people or bins."
  }
 }

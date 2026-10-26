@@ -38,7 +38,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "only a central portion of the 1 km terminal; far wave bays, jet bridges and apron markings omitted; tower scaled to 80 m"
+  "gaps": "portion of 1 km terminal; bays thinner but vault pier lacks ribs, tower not far behind; no jet bridges/taxiway lines"
  },
  "parts": [
   {
@@ -46,8 +46,8 @@
    "id": "main-hall",
    "footprint": {
     "rect": [
-     116,
-     36
+     112,
+     34
     ]
    },
    "at": [
@@ -56,7 +56,7 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 15,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
@@ -83,17 +83,17 @@
    "params": {
     "mode": "line",
     "start": [
-     -48,
+     -50,
      -4,
      0
     ],
     "end": [
-     48,
+     50,
      -4,
      0
     ],
-    "count": 9,
-    "lod2Step": 2,
+    "count": 15,
+    "lod2Step": 4,
     "of": [
      {
       "type": "loft",
@@ -103,42 +103,42 @@
         {
          "z": 0,
          "rect": [
-          12,
+          7.2,
           22
          ]
         },
         {
          "z": 3,
          "rect": [
-          11.4,
+          6.9,
           22
          ]
         },
         {
          "z": 6,
          "rect": [
-          9.6,
+          5.8,
           22
          ]
         },
         {
          "z": 8.5,
          "rect": [
-          7,
+          4.2,
           22
          ]
         },
         {
          "z": 10.5,
          "rect": [
-          3.8,
+          2.2,
           22
          ]
         },
         {
-         "z": 11.5,
+         "z": 11.8,
          "rect": [
-          0.8,
+          0.4,
           22
          ]
         }
@@ -153,7 +153,7 @@
    "id": "bay-glazing",
    "footprint": {
     "rect": [
-     110,
+     112,
      12
     ]
    },
@@ -167,7 +167,7 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4d6470",
+    "colour": "#2f4650",
     "windows": "curtain",
     "windowRatio": 0.75,
     "plinth": 0.3
@@ -183,17 +183,17 @@
    "id": "vault-pier",
    "footprint": {
     "rect": [
-     18,
-     38
+     22,
+     64
     ]
    },
    "at": [
-    50,
-    -14
+    52,
+    -20
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 10,
+   "height": 9,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
@@ -209,9 +209,9 @@
    "roof": {
     "form": "curved",
     "curve": "arch",
-    "colour": "#e9ecea",
+    "colour": "#dfe4e3",
     "material": "membrane",
-    "rise": 5,
+    "rise": 7,
     "overhang": 0.8
    }
   },
@@ -228,21 +228,21 @@
      {
       "z": 19,
       "ellipse": [
-       26,
-       14
+       34,
+       15
       ]
      },
      {
       "z": 20.5,
       "ellipse": [
-       24,
-       13
+       31,
+       14
       ]
      },
      {
-      "z": 22,
+      "z": 22.5,
       "ellipse": [
-       10,
+       12,
        5
       ]
      }
@@ -259,16 +259,16 @@
    "params": {
     "mode": "line",
     "start": [
-     -18,
+     -24,
      0,
      0
     ],
     "end": [
-     18,
+     24,
      0,
      0
     ],
-    "count": 4,
+    "count": 5,
     "of": [
      {
       "type": "prism",
@@ -287,16 +287,16 @@
   {
    "type": "control-tower",
    "at": [
-    -70,
-    90,
+    -62,
+    70,
     0
    ],
    "params": {
     "height": 80,
     "style": "round",
-    "colour": "#7d8388",
-    "shaftRadius": 2.8,
-    "cabRadius": 4.6,
+    "colour": "#6e757a",
+    "shaftRadius": 4.2,
+    "cabRadius": 6,
     "cabColour": "#b8c4cb",
     "bandColour": "#aeb5ba"
    }
@@ -329,12 +329,12 @@
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "paving",
   "forecourt": "none",
   "trees": [],
   "extent": [
-   160,
-   130
+   130,
+   120
   ]
  }
 }

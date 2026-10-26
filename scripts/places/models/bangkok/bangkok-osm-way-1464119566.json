@@ -50,7 +50,7 @@
     0
    ],
    "z0": 0,
-   "height": 11,
+   "height": 14,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -73,22 +73,22 @@
    "id": "glass-ground",
    "footprint": {
     "rect": [
-     52,
+     56,
      2
     ]
    },
    "at": [
     -6,
-    -13.4
+    -11.6
    ],
    "z0": 0,
    "height": 4.6,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#3f4a52",
-    "windows": "curtain",
-    "windowRatio": 0.9,
+    "colour": "#2a2e33",
+    "windows": "punched",
+    "windowRatio": 0.7,
     "faces": {
      "left": "none",
      "right": "none",
@@ -107,19 +107,19 @@
    "footprint": {
     "rect": [
      70,
-     3
+     6
     ]
    },
    "at": [
     0,
-    -12.5
+    -13.5
    ],
    "z0": 4.8,
-   "height": 6.4,
+   "height": 9.2,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#eef0f2",
+    "colour": "#f0f1f3",
     "windows": "none",
     "windowRatio": 0.2
    },
@@ -133,18 +133,18 @@
    "type": "core/canopy",
    "at": [
     -10,
-    -18,
-    5.4
+    -21,
+    4.8
    ],
    "params": {
     "form": "flat",
-    "width": 40,
-    "depth": 12,
+    "width": 44,
+    "depth": 10,
     "height": 0.0,
-    "thickness": 1.0,
-    "columns": 6,
-    "colour": "#eef0f2",
-    "edgeColour": "#d4d7da",
+    "thickness": 3.0,
+    "columns": 7,
+    "colour": "#eceef0",
+    "edgeColour": "#d0d3d6",
     "axis": "x"
    }
   },
@@ -177,43 +177,15 @@
    }
   },
   {
-   "type": "mass",
-   "id": "fin",
-   "footprint": {
-    "rect": [
-     1.6,
-     6
-    ]
-   },
-   "at": [
-    19,
-    -10
-   ],
-   "z0": 0,
-   "height": 12,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e0e3e6",
-    "windows": "none",
-    "windowRatio": 0.2
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#e0e3e6",
-    "parapet": 0.4
-   }
-  },
-  {
    "type": "core/sign-board",
    "at": [
     -14,
-    -13.2,
-    8.2
+    -16.6,
+    9.6
    ],
    "params": {
-    "width": 22,
-    "height": 2.6,
+    "width": 24,
+    "height": 3.2,
     "bottom": 0,
     "colour": "#d9c25a",
     "frameColour": "#e0e3e6",
@@ -223,31 +195,32 @@
   {
    "type": "core/steps",
    "at": [
-    32,
-    -20,
+    36,
+    -24,
     0
    ],
    "params": {
-    "width": 18,
+    "width": 14,
     "rise": 0.25,
     "run": 0.9,
-    "count": 4,
-    "colour": "#2f3033"
+    "count": 3,
+    "colour": "#2a2b2e"
    }
   },
   {
    "type": "statue-plinth",
    "at": [
-    30,
-    -18,
-    1.0
+    36,
+    -20,
+    0.6
    ],
    "params": {
-    "height": 6,
-    "steps": 2,
+    "height": 15,
+    "steps": 3,
     "shape": "tier",
     "figure": "stand",
-    "figure_colour": "#2f2a24"
+    "figure_colour": "#6a4a2a",
+    "width": 7
    }
   },
   {
@@ -334,6 +307,111 @@
     "material": "metal-sheet",
     "pitch": 12
    }
+  },
+  {
+   "type": "core/prism",
+   "id": "plinth-base",
+   "at": [
+    36,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 0.7,
+    "colour": "#25262a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "fin-0",
+   "at": [
+    35,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 16,
+    "topOffset": [
+     0,
+     -1.5
+    ],
+    "colour": "#f2f3f5",
+    "topColour": "#e4e6e8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "fin-1",
+   "at": [
+    38,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 19,
+    "topOffset": [
+     0,
+     -1.5
+    ],
+    "colour": "#f2f3f5",
+    "topColour": "#e4e6e8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "fin-2",
+   "at": [
+    41,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 22,
+    "topOffset": [
+     0,
+     -1.5
+    ],
+    "colour": "#f2f3f5",
+    "topColour": "#e4e6e8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "fin-3",
+   "at": [
+    44,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 25,
+    "topOffset": [
+     0,
+     -1.5
+    ],
+    "colour": "#f2f3f5",
+    "topColour": "#e4e6e8"
+   }
   }
  ],
  "site": {
@@ -347,6 +425,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Camera is closer in the photo; statue plinth and stepped pylon wall are simplified, canopy columns thin, upper band blank, back hall plain; site extent mostly car park."
+  "gaps": "Camera further back than the photo; canopy now thick but plinth is a plain stepped block without the pink granite finish, fin wall simplified to stepped blades, glass ground storey reads bluish; site extent mostly car park."
  }
 }

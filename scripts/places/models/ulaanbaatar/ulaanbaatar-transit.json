@@ -49,7 +49,7 @@
    "id": "centre",
    "footprint": {
     "rect": [
-     22,
+     24,
      18
     ]
    },
@@ -57,13 +57,13 @@
     -6,
     0
    ],
-   "height": 17,
+   "height": 19,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#9d9086",
+    "colour": "#a89488",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.12,
     "bands": "#dcd4c2",
     "plinth": 0.6,
     "cornice": true,
@@ -93,22 +93,22 @@
     -32,
     1.5
    ],
-   "height": 11.5,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#9d9086",
+    "colour": "#a89488",
     "windows": "punched",
-    "windowRatio": 0.3,
-    "bands": "#dcd4c2",
+    "windowRatio": 0.28,
     "plinth": 0.5,
-    "cornice": true
+    "cornice": true,
+    "windowShape": "rect"
    },
    "roof": {
     "form": "flat",
     "colour": "#7a6a60",
     "material": "membrane",
-    "parapet": 1.0,
+    "parapet": 0.4,
     "overhang": 0.5
    }
   },
@@ -125,13 +125,44 @@
     24,
     1.5
    ],
-   "height": 11.5,
+   "height": 11,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#9d9086",
+    "colour": "#a89488",
     "windows": "punched",
-    "windowRatio": 0.3,
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a60",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    -6,
+    -11
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a89488",
+    "windows": "none",
     "bands": "#dcd4c2",
     "plinth": 0.5,
     "cornice": true
@@ -140,8 +171,42 @@
     "form": "flat",
     "colour": "#7a6a60",
     "material": "membrane",
-    "parapet": 1.0,
-    "overhang": 0.5
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -13.1
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "z0": 0.5,
+    "height": 7,
+    "colour": "#3a3230",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -13.15
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.3
+    ],
+    "z0": 7.5,
+    "height": 0.6,
+    "colour": "#dcd4c2",
+    "material": "plain-render"
    }
   },
   {
@@ -152,12 +217,12 @@
    ],
    "params": {
     "rect": [
-     8,
+     6,
      3
     ],
-    "z0": 17.6,
-    "height": 3.2,
-    "colour": "#9a8f85",
+    "z0": 19.6,
+    "height": 2.2,
+    "colour": "#dcd4c2",
     "material": "plain-render"
    }
   },
@@ -172,27 +237,125 @@
      3,
      2
     ],
-    "z0": 20.8,
-    "height": 1.8,
+    "z0": 21.8,
+    "height": 2.2,
     "colour": "#b9684a",
     "material": "clay-tile"
    }
   },
   {
-   "type": "core/portico",
+   "type": "prism",
    "at": [
     -6,
-    -9.5,
-    0
+    -1.6
    ],
    "params": {
-    "width": 8,
-    "depth": 2.4,
-    "height": 8,
-    "columns": 4,
-    "pediment": false,
-    "steps": 0,
-    "colour": "#e0d8c6"
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "z0": 21.9,
+    "height": 2.0,
+    "colour": "#f0ece0",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -32,
+    -5.9,
+    11.4
+   ],
+   "params": {
+    "length": 30
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    24,
+    -5.9,
+    11.4
+   ],
+   "params": {
+    "length": 38
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -6,
+    -9.2,
+    19.4
+   ],
+   "params": {
+    "length": 24
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -17.5,
+    -9,
+    19.4
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 2.5,
+    "colour": "#dcd4c2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    5.5,
+    -6,
+    11.4
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 2.5,
+    "colour": "#dcd4c2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -47,
+    -6,
+    11.4
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 2.5,
+    "colour": "#dcd4c2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    43,
+    -6,
+    11.4
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 2.5,
+    "colour": "#dcd4c2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    5.5,
+    -9,
+    19.4
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 2.5,
+    "colour": "#dcd4c2"
    }
   },
   {
@@ -264,36 +427,64 @@
   }
  ],
  "site": {
-  "ground": "asphalt",
-  "forecourt": "plaza",
+  "ground": "snow",
+  "forecourt": "none",
   "forecourtDepth": 22,
   "trees": [
    {
     "kind": "conifer",
     "at": [
-     -2,
-     -20
+     -34,
+     -17
     ]
    },
    {
     "kind": "conifer",
     "at": [
-     10,
-     -22
+     -24,
+     -17
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     -17
     ]
    },
    {
     "kind": "conifer",
     "at": [
      24,
+     -17
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -17
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
      -20
     ]
    },
    {
     "kind": "conifer",
     "at": [
-     36,
-     -21
+     18,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -20
     ]
    }
   ],
@@ -337,8 +528,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "no stepped crest ornament or kiosk dome, no signage lettering, platform and tracks not seen in photo"
+  "gaps": "entrance bay door is a plain dark slab, no arched head, crest is simplified boxes with a flat clock board, no signage, no platform seen in photo"
  }
 }

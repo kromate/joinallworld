@@ -41,50 +41,140 @@
    "id": "chamber",
    "footprint": {
     "rect": [
-     16,
+     12,
      14
     ]
    },
    "at": [
     0,
-    4
+    6
    ],
-   "height": 6.5,
+   "height": 8.5,
    "storeys": 2,
+   "rotDeg": 0,
    "wall": {
     "material": "painted-render",
     "colour": "#eadfc6",
     "windows": "arched",
-    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "windowRatio": 0.22,
     "faces": {
-     "front": "none",
-     "back": "punched"
+     "front": "none"
     },
-    "plinth": 0.5,
-    "trimColour": "#8a4a3a"
+    "trimColour": "#7a2f2a"
    },
    "roof": {
     "form": "gable",
     "colour": "#f2f2ee",
     "material": "metal-sheet",
-    "pitch": 38,
-    "overhang": 1.2
+    "pitch": 36,
+    "overhang": 1.4
    }
   },
   {
    "type": "mass",
-   "id": "portico",
+   "id": "gable-glazing",
    "footprint": {
     "rect": [
-     10,
-     6
+     6,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -0.2
+   ],
+   "z0": 2.5,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5a63",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#2f3f48"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     12,
+     8
     ]
    },
    "at": [
     0,
     -6
    ],
-   "height": 4.8,
+   "rotDeg": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f2f2ee",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-fascia",
+   "footprint": {
+    "rect": [
+     13,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -12.4
+   ],
+   "z0": 5.0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f2a",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tympanum",
+   "footprint": {
+    "rect": [
+     9,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -12.0
+   ],
+   "z0": 5.8,
+   "height": 2.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -94,10 +184,9 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#f4f4f0",
-    "material": "metal-sheet",
-    "pitch": 32,
-    "overhang": 1.0
+    "colour": "#7a2f2a",
+    "pitch": 30,
+    "overhang": 0.2
    }
   },
   {
@@ -105,33 +194,30 @@
    "id": "wing-left",
    "footprint": {
     "rect": [
-     20,
+     22,
      9
     ]
    },
    "at": [
-    -17,
-    0
+    -19,
+    4
    ],
-   "height": 3.8,
+   "height": 4.4,
    "storeys": 1,
    "wall": {
     "material": "brick",
     "colour": "#9a5a44",
     "windows": "ribbon",
-    "windowRatio": 0.35,
+    "windowRatio": 0.4,
     "glassColour": "#394650",
-    "plinth": 0.3,
-    "faces": {
-     "left": "none"
-    }
+    "plinth": 0.3
    },
    "roof": {
-    "form": "gable",
+    "form": "hip",
     "colour": "#f2f2ee",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.2
+    "pitch": 18,
+    "overhang": 1.6
    }
   },
   {
@@ -139,49 +225,80 @@
    "id": "wing-right",
    "footprint": {
     "rect": [
-     18,
+     20,
      9
     ]
    },
    "at": [
-    16,
-    0
+    18,
+    4
    ],
-   "height": 3.8,
+   "height": 4.2,
    "storeys": 1,
    "wall": {
     "material": "brick",
     "colour": "#9a5a44",
     "windows": "ribbon",
-    "windowRatio": 0.35,
+    "windowRatio": 0.4,
     "glassColour": "#394650",
-    "plinth": 0.3,
-    "faces": {
-     "right": "none"
-    }
+    "plinth": 0.3
    },
    "roof": {
-    "form": "gable",
+    "form": "hip",
     "colour": "#f2f2ee",
     "material": "metal-sheet",
-    "pitch": 14,
-    "overhang": 1.2
+    "pitch": 18,
+    "overhang": 1.6
    }
   },
   {
    "type": "core/colonnade",
    "at": [
     0,
-    -8.6,
+    -11.2,
     0
    ],
    "params": {
-    "length": 9,
+    "length": 11,
     "count": 4,
-    "height": 4.6,
-    "radius": 0.42,
+    "height": 5.6,
+    "radius": 0.5,
     "kind": "round",
     "beamHeight": 0.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -19,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 6,
+    "height": 3.4,
+    "radius": 0.25,
+    "kind": "round",
+    "beamHeight": 0.3,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    18,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 5,
+    "height": 3.4,
+    "radius": 0.25,
+    "kind": "round",
+    "beamHeight": 0.3,
     "colour": "#f4f1ea"
    }
   },
@@ -189,12 +306,12 @@
    "type": "core/steps",
    "at": [
     0,
-    -10.4,
+    -14,
     0
    ],
    "params": {
-    "width": 9,
-    "rise": 0.5,
+    "width": 10,
+    "rise": 0.4,
     "run": 1.0,
     "count": 2,
     "colour": "#d9d6cc"
@@ -203,32 +320,20 @@
   {
    "type": "core/flag",
    "at": [
-    -7,
-    -11,
+    -8,
+    -15,
     0
    ],
    "params": {
     "height": 12,
-    "colour": "#1b3a8a"
-   }
-  },
-  {
-   "type": "core/flag",
-   "at": [
-    9,
-    -11,
-    0
-   ],
-   "params": {
-    "height": 10,
-    "colour": "#2a2a2a"
+    "colour": "#1f2f7a"
    }
   },
   {
    "type": "core/sign-board",
    "at": [
     14,
-    -14,
+    -16,
     0
    ],
    "params": {
@@ -282,6 +387,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "portico gable has no crest or truss; columns plain; maroon fascia and brick lower walls approximated; arched gable window and side hip roofs missing; outline simplified"
+  "gaps": "porch roof has plain boxy tympanum with no crest; arched gable window and side hip roofs only approximated; flag lacks yellow stripe and star; walls cream/brick approximated"
  }
 }

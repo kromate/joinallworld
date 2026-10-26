@@ -30,6 +30,31 @@
  "parts": [
   {
    "type": "mass",
+   "id": "brick-plaza",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b98c84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98c84"
+   }
+  },
+  {
+   "type": "mass",
    "id": "ground",
    "footprint": {
     "rect": [
@@ -47,7 +72,7 @@
     "material": "glass-curtain",
     "colour": "#e6e3da",
     "windows": "curtain",
-    "windowRatio": 0.75,
+    "windowRatio": 0.85,
     "glassColour": "#4f8f8c",
     "groundKind": "curtain",
     "plinth": 0.3,
@@ -55,7 +80,8 @@
      "left": "plain",
      "right": "plain",
      "back": "plain"
-    }
+    },
+    "trimColour": "#2f8f8a"
    },
    "roof": {
     "form": "flat",
@@ -77,14 +103,14 @@
     0
    ],
    "z0": 3.6,
-   "height": 2.6,
+   "height": 6.0,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d4d1c8",
-    "windows": "none",
-    "windowRatio": 0.55,
-    "glassColour": "#2f3a42"
+    "colour": "#d8d5cc",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#34424a"
    },
    "roof": {
     "form": "flat",
@@ -116,20 +142,24 @@
      {
       "type": "panels",
       "size": [
-       2.2,
-       1.4
+       5.2,
+       2.1
       ],
       "colours": [
        "#2c4a9c",
        "#e0902c",
-       "#d9b44a",
        "#f0ece0",
-       "#3a62b8"
+       "#3a62b8",
+       "#e8a34a"
       ],
       "faces": [
        "front"
       ],
-      "gap": 0.0
+      "gap": 0.0,
+      "slits": {
+       "fraction": 0.12,
+       "colour": "#f0ece0"
+      }
      }
     ]
    },
@@ -202,33 +232,34 @@
    "id": "bust-plinth",
    "footprint": {
     "rect": [
-     3,
-     3
+     2,
+     2
     ]
    },
    "at": [
     0,
     -20
    ],
-   "height": 6,
+   "height": 4.2,
    "storeys": 1,
    "wall": {
     "material": "granite",
-    "colour": "#7a4a3e",
+    "colour": "#6e4a42",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
     "colour": "#55504c"
-   }
+   },
+   "z0": 1.5
   },
   {
    "type": "mass",
    "id": "bust-base",
    "footprint": {
     "rect": [
-     7,
-     7
+     5.5,
+     5.5
     ]
    },
    "at": [
@@ -245,12 +276,13 @@
    "roof": {
     "form": "flat",
     "colour": "#55504c"
-   }
+   },
+   "z0": 0.5
   },
   {
    "type": "flag",
    "at": [
-    -14,
+    14,
     -12,
     0
    ],
@@ -260,35 +292,6 @@
     "colours": [
      "#00afca"
     ]
-   }
-  },
-  {
-   "type": "mass",
-   "id": "dark-strip",
-   "footprint": {
-    "rect": [
-     60.4,
-     23.2
-    ]
-   },
-   "at": [
-    0,
-    0
-   ],
-   "z0": 6.2,
-   "height": 3.4,
-   "storeys": 1,
-   "wall": {
-    "material": "glass-curtain",
-    "colour": "#2f3a42",
-    "windows": "ribbon",
-    "windowRatio": 0.85,
-    "glassColour": "#222c33"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#bdbab2",
-    "overhang": 0.3
    }
   },
   {
@@ -328,15 +331,15 @@
    "id": "bust-base2",
    "footprint": {
     "rect": [
-     5,
-     5
+     3.4,
+     3.4
     ]
    },
    "at": [
     0,
     -20
    ],
-   "z0": 0.5,
+   "z0": 1.0,
    "height": 0.5,
    "storeys": 1,
    "wall": {
@@ -354,20 +357,20 @@
    "id": "bust",
    "footprint": {
     "rect": [
-     1.8,
-     1.8
+     1.1,
+     1.1
     ]
    },
    "at": [
     0,
     -20
    ],
-   "z0": 6,
-   "height": 2.4,
+   "z0": 5.7,
+   "height": 1.6,
    "storeys": 1,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#2e2a26",
+    "colour": "#55524e",
     "windows": "none"
    },
    "roof": {
@@ -513,6 +516,6 @@
  "review": {
   "rounds": 1,
   "match": "fair",
-  "gaps": "Frieze is a blocky multi-colour panel band, not the swirling figurative mosaic; bust is a dark block; paving is grey not pink brick; shrubs are plain green blocks"
+  "gaps": "Frieze now large blue/orange/white panels but not swirling figurative mosaic; spruce low-poly; shrubs plain blocks; red boards stand in for sign bands"
  }
 }

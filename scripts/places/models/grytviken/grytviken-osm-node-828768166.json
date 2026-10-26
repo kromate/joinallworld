@@ -34,41 +34,49 @@
    "at": [
     0,
     0,
-    0.0
+    0
    ],
    "params": {
     "sections": [
      {
       "z": 0,
       "rect": [
-       0.85,
-       0.3
+       0.72,
+       0.27
       ]
      },
      {
-      "z": 1.1,
+      "z": 1.0,
       "rect": [
-       0.74,
-       0.28
+       0.7,
+       0.25
       ]
      },
      {
       "z": 1.45,
       "rect": [
-       0.6,
-       0.26
+       0.66,
+       0.24
       ]
      },
      {
-      "z": 1.58,
+      "z": 1.55,
       "rect": [
-       0.46,
-       0.22
+       0.56,
+       0.23
       ],
       "cx": 0.04
+     },
+     {
+      "z": 1.62,
+      "rect": [
+       0.34,
+       0.2
+      ],
+      "cx": 0.1
      }
     ],
-    "colour": "#7d7f80"
+    "colour": "#8a8c8b"
    }
   },
   {
@@ -76,138 +84,308 @@
    "id": "kerb-front",
    "at": [
     0,
-    -1.1
+    -0.35
    ],
    "params": {
     "rect": [
-     1.6,
-     0.15
+     1.0,
+     0.1
     ],
     "z0": 0,
-    "height": 0.25,
-    "colour": "#8d8f90"
+    "height": 0.2,
+    "colour": "#a9abab"
    }
   },
   {
    "type": "prism",
    "id": "kerb-l",
    "at": [
-    -0.8,
-    -0.4
+    -0.5,
+    -0.2
    ],
    "params": {
     "rect": [
-     0.15,
-     1.55
+     0.1,
+     0.4
     ],
     "z0": 0,
-    "height": 0.25,
-    "colour": "#8d8f90"
+    "height": 0.2,
+    "colour": "#a9abab"
    }
   },
   {
    "type": "prism",
    "id": "kerb-r",
    "at": [
-    0.8,
-    -0.4
+    0.5,
+    -0.2
    ],
    "params": {
     "rect": [
-     0.15,
-     1.55
-    ],
-    "z0": 0,
-    "height": 0.25,
-    "colour": "#8d8f90"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "slab",
-   "at": [
-    0,
-    -0.9
-   ],
-   "params": {
-    "rect": [
-     0.9,
+     0.1,
      0.4
     ],
     "z0": 0,
-    "height": 0.08,
-    "colour": "#6a6c6e"
+    "height": 0.2,
+    "colour": "#a9abab"
    }
   },
   {
    "type": "loft",
-   "id": "star",
+   "id": "star-h",
    "at": [
     0,
-    -0.16,
+    -0.13,
     0
    ],
    "params": {
     "sections": [
      {
-      "z": 1.2,
+      "z": 1.15,
       "rect": [
-       0.08,
+       0.02,
        0.02
       ]
      },
      {
-      "z": 1.26,
+      "z": 1.3,
       "rect": [
-       0.2,
+       0.3,
        0.02
       ]
      },
      {
-      "z": 1.34,
+      "z": 1.45,
       "rect": [
-       0.2,
-       0.02
-      ]
-     },
-     {
-      "z": 1.4,
-      "rect": [
-       0.08,
+       0.02,
        0.02
       ]
      }
     ],
-    "colour": "#3e4042"
+    "colour": "#6a6d6e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "star-v",
+   "at": [
+    0,
+    -0.13,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.15,
+      "rect": [
+       0.02,
+       0.02
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       0.025,
+       0.02
+      ]
+     },
+     {
+      "z": 1.45,
+      "rect": [
+       0.02,
+       0.02
+      ]
+     }
+    ],
+    "colour": "#6a6d6e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "star-d1",
+   "at": [
+    0,
+    -0.13,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.17,
+      "rect": [
+       0.02,
+       0.02
+      ],
+      "cx": -0.11
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       0.025,
+       0.02
+      ]
+     },
+     {
+      "z": 1.43,
+      "rect": [
+       0.02,
+       0.02
+      ],
+      "cx": 0.11
+     }
+    ],
+    "colour": "#6a6d6e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "star-d2",
+   "at": [
+    0,
+    -0.13,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.17,
+      "rect": [
+       0.02,
+       0.02
+      ],
+      "cx": 0.11
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       0.025,
+       0.02
+      ]
+     },
+     {
+      "z": 1.43,
+      "rect": [
+       0.02,
+       0.02
+      ],
+      "cx": -0.11
+     }
+    ],
+    "colour": "#6a6d6e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text0",
+   "at": [
+    0,
+    -0.13
+   ],
+   "params": {
+    "rect": [
+     0.32000000000000006,
+     0.02
+    ],
+    "z0": 0.62,
+    "height": 0.012,
+    "colour": "#767a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text1",
+   "at": [
+    0,
+    -0.13
+   ],
+   "params": {
+    "rect": [
+     0.28800000000000003,
+     0.02
+    ],
+    "z0": 0.72,
+    "height": 0.012,
+    "colour": "#767a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text2",
+   "at": [
+    0,
+    -0.13
+   ],
+   "params": {
+    "rect": [
+     0.32000000000000006,
+     0.02
+    ],
+    "z0": 0.82,
+    "height": 0.012,
+    "colour": "#767a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text3",
+   "at": [
+    0,
+    -0.13
+   ],
+   "params": {
+    "rect": [
+     0.28800000000000003,
+     0.02
+    ],
+    "z0": 0.92,
+    "height": 0.012,
+    "colour": "#767a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text4",
+   "at": [
+    0,
+    -0.13
+   ],
+   "params": {
+    "rect": [
+     0.32000000000000006,
+     0.02
+    ],
+    "z0": 1.0,
+    "height": 0.012,
+    "colour": "#767a7a"
    }
   },
   {
    "type": "fence-wall",
    "at": [
     0,
-    1.8,
+    0.9,
     0
    ],
    "params": {
-    "length": 8,
-    "height": 1.2,
-    "thickness": 0.12,
+    "length": 6,
+    "height": 1.0,
+    "thickness": 0.14,
     "kind": "railing",
-    "pillarEvery": 2.0,
+    "pillarEvery": 1.5,
     "colour": "#f4f4f0"
    }
   }
  ],
  "site": {
-  "ground": "grass",
+  "ground": "snow",
   "extent": [
    16,
    12
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "not rendered: render server was down; stone taper, kerb and fence composed from photos by eye; star is a flat blank octagon"
+  "gaps": "star is a simple 8-spoke diamond cross, inscription bands are blank; stone has no granite grain; kerb stripe texture from renderer"
  }
 }

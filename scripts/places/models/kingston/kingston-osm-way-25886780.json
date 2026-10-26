@@ -35,164 +35,84 @@
    "params": {
     "points": [
      [
-      66.0,
+      60.0,
       0.0
      ],
      [
-      65.19,
-      8.13
+      57.06,
+      15.45
      ],
      [
-      62.77,
-      16.07
+      48.55,
+      29.38
      ],
      [
-      58.81,
-      23.61
+      35.26,
+      40.45
      ],
      [
-      53.4,
-      30.56
-     ],
-     [
-      46.67,
-      36.77
-     ],
-     [
-      38.79,
-      42.07
-     ],
-     [
-      29.96,
-      46.33
-     ],
-     [
-      20.4,
-      49.45
-     ],
-     [
-      10.32,
-      51.36
+      18.55,
+      47.55
      ],
      [
       0.0,
-      52.0
+      50.0
      ],
      [
-      -10.32,
-      51.36
+      -18.55,
+      47.55
      ],
      [
-      -20.4,
-      49.45
+      -35.26,
+      40.45
      ],
      [
-      -29.96,
-      46.33
+      -48.55,
+      29.38
      ],
      [
-      -38.79,
-      42.07
+      -57.06,
+      15.45
      ],
      [
-      -46.67,
-      36.77
-     ],
-     [
-      -53.4,
-      30.56
-     ],
-     [
-      -58.81,
-      23.61
-     ],
-     [
-      -62.77,
-      16.07
-     ],
-     [
-      -65.19,
-      8.13
-     ],
-     [
-      -66.0,
+      -60.0,
       0.0
      ],
      [
-      -65.19,
-      -8.13
+      -57.06,
+      -15.45
      ],
      [
-      -62.77,
-      -16.07
+      -48.55,
+      -29.38
      ],
      [
-      -58.81,
-      -23.61
+      -35.26,
+      -40.45
      ],
      [
-      -53.4,
-      -30.56
-     ],
-     [
-      -46.67,
-      -36.77
-     ],
-     [
-      -38.79,
-      -42.07
-     ],
-     [
-      -29.96,
-      -46.33
-     ],
-     [
-      -20.4,
-      -49.45
-     ],
-     [
-      -10.32,
-      -51.36
+      -18.55,
+      -47.55
      ],
      [
       -0.0,
-      -52.0
+      -50.0
      ],
      [
-      10.32,
-      -51.36
+      18.55,
+      -47.55
      ],
      [
-      20.4,
-      -49.45
+      35.26,
+      -40.45
      ],
      [
-      29.96,
-      -46.33
+      48.55,
+      -29.38
      ],
      [
-      38.79,
-      -42.07
-     ],
-     [
-      46.67,
-      -36.77
-     ],
-     [
-      53.4,
-      -30.56
-     ],
-     [
-      58.81,
-      -23.61
-     ],
-     [
-      62.77,
-      -16.07
-     ],
-     [
-      65.19,
-      -8.13
+      57.06,
+      -15.45
      ]
     ],
     "height": 0.12,
@@ -243,23 +163,18 @@
     ]
    },
    "at": [
-    8,
-    -68
+    4,
+    -60
    ],
    "height": 16,
    "storeys": 3,
    "wall": {
     "material": "concrete",
     "colour": "#e6e6e0",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.45,
     "plinth": 0.5,
-    "pattern": [
-     {
-      "type": "bands",
-      "colour": "#c5c7c3"
-     }
-    ],
+    "pattern": [],
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -290,7 +205,10 @@
     "thickness": 0.15,
     "folds": 4,
     "colour": "#f3f3ef"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
@@ -302,7 +220,7 @@
     ]
    },
    "at": [
-    -76,
+    -68,
     -34
    ],
    "height": 8,
@@ -310,7 +228,7 @@
    "wall": {
     "material": "painted-render",
     "colour": "#d9d3c0",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.25,
     "plinth": 0.3
    },
@@ -331,7 +249,7 @@
     ]
    },
    "at": [
-    84,
+    72,
     -50
    ],
    "height": 10,
@@ -360,18 +278,18 @@
      0,
      0
     ],
-    "radius": 70,
-    "radiusY": 58,
+    "radius": 60,
+    "radiusY": 50,
     "startDeg": 0,
     "endDeg": 180,
     "tiers": [
      {
-      "rows": 9,
+      "rows": 6,
       "rise": 0.5,
       "run": 0.8
      },
      {
-      "rows": 7,
+      "rows": 4,
       "rise": 0.55,
       "run": 0.8,
       "gap": 2.2,
@@ -384,16 +302,16 @@
      "#e3b83a",
      "#3f8a55"
     ],
-    "blocks": 8,
+    "blocks": 3,
     "concreteColour": "#d7d8d4",
     "under": "solid",
-    "facetDeg": 12,
+    "facetDeg": 60,
     "canopy": {
      "height": 14,
      "depth": 9,
      "colour": "#eeeeea",
      "slopeDeg": 3,
-     "supports": 8
+     "supports": 3
     }
    }
   },
@@ -409,22 +327,26 @@
      0,
      0
     ],
-    "radius": 70,
-    "radiusY": 58,
+    "radius": 60,
+    "radiusY": 50,
     "startDeg": 180,
     "endDeg": 235,
-    "rows": 8,
+    "rows": 6,
     "rise": 0.45,
     "run": 0.8,
     "seatColours": [
      "#d98b3a",
      "#2f63a8"
     ],
-    "blocks": 4,
+    "blocks": 3,
     "concreteColour": "#d7d8d4",
     "under": "solid",
-    "facetDeg": 12
-   }
+    "facetDeg": 22
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "stand",
@@ -438,28 +360,32 @@
      0,
      0
     ],
-    "radius": 70,
-    "radiusY": 58,
+    "radius": 60,
+    "radiusY": 50,
     "startDeg": 305,
     "endDeg": 360,
-    "rows": 8,
+    "rows": 6,
     "rise": 0.45,
     "run": 0.8,
     "seatColours": [
      "#d98b3a",
      "#2f63a8"
     ],
-    "blocks": 4,
+    "blocks": 3,
     "concreteColour": "#d7d8d4",
     "under": "solid",
-    "facetDeg": 12
-   }
+    "facetDeg": 22
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "scoreboard",
    "at": [
-    60,
-    52,
+    54,
+    46,
     0
    ],
    "params": {
@@ -468,71 +394,90 @@
     "post_height": 3,
     "facing": "south",
     "colour": "#2a2d31"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "floodlight-mast",
    "at": [
-    -70,
-    -52,
+    -59,
+    -46,
     0
    ],
    "params": {
     "height": 34,
     "head_width": 5,
     "colour": "#aeb4ba"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
    "at": [
-    80,
-    -60,
+    68,
+    -54,
     0
    ],
    "params": {
     "height": 34,
     "head_width": 5,
     "colour": "#aeb4ba"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
    "at": [
-    -78,
-    40,
+    -66,
+    36,
     0
    ],
    "params": {
     "height": 34,
     "head_width": 5,
     "colour": "#aeb4ba"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "floodlight-mast",
    "at": [
-    86,
-    30,
+    73,
+    27,
     0
    ],
    "params": {
     "height": 34,
     "head_width": 5,
     "colour": "#aeb4ba"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/tree",
    "at": [
     -30,
-    -92,
+    -80,
     0
    ],
    "params": {
     "kind": "broadleaf",
     "height": 9,
-    "count": 5,
+    "count": 3,
     "spread": 5,
     "line": 50,
     "colour": "#4a7d3a"

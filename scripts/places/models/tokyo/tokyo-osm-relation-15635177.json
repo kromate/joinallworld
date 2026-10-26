@@ -18,8 +18,8 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 4,
-  "fovDeg": 40,
+  "pitchDeg": 8,
+  "fovDeg": 34,
   "fit": "building"
  },
  "parts": [
@@ -27,8 +27,10 @@
    "type": "mass",
    "id": "lawn",
    "footprint": {
-    "osm": true,
-    "simplify": 3
+    "rect": [
+     120,
+     62
+    ]
    },
    "height": 0.5,
    "storeys": 1,
@@ -39,23 +41,27 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d9d58"
-   }
+    "colour": "#8a9a55"
+   },
+   "at": [
+    0,
+    -4
+   ]
   },
   {
    "type": "mosque-domed/pavilion",
    "at": [
-    -4,
-    -14,
+    -6,
+    12,
     0
    ],
    "params": {
     "width": 12,
-    "depth": 10,
-    "height": 4.4,
+    "depth": 9,
+    "height": 3.4,
     "roof": "hip",
-    "rise": 2.2,
-    "posts": 4,
+    "rise": 2.8,
+    "posts": 6,
     "colour": "#9fb4b0",
     "cap_colour": "#3f8f8c"
    }
@@ -63,13 +69,13 @@
   {
    "type": "floodlight-mast",
    "at": [
-    -34,
-    -8,
+    -40,
+    -2,
     0
    ],
    "params": {
-    "height": 18,
-    "head_width": 3
+    "height": 24,
+    "head_width": 2.4
    }
   },
   {
@@ -82,123 +88,433 @@
     ]
    },
    "at": [
-    40,
+    30,
     36
    ],
-   "height": 28,
+   "height": 30,
    "storeys": 4,
    "wall": {
     "material": "metal-cladding",
-    "colour": "#d3d6d6",
-    "windows": "none",
-    "bands": "#2a9d9a"
+    "colour": "#d9dcdc",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#aeb2b4"
+    "colour": "#c4c7c8"
    }
   },
   {
-   "type": "mass",
-   "id": "office",
-   "footprint": {
-    "rect": [
-     30,
-     16
-    ]
-   },
+   "type": "prism",
+   "id": "stripe0",
    "at": [
-    -12,
-    34
+    49,
+    22.8,
+    25.2
    ],
-   "height": 14,
-   "storeys": 3,
-   "wall": {
-    "material": "concrete",
-    "colour": "#b9bec4",
-    "windows": "ribbon",
-    "windowRatio": 0.3
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#9a9d9f"
+   "params": {
+    "rect": [
+     20,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#2a9d9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe1",
+   "at": [
+    47,
+    22.8,
+    26.8
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#2a9d9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe2",
+   "at": [
+    53,
+    22.8,
+    28.4
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#2a9d9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    18,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     120,
+     7
+    ],
+    "height": 0.05,
+    "colour": "#4a4c50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "van0",
+   "at": [
+    8,
+    18.5,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.1
+    ],
+    "height": 2.2,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "van1",
+   "at": [
+    22,
+    18.5,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.1
+    ],
+    "height": 2.2,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "at": [
+    -30,
+    52,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     40,
+     14
+    ],
+    "height": 16,
+    "colour": "#9ca2a8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    26,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "height": 5,
+    "thickness": 0.15,
+    "colour": "#7a7e80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wash-bench",
+   "at": [
+    0,
+    13.5,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad0",
+   "at": [
+    -18,
+    -16,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#b0746a"
    }
   },
   {
    "type": "prism",
    "id": "bbq0",
    "at": [
-    -30,
-    -22,
-    0
+    -18,
+    -16,
+    0.56
    ],
    "params": {
     "rect": [
-     1.8,
-     1.8
+     2.2,
+     2.2
     ],
-    "height": 0.9,
+    "height": 1.7,
     "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plate0",
+   "at": [
+    -18,
+    -17.08,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.05
+    ],
+    "height": 0.8,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad1",
+   "at": [
+    -2,
+    -12,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#b0746a"
    }
   },
   {
    "type": "prism",
    "id": "bbq1",
    "at": [
-    14,
-    -18,
-    0
+    -2,
+    -12,
+    0.56
    ],
    "params": {
     "rect": [
-     1.8,
-     1.8
+     2.2,
+     2.2
     ],
-    "height": 0.9,
+    "height": 1.7,
     "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plate1",
+   "at": [
+    -2,
+    -13.08,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.05
+    ],
+    "height": 0.8,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad2",
+   "at": [
+    10,
+    -22,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#b0746a"
    }
   },
   {
    "type": "prism",
    "id": "bbq2",
    "at": [
-    8,
-    -12,
-    0
+    10,
+    -22,
+    0.56
    ],
    "params": {
     "rect": [
-     1.8,
-     1.8
+     2.2,
+     2.2
     ],
-    "height": 0.9,
+    "height": 1.7,
     "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plate2",
+   "at": [
+    10,
+    -23.08,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.05
+    ],
+    "height": 0.8,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad3",
+   "at": [
+    22,
+    -10,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#b0746a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bbq3",
+   "at": [
+    22,
+    -10,
+    0.56
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 1.7,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plate3",
+   "at": [
+    22,
+    -11.08,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.05
+    ],
+    "height": 0.8,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad4",
+   "at": [
+    -30,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#b0746a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bbq4",
+   "at": [
+    -30,
+    0,
+    0.56
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 1.7,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plate4",
+   "at": [
+    -30,
+    -1.08,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.05
+    ],
+    "height": 0.8,
+    "colour": "#f4f4f0"
    }
   }
  ],
  "site": {
   "ground": "grass",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     30,
-     20
-    ],
-    "height": 7
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     -45,
-     25
-    ],
-    "height": 7
-   }
-  ],
+  "trees": [],
   "extent": [
-   150,
-   100
+   160,
+   110
   ]
  },
  "schema": "allworld-place-model",
@@ -207,7 +523,7 @@
  "venueId": "tokyo-osm-relation-15635177",
  "review": {
   "rounds": 2,
-  "match": "fair",
-  "gaps": "park shown at 0.15 scale so lawn/pavilion proportions off; warehouse and picnic shelter right, barbecue blocks tiny, no net fence or road"
+  "match": "rough",
+  "gaps": "flat olive lawn, warehouse slab with teal stripes, pavilion, mast and numbered barbecue pits present; camera fits the whole 800 m park so foreground is small, net fence and vans only sketched, car park block is a plain box"
  }
 }

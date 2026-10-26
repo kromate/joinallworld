@@ -22,8 +22,8 @@
  ],
  "camera": {
   "yawDeg": 30,
-  "pitchDeg": 8,
-  "fovDeg": 50,
+  "pitchDeg": 6,
+  "fovDeg": 38,
   "aspect": 1.333
  },
  "parts": [
@@ -32,25 +32,20 @@
    "id": "podium",
    "footprint": {
     "osm": true,
-    "simplify": 4
+    "simplify": 10
    },
    "height": 13,
    "storeys": 3,
    "wall": {
     "material": "exposed-concrete",
-    "colour": "#d6d4cc",
+    "colour": "#ecebe4",
     "windows": "ribbon",
-    "windowRatio": 0.5,
-    "bay": 10,
-    "glassColour": "#8fa6b2",
+    "windowRatio": 0.3,
+    "bay": 16,
+    "glassColour": "#b8c4c8",
     "groundKind": "shopfront",
     "groundHeight": 4.4,
-    "pattern": [
-     {
-      "type": "balconies",
-      "colour": "#c4c2ba"
-     }
-    ]
+    "pattern": []
    },
    "roof": {
     "form": "flat",
@@ -63,13 +58,13 @@
    "id": "upper-block-a",
    "footprint": {
     "rect": [
-     34,
-     30
+     42,
+     34
     ]
    },
    "at": [
-    37.7,
-    -22
+    41.5,
+    -26
    ],
    "rotDeg": -30,
    "z0": 13,
@@ -79,7 +74,7 @@
     "material": "exposed-concrete",
     "colour": "#f0eee6",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.4,
     "bay": 8,
     "glassColour": "#9aa7ab",
     "trimColour": "#f2f0e8",
@@ -101,13 +96,13 @@
    "id": "upper-block-b",
    "footprint": {
     "rect": [
-     24,
-     26
+     30,
+     30
     ]
    },
    "at": [
-    2,
-    0
+    5.5,
+    -4
    ],
    "rotDeg": -30,
    "z0": 13,
@@ -117,7 +112,7 @@
     "material": "exposed-concrete",
     "colour": "#f0eee6",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.4,
     "bay": 8,
     "glassColour": "#9aa7ab",
     "trimColour": "#f2f0e8",
@@ -138,18 +133,18 @@
    "type": "prism",
    "id": "red-fin",
    "at": [
-    50.7,
-    -29.5,
+    52,
+    -31,
     0
    ],
    "rotDeg": -30,
    "params": {
     "rect": [
-     4,
-     1.6
+     6,
+     2
     ],
     "z0": 0,
-    "height": 20,
+    "height": 24,
     "colour": "#a52d33",
     "topColour": "#a52d33"
    }
@@ -166,7 +161,7 @@
    "params": {
     "width": 20,
     "height": 6,
-    "colour": "#d9553e"
+    "colour": "#ffffff"
    }
   },
   {
@@ -181,7 +176,7 @@
    "params": {
     "width": 16,
     "height": 6,
-    "colour": "#2d5aa8"
+    "colour": "#f4f4f0"
    }
   },
   {
@@ -196,7 +191,22 @@
    "params": {
     "width": 14,
     "height": 5,
-    "colour": "#c9a24a"
+    "colour": "#fafafa"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "fin-sign",
+   "at": [
+    52,
+    -31,
+    12
+   ],
+   "rotDeg": 60,
+   "params": {
+    "width": 4.5,
+    "height": 4,
+    "colour": "#ffffff"
    }
   }
  ],
@@ -210,8 +220,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "cantilevered ribbon-glazed upper blocks; podium corner not chamfered, shopfront and balcony bands simplified, signs blank boards, camera far wider than photo"
+  "gaps": "upper blocks now cantilever over podium but sign boards hidden/not facing street; glazed shopfront and balcony bands still simplified; red fin has no legible sign; camera elevated vs street-level photo"
  }
 }

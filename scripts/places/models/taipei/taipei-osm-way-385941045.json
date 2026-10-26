@@ -12,15 +12,7 @@
    "author": "玄史生",
    "view": "street",
    "file": "/tmp/places-evidence/taipei/yf1.jpg",
-   "used": "wide mown grass levee, curving dark asphalt bikeway with white edge lines, slim street lamps, reeds, trees at the river side"
-  },
-  {
-   "kind": "photo",
-   "url": "https://commons.wikimedia.org/wiki/File:IGD2008Taipei_Soccer_Yinfeng_Riverside_Park.jpg",
-   "licence": "CC BY-SA 3.0",
-   "author": "Rico Shen",
-   "view": "street",
-   "used": "football pitch in the park"
+   "used": "wide mown grass levee, a smooth curving dark asphalt bikeway with white edge lines, slim single-arm street lamps, reeds at the river side, skyline of pale 15-30 storey towers and hills across the river"
   },
   {
    "kind": "osm",
@@ -30,62 +22,81 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 14,
-  "fovDeg": 40,
+  "pitchDeg": 8,
+  "fovDeg": 50,
   "aspect": 1.5
  },
  "parts": [
-  {
-   "type": "prism",
-   "id": "floodwall",
-   "params": {
-    "points": [
-     [
-      -75,
-      36
-     ],
-     [
-      75,
-      36
-     ],
-     [
-      75,
-      38.5
-     ],
-     [
-      -75,
-      38.5
-     ]
-    ],
-    "height": 3.5,
-    "colour": "#b5b8b6"
-   }
-  },
   {
    "type": "prism",
    "id": "levee",
    "params": {
     "points": [
      [
-      -75,
-      18
+      -80,
+      -28
      ],
      [
-      75,
-      18
+      80,
+      -28
      ],
      [
-      75,
-      36
+      80,
+      22
      ],
      [
-      -75,
-      36
+      -80,
+      22
      ]
     ],
-    "height": 2,
+    "height": 1.6,
     "topScale": 1,
-    "colour": "#5f8f45"
+    "colour": "#6a9a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "levee-slope",
+   "params": {
+    "points": [
+     [
+      -80,
+      22
+     ],
+     [
+      80,
+      22
+     ],
+     [
+      80,
+      34
+     ],
+     [
+      -80,
+      34
+     ]
+    ],
+    "height": 1.6,
+    "topScale": 1,
+    "colour": "#557f3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "reeds",
+   "at": [
+    0,
+    28
+   ],
+   "params": {
+    "rect": [
+     150,
+     5
+    ],
+    "z0": 0,
+    "height": 3,
+    "topScale": 0.8,
+    "colour": "#a89a55"
    }
   },
   {
@@ -93,37 +104,41 @@
    "at": [
     0,
     0,
-    0
+    1.62
    ],
    "params": {
     "points": [
      [
-      -75,
+      -70,
+      -26
+     ],
+     [
+      -40,
+      -26
+     ],
+     [
+      -10,
+      -20
+     ],
+     [
+      14,
       -8
      ],
      [
-      -42,
-      -12
-     ],
-     [
-      -8,
-      -6
-     ],
-     [
       28,
-      2
+      6
      ],
      [
-      60,
-      -6
+      34,
+      20
      ],
      [
-      75,
-      -4
+      44,
+      30
      ]
     ],
-    "width": 5.5,
-    "colour": "#4a4a4e"
+    "width": 10,
+    "colour": "#46464a"
    }
   },
   {
@@ -131,42 +146,83 @@
    "at": [
     0,
     0,
-    0
+    1.64
    ],
    "params": {
     "points": [
      [
-      -75,
-      24
+      -70.0,
+      -30.8
      ],
      [
-      -20,
-      27
+      -39.52,
+      -30.78
      ],
      [
-      35,
-      24
+      -8.48,
+      -24.55
      ],
      [
-      75,
-      28
+      16.71,
+      -11.96
+     ],
+     [
+      31.91,
+      3.21
+     ],
+     [
+      37.99,
+      17.34
+     ],
+     [
+      47.39,
+      26.61
      ]
     ],
-    "width": 2.4,
-    "colour": "#d8cfc0"
+    "width": 0.4,
+    "colour": "#eeeeea"
    }
   },
   {
-   "type": "football-pitch",
+   "type": "path-strip",
    "at": [
-    -40,
-    -45,
-    0.05
+    0,
+    0,
+    1.64
    ],
    "params": {
-    "length": 60,
-    "width": 38,
-    "stripes": 6
+    "points": [
+     [
+      -70.0,
+      -21.2
+     ],
+     [
+      -40.48,
+      -21.22
+     ],
+     [
+      -11.52,
+      -15.45
+     ],
+     [
+      11.29,
+      -4.04
+     ],
+     [
+      24.09,
+      8.79
+     ],
+     [
+      30.01,
+      22.66
+     ],
+     [
+      40.61,
+      33.39
+     ]
+    ],
+    "width": 0.4,
+    "colour": "#eeeeea"
    }
   },
   {
@@ -175,107 +231,215 @@
     "of": {
      "type": "lamp",
      "params": {
-      "height": 8
+      "height": 9
      }
     },
     "mode": "line",
     "start": [
-     -68,
-     -2
+     -60,
+     -17
     ],
     "end": [
-     68,
-     -2
+     20,
+     6
     ],
-    "count": 9
+    "count": 5
    }
   },
   {
-   "type": "array",
-   "params": {
-    "of": {
-     "type": "floodlight-mast",
-     "params": {
-      "height": 22
-     }
-    },
-    "mode": "line",
-    "start": [
-     -70,
-     -60
-    ],
-    "end": [
-     -30,
-     -60
-    ],
-    "count": 3
-   }
-  },
-  {
-   "type": "pavilion",
+   "type": "prism",
+   "id": "tower0",
    "at": [
-    30,
-    -24,
-    0
+    -70,
+    70
    ],
    "params": {
-    "width": 8,
-    "depth": 6,
-    "height": 3.8
+    "rect": [
+     16,
+     15
+    ],
+    "z0": 0,
+    "height": 14.960000000000003,
+    "colour": "#d9d6cf",
+    "windows": "none"
    }
   },
   {
-   "type": "pavilion",
+   "type": "prism",
+   "id": "tower1",
    "at": [
-    -12,
-    -26,
-    0
+    -52,
+    70
    ],
    "params": {
-    "width": 7,
-    "depth": 5,
-    "height": 3.6
+    "rect": [
+     14,
+     16
+    ],
+    "z0": 0,
+    "height": 21.120000000000005,
+    "colour": "#cfd0cc",
+    "windows": "none"
    }
   },
   {
-   "type": "core/steps",
+   "type": "prism",
+   "id": "tower2",
    "at": [
-    50,
-    20,
-    0
+    -34,
+    70
    ],
    "params": {
-    "width": 10,
-    "rise": 2,
-    "run": 1.8,
-    "count": 4,
-    "colour": "#b5b8b6"
+    "z0": 0,
+    "height": 13.200000000000001,
+    "colour": "#e2ddd2",
+    "radius": 6.0,
+    "n": 12,
+    "windows": "none"
    }
   },
   {
-   "type": "tree-grove",
+   "type": "prism",
+   "id": "tower3",
+   "at": [
+    -16,
+    70
+   ],
+   "params": {
+    "rect": [
+     16,
+     18
+    ],
+    "z0": 0,
+    "height": 25.520000000000007,
+    "colour": "#c9cdd0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower4",
+   "at": [
+    4,
+    70
+   ],
+   "params": {
+    "z0": 0,
+    "height": 18.480000000000004,
+    "colour": "#d6cfc4",
+    "radius": 7.0,
+    "n": 12,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower5",
+   "at": [
+    22,
+    70
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "z0": 0,
+    "height": 30.800000000000004,
+    "colour": "#c9cdd0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower6",
+   "at": [
+    44,
+    70
+   ],
+   "params": {
+    "z0": 0,
+    "height": 17.6,
+    "colour": "#e2ddd2",
+    "radius": 7.0,
+    "n": 12,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower7",
+   "at": [
+    62,
+    70
+   ],
+   "params": {
+    "rect": [
+     12,
+     14
+    ],
+    "z0": 0,
+    "height": 22.880000000000003,
+    "colour": "#cfd0cc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill1",
+   "at": [
+    -10,
+    100
+   ],
+   "params": {
+    "rect": [
+     130,
+     16
+    ],
+    "z0": 0,
+    "height": 30,
+    "topScale": [
+     0.6,
+     0.3
+    ],
+    "colour": "#6f8a78"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill2",
    "at": [
     52,
-    -34,
-    0
+    102
    ],
    "params": {
-    "width": 36,
-    "depth": 22,
-    "count": 8
+    "rect": [
+     50,
+     16
+    ],
+    "z0": 0,
+    "height": 22,
+    "topScale": [
+     0.6,
+     0.3
+    ],
+    "colour": "#7c9486"
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    -50,
-    10,
+    -45,
+    28,
     0
    ],
    "params": {
-    "width": 36,
-    "depth": 14,
-    "count": 6
+    "width": 30,
+    "depth": 4,
+    "count": 4,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 6
    }
   }
  ],
@@ -289,8 +453,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Photo is a long low-angle view of the levee; model is a short stretch with generic pitch, pavilions and floodlights; no skyline, reeds or river, bikeway thin."
+  "gaps": "camera sits far back so the levee reads as a small plot; skyline towers are plain pale boxes and cylinders; bikeway is wider and curved but the white edge lines are barely visible; reeds are a single tan strip; no river water between levee and towers"
  }
 }

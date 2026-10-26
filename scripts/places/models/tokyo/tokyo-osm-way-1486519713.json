@@ -77,12 +77,12 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6e1a12",
+    "colour": "#3a1410",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6e1a12"
+    "colour": "#3a1410"
    }
   },
   {
@@ -103,12 +103,12 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6e1a12",
+    "colour": "#3a1410",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6e1a12"
+    "colour": "#3a1410"
    }
   },
   {
@@ -129,12 +129,12 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#6e1a12",
+    "colour": "#3a1410",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6e1a12"
+    "colour": "#3a1410"
    }
   },
   {
@@ -162,9 +162,10 @@
      "type": "prism",
      "params": {
       "n": 10,
-      "radius": 0.3,
+      "radius": 0.42,
       "height": 4.6,
-      "colour": "#b32a1d"
+      "colour": "#b3261e",
+      "material": "painted-render"
      }
     }
    }
@@ -194,9 +195,10 @@
      "type": "prism",
      "params": {
       "n": 10,
-      "radius": 0.3,
+      "radius": 0.42,
       "height": 4.6,
-      "colour": "#b32a1d"
+      "colour": "#b3261e",
+      "material": "painted-render"
      }
     }
    }
@@ -215,8 +217,13 @@
      0.5
     ],
     "height": 0.6,
-    "colour": "#b32a1d"
-   }
+    "colour": "#b32a1d",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -232,8 +239,13 @@
      0.3
     ],
     "height": 0.4,
-    "colour": "#b32a1d"
-   }
+    "colour": "#b32a1d",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
@@ -249,7 +261,8 @@
      3.0
     ],
     "height": 3.6,
-    "colour": "#7a1d14"
+    "colour": "#7a1d14",
+    "material": "painted-render"
    }
   },
   {
@@ -262,12 +275,13 @@
    ],
    "params": {
     "rect": [
-     9.4,
-     6.4
+     10.2,
+     7.2
     ],
     "height": 1.1,
-    "colour": "#f2f0ea",
-    "bottom": true
+    "colour": "#f6f4ee",
+    "bottom": true,
+    "material": "painted-render"
    }
   },
   {
@@ -280,11 +294,12 @@
    ],
    "params": {
     "rect": [
-     10.4,
-     7.4
+     11.6,
+     8.6
     ],
     "height": 0.5,
-    "colour": "#b32a1d"
+    "colour": "#b3261e",
+    "material": "painted-render"
    }
   },
   {
@@ -298,48 +313,256 @@
     "width": 10.6,
     "depth": 7.6,
     "rise": 2.6,
-    "overhang": 1.3,
-    "upturn": 0.7,
+    "overhang": 2.3,
+    "upturn": 1.3,
     "colour": "#4b4e53",
     "trim": "#c9a23a",
     "material": "clay-tile",
-    "ridge": true
+    "ridge": false
    }
+  },
+  {
+   "type": "loft",
+   "id": "karahafu-gold",
+   "at": [
+    0,
+    -3.5,
+    5.7
+   ],
+   "params": {
+    "colour": "#d8b04a",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       6.2,
+       0.9
+      ]
+     },
+     {
+      "z": 0.19,
+      "rect": [
+       5.8,
+       0.9
+      ]
+     },
+     {
+      "z": 0.44,
+      "rect": [
+       5.0,
+       0.9
+      ]
+     },
+     {
+      "z": 0.72,
+      "rect": [
+       4.0,
+       0.9
+      ]
+     },
+     {
+      "z": 0.99,
+      "rect": [
+       3.1,
+       0.9
+      ]
+     },
+     {
+      "z": 1.26,
+      "rect": [
+       2.3,
+       0.9
+      ]
+     },
+     {
+      "z": 1.54,
+      "rect": [
+       1.7,
+       0.9
+      ]
+     },
+     {
+      "z": 1.81,
+      "rect": [
+       1.2,
+       0.9
+      ]
+     },
+     {
+      "z": 2.09,
+      "rect": [
+       0.5,
+       0.9
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "loft",
    "id": "karahafu",
    "at": [
     0,
-    -3.3,
-    6.4
+    -3.8,
+    5.7
    ],
    "params": {
-    "colour": "#4b4e53",
+    "colour": "#1c1c1e",
     "sections": [
      {
-      "z": 0,
+      "z": 0.0,
       "rect": [
-       4.4,
-       1.2
+       5.95,
+       0.5
       ]
      },
      {
-      "z": 1.4,
+      "z": 0.19,
       "rect": [
-       2.6,
-       0.9
+       5.57,
+       0.5
       ]
      },
      {
-      "z": 2.2,
+      "z": 0.44,
       "rect": [
-       0.8,
-       0.4
+       4.8,
+       0.5
+      ]
+     },
+     {
+      "z": 0.72,
+      "rect": [
+       3.84,
+       0.5
+      ]
+     },
+     {
+      "z": 0.99,
+      "rect": [
+       2.98,
+       0.5
+      ]
+     },
+     {
+      "z": 1.26,
+      "rect": [
+       2.21,
+       0.5
+      ]
+     },
+     {
+      "z": 1.54,
+      "rect": [
+       1.63,
+       0.5
+      ]
+     },
+     {
+      "z": 1.81,
+      "rect": [
+       1.15,
+       0.5
+      ]
+     },
+     {
+      "z": 2.09,
+      "rect": [
+       0.48,
+       0.5
       ]
      }
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "karahafu-infill",
+   "at": [
+    0,
+    -4.1,
+    5.8
+   ],
+   "params": {
+    "colour": "#a8281c",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       4.34,
+       0.3
+      ]
+     },
+     {
+      "z": 0.19,
+      "rect": [
+       4.06,
+       0.3
+      ]
+     },
+     {
+      "z": 0.44,
+      "rect": [
+       3.5,
+       0.3
+      ]
+     },
+     {
+      "z": 0.72,
+      "rect": [
+       2.8,
+       0.3
+      ]
+     },
+     {
+      "z": 0.99,
+      "rect": [
+       2.17,
+       0.3
+      ]
+     },
+     {
+      "z": 1.26,
+      "rect": [
+       1.61,
+       0.3
+      ]
+     },
+     {
+      "z": 1.54,
+      "rect": [
+       1.19,
+       0.3
+      ]
+     },
+     {
+      "z": 1.81,
+      "rect": [
+       0.84,
+       0.3
+      ]
+     },
+     {
+      "z": 2.09,
+      "rect": [
+       0.35,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/steps",
@@ -369,7 +592,11 @@
     "thickness": 0.08,
     "kind": "rail",
     "colour": "#26282b"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "fence-wall",
@@ -384,7 +611,11 @@
     "thickness": 0.08,
     "kind": "rail",
     "colour": "#26282b"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -420,6 +651,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Eaves bracket complexes, gilded edges and the curved kara-hafu gable are simplified (gable reads as a plain pyramid); lacquer reads brick-textured; railings and hall bays simplified."
+  "gaps": "Kara-hafu gable is a simple cusped loft (no carving); eaves lack the dougong bracket complexes and are only modestly swept; bracket band renders blue-grey; ridge direction and the hall bays are simplified."
  }
 }

@@ -3,7 +3,7 @@
  "version": 2,
  "city": "stanley",
  "venueId": "stanley-osm-way-942254769",
- "verified": "photo",
+ "verified": "footprint",
  "evidence": [
   {
    "kind": "photo",
@@ -12,7 +12,7 @@
    "author": "Nadriamez",
    "view": "front",
    "file": "/tmp/places-evidence/stanley/college1.jpg",
-   "used": "long two-storey buff stone-block range with projecting gabled bays, maroon pitched roof, blue-framed windows in a regular rhythm, long glazed rooflight along the ridge, cars on grass-edged forecourt; the Community School is the same campus as Falkland College, so identity is likely but not certain"
+   "used": "UNCONFIRMED: photo shows the Falkland Islands Community School (Stanley); the Falkland College OSM polygon is on the same school campus and about the same size (52 x 19 m), so the look (buff stone, maroon roof, glazed ridge monitor, projecting gabled bays, blue-framed ganged windows, grassy bank) is borrowed, not verified as this building"
   },
   {
    "kind": "osm",
@@ -34,47 +34,108 @@
    "footprint": {
     "polygon": [
      [
-      -26.3,
+      -22,
       -4.5
      ],
      [
-      26.2,
-      -4.7
+      22,
+      -4.6
      ],
      [
-      26.1,
+      22,
       9.9
      ],
      [
-      -26.3,
+      -22,
       9.4
      ]
     ]
    },
-   "height": 7.4,
+   "height": 7.2,
    "storeys": 2,
    "wall": {
     "material": "sandstone",
-    "colour": "#b8a98c",
-    "windows": "punched",
-    "windowRatio": 0.32,
-    "glassColour": "#2f5f9a",
-    "bay": 3.3,
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
     "plinth": 0.4,
-    "faces": {
-     "front": "punched",
-     "back": "punched",
-     "left": "punched",
-     "right": "punched"
-    },
     "bands": "#a89877"
    },
    "roof": {
-    "form": "hip",
     "colour": "#6b3a3d",
     "material": "corrugated",
-    "rise": 2.0,
-    "overhang": 0.5
+    "overhang": 0.4,
+    "form": "gable",
+    "rise": 2.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing-0",
+   "footprint": {
+    "rect": [
+     4.6,
+     13
+    ]
+   },
+   "at": [
+    -24.2,
+    2.9
+   ],
+   "height": 6.0,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "colour": "#6b3a3d",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "form": "gable",
+    "rise": 2.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing-1",
+   "footprint": {
+    "rect": [
+     4.6,
+     13
+    ]
+   },
+   "at": [
+    24.2,
+    2.9
+   ],
+   "height": 6.0,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "colour": "#6b3a3d",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "form": "gable",
+    "rise": 2.2,
+    "axis": "y"
    }
   },
   {
@@ -83,35 +144,35 @@
    "footprint": {
     "rect": [
      7,
-     5.5
+     5.4
     ]
    },
    "at": [
-    -21,
+    -17,
     -7.2
    ],
-   "height": 7.4,
+   "height": 7.2,
    "storeys": 2,
    "wall": {
     "material": "sandstone",
-    "colour": "#b8a98c",
-    "windows": "punched",
-    "windowRatio": 0.34,
-    "glassColour": "#2f5f9a",
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
+    "plinth": 0.4,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    },
-    "bay": 2.2,
-    "plinth": 0.4
+    }
    },
    "roof": {
-    "form": "gable",
     "colour": "#6b3a3d",
     "material": "corrugated",
-    "rise": 2.8,
     "overhang": 0.3,
+    "form": "gable",
+    "rise": 2.8,
     "axis": "y"
    }
   },
@@ -120,36 +181,36 @@
    "id": "gable-1",
    "footprint": {
     "rect": [
-     7,
-     5.5
+     5.5,
+     3.4000000000000004
     ]
    },
    "at": [
-    -7,
-    -7.2
+    -5,
+    -6.2
    ],
-   "height": 7.4,
+   "height": 7.2,
    "storeys": 2,
    "wall": {
     "material": "sandstone",
-    "colour": "#b8a98c",
-    "windows": "punched",
-    "windowRatio": 0.34,
-    "glassColour": "#2f5f9a",
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
+    "plinth": 0.4,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    },
-    "bay": 2.2,
-    "plinth": 0.4
+    }
    },
    "roof": {
-    "form": "gable",
     "colour": "#6b3a3d",
     "material": "corrugated",
-    "rise": 2.8,
     "overhang": 0.3,
+    "form": "gable",
+    "rise": 2.8,
     "axis": "y"
    }
   },
@@ -158,36 +219,36 @@
    "id": "gable-2",
    "footprint": {
     "rect": [
-     7,
-     5.5
+     8.5,
+     5.4
     ]
    },
    "at": [
-    7,
+    8,
     -7.2
    ],
-   "height": 7.4,
+   "height": 7.2,
    "storeys": 2,
    "wall": {
     "material": "sandstone",
-    "colour": "#b8a98c",
-    "windows": "punched",
-    "windowRatio": 0.34,
-    "glassColour": "#2f5f9a",
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
+    "plinth": 0.4,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    },
-    "bay": 2.2,
-    "plinth": 0.4
+    }
    },
    "roof": {
-    "form": "gable",
     "colour": "#6b3a3d",
     "material": "corrugated",
-    "rise": 2.8,
     "overhang": 0.3,
+    "form": "gable",
+    "rise": 2.8,
     "axis": "y"
    }
   },
@@ -196,58 +257,76 @@
    "id": "gable-3",
    "footprint": {
     "rect": [
-     7,
-     5.5
+     6,
+     2.4000000000000004
     ]
    },
    "at": [
-    21,
-    -7.2
+    19,
+    -5.7
    ],
-   "height": 7.4,
+   "height": 7.2,
    "storeys": 2,
    "wall": {
     "material": "sandstone",
-    "colour": "#b8a98c",
-    "windows": "punched",
-    "windowRatio": 0.34,
-    "glassColour": "#2f5f9a",
+    "colour": "#c0a58a",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a7bb0",
+    "trimColour": "#3d6fb0",
+    "plinth": 0.4,
     "faces": {
      "left": "none",
      "right": "none",
      "back": "none"
-    },
-    "bay": 2.2,
-    "plinth": 0.4
+    }
    },
    "roof": {
-    "form": "gable",
     "colour": "#6b3a3d",
     "material": "corrugated",
-    "rise": 2.8,
     "overhang": 0.3,
+    "form": "gable",
+    "rise": 2.8,
     "axis": "y"
    }
   },
   {
    "type": "prism",
-   "id": "rooflight",
+   "id": "monitor",
    "params": {
     "rect": [
-     34,
-     4
+     42,
+     3.8
     ],
-    "z0": 9.2,
-    "height": 1.6,
-    "topScale": [
-     1,
-     0.4
-    ],
-    "colour": "#b9d6e4"
+    "z0": 8.8,
+    "height": 2.1,
+    "colour": "#b4cddb",
+    "topColour": "#c9dbe6"
    },
    "at": [
     0,
-    2.5
+    2.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bank",
+   "params": {
+    "rect": [
+     70,
+     7
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "colour": "#7f8f3c"
+   },
+   "at": [
+    0,
+    -15
    ]
   },
   {
@@ -255,7 +334,7 @@
    "id": "entry",
    "at": [
     0,
-    -10.3,
+    -12,
     0
    ],
    "params": {
@@ -265,26 +344,11 @@
     "count": 3,
     "colour": "#b0ab9f"
    }
-  },
-  {
-   "type": "car",
-   "id": "cars",
-   "at": [
-    -14,
-    -15,
-    0
-   ],
-   "params": {
-    "colour": "#2d3e57",
-    "count": 3,
-    "spacing": 3.2,
-    "yaw": 0
-   }
   }
  ],
  "site": {
   "ground": "grass",
-  "forecourt": "parking",
+  "forecourt": "none",
   "forecourtDepth": 6,
   "trees": 0,
   "extent": [
@@ -295,6 +359,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "stone texture is generic block; gables evenly spaced rather than the real stepped rhythm; glazed roof monitor is a low prism; entrance canopy, end wings and trees omitted; identity of photo (Community School) assumed to be the same campus"
+  "gaps": "photo is the Community School, identity of this building unconfirmed (verified downgraded to footprint); bay spacing only approximates the real irregular rhythm; monitor is a boxy prism without glazing bars; end wings, canopy and trees simplified; stone has generic block texture"
  }
 }

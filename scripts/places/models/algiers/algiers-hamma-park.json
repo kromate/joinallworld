@@ -29,24 +29,6 @@
  },
  "parts": [
   {
-   "type": "prism",
-   "id": "under",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "rect": [
-     118,
-     118
-    ],
-    "height": 0.3,
-    "colour": "#3a5f30",
-    "topColour": "#3a5f30"
-   }
-  },
-  {
    "type": "mass",
    "id": "garden",
    "footprint": {
@@ -81,17 +63,17 @@
      ]
     ]
    },
-   "height": 0.5,
-   "storeys": 1,
+   "height": 1.0,
+   "storeys": 2,
    "wall": {
     "material": "stucco",
-    "colour": "#3f6a34",
+    "colour": "#2b4725",
     "windows": "none",
     "windowRatio": 0
    },
    "roof": {
     "form": "flat",
-    "colour": "#46733a"
+    "colour": "#2d4b27"
    }
   },
   {
@@ -162,7 +144,7 @@
    "type": "core/gate",
    "at": [
     -13.2,
-    -57.599999999999994,
+    -57.6,
     0.5
    ],
    "params": {
@@ -189,26 +171,10 @@
    }
   },
   {
-   "type": "pavilion",
-   "at": [
-    4.8,
-    -43.199999999999996,
-    0.5
-   ],
-   "params": {
-    "width": 7,
-    "depth": 6,
-    "height": 4,
-    "roof": "hip",
-    "colour": "#f1ead8",
-    "cap_colour": "#b5593f"
-   }
-  },
-  {
    "type": "basin-fountain",
    "at": [
-    -3.0,
-    -21.0,
+    -3,
+    -26,
     0.5
    ],
    "params": {
@@ -219,7 +185,7 @@
    "type": "core/steps",
    "at": [
     -13.2,
-    -48.0,
+    -49,
     0.5
    ],
    "params": {
@@ -231,321 +197,6 @@
    }
   },
   {
-   "type": "tree-grove",
-   "at": [
-    -20,
-    -35,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -17,
-    -32,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    14,
-    -35,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    17,
-    -32,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -24,
-    -8,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -21,
-    -5,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    22,
-    -6,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    25,
-    -3,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -22,
-    18,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -19,
-    21,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    22,
-    22,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    25,
-    25,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -6,
-    40,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -3,
-    43,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    16,
-    44,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    19,
-    47,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -14,
-    46,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 6,
-    "kind": "broadleaf",
-    "min_height": 9,
-    "max_height": 15
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -11,
-    49,
-    0.5
-   ],
-   "params": {
-    "width": 30,
-    "depth": 26,
-    "count": 2,
-    "kind": "palm",
-    "min_height": 14,
-    "max_height": 19
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
    "type": "prism",
    "id": "court",
    "at": [
@@ -555,8 +206,8 @@
    ],
    "params": {
     "rect": [
-     44,
-     12
+     62,
+     16
     ],
     "height": 0.2,
     "colour": "#e6dcc4",
@@ -567,13 +218,13 @@
    "type": "prism",
    "id": "hedge",
    "at": [
-    -4,
-    -45,
+    -6,
+    -43.5,
     0.5
    ],
    "params": {
     "rect": [
-     26,
+     30,
      1.4
     ],
     "height": 1.1,
@@ -584,8 +235,8 @@
   {
    "type": "revolve",
    "at": [
-    14,
-    -52,
+    18,
+    -51,
     0.5
    ],
    "params": {
@@ -593,89 +244,446 @@
     "colour": "#efe6d0",
     "profile": [
      [
-      2.2,
+      3.0,
       0
      ],
      [
-      2.2,
-      2.6
+      3.0,
+      3.0
      ],
      [
-      3.2,
-      2.6
+      4.4,
+      3.0
      ],
      [
-      2.8,
-      3.4
-     ],
-     [
-      1.2,
+      3.8,
       4.2
      ],
      [
+      1.6,
+      5.4
+     ],
+     [
       0,
-      4.5
+      5.8
      ]
     ]
    }
   },
   {
-   "type": "mass",
-   "id": "hill",
-   "footprint": {
-    "rect": [
-     48,
-     8
+   "type": "loft",
+   "id": "hillside",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "colour": "#4a6a35",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       104,
+       26
+      ],
+      "cy": 3,
+      "colour": "#3d5e30"
+     },
+     {
+      "z": 10,
+      "rect": [
+       98,
+       22
+      ],
+      "cy": 5,
+      "colour": "#4f6a34"
+     },
+     {
+      "z": 18,
+      "rect": [
+       92,
+       18
+      ],
+      "cy": 7,
+      "colour": "#7d7a3e"
+     },
+     {
+      "z": 27,
+      "rect": [
+       86,
+       14
+      ],
+      "cy": 9,
+      "colour": "#a88a52"
+     },
+     {
+      "z": 34,
+      "rect": [
+       80,
+       10
+      ],
+      "cy": 10,
+      "colour": "#b89a5c"
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -16,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    -27,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 26,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": []
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    16,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    18,
+    -27,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 26,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": []
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -16,
+    -2,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": [
+     [
+      10,
+      -12,
+      26,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    1,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 26,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": [
+     [
+      10,
+      -12,
+      26,
+      0
+     ]
     ]
    },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
    "at": [
-    0,
-    58.5
+    16,
+    -2,
+    0.5
    ],
-   "z0": 0,
-   "height": 9,
-   "storeys": 1,
-   "wall": {
-    "material": "stucco",
-    "colour": "#3f6a34",
-    "windows": "none",
-    "windowRatio": 0
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#46733a"
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": [
+     [
+      -22,
+      -12,
+      -6,
+      0
+     ]
+    ]
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    0,
-    58.5,
+    18,
+    1,
     0.5
    ],
    "params": {
-    "width": 44,
-    "depth": 7,
+    "width": 28,
+    "depth": 26,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": [
+     [
+      -22,
+      -12,
+      -6,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -16,
+    26,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    29,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 26,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": []
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    16,
+    26,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    18,
+    29,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 26,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": []
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -14,
+    49,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 20,
     "count": 6,
     "kind": "broadleaf",
-    "min_height": 10,
-    "max_height": 15
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -16,
+    52,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 18,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": []
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    14,
+    49,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 20,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 19,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    16,
+    52,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 18,
+    "count": 3,
+    "kind": "palm",
+    "min_height": 16,
+    "max_height": 22,
+    "keep_out": []
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    60,
+    3
+   ],
+   "params": {
+    "width": 84,
+    "depth": 12,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 18
    }
   },
   {
    "type": "tree-grove",
    "at": [
     0,
-    58.5,
-    0.5
+    60,
+    3
    ],
    "params": {
-    "width": 44,
-    "depth": 7,
-    "count": 2,
+    "width": 84,
+    "depth": 12,
+    "count": 3,
     "kind": "palm",
-    "min_height": 14,
-    "max_height": 18
+    "min_height": 16,
+    "max_height": 20
    },
    "lod": [
     0
@@ -687,13 +695,13 @@
   "forecourt": "none",
   "trees": [],
   "extent": [
-   118,
-   118
+   70,
+   120
   ]
  },
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Canopy still sparser than the photo (tree triangle budget); hillside is a low block; kiosk simplified; outer lawn plain green"
+  "gaps": "Canopy denser with tall palm emergents but crowns still single-tone light green and not fully touching; hillside is a banded loft slab with no trees on its slope; square plate removed but ground is a flat dark polygon; no winding paths visible under trees"
  }
 }

@@ -18,23 +18,23 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 6,
-  "fovDeg": 55,
+  "pitchDeg": 3,
+  "fovDeg": 75,
   "aspect": 1.333,
-  "fit": "site"
+  "fit": "all"
  },
  "parts": [
   {
    "type": "lawn",
    "at": [
     0,
-    10,
+    5,
     0
    ],
    "params": {
-    "width": 110,
-    "depth": 100,
-    "colour": "#6f9a4a"
+    "width": 64,
+    "depth": 84,
+    "colour": "#5f9040"
    }
   },
   {
@@ -48,26 +48,26 @@
     "points": [
      [
       0,
-      -45
+      -38
      ],
      [
       0,
-      5
+      10
      ],
      [
       2,
-      50
+      46
      ]
     ],
-    "width": 17,
-    "colour": "#bdb5a6"
+    "width": 22,
+    "colour": "#b9b3a6"
    }
   },
   {
    "type": "fence-wall",
    "at": [
-    -9,
-    -45,
+    -9.5,
+    -35,
     0
    ],
    "params": {
@@ -77,24 +77,67 @@
       0
      ],
      [
-      0,
-      50
+      -1.5,
+      18
      ],
      [
-      2,
-      95
+      -3.5,
+      36
+     ],
+     [
+      -3.5,
+      52
+     ],
+     [
+      -2.5,
+      70
      ]
     ],
-    "height": 0.6,
-    "thickness": 0.7,
-    "colour": "#a48268"
+    "height": 0.75,
+    "thickness": 0.8,
+    "colour": "#c9c3b4"
    }
   },
   {
    "type": "fence-wall",
    "at": [
-    9,
-    -45,
+    -9.5,
+    -35,
+    0.75
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      -1.5,
+      18
+     ],
+     [
+      -3.5,
+      36
+     ],
+     [
+      -3.5,
+      52
+     ],
+     [
+      -2.5,
+      70
+     ]
+    ],
+    "height": 0.12,
+    "thickness": 0.95,
+    "colour": "#a4624a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9.5,
+    -35,
     0
    ],
    "params": {
@@ -104,49 +147,124 @@
       0
      ],
      [
-      0,
-      50
+      1.5,
+      18
      ],
      [
-      2,
-      95
+      3.5,
+      36
+     ],
+     [
+      3.5,
+      52
+     ],
+     [
+      2.5,
+      70
      ]
     ],
-    "height": 0.6,
-    "thickness": 0.7,
-    "colour": "#a48268"
+    "height": 0.75,
+    "thickness": 0.8,
+    "colour": "#c9c3b4"
    }
   },
   {
-   "type": "tree-grove",
+   "type": "fence-wall",
    "at": [
-    -30,
-    20,
-    0
+    9.5,
+    -35,
+    0.75
    ],
    "params": {
-    "width": 40,
-    "depth": 60,
-    "count": 14,
-    "kind": "broadleaf",
-    "min_height": 7,
-    "max_height": 12
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      1.5,
+      18
+     ],
+     [
+      3.5,
+      36
+     ],
+     [
+      3.5,
+      52
+     ],
+     [
+      2.5,
+      70
+     ]
+    ],
+    "height": 0.12,
+    "thickness": 0.95,
+    "colour": "#a4624a"
    }
   },
   {
    "type": "tree-grove",
    "at": [
-    28,
+    -25.5,
     10,
     0
    ],
    "params": {
-    "width": 36,
-    "depth": 50,
-    "count": 12,
+    "width": 22,
+    "depth": 60,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 16,
+    "count": 6,
     "kind": "conifer",
-    "min_height": 3,
-    "max_height": 6
+    "min_height": 2,
+    "max_height": 4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    25.5,
+    12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 55,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "count": 6,
+    "kind": "conifer",
+    "min_height": 2,
+    "max_height": 4
    }
   },
   {
@@ -154,36 +272,86 @@
    "id": "pavilion",
    "footprint": {
     "rect": [
-     18,
-     6
+     10,
+     4
     ]
    },
    "at": [
-    26,
-    58
+    16,
+    34
    ],
    "z0": 0,
-   "height": 3.6,
+   "height": 3.2,
    "storeys": 1,
    "wall": {
-    "material": "concrete",
-    "colour": "#7b7468",
-    "windows": "curtain",
-    "plinth": 0,
-    "windowRatio": 0.5,
-    "glassColour": "#4b5560"
+    "material": "timber",
+    "colour": "#5a4a3c",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#4a4743",
-    "overhang": 0.8
+    "colour": "#3a3532",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-far",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    46
+   ],
+   "height": 42,
+   "storeys": 12,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8a8a",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "glassColour": "#4a7a88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a7a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-far-l",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    44
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3d4",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90"
    }
   },
   {
    "type": "flag",
    "at": [
-    24,
-    0,
+    28,
+    -5,
     0
    ],
    "params": {
@@ -199,14 +367,14 @@
   {
    "type": "lamp",
    "at": [
-    -8,
-    -40,
+    -7,
+    -30,
     0
    ],
    "params": {
     "height": 5,
-    "count": 6,
-    "spacing": 14
+    "count": 4,
+    "spacing": 18
    }
   }
  ],
@@ -214,8 +382,8 @@
   "ground": "grass",
   "forecourt": "garden",
   "extent": [
-   130,
-   120
+   64,
+   84
   ]
  },
  "schema": "allworld-place-model",
@@ -223,8 +391,8 @@
  "city": "ulaanbaatar",
  "venueId": "ulaanbaatar-osm-way-1495767145",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "camera frames only the small pavilion because the camera fits the mass, so promenade, curved edge walls and trees are not in the photo view; park content itself is in the standard render"
+  "gaps": "Camera cannot stand inside the park so the promenade is seen from outside at an angle; curved bench walls, mounds and mixed planting are approximated; no people or cars."
  }
 }

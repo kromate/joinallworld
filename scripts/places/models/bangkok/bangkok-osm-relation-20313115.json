@@ -50,60 +50,13 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#7fa35a",
+    "colour": "#8cb85e",
     "windows": "none",
     "windowRatio": 0.2
    },
    "roof": {
     "form": "flat",
-    "colour": "#7fa35a"
-   }
-  },
-  {
-   "type": "water-surface",
-   "at": [
-    10,
-    -8,
-    0.2
-   ],
-   "params": {
-    "width": 50,
-    "depth": 30,
-    "shape": "rect",
-    "colour": "#6f8f86",
-    "bank": true
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    -22,
-    10,
-    0
-   ],
-   "params": {
-    "width": 26,
-    "depth": 50,
-    "count": 18,
-    "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 12
-   }
-  },
-  {
-   "type": "tree-grove",
-   "at": [
-    34,
-    28,
-    0
-   ],
-   "params": {
-    "width": 22,
-    "depth": 26,
-    "count": 10,
-    "kind": "broadleaf",
-    "min_height": 8,
-    "max_height": 12
+    "colour": "#8cb85e"
    }
   },
   {
@@ -111,58 +64,200 @@
    "at": [
     0,
     0,
-    0.2
+    0.55
    ],
    "params": {
     "points": [
      [
-      -30,
-      -40
+      -38,
+      -50
      ],
      [
-      -30,
-      40
+      -38,
+      50
      ],
      [
-      32,
-      40
+      38,
+      50
      ],
      [
-      34,
-      -30
+      38,
+      -50
      ],
      [
-      -30,
-      -40
+      -38,
+      -50
+     ]
+    ],
+    "width": 5.4,
+    "colour": "#a8553c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.62
+   ],
+   "params": {
+    "points": [
+     [
+      -38,
+      -50
+     ],
+     [
+      -38,
+      50
+     ],
+     [
+      38,
+      50
+     ],
+     [
+      38,
+      -50
+     ],
+     [
+      -38,
+      -50
      ]
     ],
     "width": 4,
-    "colour": "#6e6f72"
+    "colour": "#55575b"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    14,
+    6,
+    0.55
+   ],
+   "params": {
+    "width": 38,
+    "depth": 56,
+    "shape": "ellipse",
+    "colour": "#7b9a90",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    14,
+    -24
+   ],
+   "z0": 0.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
    }
   },
   {
    "type": "tree-avenue",
    "at": [
-    -34,
     -38,
+    -50,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 100,
+    "count": 7,
+    "kind": "broadleaf",
+    "gap": 3.4,
+    "height_min": 12,
+    "height_max": 15
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    38,
+    -50,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 100,
+    "count": 7,
+    "kind": "broadleaf",
+    "gap": 3.4,
+    "height_min": 12,
+    "height_max": 15
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -38,
+    -50,
     0
    ],
    "rotDeg": -90,
    "params": {
-    "length": 78,
-    "count": 9,
+    "length": 76,
+    "count": 7,
     "kind": "broadleaf",
-    "gap": 4.5,
-    "height_min": 9,
-    "height_max": 12
+    "gap": 3.4,
+    "height_min": 12,
+    "height_max": 15
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -38,
+    50,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 76,
+    "count": 7,
+    "kind": "broadleaf",
+    "gap": 3.4,
+    "height_min": 11,
+    "height_max": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 30,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
    }
   },
   {
    "type": "pavilion",
    "at": [
-    -8,
-    26,
-    0.2
+    -20,
+    20,
+    0.6
    ],
    "params": {
     "width": 8,
@@ -170,24 +265,6 @@
     "height": 3.8,
     "roof": "hip",
     "rise": 2.0,
-    "posts": 4,
-    "colour": "#e8e1d0",
-    "cap_colour": "#d9772b"
-   }
-  },
-  {
-   "type": "pavilion",
-   "at": [
-    24,
-    -20,
-    0.2
-   ],
-   "params": {
-    "width": 6,
-    "depth": 5,
-    "height": 3.4,
-    "roof": "hip",
-    "rise": 1.8,
     "posts": 4,
     "colour": "#e8e1d0",
     "cap_colour": "#d9772b"
@@ -203,8 +280,8 @@
     ]
    },
    "at": [
-    -26,
-    -30
+    -33,
+    -44
    ],
    "z0": 0,
    "height": 3.2,
@@ -212,37 +289,7 @@
    "wall": {
     "material": "painted-render",
     "colour": "#e4dccb",
-    "windows": "none",
-    "windowRatio": 0.2
-   },
-   "roof": {
-    "form": "hip",
-    "colour": "#d9772b",
-    "material": "clay-tile",
-    "overhang": 0.6
-   }
-  },
-  {
-   "type": "mass",
-   "id": "kiosk-2",
-   "footprint": {
-    "rect": [
-     5,
-     4
-    ]
-   },
-   "at": [
-    30,
-    36
-   ],
-   "z0": 0,
-   "height": 3.2,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e4dccb",
-    "windows": "none",
-    "windowRatio": 0.2
+    "windows": "none"
    },
    "roof": {
     "form": "hip",
@@ -254,8 +301,8 @@
   {
    "type": "core/gate",
    "at": [
-    -4,
-    -52,
+    0,
+    -56,
     0
    ],
    "params": {
@@ -267,22 +314,22 @@
   {
    "type": "core/lamp",
    "at": [
-    -26,
-    -42,
-    0
+    -36,
+    -44,
+    0.5
    ],
    "params": {
     "height": 6,
     "count": 8,
-    "spacing": 10
+    "spacing": 12
    }
   },
   {
    "type": "park-bench",
    "at": [
-    -27,
-    2,
-    0.2
+    -35.5,
+    0,
+    0.6
    ],
    "rotDeg": 90,
    "params": {
@@ -302,6 +349,6 @@
  "review": {
   "rounds": 2,
   "match": "rough",
-  "gaps": "Photo is a ground-level path view; render is an overview. Pond, pavilions, kiosks are placed typically (only boundary and tree-lined path are evidenced); shrub edging and lawn detail missing."
+  "gaps": "overview render versus a ground-level path photo; trees are repeated generic crowns rather than spreading rain trees; shrub hedges and canna planting omitted; pond outline is a plain ellipse and the bridge a simple slab"
  }
 }

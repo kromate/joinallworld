@@ -25,7 +25,35 @@
  "parts": [
   {
    "type": "mass",
-   "id": "main",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     53,
+     40
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "z0": 0,
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6d2a28",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a2220",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
    "footprint": {
     "rect": [
      57,
@@ -36,27 +64,19 @@
     0,
     0
    ],
-   "z0": 0,
-   "height": 17,
-   "storeys": 3,
+   "z0": 6.6,
+   "height": 10.4,
+   "storeys": 1,
    "wall": {
-    "material": "stone",
-    "colour": "#b4a893",
-    "windows": "punched",
-    "plinth": 0.8,
-    "windowRatio": 0.12,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    },
-    "cornice": true,
-    "bands": "#8a2f2a"
+    "material": "painted-render",
+    "colour": "#cbbfa8",
+    "windows": "none",
+    "plinth": 0
    },
    "roof": {
     "form": "flat",
     "colour": "#6b6f73",
-    "parapet": 0.6
+    "parapet": 0.5
    }
   },
   {
@@ -64,16 +84,16 @@
    "id": "pier-l",
    "footprint": {
     "rect": [
-     7,
-     3
+     3.2,
+     3.2
     ]
    },
    "at": [
-    -24.5,
-    -23.5
+    -27.4,
+    -23.2
    ],
    "z0": 0,
-   "height": 12.6,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -83,7 +103,8 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#7d2a26"
+    "colour": "#7d2a26",
+    "parapet": 0.5
    }
   },
   {
@@ -91,16 +112,16 @@
    "id": "pier-r",
    "footprint": {
     "rect": [
-     7,
-     3
+     3.2,
+     3.2
     ]
    },
    "at": [
-    24.5,
-    -23.5
+    27.4,
+    -23.2
    ],
    "z0": 0,
-   "height": 12.6,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -110,37 +131,67 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#7d2a26"
+    "colour": "#7d2a26",
+    "parapet": 0.5
    }
   },
   {
-   "type": "mass",
-   "id": "gable",
-   "footprint": {
+   "type": "prism",
+   "id": "frieze",
+   "params": {
     "rect": [
-     16,
-     12
-    ]
+     57,
+     0.5
+    ],
+    "z0": 16.2,
+    "height": 0.8,
+    "colour": "#b08a2a",
+    "topColour": "#b08a2a"
+   },
+   "at": [
+    0,
+    -22.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "band-low",
+   "params": {
+    "rect": [
+     40,
+     0.4
+    ],
+    "z0": 6.9,
+    "height": 0.5,
+    "colour": "#b08a2a",
+    "topColour": "#b08a2a"
+   },
+   "at": [
+    0,
+    -22.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable",
+   "params": {
+    "rect": [
+     15,
+     8
+    ],
+    "z0": 17,
+    "height": 4.6,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#3a3836",
+    "topColour": "#3a3836"
    },
    "at": [
     0,
     -3
-   ],
-   "z0": 17.0,
-   "height": 0.6,
-   "storeys": 1,
-   "wall": {
-    "material": "concrete",
-    "colour": "#3a3836",
-    "windows": "none",
-    "plinth": 0
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#3a3836",
-    "rise": 4.2,
-    "overhang": 0.6
-   }
+   ]
   },
   {
    "type": "finial",
@@ -158,66 +209,114 @@
   },
   {
    "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
+   "id": "panels",
    "params": {
     "mode": "line",
     "start": [
-     -20,
-     -22.7,
-     9.4
+     -19,
+     -22.9,
+     7.4
     ],
     "end": [
-     20,
-     -22.7,
-     9.4
+     19,
+     -22.9,
+     7.4
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8.2,
+       0.5
+      ],
+      "height": 8.4,
+      "colour": "#d9cfb8",
+      "topColour": "#d9cfb8"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "discs",
+   "params": {
+    "mode": "line",
+    "start": [
+     -19,
+     -23.4,
+     11.6
+    ],
+    "end": [
+     19,
+     -23.4,
+     11.6
     ],
     "count": 5,
     "of": [
      {
-      "type": "prism",
+      "type": "sweep-path",
       "params": {
-       "rect": [
-        7.4,
-        0.5
-       ],
-       "height": 6.8,
-       "colour": "#cfc7b4"
+       "radius": 0.5,
+       "n": 8,
+       "closed": true,
+       "colour": "#4a4a46",
+       "arc": {
+        "plane": "xz",
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 3.0,
+        "startDeg": 0,
+        "endDeg": 360,
+        "steps": 16
+       }
       }
      },
      {
-      "type": "prism",
-      "at": [
-       0,
-       -0.3,
-       1.6
-      ],
+      "type": "sweep-path",
       "params": {
-       "rect": [
-        4.2,
-        0.3
-       ],
-       "height": 3.6,
-       "colour": "#6a6760"
+       "radius": 0.7,
+       "n": 6,
+       "closed": true,
+       "colour": "#4a4a46",
+       "arc": {
+        "plane": "xz",
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 1.7,
+        "startDeg": 0,
+        "endDeg": 360,
+        "steps": 10
+       }
       }
      }
     ]
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "canopy",
    "at": [
     0,
-    -24.7,
-    4.4
+    -25,
+    4.6
    ],
    "params": {
     "form": "flat",
-    "width": 30,
-    "depth": 4.4,
+    "width": 24,
+    "depth": 4.2,
     "height": 0.0,
     "thickness": 1.1,
     "colour": "#e5cf7a",
@@ -226,37 +325,75 @@
   },
   {
    "type": "prism",
-   "at": [
-    -30,
-    -25.5,
-    0
-   ],
+   "id": "cafe-awning",
    "params": {
     "rect": [
      16,
-     6
+     4
     ],
-    "height": 3.6,
-    "colour": "#b09a7c"
-   }
+    "z0": 3.2,
+    "height": 0.5,
+    "colour": "#c9b36a",
+    "topColour": "#c9b36a"
+   },
+   "at": [
+    -35,
+    -25.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cafe-posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -43,
+     -27,
+     0
+    ],
+    "end": [
+     -27,
+     -27,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 3.2,
+      "colour": "#6b4a2e",
+      "topColour": "#6b4a2e"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "car",
    "at": [
-    -12,
-    -33,
+    -30,
+    -34,
+    0
+   ],
+   "lod": [
     0
    ],
    "params": {
-    "colour": "#222222",
-    "count": 5,
-    "spacing": 4
+    "colour": "#2a2e38",
+    "count": 12,
+    "spacing": 5.4
    }
   },
   {
    "type": "tree",
    "at": [
-    16,
+    24,
     -30,
     0
    ],
@@ -279,8 +416,8 @@
  "city": "ulaanbaatar",
  "venueId": "ulaanbaatar-osm-way-129230039",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "relief medallions are square dark panels not round; maroon end piers simplified; no cafe awning on left; gable and sign band approximate"
+  "gaps": "Relief medallions are plain dark rings, not sculpted; Greek-key band is a plain gold strip; cafe awning and parked cars are simplified."
  }
 }

@@ -9,7 +9,7 @@
    "kind": "photo",
    "url": "https://commons.wikimedia.org/wiki/File:Igreja_matriz_de_Montelavar.jpg",
    "licence": "CC BY-SA 4.0",
-   "author": "M\u00e1rio Rod Santos",
+   "author": "Mário Rod Santos",
    "view": "front",
    "file": "/tmp/places-evidence/lisbon/mont1.jpg",
    "used": "whitewashed gabled front with limestone quoins, door and window, tall corner tower with arched belfry and finials at the right, lower tiled side wing behind"
@@ -67,15 +67,15 @@
    "id": "tower-base",
    "footprint": {
     "rect": [
-     4.6,
-     4.6
+     3.4,
+     3.4
     ]
    },
    "at": [
-    6.9,
-    2.3
+    6.2,
+    1.7
    ],
-   "height": 10.5,
+   "height": 11.2,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -96,32 +96,33 @@
    "id": "belfry",
    "footprint": {
     "rect": [
-     4.2,
-     4.2
+     3.2,
+     3.2
     ]
    },
    "at": [
-    6.9,
-    2.3
+    6.2,
+    1.7
    ],
-   "z0": 10.5,
-   "height": 4.2,
+   "z0": 11.2,
+   "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
     "colour": "#f1eee6",
     "windows": "arched",
-    "windowRatio": 0.55,
+    "windowRatio": 0.4,
     "faces": {
      "back": "none"
     },
     "cornice": true,
-    "windowShape": "arched"
+    "windowShape": "arched",
+    "bay": 1.5
    },
    "roof": {
     "form": "flat",
     "colour": "#dcc6a0",
-    "overhang": 0.35
+    "overhang": 0.25
    }
   },
   {
@@ -129,15 +130,15 @@
    "id": "side-wing",
    "footprint": {
     "rect": [
-     4.4,
+     4.0,
      19
     ]
    },
    "at": [
-    11.4,
-    14.1
+    6.3,
+    12.9
    ],
-   "height": 3.4,
+   "height": 4.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -150,7 +151,7 @@
    "roof": {
     "form": "gable",
     "axis": "y",
-    "rise": 1.0,
+    "rise": 1.2,
     "colour": "#b5573b",
     "material": "clay-tile",
     "overhang": 0.4
@@ -166,7 +167,7 @@
     ]
    },
    "at": [
-    -4.3,
+    -3.8,
     -0.1
    ],
    "height": 6.5,
@@ -198,13 +199,13 @@
   {
    "type": "arched-window",
    "at": [
-    -2.9,
+    -1.0,
     0,
-    4.6
+    4.3
    ],
    "params": {
-    "width": 1.0,
-    "height": 1.7,
+    "width": 1.1,
+    "height": 1.9,
     "kind": "arch",
     "trim": "#dcc6a0"
    }
@@ -227,14 +228,14 @@
   {
    "type": "core/prism",
    "at": [
-    4.95,
+    4.75,
     0.05,
     0
    ],
    "params": {
     "rect": [
-     0.8,
-     0.8
+     0.7,
+     0.7
     ],
     "z0": 0,
     "height": 14.8,
@@ -244,14 +245,14 @@
   {
    "type": "core/prism",
    "at": [
-    8.85,
+    7.65,
     0.05,
     0
    ],
    "params": {
     "rect": [
-     0.8,
-     0.8
+     0.7,
+     0.7
     ],
     "z0": 0,
     "height": 14.8,
@@ -261,14 +262,14 @@
   {
    "type": "core/prism",
    "at": [
-    4.95,
-    4.55,
+    4.75,
+    3.35,
     0
    ],
    "params": {
     "rect": [
-     0.8,
-     0.8
+     0.7,
+     0.7
     ],
     "z0": 0,
     "height": 14.8,
@@ -278,14 +279,14 @@
   {
    "type": "core/prism",
    "at": [
-    8.85,
-    4.55,
+    7.65,
+    3.35,
     0
    ],
    "params": {
     "rect": [
-     0.8,
-     0.8
+     0.7,
+     0.7
     ],
     "z0": 0,
     "height": 14.8,
@@ -295,16 +296,16 @@
   {
    "type": "core/prism",
    "at": [
-    6.9,
-    2.3,
+    6.2,
+    1.7,
     0
    ],
    "params": {
     "rect": [
-     5.1,
-     5.1
+     4.0,
+     4.0
     ],
-    "z0": 10.15,
+    "z0": 10.9,
     "height": 0.45,
     "colour": "#dcc6a0"
    }
@@ -312,16 +313,16 @@
   {
    "type": "core/prism",
    "at": [
-    6.9,
-    2.3,
+    6.2,
+    1.7,
     0
    ],
    "params": {
     "rect": [
-     5.0,
-     5.0
+     3.9,
+     3.9
     ],
-    "z0": 14.7,
+    "z0": 14.65,
     "height": 0.35,
     "colour": "#dcc6a0"
    }
@@ -346,14 +347,14 @@
   {
    "type": "core/prism",
    "at": [
-    4.3,
+    4.0,
     -0.1,
     0
    ],
    "params": {
     "rect": [
-     0.8,
-     0.7
+     1.1,
+     0.8
     ],
     "z0": 0,
     "height": 6.5,
@@ -363,14 +364,14 @@
   {
    "type": "core/prism",
    "at": [
-    -4.3,
+    -4.0,
     -0.1,
     0
    ],
    "params": {
     "rect": [
-     0.8,
-     0.7
+     1.1,
+     0.8
     ],
     "z0": 0,
     "height": 6.5,
@@ -380,59 +381,63 @@
   {
    "type": "core/revolve",
    "at": [
-    6.9,
-    2.3,
-    15.05
+    6.2,
+    1.7,
+    15.0
    ],
    "params": {
-    "segments": 16,
+    "segments": 8,
     "colour": "#f6f3ec",
     "profile": [
      [
-      0,
-      0
+      0.0,
+      0.0
      ],
      [
-      2.0,
-      0
+      1.44,
+      0.0
      ],
      [
-      2.05,
-      0.25
+      1.4759999999999998,
+      0.18
      ],
      [
-      1.8,
-      0.8
+      1.296,
+      0.576
      ],
      [
-      1.2,
-      1.4
+      0.864,
+      1.008
      ],
      [
-      0.8,
-      1.8
+      0.576,
+      1.296
      ],
      [
-      0.5,
-      2.1
+      0.36,
+      1.512
      ],
      [
-      0.4,
-      2.4
+      0.288,
+      1.728
      ],
      [
-      0,
-      2.4
+      0.0,
+      1.728
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    6.9,
-    2.3,
-    17.4
+    6.2,
+    1.7,
+    16.75
    ],
    "params": {
     "segments": 8,
@@ -463,14 +468,18 @@
       1.3
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    4.95,
+    4.75,
     0.05,
-    15.05
+    14.95
    ],
    "params": {
     "segments": 8,
@@ -501,14 +510,18 @@
       1.6
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    8.85,
+    7.65,
     0.05,
-    15.05
+    14.95
    ],
    "params": {
     "segments": 8,
@@ -539,14 +552,18 @@
       1.6
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    4.95,
-    4.55,
-    15.05
+    4.75,
+    3.35,
+    14.95
    ],
    "params": {
     "segments": 8,
@@ -577,14 +594,18 @@
       1.6
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    8.85,
-    4.55,
-    15.05
+    7.65,
+    3.35,
+    14.95
    ],
    "params": {
     "segments": 8,
@@ -615,7 +636,11 @@
       1.6
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/sweep-path",
@@ -736,9 +761,9 @@
   {
    "type": "core/revolve",
    "at": [
-    6.9,
-    0.8,
-    11.5
+    5.7,
+    1.7,
+    11.7
    ],
    "params": {
     "segments": 10,
@@ -773,132 +798,278 @@
       0.0
      ]
     ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    6.7,
+    1.7,
+    11.7
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#5a4a30",
+    "profile": [
+     [
+      0.0,
+      1.1
+     ],
+     [
+      0.0825,
+      1.1
+     ],
+     [
+      0.165,
+      0.8800000000000001
+     ],
+     [
+      0.275,
+      0.49500000000000005
+     ],
+     [
+      0.30250000000000005,
+      0.165
+     ],
+     [
+      0.275,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -2.3,
+      -0.2,
+      3.45
+     ],
+     [
+      -1.0,
+      -0.2,
+      4.05
+     ],
+     [
+      0.3,
+      -0.2,
+      3.45
+     ]
+    ],
+    "colour": "#d9c3a0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    6.2,
+    1.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     3.9
+    ],
+    "z0": 7.0,
+    "height": 0.3,
+    "colour": "#dcc6a0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    7.95,
+    1.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.2
+    ],
+    "z0": 4.0,
+    "height": 3.0,
+    "colour": "#3d6aa0"
    }
   },
   {
    "type": "core/revolve",
    "at": [
-    6.9,
-    3.8,
-    11.5
+    -4.4,
+    -0.1,
+    6.5
    ],
    "params": {
-    "segments": 10,
-    "colour": "#5a4a30",
+    "segments": 8,
+    "colour": "#dcc6a0",
     "profile": [
      [
-      0.0,
-      1.1
+      0,
+      0
      ],
      [
-      0.0825,
-      1.1
+      0.3,
+      0
      ],
      [
-      0.165,
-      0.8800000000000001
+      0.25,
+      0.3
      ],
      [
-      0.275,
-      0.49500000000000005
+      0.35,
+      0.55
      ],
      [
-      0.30250000000000005,
-      0.165
+      0.2,
+      0.8
      ],
      [
-      0.275,
-      0.0
-     ],
-     [
-      0.0,
-      0.0
+      0,
+      0.9
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    4.9,
-    2.3,
-    11.5
+    4.4,
+    -0.1,
+    6.5
    ],
    "params": {
-    "segments": 10,
-    "colour": "#5a4a30",
+    "segments": 8,
+    "colour": "#dcc6a0",
     "profile": [
      [
-      0.0,
-      1.1
+      0,
+      0
      ],
      [
-      0.0825,
-      1.1
+      0.3,
+      0
      ],
      [
-      0.165,
-      0.8800000000000001
+      0.25,
+      0.3
      ],
      [
-      0.275,
-      0.49500000000000005
+      0.35,
+      0.55
      ],
      [
-      0.30250000000000005,
-      0.165
+      0.2,
+      0.8
      ],
      [
-      0.275,
-      0.0
-     ],
-     [
-      0.0,
-      0.0
+      0,
+      0.9
      ]
     ]
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/revolve",
    "at": [
-    8.9,
-    2.3,
-    11.5
+    0,
+    -0.1,
+    9.7
    ],
    "params": {
-    "segments": 10,
-    "colour": "#5a4a30",
+    "segments": 8,
+    "colour": "#dcc6a0",
     "profile": [
      [
-      0.0,
-      1.1
+      0,
+      0
      ],
      [
-      0.0825,
-      1.1
+      0.3,
+      0
      ],
      [
-      0.165,
-      0.8800000000000001
+      0.25,
+      0.3
      ],
      [
-      0.275,
-      0.49500000000000005
+      0.35,
+      0.55
      ],
      [
-      0.30250000000000005,
-      0.165
+      0.2,
+      0.8
      ],
      [
-      0.275,
-      0.0
-     ],
-     [
-      0.0,
-      0.0
+      0,
+      0.9
      ]
     ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "low-range",
+   "footprint": {
+    "rect": [
+     2.6,
+     14
+    ]
+   },
+   "at": [
+    9.6,
+    12
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "rise": 0.8,
+    "colour": "#b5573b",
+    "material": "clay-tile",
+    "overhang": 0.35,
+    "high": "left"
    }
   }
  ],
@@ -913,8 +1084,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "quoins and belfry are plain stripes and arches without ornate surrounds, finial and onion cap simplified, side range runs away at an odd angle and the long nave side wall is hidden, no tile panel, door surround plain, asphalt is dark blue-grey and sky/horizon are renderer defaults"
+  "gaps": "belfry has narrow arched openings but no keystone surrounds, finials are spikes not balls, tower is slimmer but side range is a simple tiled gable plus lean-to without the long arched arcade, door surround is a plain pediment, ground is dark default asphalt"
  }
 }

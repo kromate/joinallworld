@@ -22,7 +22,8 @@
    "type": "mass",
    "id": "campus",
    "footprint": {
-    "osm": true
+    "osm": true,
+    "simplify": 4
    },
    "at": [
     0,
@@ -33,7 +34,7 @@
    "wall": {
     "material": "painted-render",
     "colour": "#efe9d9",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.3,
     "bands": "#a9c9dc",
     "plinth": 0.5
@@ -145,7 +146,6 @@
     ]
    }
   ],
-  "cars": 14,
   "extent": [
    160,
    160

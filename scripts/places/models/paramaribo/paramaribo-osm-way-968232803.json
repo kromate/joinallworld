@@ -1,5 +1,5 @@
 {
- "verified": "text",
+ "verified": "photo",
  "evidence": [
   {
    "kind": "photo",
@@ -58,7 +58,8 @@
     "cornice": true,
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     },
     "pattern": [
      {
@@ -108,7 +109,8 @@
     "bands": "#e4dcc4",
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     }
    },
    "roof": {
@@ -152,7 +154,8 @@
        "front"
       ]
      }
-    ]
+    ],
+    "faces": {}
    },
    "roof": {
     "form": "flat",
@@ -182,7 +185,9 @@
     "windowRatio": 0.26,
     "plinth": 0.3,
     "faces": {
-     "front": "plain"
+     "front": "plain",
+     "left": "plain",
+     "back": "plain"
     }
    },
    "roof": {
@@ -215,7 +220,9 @@
     "windowRatio": 0.26,
     "plinth": 0.3,
     "faces": {
-     "front": "plain"
+     "front": "plain",
+     "right": "plain",
+     "back": "plain"
     }
    },
    "roof": {
@@ -248,7 +255,8 @@
     "windowRatio": 0.24,
     "faces": {
      "left": "plain",
-     "right": "plain"
+     "right": "plain",
+     "back": "plain"
     }
    },
    "roof": {
@@ -551,7 +559,8 @@
     "material": "painted-render",
     "colour": "#bfc3a8",
     "windows": "punched",
-    "windowRatio": 0.25
+    "windowRatio": 0.25,
+    "faces": {}
    },
    "roof": {
     "form": "shed",
@@ -569,8 +578,7 @@
     0
    ],
    "lod": [
-    0,
-    1
+    0
    ],
    "params": {
     "width": 6,
@@ -619,7 +627,16 @@
     "height": 8
    }
   ],
-  "cars": 3,
+  "cars": [
+   {
+    "at": [
+     -20,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   }
+  ],
   "extent": [
    150,
    150
@@ -630,8 +647,8 @@
  "city": "paramaribo",
  "venueId": "paramaribo-osm-way-968232803",
  "review": {
-  "rounds": 0,
-  "match": "rough",
-  "gaps": "Composed from the front photo but NOT render-compared: the shared render queue workers were hung (no heartbeat since 24 Oct 21:40), so proportions, arcade and veranda read, roof pitch and LOD0 triangles are unchecked."
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Rear and outer faces of wings plain to meet budget; zigzag outline not traced."
  }
 }

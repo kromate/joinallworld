@@ -46,19 +46,18 @@
     0,
     0
    ],
-   "height": 10.5,
+   "height": 11.5,
    "storeys": 2,
    "wall": {
     "material": "limestone",
-    "colour": "#b3a688",
+    "colour": "#a39a85",
     "windows": "arched",
-    "windowRatio": 0.5,
-    "bay": 6.0,
-    "bands": "#8d8168",
-    "glassColour": "#6f8f6a",
-    "plinth": 0.7,
+    "windowRatio": 0.55,
+    "bay": 4.8,
+    "bands": "#6e6552",
+    "glassColour": "#d3e6f2",
+    "plinth": 0.9,
     "cornice": true,
-    "parapet": 0.5,
     "pattern": [
      {
       "type": "arcade"
@@ -69,9 +68,8 @@
     ]
    },
    "roof": {
-    "form": "flat",
-    "colour": "#8d8168",
-    "parapet": 0.5
+    "form": "none",
+    "colour": "#7d7461"
    }
   },
   {
@@ -94,14 +92,18 @@
      "type": "prism",
      "params": {
       "rect": [
-       1.0,
-       0.3
+       1.4,
+       0.5
       ],
       "height": 0.5,
-      "colour": "#c4b898"
+      "colour": "#b5ab92"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -123,14 +125,18 @@
      "type": "prism",
      "params": {
       "rect": [
-       0.55,
-       0.3
+       0.9500000000000001,
+       0.5
       ],
       "height": 0.5,
-      "colour": "#9d9075"
+      "colour": "#857b64"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -152,14 +158,18 @@
      "type": "prism",
      "params": {
       "rect": [
-       1.0,
-       0.3
+       1.4,
+       0.5
       ],
       "height": 0.5,
-      "colour": "#c4b898"
+      "colour": "#b5ab92"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
@@ -181,14 +191,18 @@
      "type": "prism",
      "params": {
       "rect": [
-       0.55,
-       0.3
+       0.9500000000000001,
+       0.5
       ],
       "height": 0.5,
-      "colour": "#9d9075"
+      "colour": "#857b64"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "core/steps",
@@ -203,91 +217,7 @@
     "rise": 0.2,
     "run": 0.6,
     "count": 2,
-    "colour": "#b1a687"
-   }
-  },
-  {
-   "type": "array",
-   "id": "base-ferns",
-   "params": {
-    "mode": "line",
-    "start": [
-     -15,
-     -8.3,
-     0
-    ],
-    "end": [
-     15,
-     -8.3,
-     0
-    ],
-    "count": 9,
-    "of": {
-     "type": "hedge",
-     "params": {
-      "length": 3.2,
-      "height": 1.1,
-      "depth": 1.4,
-      "colour": "#2f6b32"
-     }
-    }
-   }
-  },
-  {
-   "type": "array",
-   "id": "ginger-lilies",
-   "params": {
-    "mode": "line",
-    "start": [
-     -13,
-     -9.6,
-     0
-    ],
-    "end": [
-     13,
-     -9.6,
-     0
-    ],
-    "count": 6,
-    "of": {
-     "type": "hedge",
-     "params": {
-      "length": 3.5,
-      "height": 1.7,
-      "depth": 1.5,
-      "colour": "#3f8a3a"
-     }
-    }
-   }
-  },
-  {
-   "type": "garden-bed",
-   "id": "red-flowers-a",
-   "at": [
-    -8,
-    -9.8,
-    0.05
-   ],
-   "params": {
-    "width": 4,
-    "depth": 1.4,
-    "colour": "#c4262a",
-    "hedge": false
-   }
-  },
-  {
-   "type": "garden-bed",
-   "id": "red-flowers-b",
-   "at": [
-    8,
-    -9.8,
-    0.05
-   ],
-   "params": {
-    "width": 4,
-    "depth": 1.4,
-    "colour": "#c4262a",
-    "hedge": false
+    "colour": "#9d9378"
    }
   },
   {
@@ -300,7 +230,7 @@
    ],
    "params": {
     "kind": "palm",
-    "height": 16
+    "height": 11
    }
   },
   {
@@ -313,22 +243,7 @@
    ],
    "params": {
     "kind": "palm",
-    "height": 17
-   }
-  },
-  {
-   "type": "big-tree",
-   "id": "mahogany",
-   "at": [
-    28,
-    6,
-    0
-   ],
-   "params": {
-    "height": 18,
-    "crown_radius": 8,
-    "trunk_radius": 0.8,
-    "colour": "#3f6b35"
+    "height": 12
    }
   },
   {
@@ -340,37 +255,180 @@
     0
    ],
    "params": {
-    "width": 22,
+    "width": 26,
     "rise": 0.02,
     "run": 1.2,
     "count": 2,
-    "colour": "#b9b29c"
+    "colour": "#b79f7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "central-bay",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.4
+   ],
+   "height": 12.8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a39a85",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "bay": 4.5,
+    "bands": "#6e6552",
+    "glassColour": "#d3e6f2",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d7461",
+    "pitch": 30,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-step0",
+   "footprint": {
+    "rect": [
+     1.5,
+     14
+    ]
+   },
+   "at": [
+    -16.4,
+    0
+   ],
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a39a85",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7461"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-step1",
+   "footprint": {
+    "rect": [
+     1.5,
+     14
+    ]
+   },
+   "at": [
+    -14.9,
+    0
+   ],
+   "height": 13.4,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a39a85",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7461"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-step2",
+   "footprint": {
+    "rect": [
+     1.5,
+     14
+    ]
+   },
+   "at": [
+    -13.4,
+    0
+   ],
+   "height": 14.6,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a39a85",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7461"
    }
   },
   {
    "type": "array",
-   "id": "areca-palms",
+   "id": "wall-palms",
    "params": {
     "mode": "line",
     "start": [
-     -12,
-     -9,
+     -14,
+     -9.5,
      0
     ],
     "end": [
-     12,
-     -9,
+     14,
+     -9.5,
      0
     ],
-    "count": 3,
+    "count": 5,
     "of": {
      "type": "tree",
      "params": {
       "kind": "palm",
-      "height": 7
+      "height": 6
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "wall-shrubs",
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     -8.6,
+     0
+    ],
+    "end": [
+     15,
+     -8.6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 3
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -387,7 +445,7 @@
  "venueId": "bridgetown-recreation",
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "park outline unusable so house sized from photos; window glazing cannot be left empty so a sky-blue glass colour stands in; hood moulds and quoin relief are thin blocks; no stained streaks"
+  "match": "fair",
+  "gaps": "roofless shell approximated by roof none and pale sky-blue glass in window openings (not true see-through); string course and quoins are thin relief; stepped gable is three stacked blocks; no staining streaks or ruined broken parapet; shrubs are small palms rather than dense ginger lilies"
  }
 }

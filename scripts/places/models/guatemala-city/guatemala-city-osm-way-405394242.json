@@ -138,7 +138,7 @@
     "colour": "#e2c48a",
     "windows": "arched",
     "windowShape": "arched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.1,
     "faces": {
      "front": "arched",
      "back": "none",
@@ -177,10 +177,16 @@
     "colour": "#e2c48a",
     "windows": "arched",
     "windowShape": "arched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.08,
     "plinth": 1.2,
     "cornice": true,
-    "bands": "#f3eee2"
+    "bands": "#f3eee2",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "hip",
@@ -211,10 +217,16 @@
     "colour": "#e2c48a",
     "windows": "arched",
     "windowShape": "arched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.08,
     "plinth": 1.2,
     "cornice": true,
-    "bands": "#f3eee2"
+    "bands": "#f3eee2",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
    },
    "roof": {
     "form": "hip",
@@ -288,7 +300,11 @@
       "material": "plain-render"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "mass",

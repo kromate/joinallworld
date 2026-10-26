@@ -23,10 +23,10 @@
  "camera": {
   "yawDeg": 10,
   "pitchDeg": 4,
-  "fovDeg": 38,
+  "fovDeg": 30,
   "aspect": 1.333,
   "fit": "building",
-  "margin": 0.7,
+  "margin": 0.05,
   "shiftX": 0
  },
  "parts": [
@@ -56,9 +56,9 @@
    ],
    "params": {
     "length": 24,
-    "height": 2.0,
-    "thickness": 0.6,
-    "colour": "#d6b898"
+    "height": 1.7,
+    "thickness": 0.5,
+    "colour": "#c9733a"
    }
   },
   {
@@ -70,9 +70,9 @@
    ],
    "params": {
     "length": 24,
-    "height": 2.0,
-    "thickness": 0.6,
-    "colour": "#d6b898"
+    "height": 1.7,
+    "thickness": 0.5,
+    "colour": "#c9733a"
    }
   },
   {
@@ -84,9 +84,9 @@
    ],
    "params": {
     "length": 58,
-    "height": 2.0,
-    "thickness": 0.6,
-    "colour": "#d6b898"
+    "height": 1.7,
+    "thickness": 0.5,
+    "colour": "#c9733a"
    }
   },
   {
@@ -98,9 +98,9 @@
    ],
    "params": {
     "length": 34,
-    "height": 2.0,
-    "thickness": 0.6,
-    "colour": "#d6b898",
+    "height": 1.7,
+    "thickness": 0.5,
+    "colour": "#c9733a",
     "points": [
      [
       0,
@@ -122,9 +122,9 @@
    ],
    "params": {
     "length": 34,
-    "height": 2.0,
-    "thickness": 0.6,
-    "colour": "#d6b898",
+    "height": 1.7,
+    "thickness": 0.5,
+    "colour": "#c9733a",
     "points": [
      [
       0,
@@ -152,40 +152,48 @@
      {
       "z": 0,
       "rect": [
-       8,
-       3.2
-      ],
-      "colour": "#c9733a"
-     },
-     {
-      "z": 6.75,
-      "rect": [
-       6.88,
+       6.4,
        3.0
       ],
       "colour": "#c9733a"
      },
      {
-      "z": 11.25,
+      "z": 7,
       "rect": [
        5.6,
        2.8
       ],
-      "colour": "#9a958a"
+      "colour": "#c9733a"
      },
      {
-      "z": 14.25,
+      "z": 11,
       "rect": [
-       3.6,
-       2.4
+       4.6,
+       2.6
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       3.4,
+       2.2
       ],
       "colour": "#9a958a"
      },
      {
-      "z": 15,
+      "z": 15.5,
       "rect": [
-       1.6,
+       1.8,
        1.6
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 17,
+      "rect": [
+       0.6,
+       0.6
       ],
       "colour": "#3a3631"
      }
@@ -197,15 +205,15 @@
    "id": "door",
    "at": [
     0,
-    -18.55,
+    -18.6,
     0.6
    ],
    "params": {
     "rect": [
-     2.24,
+     1.7,
      0.3
     ],
-    "height": 6.75,
+    "height": 5.6,
     "colour": "#5a3a22"
    }
   },
@@ -235,7 +243,7 @@
    ],
    "params": {
     "height": 2.2,
-    "colour": "#8a867c"
+    "colour": "#6f6b64"
    }
   },
   {
@@ -247,7 +255,7 @@
    ],
    "params": {
     "height": 2.2,
-    "colour": "#8a867c"
+    "colour": "#6f6b64"
    }
   },
   {
@@ -635,6 +643,342 @@
     "kind": "palm",
     "height": 8
    }
+  },
+  {
+   "type": "prism",
+   "id": "cornice3.2",
+   "at": [
+    0,
+    -17,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     3.4
+    ],
+    "height": 0.45,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice6.4",
+   "at": [
+    0,
+    -17,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     3.4
+    ],
+    "height": 0.45,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice9.2",
+   "at": [
+    0,
+    -17,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     3.4
+    ],
+    "height": 0.45,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice11.8",
+   "at": [
+    0,
+    -17,
+    11.8
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     3.4
+    ],
+    "height": 0.45,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice13.6",
+   "at": [
+    0,
+    -17,
+    13.6
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     3.4
+    ],
+    "height": 0.45,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-1",
+   "at": [
+    -3.0,
+    -18.55,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.4
+    ],
+    "height": 10.5,
+    "colour": "#8f8a80"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pylon-1",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.0
+    ],
+    "height": 5.2,
+    "colour": "#c9733a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pylon-cap-1",
+   "at": [
+    -8,
+    -17,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.3
+    ],
+    "height": 0.6,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pylon-cloth-1",
+   "at": [
+    -8,
+    -18.05,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#b63a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "poleng-1",
+   "at": [
+    -4.6,
+    -20.0,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#2a2826"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster1",
+   "at": [
+    3.0,
+    -18.55,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.4
+    ],
+    "height": 10.5,
+    "colour": "#8f8a80"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pylon1",
+   "at": [
+    8,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.0
+    ],
+    "height": 5.2,
+    "colour": "#c9733a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pylon-cap1",
+   "at": [
+    8,
+    -17,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.3
+    ],
+    "height": 0.6,
+    "colour": "#9a958a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pylon-cloth1",
+   "at": [
+    8,
+    -18.05,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#b63a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "poleng1",
+   "at": [
+    4.6,
+    -20.0,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#2a2826"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-panel",
+   "at": [
+    0,
+    -18.7,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.25
+    ],
+    "height": 1.3,
+    "colour": "#e4d8bc"
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
@@ -642,13 +986,13 @@
   "forecourt": "plaza",
   "trees": 0,
   "extent": [
-   80,
-   60
+   62,
+   40
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Orange-brick stepped kori agung with statues and meru shrines; carved stone ornament, split bentar detail and compound plan are simplified; OSM outline not used literally; comparison framing small."
+  "gaps": "Taller narrow stepped kori with grey cornices, pilasters, door panel, orange-brick walls, pylons and poleng-banded statues; carved stone ornament, red tile coping and green hill backdrop absent; compound plan simplified."
  }
 }

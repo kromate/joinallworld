@@ -37,7 +37,7 @@
    "id": "podium",
    "footprint": {
     "rect": [
-     80,
+     76,
      30
     ]
    },
@@ -55,10 +55,10 @@
     "pattern": [
      {
       "type": "pilotis",
-      "inset": 2.5,
-      "spacing": 9,
-      "width": 2.2,
-      "colour": "#ddd6c8",
+      "inset": 2.0,
+      "spacing": 8,
+      "width": 2.6,
+      "colour": "#efeadf",
       "faces": [
        "front"
       ]
@@ -74,7 +74,7 @@
       ]
      }
     ],
-    "glassColour": "#4f6372"
+    "glassColour": "#c9a45e"
    },
    "roof": {
     "form": "flat",
@@ -88,30 +88,27 @@
    "id": "upper-glazing",
    "footprint": {
     "rect": [
-     70,
-     20
+     76,
+     16
     ]
    },
    "at": [
     0,
-    2
+    5
    ],
    "z0": 9.5,
-   "height": 6,
+   "height": 4.5,
    "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#5d7686",
-    "windows": "curtain",
-    "windowRatio": 0.8,
-    "faces": {
-     "left": "plain",
-     "right": "plain"
-    }
+    "material": "concrete",
+    "colour": "#e8e1d3",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#5d7686"
    },
    "roof": {
     "form": "flat",
-    "colour": "#e0d9cc",
+    "colour": "#d8d2c5",
     "material": "metal-sheet",
     "overhang": 2.5
    }
@@ -121,20 +118,20 @@
    "id": "gable-hall",
    "footprint": {
     "rect": [
-     26,
-     22
+     30,
+     20
     ]
    },
    "at": [
     0,
-    2
+    4
    ],
-   "z0": 15.5,
-   "height": 8,
+   "z0": 14,
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#7f98a6",
+    "colour": "#8fa3ad",
     "windows": "curtain",
     "windowRatio": 0.85,
     "faces": {
@@ -144,10 +141,10 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#cfc7b8",
+    "colour": "#4f545a",
     "material": "metal-sheet",
-    "rise": 5,
-    "overhang": 3,
+    "rise": 8,
+    "overhang": 1.5,
     "axis": "x"
    }
   },
@@ -156,18 +153,18 @@
    "id": "fringe-canopy",
    "at": [
     0,
-    -20,
+    -17,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 50,
-    "depth": 8,
-    "height": 10.5,
-    "thickness": 1.0,
+    "width": 60,
+    "depth": 9,
+    "height": 10.8,
+    "thickness": 1.3,
     "columns": 0,
-    "colour": "#b7956d",
-    "edgeColour": "#a08058"
+    "colour": "#6b4a30",
+    "edgeColour": "#573b25"
    }
   },
   {
@@ -176,25 +173,26 @@
    "footprint": {
     "rect": [
      22,
-     26
+     22
     ]
    },
    "at": [
-    -47,
-    2
+    -48,
+    3
    ],
-   "height": 12,
+   "height": 10,
    "storeys": 2,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#6b8190",
-    "windows": "curtain",
-    "windowRatio": 0.7,
-    "plinth": 0.5
+    "material": "concrete",
+    "colour": "#e6dfd0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "glassColour": "#4f6372"
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8d2c5",
+    "colour": "#cfc9bc",
     "material": "metal-sheet",
     "overhang": 1.5
    }
@@ -205,25 +203,26 @@
    "footprint": {
     "rect": [
      22,
-     26
+     22
     ]
    },
    "at": [
-    47,
-    2
+    48,
+    3
    ],
-   "height": 12,
+   "height": 10,
    "storeys": 2,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#6b8190",
-    "windows": "curtain",
-    "windowRatio": 0.7,
-    "plinth": 0.5
+    "material": "concrete",
+    "colour": "#e6dfd0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "glassColour": "#4f6372"
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8d2c5",
+    "colour": "#cfc9bc",
     "material": "metal-sheet",
     "overhang": 1.5
    }
@@ -231,22 +230,22 @@
   {
    "type": "control-tower",
    "at": [
-    -30,
-    40,
+    -50,
+    48,
     0
    ],
    "params": {
-    "height": 50,
+    "height": 34,
     "style": "round",
-    "colour": "#d6d2c8",
-    "cabColour": "#4a5f70",
-    "bandColour": "#c8362f"
+    "colour": "#e6e2d8",
+    "cabColour": "#6b747c",
+    "bandColour": "#8b9097"
    }
   },
   {
    "type": "lamp",
    "at": [
-    -52,
+    -45,
     -30,
     0
    ],
@@ -260,11 +259,11 @@
    "type": "car",
    "at": [
     -30,
-    -40,
+    -44,
     0
    ],
    "params": {
-    "count": 7,
+    "count": 4,
     "spacing": 5.5,
     "yaw": 0
    }
@@ -293,14 +292,14 @@
   "forecourt": "parking",
   "trees": [],
   "extent": [
-   150,
-   100
+   130,
+   80
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Real canopy is a folded pitched brown roof and the columns are heavier; glass hall roof is a plain gable; terminal is 320 m long but only about 80 m is modelled (120 m scene clamp); tower position is a guess."
+  "gaps": "Real canopy is a folded pitched brown roof with a hipped glazed gable hall; model canopy is flat brown; only about 100 m of the 320 m terminal is modelled (120 m scene clamp); tower position is a guess; ground storey is pilotis with dark slots rather than warm glazing."
  },
  "schema": "allworld-place-model",
  "version": 2,

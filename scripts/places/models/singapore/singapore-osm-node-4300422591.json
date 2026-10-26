@@ -29,69 +29,258 @@
   }
  ],
  "camera": {
-  "yawDeg": 0,
-  "pitchDeg": 12,
+  "yawDeg": 8,
+  "pitchDeg": 14,
   "fovDeg": 58,
   "aspect": 1.5,
-  "fit": "all",
-  "margin": 0.05
+  "fit": "building",
+  "margin": 0.03
  },
  "parts": [
   {
    "type": "water-surface",
+   "id": "water",
    "at": [
-    10,
-    10,
+    23,
+    6,
     0
    ],
    "params": {
-    "width": 100,
-    "depth": 90,
+    "width": 74,
+    "depth": 116,
     "shape": "rect",
-    "colour": "#6b8a84",
+    "colour": "#5f8a86",
     "bank": false
    }
   },
   {
+   "type": "prism",
+   "id": "land",
+   "params": {
+    "points": [
+     [
+      -48,
+      -52
+     ],
+     [
+      1.0,
+      -52.0
+     ],
+     [
+      1.19,
+      -43.0
+     ],
+     [
+      -1.31,
+      -34.0
+     ],
+     [
+      -7.11,
+      -22.0
+     ],
+     [
+      -10.41,
+      -10.0
+     ],
+     [
+      -12.04,
+      0.0
+     ],
+     [
+      -15.84,
+      10.0
+     ],
+     [
+      -13.74,
+      20.0
+     ],
+     [
+      -9.97,
+      30.0
+     ],
+     [
+      -13.52,
+      40.0
+     ],
+     [
+      -18.15,
+      50.0
+     ],
+     [
+      -18.18,
+      57.0
+     ],
+     [
+      -19,
+      64
+     ],
+     [
+      -48,
+      64
+     ]
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#5c7a4c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sand",
+   "params": {
+    "points": [
+     [
+      1.0,
+      -52.0
+     ],
+     [
+      1.19,
+      -43.0
+     ],
+     [
+      -1.31,
+      -34.0
+     ],
+     [
+      -7.11,
+      -22.0
+     ],
+     [
+      -10.41,
+      -10.0
+     ],
+     [
+      -12.04,
+      0.0
+     ],
+     [
+      -15.84,
+      10.0
+     ],
+     [
+      -13.74,
+      20.0
+     ],
+     [
+      -9.97,
+      30.0
+     ],
+     [
+      -13.52,
+      40.0
+     ],
+     [
+      -18.15,
+      50.0
+     ],
+     [
+      -18.18,
+      57.0
+     ],
+     [
+      -19,
+      64
+     ],
+     [
+      -13.7,
+      64
+     ],
+     [
+      -12.88,
+      57.0
+     ],
+     [
+      -12.85,
+      50.0
+     ],
+     [
+      -8.22,
+      40.0
+     ],
+     [
+      -4.67,
+      30.0
+     ],
+     [
+      -8.44,
+      20.0
+     ],
+     [
+      -10.54,
+      10.0
+     ],
+     [
+      -6.74,
+      0.0
+     ],
+     [
+      -5.11,
+      -10.0
+     ],
+     [
+      -1.81,
+      -22.0
+     ],
+     [
+      3.99,
+      -34.0
+     ],
+     [
+      6.49,
+      -43.0
+     ],
+     [
+      6.3,
+      -52.0
+     ]
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#cdb98d",
+    "material": "sand",
+    "slot": "sand"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
    "type": "sweep-path",
    "id": "deck",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "section": {
      "rect": [
-      3.2,
-      0.25
+      3.5,
+      0.3
      ]
     },
     "points": [
      [
       0,
       -34,
-      1.4
+      1.8
      ],
      [
       0,
       2,
-      1.4
+      1.8
      ],
      [
       9,
       22,
-      1.4
+      1.8
      ],
      [
       26,
       34,
-      1.4
+      1.8
      ],
      [
       44,
       38,
-      1.4
+      1.8
      ]
     ],
     "colour": "#8a6a46",
@@ -101,276 +290,534 @@
   {
    "type": "sweep-path",
    "id": "rail-l",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "section": {
      "rect": [
       0.05,
-      1.1
+      1.0
      ]
     },
     "points": [
      [
-      -1.6,
+      1.7,
       -34.0,
-      1.95
+      2.45
      ],
      [
-      -1.58,
-      2.25,
-      1.95
+      1.68,
+      1.73,
+      2.45
      ],
      [
-      7.76,
-      23.01,
-      1.95
+      10.32,
+      20.93,
+      2.45
      ],
      [
-      25.33,
-      35.46,
-      1.95
+      26.71,
+      32.45,
+      2.45
      ],
      [
-      43.65,
-      39.56,
-      1.95
+      44.37,
+      36.34,
+      2.45
      ]
     ],
-    "colour": "#a8aeb2"
+    "colour": "#c4c9cc"
    }
   },
   {
    "type": "sweep-path",
    "id": "rail-r",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "section": {
      "rect": [
       0.05,
-      1.1
+      1.0
      ]
     },
     "points": [
      [
-      1.6,
+      -1.7,
       -34.0,
-      1.95
+      2.45
      ],
      [
-      1.58,
-      1.75,
-      1.95
+      -1.68,
+      2.27,
+      2.45
      ],
      [
-      10.24,
-      20.99,
-      1.95
+      7.68,
+      23.07,
+      2.45
      ],
      [
-      26.67,
-      32.54,
-      1.95
+      25.29,
+      35.55,
+      2.45
      ],
      [
-      44.35,
-      36.44,
-      1.95
+      43.63,
+      39.66,
+      2.45
      ]
     ],
-    "colour": "#a8aeb2"
+    "colour": "#c4c9cc"
    }
   },
   {
    "type": "sweep-path",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "section": {
      "rect": [
       0.12,
-      0.12
+      0.1
      ]
     },
     "points": [
      [
-      1.2,
+      1.7,
       -34.0,
-      2.55
+      3.0
      ],
      [
-      1.18,
-      1.81,
-      2.55
+      1.68,
+      1.73,
+      3.0
      ],
      [
-      9.93,
-      21.24,
-      2.55
+      10.32,
+      20.93,
+      3.0
      ],
      [
-      26.5,
-      32.91,
-      2.55
+      26.71,
+      32.45,
+      3.0
      ],
      [
-      44.26,
-      36.83,
-      2.55
+      44.37,
+      36.34,
+      3.0
      ]
     ],
-    "colour": "#7d8488"
+    "colour": "#8e9498"
    }
   },
   {
    "type": "sweep-path",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "section": {
      "rect": [
       0.12,
-      0.12
+      0.1
      ]
     },
     "points": [
      [
-      -1.2,
+      -1.7,
       -34.0,
-      2.55
+      3.0
      ],
      [
-      -1.18,
-      2.19,
-      2.55
+      -1.68,
+      2.27,
+      3.0
      ],
      [
-      8.07,
-      22.76,
-      2.55
+      7.68,
+      23.07,
+      3.0
      ],
      [
-      25.5,
-      35.09,
-      2.55
+      25.29,
+      35.55,
+      3.0
      ],
      [
-      43.74,
-      39.17,
-      2.55
+      43.63,
+      39.66,
+      3.0
      ]
     ],
-    "colour": "#7d8488"
+    "colour": "#8e9498"
    }
   },
   {
    "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "mode": "line",
     "start": [
-     0,
+     -1.4,
      -32,
      0
     ],
     "end": [
+     -1.4,
      0,
-     -2,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.25,
+      "n": 6,
+      "height": 1.8,
+      "colour": "#5d4a38"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     1.4,
+     -32,
+     0
+    ],
+    "end": [
+     1.4,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.25,
+      "n": 6,
+      "height": 1.8,
+      "colour": "#5d4a38"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     8,
+     20,
+     0
+    ],
+    "end": [
+     43,
+     38,
      0
     ],
     "count": 8,
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.22,
+      "radius": 0.28,
       "n": 6,
-      "height": 1.4,
-      "z0": -1.0,
+      "height": 1.8,
+      "colour": "#5d4a38"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "jetty",
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -12,
+      56,
+      1.5
+     ],
+     [
+      52,
+      56,
+      1.5
+     ]
+    ],
+    "colour": "#8a6a46",
+    "slot": "timber-boards"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     56,
+     0
+    ],
+    "end": [
+     52,
+     56,
+     0
+    ],
+    "count": 14,
+    "lod1Step": 2,
+    "lod2Step": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.18,
+      "n": 5,
+      "height": 1.5,
       "colour": "#5d4a38"
      }
     }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 4,
+    "dy": 4,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 6,
+      "height": 6,
+      "colour": "#6e5236"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-body",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "z0": 6,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a46",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5236",
+    "overhang": 0.3
    }
   },
   {
    "type": "prism",
-   "id": "shore",
+   "id": "landing",
    "at": [
-    0,
-    0,
-    0
+    -24,
+    6,
+    11
    ],
    "params": {
+    "rect": [
+     9.5,
+     9.5
+    ],
+    "height": 0.35,
+    "colour": "#7a5c3c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "landing-rail",
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      0.9
+     ]
+    },
     "points": [
      [
-      -40,
-      -20
+      -28.6,
+      1.4,
+      11.8
      ],
      [
-      -18,
-      0
+      -19.4,
+      1.4,
+      11.8
      ],
      [
-      -6,
-      22
+      -19.4,
+      10.6,
+      11.8
      ],
      [
-      0,
-      54
-     ],
-     [
-      -40,
-      54
+      -28.6,
+      10.6,
+      11.8
      ]
     ],
-    "height": 0.5,
-    "z0": -0.1,
-    "colour": "#cdb98d",
-    "material": "sand",
-    "slot": "sand"
+    "closed": true,
+    "colour": "#a6aaa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     4.6,
+     4.6
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "z0": 11.35,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a46",
+    "windows": "ribbon",
+    "windowRatio": 0.55
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f5448",
+    "pitch": 24,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kampong-house",
+   "footprint": {
+    "rect": [
+     13,
+     8
+    ]
+   },
+   "at": [
+    -32,
+    38
+   ],
+   "z0": 1.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b790",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c6a56",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 1.2
    }
   },
   {
    "type": "array",
    "at": [
-    0,
-    0,
+    -32,
+    38,
     0
    ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 2,
+    "dx": 3,
+    "dy": 6,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.2,
+      "n": 6,
+      "height": 1.8,
+      "colour": "#5d4a38"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
    "params": {
     "mode": "line",
     "start": [
      -34,
-     -14,
+     -30,
      0
     ],
     "end": [
-     -8,
-     48,
+     -15,
+     52,
      0
     ],
-    "count": 9,
+    "count": 6,
     "of": {
      "type": "core/tree",
      "params": {
       "kind": "broadleaf",
-      "height": 9,
+      "height": 11,
       "count": 2,
       "spread": 9,
       "colour": "#3f6a44"
@@ -380,24 +827,19 @@
   },
   {
    "type": "array",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "mode": "line",
     "start": [
-     -10,
-     56,
+     -30,
+     -40,
      0
     ],
     "end": [
-     48,
+     -24,
      60,
      0
     ],
-    "count": 8,
+    "count": 3,
     "of": {
      "type": "core/tree",
      "params": {
@@ -405,143 +847,100 @@
       "height": 9,
       "count": 2,
       "spread": 8,
-      "colour": "#3f6a44"
+      "colour": "#3a6040"
      }
     }
    }
   },
   {
    "type": "prism",
-   "id": "tower-shaft",
    "at": [
-    40,
-    48,
+    -12,
+    -4,
     0
    ],
    "params": {
-    "radius": 3.0,
+    "radius": 1.8,
     "n": 6,
-    "height": 14,
-    "topScale": 0.8,
-    "colour": "#8a6a46",
-    "windows": "none"
-   }
+    "height": 1.62,
+    "colour": "#8a6a52",
+    "topScale": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
-   "id": "tower-deck",
    "at": [
-    40,
-    48,
-    14
-   ],
-   "params": {
-    "radius": 3.8,
-    "n": 6,
-    "height": 2.2,
-    "colour": "#7a5c3c"
-   }
-  },
-  {
-   "type": "revolve",
-   "id": "tower-roof",
-   "at": [
-    40,
-    48,
-    16.2
-   ],
-   "params": {
-    "segments": 6,
-    "colour": "#8d8f90",
-    "profile": [
-     [
-      4.6,
-      0
-     ],
-     [
-      4.6,
-      0.3
-     ],
-     [
-      0.3,
-      3.0
-     ],
-     [
-      0,
-      3.2
-     ]
-    ]
-   }
-  },
-  {
-   "type": "mass",
-   "id": "kampong-house",
-   "footprint": {
-    "rect": [
-     11,
-     7
-    ]
-   },
-   "at": [
-    18,
-    50
-   ],
-   "z0": 1.0,
-   "height": 3.4,
-   "storeys": 1,
-   "wall": {
-    "material": "timber",
-    "colour": "#d8cdb4",
-    "windows": "punched",
-    "windowRatio": 0.18,
-    "plinth": 0.0
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#8d8f90",
-    "material": "corrugated",
-    "pitch": 22,
-    "overhang": 0.9
-   }
-  },
-  {
-   "type": "array",
-   "at": [
-    18,
-    50,
+    -14,
+    22,
     0
    ],
    "params": {
-    "mode": "grid",
-    "cols": 4,
-    "rows": 2,
-    "dx": 3.3,
-    "dy": 5.6,
-    "centred": true,
-    "of": {
-     "type": "prism",
-     "params": {
-      "radius": 0.15,
-      "n": 6,
-      "height": 1.0,
-      "colour": "#5d4a38"
-     }
-    }
-   }
+    "radius": 1.3,
+    "n": 6,
+    "height": 1.1700000000000002,
+    "colour": "#8a6a52",
+    "topScale": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13,
+    46,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 6,
+    "height": 1.4400000000000002,
+    "colour": "#8a6a52",
+    "topScale": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -46,
+    0
+   ],
+   "params": {
+    "radius": 1.2,
+    "n": 6,
+    "height": 1.08,
+    "colour": "#8a6a52",
+    "topScale": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
   }
  ],
  "site": {
-  "ground": "sand",
+  "ground": "grass",
   "forecourt": "none",
   "trees": [],
   "extent": [
-   110,
-   100
+   100,
+   120
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Photo is a eye-level view along the deck; the render is an overview with sky-high camera; mesh railings are plain bars, no mangrove canopy mass; tower and house placed from text."
+  "gaps": "wide piled boardwalk with mesh rails, organic shoreline with sand and rocks, long jetty, stilted house and landing tower added; no mangrove canopy mass, tower and house from text only, water is flat, deck is not at photo eye level"
  }
 }

@@ -34,18 +34,19 @@
    "storeys": 4,
    "wall": {
     "material": "render",
-    "colour": "#a8a59d",
-    "trimColour": "#e6e4de",
+    "colour": "#b3aea4",
+    "trimColour": "#3a62a8",
     "windows": "punched",
-    "windowRatio": 0.28,
+    "windowRatio": 0.24,
     "plinth": 0.6,
-    "bands": "#a8a59d"
+    "cornice": true,
+    "glassColour": "#6d7f92"
    },
    "roof": {
     "form": "flat",
-    "colour": "#7d8794",
+    "colour": "#8a8a88",
     "material": "metal-sheet",
-    "parapet": 0.5,
+    "parapet": 0.3,
     "overhang": 0.4
    }
   },
@@ -53,30 +54,30 @@
    "type": "canopy",
    "at": [
     0,
-    -22,
+    -21,
     0
    ],
    "params": {
     "form": "flat",
-    "width": 9,
-    "depth": 3,
-    "height": 3.4,
-    "thickness": 0.35,
+    "width": 12,
+    "depth": 3.5,
+    "height": 3.6,
+    "thickness": 0.6,
     "columns": 0,
-    "colour": "#e9dff0",
-    "edgeColour": "#d6c8e0"
+    "colour": "#e8e6e2",
+    "edgeColour": "#3a62a8"
    }
   },
   {
    "type": "lamp",
    "at": [
-    -16,
-    -26,
+    6,
+    -24,
     0
    ],
    "params": {
-    "height": 4.5,
-    "count": 2,
+    "height": 5.5,
+    "count": 1,
     "spacing": 30
    }
   },
@@ -103,7 +104,7 @@
     0
    ],
    "params": {
-    "count": 3,
+    "count": 2,
     "spacing": 3,
     "yaw": 90
    }
@@ -129,14 +130,14 @@
    }
   ],
   "extent": [
-   90,
-   70
+   70,
+   55
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Window reveals, blue eave line, lower ground storey and blank entrance board are simplified; roof is flat grey; the photo is a steep low angle so proportions cannot be matched exactly."
+  "gaps": "Warm grey render, blue eave trim and short entrance canopy now match; deep window reveals, low ground storey with blue canopy band, and the stepped corner are simplified; roof is flat grey; steep low-angle photo so proportions cannot match exactly."
  },
  "schema": "allworld-place-model",
  "version": 2,

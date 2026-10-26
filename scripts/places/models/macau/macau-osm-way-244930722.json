@@ -70,214 +70,12 @@
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#a65a4c",
+    "colour": "#b0584a",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#a65a4c"
-   }
-  },
-  {
-   "type": "mass",
-   "id": "bed-west",
-   "footprint": {
-    "rect": [
-     9,
-     5
-    ]
-   },
-   "at": [
-    -7,
-    0.5
-   ],
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#4f7a3f",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#5f8f4a"
-   },
-   "z0": 0.5
-  },
-  {
-   "type": "mass",
-   "id": "bed-east",
-   "footprint": {
-    "rect": [
-     9,
-     5
-    ]
-   },
-   "at": [
-    7,
-    0.5
-   ],
-   "height": 0.5,
-   "storeys": 1,
-   "wall": {
-    "material": "stone",
-    "colour": "#4f7a3f",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#6a9a4c"
-   },
-   "z0": 0.5
-  },
-  {
-   "type": "hedge",
-   "at": [
-    -7,
-    -2.2,
-    0.55
-   ],
-   "params": {
-    "length": 9,
-    "height": 0.7,
-    "depth": 0.8,
-    "colour": "#3f6a33"
-   }
-  },
-  {
-   "type": "hedge",
-   "at": [
-    7,
-    -2.2,
-    0.55
-   ],
-   "params": {
-    "length": 9,
-    "height": 0.7,
-    "depth": 0.8,
-    "colour": "#3f6a33"
-   }
-  },
-  {
-   "type": "flowerbeds",
-   "at": [
-    -7,
-    0.7,
-    1.0
-   ],
-   "params": {
-    "rows": 1,
-    "cols": 2,
-    "width": 3.6,
-    "depth": 3.4,
-    "colours": [
-     "#d9456a",
-     "#e6c23a"
-    ]
-   }
-  },
-  {
-   "type": "flowerbeds",
-   "at": [
-    7,
-    0.7,
-    1.0
-   ],
-   "params": {
-    "rows": 1,
-    "cols": 2,
-    "width": 3.6,
-    "depth": 3.4,
-    "colours": [
-     "#c9384f",
-     "#e6c23a"
-    ]
-   }
-  },
-  {
-   "type": "sweep-path",
-   "at": [
-    0,
-    1,
-    0.55
-   ],
-   "params": {
-    "section": {
-     "circle": 0.07
-    },
-    "points": [
-     [
-      -1.5,
-      0,
-      0
-     ],
-     [
-      -1.5,
-      0,
-      2.2
-     ],
-     [
-      0,
-      0,
-      3.4
-     ],
-     [
-      1.5,
-      0,
-      2.2
-     ],
-     [
-      1.5,
-      0,
-      0
-     ]
-    ],
-    "curve": true,
-    "steps": 10,
-    "colour": "#356b3a"
-   }
-  },
-  {
-   "type": "pergola",
-   "at": [
-    11,
-    1.5,
-    0.55
-   ],
-   "params": {
-    "width": 1.6,
-    "depth": 1.2,
-    "height": 3.4,
-    "colour": "#c43a2c"
-   }
-  },
-  {
-   "type": "sweep-path",
-   "at": [
-    11,
-    1.5,
-    0.55
-   ],
-   "params": {
-    "section": {
-     "rect": [
-      3.6,
-      0.35
-     ]
-    },
-    "points": [
-     [
-      -2,
-      0,
-      3.6
-     ],
-     [
-      2,
-      0,
-      3.6
-     ]
-    ],
-    "colour": "#c93a2c"
+    "colour": "#b0584a"
    }
   },
   {
@@ -364,37 +162,358 @@
    "params": {
     "height": 3.5
    }
+  },
+  {
+   "type": "mass",
+   "id": "shrub--8.5",
+   "footprint": {
+    "rect": [
+     9,
+     4.4
+    ]
+   },
+   "at": [
+    -8.5,
+    0.5
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8aa23a",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ab43f"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "hedge-dark-8.5",
+   "footprint": {
+    "rect": [
+     9,
+     1.2
+    ]
+   },
+   "at": [
+    -8.5,
+    -1.4
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2f5a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#356b36"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "shrub-8.5",
+   "footprint": {
+    "rect": [
+     9,
+     4.4
+    ]
+   },
+   "at": [
+    8.5,
+    0.5
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8aa23a",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "glassColour": "#56626b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ab43f"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "hedge-dark8.5",
+   "footprint": {
+    "rect": [
+     9,
+     1.2
+    ]
+   },
+   "at": [
+    8.5,
+    -1.4
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2f5a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#356b36"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    1,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "points": [
+     [
+      -1.5,
+      0,
+      0
+     ],
+     [
+      -1.5,
+      0,
+      2.2
+     ],
+     [
+      0,
+      0,
+      3.4
+     ],
+     [
+      1.5,
+      0,
+      2.2
+     ],
+     [
+      1.5,
+      0,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#356b3a"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    11,
+    1.5,
+    0.55
+   ],
+   "params": {
+    "width": 4.2,
+    "depth": 1.0,
+    "height": 4.2,
+    "kind": "round",
+    "pier": "#c43a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-header",
+   "footprint": {
+    "rect": [
+     4.6,
+     0.5
+    ]
+   },
+   "at": [
+    11,
+    1.5
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c43a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f"
+   },
+   "z0": 3.8
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lant-9",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -7.5,
+    2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d42a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d42a2a"
+   },
+   "z0": 4.5
+  },
+  {
+   "type": "tree",
+   "at": [
+    1,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lant1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.5,
+    4
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d42a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d42a2a"
+   },
+   "z0": 4.5
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lant10",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    11.5,
+    -2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d42a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d42a2a"
+   },
+   "z0": 4.5
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lant-2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -0.5,
+    -3
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d42a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d42a2a"
+   },
+   "z0": 4.5
   }
  ],
  "site": {
   "ground": "asphalt",
   "forecourt": "road",
-  "trees": [
-   {
-    "kind": "broadleaf",
-    "at": [
-     -12,
-     3
-    ],
-    "height": 9
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     2,
-     5
-    ],
-    "height": 10
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     13,
-     3
-    ],
-    "height": 8
-   }
-  ],
+  "trees": 0,
   "extent": [
    34,
    26
@@ -405,8 +524,8 @@
  "city": "macau",
  "venueId": "macau-osm-way-244930722",
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "trees are generic low-poly; no lanterns, red festival arch detail or planting texture; outline is small OSM traffic island"
+  "gaps": "trees are generic low-poly blobs, not sparse forked crowns; shrubs are plain green slabs; festival arch is a stone-coloured stand-in; lanterns are small red cubes"
  }
 }

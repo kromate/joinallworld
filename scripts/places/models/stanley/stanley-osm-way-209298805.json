@@ -44,14 +44,22 @@
    "storeys": 2,
    "wall": {
     "material": "timber",
-    "colour": "#b07050",
+    "colour": "#8a5a3e",
     "windows": "punched",
-    "windowRatio": 0.1,
+    "windowRatio": 0.08,
     "faces": {
      "left": "punched",
      "back": "none"
     },
-    "plinth": 0.3
+    "plinth": 0.3,
+    "trimColour": "#f2f0ea",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#744a33",
+      "height": 0.08
+     }
+    ]
    },
    "roof": {
     "form": "gable",
@@ -75,7 +83,7 @@
     3.5,
     -2.5
    ],
-   "height": 4.2,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "timber",
@@ -87,7 +95,7 @@
     "form": "hip",
     "colour": "#1f6b45",
     "material": "corrugated",
-    "rise": 2.8,
+    "rise": 2.6,
     "overhang": 0.4
    }
   },
@@ -185,64 +193,280 @@
   },
   {
    "type": "prism",
-   "id": "stair",
+   "id": "bal-post0",
    "params": {
-    "points": [
-     [
-      0,
-      0
-     ],
-     [
-      1.2,
-      0
-     ],
-     [
-      1.2,
-      5
-     ],
-     [
-      0,
-      5
-     ]
+    "rect": [
+     0.2,
+     0.2
     ],
     "z0": 0,
-    "height": 0.2,
-    "colour": "#1f1f1f",
-    "topScale": 1.0
+    "height": 3.0,
+    "colour": "#1f1f1f"
    },
    "at": [
-    -1.2,
-    -11.0
+    -8.0,
+    -10.8
    ]
+  },
+  {
+   "type": "prism",
+   "id": "bal-post1",
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -6.0,
+    -10.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bal-post2",
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -4.2,
+    -10.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread0",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 2.88,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -3.5,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread1",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 2.58,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -2.9,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread2",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 2.28,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -2.3,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread3",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 1.98,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -1.7,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread4",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 1.68,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -1.1,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread5",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 1.38,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    -0.5,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread6",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 1.08,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    0.1,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread7",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 0.78,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    0.7,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread8",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 0.48,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    1.3,
+    -10.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tread9",
+   "params": {
+    "rect": [
+     0.6,
+     1.0
+    ],
+    "z0": 0.18,
+    "height": 0.12,
+    "colour": "#1f1f1f"
+   },
+   "at": [
+    1.9,
+    -10.2
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "stair-rail",
+   "at": [
+    0,
+    -10.8,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -3.9,
+      0,
+      4.0
+     ],
+     [
+      2.4,
+      0,
+      1.0
+     ]
+    ],
+    "colour": "#1f1f1f"
+   }
   },
   {
    "type": "revolve",
    "id": "anchor-drum",
    "at": [
+    -12,
     -13,
-    -8,
     0
    ],
    "params": {
     "profile": [
      [
-      2.6,
+      3.2,
       0,
       "#8d8b84"
      ],
      [
-      2.6,
-      1.0,
+      3.2,
+      1.1,
       "#8d8b84"
      ],
      [
-      2.6,
-      1.2,
+      3.2,
+      1.3,
       "#a8794e"
      ],
      [
       0.2,
-      1.2,
+      1.3,
       "#a8794e"
      ]
     ]
@@ -253,53 +477,207 @@
    "id": "anchor-shaft",
    "params": {
     "rect": [
-     0.3,
-     0.3
+     0.5,
+     0.5
     ],
-    "z0": 1.2,
-    "height": 3.6,
+    "z0": 1.3,
+    "height": 5.2,
     "colour": "#1a1a1a"
    },
    "at": [
-    -13,
-    -8
+    -12,
+    -13
    ]
   },
   {
    "type": "prism",
-   "id": "anchor-arm",
+   "id": "anchor-stock",
    "params": {
     "rect": [
-     3.8,
-     0.25
+     5.0,
+     0.3
     ],
-    "z0": 4.6,
-    "height": 0.25,
+    "z0": 6.0,
+    "height": 0.35,
     "colour": "#1a1a1a"
    },
    "at": [
-    -13,
-    -8
+    -12,
+    -13
    ]
   },
   {
-   "type": "core/fence-wall",
-   "id": "red-box",
+   "type": "sweep-path",
+   "id": "anchor-arms",
    "at": [
-    1.5,
-    -5,
-    0
+    -12,
+    -13,
+    1.3
    ],
    "params": {
-    "length": 0.6,
-    "height": 1.3,
-    "thickness": 0.5,
-    "colour": "#b02a24"
+    "section": {
+     "circle": 0.2
+    },
+    "points": [
+     [
+      -2.3,
+      0,
+      1.8
+     ],
+     [
+      -1.4,
+      0,
+      0.5
+     ],
+     [
+      0,
+      0,
+      0.1
+     ],
+     [
+      1.4,
+      0,
+      0.5
+     ],
+     [
+      2.3,
+      0,
+      1.8
+     ]
+    ],
+    "curve": true,
+    "colour": "#1a1a1a"
    }
+  },
+  {
+   "type": "mass",
+   "id": "shed0",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    12,
+    -6.5
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e4dccb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f6b45",
+    "material": "corrugated",
+    "rise": 1.1,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed1",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    15.5,
+    -5
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e4dccb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f6b45",
+    "material": "corrugated",
+    "rise": 1.1,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "phone-box",
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#b02a24"
+   },
+   "at": [
+    10.2,
+    -9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post-box",
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#b02a24"
+   },
+   "at": [
+    0.5,
+    -7.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-door",
+   "params": {
+    "rect": [
+     1.2,
+     0.15
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#1b1b1b"
+   },
+   "at": [
+    3.5,
+    -7.05
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cannon",
+   "params": {
+    "rect": [
+     0.6,
+     2.2
+    ],
+    "z0": 0.2,
+    "height": 0.6,
+    "colour": "#6b3b2e"
+   },
+   "at": [
+    16,
+    -11
+   ]
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "cobble",
   "forecourt": "none",
   "trees": 0,
   "extent": [
@@ -310,6 +688,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "shingle texture is plain timber boards; no gravel yard texture (asphalt stand-in); sheds, phone box, pier and the long shingle flank are approximate; stair is a flat strip"
+  "gaps": "ground is grey paving-block stand-in for gravel; shingle is plain boards with thin bands; stair is floating treads with one rail; sheds, cannon and phone box approximate; wall behind anchor drum timber coping simple"
  }
 }

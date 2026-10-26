@@ -28,9 +28,9 @@
   "fit": "all"
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "entrance arch is a simple barrel not the swept asymmetric shell; wavy taupe cladding is plain fins; roof terraces and glass screens simplified; only 118 m of the 427 m mall"
+  "gaps": "swept shell approximated; wavy cladding is wave roof on a box; glass balustrade and planting simplified; mall only 118 m of 427 m"
  },
  "parts": [
   {
@@ -127,46 +127,19 @@
   },
   {
    "type": "mass",
-   "id": "signboard",
-   "footprint": {
-    "rect": [
-     40,
-     2
-    ]
-   },
-   "at": [
-    -8,
-    -9
-   ],
-   "z0": 22,
-   "height": 6,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#8f959b",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#aab0b4",
-    "parapet": 0.6
-   }
-  },
-  {
-   "type": "mass",
    "id": "wave-wing",
    "footprint": {
     "rect": [
-     44,
-     16
+     42,
+     12
     ]
    },
    "at": [
-    -38,
-    -12
+    -30,
+    -4
    ],
    "z0": 0,
-   "height": 18,
+   "height": 20,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -186,9 +159,11 @@
     ]
    },
    "roof": {
-    "form": "flat",
-    "colour": "#9a8a76",
-    "parapet": 0.4
+    "form": "wave",
+    "colour": "#a08f78",
+    "waves": 2,
+    "rise": 3,
+    "thickness": 0.6
    }
   },
   {
@@ -196,107 +171,55 @@
    "id": "entrance",
    "footprint": {
     "rect": [
-     40,
-     26
+     28,
+     24
     ]
    },
    "at": [
-    8,
-    -20
+    10,
+    -18
    ],
    "z0": 0,
-   "height": 15,
+   "height": 14,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#2b2e33",
+    "colour": "#232a30",
     "windows": "curtain",
-    "windowRatio": 0.5,
+    "windowRatio": 0.8,
+    "plinth": 0.1,
     "faces": {
-     "front": "plain",
      "left": "plain",
      "right": "plain"
-    },
-    "plinth": 0.3
+    }
    },
    "roof": {
     "form": "curved",
-    "curve": "arch",
-    "colour": "#c8a98a",
-    "rise": 6,
-    "overhang": 3.5,
-    "thickness": 1.2
+    "curve": "sweep",
+    "colour": "#b8946c",
+    "rise": 13,
+    "overhang": 2.5,
+    "thickness": 1.8
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    8,
-    -34,
+    10,
+    -31,
     0
    ],
    "params": {
     "width": 14,
     "height": 3,
     "bottom": 15,
-    "colour": "#1d2024",
+    "colour": "#2a3036",
     "frameColour": "#c8a98a",
     "posts": false
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hoarding-l",
-   "footprint": {
-    "rect": [
-     9,
-     0.6
-    ]
    },
-   "at": [
-    -3,
-    -29.5
-   ],
-   "z0": 0,
-   "height": 5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#3a8fc2",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#3a8fc2",
-    "parapet": 0.6
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hoarding-r",
-   "footprint": {
-    "rect": [
-     9,
-     0.6
-    ]
-   },
-   "at": [
-    19,
-    -29.5
-   ],
-   "z0": 0,
-   "height": 5,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#2a9d8f",
-    "windows": "none"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#2a9d8f",
-    "parapet": 0.6
-   }
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/canopy",
@@ -313,7 +236,10 @@
     "columns": 4,
     "colour": "#d94a3d",
     "edgeColour": "#e8e8e8"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "array",
@@ -334,18 +260,20 @@
      40,
      0
     ],
-    "count": 6,
+    "count": 5,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       2.6,
-       2.6
+       3.4,
+       3.4
       ],
-      "height": 9,
+      "height": 15,
       "colour": "#b9b8b2"
      }
-    }
+    },
+    "lod2Step": 5,
+    "lod1Step": 2
    }
   },
   {
@@ -353,44 +281,64 @@
    "at": [
     -62,
     -6,
-    9
+    15
    ],
    "params": {
     "rect": [
-     6,
+     7,
      118
     ],
-    "height": 2.2,
+    "height": 3.2,
     "colour": "#cfd0cc"
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    4,
+    -46,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0.25,
+      "#6a9a45"
+     ],
+     [
+      7,
+      0.25,
+      "#6a9a45"
+     ],
+     [
+      7.6,
+      0.25,
+      "#d8d6cf"
+     ],
+     [
+      7.6,
+      0,
+      "#d8d6cf"
+     ]
+    ],
+    "segments": 20,
+    "bottomCap": true,
+    "colour": "#6a9a45"
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
   "ground": "paving",
   "forecourt": "plaza",
-  "trees": [
-   {
-    "kind": "palm",
-    "at": [
-     40,
-     -40
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     52,
-     -34
-    ]
-   },
-   {
-    "kind": "broadleaf",
-    "at": [
-     30,
-     -42
-    ]
-   }
-  ],
+  "trees": [],
   "extent": [
    150,
    110

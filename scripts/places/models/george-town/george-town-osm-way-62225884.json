@@ -26,16 +26,16 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 6,
-  "fovDeg": 50,
+  "pitchDeg": 10,
+  "fovDeg": 45,
   "aspect": 1.5,
   "fit": "building",
-  "margin": 0.15
+  "margin": 0.0
  },
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "critic fixes applied (parking and round tanks removed, dormer, full-width veranda, hedge, boulder rim, denser planting) but NOT re-rendered: render server down; lagoon still oval"
+  "match": "fair",
+  "gaps": "veranda centred, hedge, stone rim, dormer, bounded site, denser palms; lagoon still two ovals not irregular, grey surround remains, no broadleaf undergrowth"
  },
  "parts": [
   {
@@ -48,6 +48,36 @@
    "params": {
     "width": 46,
     "depth": 22,
+    "shape": "oval",
+    "colour": "#4a8f98",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "shape": "oval",
+    "colour": "#4a8f98",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -12,
+    16,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
     "shape": "oval",
     "colour": "#4a8f98",
     "bank": true
@@ -152,7 +182,7 @@
   {
    "type": "veranda",
    "at": [
-    -15,
+    -4,
     29.5,
     0
    ],
@@ -195,7 +225,7 @@
    "type": "core/gate",
    "at": [
     0,
-    -48,
+    -28,
     0
    ],
    "params": {
@@ -211,7 +241,7 @@
    "type": "ticket-kiosk",
    "at": [
     -12,
-    -44,
+    -26,
     0
    ],
    "params": {
@@ -247,20 +277,20 @@
    "params": {
     "kind": "palm",
     "height": 10,
-    "count": 26,
-    "spread": 80
+    "count": 18,
+    "spread": 70
    }
   },
   {
    "type": "core/fence-wall",
    "at": [
-    -10,
-    22,
+    0,
+    26,
     0
    ],
    "params": {
-    "length": 20,
-    "height": 1.0,
+    "length": 46,
+    "height": 1.2,
     "thickness": 1.4,
     "kind": "wall",
     "colour": "#3f7a3a"
@@ -295,39 +325,18 @@
    }
   },
   {
-   "type": "core/array",
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    23,
+    0
+   ],
    "params": {
-    "of": {
-     "type": "mass",
-     "footprint": {
-      "rect": [
-       2.6,
-       1.8
-      ]
-     },
-     "height": 0.9,
-     "storeys": 1,
-     "wall": {
-      "material": "stone",
-      "colour": "#8f8a7a",
-      "windows": "none",
-      "windowRatio": 0
-     },
-     "roof": {
-      "form": "flat",
-      "colour": "#a39d8a"
-     }
-    },
-    "mode": "line",
-    "start": [
-     -22,
-     23
-    ],
-    "end": [
-     22,
-     23
-    ],
-    "count": 10
+    "length": 44,
+    "height": 0.9,
+    "thickness": 1.8,
+    "kind": "wall",
+    "colour": "#8f8a7a"
    }
   },
   {
@@ -340,7 +349,7 @@
    "params": {
     "kind": "broadleaf",
     "height": 4,
-    "count": 8,
+    "count": 10,
     "spread": 14
    }
   },
@@ -354,7 +363,7 @@
    "params": {
     "kind": "broadleaf",
     "height": 4,
-    "count": 6,
+    "count": 10,
     "spread": 12
    }
   }
@@ -363,8 +372,8 @@
   "ground": "sand",
   "forecourt": "none",
   "extent": [
-   110,
-   110
+   90,
+   70
   ]
  },
  "schema": "allworld-place-model",

@@ -19,29 +19,80 @@
    "licence": "Public domain",
    "author": "Wofratz",
    "view": "front",
-   "used": "white fence plot and granite kerb beside Shackleton's grave"
+   "used": "white fence plot and granite kerb beside Shackleton's grave; upright granite headstone at the head of the plot"
   }
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 40,
-  "fovDeg": 40
+  "pitchDeg": 28,
+  "fovDeg": 55
  },
  "parts": [
   {
    "type": "prism",
-   "id": "plaque",
+   "id": "earth",
    "at": [
     0,
     0
    ],
    "params": {
     "rect": [
-     0.9,
-     0.6
+     2.0,
+     1.5
     ],
     "z0": 0,
-    "height": 0.1,
+    "height": 0.01,
+    "colour": "#4a4034"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tuft-l",
+   "at": [
+    -0.85,
+    -0.55
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.15
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#6b7a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tuft-r",
+   "at": [
+    0.9,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.15
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#6b7a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.04,
     "colour": "#3f4448"
    }
   },
@@ -50,91 +101,57 @@
    "id": "plaque-face",
    "at": [
     0,
-    0
+    -0.3
    ],
    "params": {
     "rect": [
-     0.78,
-     0.48
+     0.94,
+     0.64
     ],
-    "z0": 0.1,
-    "height": 0.02,
-    "colour": "#5d6368"
+    "z0": 0.04,
+    "height": 0.01,
+    "colour": "#4a5056"
    }
   },
   {
    "type": "prism",
-   "id": "edge-f",
+   "id": "plaque-patch",
+   "at": [
+    0.2,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 0.05,
+    "height": 0.005,
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "headstone",
    "at": [
     0,
-    -0.325
+    0.75
    ],
    "params": {
     "rect": [
-     1.0,
-     0.05
+     0.9,
+     0.14
     ],
     "z0": 0,
-    "height": 0.14,
-    "colour": "#8d8f90"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "edge-b",
-   "at": [
-    0,
-    0.325
-   ],
-   "params": {
-    "rect": [
-     1.0,
-     0.05
-    ],
-    "z0": 0,
-    "height": 0.14,
-    "colour": "#8d8f90"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "edge-l",
-   "at": [
-    -0.475,
-    0
-   ],
-   "params": {
-    "rect": [
-     0.05,
-     0.6
-    ],
-    "z0": 0,
-    "height": 0.14,
-    "colour": "#8d8f90"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "edge-r",
-   "at": [
-    0.475,
-    0
-   ],
-   "params": {
-    "rect": [
-     0.05,
-     0.6
-    ],
-    "z0": 0,
-    "height": 0.14,
-    "colour": "#8d8f90"
+    "height": 1.4,
+    "colour": "#6b7075"
    }
   },
   {
    "type": "fence-wall",
    "at": [
     0,
-    1.2,
+    1.8,
     0
    ],
    "params": {
@@ -150,11 +167,11 @@
    "type": "fence-wall",
    "at": [
     3,
-    0.2,
+    0.4,
     0
    ],
    "params": {
-    "length": 2.0,
+    "length": 3.0,
     "height": 1.2,
     "thickness": 0.12,
     "kind": "railing",
@@ -172,8 +189,8 @@
   ]
  },
  "review": {
-  "rounds": 0,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "not rendered: render server was down; flat plaque and kerb composed by eye; lettering omitted"
+  "gaps": "lettering omitted; headstone height and plaque position estimated; no snow cover; granite kerb of the other photo not modelled"
  }
 }

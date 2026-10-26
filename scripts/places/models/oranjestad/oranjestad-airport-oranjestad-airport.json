@@ -33,20 +33,20 @@
    "id": "bay0",
    "footprint": {
     "rect": [
-     22,
-     36
+     17,
+     30
     ]
    },
    "at": [
-    -47,
+    -50.3,
     0
    ],
-   "height": 5.5,
+   "height": 11,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#c9b48a",
-    "windows": "punched",
+    "colour": "#c2a779",
+    "windows": "ribbon",
     "windowRatio": 0.28,
     "faces": {
      "back": "plain",
@@ -56,12 +56,9 @@
     "plinth": 0.3
    },
    "roof": {
-    "form": "gable",
-    "colour": "#25a3b5",
-    "material": "metal-sheet",
-    "pitch": 9,
-    "overhang": 1.2,
-    "axis": "x"
+    "form": "flat",
+    "colour": "#b89f74",
+    "parapet": 0.4
    }
   },
   {
@@ -69,15 +66,15 @@
    "id": "bay1",
    "footprint": {
     "rect": [
-     30,
-     36
+     17,
+     30
     ]
    },
    "at": [
-    -19,
+    -31.3,
     0
    ],
-   "height": 7,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -95,8 +92,8 @@
     "form": "gable",
     "colour": "#25a3b5",
     "material": "metal-sheet",
-    "pitch": 9,
-    "overhang": 1.2,
+    "pitch": 14,
+    "overhang": 0.8,
     "axis": "x"
    }
   },
@@ -105,15 +102,15 @@
    "id": "bay2",
    "footprint": {
     "rect": [
-     30,
-     36
+     17,
+     30
     ]
    },
    "at": [
-    9,
+    -12.2,
     0
    ],
-   "height": 7,
+   "height": 9,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -131,8 +128,8 @@
     "form": "gable",
     "colour": "#25a3b5",
     "material": "metal-sheet",
-    "pitch": 9,
-    "overhang": 1.2,
+    "pitch": 14,
+    "overhang": 0.8,
     "axis": "x"
    }
   },
@@ -141,15 +138,15 @@
    "id": "bay3",
    "footprint": {
     "rect": [
-     30,
-     36
+     17,
+     30
     ]
    },
    "at": [
-    37,
+    6.8,
     0
    ],
-   "height": 7,
+   "height": 10,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -167,48 +164,88 @@
     "form": "gable",
     "colour": "#25a3b5",
     "material": "metal-sheet",
-    "pitch": 9,
-    "overhang": 1.2,
+    "pitch": 14,
+    "overhang": 0.8,
     "axis": "x"
    }
   },
   {
    "type": "mass",
-   "id": "link",
+   "id": "bay4",
    "footprint": {
     "rect": [
-     100,
-     2.6
+     17,
+     30
     ]
    },
    "at": [
-    -6,
-    -19.5
+    25.8,
+    0
    ],
-   "height": 3.2,
+   "height": 9,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#9fb4b8",
+    "colour": "#c9b48a",
     "windows": "ribbon",
-    "windowRatio": 0.6,
+    "windowRatio": 0.28,
     "faces": {
      "back": "plain",
      "left": "plain",
      "right": "plain"
-    }
+    },
+    "plinth": 0.3
    },
    "roof": {
-    "form": "flat",
+    "form": "gable",
+    "colour": "#25a3b5",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay5",
+   "footprint": {
+    "rect": [
+     17,
+     30
+    ]
+   },
+   "at": [
+    44.9,
+    0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
     "colour": "#c9b48a",
-    "parapet": 0.2
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#25a3b5",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8,
+    "axis": "x"
    }
   },
   {
    "type": "control-tower",
    "at": [
-    -14,
-    10,
+    -12,
+    20,
     0
    ],
    "params": {
@@ -237,45 +274,29 @@
     },
     "mode": "line",
     "start": [
-     -44,
-     -23.5
+     -41,
+     -20.5
     ],
     "end": [
-     40,
-     -23.5
+     45,
+     -20.5
     ],
-    "count": 4,
-    "lod1Step": 4,
-    "lod2Step": 4
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 5
    }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    -55,
-    -30,
-    0
-   ],
-   "params": {
-    "height": 25,
-    "count": 4,
-    "spacing": 35
-   },
-   "lod": [
-    0
-   ]
   },
   {
    "type": "prism",
    "id": "apron",
    "at": [
-    10,
+    0,
     -42
    ],
    "params": {
     "rect": [
      120,
-     30
+     34
     ],
     "z0": 0,
     "height": 0.1,
@@ -289,14 +310,14 @@
   {
    "type": "airliner",
    "at": [
-    -10,
-    -42,
+    -21,
+    -50,
     0
    ],
-   "rotDeg": 0,
+   "rotDeg": 90,
    "params": {
-    "scale": 0.9,
-    "colour": "#eef1f2",
+    "scale": 0.8,
+    "colour": "#f4f6f6",
     "tailColour": "#d94a3a"
    },
    "lod": [
@@ -306,14 +327,14 @@
   {
    "type": "airliner",
    "at": [
-    16,
-    -42,
+    7,
+    -50,
     0
    ],
-   "rotDeg": 0,
+   "rotDeg": 90,
    "params": {
-    "scale": 0.9,
-    "colour": "#eef1f2",
+    "scale": 0.8,
+    "colour": "#f4f6f6",
     "tailColour": "#3f9a4a"
    },
    "lod": [
@@ -323,14 +344,14 @@
   {
    "type": "airliner",
    "at": [
-    42,
-    -42,
+    35,
+    -50,
     0
    ],
-   "rotDeg": 0,
+   "rotDeg": 90,
    "params": {
-    "scale": 0.9,
-    "colour": "#eef1f2",
+    "scale": 0.8,
+    "colour": "#f4f6f6",
     "tailColour": "#2c5fb0"
    },
    "lod": [
@@ -338,41 +359,58 @@
    ]
   },
   {
-   "type": "airliner",
-   "at": [
-    68,
-    -42,
-    0
-   ],
-   "rotDeg": 0,
+   "type": "array",
    "params": {
-    "scale": 0.9,
-    "colour": "#eef1f2",
-    "tailColour": "#e0a030"
+    "of": {
+     "type": "lamp",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "height": 30,
+      "count": 1,
+      "spacing": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     -54,
+     -33
+    ],
+    "end": [
+     54,
+     -33
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 5
    },
    "lod": [
-    0
+    0,
+    1
    ]
   },
   {
    "type": "prism",
-   "id": "hill",
+   "id": "ridge",
    "at": [
-    10,
-    48
+    0,
+    52
    ],
    "params": {
     "rect": [
-     150,
-     14
+     130,
+     16
     ],
     "z0": 0,
-    "height": 14,
+    "height": 8,
     "topScale": [
-     0.6,
-     0.3
+     0.7,
+     0.4
     ],
-    "colour": "#7a6a4c"
+    "colour": "#6d7a5a"
    }
   }
  ],
@@ -381,13 +419,13 @@
   "forecourt": "none",
   "trees": [],
   "extent": [
-   116,
-   90
+   140,
+   110
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Walls hidden behind the white link block so the tan body reads white; no hills, water, apron airliners or tall floodlights as in the photo; bay roofs hipped rather than the real low gables."
+  "gaps": "Airliners still render bluish and nose-on with the bays reading a little too regular; hills behind are not visible; real roofs are larger hipped steps with a longer row."
  }
 }

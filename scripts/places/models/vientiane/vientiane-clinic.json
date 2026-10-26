@@ -45,16 +45,23 @@
     "material": "painted-render",
     "colour": "#e8e2d0",
     "windows": "ribbon",
-    "windowRatio": 0.22,
+    "windowRatio": 0.14,
     "bands": "#d6cfba",
     "plinth": 0.5,
     "cornice": true,
-    "pattern": [],
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
     "faces": {}
    },
    "roof": {
     "form": "flat",
-    "colour": "#c9c4b6",
+    "colour": "#9c9a92",
     "material": "membrane",
     "parapet": 0.6
    }
@@ -64,8 +71,8 @@
    "id": "gable-a",
    "footprint": {
     "rect": [
-     10,
-     8
+     6,
+     5
     ]
    },
    "at": [
@@ -82,7 +89,7 @@
    "roof": {
     "form": "gable",
     "axis": "x",
-    "colour": "#b04a2e",
+    "colour": "#a8482c",
     "material": "clay-tile",
     "pitch": 30,
     "overhang": 0.6
@@ -93,8 +100,8 @@
    "id": "gable-b",
    "footprint": {
     "rect": [
-     8,
-     7
+     6,
+     5
     ]
    },
    "at": [
@@ -111,7 +118,7 @@
    "roof": {
     "form": "gable",
     "axis": "y",
-    "colour": "#b04a2e",
+    "colour": "#a8482c",
     "material": "clay-tile",
     "pitch": 30,
     "overhang": 0.6
@@ -122,15 +129,15 @@
    "id": "gatehouse",
    "footprint": {
     "rect": [
-     9,
-     5
+     14,
+     6
     ]
    },
    "at": [
-    -48,
-    -40
+    -42,
+    -38
    ],
-   "height": 3.2,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -140,23 +147,23 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#9a4a33",
+    "colour": "#a8482c",
     "material": "clay-tile",
-    "pitch": 22,
-    "overhang": 0.9
+    "pitch": 18,
+    "overhang": 1.6
    }
   },
   {
    "type": "core/sign-board",
    "at": [
-    -52,
-    -44,
+    -42,
+    -43,
     0
    ],
    "params": {
-    "width": 7,
-    "height": 1.6,
-    "bottom": 3.4,
+    "width": 12,
+    "height": 2.6,
+    "bottom": 3.6,
     "colour": "#1f3f7a",
     "frameColour": "#7a3b28"
    }
@@ -164,12 +171,12 @@
   {
    "type": "core/gate",
    "at": [
-    -40,
-    -46,
+    -30,
+    -44,
     0
    ],
    "params": {
-    "width": 6,
+    "width": 8,
     "height": 2.4,
     "pillar": 0.8,
     "colour": "#e8e2d0"
@@ -194,7 +201,7 @@
   }
  ],
  "site": {
-  "ground": "laterite",
+  "ground": "paving",
   "forecourt": "road",
   "forecourtDepth": 10,
   "trees": [
@@ -226,8 +233,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "OSM L-outline orientation differs from the street view; lattice screen, awnings, tuk-tuks and the red banner are omitted"
+  "gaps": "OSM L-outline orientation differs from street view; lattice screen, awnings, tuk-tuks and banner omitted; balconies approximate"
  }
 }

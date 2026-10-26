@@ -45,9 +45,9 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#f0f1f0",
+    "colour": "#fafafa",
     "windows": "curtain",
-    "windowRatio": 0.42,
+    "windowRatio": 0.36,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -56,22 +56,23 @@
     "pattern": [
      {
       "type": "pilotis",
-      "inset": 0.8,
-      "spacing": 5.5,
-      "width": 0.9,
-      "colour": "#e8e9e8",
+      "inset": 0.6,
+      "spacing": 4.0,
+      "width": 0.7,
+      "colour": "#f2f3f2",
       "faces": [
        "front"
       ]
      }
     ],
-    "plinth": 0.3
+    "plinth": 0.3,
+    "glassColour": "#b8cadb"
    },
    "roof": {
     "form": "flat",
     "colour": "#eceeee",
     "material": "metal-sheet",
-    "overhang": 2.6,
+    "overhang": 1.0,
     "parapet": 0.3
    }
   },
@@ -92,20 +93,21 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#eeefef",
+    "colour": "#fafafa",
     "windows": "curtain",
-    "windowRatio": 0.4,
+    "windowRatio": 0.36,
     "faces": {
      "left": "plain",
      "back": "plain"
     },
-    "plinth": 0.3
+    "plinth": 0.3,
+    "glassColour": "#b8cadb"
    },
    "roof": {
     "form": "flat",
     "colour": "#eceeee",
     "material": "metal-sheet",
-    "overhang": 1.6,
+    "overhang": 1.2,
     "parapet": 0.3
    }
   },
@@ -126,20 +128,21 @@
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#eeefef",
+    "colour": "#fafafa",
     "windows": "curtain",
-    "windowRatio": 0.4,
+    "windowRatio": 0.36,
     "faces": {
      "right": "plain",
      "back": "plain"
     },
-    "plinth": 0.3
+    "plinth": 0.3,
+    "glassColour": "#b8cadb"
    },
    "roof": {
     "form": "flat",
     "colour": "#eceeee",
     "material": "metal-sheet",
-    "overhang": 1.6,
+    "overhang": 1.2,
     "parapet": 0.3
    }
   },
@@ -193,6 +196,75 @@
     3
    ],
    "rotDeg": 0
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 46,
+    "depth": 30,
+    "height": 12.7,
+    "thickness": 0.5,
+    "colour": "#f4f5f5",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.3,
+    "columns": 8,
+    "colour": "#f2f3f2",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -32,
+    -1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 27,
+    "height": 7.7,
+    "thickness": 0.35,
+    "colour": "#f4f5f5",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    32,
+    -1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 27,
+    "height": 7.7,
+    "thickness": 0.35,
+    "colour": "#f4f5f5",
+    "edgeColour": "#ffffff"
+   }
   }
  ],
  "site": {
@@ -223,6 +295,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "no ribbed swept roof edge or column rhythm at the ground floor; glazing reads darker than the photo; modelled at about 40% of the real 236 m length"
+  "gaps": "glazing still reads darker than the photo; no ribbed roof ribs or ground-floor open colonnade depth; modelled at about 40% of the real 236 m length"
  }
 }

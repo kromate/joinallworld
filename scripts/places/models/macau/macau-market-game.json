@@ -41,15 +41,15 @@
    "storeys": 2,
    "wall": {
     "material": "tile-cladding",
-    "colour": "#c8b497",
-    "windows": "ribbon",
-    "windowRatio": 0.35,
+    "colour": "#cdb99c",
+    "windows": "punched",
+    "windowRatio": 0.18,
     "bands": "#a8a59c",
     "plinth": 1.0,
     "bay": 4.2,
     "faces": {
-     "front": "ribbon",
-     "back": "ribbon",
+     "front": "punched",
+     "back": "punched",
      "left": "punched",
      "right": "punched"
     }
@@ -75,28 +75,120 @@
     ],
     "height": 12.5,
     "colour": "#c8b497",
-    "topColour": "#8f9193"
+    "topColour": "#8f9193",
+    "windows": "punched",
+    "storeys": 3,
+    "windowRatio": 0.12
    }
   },
   {
-   "type": "prism",
+   "type": "array",
    "id": "vent-panels",
    "lod": [
     0,
     1
    ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     27,
+     -7.55,
+     0.0
+    ],
+    "end": [
+     31.5,
+     -7.55,
+     0.0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.3
+      ],
+      "z0": 0.0,
+      "height": 3.0,
+      "colour": "#eeeeea"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 21,
+    "start": [
+     -42,
+     -7.5,
+     0
+    ],
+    "end": [
+     42,
+     -7.5,
+     0
+    ],
+    "lod1Step": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.5
+      ],
+      "height": 9.6,
+      "colour": "#a8a59c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-door",
+   "lod": [
+    0,
+    1
+   ],
    "at": [
-    -8,
-    -7.55
+    38,
+    -6.7
    ],
    "params": {
     "rect": [
-     20,
-     0.3
+     3,
+     0.4
     ],
-    "z0": 0.6,
-    "height": 3.2,
-    "colour": "#eeeeea"
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#5a5048"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sill-slab",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4,
+    -8.0
+   ],
+   "params": {
+    "rect": [
+     84,
+     2.0
+    ],
+    "z0": 6.0,
+    "height": 0.4,
+    "colour": "#a8a59c"
    }
   },
   {
@@ -104,14 +196,14 @@
    "id": "louvre-balconies",
    "params": {
     "mode": "line",
-    "count": 8,
+    "count": 16,
     "start": [
-     -34,
+     -39.5,
      -8.0,
      6.4
     ],
     "end": [
-     26,
+     39.5,
      -8.0,
      6.4
     ],
@@ -120,7 +212,7 @@
       "type": "prism",
       "params": {
        "rect": [
-        5.2,
+        5.0,
         1.8
        ],
        "height": 0.4,
@@ -136,7 +228,7 @@
       ],
       "params": {
        "rect": [
-        5.2,
+        5.0,
         0.3
        ],
        "height": 2.4,
@@ -183,8 +275,8 @@
  "city": "macau",
  "venueId": "macau-market-game",
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "no breeze-block panels, window frames and stepped roofline simplified; louvre balconies roughly placed"
+  "gaps": "pale beige tile wall with grey concrete piers, punched windows, amber louvre balconies on a sill slab and two white vent panels added; window frames and stepped roofline simplified"
  }
 }

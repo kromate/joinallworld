@@ -26,7 +26,7 @@
   "fovDeg": 55,
   "aspect": 1.333,
   "fit": "all",
-  "margin": -0.2
+  "margin": 0.0
  },
  "parts": [
   {
@@ -34,11 +34,12 @@
    "id": "lawn",
    "footprint": {
     "osm": true,
-    "simplify": 1.0
+    "simplify": 1.0,
+    "scale": 0.25
    },
    "at": [
     0,
-    0
+    10
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -60,32 +61,32 @@
    "type": "fence-wall",
    "id": "entrance-wall",
    "at": [
-    -6,
+    -24,
     -50,
     0
    ],
    "params": {
-    "length": 26,
-    "height": 2.8,
-    "thickness": 0.6,
+    "length": 46,
+    "height": 3.2,
+    "thickness": 0.7,
     "kind": "wall",
-    "colour": "#5e676b"
+    "colour": "#5b6569"
    }
   },
   {
    "type": "fence-wall",
    "id": "boundary-left",
    "at": [
-    -34,
+    -52,
     -50,
     0
    ],
    "params": {
     "length": 28,
-    "height": 2.2,
+    "height": 2.6,
     "thickness": 0.5,
     "kind": "wall",
-    "colour": "#8d8a80"
+    "colour": "#6a7377"
    }
   },
   {
@@ -99,7 +100,7 @@
    },
    "at": [
     -30,
-    -47
+    -46
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -107,10 +108,10 @@
    "storeys": 1,
    "wall": {
     "material": "stone",
-    "colour": "#a39d8d",
+    "colour": "#a8a292",
     "windows": "punched",
-    "windowRatio": 0.2,
-    "glassColour": "#3f8f91",
+    "windowRatio": 0.3,
+    "glassColour": "#2f9a9a",
     "faces": {
      "front": "punched",
      "back": "plain",
@@ -120,9 +121,9 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#6b665c",
+    "colour": "#6a4f3c",
     "parapet": 0.2,
-    "overhang": 0.7
+    "overhang": 0.9
    }
   },
   {
@@ -188,34 +189,6 @@
    }
   },
   {
-   "type": "stadium/tree-grove",
-   "at": [
-    -20,
-    20
-   ],
-   "params": {
-    "width": 70,
-    "depth": 55,
-    "count": 26,
-    "min_height": 7,
-    "max_height": 13
-   }
-  },
-  {
-   "type": "stadium/tree-grove",
-   "at": [
-    50,
-    60
-   ],
-   "params": {
-    "width": 60,
-    "depth": 45,
-    "count": 20,
-    "min_height": 7,
-    "max_height": 12
-   }
-  },
-  {
    "type": "core/tree",
    "at": [
     -18,
@@ -229,25 +202,6 @@
    }
   },
   {
-   "type": "pavilion",
-   "id": "garden-pavilion",
-   "at": [
-    30,
-    20,
-    0.3
-   ],
-   "rotDeg": 15,
-   "params": {
-    "width": 5.5,
-    "depth": 5.5,
-    "height": 3.6,
-    "roof": "hip",
-    "rise": 1.6,
-    "colour": "#a58a64",
-    "cap_colour": "#5f625f"
-   }
-  },
-  {
    "type": "core/lamp",
    "at": [
     -6,
@@ -257,6 +211,145 @@
     "height": 5,
     "count": 4,
     "spacing": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    -8,
+    -60
+   ],
+   "params": {
+    "rect": [
+     70,
+     20
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#8e8f8c",
+    "topColour": "#8e8f8c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "red-brick-rows",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -68
+    ],
+    "end": [
+     24,
+     -68
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       14
+      ],
+      "z0": 0.15,
+      "height": 0.05,
+      "colour": "#9a5b52"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "plaques",
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -50.5
+    ],
+    "end": [
+     12,
+     -50.5
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       0.25
+      ],
+      "z0": 1.2,
+      "height": 1.7,
+      "colour": "#2b2f33",
+      "topColour": "#2b2f33"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    -34,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#6b4a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -52
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 8,
+    "spread": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 14
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "width": 60,
+    "depth": 22,
+    "count": 22,
+    "min_height": 8,
+    "max_height": 13
    }
   }
  ],
@@ -269,8 +362,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Only the entrance wall/gatehouse is photographed; the park interior (paths, pavilion, trees) is typical, not verified; the stacked-stone wall texture is a flat grey and plaques are blank."
+  "gaps": "Comparison camera frames the whole plot so the entrance wall, plaques and gate house read tiny; wall is flat grey without stacked-stone relief, paving is stripes not herringbone; vines and overhanging canopy only approximated by tree clusters."
  }
 }

@@ -11,7 +11,7 @@
    "licence": "CC BY-SA 3.0",
    "author": "mailer_diablo",
    "view": "front",
-   "file": "/tmp/places-evidence/singapore/lotone1.jpg",
+   "file": "/tmp/places-evidence/sg2/lotone1.jpg",
    "used": "stone-beige rounded corner, big curved glazed bands on levels 2-3, open pillared ground storey, tinted glass pyramid roof element"
   },
   {
@@ -37,55 +37,226 @@
  "parts": [
   {
    "type": "mass",
-   "id": "mall",
+   "id": "podium",
    "footprint": {
     "osm": true,
-    "simplify": 2.0
+    "simplify": 6
    },
-   "height": 22,
-   "storeys": 4,
+   "height": 5,
+   "storeys": 1,
    "wall": {
-    "material": "painted-render",
-    "colour": "#cdbca4",
-    "windows": "ribbon",
-    "windowRatio": 0.62,
-    "plinth": 0.5,
+    "material": "glass-curtain",
+    "colour": "#2c3a40",
+    "windows": "none",
+    "windowRatio": 0.7,
     "pattern": [
      {
       "type": "pilotis",
-      "colour": "#b9a68e",
-      "inset": 2,
-      "spacing": 9,
+      "colour": "#cbbfa8",
+      "inset": 1.5,
+      "spacing": 6,
       "width": 1.2
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#c0392b",
+       "#e3b23c"
+      ],
+      "height": 0.8,
+      "at": 0.8
      }
-    ],
-    "cornice": true
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#8d8f90",
-    "parapet": 0.8
+    "colour": "#b8a98e",
+    "parapet": 0
    }
   },
   {
    "type": "mass",
-   "id": "glass-top",
+   "id": "upper",
    "footprint": {
     "osm": true,
-    "scale": 0.62,
-    "simplify": 4
+    "simplify": 6
    },
-   "z0": 22,
-   "height": 4,
-   "storeys": 1,
+   "z0": 5,
+   "height": 17,
+   "storeys": 3,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#58788a",
-    "windows": "none"
+    "material": "painted-render",
+    "colour": "#d9cdb6",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 14,
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9cdb6",
+       "#c9b79a"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#4f7a84"
+      ],
+      "height": 2.2,
+      "at": 0.55,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
    },
    "roof": {
     "form": "flat",
-    "colour": "#6c7a82"
+    "colour": "#b8a98e",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "round-corner",
+   "at": [
+    -19.5,
+    -42.5,
+    5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      11.5,
+      0,
+      "#c9b79a"
+     ],
+     [
+      11.5,
+      1.2,
+      "#c9b79a"
+     ],
+     [
+      12.2,
+      1.3,
+      "#cfc2a8"
+     ],
+     [
+      12.2,
+      2.5,
+      "#2f4a52"
+     ],
+     [
+      12.2,
+      6.5,
+      "#4f7a84"
+     ],
+     [
+      11.8,
+      7.0,
+      "#2f4a52"
+     ],
+     [
+      11.8,
+      7.6,
+      "#d9cdb6"
+     ],
+     [
+      12.2,
+      8.0,
+      "#d9cdb6"
+     ],
+     [
+      12.2,
+      10.0,
+      "#2f4a52"
+     ],
+     [
+      12.2,
+      15.0,
+      "#4f7a84"
+     ],
+     [
+      12.6,
+      15.5,
+      "#cdbfa5"
+     ],
+     [
+      12.6,
+      17.5,
+      "#cdbfa5"
+     ],
+     [
+      0.01,
+      17.6,
+      "#b8a98e"
+     ]
+    ],
+    "colour": "#d9cdb6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-roof",
+   "at": [
+    0,
+    -5,
+    22
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -25
+     ],
+     [
+      30,
+      -25
+     ],
+     [
+      30,
+      25
+     ],
+     [
+      -30,
+      25
+     ]
+    ],
+    "z0": 0,
+    "height": 4,
+    "topScale": [
+     0.85,
+     0.5
+    ],
+    "topOffset": [
+     0,
+     8
+    ],
+    "colour": "#78a2b4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-pyramid",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 17,
+    "height": 14,
+    "topScale": 0.45,
+    "colour": "#4a6b80",
+    "windows": "none"
    }
   },
   {
@@ -100,21 +271,27 @@
     "height": 2.5,
     "bottom": 6.5,
     "colour": "#d8d2c4"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
    "at": [
-    -45,
-    -55
+    -60,
+    -60
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 12,
-    "count": 3,
+    "height": 14,
+    "count": 2,
     "spread": 9,
-    "line": 40
-   }
+    "line": 20
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -126,8 +303,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Curved glazed corner bays, sloping glass roof element and open pillared storeys are only approximated; mass is a straight-walled OSM extrusion"
+  "gaps": "Rounded curved glazed corner with stone cornice, open pillared podium, and tilted glass roof plus pyramid are in; ribbon bands on long face and the pyramid placement are approximate, shopfront signage panels and the sloping soffit eave are not modelled."
  }
 }

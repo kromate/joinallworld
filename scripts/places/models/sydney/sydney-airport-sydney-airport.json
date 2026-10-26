@@ -17,7 +17,7 @@
   }
  ],
  "camera": {
-  "yawDeg": 170,
+  "yawDeg": -8,
   "pitchDeg": 28,
   "fovDeg": 55,
   "aspect": 1.6,
@@ -197,9 +197,9 @@
    ],
    "params": {
     "length": 14,
-    "colour": "#dfe3e4"
+    "colour": "#2f6fb0"
    },
-   "rotDeg": 0
+   "rotDeg": -90
   },
   {
    "lod": [
@@ -213,8 +213,9 @@
    ],
    "params": {
     "length": 14,
-    "colour": "#dfe3e4"
-   }
+    "colour": "#2f6fb0"
+   },
+   "rotDeg": -90
   },
   {
    "lod": [
@@ -228,17 +229,18 @@
    ],
    "params": {
     "length": 14,
-    "colour": "#dfe3e4"
-   }
+    "colour": "#2f6fb0"
+   },
+   "rotDeg": -90
   },
   {
    "type": "core/airliner",
    "at": [
     -20,
-    -72,
+    -70,
     0
    ],
-   "rotDeg": 90,
+   "rotDeg": 0,
    "params": {
     "scale": 1.0,
     "colour": "#eef1f2",
@@ -249,10 +251,10 @@
    "type": "core/airliner",
    "at": [
     26,
-    -74,
+    -70,
     0
    ],
-   "rotDeg": 90,
+   "rotDeg": 0,
    "params": {
     "scale": 1.0,
     "colour": "#eef1f2",
@@ -262,12 +264,12 @@
   {
    "type": "core/control-tower",
    "at": [
-    68,
-    -8,
+    80,
+    44,
     0
    ],
    "params": {
-    "height": 58,
+    "height": 40,
     "style": "round",
     "colour": "#cfd3d4",
     "cabColour": "#4a5a62"
@@ -306,8 +308,8 @@
  "city": "sydney",
  "venueId": "sydney-airport-sydney-airport",
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "Only a ~130 m portion of a 745 m terminal; curved skylight roof, many piers and aerobridge colours not modelled; pale grey flat roofs"
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a ~130 m portion of a 745 m terminal; curved skylight roof and many piers not modelled; aerobridges and nose-in aircraft approximate"
  }
 }

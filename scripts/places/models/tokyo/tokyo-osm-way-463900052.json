@@ -38,6 +38,20 @@
  },
  "parts": [
   {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    -0.25
+   ],
+   "params": {
+    "width": 170,
+    "depth": 140,
+    "colour": "#b9b6ae",
+    "border_colour": "#b9b6ae"
+   }
+  },
+  {
    "type": "lawn",
    "at": [
     0,
@@ -59,13 +73,13 @@
    ],
    "params": {
     "length": 96,
-    "depth": 20,
+    "depth": 24,
     "height": 14,
     "roof": "cantilever",
-    "rear": "ribbon",
+    "rear": "none",
     "storeys": 2,
     "seat_colour": "#f0c514",
-    "seat_colour2": "#e6bd10",
+    "seat_colour2": "#f0c514",
     "accent_material": "metal-cladding"
    }
   },
@@ -78,7 +92,7 @@
    ],
    "rotDeg": 180,
    "params": {
-    "length": 84,
+    "length": 96,
     "depth": 18,
     "height": 9,
     "roof": "none",
@@ -97,9 +111,9 @@
    ],
    "rotDeg": 90,
    "params": {
-    "length": 60,
+    "length": 70,
     "depth": 19,
-    "height": 10,
+    "height": 11,
     "roof": "none",
     "rear": "none",
     "storeys": 1,
@@ -116,9 +130,9 @@
    ],
    "rotDeg": -90,
    "params": {
-    "length": 60,
+    "length": 70,
     "depth": 19,
-    "height": 10,
+    "height": 11,
     "roof": "none",
     "rear": "none",
     "storeys": 1,
@@ -129,53 +143,27 @@
   {
    "type": "floodlight-mast",
    "at": [
-    -80,
-    -52,
-    0
-   ],
-   "params": {
-    "height": 34,
-    "head_width": 5,
-    "colour": "#aeb4ba"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
     80,
-    -52,
+    52,
     0
    ],
    "params": {
-    "height": 34,
-    "head_width": 5,
-    "colour": "#aeb4ba"
+    "height": 46,
+    "head_width": 9,
+    "colour": "#c4c9ce"
    }
   },
   {
    "type": "floodlight-mast",
    "at": [
     -80,
-    52,
+    -52,
     0
    ],
    "params": {
-    "height": 34,
-    "head_width": 5,
-    "colour": "#aeb4ba"
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    80,
-    52,
-    0
-   ],
-   "params": {
-    "height": 34,
-    "head_width": 5,
-    "colour": "#aeb4ba"
+    "height": 40,
+    "head_width": 7,
+    "colour": "#c4c9ce"
    }
   },
   {
@@ -191,20 +179,6 @@
     "post_height": 3,
     "facing": "south",
     "colour": "#2a2d31"
-   }
-  },
-  {
-   "type": "plaza",
-   "at": [
-    0,
-    -80,
-    0
-   ],
-   "params": {
-    "width": 110,
-    "depth": 16,
-    "colour": "#bdb8ac",
-    "border_colour": "#d4d2cb"
    }
   },
   {
@@ -233,8 +207,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Photos are interior views only; exterior massing (one roofed main stand, open yellow terraces, corner masts) follows them, roof detail, signage boards and the real irregular outline are simplified."
+  "gaps": "Interior-only photos; main stand's outward face still reads glazed/white from the exterior camera, roof is a thin cantilever; terraces, blue away block, tall corner mast and concrete concourse added; outline simplified."
  }
 }

@@ -41,14 +41,14 @@
      54,
      26
     ],
-    "height": 3.4,
+    "height": 5.2,
     "topScale": [
-     0.8,
-     0.72
+     0.7,
+     0.55
     ],
     "topOffset": [
      0,
-     1
+     1.5
     ],
     "colour": "#b5502c",
     "topColour": "#9c4a2a"
@@ -67,7 +67,7 @@
     0,
     -14.2
    ],
-   "height": 1.6,
+   "height": 3,
    "wall": {
     "material": "concrete",
     "colour": "#9a9d98",
@@ -92,24 +92,21 @@
     4,
     1.5
    ],
-   "z0": 3.4,
+   "z0": 5.2,
    "height": 5.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e0cf94",
-    "windows": "punched",
-    "windowRatio": 0.18,
-    "faces": {
-     "front": "plain"
-    }
+    "colour": "#e6d8b0",
+    "windows": "none",
+    "windowRatio": 0.18
    },
    "roof": {
     "form": "hip",
-    "colour": "#d8cfa4",
+    "colour": "#efe3bc",
     "material": "concrete",
-    "pitch": 10,
-    "overhang": 3.2
+    "pitch": 14,
+    "overhang": 4.0
    }
   },
   {
@@ -125,20 +122,20 @@
     -19,
     -1
    ],
-   "z0": 2.6,
+   "z0": 3.8,
    "height": 3.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e0cf94",
+    "colour": "#e6d8b0",
     "windows": "none"
    },
    "roof": {
     "form": "hip",
-    "colour": "#d8cfa4",
+    "colour": "#efe3bc",
     "material": "concrete",
-    "pitch": 8,
-    "overhang": 2.2
+    "pitch": 12,
+    "overhang": 2.4
    }
   },
   {
@@ -160,14 +157,14 @@
     "start": [
      -8,
      -6.5,
-     3.4
+     5.2
     ],
     "end": [
      16,
      -6.5,
-     3.4
+     5.2
     ],
-    "count": 6
+    "count": 7
    }
   },
   {
@@ -176,7 +173,7 @@
    "at": [
     4,
     -6.5,
-    3.6
+    5.4
    ],
    "params": {
     "rect": [
@@ -190,15 +187,15 @@
   {
    "type": "core/steps",
    "at": [
-    -8,
-    -14,
+    -9,
+    -13,
     0
    ],
    "params": {
     "width": 3,
-    "rise": 3.2,
+    "rise": 5.0,
     "run": 1.2,
-    "count": 12,
+    "count": 17,
     "colour": "#b8b4a8"
    }
   },
@@ -216,6 +213,57 @@
     "spread": 6,
     "line": 10
    }
+  },
+  {
+   "type": "prism",
+   "id": "dark-interior",
+   "at": [
+    4,
+    -5.8,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#4a4234"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-rail",
+   "at": [
+    -10.8,
+    -10,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     8
+    ],
+    "height": 1.0,
+    "colour": "#c8c4b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-rail2",
+   "at": [
+    -7.2,
+    -10,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     8
+    ],
+    "height": 1.0,
+    "colour": "#c8c4b8"
+   }
   }
  ],
  "site": {
@@ -226,8 +274,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "mound and retaining wall proportions approximate; roof is lower-pitched than the deep photo overhang; people, stair rails and the second lower roof tier are not modelled"
+  "gaps": "veranda dark interior approximated by a flat panel; roof reads grey not cream; no people, only simple stair rails; mound slope gentler than photo"
  }
 }

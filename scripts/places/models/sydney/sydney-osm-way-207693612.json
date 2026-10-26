@@ -13,7 +13,7 @@
   {
    "kind": "osm",
    "ref": "way/141281549",
-   "used": "104 x 45 m outline of the Waranara Library (16MW) with 8 levels tagged; modelled as the fin-clad upper mass; the brief name 'academic core' is matched at 131 m"
+   "used": "overall site extent; recomposed from the photo (leaning fin faces, setback atrium) rather than the OSM outline"
   }
  ],
  "camera": {
@@ -28,18 +28,24 @@
    "type": "mass",
    "id": "ground-glass",
    "footprint": {
-    "osm": true,
-    "simplify": 1.0
+    "rect": [
+     100,
+     22
+    ]
    },
-   "height": 5.0,
+   "at": [
+    24,
+    3
+   ],
+   "height": 5,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#2f3a40",
+    "colour": "#232b30",
     "windows": "curtain",
-    "windowRatio": 0.85,
+    "windowRatio": 0.9,
     "bay": 7,
-    "glassColour": "#2f3a40"
+    "glassColour": "#232b30"
    },
    "roof": {
     "form": "flat",
@@ -47,33 +53,397 @@
    }
   },
   {
+   "type": "loft",
+   "id": "fin-body",
+   "params": {
+    "colour": "#b8774a",
+    "topColour": "#8c8f93",
+    "sections": [
+     {
+      "z": 5,
+      "rect": [
+       62,
+       26
+      ],
+      "cy": 2
+     },
+     {
+      "z": 27,
+      "rect": [
+       62,
+       29
+      ],
+      "cy": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "z0": 5,
+      "height": 22,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#8f3a2a",
+      "topColour": "#8f3a2a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30.0,
+     -11.3
+    ],
+    "end": [
+     29.0,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "z0": 5.0,
+      "height": 20.0,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#c99a62",
+      "topColour": "#c99a62"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26.3,
+     -11.3
+    ],
+    "end": [
+     32.7,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.7
+      ],
+      "z0": 5,
+      "height": 20,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#a9442f",
+      "topColour": "#a9442f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -29.1,
+     -11.3
+    ],
+    "end": [
+     28.3,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.7
+      ],
+      "z0": 6.5,
+      "height": 20.5,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#e3cf9f",
+      "topColour": "#e3cf9f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -25.400000000000002,
+     -11.3
+    ],
+    "end": [
+     32.0,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "z0": 5,
+      "height": 22,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#b8603a",
+      "topColour": "#b8603a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28.2,
+     -11.3
+    ],
+    "end": [
+     27.6,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "z0": 8.0,
+      "height": 17.0,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#c99a62",
+      "topColour": "#c99a62"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24.5,
+     -11.3
+    ],
+    "end": [
+     31.3,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.7
+      ],
+      "z0": 5,
+      "height": 20,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#7c3326",
+      "topColour": "#7c3326"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27.3,
+     -11.3
+    ],
+    "end": [
+     26.9,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.7
+      ],
+      "z0": 9.5,
+      "height": 17.5,
+      "topOffset": [
+       0,
+       -2.7
+      ],
+      "colour": "#b8603a",
+      "topColour": "#b8603a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -23.6,
+     -11.3
+    ],
+    "end": [
+     30.599999999999998,
+     -11.3
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
    "type": "mass",
-   "id": "fin-block",
+   "id": "atrium",
    "footprint": {
-    "osm": true,
-    "simplify": 1.0,
-    "scale": 0.97
+    "rect": [
+     22,
+     20
+    ]
    },
-   "z0": 5.0,
-   "height": 22,
-   "storeys": 5,
+   "at": [
+    43,
+    6
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb3bb",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "bay": 5.5,
+    "glassColour": "#8aa3ad"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-right",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    62,
+    3
+   ],
+   "z0": 5,
+   "height": 14,
+   "storeys": 3,
    "wall": {
     "material": "metal-cladding",
     "colour": "#c9a574",
     "windows": "none",
-    "windowRatio": 0,
     "pattern": [
      {
       "type": "panels",
       "size": [
-       2.0,
-       22
+       1.4,
+       14
       ],
       "colours": [
        "#a9442f",
        "#c99a62",
-       "#e3cf9f",
-       "#b8603a"
+       "#8f3a2a",
+       "#e3cf9f"
       ],
       "mode": "stripes-v",
       "gap": 0,
@@ -84,63 +454,149 @@
    "roof": {
     "form": "flat",
     "colour": "#8c8f93",
-    "parapet": 0.5
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-block",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    82,
+    10
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8b86",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7479"
    }
   },
   {
    "type": "prism",
-   "id": "atrium",
+   "id": "terrace1",
    "at": [
-    -4,
-    -24
+    22,
+    -14
    ],
    "params": {
     "rect": [
-     26,
+     70,
      6
     ],
     "z0": 0,
-    "height": 16,
-    "colour": "#9fb3bb",
-    "topColour": "#9fb3bb",
-    "windows": "curtain",
-    "windowRatio": 0.9,
-    "bay": 6,
-    "glassColour": "#8aa3ad"
+    "height": 0.3,
+    "colour": "#45484b",
+    "topColour": "#45484b"
    }
   },
   {
-   "type": "awning",
+   "type": "prism",
+   "id": "terrace2",
    "at": [
-    -22,
-    -22,
-    0
+    22,
+    -18
    ],
    "params": {
-    "width": 14,
-    "depth": 4,
-    "height": 3.2,
-    "colours": [
-     "#e8e8e4",
-     "#d4d4d0"
-    ]
+    "rect": [
+     70,
+     3
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#55585b",
+    "topColour": "#55585b"
    }
   },
   {
-   "type": "awning",
-   "at": [
-    2,
-    -28,
+   "type": "array",
+   "lod": [
     0
    ],
    "params": {
-    "width": 14,
-    "depth": 4,
-    "height": 3.2,
-    "colours": [
-     "#e8e8e4",
-     "#d4d4d0"
-    ]
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f0efe9",
+      "profile": [
+       [
+        0,
+        2.3
+       ],
+       [
+        1.8,
+        2.0
+       ],
+       [
+        0,
+        2.8
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8,
+     -15
+    ],
+    "end": [
+     40,
+     -15
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f0efe9",
+      "profile": [
+       [
+        0,
+        2.3
+       ],
+       [
+        1.8,
+        2.0
+       ],
+       [
+        0,
+        2.8
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8,
+     -20
+    ],
+    "end": [
+     40,
+     -20
+    ],
+    "count": 5
    }
   }
  ],
@@ -179,7 +635,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Fins are flat coloured stripes on the OSM outline, not the leaning, staggered fin faces; the glass atrium is a plain box in front; ground floor is a recessed dark band without terrace umbrellas; adjoining concrete block at right missing."
+  "gaps": "Fins are leaning slats with only mild stagger; atrium and right block simplified boxes; umbrellas without tables or poles."
  },
  "schema": "allworld-place-model",
  "version": 2,

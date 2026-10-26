@@ -11,7 +11,7 @@
    "licence": "CC0",
    "author": "Actuall7",
    "view": "front",
-   "file": "/tmp/places-evidence/singapore/iman1.jpg",
+   "file": "/tmp/places-evidence/sg2/iman1.jpg",
    "used": "cream-yellow walls with salmon pink panels and terracotta trim bands, orange pointed pyramid turrets on corners, dark red-brown hip roof, tall pink minaret with red cone and crescent"
   },
   {
@@ -32,367 +32,661 @@
   "yawDeg": 35,
   "pitchDeg": 8,
   "fovDeg": 38,
-  "aspect": 0.75
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.02
  },
  "parts": [
   {
-   "type": "mass",
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     40
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#d8c9b0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
    "id": "hall",
-   "footprint": {
-    "osm": true,
-    "simplify": 0.5
-   },
-   "height": 14,
-   "storeys": 3,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f4d98c",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      13.03,
+      5.4
+     ],
+     [
+      5.4,
+      13.03
+     ],
+     [
+      -5.4,
+      13.03
+     ],
+     [
+      -13.03,
+      5.4
+     ],
+     [
+      -13.03,
+      -5.4
+     ],
+     [
+      -5.4,
+      -13.03
+     ],
+     [
+      5.4,
+      -13.03
+     ],
+     [
+      13.03,
+      -5.4
+     ]
+    ],
+    "z0": 0,
+    "height": 12.5,
+    "colour": "#f3e09e",
     "windows": "arched",
     "windowShape": "pointed",
-    "windowRatio": 0.1,
-    "plinth": 0.6,
-    "bands": "#e3a98d",
-    "cornice": true,
+    "windowRatio": 0.12,
+    "storeys": 1,
+    "glassColour": "#c9b27a",
     "pattern": [
      {
       "type": "bands",
-      "colour": "#c4623f",
-      "height": 0.5,
-      "at": 0.9
+      "colours": [
+       "#f0b090"
+      ],
+      "height": 9,
+      "at": 0.45,
+      "proud": 0.12
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#b5532f"
+      ],
+      "height": 1.0,
+      "at": 0.9,
+      "proud": 0.3
      }
     ]
-   },
-   "roof": {
-    "form": "hip",
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "at": [
+    0,
+    0,
+    12.4
+   ],
+   "params": {
+    "points": [
+     [
+      13.58,
+      5.63
+     ],
+     [
+      5.63,
+      13.58
+     ],
+     [
+      -5.63,
+      13.58
+     ],
+     [
+      -13.58,
+      5.63
+     ],
+     [
+      -13.58,
+      -5.63
+     ],
+     [
+      -5.63,
+      -13.58
+     ],
+     [
+      5.63,
+      -13.58
+     ],
+     [
+      13.58,
+      -5.63
+     ]
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#b5532f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof1",
+   "at": [
+    0,
+    0,
+    13.7
+   ],
+   "params": {
+    "points": [
+     [
+      13.77,
+      5.7
+     ],
+     [
+      5.7,
+      13.77
+     ],
+     [
+      -5.7,
+      13.77
+     ],
+     [
+      -13.77,
+      5.7
+     ],
+     [
+      -13.77,
+      -5.7
+     ],
+     [
+      -5.7,
+      -13.77
+     ],
+     [
+      5.7,
+      -13.77
+     ],
+     [
+      13.77,
+      -5.7
+     ]
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "topScale": 0.88,
     "colour": "#8b3a22",
-    "pitch": 12,
-    "overhang": 0.2
+    "windows": "none"
    }
   },
   {
    "type": "prism",
-   "id": "turret--19--2",
+   "id": "roof2",
    "at": [
-    -19,
-    -2
+    0,
+    0,
+    16.1
    ],
    "params": {
     "points": [
      [
-      -2,
-      -2
+      11.27,
+      4.67
      ],
      [
-      2,
-      -2
+      4.67,
+      11.27
      ],
      [
-      2,
-      2
+      -4.67,
+      11.27
      ],
      [
-      -2,
-      2
+      -11.27,
+      4.67
+     ],
+     [
+      -11.27,
+      -4.67
+     ],
+     [
+      -4.67,
+      -11.27
+     ],
+     [
+      4.67,
+      -11.27
+     ],
+     [
+      11.27,
+      -4.67
      ]
     ],
     "z0": 0,
-    "height": 15.5,
-    "colour": "#f4d98c",
+    "height": 2.6,
+    "topScale": 0.8,
+    "colour": "#7a3220",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof3",
+   "at": [
+    0,
+    0,
+    18.7
+   ],
+   "params": {
+    "points": [
+     [
+      7.85,
+      3.25
+     ],
+     [
+      3.25,
+      7.85
+     ],
+     [
+      -3.25,
+      7.85
+     ],
+     [
+      -7.85,
+      3.25
+     ],
+     [
+      -7.85,
+      -3.25
+     ],
+     [
+      -3.25,
+      -7.85
+     ],
+     [
+      3.25,
+      -7.85
+     ],
+     [
+      7.85,
+      -3.25
+     ]
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 0.55,
+    "colour": "#8b3a22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-0",
+   "at": [
+    13.03,
+    5.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "z0": 0,
+    "height": 16.7,
+    "colour": "#f1dd98",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-ring-0",
+   "at": [
+    13.03,
+    5.4,
+    16.6
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b5532f",
     "windows": "none"
    }
   },
   {
    "type": "revolve",
    "at": [
-    -19,
-    -2,
-    15.5
+    13.03,
+    5.4,
+    17.6
    ],
    "params": {
-    "segments": 8,
+    "segments": 4,
+    "phase": 45,
     "profile": [
      [
-      3,
+      4.0,
       0,
       "#b5532f"
      ],
      [
-      2.6,
+      3.4,
       0.8,
       "#b5532f"
      ],
      [
-      2.4,
+      3.0,
       1.0,
-      "#e9a05a"
+      "#e08a42"
      ],
      [
-      0,
-      5.5,
-      "#e9a05a"
+      0.01,
+      8.5,
+      "#e08a42"
      ]
     ],
-    "colour": "#e9a05a"
+    "colour": "#e08a42"
    }
   },
   {
    "type": "prism",
-   "id": "turret-18--14",
+   "id": "turret-2",
    "at": [
-    18,
-    -14
+    -5.4,
+    13.03,
+    0
    ],
    "params": {
-    "points": [
-     [
-      -2,
-      -2
-     ],
-     [
-      2,
-      -2
-     ],
-     [
-      2,
-      2
-     ],
-     [
-      -2,
-      2
-     ]
+    "rect": [
+     4.8,
+     4.8
     ],
     "z0": 0,
-    "height": 15.5,
-    "colour": "#f4d98c",
+    "height": 16.7,
+    "colour": "#f1dd98",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-ring-2",
+   "at": [
+    -5.4,
+    13.03,
+    16.6
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b5532f",
     "windows": "none"
    }
   },
   {
    "type": "revolve",
    "at": [
-    18,
-    -14,
-    15.5
+    -5.4,
+    13.03,
+    17.6
    ],
    "params": {
-    "segments": 8,
+    "segments": 4,
+    "phase": 45,
     "profile": [
      [
-      3,
+      4.0,
       0,
       "#b5532f"
      ],
      [
-      2.6,
+      3.4,
       0.8,
       "#b5532f"
      ],
      [
-      2.4,
+      3.0,
       1.0,
-      "#e9a05a"
+      "#e08a42"
      ],
      [
-      0,
-      5.5,
-      "#e9a05a"
+      0.01,
+      8.5,
+      "#e08a42"
      ]
     ],
-    "colour": "#e9a05a"
+    "colour": "#e08a42"
    }
   },
   {
    "type": "prism",
-   "id": "turret-17-5",
+   "id": "turret-4",
    "at": [
-    17,
-    5
+    -13.03,
+    -5.4,
+    0
    ],
    "params": {
-    "points": [
-     [
-      -2,
-      -2
-     ],
-     [
-      2,
-      -2
-     ],
-     [
-      2,
-      2
-     ],
-     [
-      -2,
-      2
-     ]
+    "rect": [
+     4.8,
+     4.8
     ],
     "z0": 0,
-    "height": 15.5,
-    "colour": "#f4d98c",
+    "height": 16.7,
+    "colour": "#f1dd98",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-ring-4",
+   "at": [
+    -13.03,
+    -5.4,
+    16.6
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b5532f",
     "windows": "none"
    }
   },
   {
    "type": "revolve",
    "at": [
-    17,
-    5,
-    15.5
+    -13.03,
+    -5.4,
+    17.6
    ],
    "params": {
-    "segments": 8,
+    "segments": 4,
+    "phase": 45,
     "profile": [
      [
-      3,
+      4.0,
       0,
       "#b5532f"
      ],
      [
-      2.6,
+      3.4,
       0.8,
       "#b5532f"
      ],
      [
-      2.4,
+      3.0,
       1.0,
-      "#e9a05a"
+      "#e08a42"
      ],
      [
-      0,
-      5.5,
-      "#e9a05a"
+      0.01,
+      8.5,
+      "#e08a42"
      ]
     ],
-    "colour": "#e9a05a"
+    "colour": "#e08a42"
    }
   },
   {
    "type": "prism",
-   "id": "turret--14-15",
+   "id": "turret-6",
    "at": [
-    -14,
-    15
+    5.4,
+    -13.03,
+    0
    ],
    "params": {
-    "points": [
-     [
-      -2,
-      -2
-     ],
-     [
-      2,
-      -2
-     ],
-     [
-      2,
-      2
-     ],
-     [
-      -2,
-      2
-     ]
+    "rect": [
+     4.8,
+     4.8
     ],
     "z0": 0,
-    "height": 15.5,
-    "colour": "#f4d98c",
+    "height": 16.7,
+    "colour": "#f1dd98",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-ring-6",
+   "at": [
+    5.4,
+    -13.03,
+    16.6
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b5532f",
     "windows": "none"
    }
   },
   {
    "type": "revolve",
    "at": [
-    -14,
-    15,
-    15.5
+    5.4,
+    -13.03,
+    17.6
    ],
    "params": {
-    "segments": 8,
+    "segments": 4,
+    "phase": 45,
     "profile": [
      [
-      3,
+      4.0,
       0,
       "#b5532f"
      ],
      [
-      2.6,
+      3.4,
       0.8,
       "#b5532f"
      ],
      [
-      2.4,
+      3.0,
       1.0,
-      "#e9a05a"
+      "#e08a42"
      ],
      [
-      0,
-      5.5,
-      "#e9a05a"
+      0.01,
+      8.5,
+      "#e08a42"
      ]
     ],
-    "colour": "#e9a05a"
+    "colour": "#e08a42"
    }
   },
   {
    "type": "prism",
    "id": "minaret",
    "at": [
-    -21,
-    10
+    -15.375399999999999,
+    6.372,
+    0
    ],
    "params": {
-    "points": [
-     [
-      -2.2,
-      -2.2
-     ],
-     [
-      2.2,
-      -2.2
-     ],
-     [
-      2.2,
-      2.2
-     ],
-     [
-      -2.2,
-      2.2
-     ]
+    "rect": [
+     3.8,
+     3.8
     ],
     "z0": 0,
-    "height": 30,
-    "colour": "#e8b3a0",
+    "height": 32,
+    "colour": "#f1dd98",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#eeb9a0",
+       "#b5532f"
+      ],
+      "height": 1.0,
+      "at": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-gallery",
+   "at": [
+    -15.375399999999999,
+    6.372,
+    30
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#b5532f",
     "windows": "none"
    }
   },
   {
    "type": "revolve",
    "at": [
-    -21,
-    10,
-    30
+    -15.375399999999999,
+    6.372,
+    32
    ],
    "params": {
-    "segments": 8,
+    "segments": 4,
+    "phase": 45,
     "profile": [
      [
-      3.2,
+      3.6,
       0,
-      "#b5532f"
-     ],
-     [
-      2.8,
-      1.2,
-      "#b5532f"
-     ],
-     [
-      2.6,
-      1.4,
       "#c4452f"
      ],
      [
-      0,
-      8,
+      0.01,
+      7.5,
       "#c4452f"
      ]
     ],
@@ -400,17 +694,34 @@
    }
   },
   {
+   "type": "prism",
+   "id": "crescent",
+   "at": [
+    -15.375399999999999,
+    6.372,
+    39.5
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 8,
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c9c9c0",
+    "windows": "none"
+   }
+  },
+  {
    "type": "core/tree",
    "at": [
-    -30,
-    -30
+    -24,
+    -22
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 9,
-    "count": 4,
+    "height": 10,
+    "count": 3,
     "spread": 8,
-    "line": 50
+    "line": 14
    }
   }
  ],
@@ -418,13 +729,13 @@
   "ground": "paving",
   "forecourt": "plaza",
   "extent": [
-   100,
-   90
+   50,
+   46
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Octagonal stepped roof, lattice arch panels and ornamental frieze missing; roof overhang too wide; turret positions approximate"
+  "gaps": "Octagonal body with stepped octagonal roof, pyramid turrets and square minaret now match the massing; lattice arch panels and the ornamental medallion frieze are only flat salmon bands and a plain terracotta ring, turret lanterns are plain."
  }
 }

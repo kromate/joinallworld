@@ -22,7 +22,7 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 4,
+  "pitchDeg": 14,
   "fovDeg": 50,
   "aspect": 1.333,
   "fit": "all",
@@ -49,9 +49,9 @@
     -40
    ],
    "params": {
-    "width": 80,
+    "width": 60,
     "depth": 34,
-    "count": 30,
+    "count": 22,
     "min_height": 8,
     "max_height": 14
    }
@@ -98,13 +98,13 @@
    ],
    "params": {
     "rect": [
-     160,
+     150,
      3.0
     ],
     "z0": 0,
-    "height": 2.2,
-    "colour": "#8b867c",
-    "topColour": "#9a958b",
+    "height": 2.6,
+    "colour": "#8a8378",
+    "topColour": "#9a9488",
     "topScale": [
      1,
      0.9
@@ -117,23 +117,23 @@
    "params": {
     "mode": "line",
     "start": [
-     -72,
-     3.5
+     -68,
+     3.8
     ],
     "end": [
-     72,
-     3.5
+     68,
+     3.8
     ],
-    "count": 48,
+    "count": 50,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       2.0,
-       2.4
+       2.4,
+       2.6
       ],
       "z0": 0,
-      "height": 1.6,
+      "height": 2.2,
       "colour": "#7c7d7b",
       "topColour": "#8d8e8b",
       "topScale": 0.6
@@ -153,23 +153,23 @@
    "params": {
     "mode": "line",
     "start": [
-     -70,
-     6
+     -68,
+     6.4
     ],
     "end": [
-     70,
-     6
+     68,
+     6.4
     ],
-    "count": 44,
+    "count": 48,
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       2.2,
-       2.4
+       2.4,
+       2.6
       ],
       "z0": 0,
-      "height": 1.2,
+      "height": 1.7999999999999998,
       "colour": "#74756f",
       "topColour": "#858681",
       "topScale": 0.6
@@ -185,7 +185,7 @@
    "id": "spur",
    "at": [
     12,
-    16
+    26
    ],
    "rotDeg": 8,
    "params": {
@@ -217,7 +217,7 @@
     ],
     "z0": 0,
     "height": 1.8,
-    "colour": "#7f7f7a",
+    "colour": "#6f6f6a",
     "topColour": "#8a8a84"
    }
   },
@@ -235,11 +235,12 @@
   {
    "type": "fence-wall",
    "at": [
-    -40,
-    1
+    -75,
+    0.5,
+    2.6
    ],
    "params": {
-    "length": 50,
+    "length": 150,
     "height": 1.1,
     "thickness": 0.1,
     "kind": "fence",
@@ -256,8 +257,8 @@
    ],
    "params": {
     "width": 170,
-    "depth": 70,
-    "colour": "#a39a7c",
+    "depth": 80,
+    "colour": "#a09a88",
     "bank": false
    }
   },
@@ -298,39 +299,98 @@
    }
   },
   {
-   "type": "pier-boardwalk",
-   "id": "pier",
-   "at": [
-    -28,
-    22
-   ],
-   "rotDeg": 90,
+   "type": "array",
+   "id": "tetrapods-3",
    "params": {
-    "length": 26,
-    "width": 3,
-    "height": 0.9,
-    "colour": "#8a6a43"
+    "mode": "line",
+    "start": [
+     -68,
+     9
+    ],
+    "end": [
+     68,
+     9
+    ],
+    "count": 46,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       2.6
+      ],
+      "z0": 0,
+      "height": 1.6,
+      "colour": "#6f706b",
+      "topColour": "#7d7e79",
+      "topScale": 0.6
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "poles",
+   "params": {
+    "mode": "line",
+    "start": [
+     8,
+     26
+    ],
+    "end": [
+     8,
+     26
+    ],
+    "count": 1,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "z0": 1.8,
+      "height": 12,
+      "colour": "#6a6560"
+     }
+    }
    }
   },
   {
-   "type": "stadium/path-strip",
+   "type": "prism",
+   "id": "pole-2",
    "at": [
-    0,
+    -60,
     0
    ],
    "params": {
-    "points": [
-     [
-      -28,
-      -10
-     ],
-     [
-      -28,
-      -3
-     ]
+    "rect": [
+     0.35,
+     0.35
     ],
-    "width": 2.4,
-    "colour": "#b9b2a4"
+    "z0": 2.0,
+    "height": 10,
+    "colour": "#6a6560"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pole-3",
+   "at": [
+    70,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 2.0,
+    "height": 10,
+    "colour": "#6a6560"
    }
   }
  ],
@@ -339,12 +399,12 @@
   "forecourt": "water",
   "extent": [
    160,
-   150
+   140
   ]
  },
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "rough",
-  "gaps": "Photo is only of the Yangtze sea wall and tetrapod breakwater; park extent, lawn, pavilions and pier are typical because no OSM outline matched; comparison camera does not frame the shoreline closely."
+  "gaps": "Camera does not reproduce the shoreline view: the sea wall, tetrapod rows and spur are tiny in a wide grey-green ground plane; tetrapods are plain boxes; river colour is shared with the site ground; no ships."
  }
 }

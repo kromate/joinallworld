@@ -26,127 +26,115 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 6,
+  "pitchDeg": 3,
   "fovDeg": 40,
   "aspect": 0.63,
-  "margin": 0.12,
+  "margin": 0.03,
   "fit": "building"
  },
  "parts": [
   {
    "type": "loft",
    "id": "shelf",
-   "at": [
-    0,
-    0,
-    0
-   ],
    "params": {
     "curve": true,
-    "colour": "#d9bc84",
+    "colour": "#d6a85a",
     "capBottom": true,
     "sections": [
      {
-      "z": 0.0,
+      "z": 0,
       "ellipse": [
-       7.0,
-       5.0
-      ]
+       8.5,
+       5.5
+      ],
+      "cx": 0
      },
      {
-      "z": 0.595,
+      "z": 0.4,
       "ellipse": [
-       6.0,
-       4.25
-      ]
+       7.6,
+       5
+      ],
+      "cx": 0.4
      },
      {
-      "z": 0.935,
+      "z": 0.8,
       "ellipse": [
-       3.5,
-       2.5
-      ]
+       6.2,
+       4.2
+      ],
+      "cx": -0.3
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       4.5,
+       3.2
+      ],
+      "cx": 0
      }
     ]
    }
   },
   {
    "type": "loft",
-   "id": "pedestal",
+   "id": "base",
    "at": [
     0,
     0,
-    0.85
+    0.9
    ],
    "params": {
     "curve": true,
-    "colour": "#dcb878",
+    "colour": "#d6a85a",
     "sections": [
      {
-      "z": 0.0,
+      "z": 0,
       "ellipse": [
-       2.89,
-       2.04
-      ]
+       3.1,
+       2.3
+      ],
+      "cx": 0
      },
      {
-      "z": 0.59,
+      "z": 0.7,
       "ellipse": [
-       2.04,
-       1.53
-      ]
+       2.2,
+       1.7
+      ],
+      "cx": 0
      },
      {
-      "z": 1.36,
+      "z": 1.6,
       "ellipse": [
-       1.05,
-       0.85
-      ]
+       1.25,
+       1.0
+      ],
+      "cx": 0
      },
      {
-      "z": 2.12,
+      "z": 2.6,
       "ellipse": [
-       0.82,
-       0.71
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "type": "loft",
-   "id": "neck",
-   "at": [
-    0,
-    0,
-    2.72
-   ],
-   "params": {
-    "curve": true,
-    "colour": "#d3ae72",
-    "sections": [
+       0.95,
+       0.8
+      ],
+      "cx": 0
+     },
      {
-      "z": 0.0,
+      "z": 4.2,
       "ellipse": [
        0.85,
-       0.71
-      ]
+       0.72
+      ],
+      "cx": 0.1
      },
      {
-      "z": 0.51,
+      "z": 5.6,
       "ellipse": [
-       0.94,
-       0.78
+       0.95,
+       0.8
       ],
-      "cx": 0.03
-     },
-     {
-      "z": 0.77,
-      "ellipse": [
-       1.19,
-       0.94
-      ],
-      "cx": -0.09
+      "cx": 0.25
      }
     ]
    }
@@ -157,89 +145,598 @@
    "at": [
     0,
     0,
-    3.4
+    6.4
+   ],
+   "params": {
+    "curve": false,
+    "colour": "#7a5a3e",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       2.6,
+       1.9
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       4.0,
+       2.5
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       4.7,
+       2.7
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 3.9,
+      "rect": [
+       4.4,
+       2.6
+      ],
+      "cx": -0.05
+     },
+     {
+      "z": 4.3,
+      "rect": [
+       4.0,
+       2.4
+      ],
+      "cx": -0.35
+     },
+     {
+      "z": 4.7,
+      "rect": [
+       2.0,
+       1.6
+      ],
+      "cx": -1.2
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       0.8,
+       0.9
+      ],
+      "cx": -1.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stone0",
+   "at": [
+    -6.8,
+    -3.6,
+    0.55
    ],
    "params": {
     "curve": true,
-    "colour": "#a98767",
+    "colour": "#7d7468",
     "sections": [
      {
-      "z": 0.0,
+      "z": 0,
       "ellipse": [
-       1.05,
-       0.85
+       0.55,
+       0.405
       ],
-      "cx": 0.0
+      "cx": 0
      },
      {
-      "z": 0.51,
+      "z": 0.35,
       "ellipse": [
-       1.61,
-       1.19
+       0.6050000000000001,
+       0.45
       ],
-      "cx": 0.09
+      "cx": 0
      },
      {
-      "z": 1.27,
+      "z": 0.7,
       "ellipse": [
-       1.53,
-       1.22
+       0.33,
+       0.225
       ],
-      "cx": -0.09
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stone1",
+   "at": [
+    -5.2,
+    -4.0,
+    0.55
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#6f665c",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.45,
+       0.36000000000000004
+      ],
+      "cx": 0
      },
      {
-      "z": 1.78,
+      "z": 0.275,
       "ellipse": [
-       1.27,
-       1.05
+       0.49500000000000005,
+       0.4
       ],
-      "cx": -0.42
+      "cx": 0
      },
      {
-      "z": 2.21,
+      "z": 0.55,
       "ellipse": [
-       0.68,
-       0.68
+       0.27,
+       0.2
       ],
-      "cx": -0.94
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stone2",
+   "at": [
+    3.6,
+    -3.7,
+    0.55
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#8a8378",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.4,
+       0.315
+      ],
+      "cx": 0
      },
      {
-      "z": 2.46,
+      "z": 0.25,
       "ellipse": [
-       0.2,
-       0.34
+       0.44000000000000006,
+       0.35
       ],
-      "cx": -1.19
+      "cx": 0
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.24,
+       0.175
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stone3",
+   "at": [
+    4.9,
+    -3.9,
+    0.55
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#9a948a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.5,
+       0.36000000000000004
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.3,
+      "ellipse": [
+       0.55,
+       0.4
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       0.3,
+       0.2
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stone4",
+   "at": [
+    6.3,
+    -3.6,
+    0.55
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#7a7268",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.45,
+       0.36000000000000004
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.25,
+      "ellipse": [
+       0.49500000000000005,
+       0.4
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.27,
+       0.2
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stone5",
+   "at": [
+    7.4,
+    -3.4,
+    0.55
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#8d867a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.6,
+       0.45
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.35,
+      "ellipse": [
+       0.66,
+       0.5
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.36,
+       0.25
+      ],
+      "cx": 0
      }
     ]
    }
   },
   {
    "type": "array",
-   "id": "boundary-stones",
+   "id": "pits0",
+   "lod": [
+    0
+   ],
    "params": {
     "mode": "line",
-    "count": 7,
+    "count": 5,
     "start": [
-     -4.5,
-     -3.2,
-     0.6
+     -1.309427813450623,
+     -1.36,
+     7.0
     ],
     "end": [
-     4.5,
-     -3.2,
-     0.6
+     1.8397193470364537,
+     -1.36,
+     7.037228990892413
     ],
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.9,
-       0.7
+       0.26766435653450715,
+       0.06
       ],
-      "height": 0.5,
-      "colour": "#8f7d6a",
-      "topColour": "#a39380"
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits1",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -1.3977743359582333,
+     -1.36,
+     7.45
+    ],
+    "end": [
+     1.461021217980837,
+     -1.36,
+     7.4661629294366
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25542704681782863,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -1.2399213609642044,
+     -1.36,
+     7.9
+    ],
+    "end": [
+     1.563084658776136,
+     -1.36,
+     7.933882841026009
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.29462154392303597,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits3",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -1.4619306554963758,
+     -1.36,
+     8.35
+    ],
+    "end": [
+     1.8989432145445995,
+     -1.36,
+     8.360266804860453
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.21324255727698582,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits4",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -1.749337942753974,
+     -1.36,
+     8.8
+    ],
+    "end": [
+     1.5869355542197905,
+     -1.36,
+     8.957918987789892
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2887263961893838,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits5",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -1.6360319037781,
+     -1.36,
+     9.25
+    ],
+    "end": [
+     1.8654193547709004,
+     -1.36,
+     9.408599129947655
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2889576055763009,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits6",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -1.0708965765840404,
+     -1.36,
+     9.7
+    ],
+    "end": [
+     1.7620742546863062,
+     -1.36,
+     9.768331952109204
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.204319472014519,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits7",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -1.0908802151365782,
+     -1.36,
+     10.15
+    ],
+    "end": [
+     1.4723760869598939,
+     -1.36,
+     10.160957871222218
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.23788164022997504,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "pits8",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -1.6886857448608688,
+     -1.36,
+     10.6
+    ],
+    "end": [
+     1.8579600121465683,
+     -1.36,
+     10.747246719757333
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2850731619537221,
+       0.06
+      ],
+      "height": 0.17,
+      "colour": "#3d2a1c"
      }
     }
    }
@@ -250,13 +747,13 @@
   "forecourt": "none",
   "trees": 0,
   "extent": [
-   24,
-   24
+   14,
+   10
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Cap is a smooth lofted blob with no honeycomb weathering relief and a simplified crest; shelf is a symmetric mound instead of undulating rock; the hoodoo is drawn about 1.7x its real 1.7 m height so it reads at city scale; sea not shown."
+  "gaps": "Neck, base and flat-topped cap now follow the hoodoo, but the cap is a smooth loft with dark pit boxes on the front instead of true honeycomb relief; crest is less swept than the photo, shelf is a smooth mound not undulating rock, and the sky/ground backdrop differs."
  }
 }

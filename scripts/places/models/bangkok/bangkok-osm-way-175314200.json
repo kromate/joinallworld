@@ -1,9 +1,9 @@
 {
  "verified": "photo",
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "photo is an inside-the-pitch view so only massing, colours and stand heights compared; red fascia band, scoreboard tower and end-stand detail are simplified; stands are stock raked parts"
+  "gaps": "Photo is an inside-the-pitch view; main stand modelled as raked red/white tiers under a dark canopy with red fascia, glazed press box omitted; scoreboard tower is a plain red/white prism; end stands low plain tiers."
  },
  "evidence": [
   {
@@ -52,86 +52,6 @@
    }
   },
   {
-   "type": "stadium-stand",
-   "id": "main",
-   "at": [
-    0,
-    -52,
-    0
-   ],
-   "rotDeg": 0,
-   "params": {
-    "length": 104,
-    "depth": 22,
-    "height": 15,
-    "roof": "cantilever",
-    "rear": "ribbon",
-    "storeys": 2,
-    "seat_colour": "#c8302a",
-    "seat_colour2": "#e8e1d0"
-   }
-  },
-  {
-   "type": "stadium-stand",
-   "id": "near",
-   "at": [
-    0,
-    48,
-    0
-   ],
-   "rotDeg": 180,
-   "params": {
-    "length": 104,
-    "depth": 14,
-    "height": 8,
-    "roof": "none",
-    "rear": "plain",
-    "storeys": 1,
-    "seat_colour": "#c8302a",
-    "seat_colour2": "#e8e1d0"
-   }
-  },
-  {
-   "type": "stadium-stand",
-   "id": "west",
-   "at": [
-    -66,
-    0,
-    0
-   ],
-   "rotDeg": 270,
-   "params": {
-    "length": 60,
-    "depth": 12,
-    "height": 9,
-    "roof": "none",
-    "rear": "plain",
-    "storeys": 1,
-    "seat_colour": "#c8302a",
-    "seat_colour2": "#e8e1d0"
-   }
-  },
-  {
-   "type": "stadium-stand",
-   "id": "east",
-   "at": [
-    66,
-    0,
-    0
-   ],
-   "rotDeg": 90,
-   "params": {
-    "length": 60,
-    "depth": 12,
-    "height": 9,
-    "roof": "none",
-    "rear": "plain",
-    "storeys": 1,
-    "seat_colour": "#c8302a",
-    "seat_colour2": "#e8e1d0"
-   }
-  },
-  {
    "type": "floodlight-mast",
    "at": [
     -70,
@@ -176,21 +96,212 @@
    }
   },
   {
-   "type": "scoreboard",
+   "type": "stand",
+   "params": {
+    "start": [
+     55,
+     38
+    ],
+    "end": [
+     -55,
+     38
+    ],
+    "rows": 18,
+    "rise": 0.55,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#c8302a",
+     "#e8e1d0"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9d3c6",
+    "underColour": "#b8b2a4",
+    "stepped": true,
+    "canopy": {
+     "height": 11.6,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 2,
+     "colour": "#2e3234",
+     "edgeColour": "#c8302a",
+     "overhangBack": 0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -55,
+     -38
+    ],
+    "end": [
+     55,
+     -38
+    ],
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#c8302a",
+     "#e8e1d0"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9d3c6",
+    "underColour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -60,
+     30
+    ],
+    "end": [
+     -60,
+     -30
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#c8302a",
+     "#e8e1d0"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9d3c6",
+    "underColour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     60,
+     -30
+    ],
+    "end": [
+     60,
+     30
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#c8302a",
+     "#e8e1d0"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9d3c6",
+    "underColour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sb-tower",
    "at": [
-    62,
-    -34,
+    72,
+    30,
     0
    ],
    "params": {
-    "width": 12,
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "height": 30,
+    "colour": "#c8302a",
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sb-white",
+   "at": [
+    72,
+    30,
+    18
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "height": 4,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sb-screen",
+   "at": [
+    72,
+    27.4,
+    4
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.8
+    ],
     "height": 5,
-    "post_height": 3
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -76,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 8,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    76,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 8,
+    "line": 40
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "grass",
   "forecourt": "parking",
   "trees": [
    {

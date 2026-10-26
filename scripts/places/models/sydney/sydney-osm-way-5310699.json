@@ -175,39 +175,64 @@
     "run": 0.8,
     "seatColour": "#d9902f",
     "seatColours": [
-     "#d9902f",
-     "#8a5a26"
+     "#e8780c",
+     "#6b3612",
+     "#f08410",
+     "#7a4016"
     ],
     "blocks": 6,
-    "under": "open",
-    "concreteColour": "#b9b5aa",
-    "backWall": 1
+    "under": "solid",
+    "concreteColour": "#6e6a62",
+    "backWall": 1.5
    }
   },
   {
-   "type": "prism",
+   "type": "sweep-path",
    "id": "main-roof",
    "at": [
     0,
-    42,
-    10.8
+    0,
+    11.2
    ],
    "params": {
-    "rect": [
-     68,
-     17
+    "section": {
+     "poly": [
+      [
+       -9,
+       0.0
+      ],
+      [
+       9.5,
+       0.0
+      ],
+      [
+       9.5,
+       2.6
+      ],
+      [
+       -9,
+       0.5
+      ]
+     ]
+    },
+    "points": [
+     [
+      -37,
+      42,
+      0
+     ],
+     [
+      37,
+      42,
+      0
+     ]
     ],
-    "height": 1.4,
-    "topScale": [
-     1,
-     0.55
-    ],
-    "topOffset": [
+    "up": [
      0,
-     2.5
+     0,
+     1
     ],
-    "colour": "#3e444a",
-    "topColour": "#4a5056"
+    "colour": "#3a3f44"
    }
   },
   {
@@ -293,19 +318,17 @@
      30,
      -34
     ],
-    "rows": 7,
+    "rows": 6,
     "rise": 0.45,
     "run": 0.8,
-    "seatColour": "#7a8087",
-    "under": "open",
+    "seatColour": "#c9762a",
+    "under": "solid",
     "concreteColour": "#b9b5aa",
-    "canopy": {
-     "height": 5.5,
-     "depth": 6,
-     "colour": "#8e9498",
-     "slopeDeg": 2,
-     "supports": 6
-    }
+    "seatColours": [
+     "#c9762a",
+     "#7a4a22"
+    ],
+    "blocks": 4
    }
   },
   {
@@ -368,36 +391,36 @@
     0
    ],
    "params": {
-    "colour": "#8a8f94",
+    "colour": "#6a6f74",
     "capTop": true,
     "sections": [
      {
       "z": 0,
       "rect": [
-       0.8,
-       0.8
+       1.3,
+       1.3
       ]
      },
      {
-      "z": 30,
+      "z": 34,
       "rect": [
-       0.4,
-       0.4
+       0.7,
+       0.7
       ]
      },
      {
-      "z": 30.1,
+      "z": 34.1,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#cfd3d6"
      },
      {
-      "z": 32.4,
+      "z": 37,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#e8ecef"
      }
@@ -412,36 +435,36 @@
     0
    ],
    "params": {
-    "colour": "#8a8f94",
+    "colour": "#6a6f74",
     "capTop": true,
     "sections": [
      {
       "z": 0,
       "rect": [
-       0.8,
-       0.8
+       1.3,
+       1.3
       ]
      },
      {
-      "z": 30,
+      "z": 34,
       "rect": [
-       0.4,
-       0.4
+       0.7,
+       0.7
       ]
      },
      {
-      "z": 30.1,
+      "z": 34.1,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#cfd3d6"
      },
      {
-      "z": 32.4,
+      "z": 37,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#e8ecef"
      }
@@ -456,36 +479,36 @@
     0
    ],
    "params": {
-    "colour": "#8a8f94",
+    "colour": "#6a6f74",
     "capTop": true,
     "sections": [
      {
       "z": 0,
       "rect": [
-       0.8,
-       0.8
+       1.3,
+       1.3
       ]
      },
      {
-      "z": 30,
+      "z": 34,
       "rect": [
-       0.4,
-       0.4
+       0.7,
+       0.7
       ]
      },
      {
-      "z": 30.1,
+      "z": 34.1,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#cfd3d6"
      },
      {
-      "z": 32.4,
+      "z": 37,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#e8ecef"
      }
@@ -500,36 +523,36 @@
     0
    ],
    "params": {
-    "colour": "#8a8f94",
+    "colour": "#6a6f74",
     "capTop": true,
     "sections": [
      {
       "z": 0,
       "rect": [
-       0.8,
-       0.8
+       1.3,
+       1.3
       ]
      },
      {
-      "z": 30,
+      "z": 34,
       "rect": [
-       0.4,
-       0.4
+       0.7,
+       0.7
       ]
      },
      {
-      "z": 30.1,
+      "z": 34.1,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#cfd3d6"
      },
      {
-      "z": 32.4,
+      "z": 37,
       "rect": [
-       3.6,
-       1.2
+       6,
+       2.2
       ],
       "colour": "#e8ecef"
      }
@@ -562,6 +585,36 @@
     "form": "flat",
     "colour": "#2b2e33"
    }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stairs",
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -45.5,
+      36,
+      1
+     ],
+     [
+      -45.5,
+      40,
+      9
+     ]
+    ],
+    "up": [
+     1,
+     0,
+     0
+    ],
+    "colour": "#a0a4a6"
+   }
   }
  ],
  "site": {
@@ -588,6 +641,48 @@
      30,
      -56
     ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     62
+    ]
    }
   ],
   "extent": [
@@ -596,8 +691,8 @@
   ]
  },
  "review": {
-  "rounds": 3,
-  "match": "rough",
-  "gaps": "Main roof is a straight slab rather than the tapered wedge; stairs and concourse columns omitted; seat colours uniform per block; grass hills approximated by green stepped arcs; trees not matched."
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a thin wedge slab but its taper is subtle; south stand low and mostly hidden; stair flights are a single ramp; trees generic; floodlight heads are boxes not lamp arrays."
  }
 }

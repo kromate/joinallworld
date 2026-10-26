@@ -19,9 +19,9 @@
  "camera": {
   "yawDeg": 4,
   "pitchDeg": 3,
-  "fovDeg": 55,
+  "fovDeg": 45,
   "aspect": 1.333,
-  "margin": 0.02
+  "margin": 0.0
  },
  "parts": [
   {
@@ -52,8 +52,8 @@
     "form": "flat",
     "colour": "#1f56c4",
     "material": "metal-sheet",
-    "overhang": 0.4,
-    "parapet": 1.4
+    "overhang": 0.5,
+    "parapet": 2.0
    }
   },
   {
@@ -72,15 +72,17 @@
    "height": 3.4,
    "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#2c3236",
+    "material": "painted-render",
+    "colour": "#f2f0ea",
     "windows": "curtain",
-    "windowRatio": 0.8,
-    "plinth": 1.0
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "glassColour": "#26323a"
    },
    "roof": {
     "form": "flat",
-    "colour": "#1f56c4"
+    "colour": "#1f56c4",
+    "parapet": 1.2
    }
   },
   {
@@ -96,8 +98,8 @@
     "width": 36,
     "depth": 5,
     "height": 4.4,
-    "thickness": 0.9,
-    "columns": 8,
+    "thickness": 1.1,
+    "columns": 0,
     "colour": "#1f56c4",
     "edgeColour": "#1f56c4"
    }
@@ -114,8 +116,8 @@
     "width": 12,
     "depth": 3,
     "height": 4.4,
-    "thickness": 0.9,
-    "columns": 3,
+    "thickness": 1.1,
+    "columns": 0,
     "colour": "#1f56c4",
     "edgeColour": "#1f56c4"
    }
@@ -125,59 +127,198 @@
    "id": "tower-shaft",
    "footprint": {
     "rect": [
-     9,
-     9
+     7,
+     7
     ]
    },
    "at": [
     -6,
     4.5
    ],
-   "height": 8.5,
+   "height": 9.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#e9e6d6",
     "windows": "punched",
-    "windowRatio": 0.08
+    "windowRatio": 0.06
    },
    "roof": {
     "form": "flat",
     "colour": "#cfcdbf",
-    "overhang": 1.0,
-    "parapet": 0.3
+    "overhang": 0.4,
+    "parapet": 0.2
    },
    "z0": 4.8
   },
   {
-   "type": "mass",
+   "type": "prism",
+   "id": "tower-gallery",
+   "at": [
+    -6,
+    4.5,
+    13.3
+   ],
+   "params": {
+    "n": 8,
+    "radius": 5.0,
+    "height": 0.35,
+    "colour": "#cfcdbf"
+   }
+  },
+  {
+   "type": "prism",
    "id": "tower-cab",
+   "at": [
+    -6,
+    4.5,
+    13.65
+   ],
+   "params": {
+    "n": 8,
+    "radius": 4.2,
+    "height": 2.6,
+    "colour": "#46545a",
+    "windows": "curtain",
+    "glassColour": "#46545a",
+    "windowRatio": 0.85,
+    "topScale": 1.12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-roof",
+   "at": [
+    -6,
+    4.5,
+    16.25
+   ],
+   "params": {
+    "n": 8,
+    "radius": 4.9,
+    "height": 0.4,
+    "colour": "#d9d8cc",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "tower-rail",
+   "at": [
+    -6,
+    4.5,
+    14.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "closed": true,
+    "points": [
+     [
+      4.527007987351844,
+      1.8751529757469412,
+      0
+     ],
+     [
+      1.8751446654921164,
+      4.527011429572104,
+      0
+     ],
+     [
+      -1.8751529676214307,
+      4.527007990717549,
+      0
+     ],
+     [
+      -4.527011426206414,
+      1.8751446736176325,
+      0
+     ],
+     [
+      -4.527007994083255,
+      -1.8751529594959198,
+      0
+     ],
+     [
+      -1.8751446817431503,
+      -4.527011422840722,
+      0
+     ],
+     [
+      1.875152951370408,
+      -4.527007997448961,
+      0
+     ],
+     [
+      4.5270114194750315,
+      -1.8751446898686686,
+      0
+     ]
+    ],
+    "colour": "#e9e6d6"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -12,
+    -10.6,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "count": 9,
+    "height": 4.4,
+    "radius": 0.25,
+    "kind": "square",
+    "colour": "#1f56c4"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -23,
+    -10.1,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "count": 4,
+    "height": 4.4,
+    "radius": 0.25,
+    "kind": "square",
+    "colour": "#1f56c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
    "footprint": {
     "rect": [
-     11,
-     11
+     12,
+     8
     ]
    },
    "at": [
-    -6,
-    4.5
+    38,
+    10
    ],
-   "height": 2.8,
+   "height": 3.6,
    "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#46545a",
-    "windows": "curtain",
-    "windowRatio": 0.85,
-    "plinth": 0.6
+    "material": "painted-render",
+    "colour": "#e4e2da",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#d9d8cc",
-    "overhang": 0.7,
-    "parapet": 0.2
-   },
-   "z0": 13.3
+    "colour": "#1f56c4",
+    "parapet": 0.5
+   }
   },
   {
    "type": "mass",
@@ -204,19 +345,19 @@
     "form": "flat",
     "colour": "#1f56c4",
     "overhang": 0.4,
-    "parapet": 0.8
+    "parapet": 1.4
    }
   },
   {
    "type": "core/sign-board",
    "at": [
     -6,
-    -0.2,
-    6.6
+    1.0,
+    6
    ],
    "params": {
-    "width": 7,
-    "height": 1.6,
+    "width": 6,
+    "height": 2.4,
     "bottom": 0,
     "colour": "#e2531c",
     "frameColour": "#e2531c",
@@ -244,14 +385,14 @@
    }
   ],
   "extent": [
-   110,
-   80
+   70,
+   40
   ]
  },
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Tower cab is a box without gallery rail or external stair; terminal front glazing and posts simplified; no apron equipment"
+  "gaps": "Octagonal cab and rail added, tower still small in frame; no external stair, NAUSORI is a blank orange board, glazed bay simplified"
  },
  "schema": "allworld-place-model",
  "version": 2,

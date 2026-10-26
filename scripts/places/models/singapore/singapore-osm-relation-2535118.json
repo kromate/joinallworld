@@ -11,7 +11,7 @@
    "licence": "CC BY-SA 3.0",
    "author": "mailer_diablo",
    "view": "front",
-   "file": "/tmp/places-evidence/singapore/np1.jpg",
+   "file": "/tmp/places-evidence/sg2/np1.jpg",
    "used": "tall pale blue-white tower block with yellow ribbon balcony floors, lower beige and brown blocks behind, low canteen with three pyramid hip roofs in red-brown over a dark glazed base, big rain trees"
   },
   {
@@ -20,7 +20,7 @@
    "licence": "CC BY 2.0",
    "author": "Michelle Lee",
    "view": "front",
-   "file": "/tmp/places-evidence/singapore/np2.jpg",
+   "file": "/tmp/places-evidence/sg2/np2.jpg",
    "used": "oval convention-centre hall: huge oval flat roof on round columns, dark glass, panelled grey soffit"
   },
   {
@@ -32,10 +32,10 @@
  "camera": {
   "yawDeg": 0,
   "pitchDeg": 3,
-  "fovDeg": 52,
+  "fovDeg": 44,
   "aspect": 1.333,
   "fit": "all",
-  "margin": 0.04
+  "margin": 0.02
  },
  "parts": [
   {
@@ -43,21 +43,21 @@
    "id": "tower",
    "footprint": {
     "rect": [
-     15,
+     20,
      13
     ]
    },
    "at": [
-    -34,
-    12
+    -36,
+    14
    ],
-   "height": 46,
-   "storeys": 12,
+   "height": 50,
+   "storeys": 10,
    "wall": {
     "material": "painted-render",
-    "colour": "#dde6ec",
+    "colour": "#e4ecf2",
     "windows": "punched",
-    "windowRatio": 0.12,
+    "windowRatio": 0.14,
     "bay": 4.5,
     "faces": {
      "left": "none",
@@ -76,21 +76,21 @@
    "id": "wing",
    "footprint": {
     "rect": [
-     40,
-     12
+     44,
+     13
     ]
    },
    "at": [
-    -4,
-    12
+    -8,
+    14
    ],
-   "height": 32,
-   "storeys": 9,
+   "height": 26,
+   "storeys": 5,
    "wall": {
     "material": "painted-render",
     "colour": "#e6e9ea",
     "windows": "ribbon",
-    "windowRatio": 0.5,
+    "windowRatio": 0.55,
     "bay": 8,
     "faces": {
      "left": "none",
@@ -103,9 +103,9 @@
       "colours": [
        "#e7b83a"
       ],
-      "height": 0.9,
+      "height": 1.2,
       "at": 0.5,
-      "proud": 0.3,
+      "proud": 0.8,
       "floors": "all"
      }
     ]
@@ -129,7 +129,7 @@
     -48,
     -8
    ],
-   "height": 14,
+   "height": 18,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -137,7 +137,7 @@
     "windows": "ribbon",
     "windowRatio": 0.4,
     "bay": 6,
-    "cornice": true,
+    "cornice": false,
     "faces": {
      "left": "none",
      "right": "none",
@@ -163,8 +163,8 @@
     32,
     26
    ],
-   "height": 30,
-   "storeys": 8,
+   "height": 22,
+   "storeys": 5,
    "wall": {
     "material": "painted-render",
     "colour": "#b8a79c",
@@ -197,23 +197,23 @@
    "id": "canteen-base",
    "footprint": {
     "rect": [
-     56,
+     60,
      22
     ]
    },
    "at": [
-    -12,
+    -10,
     -10
    ],
-   "height": 4.6,
+   "height": 4.2,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#40454b",
+    "colour": "#2e3338",
     "windows": "ribbon",
-    "windowRatio": 0.55,
+    "windowRatio": 0.4,
     "plinth": 0.5,
-    "bay": 8,
+    "bay": 12,
     "faces": {
      "left": "none",
      "right": "none",
@@ -222,99 +222,99 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#d8d2c0",
-    "overhang": 2.2,
-    "parapet": 0.0
+    "colour": "#e2dccb",
+    "overhang": 1.0,
+    "parapet": 0.5
    }
   },
   {
    "type": "mass",
    "footprint": {
     "rect": [
-     13,
-     13
+     16,
+     16
     ]
    },
    "id": "roof-27",
    "at": [
-    -27,
+    -30,
     -10
    ],
-   "z0": 4.6,
-   "height": 3.2,
+   "z0": 4.7,
+   "height": 2.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9c9a0",
-    "windows": "punched",
+    "colour": "#cdbd96",
+    "windows": "none",
     "windowRatio": 0.2
    },
    "roof": {
     "form": "pyramidal",
-    "colour": "#7d3f2c",
+    "colour": "#8a3a26",
     "material": "clay-tile",
-    "rise": 4.8,
-    "overhang": 1.6
+    "rise": 7.5,
+    "overhang": 2.6
    }
   },
   {
    "type": "mass",
    "footprint": {
     "rect": [
-     13,
-     13
+     16,
+     16
     ]
    },
    "id": "roof-12",
    "at": [
-    -12,
+    -10,
     -10
    ],
-   "z0": 4.6,
-   "height": 3.2,
+   "z0": 4.7,
+   "height": 2.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9c9a0",
-    "windows": "punched",
+    "colour": "#cdbd96",
+    "windows": "none",
     "windowRatio": 0.2
    },
    "roof": {
     "form": "pyramidal",
-    "colour": "#7d3f2c",
+    "colour": "#8a3a26",
     "material": "clay-tile",
-    "rise": 4.8,
-    "overhang": 1.6
+    "rise": 7.5,
+    "overhang": 2.6
    }
   },
   {
    "type": "mass",
    "footprint": {
     "rect": [
-     13,
-     13
+     16,
+     16
     ]
    },
    "id": "roof3",
    "at": [
-    3,
+    10,
     -10
    ],
-   "z0": 4.6,
-   "height": 3.2,
+   "z0": 4.7,
+   "height": 2.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9c9a0",
-    "windows": "punched",
+    "colour": "#cdbd96",
+    "windows": "none",
     "windowRatio": 0.2
    },
    "roof": {
     "form": "pyramidal",
-    "colour": "#7d3f2c",
+    "colour": "#8a3a26",
     "material": "clay-tile",
-    "rise": 4.8,
-    "overhang": 1.6
+    "rise": 7.5,
+    "overhang": 2.6
    }
   },
   {
@@ -441,7 +441,7 @@
      ]
     ],
     "height": 9,
-    "colour": "#3f4a52",
+    "colour": "#2f3a42",
     "material": "glass-dark",
     "slot": "glass-dark"
    }
@@ -569,7 +569,7 @@
       -3.56
      ]
     ],
-    "height": 1.4,
+    "height": 2.4,
     "topScale": 0.97,
     "colour": "#b9bec0",
     "bottom": true
@@ -577,10 +577,6 @@
   },
   {
    "type": "array",
-   "lod": [
-    0,
-    1
-   ],
    "at": [
     48,
     -6,
@@ -588,7 +584,7 @@
    ],
    "params": {
     "mode": "arc",
-    "count": 8,
+    "count": 10,
     "radius": 17,
     "radiusY": 12,
     "startDeg": 0,
@@ -596,13 +592,16 @@
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.8,
+      "radius": 1.0,
       "n": 10,
       "height": 9,
-      "colour": "#c9cdcb"
+      "colour": "#d0d4d2"
      }
     }
-   }
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -612,36 +611,36 @@
    {
     "kind": "broadleaf",
     "at": [
-     -40,
-     -32
+     84,
+     -16
     ],
-    "height": 16
+    "height": 24
    },
    {
     "kind": "broadleaf",
     "at": [
-     22,
-     -32
+     -70,
+     -30
     ],
-    "height": 16
+    "height": 22
    },
    {
     "kind": "broadleaf",
     "at": [
-     60,
-     -32
+     66,
+     26
     ],
-    "height": 16
+    "height": 24
    }
   ],
   "extent": [
-   130,
-   90
+   150,
+   70
   ]
  },
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Campus cluster composed from two photos; tower lacks balcony wings and logo panel, hall is simplified, large rain trees missing; OSM campus outline unused."
+  "gaps": "Taller tower with yellow balcony-band wing, stepped-down blocks, larger red pyramid roofs over a glazed base and oval hall are in; tower lacks projecting balcony wing and logo, hall drum and columns simple, rain trees are standard broadleaf tufts not wide flat canopies; OSM campus outline unused."
  }
 }

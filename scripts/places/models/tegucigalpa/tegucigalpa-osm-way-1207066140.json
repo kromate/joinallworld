@@ -39,7 +39,7 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "facade pilasters and arched centre pediment simplified (no real arch gable); belfries not open arched pairs; no door arches or round windows; dome too visible"
+  "gaps": "Round windows, door arches and open belfry arches omitted; central arched pediment is stepped loft and reads weakly; dome behind still prominent; no real banded facade pilasters."
  },
  "parts": [
   {
@@ -55,7 +55,7 @@
     0,
     -3
    ],
-   "height": 14,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -122,8 +122,8 @@
     1,
     -4
    ],
-   "height": 18,
-   "storeys": 3,
+   "height": 22,
+   "storeys": 4,
    "wall": {
     "material": "painted-render",
     "colour": "#f1f0ec",
@@ -160,28 +160,9 @@
     "plinth": 0.5
    },
    "roof": {
-    "form": "gable",
-    "colour": "#e4e4e0",
-    "pitch": 30,
-    "axis": "x"
-   }
-  },
-  {
-   "type": "core/portico",
-   "at": [
-    1,
-    -11,
-    0
-   ],
-   "params": {
-    "width": 9,
-    "depth": 1.5,
-    "height": 4.5,
-    "columns": 0,
-    "pediment": false,
-    "steps": 2,
-    "colour": "#f1f0ec",
-    "roofColour": "#b7bbbf"
+    "form": "flat",
+    "colour": "#9fa4a8",
+    "parapet": 0.5
    }
   },
   {
@@ -322,8 +303,8 @@
    ],
    "at": [
     0,
-    44,
-    16
+    52,
+    14
    ],
    "params": {
     "colour": "#f1f0ec",
@@ -339,20 +320,20 @@
     "profile": [
      [
       6.6,
-      0
+      0.0
      ],
      [
       6.6,
-      11
+      6.6
      ],
      [
       6.9,
-      11.4,
+      6.84,
       "#b7bbbf"
      ],
      [
       6.3,
-      12.0,
+      7.199999999999999,
       "#b7bbbf"
      ]
     ]
@@ -362,8 +343,8 @@
    "type": "revolve",
    "at": [
     0,
-    44,
-    28
+    52,
+    21.5
    ],
    "params": {
     "colour": "#a9aeb3",
@@ -448,12 +429,15 @@
     "pattern": [
      {
       "type": "bands",
-      "colour": "#b7bbbf",
-      "height": 0.5,
+      "colour": "#9fa4a8",
+      "height": 0.7,
       "at": 0.9,
-      "proud": 0.25,
+      "proud": 0.3,
       "floors": [
+       0,
+       1,
        2,
+       3,
        4
       ]
      },
@@ -472,7 +456,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b7bbbf",
+    "colour": "#9fa4a8",
     "parapet": 0.3
    }
   },
@@ -496,13 +480,13 @@
     "material": "painted-render",
     "colour": "#f1f0ec",
     "windows": "arched",
-    "windowRatio": 0.5,
+    "windowRatio": 0.7,
     "bay": 4,
     "cornice": true
    },
    "roof": {
     "form": "flat",
-    "colour": "#b7bbbf",
+    "colour": "#9fa4a8",
     "overhang": 0.8
    }
   },
@@ -518,7 +502,7 @@
     1
    ],
    "params": {
-    "colour": "#b9bcc0",
+    "colour": "#a9aeb3",
     "profile": [
      [
       4.2,
@@ -595,12 +579,15 @@
     "pattern": [
      {
       "type": "bands",
-      "colour": "#b7bbbf",
-      "height": 0.5,
+      "colour": "#9fa4a8",
+      "height": 0.7,
       "at": 0.9,
-      "proud": 0.25,
+      "proud": 0.3,
       "floors": [
+       0,
+       1,
        2,
+       3,
        4
       ]
      },
@@ -619,7 +606,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#b7bbbf",
+    "colour": "#9fa4a8",
     "parapet": 0.3
    }
   },
@@ -643,13 +630,13 @@
     "material": "painted-render",
     "colour": "#f1f0ec",
     "windows": "arched",
-    "windowRatio": 0.5,
+    "windowRatio": 0.7,
     "bay": 4,
     "cornice": true
    },
    "roof": {
     "form": "flat",
-    "colour": "#b7bbbf",
+    "colour": "#9fa4a8",
     "overhang": 0.8
    }
   },
@@ -665,7 +652,7 @@
     1
    ],
    "params": {
-    "colour": "#b9bcc0",
+    "colour": "#a9aeb3",
     "profile": [
      [
       4.2,
@@ -744,7 +731,7 @@
     -9.5,
     -8
    ],
-   "height": 15,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -771,10 +758,9 @@
     ]
    },
    "roof": {
-    "form": "gable",
-    "colour": "#e4e4e0",
-    "pitch": 30,
-    "axis": "y"
+    "form": "flat",
+    "colour": "#9fa4a8",
+    "parapet": 0.4
    }
   },
   {
@@ -790,7 +776,7 @@
     9.5,
     -8
    ],
-   "height": 15,
+   "height": 17,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
@@ -817,10 +803,163 @@
     ]
    },
    "roof": {
-    "form": "gable",
-    "colour": "#e4e4e0",
-    "pitch": 30,
-    "axis": "y"
+    "form": "flat",
+    "colour": "#9fa4a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1,
+    -8.6,
+    22
+   ],
+   "params": {
+    "colour": "#f1f0ec",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13,
+       1.2
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       12.2,
+       1.2
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       9.8,
+       1.2
+      ]
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       6.8,
+       1.2
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       3.4,
+       1.2
+      ]
+     },
+     {
+      "z": 6.9,
+      "rect": [
+       0.6,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1,
+    -9.3,
+    23.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#9fa4a8"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9.5,
+    -7,
+    17
+   ],
+   "params": {
+    "colour": "#a9aeb3",
+    "segments": 14,
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.4,
+      0.8
+     ],
+     [
+      1.8,
+      2.0
+     ],
+     [
+      0.9,
+      2.8
+     ],
+     [
+      0.2,
+      3.2
+     ],
+     [
+      0.2,
+      4.2,
+      "#e8e8e8"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    9.5,
+    -7,
+    17
+   ],
+   "params": {
+    "colour": "#a9aeb3",
+    "segments": 14,
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.4,
+      0.8
+     ],
+     [
+      1.8,
+      2.0
+     ],
+     [
+      0.9,
+      2.8
+     ],
+     [
+      0.2,
+      3.2
+     ],
+     [
+      0.2,
+      4.2,
+      "#e8e8e8"
+     ]
+    ]
    }
   }
  ],

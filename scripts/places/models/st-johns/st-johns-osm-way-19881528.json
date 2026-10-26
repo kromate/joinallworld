@@ -26,6 +26,96 @@
  "parts": [
   {
    "type": "prism",
+   "id": "sandring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      72.0,
+      0.0
+     ],
+     [
+      67.7,
+      21.9
+     ],
+     [
+      55.2,
+      41.1
+     ],
+     [
+      36.0,
+      55.4
+     ],
+     [
+      12.5,
+      63.0
+     ],
+     [
+      -12.5,
+      63.0
+     ],
+     [
+      -36.0,
+      55.4
+     ],
+     [
+      -55.2,
+      41.1
+     ],
+     [
+      -67.7,
+      21.9
+     ],
+     [
+      -72.0,
+      0.0
+     ],
+     [
+      -67.7,
+      -21.9
+     ],
+     [
+      -55.2,
+      -41.1
+     ],
+     [
+      -36.0,
+      -55.4
+     ],
+     [
+      -12.5,
+      -63.0
+     ],
+     [
+      12.5,
+      -63.0
+     ],
+     [
+      36.0,
+      -55.4
+     ],
+     [
+      55.2,
+      -41.1
+     ],
+     [
+      67.7,
+      -21.9
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#d9c9a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
    "id": "outfield",
    "at": [
     0,
@@ -203,7 +293,46 @@
   {
    "type": "stand",
    "lod": [
+    0
+   ],
+   "at": [
     0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 130,
+    "endDeg": 152,
+    "rows": 5,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "facetDeg": 60,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 6,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 10,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
     1
    ],
    "at": [
@@ -219,8 +348,48 @@
     "radius": 58,
     "radiusY": 50,
     "startDeg": 130,
-    "endDeg": 230,
-    "rows": 7,
+    "endDeg": 152,
+    "rows": 2,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 6,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 10,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 154,
+    "endDeg": 176,
+    "rows": 6,
     "rise": 0.7,
     "run": 0.85,
     "firstHeight": 3,
@@ -233,9 +402,209 @@
     "underColour": "#d4d0c4",
     "canopy": {
      "height": 9,
-     "depth": 24,
-     "thickness": 1.2,
-     "slopeDeg": 6,
+     "depth": 20,
+     "thickness": 0.8,
+     "slopeDeg": 14,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 154,
+    "endDeg": 176,
+    "rows": 2,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 9,
+     "depth": 20,
+     "thickness": 0.8,
+     "slopeDeg": 14,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 184,
+    "endDeg": 206,
+    "rows": 6,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 60,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 10,
+     "depth": 20,
+     "thickness": 0.8,
+     "slopeDeg": -12,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 184,
+    "endDeg": 206,
+    "rows": 2,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 10,
+     "depth": 20,
+     "thickness": 0.8,
+     "slopeDeg": -12,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 208,
+    "endDeg": 230,
+    "rows": 5,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "facetDeg": 60,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 6,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": -10,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 208,
+    "endDeg": 230,
+    "rows": 2,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 6,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": -10,
      "colour": "#3566b0",
      "edgeColour": "#3566b0"
     }
@@ -248,6 +617,9 @@
     0,
     0
    ],
+   "lod": [
+    0
+   ],
    "params": {
     "mode": "arc",
     "centre": [
@@ -255,21 +627,102 @@
      0,
      0
     ],
-    "radius": 64,
-    "radiusY": 56,
-    "startDeg": 150,
-    "endDeg": 210,
-    "count": 4,
+    "radius": 66,
+    "radiusY": 58,
+    "startDeg": 135,
+    "endDeg": 225,
+    "count": 5,
     "facing": "outward",
     "of": [
      {
       "type": "prism",
       "params": {
        "rect": [
-        30,
-        10
+        16,
+        6
        ],
-       "height": 22,
+       "height": 6,
+       "storeys": 2,
+       "colour": "#f4f2ec",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 66,
+    "radiusY": 58,
+    "startDeg": 135,
+    "endDeg": 225,
+    "count": 3,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        16,
+        6
+       ],
+       "height": 6,
+       "storeys": 2,
+       "colour": "#f4f2ec",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 68,
+    "radiusY": 60,
+    "startDeg": 170,
+    "endDeg": 190,
+    "count": 2,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        16,
+        9
+       ],
+       "height": 24,
        "storeys": 5,
        "colour": "#f4f2ec",
        "windows": "none",
@@ -286,9 +739,89 @@
    }
   },
   {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 68,
+    "radiusY": 60,
+    "startDeg": 170,
+    "endDeg": 190,
+    "count": 2,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        16,
+        9
+       ],
+       "height": 24,
+       "storeys": 5,
+       "colour": "#f4f2ec",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
    "type": "stand",
    "lod": [
+    0
+   ],
+   "at": [
     0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": -40,
+    "endDeg": -14,
+    "rows": 6,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 60,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 7,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 9,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
     1
    ],
    "at": [
@@ -304,23 +837,183 @@
     "radius": 60,
     "radiusY": 52,
     "startDeg": -40,
-    "endDeg": 50,
+    "endDeg": -14,
+    "rows": 2,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 7,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 9,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": -12,
+    "endDeg": 14,
     "rows": 8,
     "rise": 0.6,
     "run": 0.85,
     "firstHeight": 1.5,
     "facetDeg": 60,
     "under": "open",
-    "slab": 0.6,
+    "slab": 0.8,
     "bay": 6,
     "seatColour": "#2f6aa0",
-    "concreteColour": "#d6d3c8",
-    "underColour": "#bfbcb0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
     "canopy": {
-     "height": 7.5,
+     "height": 8,
+     "depth": 16,
+     "thickness": 0.8,
+     "slopeDeg": -10,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": -12,
+    "endDeg": 14,
+    "rows": 2,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 8,
+     "depth": 16,
+     "thickness": 0.8,
+     "slopeDeg": -10,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": 16,
+    "endDeg": 50,
+    "rows": 6,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 60,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 7,
      "depth": 14,
      "thickness": 0.8,
-     "slopeDeg": 6,
+     "slopeDeg": 10,
+     "colour": "#3566b0",
+     "edgeColour": "#3566b0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 52,
+    "startDeg": 16,
+    "endDeg": 50,
+    "rows": 2,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 180,
+    "under": "open",
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#e4e0d4",
+    "underColour": "#d4d0c4",
+    "canopy": {
+     "height": 7,
+     "depth": 14,
+     "thickness": 0.8,
+     "slopeDeg": 10,
      "colour": "#3566b0",
      "edgeColour": "#3566b0"
     }
@@ -329,16 +1022,34 @@
   {
    "type": "prism",
    "at": [
-    74,
+    70,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 16,
+    "storeys": 4,
+    "colour": "#f4f2ec",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    72,
     -18,
     0
    ],
    "params": {
     "rect": [
      7,
-     7
+     12
     ],
-    "height": 15,
+    "height": 9,
     "colour": "#e9e6dd",
     "windows": "none"
    }
@@ -433,9 +1144,9 @@
   }
  ],
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "Photo shows stands mid-construction; South Stand is a plain white 5-storey backing block (no balconies), North Stand is thin with approximate tower, no surrounding roads or pond."
+  "gaps": "South stand now stepped with split blue canopy segments and central 5-storey block; unfinished construction look (cranes, bare sand, pond, roads) only approximated; North stand tiers/tower simplified."
  },
  "site": {
   "ground": "sand",

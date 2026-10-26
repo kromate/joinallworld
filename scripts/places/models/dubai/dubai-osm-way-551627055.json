@@ -45,28 +45,64 @@
     0
    ],
    "params": {
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "curve": true,
     "sections": [
      {
       "z": 0,
-      "circle": 8.2
+      "circle": 5.2
      },
      {
-      "z": 2.6,
-      "circle": 7.29
+      "z": 1.5,
+      "circle": 4.32
      },
      {
-      "z": 13.0,
-      "circle": 7.17
+      "z": 15.0,
+      "circle": 3.92
      },
      {
-      "z": 23.4,
-      "circle": 6.14
-     },
+      "z": 30,
+      "circle": 3.52
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "bao1-ribs",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    6,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.92,
+    "startDeg": 0,
+    "endDeg": 330,
+    "count": 12,
+    "facing": "outward",
+    "of": [
      {
-      "z": 26,
-      "circle": 5.8
+      "type": "prism",
+      "params": {
+       "z0": 0,
+       "height": 27.0,
+       "colour": "#6a5039",
+       "rect": [
+        0.5,
+        0.35
+       ],
+       "windows": "none"
+      }
      }
     ]
    }
@@ -84,61 +120,17 @@
    ],
    "params": {
     "segments": 6,
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "profile": [
      [
-      6.82,
+      4.2,
       0
      ],
      [
-      5.27,
-      34
+      3.52,
+      30
      ]
     ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao1-knot0",
-   "at": [
-    -1.62,
-    0.34,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 9.1,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao1-knot1",
-   "at": [
-    -3.19,
-    1.05,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 15.6,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
    }
   },
   {
@@ -154,28 +146,64 @@
     0
    ],
    "params": {
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "curve": true,
     "sections": [
      {
       "z": 0,
-      "circle": 4.76
+      "circle": 4.16
      },
      {
-      "z": 1.7,
-      "circle": 4.23
+      "z": 1.5,
+      "circle": 3.46
      },
      {
-      "z": 8.5,
-      "circle": 4.17
+      "z": 11.0,
+      "circle": 3.14
      },
      {
-      "z": 15.3,
-      "circle": 3.56
-     },
+      "z": 22,
+      "circle": 2.82
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "bao2-ribs",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    18,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.14,
+    "startDeg": 0,
+    "endDeg": 330,
+    "count": 12,
+    "facing": "outward",
+    "of": [
      {
-      "z": 17,
-      "circle": 3.37
+      "type": "prism",
+      "params": {
+       "z0": 0,
+       "height": 19.8,
+       "colour": "#6a5039",
+       "rect": [
+        0.5,
+        0.35
+       ],
+       "windows": "none"
+      }
      }
     ]
    }
@@ -193,61 +221,17 @@
    ],
    "params": {
     "segments": 6,
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "profile": [
      [
-      3.96,
+      3.36,
       0
      ],
      [
-      3.06,
-      25
+      2.82,
+      22
      ]
     ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao2-knot0",
-   "at": [
-    -28.9,
-    14.76,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 5.95,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao2-knot1",
-   "at": [
-    -30.35,
-    14.6,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 10.2,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
    }
   },
   {
@@ -263,28 +247,64 @@
     0
    ],
    "params": {
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "curve": true,
     "sections": [
      {
       "z": 0,
-      "circle": 5.02
+      "circle": 4.42
      },
      {
-      "z": 1.9,
-      "circle": 4.47
+      "z": 1.5,
+      "circle": 3.67
      },
      {
-      "z": 9.5,
-      "circle": 4.39
+      "z": 12.0,
+      "circle": 3.33
      },
      {
-      "z": 17.1,
-      "circle": 3.76
-     },
+      "z": 24,
+      "circle": 2.99
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "bao3-ribs",
+   "lod": [
+    0
+   ],
+   "at": [
+    18,
+    32,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.33,
+    "startDeg": 0,
+    "endDeg": 330,
+    "count": 12,
+    "facing": "outward",
+    "of": [
      {
-      "z": 19,
-      "circle": 3.55
+      "type": "prism",
+      "params": {
+       "z0": 0,
+       "height": 21.6,
+       "colour": "#6a5039",
+       "rect": [
+        0.5,
+        0.35
+       ],
+       "windows": "none"
+      }
      }
     ]
    }
@@ -302,61 +322,17 @@
    ],
    "params": {
     "segments": 6,
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "profile": [
      [
-      4.18,
+      3.57,
       0
      ],
      [
-      3.23,
-      27
+      2.99,
+      24
      ]
     ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao3-knot0",
-   "at": [
-    20.03,
-    29.02,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 6.65,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao3-knot1",
-   "at": [
-    20.53,
-    29.43,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 11.4,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
    }
   },
   {
@@ -372,28 +348,64 @@
     0
    ],
    "params": {
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "curve": true,
     "sections": [
      {
       "z": 0,
-      "circle": 4.23
+      "circle": 3.77
      },
      {
-      "z": 1.4,
-      "circle": 3.76
+      "z": 1.5,
+      "circle": 3.13
      },
      {
-      "z": 7.0,
-      "circle": 3.71
+      "z": 9.5,
+      "circle": 2.84
      },
      {
-      "z": 12.6,
-      "circle": 3.17
-     },
+      "z": 19,
+      "circle": 2.55
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "bao4-ribs",
+   "lod": [
+    0
+   ],
+   "at": [
+    36,
+    46,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.84,
+    "startDeg": 0,
+    "endDeg": 330,
+    "count": 12,
+    "facing": "outward",
+    "of": [
      {
-      "z": 14,
-      "circle": 2.99
+      "type": "prism",
+      "params": {
+       "z0": 0,
+       "height": 17.1,
+       "colour": "#6a5039",
+       "rect": [
+        0.5,
+        0.35
+       ],
+       "windows": "none"
+      }
      }
     ]
    }
@@ -411,61 +423,17 @@
    ],
    "params": {
     "segments": 6,
-    "colour": "#7a5d47",
+    "colour": "#5b4333",
     "profile": [
      [
-      3.52,
+      3.04,
       0
      ],
      [
-      2.72,
-      22
+      2.55,
+      19
      ]
     ]
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao4-knot0",
-   "at": [
-    35.34,
-    43.03,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 4.9,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "bao4-knot1",
-   "at": [
-    37.9,
-    43.62,
-    0
-   ],
-   "lod": [
-    0
-   ],
-   "params": {
-    "z0": 8.4,
-    "height": 1.6,
-    "colour": "#5a4332",
-    "rect": [
-     1.6,
-     1.0
-    ],
-    "windows": "none"
    }
   },
   {
@@ -641,21 +609,21 @@
    "id": "village",
    "footprint": {
     "rect": [
-     34,
-     12
+     36,
+     16
     ]
    },
    "at": [
-    44,
+    42,
     14
    ],
    "rotDeg": -8,
-   "height": 4.6,
+   "height": 9.5,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
     "colour": "#c79a58",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.12,
     "plinth": 0.3,
     "pattern": [
@@ -694,7 +662,7 @@
     26
    ],
    "rotDeg": 10,
-   "height": 3.8,
+   "height": 6.5,
    "storeys": 1,
    "wall": {
     "material": "mud-render",
@@ -836,7 +804,7 @@
    "wall": {
     "material": "painted-render",
     "colour": "#d9c7a3",
-    "windows": "punched",
+    "windows": "none",
     "windowRatio": 0.1,
     "plinth": 0.4,
     "pattern": [
@@ -935,7 +903,7 @@
    "at": [
     0,
     6,
-    24.5
+    28.8
    ],
    "lod": [
     0
@@ -956,7 +924,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.91,
+       "radius": 1.53,
        "points": [
         [
          0.0,
@@ -964,14 +932,14 @@
          0.0
         ],
         [
-         8.01,
+         5.09,
          0.0,
-         5.84
+         2.1
         ],
         [
-         16.03,
+         10.18,
          0.0,
-         8.75
+         3.15
         ]
        ],
        "curve": true,
@@ -981,28 +949,28 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.06,
+       "radius": 0.85,
        "points": [
         [
-         16.03,
+         10.18,
          0.0,
-         8.75
+         3.15
         ],
         [
-         20.07,
-         -2.9,
-         14.46
+         12.75,
+         -1.84,
+         5.21
         ],
         [
-         24.1,
-         -5.8,
-         17.98
+         15.31,
+         -3.68,
+         6.47
         ]
        ],
        "curve": true,
@@ -1012,28 +980,28 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.46,
        "points": [
         [
-         24.1,
-         -5.8,
-         17.98
+         15.31,
+         -3.68,
+         6.47
         ],
         [
-         24.77,
-         -7.76,
-         22.33
+         15.74,
+         -4.93,
+         8.04
         ],
         [
-         25.43,
-         -9.72,
-         25.35
+         16.16,
+         -6.18,
+         9.13
         ]
        ],
        "curve": true,
@@ -1043,23 +1011,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         25.43,
-         -9.72,
-         25.35
+         16.16,
+         -6.18,
+         9.13
         ],
         [
-         25.48,
-         -9.91,
-         29.57
+         16.21,
+         -6.37,
+         11.56
         ]
        ],
        "curve": true,
@@ -1069,23 +1037,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         25.43,
-         -9.72,
-         25.35
+         16.16,
+         -6.18,
+         9.13
         ],
         [
-         25.6,
-         -9.98,
-         29.56
+         16.31,
+         -6.31,
+         12.06
         ]
        ],
        "curve": true,
@@ -1095,23 +1064,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         25.43,
-         -9.72,
-         25.35
+         16.16,
+         -6.18,
+         9.13
         ],
         [
-         25.04,
-         -11.04,
-         29.35
+         16.09,
+         -6.37,
+         12.06
         ]
        ],
        "curve": true,
@@ -1121,28 +1091,191 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.18,
        "points": [
         [
-         24.1,
-         -5.8,
-         17.98
+         16.16,
+         -6.18,
+         9.13
         ],
         [
-         27.11,
-         -6.25,
-         22.32
+         16.32,
+         -6.44,
+         11.55
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.16,
+         -6.18,
+         9.13
         ],
         [
-         30.12,
-         -6.7,
-         25.17
+         16.44,
+         -6.3,
+         12.05
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.16,
+         -6.18,
+         9.13
+        ],
+        [
+         16.15,
+         -6.48,
+         12.05
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.16,
+         -6.18,
+         9.13
+        ],
+        [
+         15.76,
+         -7.51,
+         11.43
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.16,
+         -6.18,
+         9.13
+        ],
+        [
+         16.58,
+         -7.5,
+         11.93
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.16,
+         -6.18,
+         9.13
+        ],
+        [
+         15.08,
+         -7.05,
+         11.93
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.46,
+       "points": [
+        [
+         15.31,
+         -3.68,
+         6.47
+        ],
+        [
+         17.22,
+         -3.97,
+         8.04
+        ],
+        [
+         19.14,
+         -4.26,
+         9.06
         ]
        ],
        "curve": true,
@@ -1152,23 +1285,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         30.12,
-         -6.7,
-         25.17
+         19.14,
+         -4.26,
+         9.06
         ],
         [
-         31.88,
-         -9.05,
-         28.86
+         20.92,
+         -6.64,
+         11.19
         ]
        ],
        "curve": true,
@@ -1178,23 +1311,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         30.12,
-         -6.7,
-         25.17
+         19.14,
+         -4.26,
+         9.06
         ],
         [
-         31.15,
-         -7.27,
-         29.73
+         21.95,
+         -5.22,
+         11.69
         ]
        ],
        "curve": true,
@@ -1204,23 +1338,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         30.12,
-         -6.7,
-         25.17
+         19.14,
+         -4.26,
+         9.06
         ],
         [
-         33.06,
-         -5.86,
-         28.76
+         19.27,
+         -7.23,
+         11.69
         ]
        ],
        "curve": true,
@@ -1230,28 +1365,191 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.06,
+       "radius": 0.18,
        "points": [
         [
-         16.03,
+         19.14,
+         -4.26,
+         9.06
+        ],
+        [
+         20.18,
+         -4.84,
+         11.68
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         19.14,
+         -4.26,
+         9.06
+        ],
+        [
+         20.33,
+         -4.15,
+         12.18
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         19.14,
+         -4.26,
+         9.06
+        ],
+        [
+         19.67,
+         -5.33,
+         12.18
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         19.14,
+         -4.26,
+         9.06
+        ],
+        [
+         22.12,
+         -3.4,
+         11.12
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         19.14,
+         -4.26,
+         9.06
+        ],
+        [
+         21.11,
+         -1.87,
+         11.62
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         19.14,
+         -4.26,
+         9.06
+        ],
+        [
+         22.09,
+         -5.23,
+         11.62
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.85,
+       "points": [
+        [
+         10.18,
          0.0,
-         8.75
+         3.15
         ],
         [
-         20.71,
-         3.48,
-         12.38
+         13.16,
+         2.21,
+         4.46
         ],
         [
-         25.4,
-         6.97,
-         13.96
+         16.14,
+         4.43,
+         5.03
         ]
        ],
        "curve": true,
@@ -1261,28 +1559,28 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.46,
        "points": [
         [
-         25.4,
-         6.97,
-         13.96
+         16.14,
+         4.43,
+         5.03
         ],
         [
-         29.84,
-         7.87,
-         15.96
+         18.96,
+         5.0,
+         5.75
         ],
         [
-         34.26,
-         8.78,
-         16.47
+         21.77,
+         5.58,
+         5.93
         ]
        ],
        "curve": true,
@@ -1292,23 +1590,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         34.26,
-         8.78,
-         16.47
+         21.77,
+         5.58,
+         5.93
         ],
         [
-         38.58,
-         7.6,
-         17.85
+         26.15,
+         4.38,
+         6.73
         ]
        ],
        "curve": true,
@@ -1318,23 +1616,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         34.26,
-         8.78,
-         16.47
+         21.77,
+         5.58,
+         5.93
         ],
         [
-         36.28,
-         11.75,
-         19.46
+         26.06,
+         7.06,
+         7.23
         ]
        ],
        "curve": true,
@@ -1344,23 +1643,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         34.26,
-         8.78,
-         16.47
+         21.77,
+         5.58,
+         5.93
         ],
         [
-         37.66,
-         8.31,
-         19.66
+         24.71,
+         2.12,
+         7.23
         ]
        ],
        "curve": true,
@@ -1370,28 +1670,191 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.18,
        "points": [
         [
-         25.4,
-         6.97,
-         13.96
+         21.77,
+         5.58,
+         5.93
         ],
         [
-         26.62,
-         10.13,
-         16.99
+         23.82,
+         8.59,
+         7.66
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         21.77,
+         5.58,
+         5.93
         ],
         [
-         27.86,
-         13.3,
-         18.69
+         21.76,
+         9.22,
+         8.16
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         21.77,
+         5.58,
+         5.93
+        ],
+        [
+         25.16,
+         6.91,
+         8.16
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         21.77,
+         5.58,
+         5.93
+        ],
+        [
+         25.23,
+         5.1,
+         7.77
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         21.77,
+         5.58,
+         5.93
+        ],
+        [
+         24.9,
+         7.14,
+         8.27
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         21.77,
+         5.58,
+         5.93
+        ],
+        [
+         24.35,
+         3.23,
+         8.27
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.46,
+       "points": [
+        [
+         16.14,
+         4.43,
+         5.03
+        ],
+        [
+         16.91,
+         6.44,
+         6.12
+        ],
+        [
+         17.7,
+         8.45,
+         6.73
         ]
        ],
        "curve": true,
@@ -1401,23 +1864,50 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         27.86,
-         13.3,
-         18.69
+         17.7,
+         8.45,
+         6.73
         ],
         [
-         27.03,
+         16.85,
+         10.83,
+         8.62
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         17.7,
+         8.45,
+         6.73
+        ],
+        [
          15.65,
-         21.98
+         9.93,
+         9.12
         ]
        ],
        "curve": true,
@@ -1427,23 +1917,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         27.86,
-         13.3,
-         18.69
+         17.7,
+         8.45,
+         6.73
         ],
         [
-         27.09,
-         15.22,
-         22.27
+         18.34,
+         10.89,
+         9.12
         ]
        ],
        "curve": true,
@@ -1453,23 +1944,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         27.86,
-         13.3,
-         18.69
+         17.7,
+         8.45,
+         6.73
         ],
         [
-         29.84,
-         15.68,
-         21.44
+         16.92,
+         10.4,
+         8.79
         ]
        ],
        "curve": true,
@@ -1479,7 +1971,143 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         17.7,
+         8.45,
+         6.73
+        ],
+        [
+         15.96,
+         9.62,
+         9.29
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         17.7,
+         8.45,
+         6.73
+        ],
+        [
+         18.16,
+         10.5,
+         9.29
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         17.7,
+         8.45,
+         6.73
+        ],
+        [
+         19.72,
+         10.87,
+         8.31
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         17.7,
+         8.45,
+         6.73
+        ],
+        [
+         18.0,
+         11.59,
+         8.81
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         17.7,
+         8.45,
+         6.73
+        ],
+        [
+         20.73,
+         9.31,
+         8.81
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -1491,7 +2119,7 @@
    "at": [
     0,
     6,
-    26.0
+    29.8
    ],
    "lod": [
     0
@@ -1512,7 +2140,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.91,
+       "radius": 1.53,
        "points": [
         [
          0.0,
@@ -1520,14 +2148,14 @@
          0.0
         ],
         [
-         5.56,
+         3.53,
          0.0,
-         7.67
+         2.76
         ],
         [
-         11.12,
+         7.06,
          0.0,
-         12.65
+         4.55
         ]
        ],
        "curve": true,
@@ -1537,28 +2165,28 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.06,
+       "radius": 0.85,
        "points": [
         [
-         11.12,
+         7.06,
          0.0,
-         12.65
+         4.55
         ],
         [
-         14.85,
-         -1.77,
-         17.25
+         9.43,
+         -1.12,
+         6.21
         ],
         [
-         18.56,
-         -3.55,
-         20.07
+         11.79,
+         -2.26,
+         7.23
         ]
        ],
        "curve": true,
@@ -1568,28 +2196,28 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.46,
        "points": [
         [
-         18.56,
-         -3.55,
-         20.07
+         11.79,
+         -2.26,
+         7.23
         ],
         [
-         20.27,
-         -6.34,
-         22.88
+         12.88,
+         -4.03,
+         8.24
         ],
         [
-         21.97,
-         -9.15,
-         24.41
+         13.96,
+         -5.81,
+         8.79
         ]
        ],
        "curve": true,
@@ -1599,23 +2227,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         21.97,
-         -9.15,
-         24.41
+         13.96,
+         -5.81,
+         8.79
         ],
         [
-         22.84,
-         -12.1,
-         26.86
+         14.84,
+         -8.82,
+         10.2
         ]
        ],
        "curve": true,
@@ -1625,23 +2253,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         21.97,
-         -9.15,
-         24.41
+         13.96,
+         -5.81,
+         8.79
         ],
         [
-         24.43,
-         -10.53,
-         27.16
+         16.39,
+         -7.8,
+         10.7
         ]
        ],
        "curve": true,
@@ -1651,23 +2280,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         21.97,
-         -9.15,
-         24.41
+         13.96,
+         -5.81,
+         8.79
         ],
         [
-         22.67,
-         -11.87,
-         27.16
+         12.99,
+         -8.79,
+         10.7
         ]
        ],
        "curve": true,
@@ -1677,28 +2307,191 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.18,
        "points": [
         [
-         18.56,
-         -3.55,
-         20.07
+         13.96,
+         -5.81,
+         8.79
         ],
         [
-         21.92,
-         -2.98,
-         23.11
+         16.46,
+         -7.22,
+         10.37
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.96,
+         -5.81,
+         8.79
         ],
         [
-         25.26,
-         -2.41,
-         24.83
+         16.82,
+         -5.56,
+         10.87
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.96,
+         -5.81,
+         8.79
+        ],
+        [
+         15.23,
+         -8.39,
+         10.87
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.96,
+         -5.81,
+         8.79
+        ],
+        [
+         14.66,
+         -8.58,
+         10.37
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.96,
+         -5.81,
+         8.79
+        ],
+        [
+         16.1,
+         -7.7,
+         10.87
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.96,
+         -5.81,
+         8.79
+        ],
+        [
+         12.97,
+         -8.49,
+         10.87
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.46,
+       "points": [
+        [
+         11.79,
+         -2.26,
+         7.23
+        ],
+        [
+         13.93,
+         -1.89,
+         8.32
+        ],
+        [
+         16.05,
+         -1.53,
+         8.94
         ]
        ],
        "curve": true,
@@ -1708,23 +2501,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         25.26,
-         -2.41,
-         24.83
+         16.05,
+         -1.53,
+         8.94
         ],
         [
-         27.23,
-         -3.74,
-         28.24
+         18.05,
+         -2.89,
+         10.91
         ]
        ],
        "curve": true,
@@ -1734,23 +2527,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         25.26,
-         -2.41,
-         24.83
+         16.05,
+         -1.53,
+         8.94
         ],
         [
-         27.96,
-         -0.04,
-         26.9
+         18.47,
+         -1.52,
+         11.41
         ]
        ],
        "curve": true,
@@ -1760,23 +2554,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         25.26,
-         -2.41,
-         24.83
+         16.05,
+         -1.53,
+         8.94
         ],
         [
-         27.77,
-         -0.6,
-         27.6
+         16.93,
+         -3.78,
+         11.41
         ]
        ],
        "curve": true,
@@ -1786,28 +2581,191 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.06,
+       "radius": 0.18,
        "points": [
         [
-         11.12,
+         16.05,
+         -1.53,
+         8.94
+        ],
+        [
+         18.79,
+         0.87,
+         10.12
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.05,
+         -1.53,
+         8.94
+        ],
+        [
+         16.96,
+         2.0,
+         10.62
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.05,
+         -1.53,
+         8.94
+        ],
+        [
+         19.67,
+         -1.1,
+         10.62
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.05,
+         -1.53,
+         8.94
+        ],
+        [
+         18.59,
+         0.31,
+         10.54
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.05,
+         -1.53,
+         8.94
+        ],
+        [
+         17.11,
+         1.42,
+         11.04
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         16.05,
+         -1.53,
+         8.94
+        ],
+        [
+         19.19,
+         -1.45,
+         11.04
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.85,
+       "points": [
+        [
+         7.06,
          0.0,
-         12.65
+         4.55
         ],
         [
-         14.5,
-         2.18,
-         16.91
+         9.21,
+         1.38,
+         6.09
         ],
         [
-         17.86,
-         4.36,
-         19.49
+         11.35,
+         2.77,
+         7.02
         ]
        ],
        "curve": true,
@@ -1817,28 +2775,28 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.46,
        "points": [
         [
-         17.86,
-         4.36,
-         19.49
+         11.35,
+         2.77,
+         7.02
         ],
         [
-         19.59,
-         4.56,
-         22.95
+         12.45,
+         2.9,
+         8.26
         ],
         [
-         21.33,
-         4.77,
-         25.32
+         13.55,
+         3.03,
+         9.12
         ]
        ],
        "curve": true,
@@ -1848,23 +2806,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         21.33,
-         4.77,
-         25.32
+         13.55,
+         3.03,
+         9.12
         ],
         [
-         21.57,
-         4.91,
-         28.72
+         13.79,
+         3.17,
+         11.07
         ]
        ],
        "curve": true,
@@ -1874,23 +2832,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         21.33,
-         4.77,
-         25.32
+         13.55,
+         3.03,
+         9.12
         ],
         [
-         22.29,
-         5.82,
-         28.42
+         13.67,
+         3.28,
+         11.57
         ]
        ],
        "curve": true,
@@ -1900,23 +2859,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         21.33,
-         4.77,
-         25.32
+         13.55,
+         3.03,
+         9.12
         ],
         [
-         22.41,
-         4.65,
-         28.55
+         13.83,
+         3.01,
+         11.57
         ]
        ],
        "curve": true,
@@ -1926,28 +2886,191 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.58,
+       "radius": 0.18,
        "points": [
         [
-         17.86,
-         4.36,
-         19.49
+         13.55,
+         3.03,
+         9.12
         ],
         [
-         18.97,
-         7.25,
-         22.24
+         14.53,
+         4.1,
+         10.9
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.55,
+         3.03,
+         9.12
         ],
         [
-         20.07,
-         10.15,
-         23.8
+         13.75,
+         4.47,
+         11.4
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.55,
+         3.03,
+         9.12
+        ],
+        [
+         14.96,
+         3.36,
+         11.4
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.55,
+         3.03,
+         9.12
+        ],
+        [
+         14.65,
+         2.9,
+         10.98
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.55,
+         3.03,
+         9.12
+        ],
+        [
+         14.53,
+         3.54,
+         11.48
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         13.55,
+         3.03,
+         9.12
+        ],
+        [
+         14.38,
+         2.3,
+         11.48
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.46,
+       "points": [
+        [
+         11.35,
+         2.77,
+         7.02
+        ],
+        [
+         12.05,
+         4.61,
+         8.01
+        ],
+        [
+         12.75,
+         6.45,
+         8.57
         ]
        ],
        "curve": true,
@@ -1957,23 +3080,23 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         20.07,
-         10.15,
-         23.8
+         12.75,
+         6.45,
+         8.57
         ],
         [
-         19.86,
-         12.12,
-         27.04
+         12.54,
+         8.45,
+         10.43
         ]
        ],
        "curve": true,
@@ -1983,23 +3106,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         20.07,
-         10.15,
-         23.8
+         12.75,
+         6.45,
+         8.57
         ],
         [
-         21.68,
-         10.96,
-         27.13
+         11.45,
+         7.98,
+         10.93
         ]
        ],
        "curve": true,
@@ -2009,23 +3133,24 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.2,
+       "radius": 0.18,
        "points": [
         [
-         20.07,
-         10.15,
-         23.8
+         12.75,
+         6.45,
+         8.57
         ],
         [
-         22.52,
-         11.66,
-         26.27
+         13.71,
+         8.22,
+         10.93
         ]
        ],
        "curve": true,
@@ -2035,7 +3160,170 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         12.75,
+         6.45,
+         8.57
+        ],
+        [
+         14.38,
+         7.27,
+         10.49
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         12.75,
+         6.45,
+         8.57
+        ],
+        [
+         13.63,
+         8.05,
+         10.99
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         12.75,
+         6.45,
+         8.57
+        ],
+        [
+         14.56,
+         6.21,
+         10.99
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         12.75,
+         6.45,
+         8.57
+        ],
+        [
+         15.25,
+         7.99,
+         9.99
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         12.75,
+         6.45,
+         8.57
+        ],
+        [
+         13.94,
+         9.13,
+         10.49
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.18,
+       "points": [
+        [
+         12.75,
+         6.45,
+         8.57
+        ],
+        [
+         15.68,
+         6.31,
+         10.49
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -2047,7 +3335,7 @@
    "at": [
     -30,
     18,
-    15.5
+    20.8
    ],
    "lod": [
     0
@@ -2068,7 +3356,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.11,
+       "radius": 0.65,
        "points": [
         [
          0.0,
@@ -2076,45 +3364,45 @@
          0.0
         ],
         [
-         5.23,
+         2.44,
          0.0,
-         3.81
+         1.01
         ],
         [
-         10.45,
+         4.87,
          0.0,
-         5.71
+         1.51
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 5,
+       "n": 4,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.62,
+       "radius": 0.36,
        "points": [
         [
-         10.45,
+         4.87,
          0.0,
-         5.71
+         1.51
         ],
         [
-         13.44,
-         -2.39,
-         8.61
+         6.26,
+         -1.11,
+         2.27
         ],
         [
-         16.43,
-         -4.78,
-         10.1
+         7.65,
+         -2.23,
+         2.67
         ]
        ],
        "curve": true,
@@ -2124,90 +3412,92 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         16.43,
-         -4.78,
-         10.1
+         7.65,
+         -2.23,
+         2.67
         ],
         [
-         17.25,
-         -7.16,
-         12.03
+         8.04,
+         -3.34,
+         3.18
         ],
         [
-         18.07,
-         -9.55,
-         13.03
+         8.42,
+         -4.45,
+         3.44
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         16.43,
-         -4.78,
-         10.1
+         7.65,
+         -2.23,
+         2.67
         ],
         [
-         18.34,
-         -5.29,
-         12.9
+         8.54,
+         -2.46,
+         3.41
         ],
         [
-         20.25,
-         -5.81,
-         14.72
+         9.43,
+         -2.71,
+         3.89
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.62,
+       "radius": 0.36,
        "points": [
         [
-         10.45,
+         4.87,
          0.0,
-         5.71
+         1.51
         ],
         [
-         12.8,
-         1.04,
-         9.0
+         5.96,
+         0.48,
+         2.38
         ],
         [
-         15.16,
-         2.08,
-         11.09
+         7.06,
+         0.97,
+         2.93
         ]
        ],
        "curve": true,
@@ -2217,69 +3507,71 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         15.16,
-         2.08,
-         11.09
+         7.06,
+         0.97,
+         2.93
         ],
         [
-         16.28,
-         1.94,
-         13.56
+         7.58,
+         0.9,
+         3.58
         ],
         [
-         17.38,
-         1.78,
-         15.26
+         8.1,
+         0.83,
+         4.03
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         15.16,
-         2.08,
-         11.09
+         7.06,
+         0.97,
+         2.93
         ],
         [
-         15.91,
-         2.95,
-         13.64
+         7.41,
+         1.37,
+         3.6
         ],
         [
-         16.65,
-         3.84,
-         15.4
+         7.76,
+         1.79,
+         4.07
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -2291,7 +3583,7 @@
    "at": [
     -30,
     18,
-    17.0
+    21.8
    ],
    "lod": [
     0
@@ -2312,7 +3604,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.11,
+       "radius": 0.65,
        "points": [
         [
          0.0,
@@ -2320,45 +3612,45 @@
          0.0
         ],
         [
-         4.02,
+         1.87,
          0.0,
-         5.54
+         1.46
         ],
         [
-         8.02,
+         3.74,
          0.0,
-         9.14
+         2.41
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 5,
+       "n": 4,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.62,
+       "radius": 0.36,
        "points": [
         [
-         8.02,
+         3.74,
          0.0,
-         9.14
+         2.41
         ],
         [
-         10.35,
-         -1.4,
-         12.84
+         4.82,
+         -0.65,
+         3.39
         ],
         [
-         12.66,
-         -2.81,
-         15.25
+         5.9,
+         -1.31,
+         4.03
         ]
        ],
        "curve": true,
@@ -2368,90 +3660,92 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         12.66,
-         -2.81,
-         15.25
+         5.9,
+         -1.31,
+         4.03
         ],
         [
-         13.73,
-         -4.42,
-         18.11
+         6.4,
+         -2.06,
+         4.78
         ],
         [
-         14.81,
-         -6.05,
-         19.98
+         6.9,
+         -2.82,
+         5.27
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         12.66,
-         -2.81,
-         15.25
+         5.9,
+         -1.31,
+         4.03
         ],
         [
-         13.83,
-         -2.7,
-         18.15
+         6.44,
+         -1.26,
+         4.79
         ],
         [
-         14.99,
-         -2.6,
-         20.18
+         6.98,
+         -1.21,
+         5.33
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.62,
+       "radius": 0.36,
        "points": [
         [
-         8.02,
+         3.74,
          0.0,
-         9.14
+         2.41
         ],
         [
-         10.3,
-         1.59,
-         12.9
+         4.8,
+         0.74,
+         3.41
         ],
         [
-         12.56,
-         3.19,
-         15.33
+         5.85,
+         1.49,
+         4.05
         ]
        ],
        "curve": true,
@@ -2461,69 +3755,71 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         12.56,
-         3.19,
-         15.33
+         5.85,
+         1.49,
+         4.05
         ],
         [
-         13.95,
-         3.16,
-         18.11
+         6.5,
+         1.47,
+         4.78
         ],
         [
-         15.35,
-         3.12,
-         20.02
+         7.15,
+         1.45,
+         5.29
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.34,
+       "radius": 0.35,
        "points": [
         [
-         12.56,
-         3.19,
-         15.33
+         5.85,
+         1.49,
+         4.05
         ],
         [
-         13.2,
-         4.89,
-         18.2
+         6.15,
+         2.28,
+         4.8
         ],
         [
-         13.83,
-         6.59,
-         20.12
+         6.44,
+         3.07,
+         5.31
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -2535,7 +3831,7 @@
    "at": [
     18,
     32,
-    17.5
+    22.8
    ],
    "lod": [
     0
@@ -2556,7 +3852,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.18,
+       "radius": 0.76,
        "points": [
         [
          0.0,
@@ -2564,45 +3860,14 @@
          0.0
         ],
         [
-         5.59,
+         2.84,
          0.0,
-         4.07
+         1.17
         ],
         [
-         11.17,
+         5.68,
          0.0,
-         6.1
-        ]
-       ],
-       "curve": true,
-       "steps": 1,
-       "n": 5,
-       "taper": [
-        1,
-        0.5
-       ],
-       "colour": "#7a5d47"
-      }
-     },
-     {
-      "type": "sweep-path",
-      "params": {
-       "radius": 0.65,
-       "points": [
-        [
-         11.17,
-         0.0,
-         6.1
-        ],
-        [
-         13.7,
-         -1.94,
-         10.01
-        ],
-        [
-         16.24,
-         -3.87,
-         12.48
+         1.76
         ]
        ],
        "curve": true,
@@ -2612,7 +3877,38 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.42,
+       "points": [
+        [
+         5.68,
+         0.0,
+         1.76
+        ],
+        [
+         6.96,
+         -0.99,
+         2.88
+        ],
+        [
+         8.25,
+         -1.97,
+         3.59
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 4,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333"
       }
      },
      {
@@ -2621,29 +3917,30 @@
        "radius": 0.35,
        "points": [
         [
-         16.24,
-         -3.87,
-         12.48
+         8.25,
+         -1.97,
+         3.59
         ],
         [
-         16.55,
-         -5.21,
-         15.76
+         8.41,
+         -2.65,
+         4.54
         ],
         [
-         16.85,
-         -6.55,
-         18.04
+         8.56,
+         -3.33,
+         5.2
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
@@ -2652,112 +3949,51 @@
        "radius": 0.35,
        "points": [
         [
-         16.24,
-         -3.87,
-         12.48
+         8.25,
+         -1.97,
+         3.59
         ],
         [
-         17.81,
-         -3.94,
-         15.39
+         9.05,
+         -2.0,
+         4.43
         ],
         [
-         19.37,
-         -3.99,
-         17.37
+         9.84,
+         -2.03,
+         5.0
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.65,
+       "radius": 0.42,
        "points": [
         [
-         11.17,
+         5.68,
          0.0,
-         6.1
+         1.76
         ],
         [
-         13.66,
-         1.68,
-         9.32
-        ],
-        [
-         16.16,
-         3.35,
-         11.27
-        ]
-       ],
-       "curve": true,
-       "steps": 1,
-       "n": 4,
-       "taper": [
-        1,
-        0.5
-       ],
-       "colour": "#7a5d47"
-      }
-     },
-     {
-      "type": "sweep-path",
-      "params": {
-       "radius": 0.35,
-       "points": [
-        [
-         16.16,
-         3.35,
-         11.27
-        ],
-        [
-         18.13,
-         3.64,
-         13.69
-        ],
-        [
-         20.1,
-         3.91,
-         15.21
-        ]
-       ],
-       "curve": true,
-       "steps": 1,
-       "n": 4,
-       "taper": [
-        1,
-        0.5
-       ],
-       "colour": "#7a5d47"
-      }
-     },
-     {
-      "type": "sweep-path",
-      "params": {
-       "radius": 0.35,
-       "points": [
-        [
-         16.16,
-         3.35,
-         11.27
-        ],
-        [
-         17.3,
-         5.15,
-         13.23
-        ],
-        [
-         18.43,
          6.94,
-         14.35
+         0.85,
+         2.68
+        ],
+        [
+         8.21,
+         1.7,
+         3.25
         ]
        ],
        "curve": true,
@@ -2767,7 +4003,71 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.35,
+       "points": [
+        [
+         8.21,
+         1.7,
+         3.25
+        ],
+        [
+         9.21,
+         1.85,
+         3.94
+        ],
+        [
+         10.22,
+         1.99,
+         4.38
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.35,
+       "points": [
+        [
+         8.21,
+         1.7,
+         3.25
+        ],
+        [
+         8.79,
+         2.62,
+         3.81
+        ],
+        [
+         9.37,
+         3.53,
+         4.13
+        ]
+       ],
+       "curve": true,
+       "steps": 1,
+       "n": 3,
+       "taper": [
+        1,
+        0.5
+       ],
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -2779,7 +4079,7 @@
    "at": [
     18,
     32,
-    19.0
+    23.8
    ],
    "lod": [
     0
@@ -2800,7 +4100,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 1.18,
+       "radius": 0.76,
        "points": [
         [
          0.0,
@@ -2808,45 +4108,45 @@
          0.0
         ],
         [
-         4.38,
+         2.23,
          0.0,
-         6.05
+         1.74
         ],
         [
-         8.76,
+         4.45,
          0.0,
-         9.97
+         2.87
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 5,
+       "n": 4,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.65,
+       "radius": 0.42,
        "points": [
         [
-         8.76,
+         4.45,
          0.0,
-         9.97
+         2.87
         ],
         [
-         10.26,
+         5.21,
+         -0.39,
+         4.14
+        ],
+        [
+         5.97,
          -0.77,
-         14.39
-        ],
-        [
-         11.74,
-         -1.52,
-         17.48
+         5.03
         ]
        ],
        "curve": true,
@@ -2856,7 +4156,7 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
@@ -2865,29 +4165,30 @@
        "radius": 0.35,
        "points": [
         [
-         11.74,
-         -1.52,
-         17.48
+         5.97,
+         -0.77,
+         5.03
         ],
         [
-         12.38,
-         -2.48,
-         20.45
+         6.29,
+         -1.26,
+         5.89
         ],
         [
-         13.0,
-         -3.46,
-         22.53
+         6.61,
+         -1.76,
+         6.49
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
@@ -2896,50 +4197,51 @@
        "radius": 0.35,
        "points": [
         [
-         11.74,
-         -1.52,
-         17.48
+         5.97,
+         -0.77,
+         5.03
         ],
         [
-         12.86,
-         -1.42,
-         20.58
+         6.54,
+         -0.72,
+         5.93
         ],
         [
-         13.96,
-         -1.31,
-         22.76
+         7.09,
+         -0.67,
+         6.55
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.65,
+       "radius": 0.42,
        "points": [
         [
-         8.76,
+         4.45,
          0.0,
-         9.97
+         2.87
         ],
         [
-         11.01,
-         1.07,
-         14.57
+         5.6,
+         0.54,
+         4.2
         ],
         [
-         13.26,
-         2.13,
-         17.71
+         6.74,
+         1.08,
+         5.1
         ]
        ],
        "curve": true,
@@ -2949,7 +4251,7 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
@@ -2958,29 +4260,30 @@
        "radius": 0.35,
        "points": [
         [
-         13.26,
-         2.13,
-         17.71
+         6.74,
+         1.08,
+         5.1
         ],
         [
-         14.0,
-         1.95,
-         21.35
+         7.12,
+         0.99,
+         6.15
         ],
         [
-         14.74,
-         1.77,
-         23.96
+         7.49,
+         0.9,
+         6.9
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
@@ -2989,29 +4292,30 @@
        "radius": 0.35,
        "points": [
         [
-         13.26,
-         2.13,
-         17.71
+         6.74,
+         1.08,
+         5.1
         ],
         [
-         14.12,
-         3.17,
-         21.35
+         7.18,
+         1.61,
+         6.15
         ],
         [
-         14.96,
-         4.21,
-         23.92
+         7.6,
+         2.14,
+         6.89
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -3023,7 +4327,7 @@
    "at": [
     36,
     46,
-    12.5
+    17.8
    ],
    "lod": [
     0
@@ -3044,7 +4348,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.99,
+       "radius": 0.5,
        "points": [
         [
          0.0,
@@ -3052,45 +4356,45 @@
          0.0
         ],
         [
-         4.56,
+         1.83,
          0.0,
-         3.33
+         0.76
         ],
         [
-         9.13,
+         3.67,
          0.0,
-         4.99
+         1.14
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 5,
+       "n": 4,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.54,
+       "radius": 0.35,
        "points": [
         [
-         9.13,
+         3.67,
          0.0,
-         4.99
+         1.14
         ],
         [
-         11.25,
-         -1.69,
-         7.58
+         4.53,
+         -0.68,
+         1.73
         ],
         [
-         13.36,
-         -3.38,
-         9.09
+         5.38,
+         -1.36,
+         2.07
         ]
        ],
        "curve": true,
@@ -3100,90 +4404,92 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         13.36,
-         -3.38,
-         9.09
+         5.38,
+         -1.36,
+         2.07
         ],
         [
-         13.7,
-         -5.03,
-         11.01
+         5.51,
+         -2.02,
+         2.51
         ],
         [
-         14.04,
-         -6.68,
-         12.19
+         5.65,
+         -2.69,
+         2.78
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         13.36,
-         -3.38,
-         9.09
+         5.38,
+         -1.36,
+         2.07
         ],
         [
-         15.04,
-         -3.54,
-         10.92
+         6.05,
+         -1.42,
+         2.49
         ],
         [
-         16.72,
-         -3.68,
-         12.04
+         6.73,
+         -1.48,
+         2.75
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.54,
+       "radius": 0.35,
        "points": [
         [
-         9.13,
+         3.67,
          0.0,
-         4.99
+         1.14
         ],
         [
-         11.57,
-         1.79,
-         7.09
+         4.66,
+         0.72,
+         1.62
         ],
         [
-         14.01,
-         3.59,
-         8.09
+         5.64,
+         1.44,
+         1.84
         ]
        ],
        "curve": true,
@@ -3193,69 +4499,71 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         14.01,
-         3.59,
-         8.09
+         5.64,
+         1.44,
+         1.84
         ],
         [
-         15.51,
-         3.89,
-         10.08
+         6.24,
+         1.57,
+         2.3
         ],
         [
-         17.02,
-         4.17,
-         11.36
+         6.85,
+         1.68,
+         2.59
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         14.01,
-         3.59,
-         8.09
+         5.64,
+         1.44,
+         1.84
         ],
         [
-         14.64,
-         5.59,
-         9.53
+         5.89,
+         2.25,
+         2.17
         ],
         [
-         15.28,
-         7.58,
-         10.23
+         6.15,
+         3.05,
+         2.33
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -3267,7 +4575,7 @@
    "at": [
     36,
     46,
-    14.0
+    18.8
    ],
    "lod": [
     0
@@ -3288,7 +4596,7 @@
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.99,
+       "radius": 0.5,
        "points": [
         [
          0.0,
@@ -3296,45 +4604,45 @@
          0.0
         ],
         [
-         3.22,
+         1.3,
          0.0,
-         4.46
+         1.02
         ],
         [
-         6.46,
+         2.6,
          0.0,
-         7.35
+         1.68
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 5,
+       "n": 4,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.54,
+       "radius": 0.35,
        "points": [
         [
-         6.46,
+         2.6,
          0.0,
-         7.35
+         1.68
         ],
         [
-         8.52,
-         -0.9,
-         10.32
+         3.43,
+         -0.36,
+         2.35
         ],
         [
-         10.58,
-         -1.79,
-         12.23
+         4.26,
+         -0.72,
+         2.79
         ]
        ],
        "curve": true,
@@ -3344,90 +4652,92 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         10.58,
-         -1.79,
-         12.23
+         4.26,
+         -0.72,
+         2.79
         ],
         [
-         11.05,
-         -2.68,
-         14.66
+         4.45,
+         -1.08,
+         3.34
         ],
         [
-         11.52,
-         -3.56,
-         16.37
+         4.64,
+         -1.43,
+         3.73
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         10.58,
-         -1.79,
-         12.23
+         4.26,
+         -0.72,
+         2.79
         ],
         [
-         11.52,
-         -1.68,
-         14.6
+         4.64,
+         -0.68,
+         3.33
         ],
         [
-         12.45,
-         -1.55,
-         16.26
+         5.01,
+         -0.62,
+         3.71
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.54,
+       "radius": 0.35,
        "points": [
         [
-         6.46,
+         2.6,
          0.0,
-         7.35
+         1.68
         ],
         [
-         7.77,
-         1.0,
-         10.74
+         3.13,
+         0.4,
+         2.45
         ],
         [
-         9.09,
-         2.0,
-         13.08
+         3.66,
+         0.8,
+         2.98
         ]
        ],
        "curve": true,
@@ -3437,69 +4747,71 @@
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333"
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         9.09,
-         2.0,
-         13.08
+         3.66,
+         0.8,
+         2.98
         ],
         [
-         9.76,
-         2.12,
-         15.81
+         3.93,
+         0.85,
+         3.6
         ],
         [
-         10.43,
-         2.22,
-         17.77
+         4.2,
+         0.89,
+         4.05
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      },
      {
       "type": "sweep-path",
       "params": {
-       "radius": 0.3,
+       "radius": 0.35,
        "points": [
         [
-         9.09,
-         2.0,
-         13.08
+         3.66,
+         0.8,
+         2.98
         ],
         [
-         9.27,
-         2.52,
-         15.42
+         3.73,
+         1.01,
+         3.52
         ],
         [
-         9.45,
-         3.04,
-         17.08
+         3.8,
+         1.22,
+         3.89
         ]
        ],
        "curve": true,
        "steps": 1,
-       "n": 4,
+       "n": 3,
        "taper": [
         1,
         0.5
        ],
-       "colour": "#7a5d47"
+       "colour": "#5b4333",
+       "caps": false
       }
      }
     ]
@@ -3515,17 +4827,17 @@
    "at": [
     -15.0,
     12.0,
-    9.0
+    16
    ],
-   "rotDeg": -21.80140948635181,
+   "rotDeg": 158.2,
    "params": {
     "kind": "folded",
-    "width": 24.310988842807028,
-    "depth": 9,
-    "rise": 0.3,
-    "folds": 1,
-    "thickness": 0.15,
-    "slopeX": 0.4936039450139635,
+    "width": 25.8,
+    "depth": 18,
+    "rise": 1.5,
+    "folds": 2,
+    "thickness": 0.2,
+    "slopeX": 0.1,
     "colour": "#efe3c4",
     "z": 0
    }
@@ -3540,17 +4852,17 @@
    "at": [
     9.0,
     19.0,
-    9.5
+    18
    ],
-   "rotDeg": 55.30484646876604,
+   "rotDeg": 55.3,
    "params": {
     "kind": "folded",
-    "width": 23.622776601683793,
-    "depth": 9,
-    "rise": 0.3,
-    "folds": 1,
-    "thickness": 0.15,
-    "slopeX": -0.5503163416900527,
+    "width": 25.3,
+    "depth": 18,
+    "rise": 1.5,
+    "folds": 2,
+    "thickness": 0.2,
+    "slopeX": 0.1,
     "colour": "#efe3c4",
     "z": 0
    }
@@ -3565,24 +4877,24 @@
    "at": [
     27.0,
     39.0,
-    8.5
+    15
    ],
-   "rotDeg": 37.874983651098205,
+   "rotDeg": 37.9,
    "params": {
     "kind": "folded",
-    "width": 14.803508501982758,
-    "depth": 9,
-    "rise": 0.3,
-    "folds": 1,
-    "thickness": 0.15,
-    "slopeX": -0.7430670910566017,
-    "colour": "#efe3c4",
+    "width": 18.2,
+    "depth": 18,
+    "rise": 1.5,
+    "folds": 2,
+    "thickness": 0.2,
+    "slopeX": 0.1,
+    "colour": "#e7d6ae",
     "z": 0
    }
   }
  ],
  "site": {
-  "ground": "sand",
+  "ground": "paving",
   "forecourt": "none",
   "trees": 0,
   "extent": [
@@ -3597,6 +4909,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "crowns enlarged/sparser with forked limbs, sand-coloured plaza, sails now tilted surfaces between different trunks (still small); trunks still tapered, no bark texture, worm-eye photo view not matched"
+  "gaps": "trunks now tall and near-cylindrical with crowns widened and tufted; paving is blue-grey not beige, sails are thin and small, trunk lacks bark texture, worm-eye photo view not matched"
  }
 }

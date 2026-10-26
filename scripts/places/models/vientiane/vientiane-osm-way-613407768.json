@@ -11,7 +11,7 @@
    "licence": "CC BY-SA 3.0",
    "author": "Chaoborus",
    "view": "interior",
-   "file": "/tmp/places-evidence/vientiane/v20_osm-way-613407768-0.jpg",
+   "file": "/tmp/places-evidence/vientiane/stad0.jpg",
    "used": "red running track and green pitch, low stands with blue and orange seats, white-edged roof over the main stand, tall floodlight mast"
   },
   {
@@ -36,102 +36,6 @@
   "fit": "building"
  },
  "parts": [
-  {
-   "type": "prism",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "points": [
-     [
-      65.0,
-      0.0
-     ],
-     [
-      61.8125,
-      19.3125
-     ],
-     [
-      52.5875,
-      36.7375
-     ],
-     [
-      38.199999999999996,
-      50.5625
-     ],
-     [
-      20.0875,
-      59.4375
-     ],
-     [
-      0.0,
-      62.5
-     ],
-     [
-      -20.0875,
-      59.4375
-     ],
-     [
-      -38.199999999999996,
-      50.5625
-     ],
-     [
-      -52.5875,
-      36.7375
-     ],
-     [
-      -61.8125,
-      19.3125
-     ],
-     [
-      -65.0,
-      0.0
-     ],
-     [
-      -61.8125,
-      -19.3125
-     ],
-     [
-      -52.5875,
-      -36.7375
-     ],
-     [
-      -38.199999999999996,
-      -50.5625
-     ],
-     [
-      -20.0875,
-      -59.4375
-     ],
-     [
-      -0.0,
-      -62.5
-     ],
-     [
-      20.0875,
-      -59.4375
-     ],
-     [
-      38.199999999999996,
-      -50.5625
-     ],
-     [
-      52.5875,
-      -36.7375
-     ],
-     [
-      61.8125,
-      -19.3125
-     ]
-    ],
-    "z0": 0,
-    "height": 0.15,
-    "colour": "#b8b3a4",
-    "top": true
-   }
-  },
   {
    "type": "athletics-track",
    "at": [
@@ -160,24 +64,33 @@
     ],
     "radius": 60,
     "radiusY": 46,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d8d2c4",
+    "underColour": "#bdb7a8",
+    "seatColours": [
+     "#3f8aa0",
+     "#c8602f"
+    ],
+    "closeEnds": true,
     "startDeg": 215,
     "endDeg": 325,
     "rows": 7,
     "rise": 0.5,
     "run": 0.85,
     "firstHeight": 1.0,
-    "facetDeg": 10,
-    "under": "open",
+    "facetDeg": 15,
     "stepped": true,
-    "slab": 0.6,
-    "bay": 6,
-    "seatColours": [
-     "#3f8aa0",
-     "#c8602f"
-    ],
     "blocks": 4,
-    "concreteColour": "#d8d2c4",
-    "underColour": "#bdb7a8"
+    "canopy": {
+     "height": 7.5,
+     "depth": 6,
+     "thickness": 0.5,
+     "colour": "#f2f0ea",
+     "edgeColour": "#ffffff",
+     "supports": 6
+    }
    }
   },
   {
@@ -194,57 +107,106 @@
     ],
     "radius": 60,
     "radiusY": 46,
-    "startDeg": 35,
-    "endDeg": 145,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d8d2c4",
+    "underColour": "#bdb7a8",
+    "seatColours": [
+     "#3f8aa0",
+     "#c8602f"
+    ],
+    "closeEnds": true,
+    "startDeg": 325,
+    "endDeg": 395,
     "rows": 4,
     "rise": 0.45,
     "run": 0.85,
     "firstHeight": 1.0,
-    "facetDeg": 30,
-    "under": "open",
-    "slab": 0.5,
-    "bay": 6,
-    "seatColours": [
-     "#3f8aa0",
-     "#c8602f",
-     "#8a2f22"
-    ],
-    "blocks": 6,
-    "concreteColour": "#d8d2c4",
-    "underColour": "#bdb7a8"
+    "facetDeg": 20,
+    "blocks": 4
    }
   },
   {
-   "type": "array",
+   "type": "stand",
    "at": [
     0,
     0,
     0
    ],
    "params": {
-    "mode": "arc",
     "centre": [
-     0,
      0,
      0
     ],
-    "radius": 70,
-    "radiusY": 54,
-    "startDeg": 200,
-    "endDeg": 340,
-    "count": 1,
-    "facing": "outward",
-    "lod1Step": 2,
-    "lod2Step": 2,
-    "of": [
-     {
-      "type": "floodlight-mast",
-      "params": {
-       "height": 34,
-       "head_width": 4
-      }
-     }
-    ]
+    "radius": 60,
+    "radiusY": 46,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#d8d2c4",
+    "underColour": "#bdb7a8",
+    "seatColours": [
+     "#3f8aa0",
+     "#c8602f"
+    ],
+    "closeEnds": true,
+    "startDeg": 35,
+    "endDeg": 215,
+    "rows": 4,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "facetDeg": 20,
+    "blocks": 8
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    44,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    44,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
    }
   },
   {
@@ -252,17 +214,17 @@
    "id": "entrance-hall",
    "footprint": {
     "rect": [
-     44,
-     14
+     26,
+     10
     ]
    },
    "at": [
     0,
-    -72
+    -52
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8,
+   "height": 6.5,
    "storeys": 2,
    "wall": {
     "material": "painted-render",
@@ -281,7 +243,7 @@
    "roof": {
     "form": "hip",
     "colour": "#b0432a",
-    "material": "clay-tile",
+    "material": "metal-sheet",
     "pitch": 28,
     "overhang": 1.6
    }
@@ -291,17 +253,17 @@
    "id": "entrance-porch",
    "footprint": {
     "rect": [
-     12,
-     5
+     8,
+     4
     ]
    },
    "at": [
     0,
-    -81
+    -58
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 7,
+   "height": 5.5,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -311,187 +273,110 @@
    "roof": {
     "form": "gable",
     "colour": "#b0432a",
-    "material": "clay-tile",
+    "material": "metal-sheet",
     "pitch": 32,
     "overhang": 0.8
    }
   },
   {
-   "type": "prism",
-   "at": [
-    0,
-    -86,
-    0
-   ],
-   "params": {
-    "rect": [
-     5,
-     5
-    ],
-    "height": 0.9,
-    "colour": "#e7d8b0"
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    -20,
-    -88,
-    0
-   ],
-   "params": {
-    "height": 6,
-    "count": 3,
-    "spacing": 20
-   }
-  },
-  {
-   "type": "fence-wall",
+   "type": "sweep-path",
    "at": [
     0,
     0,
     0.2
    ],
    "params": {
-    "length": 10,
-    "height": 1.1,
-    "thickness": 0.08,
-    "kind": "rail",
-    "colour": "#9aa0a4",
-    "points": [
-     [
-      54,
-      0
-     ],
-     [
-      52,
-      10
-     ],
-     [
-      47,
-      19
-     ],
-     [
-      38,
-      27
-     ],
-     [
-      27,
-      33
-     ],
-     [
-      14,
-      37
-     ],
-     [
-      0,
-      38
-     ],
-     [
-      -14,
-      37
-     ],
-     [
-      -27,
-      33
-     ],
-     [
-      -38,
-      27
-     ],
-     [
-      -47,
-      19
-     ],
-     [
-      -52,
-      10
-     ],
-     [
-      -54,
-      0
-     ],
-     [
-      -52,
-      -10
-     ],
-     [
-      -47,
-      -19
-     ],
-     [
-      -38,
-      -27
-     ],
-     [
-      -27,
-      -33
-     ],
-     [
-      -14,
-      -37
-     ],
-     [
-      0,
-      -38
-     ],
-     [
-      14,
-      -37
-     ],
-     [
-      27,
-      -33
-     ],
-     [
-      38,
-      -27
-     ],
-     [
-      47,
-      -19
-     ],
-     [
-      52,
-      -10
-     ],
-     [
-      54,
-      0
+    "section": {
+     "rect": [
+      0.12,
+      0.9
      ]
-    ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 39,
+     "radiusY": 31,
+     "startDeg": 0,
+     "endDeg": 360,
+     "rise": 0
+    },
+    "closed": true,
+    "colour": "#aab0b5"
    }
   }
  ],
  "site": {
-  "ground": "paving",
+  "ground": "grass",
   "forecourt": "none",
   "trees": [
    {
     "kind": "broadleaf",
     "at": [
-     -70,
-     -50
+     -72,
+     -30
     ],
-    "height": 8
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     40
+    ],
+    "height": 9
    },
    {
     "kind": "broadleaf",
     "at": [
      70,
-     -40
+     36
     ],
-    "height": 8
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     72
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -70
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -70
+    ],
+    "height": 9
    }
   ],
   "extent": [
-   130,
-   130
+   160,
+   160
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "Low open stands on two sides with a large red track and one floodlight mast; photo is an interior view so the exterior render cannot match it directly; rail fence barely visible, no skyline, entrance hall simplified"
+  "gaps": "photo is an interior view so exterior render cannot match directly; stands stylised all round, main stand canopy generic, entrance hall simplified, rail fence is a single ring"
  }
 }

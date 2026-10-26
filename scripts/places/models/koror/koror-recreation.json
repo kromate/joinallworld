@@ -73,7 +73,7 @@
      ]
     ],
     "height": 0.2,
-    "colour": "#7d9a3a"
+    "colour": "#6fa030"
    },
    "at": [
     0,
@@ -117,7 +117,7 @@
    "id": "stand",
    "footprint": {
     "rect": [
-     46,
+     52,
      7
     ]
    },
@@ -126,13 +126,12 @@
     -46
    ],
    "z0": 0,
-   "height": 4.2,
+   "height": 3.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d9d3c0",
-    "windows": "ribbon",
-    "windowRatio": 0.18,
+    "colour": "#55604e",
+    "windows": "none",
     "plinth": 0.4
    },
    "roof": {
@@ -140,7 +139,7 @@
     "colour": "#3f7a72",
     "material": "metal-sheet",
     "pitch": 24,
-    "overhang": 1.6
+    "overhang": 3.0
    }
   },
   {
@@ -197,11 +196,11 @@
       -31
      ]
     ],
-    "height": 3.0,
+    "height": 2.6,
     "thickness": 0.06,
     "kind": "railing",
-    "colour": "#c4c8cc",
-    "pillarEvery": 3.0
+    "colour": "#9aa0a6",
+    "pillarEvery": 2.5
    },
    "lod": [
     0,
@@ -209,56 +208,144 @@
    ]
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
+   "id": "pole",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 19.5,
+    "colour": "#c4c8cc"
+   },
    "at": [
     -48,
     -40,
     0
-   ],
-   "params": {
-    "height": 20,
-    "head_width": 2.4,
-    "colour": "#b8bcc0"
-   }
+   ]
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
+   "id": "lamps",
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 1.0,
+    "z0": 19.5,
+    "colour": "#d8dadc"
+   },
+   "at": [
+    -48,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pole",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 19.5,
+    "colour": "#c4c8cc"
+   },
    "at": [
     44,
     -38,
     0
-   ],
-   "params": {
-    "height": 20,
-    "head_width": 2.4,
-    "colour": "#b8bcc0"
-   }
+   ]
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
+   "id": "lamps",
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 1.0,
+    "z0": 19.5,
+    "colour": "#d8dadc"
+   },
+   "at": [
+    44,
+    -38,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pole",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 19.5,
+    "colour": "#c4c8cc"
+   },
    "at": [
     -40,
     40,
     0
-   ],
-   "params": {
-    "height": 20,
-    "head_width": 2.4,
-    "colour": "#b8bcc0"
-   }
+   ]
   },
   {
-   "type": "floodlight-mast",
+   "type": "prism",
+   "id": "lamps",
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 1.0,
+    "z0": 19.5,
+    "colour": "#d8dadc"
+   },
+   "at": [
+    -40,
+    40,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pole",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 19.5,
+    "colour": "#c4c8cc"
+   },
    "at": [
     36,
     40,
     0
-   ],
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamps",
    "params": {
-    "height": 20,
-    "head_width": 2.4,
-    "colour": "#b8bcc0"
-   }
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 1.0,
+    "z0": 19.5,
+    "colour": "#d8dadc"
+   },
+   "at": [
+    36,
+    40,
+    0
+   ]
   },
   {
    "type": "prism",
@@ -378,142 +465,344 @@
    ]
   },
   {
+   "type": "prism",
+   "id": "ridge",
+   "params": {
+    "rect": [
+     50,
+     0.5
+    ],
+    "height": 0.4,
+    "z0": 6.3,
+    "colour": "#2f5f4a"
+   },
+   "at": [
+    0,
+    -46,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.4,
+      "colour": "#d9d3c0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -22,
+     -43,
+     0
+    ],
+    "end": [
+     22,
+     -43,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
    "type": "core/tree",
    "at": [
-    -61.1,
-    -58.6,
+    -65.05580764105027,
+    -68.38100379461571,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13.584232970442724
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55.38011091679036,
+    -68.60090942592247,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 16
+    "height": 17.007955072425375
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -48.1,
-    -58.5,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 11
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -36.4,
-    -63.5,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 11
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -25.1,
-    -61.2,
+    -42.32817982764912,
+    -64.19728589102515,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 15
+    "height": 18.825813012527192
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -10.9,
-    -63.0,
+    -35.11228729723873,
+    -65.77991995095113,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 15
+    "height": 13.106730573765802
    }
   },
   {
    "type": "core/tree",
    "at": [
-    -1.1,
-    -63.6,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 15
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    13.2,
-    -59.2,
+    -25.309341882858526,
+    -68.36290024541081,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 15
+    "height": 16.072002162894584
    }
   },
   {
    "type": "core/tree",
    "at": [
-    23.2,
-    -63.2,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 15
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    34.3,
-    -61.6,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 16
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    48.0,
-    -59.1,
+    -12.290097474287759,
+    -64.02647970732949,
     0
    ],
    "params": {
     "kind": "broadleaf",
-    "height": 16
+    "height": 19.033261733511615
    }
   },
   {
    "type": "core/tree",
    "at": [
-    59.1,
-    -63.7,
+    -2.798208645828135,
+    -67.83938629188457,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 15
+    "height": 13.239399829198142
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.50790240965252,
+    -64.6086317467277,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.273241789956735
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17.5202030054448,
+    -68.47969048419047,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18.0292594185994
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26.686805826065893,
+    -65.96427734573751,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12.711160696963137
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    35.89435155034058,
+    -68.46392275640765,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.672941819499542
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    47.46193668074034,
+    -65.71416678247768,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.501228697866622
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    57.635481157658745,
+    -65.56579918988466,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15.52926895951516
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    67.39217635289454,
+    -65.94976574800349,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.06973021565866
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    66.15521508646654,
+    -55.604350111240045,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12.483961818364826
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    68.0629615931731,
+    -45.77955361426904,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15.216192345361243
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    67.13175372769952,
+    -35.814712003985946,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.402166058081093
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    66.35620043057497,
+    -22.86151282048231,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13.028529796266469
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    64.97786747166657,
+    -10.010884503311551,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.063973282036624
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    67.16332490895509,
+    -2.1893175353104146,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.381524174798415
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    67.73471340495232,
+    9.423323018429407,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12.962006709749225
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    68.5215755076533,
+    21.23411593433357,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15.504897193589297
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    65.14434720119382,
+    30.246440968160705,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18.82581120663138
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    65.18708584912663,
+    43.461728300514785,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12.993200986115204
    }
   },
   {
    "type": "core/tree",
    "at": [
     -64,
-    -20,
+    -30,
     0
    ],
    "params": {
@@ -524,8 +813,8 @@
   {
    "type": "core/tree",
    "at": [
-    64,
-    -20,
+    -64,
+    -12,
     0
    ],
    "params": {
@@ -536,8 +825,8 @@
   {
    "type": "core/tree",
    "at": [
-    62,
-    25,
+    -64,
+    6,
     0
    ],
    "params": {
@@ -548,8 +837,8 @@
   {
    "type": "core/tree",
    "at": [
-    -62,
-    22,
+    -64,
+    24,
     0
    ],
    "params": {
@@ -560,97 +849,13 @@
   {
    "type": "core/tree",
    "at": [
-    -36.1,
-    -55.5,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -27.3,
-    -56.7,
+    -64,
+    42,
     0
    ],
    "params": {
     "kind": "palm",
-    "height": 15
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -16.0,
-    -57.6,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -6.7,
-    -57.7,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 16
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    2.2,
-    -55.5,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 16
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    15.8,
-    -57.8,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 15
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    22.6,
-    -55.0,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 14
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    32.5,
-    -57.5,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 16
+    "height": 12
    }
   }
  ],
@@ -662,8 +867,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 1,
   "match": "fair",
-  "gaps": "camera is not close behind the fence so the chain-link foreground and tarp strip do not dominate; fence is an open railing not mesh; masts are lattice towers with square heads; stand roof pitch and tree density only approximate"
+  "gaps": "fence is an open railing with grey posts, not mesh (no mesh kind); camera sits further back than the photo so the foreground fence and tarp strip are absent; stand is a simple open-fronted block with gable roof; tree canopy is lollipop broadleaf, not rainforest texture"
  }
 }

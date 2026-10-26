@@ -37,8 +37,8 @@
     0
    ],
    "params": {
-    "length": 124,
-    "width": 72,
+    "length": 135,
+    "width": 66,
     "lane_width": 7,
     "infield": true,
     "pitch": false,
@@ -65,37 +65,6 @@
     "seatColour": "#d9b04c",
     "under": "solid",
     "concreteColour": "#d8d4ca",
-    "backWall": 1.0,
-    "canopy": {
-     "height": 15,
-     "depth": 6,
-     "colour": "#eeeeea",
-     "slopeDeg": 3,
-     "supports": 8
-    }
-   }
-  },
-  {
-   "type": "stand",
-   "at": [
-    0,
-    0,
-    0
-   ],
-   "params": {
-    "centre": [
-     0,
-     0
-    ],
-    "radius": 70,
-    "radiusY": 43,
-    "startDeg": -70,
-    "endDeg": 70,
-    "rows": 16,
-    "seatColour": "#d9b04c",
-    "under": "solid",
-    "concreteColour": "#d8d4ca",
-    "facetDeg": 10,
     "backWall": 1.0
    }
   },
@@ -113,47 +82,29 @@
     ],
     "radius": 70,
     "radiusY": 43,
-    "startDeg": 135,
-    "endDeg": 225,
+    "startDeg": 150,
+    "endDeg": 210,
     "rows": 14,
     "seatColour": "#d9b04c",
     "under": "solid",
     "concreteColour": "#d8d4ca",
-    "facetDeg": 10,
+    "facetDeg": 14,
     "backWall": 1.0
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    0,
-    -52,
-    0
-   ],
-   "params": {
-    "rect": [
-     112,
-     12
-    ],
-    "z0": 0,
-    "height": 5,
-    "colour": "#e8e6df",
-    "windows": "none"
    }
   },
   {
    "type": "surface",
    "at": [
     0,
-    -52,
+    -50,
     5
    ],
    "params": {
     "kind": "folded",
-    "width": 112,
-    "depth": 22,
-    "rise": 1.5,
-    "folds": 10,
+    "width": 125,
+    "depth": 18,
+    "rise": 0.8,
+    "folds": 4,
     "thickness": 0.4,
     "colour": "#eeeeea",
     "edgeColour": "#cfd3d6",
@@ -173,7 +124,7 @@
      8
     ],
     "z0": 0,
-    "height": 6,
+    "height": 3,
     "colour": "#ffffff",
     "windows": "none"
    }
@@ -229,14 +180,14 @@
   {
    "type": "prism",
    "at": [
-    -62,
+    -58,
     -52,
     0
    ],
    "params": {
     "rect": [
-     20,
-     14
+     14,
+     10
     ],
     "z0": 0,
     "height": 5,
@@ -247,36 +198,18 @@
   {
    "type": "prism",
    "at": [
-    88,
-    -10,
+    66,
+    -50,
     0
    ],
    "params": {
     "rect": [
-     14,
-     50
+     10,
+     16
     ],
     "z0": 0,
-    "height": 6,
+    "height": 7,
     "colour": "#eeeeea",
-    "windows": "none"
-   }
-  },
-  {
-   "type": "prism",
-   "at": [
-    102,
-    -10,
-    0
-   ],
-   "params": {
-    "rect": [
-     5,
-     90
-    ],
-    "z0": 0,
-    "height": 0.1,
-    "colour": "#55575a",
     "windows": "none"
    }
   }
@@ -288,33 +221,19 @@
    {
     "kind": "palm",
     "at": [
-     78,
-     -40
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
-     78,
-     -20
-    ]
-   },
-   {
-    "kind": "palm",
-    "at": [
      -78,
      52
     ]
    }
   ],
   "extent": [
-   160,
-   150
+   150,
+   140
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "scaled to the scene clamp; stands are straight/arc approximations not one continuous bowl; adjacent buildings and road simple blocks"
+  "gaps": "track still an oval, not the photo's rounded rectangle; far stand wall reads tall and the box roof is small; near canopy flat without skylights; adjacent buildings omitted except one blue block; scaled to scene clamp"
  }
 }

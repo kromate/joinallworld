@@ -40,12 +40,12 @@
    "footprint": {
     "rect": [
      112,
-     22
+     18
     ]
    },
    "at": [
     16,
-    0
+    4
    ],
    "rotDeg": 0,
    "z0": 0,
@@ -55,7 +55,7 @@
     "material": "glass-curtain",
     "colour": "#6f98b4",
     "windows": "curtain",
-    "windowRatio": 0.6,
+    "windowRatio": 0.75,
     "bay": 9,
     "faces": {
      "left": "plain",
@@ -80,14 +80,14 @@
     0
    ],
    "params": {
-    "n": 20,
-    "radius": 15,
-    "height": 21,
+    "n": 16,
+    "radius": 17,
+    "height": 14,
     "colour": "#f0efec",
     "windows": "ribbon",
-    "windowRatio": 0.6,
+    "windowRatio": 0.7,
     "glassColour": "#2f5f93",
-    "storeys": 5
+    "storeys": 3
    }
   },
   {
@@ -137,7 +137,11 @@
     ],
     "height": 0.08,
     "colour": "#8d7b6a"
-   }
+   },
+   "lod": [
+    0,
+    2
+   ]
   },
   {
    "type": "core/flag",
@@ -160,17 +164,17 @@
    "id": "roof-cantilever",
    "at": [
     16,
-    -10,
-    23.5
+    -16,
+    22.5
    ],
    "params": {
     "kind": "folded",
-    "width": 116,
-    "depth": 46,
+    "width": 118,
+    "depth": 54,
     "rise": 0,
     "folds": 1,
-    "slopeY": 0.15,
-    "thickness": 1.6,
+    "slopeY": 0.3,
+    "thickness": 2.4,
     "colour": "#f2f2ef",
     "underColour": "#7d5a3c",
     "edgeColour": "#fafafa",
@@ -182,30 +186,33 @@
    "id": "balc1",
    "at": [
     16,
-    -14,
-    5
+    -9,
+    4
    ],
    "params": {
     "rect": [
      112,
-     5
+     8
     ],
     "height": 1.2,
     "colour": "#f0efec"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "balc2",
    "at": [
     16,
-    -13.2,
-    10
+    -10.5,
+    9
    ],
    "params": {
     "rect": [
      112,
-     4
+     6
     ],
     "height": 1.2,
     "colour": "#f0efec"
@@ -219,13 +226,13 @@
    "id": "balc3",
    "at": [
     16,
-    -12.6,
-    15
+    -11.5,
+    14
    ],
    "params": {
     "rect": [
      112,
-     3.2
+     4.5
     ],
     "height": 1.2,
     "colour": "#f0efec"
@@ -239,7 +246,7 @@
    "id": "rail1",
    "at": [
     16,
-    -16.4,
+    -12.7,
     6.2
    ],
    "params": {
@@ -259,7 +266,7 @@
    "id": "rail2",
    "at": [
     16,
-    -15.1,
+    -13.7,
     11.2
    ],
    "params": {
@@ -279,7 +286,7 @@
    "id": "rail3",
    "at": [
     16,
-    -14.2,
+    -14.0,
     16.2
    ],
    "params": {
@@ -300,16 +307,16 @@
    "footprint": {
     "rect": [
      112,
-     10
+     16
     ]
    },
    "at": [
     16,
-    -20
+    -22
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 4.5,
+   "height": 3.5,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -327,14 +334,14 @@
    "at": [
     -30,
     -11.3,
-    8
+    6
    ],
    "params": {
     "rect": [
-     4.5,
+     8,
      0.4
     ],
-    "height": 4.5,
+    "height": 8,
     "colour": "#1f8a5c"
    },
    "lod": [
@@ -356,7 +363,7 @@
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 12,
+   "height": 13,
    "storeys": 1,
    "wall": {
     "material": "concrete",
@@ -367,12 +374,39 @@
     "form": "flat",
     "colour": "#f4f4f1"
    }
+  },
+  {
+   "type": "mass",
+   "id": "stand-steps2",
+   "footprint": {
+    "rect": [
+     112,
+     10
+    ]
+   },
+   "at": [
+    16,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0efec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f1"
+   }
   }
  ],
  "review": {
-  "rounds": 3,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "Roof is only slightly tilted and thin; it does not sweep out as a long brown-soffit cantilever. Stepped balconies are boxy, the glass front is not recessed, JRA disc is small, no light masts; only ~130 m of the stand is modelled."
+  "gaps": "Roof is thicker, deeper and lower at 22.5 m (round-1 values, restored after a round-2 raise/flip left it floating, so the final spec was not re-rendered); the cantilever still reads as a flat slab, not a sweeping brown-soffit overhang. Glass front only partly recessed behind stepped white balconies; rotunda reduced to 14 m with a larger JRA disc; no light masts; only ~130 m of the stand is modelled."
  },
  "site": {
   "ground": "grass",

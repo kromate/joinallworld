@@ -35,52 +35,334 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "veranda centred, hedge, stone rim, dormer, bounded site, denser palms; lagoon still two ovals not irregular, grey surround remains, no broadleaf undergrowth"
+  "gaps": "lagoon now one irregular rock-rimmed pond with dark water, green lawn, hedge, steeper hip roof, dormer, veranda; palms still low-poly, no banana/sea-grape undergrowth detail, site is a wide aerial composition vs ground-level photo"
  },
  "parts": [
   {
-   "type": "water-surface",
+   "type": "prism",
+   "id": "lagoon-rim",
    "at": [
     0,
-    12,
+    0,
     0
    ],
    "params": {
-    "width": 46,
-    "depth": 22,
-    "shape": "oval",
-    "colour": "#4a8f98",
-    "bank": true
+    "points": [
+     [
+      40.0,
+      10.0
+     ],
+     [
+      46.36,
+      18.01
+     ],
+     [
+      31.64,
+      22.61
+     ],
+     [
+      19.31,
+      25.88
+     ],
+     [
+      6.45,
+      27.37
+     ],
+     [
+      -6.45,
+      27.37
+     ],
+     [
+      -19.31,
+      25.88
+     ],
+     [
+      -31.64,
+      22.61
+     ],
+     [
+      -46.36,
+      18.01
+     ],
+     [
+      -40.0,
+      10.0
+     ],
+     [
+      -28.82,
+      5.02
+     ],
+     [
+      -29.64,
+      -1.82
+     ],
+     [
+      -20.69,
+      -7.02
+     ],
+     [
+      -7.44,
+      -10.06
+     ],
+     [
+      7.44,
+      -10.06
+     ],
+     [
+      20.69,
+      -7.02
+     ],
+     [
+      29.64,
+      -1.82
+     ],
+     [
+      28.82,
+      5.02
+     ]
+    ],
+    "height": 0.55,
+    "colour": "#8a8374"
    }
   },
   {
-   "type": "water-surface",
+   "type": "prism",
+   "id": "lagoon-water",
    "at": [
-    14,
-    8,
-    0
+    0,
+    0,
+    0.1
    ],
    "params": {
-    "width": 22,
-    "depth": 16,
-    "shape": "oval",
-    "colour": "#4a8f98",
-    "bank": true
+    "points": [
+     [
+      36.5,
+      10.0
+     ],
+     [
+      42.3,
+      16.75
+     ],
+     [
+      28.87,
+      20.62
+     ],
+     [
+      17.62,
+      23.38
+     ],
+     [
+      5.88,
+      24.63
+     ],
+     [
+      -5.88,
+      24.63
+     ],
+     [
+      -17.62,
+      23.38
+     ],
+     [
+      -28.87,
+      20.62
+     ],
+     [
+      -42.3,
+      16.75
+     ],
+     [
+      -36.5,
+      10.0
+     ],
+     [
+      -26.29,
+      5.8
+     ],
+     [
+      -27.05,
+      0.05
+     ],
+     [
+      -18.88,
+      -4.34
+     ],
+     [
+      -6.79,
+      -6.89
+     ],
+     [
+      6.79,
+      -6.89
+     ],
+     [
+      18.88,
+      -4.34
+     ],
+     [
+      27.05,
+      0.05
+     ],
+     [
+      26.29,
+      5.8
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#5f7f78"
    }
   },
   {
-   "type": "water-surface",
+   "type": "prism",
+   "id": "rock0",
    "at": [
-    -12,
-    16,
+    45.42,
+    16.39,
     0
    ],
+   "rotDeg": 0,
    "params": {
-    "width": 26,
-    "depth": 14,
-    "shape": "oval",
-    "colour": "#4a8f98",
-    "bank": true
+    "radius": 1.5,
+    "n": 5,
+    "height": 1.0,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock1",
+   "at": [
+    20.13,
+    24.19,
+    0
+   ],
+   "rotDeg": 37,
+   "params": {
+    "radius": 1.9,
+    "n": 5,
+    "height": 1.25,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock2",
+   "at": [
+    -4.43,
+    25.97,
+    0
+   ],
+   "rotDeg": 74,
+   "params": {
+    "radius": 2.3,
+    "n": 5,
+    "height": 1.5,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock3",
+   "at": [
+    -28.47,
+    21.99,
+    0
+   ],
+   "rotDeg": 111,
+   "params": {
+    "radius": 1.5,
+    "n": 5,
+    "height": 1.75,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock4",
+   "at": [
+    -40.67,
+    10.91,
+    0
+   ],
+   "rotDeg": 148,
+   "params": {
+    "radius": 1.9,
+    "n": 5,
+    "height": 1.0,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock5",
+   "at": [
+    -28.76,
+    0.08,
+    0
+   ],
+   "rotDeg": 185,
+   "params": {
+    "radius": 2.3,
+    "n": 5,
+    "height": 1.25,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock6",
+   "at": [
+    -9.07,
+    -8.13,
+    0
+   ],
+   "rotDeg": 222,
+   "params": {
+    "radius": 1.5,
+    "n": 5,
+    "height": 1.5,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock7",
+   "at": [
+    18.2,
+    -6.1,
+    0
+   ],
+   "rotDeg": 259,
+   "params": {
+    "radius": 1.9,
+    "n": 5,
+    "height": 1.75,
+    "colour": "#7b7566",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock8",
+   "at": [
+    27.67,
+    4.71,
+    0
+   ],
+   "rotDeg": 296,
+   "params": {
+    "radius": 2.3,
+    "n": 5,
+    "height": 1.0,
+    "colour": "#7b7566",
+    "topScale": 0.7
    }
   },
   {
@@ -88,15 +370,15 @@
    "id": "cottage-1",
    "footprint": {
     "rect": [
-     22,
-     9
+     28,
+     10
     ]
    },
    "at": [
     -4,
-    34
+    34.5
    ],
-   "height": 4.6,
+   "height": 4.8,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -110,7 +392,7 @@
     "form": "hip",
     "colour": "#7d8fa0",
     "material": "metal-sheet",
-    "pitch": 24,
+    "pitch": 32,
     "overhang": 1.0
    },
    "rotDeg": 0
@@ -142,7 +424,7 @@
     "form": "hip",
     "colour": "#7d8fa0",
     "material": "metal-sheet",
-    "pitch": 24,
+    "pitch": 30,
     "overhang": 1.0
    },
    "rotDeg": -8
@@ -174,7 +456,7 @@
     "form": "hip",
     "colour": "#7d8fa0",
     "material": "metal-sheet",
-    "pitch": 24,
+    "pitch": 30,
     "overhang": 1.0
    },
    "rotDeg": 6
@@ -183,16 +465,17 @@
    "type": "veranda",
    "at": [
     -4,
-    29.5,
+    29.4,
     0
    ],
    "params": {
-    "length": 22,
+    "length": 28,
     "depth": 2.4,
     "height": 2.8,
     "roof": "lean-to",
     "roof_colour": "#7d8fa0",
-    "wall_colour": "#2f6f50"
+    "wall_colour": "#1f5a3c",
+    "posts": true
    }
   },
   {
@@ -276,40 +559,28 @@
    ],
    "params": {
     "kind": "palm",
-    "height": 10,
-    "count": 18,
+    "height": 11,
+    "count": 14,
     "spread": 70
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "at": [
-    0,
-    26,
+   },
+   "lod": [
     0
-   ],
-   "params": {
-    "length": 46,
-    "height": 1.2,
-    "thickness": 1.4,
-    "kind": "wall",
-    "colour": "#3f7a3a"
-   }
+   ]
   },
   {
    "type": "mass",
    "id": "dormer",
    "footprint": {
     "rect": [
-     5,
-     2.4
+     6,
+     2.6
     ]
    },
    "at": [
     -4,
-    29.6
+    30.2
    ],
-   "height": 5.4,
+   "height": 5.6,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
@@ -319,24 +590,9 @@
    },
    "roof": {
     "form": "gable",
-    "colour": "#2f6f50",
-    "pitch": 35,
+    "colour": "#7d8fa0",
+    "pitch": 42,
     "overhang": 0.3
-   }
-  },
-  {
-   "type": "core/fence-wall",
-   "at": [
-    0,
-    23,
-    0
-   ],
-   "params": {
-    "length": 44,
-    "height": 0.9,
-    "thickness": 1.8,
-    "kind": "wall",
-    "colour": "#8f8a7a"
    }
   },
   {
@@ -351,7 +607,10 @@
     "height": 4,
     "count": 10,
     "spread": 14
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "core/tree",
@@ -365,11 +624,128 @@
     "height": 4,
     "count": 10,
     "spread": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    25.8,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.5,
+    "depth": 1.8,
+    "colour": "#3f7a3a"
    }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -38,
+    26.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.5,
+    "depth": 1.6,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 6,
+    "spread": 60
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 5,
+    "spread": 30
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5,
+    "count": 8,
+    "spread": 16
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5,
+    "count": 8,
+    "spread": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 60
+   },
+   "lod": [
+    1,
+    2
+   ]
   }
  ],
  "site": {
-  "ground": "sand",
+  "ground": "grass",
   "forecourt": "none",
   "extent": [
    90,

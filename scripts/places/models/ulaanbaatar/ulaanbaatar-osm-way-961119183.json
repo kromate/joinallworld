@@ -52,7 +52,7 @@
      -56,
      38
     ],
-    "rows": 10,
+    "rows": 7,
     "rise": 0.55,
     "run": 0.8,
     "firstHeight": 0.9,
@@ -76,97 +76,10 @@
    }
   },
   {
-   "type": "mass",
-   "id": "offices",
-   "footprint": {
-    "rect": [
-     22,
-     12
-    ]
-   },
-   "at": [
-    -34,
-    -48
-   ],
-   "z0": 0,
-   "height": 9,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e9e8e2",
-    "windows": "punched",
-    "plinth": 0.6,
-    "windowRatio": 0.3,
-    "bands": "#3c5f93"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8f8a80",
-    "parapet": 0.5
-   }
-  },
-  {
-   "type": "mass",
-   "id": "hall",
-   "footprint": {
-    "rect": [
-     40,
-     26
-    ]
-   },
-   "at": [
-    -62,
-    -30
-   ],
-   "z0": 0,
-   "height": 10,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#dfe3e6",
-    "windows": "none",
-    "plinth": 0,
-    "bands": "#2f5d8c"
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#8fc7de",
-    "material": "metal-sheet",
-    "overhang": 0.6
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -55,
-    -38,
-    0
-   ],
-   "params": {
-    "length": 110,
-    "height": 1.2,
-    "thickness": 0.2,
-    "kind": "fence",
-    "colour": "#3a6a9a"
-   }
-  },
-  {
    "type": "floodlight-mast",
    "at": [
     62,
     -40,
-    0
-   ],
-   "params": {
-    "height": 26,
-    "head_width": 4
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    -58,
-    45,
     0
    ],
    "params": {
@@ -184,7 +97,7 @@
    "params": {
     "width": 30,
     "depth": 10,
-    "count": 6,
+    "count": 3,
     "kind": "broadleaf",
     "min_height": 7,
     "max_height": 11
@@ -219,21 +132,6 @@
    }
   },
   {
-   "type": "football-pitch",
-   "at": [
-    40,
-    -62,
-    0.12
-   ],
-   "params": {
-    "length": 48,
-    "width": 30,
-    "stripes": 1,
-    "markings": true,
-    "goals": true
-   }
-  },
-  {
    "type": "fence-wall",
    "at": [
     -52,
@@ -246,7 +144,10 @@
     "thickness": 0.2,
     "kind": "wall",
     "colour": "#2f5fa8"
-   }
+   },
+   "lod": [
+    0
+   ]
   },
   {
    "type": "mass",
@@ -304,25 +205,151 @@
   },
   {
    "type": "mass",
+   "id": "offices",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -39,
+    -38
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8e2",
+    "windows": "punched",
+    "plinth": 0.6,
+    "windowRatio": 0.22,
+    "bands": "#3c5f93",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     42,
+     25
+    ]
+   },
+   "at": [
+    -71,
+    -36
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe3e6",
+    "windows": "none",
+    "bands": "#2f5d8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fd3e6",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    22,
+    -72,
+    0.12
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 64,
+    "width": 42,
+    "stripes": 1,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#d8dcdc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "benches",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       5
+      ],
+      "height": 0.7,
+      "colour": "#8a6a44"
+     }
+    },
+    "mode": "line",
+    "start": [
+     56,
+     -96
+    ],
+    "end": [
+     56,
+     -56
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "mass",
    "id": "apt-0",
    "footprint": {
     "rect": [
-     50,
+     38,
      16
     ]
    },
    "at": [
-    -40,
-    70
+    -69.0,
+    54
    ],
-   "height": 40,
-   "storeys": 8,
+   "height": 27.599999999999998,
+   "storeys": 6,
    "wall": {
     "material": "painted-render",
-    "colour": "#b5604a",
+    "colour": "#a85a45",
     "windows": "punched",
-    "windowRatio": 0.4,
-    "bay": 12,
+    "windowRatio": 0.3,
+    "bay": 24,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -331,8 +358,40 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#7a7a7a",
-    "material": "membrane"
+    "colour": "#7a7a7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-0-up",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    -69.0,
+    54
+   ],
+   "z0": 27.599999999999998,
+   "height": 18.400000000000002,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a"
    }
   },
   {
@@ -345,17 +404,17 @@
     ]
    },
    "at": [
-    10,
-    70
+    -32.0,
+    54
    ],
-   "height": 42,
-   "storeys": 8,
+   "height": 25.2,
+   "storeys": 6,
    "wall": {
     "material": "painted-render",
     "colour": "#e6dccb",
     "windows": "punched",
-    "windowRatio": 0.4,
-    "bay": 12,
+    "windowRatio": 0.3,
+    "bay": 24,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -364,8 +423,40 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#7a7a7a",
-    "material": "membrane"
+    "colour": "#7a7a7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-1-up",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    -32.0,
+    54
+   ],
+   "z0": 25.2,
+   "height": 16.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a"
    }
   },
   {
@@ -373,22 +464,22 @@
    "id": "apt-2",
    "footprint": {
     "rect": [
-     40,
+     38,
      16
     ]
    },
    "at": [
-    52,
-    70
+    5.0,
+    54
    ],
-   "height": 38,
-   "storeys": 8,
+   "height": 28.799999999999997,
+   "storeys": 6,
    "wall": {
     "material": "painted-render",
     "colour": "#b5604a",
     "windows": "punched",
-    "windowRatio": 0.4,
-    "bay": 12,
+    "windowRatio": 0.3,
+    "bay": 24,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -397,8 +488,105 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#7a7a7a",
-    "material": "membrane"
+    "colour": "#7a7a7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-2-up",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    5.0,
+    54
+   ],
+   "z0": 28.799999999999997,
+   "height": 19.200000000000003,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-3",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    42.0,
+    54
+   ],
+   "height": 26.4,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a85a45",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 24,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-3-up",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    42.0,
+    54
+   ],
+   "z0": 26.4,
+   "height": 17.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a"
    }
   }
  ],
@@ -417,6 +605,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "stand lacks curved ends, second pitch placed on wrong side of the hall, apartment blocks simplified to three slabs with front windows only, no hoarding detail"
+  "gaps": "stand lacks curved ends and hoarding detail; offices lack the roof terrace detail and entrance canopy; apartments are 5 simplified slabs with windows on the front only; second pitch sits slightly right of the photo and fence is low-detail"
  }
 }

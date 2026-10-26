@@ -12,7 +12,7 @@
    "author": "Tim Wang from Beijing, China",
    "view": "detail",
    "file": "/tmp/places-evidence/vientiane/air1.jpg",
-   "used": "arrivals entrance: steep gable with a timber lattice screen under white fascia boards, deep flat white canopy beam below, pale tile roof beside, low viewpoint"
+   "used": "arrivals entrance: shallow gable with a dark timber lattice screen under deep white fascia boards, glowing teal neon sign band, deep flat white canopy beam"
   },
   {
    "kind": "photo",
@@ -54,21 +54,17 @@
    "wall": {
     "material": "painted-render",
     "colour": "#e7e2d3",
-    "windows": "ribbon",
+    "windows": "none",
     "windowRatio": 0.3,
-    "faces": {
-     "left": "plain",
-     "right": "plain",
-     "back": "plain"
-    },
     "plinth": 0.4,
     "cornice": true,
-    "bands": "#f4f2ea"
+    "bands": "#f4f2ea",
+    "pattern": null
    },
    "roof": {
     "form": "hip",
     "colour": "#cfc8b8",
-    "material": "clay-tile",
+    "material": "metal-sheet",
     "pitch": 10,
     "overhang": 2.0
    }
@@ -90,9 +86,9 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2ddcc",
+    "colour": "#e7e2d3",
     "windows": "ribbon",
-    "windowRatio": 0.28,
+    "windowRatio": 0.12,
     "faces": {
      "left": "plain",
      "back": "plain"
@@ -102,7 +98,7 @@
    "roof": {
     "form": "hip",
     "colour": "#cfc8b8",
-    "material": "clay-tile",
+    "material": "metal-sheet",
     "pitch": 10,
     "overhang": 1.6
    }
@@ -124,9 +120,9 @@
    "storeys": 2,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2ddcc",
+    "colour": "#e7e2d3",
     "windows": "ribbon",
-    "windowRatio": 0.28,
+    "windowRatio": 0.12,
     "faces": {
      "right": "plain",
      "back": "plain"
@@ -136,7 +132,7 @@
    "roof": {
     "form": "hip",
     "colour": "#cfc8b8",
-    "material": "clay-tile",
+    "material": "metal-sheet",
     "pitch": 10,
     "overhang": 1.6
    }
@@ -158,7 +154,7 @@
    "storeys": 1,
    "wall": {
     "material": "timber",
-    "colour": "#7a5a3f",
+    "colour": "#4a3426",
     "windows": "none",
     "windowRatio": 0.4,
     "faces": {
@@ -167,20 +163,25 @@
     },
     "pattern": [
      {
-      "type": "fins",
+      "type": "panels",
       "faces": [
        "front"
-      ]
+      ],
+      "colours": [
+       "#3e2c20",
+       "#5a4230"
+      ],
+      "slits": 0.4
      }
     ]
    },
    "roof": {
     "form": "gable",
     "axis": "y",
-    "colour": "#d8d3c4",
-    "material": "clay-tile",
-    "pitch": 30,
-    "overhang": 1.4
+    "colour": "#f2f0ea",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 2.2
    }
   },
   {
@@ -193,10 +194,10 @@
    "params": {
     "form": "flat",
     "width": 48,
-    "depth": 10,
+    "depth": 11,
     "height": 4.6,
-    "thickness": 1.6,
-    "columns": 6,
+    "thickness": 2.2,
+    "columns": 4,
     "colour": "#f4f2ea",
     "edgeColour": "#f4f2ea"
    }
@@ -272,6 +273,19 @@
    "lod": [
     0
    ]
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    0,
+    -24.4,
+    6.5
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.2,
+    "colour": "#2fd6d0"
+   }
   }
  ],
  "site": {
@@ -314,8 +328,8 @@
   ]
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "only the arrivals gable is photographed; wings and overall massing from OSM size and brief; zig-zag outline straightened; neon sign omitted; tower removed (not in evidence)"
+  "gaps": "only the arrivals gable is photographed; wings and overall massing from OSM size and brief; zig-zag outline straightened; neon is a plain emissive band; no tower"
  }
 }

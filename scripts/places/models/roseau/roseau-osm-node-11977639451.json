@@ -51,112 +51,56 @@
       0.0
      ],
      [
-      42.9,
-      8.9
-     ],
-     [
       39.64,
       17.36
-     ],
-     [
-      34.4,
-      24.94
      ],
      [
       27.43,
       31.27
      ],
      [
-      19.09,
-      36.04
-     ],
-     [
       9.79,
       39.0
-     ],
-     [
-      0.0,
-      40.0
      ],
      [
       -9.79,
       39.0
      ],
      [
-      -19.09,
-      36.04
-     ],
-     [
       -27.43,
       31.27
      ],
      [
-      -34.4,
-      24.94
-     ],
-     [
       -39.64,
       17.36
-     ],
-     [
-      -42.9,
-      8.9
      ],
      [
       -44.0,
       0.0
      ],
      [
-      -42.9,
-      -8.9
-     ],
-     [
       -39.64,
       -17.36
-     ],
-     [
-      -34.4,
-      -24.94
      ],
      [
       -27.43,
       -31.27
      ],
      [
-      -19.09,
-      -36.04
-     ],
-     [
       -9.79,
       -39.0
-     ],
-     [
-      -0.0,
-      -40.0
      ],
      [
       9.79,
       -39.0
      ],
      [
-      19.09,
-      -36.04
-     ],
-     [
       27.43,
       -31.27
      ],
      [
-      34.4,
-      -24.94
-     ],
-     [
       39.64,
       -17.36
-     ],
-     [
-      42.9,
-      -8.9
      ]
     ],
     "z0": 0,
@@ -198,26 +142,27 @@
     "startDeg": 35,
     "endDeg": 135,
     "rows": 12,
-    "rise": 0.8,
+    "rise": 0.75,
     "run": 0.8,
-    "firstHeight": 2.5,
-    "facetDeg": 22,
+    "firstHeight": 4,
+    "facetDeg": 36,
     "under": "open",
     "stepped": true,
     "slab": 0.7,
     "bay": 6,
     "seatColours": [
      "#c23a3a",
-     "#e8a02d"
+     "#e8802d",
+     "#f0c93a"
     ],
-    "blocks": 2,
+    "blocks": 4,
     "concreteColour": "#cfcdc6",
     "underColour": "#a9a79f",
     "canopy": {
-     "height": 3.2,
-     "depth": 13,
-     "thickness": 0.8,
-     "slopeDeg": 3,
+     "height": 4.2,
+     "depth": 14,
+     "thickness": 0.7,
+     "slopeDeg": 0,
      "colour": "#2f6fc4",
      "edgeColour": "#2f6fc4"
     }
@@ -238,12 +183,12 @@
     "radius": 50,
     "radiusY": 46,
     "startDeg": 135,
-    "endDeg": 215,
+    "endDeg": 235,
     "rows": 5,
     "rise": 0.7,
     "run": 0.8,
-    "firstHeight": 1.6,
-    "facetDeg": 22,
+    "firstHeight": 2.2,
+    "facetDeg": 32,
     "under": "open",
     "stepped": true,
     "slab": 0.7,
@@ -256,10 +201,10 @@
     "concreteColour": "#cfcdc6",
     "underColour": "#a9a79f",
     "canopy": {
-     "height": 2.5,
+     "height": 3.2,
      "depth": 9,
-     "thickness": 0.8,
-     "slopeDeg": 3,
+     "thickness": 0.7,
+     "slopeDeg": 0,
      "colour": "#2f6fc4",
      "edgeColour": "#2f6fc4"
     }
@@ -283,13 +228,13 @@
     ],
     "radius": 50,
     "radiusY": 46,
-    "startDeg": 215,
-    "endDeg": 245,
+    "startDeg": 235,
+    "endDeg": 255,
     "rows": 3,
     "rise": 0.5,
     "run": 0.8,
     "firstHeight": 1.2,
-    "facetDeg": 22,
+    "facetDeg": 32,
     "under": "open",
     "slab": 0.6,
     "bay": 6,
@@ -329,11 +274,11 @@
     "radiusY": 46,
     "startDeg": -30,
     "endDeg": 10,
-    "rows": 4,
+    "rows": 3,
     "rise": 0.55,
     "run": 0.8,
     "firstHeight": 1.5,
-    "facetDeg": 22,
+    "facetDeg": 32,
     "under": "open",
     "slab": 0.6,
     "bay": 6,
@@ -359,22 +304,22 @@
    "id": "pavilion",
    "footprint": {
     "rect": [
-     22,
-     9
+     20,
+     8
     ]
    },
    "at": [
-    50,
-    24
+    58,
+    22
    ],
-   "rotDeg": -60,
-   "height": 13,
-   "storeys": 3,
+   "rotDeg": -65,
+   "height": 9.5,
+   "storeys": 2,
    "wall": {
     "material": "painted-render",
     "colour": "#f2f0ea",
-    "windows": "punched",
-    "windowRatio": 0.22,
+    "windows": "none",
+    "windowRatio": 0.1,
     "plinth": 0.3,
     "bands": "#c9c6bd"
    },
@@ -391,60 +336,30 @@
    "id": "long-block",
    "footprint": {
     "rect": [
-     34,
+     58,
      9
     ]
    },
    "at": [
-    34,
-    -42
+    0,
+    -52
    ],
-   "rotDeg": -12,
+   "rotDeg": 0,
    "height": 7.5,
    "storeys": 2,
    "wall": {
     "material": "concrete",
-    "colour": "#d9c9a4",
+    "colour": "#e6dcc2",
     "windows": "punched",
-    "windowRatio": 0.35,
-    "bands": "#7a5638",
+    "windowRatio": 0.25,
     "plinth": 0.3
    },
    "roof": {
-    "form": "gable",
-    "colour": "#7d7f84",
+    "form": "flat",
+    "colour": "#8a8d92",
     "material": "corrugated",
-    "pitch": 14,
-    "overhang": 0.8
-   }
-  },
-  {
-   "type": "mass",
-   "id": "shed",
-   "footprint": {
-    "rect": [
-     16,
-     6
-    ]
-   },
-   "at": [
-    -12,
-    -50
-   ],
-   "height": 3.8,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#e6ddc0",
-    "windows": "punched",
-    "windowRatio": 0.15
-   },
-   "roof": {
-    "form": "gable",
-    "colour": "#7d868d",
-    "material": "corrugated",
-    "pitch": 14,
-    "overhang": 0.8
+    "overhang": 0.5,
+    "parapet": 0.3
    }
   },
   {
@@ -472,7 +387,8 @@
       "head_width": 5
      }
     }
-   }
+   },
+   "lod": null
   },
   {
    "type": "floodlight-mast",
@@ -484,7 +400,8 @@
    "params": {
     "height": 30,
     "head_width": 5
-   }
+   },
+   "lod": null
   },
   {
    "type": "floodlight-mast",
@@ -496,7 +413,8 @@
    "params": {
     "height": 30,
     "head_width": 5
-   }
+   },
+   "lod": null
   },
   {
    "type": "core/tree",
@@ -514,53 +432,6 @@
    "lod": [
     0
    ]
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    50,
-    -10,
-    0
-   ],
-   "params": {
-    "kind": "palm",
-    "height": 9,
-    "count": 2,
-    "spread": 10
-   },
-   "lod": [
-    0
-   ]
-  },
-  {
-   "type": "mass",
-   "id": "low-roof",
-   "footprint": {
-    "rect": [
-     20,
-     6
-    ]
-   },
-   "at": [
-    8,
-    -48
-   ],
-   "rotDeg": -12,
-   "height": 3.6,
-   "storeys": 1,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#d9c9a4",
-    "windows": "punched",
-    "windowRatio": 0.15
-   },
-   "roof": {
-    "form": "shed",
-    "colour": "#7d7f84",
-    "material": "corrugated",
-    "pitch": 12,
-    "overhang": 0.6
-   }
   },
   {
    "type": "mass",
@@ -652,6 +523,6 @@
  "review": {
   "rounds": 3,
   "match": "fair",
-  "gaps": "Far stand now tallest with red/orange tiers, west/east stands lowered, white 3-storey pavilion and tower bases added, timber-fronted block with low shed roof; real ring is more open, and the scoreboard tower, hillside town and far-stand roof sweep are simplified"
+  "gaps": "Far stand now 12 rows with three banded seat colours under flat blue roof, white two-storey pavilion outside the east end, west stand lengthened, single two-storey near block; scoreboard tower, hillside town and open ring still simplified"
  }
 }

@@ -22,7 +22,7 @@
  ],
  "camera": {
   "yawDeg": 0,
-  "pitchDeg": 4,
+  "pitchDeg": 2,
   "fovDeg": 45,
   "aspect": 1.9
  },
@@ -31,45 +31,51 @@
    "type": "mass",
    "id": "mall",
    "footprint": {
-    "osm": true,
-    "simplify": 6
+    "rect": [
+     118,
+     16
+    ]
    },
    "height": 14,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#c9cccb",
+    "colour": "#d3d6d6",
     "windows": "none",
-    "bands": "#b4b8b8",
+    "bands": "#bfc3c4",
     "plinth": 0.4
    },
    "roof": {
     "form": "flat",
     "colour": "#9a9a94",
     "parapet": 0.6
-   }
+   },
+   "at": [
+    0,
+    0
+   ]
   },
   {
    "type": "mass",
    "id": "glass-band",
    "footprint": {
     "rect": [
-     16,
+     14,
      3
     ]
    },
    "at": [
-    -2,
-    -16
+    -12,
+    -9.5
    ],
-   "height": 10,
+   "height": 11,
    "z0": 2,
    "storeys": 2,
    "wall": {
     "material": "glass-curtain",
-    "colour": "#4f86a8",
+    "colour": "#8fb4c8",
     "windows": "curtain",
-    "windowRatio": 0.8
+    "windowRatio": 0.85
    },
    "roof": {
     "form": "flat",
@@ -81,33 +87,33 @@
    "id": "banner-board",
    "footprint": {
     "rect": [
-     34,
+     30,
      0.6
     ]
    },
    "at": [
-    14,
-    -17
+    16,
+    -8.4
    ],
    "height": 8,
    "z0": 5,
    "storeys": 1,
    "wall": {
-    "material": "glass-curtain",
-    "colour": "#6fa0d8",
+    "material": "painted-render",
+    "colour": "#e6e8e8",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6fa0d8"
+    "colour": "#e6e8e8"
    }
   },
   {
    "type": "loft",
    "id": "prow",
    "at": [
-    -10,
-    -14,
+    -12,
+    -8,
     14
    ],
    "params": {
@@ -118,7 +124,7 @@
        12,
        6
       ],
-      "colour": "#2c3a45"
+      "colour": "#6f98b0"
      },
      {
       "z": 4,
@@ -126,105 +132,162 @@
        10,
        5
       ],
-      "cx": -1,
-      "colour": "#31465a"
+      "cx": -1.5,
+      "colour": "#7fa6bc"
      },
      {
       "z": 8,
       "rect": [
-       6,
-       3
+       7,
+       3.5
       ],
-      "cx": -3,
-      "colour": "#2c3a45"
+      "cx": -4,
+      "colour": "#6f98b0"
      },
      {
       "z": 11,
       "rect": [
        1.5,
-       1
+       1.2
       ],
-      "cx": -5,
-      "colour": "#232d35"
+      "cx": -7,
+      "colour": "#4a6a7c"
      }
     ],
-    "colour": "#2c3a45",
+    "colour": "#6f98b0",
     "curve": true
    }
   },
   {
-   "type": "prism",
+   "type": "loft",
    "id": "glass-tower",
    "at": [
-    44,
-    26,
+    38,
+    5,
     0
    ],
    "params": {
-    "rect": [
-     22,
-     14
-    ],
-    "height": 34,
-    "topScale": [
-     0.85,
-     0.85
-    ],
-    "colour": "#2c4a4c",
-    "topColour": "#1f3236",
-    "windows": "curtain",
-    "windowRatio": 0.6,
-    "glassColour": "#2f5a5c",
-    "pattern": [
+    "sections": [
      {
-      "type": "fins",
-      "faces": [
-       "front"
+      "z": 0,
+      "rect": [
+       10,
+       8
       ],
-      "width": 0.5,
-      "depth": 0.8,
-      "spacing": 2.2,
-      "colour": "#8a8a4a",
-      "margin": 0.3
+      "colour": "#38464a"
+     },
+     {
+      "z": 32,
+      "rect": [
+       10,
+       8
+      ],
+      "colour": "#3c5058"
+     },
+     {
+      "z": 37,
+      "rect": [
+       8,
+       7
+      ],
+      "colour": "#34464c"
+     },
+     {
+      "z": 40,
+      "rect": [
+       5.5,
+       5
+      ],
+      "colour": "#2c3a3e"
      }
-    ]
+    ],
+    "colour": "#3c5058",
+    "capTop": true
    }
   },
   {
-   "type": "prism",
-   "id": "tower-cap",
-   "at": [
-    44,
-    26,
-    34
-   ],
-   "params": {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
     "rect": [
-     19,
-     12
-    ],
-    "height": 3,
-    "topScale": [
-     0.7,
-     0.7
-    ],
-    "colour": "#1c2a2d",
-    "topColour": "#1c2a2d"
+     118,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9090",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f827f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slope",
+   "footprint": {
+    "rect": [
+     118,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4d7a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6e30"
    }
   },
   {
    "type": "core/tree",
    "at": [
     0,
-    -26
+    -16
    ],
    "params": {
     "kind": "palm",
-    "height": 12,
-    "count": 16,
+    "height": 10,
+    "count": 30,
+    "line": 112,
+    "spread": 1
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 22,
     "line": 110,
-    "spread": 2
-   }
+    "spread": 1
+   },
+   "lod": [
+    0
+   ]
   }
  ],
  "site": {
@@ -239,6 +302,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "Mall wall is the faceted OSM outline not a straight long panel wall; tower fins and chamfered top simplified; prow is a single swept loft; foreground is a palm row only, no retaining wall or hillside planting."
+  "gaps": "Straight pale mall slab with prow, slim tower and palm row over a retaining wall now read right; billboard strip is plain white (no print), tower lacks glass banding and chamfer detail, palms are lower and fewer than the dense photo planting."
  }
 }

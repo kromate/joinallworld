@@ -1,8 +1,8 @@
 {
  "review": {
   "rounds": 2,
-  "match": "rough",
-  "gaps": "portal small and camera framing too wide; stripes are overlapping bands not the photo's diagonal slabs; bamboo simple; no name text"
+  "match": "fair",
+  "gaps": "portal granite piers/lintel are plain blocks without texture or name board detail; trees are low-poly lollipops not slender young trees; bamboo is a thin stem row; stripes cover only the plaza core; camera still wide of the photo's low viewpoint"
  },
  "verified": "photo",
  "evidence": [
@@ -22,9 +22,9 @@
   }
  ],
  "camera": {
-  "yawDeg": -25,
-  "pitchDeg": 8,
-  "fovDeg": 40,
+  "yawDeg": -20,
+  "pitchDeg": 5,
+  "fovDeg": 34,
   "aspect": 1.333
  },
  "parts": [
@@ -33,383 +33,600 @@
    "id": "park",
    "footprint": {
     "osm": true,
-    "simplify": 1.0
+    "simplify": 1.0,
+    "scale": 0.4
    },
    "height": 0.5,
    "storeys": 1,
    "wall": {
     "material": "render",
-    "colour": "#b9b6ae",
+    "colour": "#c9c4b8",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#c7c3b8"
-   }
-  },
-  {
-   "type": "lamp",
-   "at": [
-    20,
-    -9,
-    0.5
-   ],
-   "params": {
-    "height": 4.5
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -3,
-    -9
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 8,
-    "spread": 5.6
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    10,
-    -2
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 8,
-    "spread": 5.6
-   }
-  },
-  {
-   "type": "core/tree",
-   "at": [
-    -18,
-    16
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 8,
-    "spread": 5.6
+    "colour": "#c9c4b8"
    }
   },
   {
    "type": "prism",
    "id": "stripe0",
    "at": [
-    -18.2,
-    -28
+    -3.39,
+    -27.2
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     5.6000000000000005,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#d9d0bf",
-    "topColour": "#d9d0bf"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe1",
    "at": [
-    -13.299999999999999,
-    -28
+    -2.87,
+    -24.25
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     7.2,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#7d8084",
-    "topColour": "#7d8084"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe2",
    "at": [
-    -8.399999999999999,
-    -28
+    -2.34,
+    -21.29
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     8.8,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#cfc6b4",
-    "topColour": "#cfc6b4"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe3",
    "at": [
-    -3.5,
-    -28
+    -1.82,
+    -18.34
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     5.6000000000000005,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#8a8d90",
-    "topColour": "#8a8d90"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe4",
    "at": [
-    1.4,
-    -28
+    -1.3,
+    -15.39
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     7.2,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#e0d8c6",
-    "topColour": "#e0d8c6"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe5",
    "at": [
-    6.3,
-    -28
+    -0.78,
+    -12.43
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     8.8,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#7d8084",
-    "topColour": "#7d8084"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe6",
    "at": [
-    11.2,
-    -28
+    -0.26,
+    -9.48
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     5.6000000000000005,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#d9d0bf",
-    "topColour": "#d9d0bf"
-   }
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
   },
   {
    "type": "prism",
    "id": "stripe7",
    "at": [
-    16.099999999999998,
-    -28
+    0.26,
+    -6.52
    ],
-   "rotDeg": 35,
    "params": {
     "rect": [
-     7.2,
-     40
+     1.5,
+     50
     ],
     "z0": 0.5,
     "height": 0.1,
-    "colour": "#8a8d90",
-    "topColour": "#8a8d90"
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe8",
+   "at": [
+    0.78,
+    -3.57
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe9",
+   "at": [
+    1.3,
+    -0.61
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe10",
+   "at": [
+    1.82,
+    2.34
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe11",
+   "at": [
+    2.34,
+    5.29
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe12",
+   "at": [
+    2.87,
+    8.25
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe13",
+   "at": [
+    3.39,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#6f7276",
+    "topColour": "#6f7276",
+    "windows": "none"
+   },
+   "rotDeg": 80,
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    9.8,
+    -8
+   ],
+   "params": {
+    "rect": [
+     2,
+     2.4
+    ],
+    "z0": 0.5,
+    "height": 5,
+    "colour": "#a4a7a4",
+    "topColour": "#a4a7a4",
+    "windows": "none"
    }
   },
   {
    "type": "prism",
-   "id": "pillar-l",
+   "id": "pier-r",
    "at": [
-    6,
-    -32
+    16.2,
+    -8
    ],
    "params": {
     "rect": [
-     1.8,
-     2.2
+     2,
+     2.4
     ],
     "z0": 0.5,
-    "height": 4.5,
-    "colour": "#8f9490",
-    "topColour": "#8f9490"
-   }
-  },
-  {
-   "type": "prism",
-   "id": "pillar-r",
-   "at": [
-    12,
-    -32
-   ],
-   "params": {
-    "rect": [
-     1.8,
-     2.2
-    ],
-    "z0": 0.5,
-    "height": 4.5,
-    "colour": "#8f9490",
-    "topColour": "#8f9490"
+    "height": 5,
+    "colour": "#a4a7a4",
+    "topColour": "#a4a7a4",
+    "windows": "none"
    }
   },
   {
    "type": "prism",
    "id": "lintel",
    "at": [
-    9,
-    -32
+    13,
+    -8
    ],
    "params": {
     "rect": [
-     7.4,
-     2.2
+     8.6,
+     2.4
     ],
-    "z0": 4.2,
+    "z0": 5.5,
     "height": 1.4,
-    "colour": "#a2a6a2",
-    "topColour": "#a2a6a2"
-   }
+    "colour": "#9a9d9a",
+    "topColour": "#9a9d9a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
    "id": "board",
    "at": [
-    9,
-    -33.2
+    13,
+    -9.3
    ],
    "params": {
     "rect": [
-     5,
+     6,
      0.2
     ],
-    "z0": 4.5,
-    "height": 0.8,
+    "z0": 5.7,
+    "height": 0.9,
     "colour": "#c9cbc6",
-    "topColour": "#c9cbc6"
-   }
+    "topColour": "#c9cbc6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing",
+   "at": [
+    5,
+    -7
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.4
+    ],
+    "z0": 0.5,
+    "height": 1.4,
+    "colour": "#8e918e",
+    "topColour": "#8e918e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "prism",
    "id": "planter",
    "at": [
-    -22,
-    -24
+    -15,
+    -2
    ],
-   "rotDeg": 0,
    "params": {
     "rect": [
-     18,
-     1.6
+     22,
+     1.2
     ],
     "z0": 0.5,
     "height": 1.0,
-    "colour": "#4a4e54",
-    "topColour": "#4a4e54"
-   }
+    "colour": "#3e4248",
+    "topColour": "#3e4248",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
    "id": "bollards",
    "params": {
     "mode": "line",
-    "count": 6,
+    "count": 7,
     "start": [
-     -16,
-     -40
+     -18,
+     -16
     ],
     "end": [
-     16,
-     -36
+     24,
+     -12
     ],
     "of": {
      "type": "prism",
      "params": {
       "rect": [
-       0.35,
-       0.35
+       0.3,
+       0.3
       ],
       "height": 1.0,
-      "colour": "#2e3034"
+      "z0": 0.5,
+      "colour": "#2a2c30",
+      "windows": "none"
      }
     }
-   }
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "array",
    "id": "bamboo",
    "params": {
     "mode": "grid",
-    "cols": 9,
-    "rows": 4,
-    "dx": 1.0,
-    "dy": 1.0,
+    "cols": 10,
+    "rows": 6,
+    "dx": 0.7,
+    "dy": 0.7,
     "of": {
      "type": "prism",
      "params": {
-      "radius": 0.12,
-      "n": 6,
+      "radius": 0.09,
+      "n": 5,
       "z0": 0.5,
-      "height": 5,
+      "height": 7,
       "colour": "#5f8a3e"
      }
     }
    },
    "at": [
-    -30,
-    -22,
+    -24,
+    2,
     0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    18,
+    -5,
+    0.5
+   ],
+   "params": {
+    "height": 4.5
+   },
+   "lod": [
+    0,
+    1
    ]
   },
   {
    "type": "prism",
    "id": "housing",
    "at": [
-    0,
-    30
+    -5,
+    26
    ],
    "params": {
     "rect": [
-     50,
-     9
+     34,
+     6
     ],
     "z0": 0,
-    "height": 30,
-    "colour": "#c8cbcf",
-    "topColour": "#c8cbcf",
-    "windows": "ribbon",
-    "windowRatio": 0.35,
-    "storeys": 12,
-    "glassColour": "#7f94a4"
+    "height": 20,
+    "colour": "#b4bcc2",
+    "topColour": "#b4bcc2",
+    "windows": "none"
    },
    "lod": [
     0,
@@ -421,8 +638,8 @@
   "ground": "paving",
   "forecourt": "none",
   "extent": [
-   140,
-   120
+   60,
+   50
   ]
  },
  "schema": "allworld-place-model",

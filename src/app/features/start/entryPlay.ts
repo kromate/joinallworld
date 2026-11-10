@@ -1,16 +1,17 @@
 // "Play now" on the entry page: the same one-tap guest start the creator sends (CreatorApp.vue playNow), with the character the device
 // already holds (a random look and a suggested name, made once and kept). Nothing here decides anything the server does: it keeps
 // the tapped Play on the device until the server has answered, reports the funnel, and sends 'jaw:quick-start' for App.vue.
+// The card is NOT closed here: it stays up saying "Starting…" until the life exists (the app closes it then, or reopens it with what
+// went wrong). Closing it at the tap left a bare screen for two round trips, on the step where half the taps were lost.
 import { keepPlay, play } from '../../../quick-start/entry.ts'
 import { isDefaultName } from '../../../game/cities/registry.ts'
-import type { Shell } from '../../state/shell.ts'
 import { cr } from './creatorState.ts'
 import { planPlay } from './quickStartModel.ts'
 import { currentDraft, draft as quickDraftRef, qs } from './quickStartState.ts'
 import { joinTarget, keepDraft, pendingRef, presetLook, track } from './startBoundary.ts'
 import { fallbackPreset } from './quickStartModel.ts'
 
-export interface EntryPlayDeps { shell: Pick<Shell, 'close'>; viewName: string }
+export interface EntryPlayDeps { viewName: string }
 
 /** Is an invite or share link waiting for this Play? */
 export const invitedNow = (): boolean => Boolean(joinTarget() || pendingRef())
@@ -37,7 +38,6 @@ export function playFromEntry(deps: EntryPlayDeps, city: string | null = null): 
   play.sending = true
   play.settling = false
   cr.city = city
-  deps.shell.close()
   window.dispatchEvent(new CustomEvent('jaw:quick-start', { detail: { name: plan.name, look: plan.look, ...(city ? { city } : {}) } }))
   return true
 }

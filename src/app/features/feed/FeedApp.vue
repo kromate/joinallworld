@@ -35,7 +35,8 @@ const playApp = isPlayApp()
 const api = feedApi((path, options) => game.fetchJson(path, options))
 type Tab = FeedTab | 'inbox'
 const asked = props.params?.tab === 'near' || props.params?.tab === 'friends' || props.params?.tab === 'city' || props.params?.tab === 'world' || props.params?.tab === 'inbox' ? props.params.tab : null
-// Near you is the default for someone with a location badge (the owner's decision); Friends otherwise. Decided once the profile is in.
+// Near you is the default for someone with a location badge (the owner's decision); Friends otherwise, and World when Friends opens
+// empty (a newcomer has no friends yet: an empty feed is the wrong first screen). Decided once the profile and the first list are in.
 const tab = ref<Tab>(asked ?? 'friends')
 const me = ref<FeedMe | null>(null)
 const posts = ref<PostView[]>([]), news = ref<NewsLine[]>([]), next = ref<string | null>(null), sponsored = ref<ListingView[]>([]), near = ref<NearLine | null>(null)
@@ -64,7 +65,7 @@ async function load(more = false): Promise<void> {
 }
 async function loadSuggestions(): Promise<void> { const r = await api.suggestions(); if (r.ok) suggestions.value = r.people.slice(0, 8) }
 onMounted(() => {
-  if (asked) { void loadMe(); void load() } else void loadMe().then(() => { if (me.value?.profile.located) tab.value = 'near'; else void load() })
+  if (asked) { void loadMe(); void load() } else void loadMe().then(() => { if (me.value?.profile.located) tab.value = 'near'; else void load().then(() => { if (tab.value === 'friends' && !posts.value.length && !failed.value) tab.value = 'world' }) })
   void loadPlaces()
   if (props.params?.post) void openPost(props.params.post)
 })

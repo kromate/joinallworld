@@ -69,7 +69,13 @@ function armPaths(): void { if (!isHome) void import('../paths/arrive.ts').then(
 function play(city: string | null = null, withAddress = true): void {
   if (sending.value) return
   if (withAddress) armPaths(); else if (!isHome) cleanAddress()
-  sending.value = playFromEntry({ shell, viewName: view.value.name }, city)
+  sending.value = playFromEntry({ viewName: view.value.name }, city)
+}
+/** The start that Play asked for has ended: with a life the card goes (a backstop: the app closes it too); without one Play can be pressed again. */
+function onStarted(event: Event): void {
+  if (!sending.value) return
+  sending.value = false
+  if ((event as CustomEvent<{ ok?: boolean }>).detail?.ok) shell.close()
 }
 /** Play on a street: the city's content (asked for when the card learnt the street) first, then the life starts there; never the dive. */
 async function playStreet(target: StreetTarget, found: boolean): Promise<void> {
@@ -171,13 +177,14 @@ onMounted(() => {
   if (!qs.landed) { qs.landed = true; if (!(view.value.onboarding?.required && view.value.connected) && firstLanding()) track('landed', { join: invited }) }
   const code = pendingRef()
   if (code) void inviterName(game.fetchJson, code).then((name) => { inviter.value = name })
+  window.addEventListener('jaw:quick-start-done', onStarted)
   void loadOnline()
   poll = setInterval(() => { void loadOnline() }, 30000)
   requestAnimationFrame(() => { setTimeout(loadArt, 0); if (variant.place) setTimeout(() => { void readStreet() }, 0) })
   if (variant.id === 'agents') agentOpen.value = true
   root.value?.querySelector<HTMLElement>('[data-entry-title]')?.focus({ preventScroll: true })
 })
-onBeforeUnmount(() => { if (poll !== null) clearInterval(poll); left = true; backdrop?.destroy(); backdrop = null })
+onBeforeUnmount(() => { window.removeEventListener('jaw:quick-start-done', onStarted); if (poll !== null) clearInterval(poll); left = true; backdrop?.destroy(); backdrop = null })
 </script>
 
 <template>

@@ -29,11 +29,14 @@ export function worldFigures(catalogue: readonly Pick<CityCatalogueEntry, 'open'
 const whole = (value: number | null | undefined): number => (typeof value === 'number' && Number.isFinite(value) && value > 0 ? Math.floor(value) : 0)
 const plural = (n: number, one: string, many: string): string => (n === 1 ? one : many)
 
-/** The line in the pill: "128 in Allworld now · 60 cities, 21 countries and territories". No count until the page has one; it is never 0. */
+/** Below this many online the pill names only the places: "1 in Allworld now" tells a first-time visitor the world is empty. */
+export const LIVE_FLOOR = 5
+
+/** The line in the pill: "128 in Allworld now · 60 cities, 21 countries and territories". No count until the page has one of at least LIVE_FLOOR. */
 export function liveLine(online: number | null, figures: { cities: number; countries: number }): string {
   const world = `${figures.cities} ${plural(figures.cities, 'city', 'cities')}, ${figures.countries} ${plural(figures.countries, 'country or territory', 'countries and territories')}`
   const here = whole(online)
-  return here > 0 ? `${here.toLocaleString('en-US')} in Allworld now · ${world}` : world
+  return here >= LIVE_FLOOR ? `${here.toLocaleString('en-US')} in Allworld now · ${world}` : world
 }
 
 /** What a seller does, in order: the line shown up front on /shops and /services. */

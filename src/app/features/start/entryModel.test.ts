@@ -27,7 +27,9 @@ test('the live line never says 0, and drops the count until there is one', () =>
   assert.equal(liveLine(1234, f), '1,234 in Allworld now · 60 cities, 21 countries and territories')
   assert.equal(liveLine(0, f), '60 cities, 21 countries and territories')
   assert.equal(liveLine(null, f), '60 cities, 21 countries and territories')
-  assert.equal(liveLine(1, { cities: 1, countries: 1 }), '1 in Allworld now · 1 city, 1 country or territory')
+  assert.equal(liveLine(1, { cities: 1, countries: 1 }), '1 city, 1 country or territory')
+  assert.equal(liveLine(4, f), '60 cities, 21 countries and territories')
+  assert.equal(liveLine(5, { cities: 1, countries: 1 }), '5 in Allworld now · 1 city, 1 country or territory')
 })
 
 test('the agent choices and the checklist use the approved words', () => {

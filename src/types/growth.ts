@@ -335,7 +335,7 @@ export type TablesClaimResult =
   | Refusal<'not_ready'>
 
 /** server/growth/metrics.ts CLIENT_SIGNALS: what a browser may report about itself. Anything else is ignored. */
-export type ClientSignal = 'webgl-missing' | 'opera-mini' | 'save-data' | 'slow-start' | 'installed' | 'share-sheet' | 'share-fallback'
+export type ClientSignal = 'webgl-missing' | 'opera-mini' | 'save-data' | 'slow-start' | 'installed' | 'share-sheet' | 'share-fallback' | 'inapp-tiktok' | 'inapp-meta' | 'old-browser'
 
 // ---- HTTP: /api/growth/ ---------------------------------------------------------------------------
 
@@ -739,5 +739,5 @@ export const OUTREACH_OPERATOR_RESPONSE_KEYS = [
   'comeback', 'email', 'log', 'previews', 'push', 'quietNow', 'rules', 'serverTime', 'whatsapp',
 ] as const satisfies readonly (keyof Ok<OutreachOperatorResponse>)[]
 export const SHARE_KINDS = ['invite', 'house', 'missions', 'week', 'table', 'event', 'wedding', 'election', 'news', 'gist', 'space', 'street'] as const satisfies readonly ShareKind[]
-export const CLIENT_SIGNALS = ['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback'] as const satisfies readonly ClientSignal[]
+export const CLIENT_SIGNALS = ['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback', 'inapp-tiktok', 'inapp-meta', 'old-browser'] as const satisfies readonly ClientSignal[]
 export const FUNNEL_STEPS = ['onboarded', 'goal-1', 'settled', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work'] as const satisfies readonly FunnelStep[]

@@ -43,7 +43,7 @@
  *   referral.linked (a new life was attached to a sharer's link; the same act is not counted again under a share name) ·
  *   referral.welcomed · referral.counted · referral.paid · referral.refused.<why>
  *   table.started.<game> · table.finished.<game> · table.abandoned.<game> · table.human · table.bot
- *   consent.adult · consent.minor · client.<signal> (webgl-missing, opera-mini, save-data, slow-start)
+ *   consent.adult · consent.minor · client.<signal> (webgl-missing, opera-mini, save-data, slow-start, inapp-tiktok, inapp-meta, old-browser)
  *
  * WHERE VISITS CAME FROM (`sources`, POST /api/growth/source). { [lagosDay]: { "source|medium|campaign|content": { landed,
  * play, game, stayed } } } — four whole-number totals per campaign per day: opened the page, pressed Play, reached the game,
@@ -88,7 +88,7 @@ export const FUNNEL: readonly { id: FunnelStep; reached: (state: LifeState) => b
 ]);
 export const FUNNEL_ORDER: readonly FunnelStep[] = Object.freeze(['onboarded', 'goal-1', 'settled', 'job', 'shift', 'goals-done', 'mission', 'table', 'day-two-work']);
 /** Signals a browser may report about itself (see POST /api/growth/client). A fixed list: nothing free-form is counted. */
-export const CLIENT_SIGNALS = Object.freeze(['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback']);
+export const CLIENT_SIGNALS = Object.freeze(['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback', 'inapp-tiktok', 'inapp-meta', 'old-browser']);
 const COUNTER = /^[a-z0-9][a-z0-9.-]{0,47}$/;
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 

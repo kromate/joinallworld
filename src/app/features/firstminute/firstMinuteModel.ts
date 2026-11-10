@@ -1,13 +1,15 @@
 // THE FIRST MINUTE (docs/FEED.md, "First minute"), as pure functions: which few things of Near you the strip shows, what it says about
 // the people here, and the ONE next action it offers. Nothing here touches the page, so the choice is tested under node --test.
 //
+// A player back after three hours or more is greeted first, and the one action is their current goal (`back`).
 // The action, the first that exists:
 //   1. someone else is in this room or place now, and it has a chat      → Say hello (the room's chat)
 //   2. a person from your local government posted, and you may reply     → Say hello (a reply to that post)
 //   3. an open community of your area, else of your city, you are not in → Join <community>
 //   4. a person from your city posted, and you may reply                 → Say hello (a reply to that post)
-//   5. you can walk now and are not in the Square                         → Walk to the Square
-//   6. otherwise                                                          → Say hello (a post on Near you)
+//   5. a regular of this venue is standing here                          → Say hello to <name> (their card)
+//   6. you can walk now and are not in the Square                         → Walk to the Square
+//   7. otherwise                                                          → Say hello (a post on Near you)
 // Each of them is already counted as activation by the server when it happens (a reply or post, a join, a walk): nothing is counted here.
 import { nearness } from '../../../feed/model.ts'
 import type { CrewView, PostView } from '../../../types/feed.ts'
@@ -29,12 +31,18 @@ export interface MinuteFacts {
   canChat: boolean
   /** The player can step into the Square now (not travelling, not on a street walk, not already there). */
   canWalk: boolean
+  /** The venue's regulars standing here now (game characters, not people). Empty in a place, on a street walk and where there are none. */
+  regulars?: readonly { id: string; name: string }[]
+  /** Set for a player who was away three hours or more and has a current goal: its title. */
+  back?: string | null
 }
 
 export type NextAction =
   | { kind: 'room'; label: string }
   | { kind: 'reply'; label: string; post: string; who: string }
   | { kind: 'join'; label: string; crew: string; name: string }
+  | { kind: 'npc'; label: string; npc: string; name: string }
+  | { kind: 'goal'; label: string }
   | { kind: 'square'; label: string }
   | { kind: 'post'; label: string }
 
@@ -69,10 +77,10 @@ export function stripItems(posts: readonly PostView[], now: number): StripItem[]
   }))
 }
 
-/** "3 people here now", "1 person here now", "Nobody else here yet"; null when the count is not known. */
-export function hereText(others: number | null): string | null {
+/** "3 people here now", "1 person here now"; with nobody else, the regulars ("Tunji is here", "3 regulars here") or "Nobody else here yet"; null when the count is not known. */
+export function hereText(others: number | null, regulars: readonly { name: string }[] = []): string | null {
   if (others === null) return null
-  if (others <= 0) return 'Nobody else here yet'
+  if (others <= 0) return regulars.length === 1 ? `${regulars[0]!.name} is here` : regulars.length ? `${regulars.length} regulars here` : 'Nobody else here yet'
   return `${others} ${others === 1 ? 'person' : 'people'} here now`
 }
 
@@ -90,6 +98,7 @@ function openCommunity(facts: MinuteFacts): CrewView | undefined {
 }
 
 export function nextAction(facts: MinuteFacts): NextAction {
+  if (facts.back) return { kind: 'goal', label: facts.back }
   if (facts.canChat && (facts.others ?? 0) > 0) return { kind: 'room', label: 'Say hello' }
   const local = neighbourPost(facts, true)
   if (local) return { kind: 'reply', label: 'Say hello', post: local.id, who: local.by.name }
@@ -97,6 +106,8 @@ export function nextAction(facts: MinuteFacts): NextAction {
   if (crew) return { kind: 'join', label: `Join ${crew.name}`, crew: crew.id, name: crew.name }
   const near = neighbourPost(facts, false)
   if (near) return { kind: 'reply', label: 'Say hello', post: near.id, who: near.by.name }
+  const regular = facts.regulars?.[0]
+  if (regular) return { kind: 'npc', label: `Say hello to ${regular.name}`, npc: regular.id, name: regular.name }
   if (facts.canWalk) return { kind: 'square', label: 'Walk to the Square' }
   return { kind: 'post', label: 'Say hello' }
 }
@@ -107,6 +118,8 @@ export function actionHint(action: NextAction): string {
     case 'room': return 'Open the chat of the people here'
     case 'reply': return `Reply to ${action.who}`
     case 'join': return 'One tap: you are in, with its chat and its world'
+    case 'npc': return `${action.name} is a regular here`
+    case 'goal': return 'Welcome back: your next goal'
     case 'square': return 'Everyone in Allworld meets there'
     case 'post': return 'Write the first post near you'
   }

@@ -74,7 +74,7 @@ test('settling in: a local government and the free starter house there — no re
     const e = g.state.estate;
     assert.deepEqual([e.lga, e.lgaConfirmed, e.lgaVia, e.lgaAt, e.living, e.tier, e.plot], ['ikeja', true, 'device', T0, 'own', 'starter', null], 'the plot is the server’s to allocate');
     assert.deepEqual([g.state.onboarding.house, g.state.onboarding.stage, g.state.location, g.state.economy.rent.house, g.state.economy.started], [null, 'settled', 'home', null, true]);
-    assert.equal(g.state.cash, outcome.ownCash, 'start cash tops the ₦5,000 seed up to the outcome’s own-house start');
+    assert.equal(g.state.cash, outcome.ownCash + 1000, 'start cash tops the ₦5,000 seed up to the outcome’s own-house start, and Settle in pays its ₦1,000 on moving home');
     assert.ok(reasons(g.state).some((reason) => reason.startsWith('Start cash · Starter house, Ikeja')));
     const first = need(seen[0]);
     assert.deepEqual([seen.length, first.house, first.rent, first.startCash, first.lga, first.via, first.own, first.lottery], [1, null, 0, outcome.ownCash, 'ikeja', 'device', true, outcome.id]);
@@ -104,7 +104,7 @@ test('settling in with a rented home still works as it did, and may carry a loca
   const outcome = g.ready();
   assert.equal(g.act('onboarding.home', { house: 'mushin', lga: 'surulere' }).code, 'life_started');
   assert.deepEqual([g.state.onboarding.house, g.state.property.house, g.state.economy.rent.house, g.state.estate.living, g.state.estate.lga, g.state.estate.lgaConfirmed], ['mushin', 'mushin', 'mushin', 'rent', 'surulere', true]);
-  assert.equal(g.state.cash, outcome.startCash.mushin);
+  assert.equal(g.state.cash, need(outcome.startCash.mushin) + 1000, 'the start cash and the Settle in reward');
   const old = game();
   old.act('onboarding.quick-start', { look: LOOK }); old.ready();
   assert.equal(old.act('onboarding.home', { house: 'mushin' }).code, 'life_started');
@@ -156,24 +156,28 @@ test('the first goal never traps a guest who went elsewhere: the free thing the 
   assert.equal(g.state.goals.chain, 1, 'what the chip asked for completed the goal');
 });
 
-test('a new life that moves in straight away ends at home, with the first goal still pointing out to the park', () => {
+test('a new life that moves in straight away ends at home, and its goals go on from there instead of sending it back to the park', () => {
   const g = game();
   g.act('onboarding.quick-start', { look: LOOK });
   g.ready();
+  const before = g.state.cash;
   const moved = g.act('onboarding.home', { lga: 'ikeja' });
   assert.equal(moved.code, 'life_started');
   assert.equal(g.state.location, 'home', 'the player arrives in the new house');
   assert.match(g.state.message, /Open the Map to see the world\.$/);
   const chip = goalChip(g);
-  assert.deepEqual([chip.id, chip.go, chip.title], ['first-fun', ['park', 'trees'], 'Play a round of Ayo'], 'the goal that needed the venue still says where to go');
-  assert.match(chip.hint, /^Head out to Freedom Park/);
-  const cash = g.state.cash;
-  assert.equal(g.run('bedroom', 'nap').ok, true);
-  assert.deepEqual([g.state.goals.chain, g.state.cash, reasons(g.state).includes('Goal: Play a round of Ayo')], [0, cash, false], 'a home nap does not complete the public activity the chip asks for');
-  assert.equal(g.act('travel', { id: 'park', mode: 'trek' }).ok, true); g.finish();
-  if (g.state.travel.event) g.act('world.roadside', { choice: need(need(g.view().travel.event).choices.at(-1)).id });
-  assert.equal(g.run('trees', 'play-ayo').ok, true);
-  assert.equal(g.state.goals.chain >= 1, true, 'and it is reachable: Ayo in the park completes it');
+  assert.deepEqual([chip.id, chip.go, g.state.goals.chain], ['eat', ['home', 'kitchen'], 3], 'Settle in is paid at once and the next goal is in the house');
+  assert.deepEqual(reasons(g.state).filter((reason) => reason.startsWith('Goal:')), ['Goal: Settle in'], 'the two opening goals are passed over, not paid');
+  assert.equal(g.state.cash > before, true);
+});
+
+test('a guest who settles but stays where they are keeps the opening goals', () => {
+  const g = game();
+  g.act('onboarding.quick-start', { look: LOOK });
+  g.ready();
+  assert.equal(g.act('onboarding.home', { lga: 'ikeja', stay: true }).code, 'life_started');
+  assert.notEqual(g.state.location, 'home');
+  assert.deepEqual([goalChip(g).id, g.state.goals.chain], ['first-fun', 0]);
 });
 
 test('missions wait until the life has settled in: nothing is dealt, counted, shown or claimable to a guest', () => {
@@ -225,22 +229,15 @@ test('a delivery from the server reaches a life that is still held for its look;
   assert.equal(g.act('social.server', { op: 'no-such-op' }).code, 'server_only');
 });
 
-test('the one line of guidance is always something that can be done: settled in before saying hello, it points the way out', () => {
+test('the one line of guidance is always something that can be done: settled in before saying hello, it goes on at home', () => {
   const g = game();
   g.act('onboarding.quick-start', { look: LOOK });
   g.run('trees', 'play-ayo');
   assert.deepEqual([goalChip(g).id, goalChip(g).open], ['say-hello', 'people']);
   g.ready();
   assert.equal(g.act('onboarding.home', { lga: 'ikeja' }).code, 'life_started');
-  // At home, with "Say hello" still the current goal: Settle in is already met and waits its turn; nothing is lost.
+  // At home nobody is there to greet: the hello is passed over, Settle in pays, and the next goal is in the kitchen.
   const chip = goalChip(g);
-  assert.deepEqual([g.state.location, chip.id, chip.open, chip.params, g.state.goals.chain], ['home', 'say-hello', 'map', { destination: 'park' }, 1]);
-  assert.match(chip.hint, /go out to Freedom Park/);
-  assert.equal(g.act('travel', { id: 'park', mode: 'trek' }).ok, true); g.finish();
-  if (g.state.travel.event) g.act('world.roadside', { choice: need(need(g.view().travel.event).choices.at(-1)).id });
-  assert.equal(g.view().goals.chip.open, 'people', 'out in public, the goal opens the people who are there');
-  const regular = need(g.view().social.here[0]);
-  assert.equal(g.run('people', `npc-${regular.id}-hello`).ok, true);
-  assert.deepEqual([g.state.goals.chain, goalChip(g).id], [3, 'eat'], 'the hello pays, and Settle in — met earlier — pays right behind it');
-  assert.deepEqual(reasons(g.state).filter((reason) => reason.startsWith('Goal:')), ['Goal: Play a round of Ayo', 'Goal: Say hello to someone', 'Goal: Settle in']);
+  assert.deepEqual([g.state.location, chip.id, chip.go, g.state.goals.chain], ['home', 'eat', ['home', 'kitchen'], 3]);
+  assert.deepEqual(reasons(g.state).filter((reason) => reason.startsWith('Goal:')), ['Goal: Play a round of Ayo', 'Goal: Settle in']);
 });

@@ -187,10 +187,10 @@ test('quick start: a guest life is held only until its look is confirmed, then p
   const before = restored.cash;
   onboard(restored);
   assert.deepEqual([restored.location, restored.onboarding.done, restored.onboarding.stage, viewLife(restored, at()).onboarding.required], ['home', true, 'settled', false]);
-  assert.equal(restored.cash, 96000 + (before - 5000), 'the old flow’s start cash plus what the guest earned: nothing lost, nothing counted twice');
-  assert.deepEqual(restored.goals.seen, ['settle-in'], 'Settle in is paid when the chain reaches it');
+  assert.equal(restored.cash, 96000 + (before - 5000) + 1000, 'the old flow’s start cash plus what the guest earned and the Settle in reward: nothing lost, nothing counted twice');
+  assert.deepEqual(restored.goals.seen, [], 'Settle in is paid on moving home');
   chip = goalChip(restored);
-  assert.deepEqual([chip.kind, chip.id], ['goal', 'say-hello'], 'the chain carries on where the guest was');
+  assert.deepEqual([chip.kind, chip.id], ['goal', 'eat'], 'at home the chain goes on with the home goals');
   assert.equal(act(restored, 'spot', { id: 'bathroom' }).code, 'selected');
 });
 

@@ -141,7 +141,8 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     }, { durable: false }).catch(() => null);
     // While the launch offer is open the preview says so (server/bonus/service.ts).
     const offer = share ? publicOffer(bonusConfig(ctx), await ctx.store.read((db) => claimedOf(db)).catch(() => 0)) : null;
-    return { status: share ? 200 : 404, html: sharePageHtml(share, code, origin, offer, sourceQuery(query)) };
+    // Never kept by the browser: a second opening of the same link is an opening too.
+    return { status: share ? 200 : 404, cache: false, html: sharePageHtml(share, code, origin, offer, sourceQuery(query)) };
   });
 
   // The pages a link in an e-mail opens. A GET only ever shows a button: mail scanners follow links, so nothing is

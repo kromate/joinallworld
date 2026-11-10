@@ -87,7 +87,7 @@ test('settling in: a new life has no place until it chooses a local government; 
   // Moving into the house that came with the plot: free, the starter room, and no weekly rent from then on.
   const { state: own, result } = onboard({ house: 'mushin', lga: 'alimosho', own: true });
   assert.equal(result.code, 'moved_in');
-  assert.deepEqual([own.estate.living, own.estate.tier, own.economy.rent.house, own.cash], ['own', 'starter', null, 76000]);
+  assert.deepEqual([own.estate.living, own.estate.tier, own.economy.rent.house, own.cash], ['own', 'starter', null, 77000]); // the start cash and Settle in's ₦1,000, paid on moving home
   assert.equal(viewLife(own, at()).economy.rent, null);
   assert.equal(own.home.items.every((item) => item.x < HOUSE_TIERS.starter.grid && item.y < HOUSE_TIERS.starter.grid), true);
   const before = own.cash;

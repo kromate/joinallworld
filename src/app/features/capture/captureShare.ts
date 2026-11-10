@@ -174,6 +174,7 @@ export async function shareReady(): Promise<'shared' | 'cancelled' | 'sheet' | '
   try {
     await globalThis.navigator.share({ files: [made.file], text: made.text, title: 'Allworld' })
     track('share_channel', { channel: 'native' })
+    void useGrowth().call('/api/growth/client', { signals: ['share-native'] })
     return 'shared'
   } catch (error) {
     const name = (error as { name?: unknown } | null)?.name

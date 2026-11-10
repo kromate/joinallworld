@@ -335,6 +335,8 @@ const HANDLERS: Record<string, Handler | undefined> = {
     const g = state.goals;
     // A life that was never a guest starts its chain here, at the first home goal (the opening goals are the quick start's).
     if (!g.started) { g.started = true; g.chain = Math.max(g.chain, STARTER_INTRO); }
+    // A guest who moves home is not sent back out for the opening goals: the chain goes on from Settle in, which is met and paid at once.
+    else if (state.location === 'home') g.chain = Math.max(g.chain, STARTER_INTRO - 1);
     if (isDream(data?.dream)) g.dream = data.dream;
     const loan = data?.loan, lottery = data?.lottery;
     const owed = (isRecord(loan) ? loan.owed : undefined) ?? (isLottery(lottery) ? LOTTERY[lottery].loan?.owed : undefined);

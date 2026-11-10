@@ -55,6 +55,7 @@ export async function sendLoop(made: LoopShare): Promise<'shared' | 'cancelled' 
   try {
     await nav.share({ files: [made.file], text: made.text, title: 'Allworld' })
     track('share_channel', { channel: 'native' })
+    void useGrowth().call('/api/growth/client', { signals: ['share-native'] })
     return 'shared'
   } catch (error) {
     const name = (error as { name?: unknown } | null)?.name

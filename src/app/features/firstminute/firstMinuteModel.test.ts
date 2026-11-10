@@ -90,3 +90,16 @@ test('the badge mark: yes or no on the device, and the Phone puts Feed first for
   assert.equal(BADGE_DOCK[0], 'feed')
   assert.deepEqual(BADGE_DOCK.slice(1), DOCK.slice(0, 3), 'the rest of the dock keeps its order')
 })
+
+test('a regular who is standing here comes before the walk to the Square, and a player who is back gets their goal', () => {
+  const regulars = [{ id: 'tunji', name: 'Tunji' }, { id: 'ada', name: 'Ada' }]
+  assert.deepEqual(nextAction(facts({ regulars })), { kind: 'npc', label: 'Say hello to Tunji', npc: 'tunji', name: 'Tunji' })
+  assert.equal(nextAction(facts({ regulars, others: 2 })).kind, 'room', 'people come before a regular')
+  assert.equal(nextAction(facts({ regulars: [] })).kind, 'square')
+  assert.equal(actionHint(nextAction(facts({ regulars }))), 'Tunji is a regular here')
+  assert.equal(hereText(0, regulars), '2 regulars here')
+  assert.equal(hereText(0, regulars.slice(0, 1)), 'Tunji is here')
+  assert.equal(hereText(3, regulars), '3 people here now')
+  assert.deepEqual(nextAction(facts({ regulars, others: 2, back: 'Eat something' })), { kind: 'goal', label: 'Eat something' }, 'back after a while: the goal first')
+  assert.equal(nextAction(facts({ back: null })).kind, 'square')
+})

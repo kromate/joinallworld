@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // THE FIRST MINUTE (docs/FEED.md, "First minute"): one strip on the first screen after Play, in the 3D world and in Lite. Up to three things
 // of Near you (an event first), how many people are here now, and ONE next action chosen by what exists (./firstMinuteModel.ts): Say hello,
-// Join <community> or Walk to the Square. Once per session, put away with ×, gone after its action. A new player also gets "Show me around",
+// Join <community>, Say hello to a regular who is standing here, or Walk to the Square. A player back after three hours is welcomed and given their current goal instead. Once per session, put away with ×, gone after its action. A new player also gets "Show me around",
 // the walkthrough on request (it no longer starts by itself for them: the strip is their first minute). Mounted by ./startFirstMinute.ts.
 import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 import { useApp, tripKey } from '../../state/app.ts'
@@ -10,6 +10,8 @@ import { placeNow, placePeople } from '../places/placeState.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { feedApi } from '../feed/feedApi.ts'
+import { useGrowth } from '../growth/useGrowth.ts'
+import { chipAction } from '../life/goalChipModel.ts'
 import { keepBadge } from '../feed/badgeMark.ts'
 import { actionHint, hereText, nextAction, stripItems } from './firstMinuteModel.ts'
 import type { Badge, NextAction, StripItem } from './firstMinuteModel.ts'
@@ -20,7 +22,8 @@ const props = defineProps<{ fresh: boolean }>()
 const StartCard = defineAsyncComponent(() => import('../shareloops/StartCard.vue'))
 const showStart = ref(false)
 const emit = defineEmits<{ close: [] }>()
-const { game, shell, community } = useApp()
+const { game, shell, community, goTo } = useApp()
+const growth = useGrowth()
 const api = feedApi((path, options) => game.fetchJson(path, options))
 const posts = ref<PostView[]>([]), communities = ref<CrewView[]>([]), badge = ref<Badge | null>(null), area = ref(''), ready = ref(false), busy = ref(false)
 
@@ -34,13 +37,18 @@ const others = computed<number | null>(() => {
   return people && 'players' in people ? people.players.filter((person) => person.here && person.id !== me()).length : null
 })
 const street = computed(() => game.state.value.location === 'city-street')
+/** The venue's regulars the scene shows now: none in a place (the Square, a room) or on a street walk. */
+const regulars = computed(() => (placeNow.value || street.value ? [] : game.view.value.social.here.map((npc) => ({ id: npc.id, name: npc.name }))))
+/** Back after three hours or more (the visit hello says so), with a goal to go on with. */
+const back = computed(() => { const hello = growth.state.hello, chip = game.view.value.goals.chip; return !props.fresh && hello?.ok && hello.away.hours >= 3 && chip.kind === 'goal' ? chip : null })
 const action = computed<NextAction>(() => nextAction({
   posts: posts.value, communities: communities.value, badge: badge.value, city: game.view.value.cityId, others: others.value,
   canChat: Boolean(placeNow.value) || !street.value,
   canWalk: placeNow.value?.kind !== 'square' && !street.value && !social.me?.visiting && !tripKey(game.state.value),
+  regulars: regulars.value, back: back.value?.title ?? null,
 }))
 const items = computed<StripItem[]>(() => stripItems(posts.value, Date.now()))
-const here = computed(() => hereText(others.value))
+const here = computed(() => hereText(others.value, regulars.value))
 const hint = computed(() => actionHint(action.value))
 
 onMounted(async () => {
@@ -67,6 +75,16 @@ async function go(): Promise<void> {
   if (next.kind === 'room') { community.toggle(true); emit('close'); return }
   if (next.kind === 'reply') { openPost(next.post); return }
   if (next.kind === 'post') { shell.open('feed', { tab: 'near' }); emit('close'); return }
+  // A regular's card, the same one their name tag in the scene opens.
+  if (next.kind === 'npc') { shell.open('person', { npc: next.npc }); emit('close'); return }
+  if (next.kind === 'goal') {
+    const chip = back.value, step = chip ? chipAction(chip) : null
+    if (step?.kind === 'open') shell.open(step.id, step.params)
+    else if (step?.kind === 'go') void goTo(step.venue, step.spot)
+    else if (step) community.toggle(true)
+    emit('close')
+    return
+  }
   busy.value = true
   try {
     if (next.kind === 'square') {

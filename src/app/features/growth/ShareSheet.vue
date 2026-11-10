@@ -47,20 +47,28 @@ const rules = computed<InviteRules>(() => referral.value?.rules ?? fallback)
 const progress = computed(() => progressLine(referral.value))
 
 function channel(name: ShareChannel): void { growth.track('share_channel', { channel: name }) }
+/** Counts a real send (an aggregate count, no ids), once per way of sending while this sheet is open. A phone share is counted by the store, when it finished. */
+const told = new Set<string>()
+function sent(name: Exclude<ShareChannel, 'native'>): void {
+  if (told.has(name)) return
+  told.add(name)
+  void growth.call('/api/growth/client', { signals: [`share-${name}`] })
+}
+function tapped(name: 'whatsapp' | 'telegram' | 'x'): void { channel(name); sent(name) }
 async function run(what: 'share' | 'copy'): Promise<void> {
   if (working.value) return
   working.value = what
   channel(what === 'share' ? 'native' : 'copy')
-  try { if (what === 'share') await growth.shareNow(); else if (!(await growth.copyShare())) await offerManual('text') } finally { working.value = null }
+  try { if (what === 'share') await growth.shareNow(); else if (await growth.copyShare()) sent('copy'); else await offerManual('text') } finally { working.value = null }
 }
 async function copyLink(): Promise<void> {
   const made = sharing.sharing
   if (working.value || !made) return
   working.value = 'link'
   channel('copy')
-  try { if (!(await growth.copyLink())) await offerManual('link') } finally { working.value = null }
+  try { if (await growth.copyLink()) sent('copy'); else await offerManual('link') } finally { working.value = null }
 }
-function toggleQr(): void { showQr.value = !showQr.value; if (showQr.value) channel('qr') }
+function toggleQr(): void { showQr.value = !showQr.value; if (showQr.value) { channel('qr'); sent('qr') } }
 onMounted(() => {
   canNative.value = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
   if (invite.value) void growth.load()
@@ -76,8 +84,8 @@ onMounted(() => {
       <p class="gr-share-text">{{ sharing.sharing.prepared.text }}</p>
       <div class="gr-share-acts">
         <BaseButton variant="primary" class="is-wide" :disabled="working !== null" @click="run('share')"><GameIcon name="share" :size="18" /> {{ working === 'share' ? 'Sharing…' : 'Share…' }}</BaseButton>
-        <LinkButton :href="sharing.sharing.prepared.whatsapp">WhatsApp</LinkButton>
-        <LinkButton :href="sharing.sharing.prepared.x">X</LinkButton>
+        <LinkButton :href="sharing.sharing.prepared.whatsapp" @click="tapped('whatsapp')">WhatsApp</LinkButton>
+        <LinkButton :href="sharing.sharing.prepared.x" @click="tapped('x')">X</LinkButton>
         <BaseButton :disabled="working !== null" @click="run('copy')">{{ working === 'copy' ? 'Copying…' : 'Copy text' }}</BaseButton>
         <LinkButton v-if="sharing.sharing.prepared.clip" :href="sharing.sharing.prepared.clip.url" :download="sharing.sharing.prepared.clip.name">{{ sharing.sharing.prepared.clip.type.startsWith('video/') ? 'Save video' : 'Save picture' }}</LinkButton>
         <LinkButton v-else-if="sharing.sharing.prepared.url" :href="sharing.sharing.prepared.url" download="allworld.jpg">Save picture</LinkButton>
@@ -94,9 +102,9 @@ onMounted(() => {
       <div class="gr-share-acts">
         <BaseButton variant="primary" class="is-wide" :disabled="working !== null" @click="copyLink">{{ working === 'link' ? 'Copying…' : 'Copy link' }}</BaseButton>
         <BaseButton v-if="canNative" class="is-wide" :disabled="working !== null" @click="run('share')">{{ working === 'share' ? 'Sharing…' : 'Share…' }}</BaseButton>
-        <LinkButton v-if="links" :href="links.whatsapp" @click="channel('whatsapp')">WhatsApp</LinkButton>
-        <LinkButton v-if="links" :href="links.telegram" @click="channel('telegram')">Telegram</LinkButton>
-        <LinkButton v-if="links" :href="links.x" @click="channel('x')">X</LinkButton>
+        <LinkButton v-if="links" :href="links.whatsapp" @click="tapped('whatsapp')">WhatsApp</LinkButton>
+        <LinkButton v-if="links" :href="links.telegram" @click="tapped('telegram')">Telegram</LinkButton>
+        <LinkButton v-if="links" :href="links.x" @click="tapped('x')">X</LinkButton>
         <BaseButton :aria-expanded="showQr" @click="toggleQr">{{ showQr ? 'Hide QR code' : 'Show QR code' }}</BaseButton>
       </div>
       <div v-if="manual" class="gr-manual" data-manual-copy>

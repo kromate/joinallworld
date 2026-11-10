@@ -32,7 +32,7 @@
  */
 
 /** The coach spells the step out for this many starter goals; later goals only ring their control. */
-export const COACH_GOALS = 3;
+export const COACH_GOALS = 6;
 /** A situational pointer (Go, the trip card, a roadside prompt) is shown this many times, then retired. */
 export const TAPER = 3;
 

@@ -34,6 +34,17 @@ export function startExtras(diagnostics: boolean): void {
 }
 
 export function startAfterReady(): void {
+  // The visit hello, for every life that reaches the game: a guest's too. It is the one call the first-party numbers follow a life by (new
+  // lives, sessions, return days: server/routes/growth.ts), and before this only a settled life sent it by itself. The store skips it when a
+  // fresh answer is already here, so nobody says it twice.
+  let said = false
+  const { game } = useApp()
+  const stopHello = watch(() => game.connected.value && game.view.value.onboarding?.required !== true, (ready) => {
+    if (!ready || said) return
+    said = true
+    void import('./features/growth/useGrowth.ts').then(({ useGrowth }) => useGrowth().load(), () => undefined)
+  }, { immediate: true })
+  if (said) stopHello()
   // Play app mode and the rules before sharing (playMode.ts): marks the page and wraps the site's API requests. Public Play builds also
   // opt in to the rating prompt, a lazy chunk that listens only inside the Play app.
   void import('./playMode.ts').then(({ isPlayApp, startPlayMode }) => {

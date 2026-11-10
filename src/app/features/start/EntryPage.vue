@@ -180,7 +180,12 @@ onMounted(() => {
   window.addEventListener('jaw:quick-start-done', onStarted)
   void loadOnline()
   poll = setInterval(() => { void loadOnline() }, 30000)
-  requestAnimationFrame(() => { setTimeout(loadArt, 0); if (variant.place) setTimeout(() => { void readStreet() }, 0) })
+  requestAnimationFrame(() => {
+    setTimeout(loadArt, 0)
+    if (variant.place) setTimeout(() => { void readStreet() }, 0)
+    // The home page offers the open city of the device's time zone under Play (suggestCity.ts: on the device, no prompt, nothing sent).
+    else if (isHome && !invited) setTimeout(() => { void import('./suggestCity.ts').then((module) => module.suggestCity()).then((city) => { if (city && !found.value && !finding.value) found.value = city }, () => undefined) }, 0)
+  })
   if (variant.id === 'agents') agentOpen.value = true
   root.value?.querySelector<HTMLElement>('[data-entry-title]')?.focus({ preventScroll: true })
 })
@@ -220,16 +225,16 @@ onBeforeUnmount(() => { window.removeEventListener('jaw:quick-start-done', onSta
       </p>
       <BonusLine v-if="account.available && !account.signedIn" />
 
-      <ul class="en-tiles" aria-label="What you can do">
-        <li v-for="tile in variant.tiles" :key="tile.label"><i aria-hidden="true"><GameIcon :name="tile.icon" :size="20" /></i><span>{{ tile.label }}</span></li>
-      </ul>
-
       <div v-if="isHome || variant.secondary.some((item) => item.kind === 'find')" class="en-find">
         <p v-if="found" class="en-found" role="status" data-entry-found>{{ foundLine }}</p>
         <button v-if="found && found.kind !== 'none'" type="button" class="en-btn is-small" data-key="found-start" :disabled="sending || starting" @click="startFound(found.city)">Start in {{ chosen && street?.place ? street.place.name : found.name }}</button>
         <button v-else type="button" class="en-link" data-key="find-city" :disabled="finding" @click="find">{{ finding ? 'Finding…' : findLabel }}</button>
         <small v-if="!found">Worked out on this device. Your position is never sent or stored.</small>
       </div>
+
+      <ul class="en-tiles" aria-label="What you can do">
+        <li v-for="tile in variant.tiles" :key="tile.label"><i aria-hidden="true"><GameIcon :name="tile.icon" :size="20" /></i><span>{{ tile.label }}</span></li>
+      </ul>
 
       <nav class="en-quiet" aria-label="More">
         <button type="button" class="en-link" data-key="agent" data-entry-agent @click="openAgent"><GameIcon name="link" :size="16" /> Connect an AI agent</button>

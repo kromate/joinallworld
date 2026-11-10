@@ -125,7 +125,7 @@ export function createGrowth(deps: GrowthDeps) {
     const current = state.sharing
     if (!current) return
     const outcome = await (await deps.loadShare()).systemShare(current.prepared)
-    void call('/api/growth/client', { signals: [outcome === 'unavailable' ? 'share-fallback' : 'share-sheet'] })
+    void call('/api/growth/client', { signals: outcome === 'unavailable' ? ['share-fallback'] : outcome === 'shared' ? ['share-sheet', 'share-native'] : ['share-sheet'] })
     if (outcome === 'unavailable') deps.toast('This browser has no share sheet. Use WhatsApp, X or Copy below.', 'info')
   }
   /** Copy the link alone (the invite sheet's Copy link). */

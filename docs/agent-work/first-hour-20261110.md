@@ -7,8 +7,8 @@
 - **Model / effort:** `Fable 5.2 / default`
 - **Thread:** `local`
 - **UTC updated:** `2026-11-10T09:00:00Z`
-- **Status:** `verified-local`
-- **Work state:** `deployment`
+- **Status:** `released`
+- **Work state:** `done`
 
 ## Goal and boundaries
 
@@ -50,13 +50,12 @@ None.
 
 ### Immediate resume steps
 
-1. Push, release, live smoke.
-2. Mark 10 Nov 2026 on any chart of new lives or day-1 return.
+1. Mark 10 Nov 2026 on any chart of new lives or day-1 return.
 
 ## Release state
 
 - **Local implementation:** `verified-local`
-- **Deployment:** `prepared`
+- **Deployment:** `live`
 - **Release gate:** typecheck, build, size, tests, live smoke
 - **References:** `docs/agent-work/first-session-20261109.md`, `docs/FEED.md`
 
@@ -65,3 +64,4 @@ None.
 | UTC | Status | Change or finding | Evidence | Next step |
 | --- | --- | --- | --- | --- |
 | 2026-11-10T09:00:00Z | verified-local | five changes made | typecheck, build, size and smoke pass | targeted tests against the live commit's known failures, browser check, release |
+| 2026-11-10T09:10:00Z | released | live as the commit that precedes this record's update | CI success, continuity ok for 2 identities, live smoke PASS 14 checks; 1,148 targeted tests, the only failures are ones the previous live commit has too | read the share and guest counts after a week |
